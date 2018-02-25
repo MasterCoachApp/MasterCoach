@@ -14,6 +14,7 @@ $app-direction: ltr;
 
 @import "ionic.globals";
 
+
 $toolbar-background: black;
 
 // Shared Variables
@@ -23,6 +24,8 @@ $toolbar-background: black;
 // To view all the possible Ionic variables, see:
 // http://ionicframework.com/docs/theming/overriding-ionic-variables/
 
+$facebook-logo: url('../assets/imgs/facebook_button_icon.svg') 6px 6px no-repeat;
+$google-logo: url('../assets/imgs/google_button_icon.svg') 6px 6px no-repeat;
 
 
 
@@ -40,6 +43,15 @@ $colors: (
   danger:     #f53d3d,
   light:      #f4f4f4,
   dark:       #222,
+  /*facebook:   (
+    base: #4C69BA,
+    contrast: #ffffff
+  ),
+  google:     (
+    backgroundColor: #DD4B39,
+    contrast: #ffffff
+  )
+*/
 );
 
 
@@ -53,6 +65,7 @@ $colors: (
 // App Material Design Variables
 // --------------------------------------------------
 // Material Design only Sass variables can go here
+// Input highlight mixin for focus, valid, and invalid states
 
 
 
