@@ -12,6 +12,7 @@ page-login {
   }
 
   .logo {
+    transition: all linear 0.1s;
     padding-top: 25px;
     padding-bottom: 50px;
     width: 250px;
@@ -142,7 +143,18 @@ page-login {
   }
 
   .hidden {
+    transition: all linear 0.2s;
+    height: 0;
+    width: 0;
+    background-color: transparent;
+    top:-200px;
+    left: 200px;
+    color: transparent;
+  }
+
+  .noDisplay {
     display: none;
   }
+
 
 }

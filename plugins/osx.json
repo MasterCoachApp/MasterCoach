@@ -26,6 +26,9 @@
       "APP_ID": "569430143426412",
       "APP_NAME": "Master Coach",
       "PACKAGE_NAME": "io.ionic.starter"
+    },
+    "ionic-plugin-keyboard": {
+      "PACKAGE_NAME": "io.ionic.coachingApp"
     }
   },
   "dependent_plugins": {}

@@ -25820,6 +25820,8 @@ page-login .inputBox {
 }
 
 page-login .logo {
+  -webkit-transition: all linear 0.1s;
+  transition: all linear 0.1s;
   padding-top: 25px;
   padding-bottom: 50px;
   width: 250px;
@@ -25956,5 +25958,16 @@ page-login .create {
 }
 
 page-login .hidden {
+  -webkit-transition: all linear 0.2s;
+  transition: all linear 0.2s;
+  height: 0;
+  width: 0;
+  background-color: transparent;
+  top: -200px;
+  left: 200px;
+  color: transparent;
+}
+
+page-login .noDisplay {
   display: none;
 }

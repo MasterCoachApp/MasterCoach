@@ -34,7 +34,7 @@
   "cordova-plugin-ionic-keyboard": {
     "source": {
       "type": "registry",
-      "id": "cordova-plugin-ionic-keyboard@^2.0.5"
+      "id": "cordova-plugin-ionic-keyboard@2.0.5"
     },
     "is_top_level": true,
     "variables": {}
@@ -49,5 +49,13 @@
       "APP_ID": "569430143426412",
       "APP_NAME": "Master Coach"
     }
+  },
+  "ionic-plugin-keyboard": {
+    "source": {
+      "type": "registry",
+      "id": "ionic-plugin-keyboard@^2.2.1"
+    },
+    "is_top_level": true,
+    "variables": {}
   }
 }

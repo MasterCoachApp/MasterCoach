@@ -10,7 +10,7 @@
 <ion-content padding style="background-color: #222222">
 
   <div [ngClass]="hasFocus ? 'hidden' : 'logo'">
-    <img src="../../../assets/imgs/olympics.png"/>
+    <img src="./assets/imgs/olympics.png"/>
   </div>
 
   <ion-row>
@@ -31,26 +31,26 @@
   </ion-row>
     <ion-row>
         <ion-col class="loginButtonColumn">
-            <button ion-button (click)="forgotPassword()" [ngClass]="hasFocus ? 'loginButton' : 'hidden'">Reset Password</button>
+            <button ion-button (click)="forgotPassword()" [ngClass]="hasFocus ? 'loginButton' : 'noDisplay'">Reset Password</button>
         </ion-col>
     </ion-row>
 
   <ion-row>
     <ion-col>
-        <hr data-content="OR" [ngClass]="hasFocus ? 'hidden' : 'hr-text'">
+        <hr data-content="OR" [ngClass]="hasFocus ? 'noDisplay' : 'hr-text'">
     </ion-col>
   </ion-row>
 
     <ion-row>
         <ion-col>
-            <button [ngClass]="hasFocus ? 'hidden' : 'loginBtn loginBtn--facebook'">
+            <button [ngClass]="hasFocus ? 'noDisplay' : 'loginBtn loginBtn--facebook'">
                 Log In with Facebook
             </button>
         </ion-col>
     </ion-row>
     <ion-row>
         <ion-col>
-            <button [ngClass]="hasFocus ? 'hidden' : 'loginBtn loginBtn--google'">
+            <button [ngClass]="hasFocus ? 'noDisplay' : 'loginBtn loginBtn--google'">
                 Log In with Google
             </button>
         </ion-col>
@@ -58,7 +58,7 @@
 
   <ion-row>
     <ion-col>
-      <button  [ngClass]="hasFocus ? 'hidden' : 'create'" (click)="createAccount()">
+      <button  [ngClass]="hasFocus ? 'noDisplay' : 'create'" (click)="createAccount()">
       Create an account
       </button>
     </ion-col>

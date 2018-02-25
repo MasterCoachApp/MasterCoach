@@ -21055,7 +21055,7 @@ ion-navbar.toolbar {
 }
 
 .toolbar-background-ios {
-  background: #f8f8f8;
+  background: black;
 }
 
 .header-ios .toolbar-background-ios,
@@ -21096,7 +21096,7 @@ ion-navbar.toolbar {
   text-align: center;
   font-size: 1.7rem;
   font-weight: 600;
-  color: #000;
+  color: #fff;
   pointer-events: auto;
 }
 
@@ -21156,8 +21156,8 @@ ion-navbar.toolbar {
 .bar-button-outline-ios {
   border-width: 1px;
   border-style: solid;
-  border-color: #488aff;
-  color: #488aff;
+  border-color: #fff;
+  color: #fff;
   background-color: transparent;
 }
 
@@ -21166,23 +21166,23 @@ ion-navbar.toolbar {
 }
 
 .bar-button-outline-ios.activated {
-  color: #fff;
-  background-color: #488aff;
+  color: #000;
+  background-color: #fff;
 }
 
 .bar-button-solid-ios {
-  color: #fff;
-  background-color: #488aff;
+  color: #000;
+  background-color: #fff;
 }
 
 .bar-button-solid-ios:hover:not(.disable-hover) {
-  color: #fff;
+  color: #000;
   opacity: .4;
 }
 
 .bar-button-solid-ios.activated {
-  color: #fff;
-  background-color: #427feb;
+  color: #000;
+  background-color: #ebebeb;
   opacity: .4;
 }
 
@@ -21263,14 +21263,14 @@ ion-navbar.toolbar {
 .bar-button-default-ios,
 .bar-button-default.bar-button-ios-default,
 .bar-button-clear-ios-default {
-  color: #488aff;
+  color: #fff;
   background-color: transparent;
 }
 
 .bar-button-default-ios:hover:not(.disable-hover),
 .bar-button-default.bar-button-ios-default:hover:not(.disable-hover),
 .bar-button-clear-ios-default:hover:not(.disable-hover) {
-  color: #488aff;
+  color: #fff;
 }
 
 .bar-button-default-ios.activated,
@@ -21282,14 +21282,14 @@ ion-navbar.toolbar {
 .bar-button-clear-ios,
 .bar-button-default.bar-button-ios-clear,
 .bar-button-clear-ios-clear {
-  color: #488aff;
+  color: #fff;
   background-color: transparent;
 }
 
 .bar-button-clear-ios:hover:not(.disable-hover),
 .bar-button-default.bar-button-ios-clear:hover:not(.disable-hover),
 .bar-button-clear-ios-clear:hover:not(.disable-hover) {
-  color: #488aff;
+  color: #fff;
 }
 
 .bar-button-clear-ios.activated,
@@ -22559,7 +22559,7 @@ ion-navbar.toolbar {
 
 .toolbar-background-md {
   border-color: #b2b2b2;
-  background: #f8f8f8;
+  background: black;
 }
 
 .header-md::after,
@@ -22609,7 +22609,7 @@ ion-navbar.toolbar {
   padding: 0 12px;
   font-size: 2rem;
   font-weight: 500;
-  color: #424242;
+  color: #fff;
 }
 
 .bar-buttons-md {
@@ -22668,8 +22668,8 @@ ion-navbar.toolbar {
 .bar-button-outline-md {
   border-width: 1px;
   border-style: solid;
-  border-color: #424242;
-  color: #424242;
+  border-color: #fff;
+  color: #fff;
   background-color: transparent;
 }
 
@@ -22682,21 +22682,21 @@ ion-navbar.toolbar {
 }
 
 .bar-button-outline-md .button-effect {
-  background-color: #424242;
+  background-color: #fff;
 }
 
 .bar-button-solid-md {
-  color: #fff;
-  background-color: #424242;
+  color: #424242;
+  background-color: #fff;
 }
 
 .bar-button-solid-md:hover:not(.disable-hover) {
-  color: #fff;
+  color: #424242;
 }
 
 .bar-button-solid-md.activated {
-  color: #fff;
-  background-color: #515151;
+  color: #424242;
+  background-color: #ebebeb;
 }
 
 .bar-button-md.bar-button-icon-start ion-icon {
@@ -22769,27 +22769,27 @@ ion-navbar.toolbar {
 .bar-button-default-md,
 .bar-button-clear-md-default,
 .bar-button-md-default {
-  color: #424242;
+  color: #fff;
   background-color: transparent;
 }
 
 .bar-button-default-md:hover:not(.disable-hover),
 .bar-button-clear-md-default:hover:not(.disable-hover),
 .bar-button-md-default:hover:not(.disable-hover) {
-  color: #424242;
+  color: #fff;
 }
 
 .bar-button-clear-md,
 .bar-button-clear-md-clear,
 .bar-button-md-clear {
-  color: #424242;
+  color: #fff;
   background-color: transparent;
 }
 
 .bar-button-clear-md:hover:not(.disable-hover),
 .bar-button-clear-md-clear:hover:not(.disable-hover),
 .bar-button-md-clear:hover:not(.disable-hover) {
-  color: #424242;
+  color: #fff;
 }
 
 .toolbar-md-primary .toolbar-background-md {
@@ -24018,7 +24018,7 @@ ion-navbar.toolbar {
 
 .toolbar-background-wp {
   border-color: #b2b2b2;
-  background: #f8f8f8;
+  background: black;
 }
 
 .toolbar-content-wp {
@@ -24038,7 +24038,7 @@ ion-navbar.toolbar {
   font-size: 1.5rem;
   font-weight: bold;
   text-transform: uppercase;
-  color: #000;
+  color: #fff;
   padding: 0 6px;
 }
 
@@ -24098,8 +24098,8 @@ ion-navbar.toolbar {
 .bar-button-outline-wp {
   border-width: 1px;
   border-style: solid;
-  border-color: #000;
-  color: #000;
+  border-color: #fff;
+  color: #fff;
   background-color: transparent;
 }
 
@@ -24108,22 +24108,22 @@ ion-navbar.toolbar {
 }
 
 .bar-button-outline-wp.activated {
-  color: #fff;
-  background-color: #000;
+  color: #000;
+  background-color: #fff;
 }
 
 .bar-button-solid-wp {
-  color: #fff;
-  background-color: #000;
+  color: #000;
+  background-color: #fff;
 }
 
 .bar-button-solid-wp:hover:not(.disable-hover) {
-  color: #fff;
+  color: #000;
 }
 
 .bar-button-solid-wp.activated {
-  color: #fff;
-  background-color: #141414;
+  color: #000;
+  background-color: #ebebeb;
 }
 
 .bar-button-wp.bar-button-icon-start ion-icon {
@@ -24196,27 +24196,27 @@ ion-navbar.toolbar {
 .bar-button-default-wp,
 .bar-button-clear-wp-default,
 .bar-button-wp-default {
-  color: #000;
+  color: #fff;
   background-color: transparent;
 }
 
 .bar-button-default-wp:hover:not(.disable-hover),
 .bar-button-clear-wp-default:hover:not(.disable-hover),
 .bar-button-wp-default:hover:not(.disable-hover) {
-  color: #000;
+  color: #fff;
 }
 
 .bar-button-clear-wp,
 .bar-button-clear-wp-clear,
 .bar-button-wp-clear {
-  color: #000;
+  color: #fff;
   background-color: transparent;
 }
 
 .bar-button-clear-wp:hover:not(.disable-hover),
 .bar-button-clear-wp-clear:hover:not(.disable-hover),
 .bar-button-wp-clear:hover:not(.disable-hover) {
-  color: #000;
+  color: #fff;
 }
 
 .toolbar-wp-primary .toolbar-background-wp {
@@ -25678,8 +25678,10 @@ ion-navbar.toolbar {
   min-height: calc(46px + env(safe-area-inset-bottom));
 }
 
-page-create-account .toolbar-background {
-  background-color: black;
+page-create-account {
+  /* Shared */
+  /* Facebook */
+  /* Google */
 }
 
 page-create-account .createAccountInput {
@@ -25724,29 +25726,86 @@ page-create-account .hr-text:after {
   background-color: #222222;
 }
 
-page-create-account .mediaLogin {
+page-create-account body {
+  padding: 2em;
+}
+
+page-create-account .loginBtn {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  position: relative;
+  /* width: 13em;  - apply for fixed size */
+  margin: 0.2em;
+  padding: 0 15px 0 46px;
+  border: none;
+  text-align: left;
+  line-height: 34px;
+  white-space: nowrap;
+  border-radius: 0.2em;
+  font-size: 16px;
+  color: #FFF;
   width: 100%;
-  border-radius: 20px;
-  color: #ffffff;
-  font-weight: bold;
-  vertical-align: top;
-  text-align: center;
-  padding-left: 15px;
-  padding-bottom: 12px;
-  font-size: 14px;
-  margin: auto;
 }
 
-page-create-account .mediaLoginFb {
-  background-color: #3b5998;
+page-create-account .loginBtn:before {
+  content: "";
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 34px;
+  height: 100%;
 }
 
-page-create-account .mediaLoginGoogle {
-  background-color: #cc0000;
+page-create-account .loginBtn:focus {
+  outline: none;
 }
 
-page-create-account .buttonTitle {
-  padding-left: 10px;
+page-create-account .loginBtn:active {
+  -webkit-box-shadow: inset 0 0 0 32px rgba(0, 0, 0, 0.1);
+  box-shadow: inset 0 0 0 32px rgba(0, 0, 0, 0.1);
+}
+
+page-create-account .loginBtn--facebook {
+  background-color: #4C69BA;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#4C69BA), to(#3B55A0));
+  background-image: linear-gradient(#4C69BA, #3B55A0);
+  /*font-family: "Helvetica neue", Helvetica Neue, Helvetica, Arial, sans-serif;*/
+  text-shadow: 0 -1px 0 #354C8C;
+}
+
+page-create-account .loginBtn--facebook:before {
+  border-right: #364e92 1px solid;
+  background: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/14082/icon_facebook.png") 6px 6px no-repeat;
+}
+
+page-create-account .loginBtn--facebook:hover,
+page-create-account .loginBtn--facebook:focus {
+  background-color: #5B7BD5;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#5B7BD5), to(#4864B1));
+  background-image: linear-gradient(#5B7BD5, #4864B1);
+}
+
+page-create-account .loginBtn--google {
+  /*font-family: "Roboto", Roboto, arial, sans-serif;*/
+  background: #DD4B39;
+}
+
+page-create-account .loginBtn--google:before {
+  border-right: #BB3F30 1px solid;
+  background: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/14082/icon_google.png") 6px 6px no-repeat;
+}
+
+page-create-account .loginBtn--google:hover,
+page-create-account .loginBtn--google:focus {
+  background: #E74B37;
+}
+
+page-login {
+  /* Shared */
+  /* Facebook */
+  /* Google */
 }
 
 page-login ion-content {
@@ -25754,20 +25813,30 @@ page-login ion-content {
 }
 
 page-login .inputBox {
-  border: 2px solid;
+  border: none;
   border-radius: 20px;
   padding-left: 20px;
+  color: white;
 }
 
 page-login .logo {
+  -webkit-transition: all linear 0.1s;
+  transition: all linear 0.1s;
   padding-top: 25px;
   padding-bottom: 50px;
   width: 250px;
   margin: auto;
 }
 
+page-login .loginButtonColumn {
+  text-align: center;
+}
+
 page-login .loginButton {
   text-align: center;
+  width: 100%;
+  background-color: black;
+  border: 1px solid #48BBF8;
 }
 
 page-login .hr-text {
@@ -25797,41 +25866,108 @@ page-login .hr-text:after {
   content: attr(data-content);
   position: relative;
   display: inline-block;
-  color: black;
+  color: white;
   padding: 0 .5em;
   line-height: 1.5em;
-  background-color: #fcfcfa;
+  background-color: #222222;
 }
 
-page-login .mediaLogin {
+page-login body {
+  padding: 2em;
+}
+
+page-login .loginBtn {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  position: relative;
+  /* width: 13em;  - apply for fixed size */
+  margin: 0.2em;
+  padding: 0 15px 0 46px;
+  border: none;
+  text-align: left;
+  line-height: 34px;
+  white-space: nowrap;
+  border-radius: 0.2em;
+  font-size: 16px;
+  color: #FFF;
   width: 100%;
-  border-radius: 20px;
-  color: #ffffff;
-  font-weight: bold;
-  vertical-align: top;
-  text-align: center;
-  padding-left: 15px;
-  padding-bottom: 12px;
-  font-size: 14px;
-  margin: auto;
 }
 
-page-login .mediaLoginFb {
-  background-color: #3b5998;
+page-login .loginBtn:before {
+  content: "";
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 34px;
+  height: 100%;
 }
 
-page-login .mediaLoginGoogle {
-  background-color: #cc0000;
+page-login .loginBtn:focus {
+  outline: none;
 }
 
-page-login .buttonTitle {
-  padding-left: 10px;
+page-login .loginBtn:active {
+  -webkit-box-shadow: inset 0 0 0 32px rgba(0, 0, 0, 0.1);
+  box-shadow: inset 0 0 0 32px rgba(0, 0, 0, 0.1);
+}
+
+page-login .loginBtn--facebook {
+  background-color: #4C69BA;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#4C69BA), to(#3B55A0));
+  background-image: linear-gradient(#4C69BA, #3B55A0);
+  /*font-family: "Helvetica neue", Helvetica Neue, Helvetica, Arial, sans-serif;*/
+  text-shadow: 0 -1px 0 #354C8C;
+}
+
+page-login .loginBtn--facebook:before {
+  border-right: #364e92 1px solid;
+  background: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/14082/icon_facebook.png") 6px 6px no-repeat;
+}
+
+page-login .loginBtn--facebook:hover,
+page-login .loginBtn--facebook:focus {
+  background-color: #5B7BD5;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#5B7BD5), to(#4864B1));
+  background-image: linear-gradient(#5B7BD5, #4864B1);
+}
+
+page-login .loginBtn--google {
+  /*font-family: "Roboto", Roboto, arial, sans-serif;*/
+  background: #DD4B39;
+}
+
+page-login .loginBtn--google:before {
+  border-right: #BB3F30 1px solid;
+  background: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/14082/icon_google.png") 6px 6px no-repeat;
+}
+
+page-login .loginBtn--google:hover,
+page-login .loginBtn--google:focus {
+  background: #E74B37;
 }
 
 page-login .create {
   padding: 15px;
   width: 100%;
-  margin-top: 30px;
+  margin-top: 5px;
   font-size: 16px;
   background: none;
+  color: white;
+}
+
+page-login .hidden {
+  -webkit-transition: all linear 0.1s;
+  transition: all linear 0.1s;
+  height: 0;
+  width: 0;
+  background-color: transparent;
+  top: -200px;
+  left: 200px;
+  color: transparent;
+}
+
+page-login .noDisplay {
+  display: none;
 }
