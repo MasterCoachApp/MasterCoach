@@ -4,6 +4,7 @@ import {UserService} from "../../../services/users";
 import {Tools} from "../../../services/tools";
 import {TabsPage} from "../../HomeTabs/tabs/tabs";
 import {CreateAccountPage} from "../create-account/create-account";
+import {Keyboard} from "@ionic-native/keyboard";
 
 /**
  * Generated class for the LoginPage page.
@@ -23,8 +24,9 @@ export class LoginPage {
   password: string;
   hasFocus: boolean;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public users: UserService, public tools: Tools) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public users: UserService, public tools: Tools, public keyboard: Keyboard) {
     this.hasFocus = false;
+    keyboard.disableScroll(true)
   }
 
   login() {
