@@ -9,9 +9,19 @@ export class UserService {
 
     }
 
+
+    // -------------------------///
+    //    Retrieve Users       ///
+    //-------------------------///
+
+
+    // -------------------------///
+    //    Authentication       ///
+    //-------------------------///
+
     authenticateUser(email: string, password: string) {
         let promise = new Promise((resolve, reject) => {
-            this.dbAuth.auth.signInWithEmailAndPassword(email, password).then(() => {
+            this.dbAuth.auth.signInWithEmailAndPassword(email, password).then(() => { //attempt to sign in with provided credentials
                 resolve("Valid");
             }).catch(error => {
                 let errorCode = error.code;
@@ -33,7 +43,7 @@ export class UserService {
         let that = this;
         let promise = new Promise( (resolve, reject) => {
 
-            that.dbAuth.auth.createUserWithEmailAndPassword(email, password).then(response => {
+            that.dbAuth.auth.createUserWithEmailAndPassword(email, password).then(response => { //create account with firebase Authentication
                 let promise = new Promise( (resolve, reject) => {
                     that.createAccountDatabase(email, firstName, lastName, response.uid).then(response =>{
                         resolve();
@@ -61,15 +71,19 @@ export class UserService {
         });
     }
 
+
+    //attempt to add the created account to the real time database
     createAccountDatabase(email: string, firstName: string, lastName: string, userId: string) {
         let that = this;
         let promise = new Promise( (resolve, reject) => {
-        let newUser = {
+        let newUser = { //store values in temporary object => should be modeled after real user object model
           "Email": email,
           "Last_name": lastName,
           "First_name": firstName,
           "UserId": userId
         };
+
+        //push creates a unique key for the passed variable, although as of right now id like to try and make the key the userId.
            let ref = that.db.database.ref("Users").push(
                newUser
            ).then(response => {

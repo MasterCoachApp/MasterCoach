@@ -32,6 +32,7 @@ export class CreateAccountPage {
   }
 
   createAccount() {
+      //validate entry
       if(this.password == "" || this.password == null || this.email == "" || this.email == null || this.firstName == null || this.lastName == null) {
           this.tools.presentToast("bottom", "You cannot leave any fields empty");
           return;
@@ -42,7 +43,7 @@ export class CreateAccountPage {
       }
 
       let that = this;
-      let promise = new Promise( (resolve, reject) => {
+      let promise = new Promise( (resolve, reject) => { //full create account process happening in the user service
           that.users.createAccountAuthentication(that.email, that.password, that.firstName, that.lastName).then(response =>{
               if(response != "Validated") {
                   reject(response);
@@ -58,7 +59,7 @@ export class CreateAccountPage {
 
       promise.then(response => {
             this.navCtrl.pop();
-      }).catch(error => {
+      }).catch(error => { //handle errors that firebase may throw when attempting to create an account
 
           if (error == "auth/invalid-email")
               this.tools.presentToast("bottom", 'Sorry, that email is invalid');
