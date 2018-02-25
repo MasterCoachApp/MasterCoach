@@ -92,6 +92,7 @@ var UserService = (function () {
     };
     //attempt to add the created account to the real time database
     UserService.prototype.createAccountDatabase = function (email, firstName, lastName, userId) {
+        console.log(email, firstName, lastName, userId);
         var that = this;
         var promise = new Promise(function (resolve, reject) {
             var newUser = {
@@ -111,111 +112,184 @@ var UserService = (function () {
             return error; //not sure what this would be
         });
     };
+    // -------------------------///
+    //   Media Authentication   ///
+    //-------------------------///
+    /*Facebook service seems to work on all accounts except for:
+        When theres missing information returned and the user is prompted for it, the system doesn't wait before proceeding.
+        Furthermore i dont believe the checks for additional info even belong there. They should be cause before the signIn with credentials occurs.
+    */
     UserService.prototype.advanceWithFacebook = function (entry) {
-        var _this = this;
         var that = this;
         var promise = new Promise(function (resolve, reject) {
             that.facebook.login(['email'])
                 .then(function (response) {
                 if (response.status === 'connected') {
-                    var facebookCredential = __WEBPACK_IMPORTED_MODULE_3_firebase__["auth"].FacebookAuthProvider.credential(response.authResponse.accessToken);
-                    that.facebook.api('/me', ['email']).then(function (response) {
+                    var facebookCredential_1 = __WEBPACK_IMPORTED_MODULE_3_firebase__["auth"].FacebookAuthProvider.credential(response.authResponse.accessToken);
+                    that.facebook.api('me?fields=id,name,email,first_name,last_name', ['email']).then(function (apiResponse) {
                         console.log(response);
-                        console.log('Good to see you, ' + response.name);
-                        console.log('Facebook Id: ' + response.id);
-                        console.log('Email: ' + response.emailVerified);
-                    });
-                    that.dbAuth.auth.signInWithCredential(facebookCredential)
-                        .then(function (success) {
+                        console.log('Good to see you, ' + apiResponse["first_name"] + " " + apiResponse["last_name"]);
+                        console.log('Facebook Id: ' + apiResponse.id);
+                        console.log('Email: ' + apiResponse.email);
                         if (entry == "create") {
-                            var first_name_1 = "";
-                            var last_name_1 = "";
-                            var email_1 = "";
-                            //issues ==> we dont wait for the values to update with the alert
-                            if (success.displayName == null || success.displayName == "" || success.displayName.split(" ").length != 2) {
-                                var prompt_1 = _this.alertCtrl.create({
-                                    title: 'Please verify this information',
-                                    message: "",
-                                    enableBackdropDismiss: false,
-                                    inputs: [
-                                        {
-                                            name: 'first_name',
-                                            placeholder: 'First name'
-                                        },
-                                        {
-                                            name: 'last_name',
-                                            placeholder: 'Last name'
-                                        },
-                                    ],
-                                    buttons: [
-                                        {
-                                            text: 'Save',
-                                            handler: function (data) {
-                                                first_name_1 = data['first_name'];
-                                                last_name_1 = data['last_name'];
-                                            }
-                                        }
-                                    ]
+                            if (apiResponse.email == "" || apiResponse.email == null) {
+                                that.requestEmailVerification().then(function (emailResponse) {
+                                    if (apiResponse["first_name"] == "" || apiResponse["first_name"] == null || apiResponse["last_name"] == null || apiResponse["last_name"] == "") {
+                                        that.requestDisplayNameValidation().then(function (nameResponse) {
+                                            that.signInWithFacebookCredentials(facebookCredential_1, emailResponse, nameResponse.first, nameResponse.last, entry, false).then(function (response) {
+                                                resolve("Success");
+                                            }).catch(function (error) {
+                                                reject(error);
+                                            });
+                                        });
+                                    }
+                                    else {
+                                        console.log(emailResponse);
+                                        that.signInWithFacebookCredentials(facebookCredential_1, emailResponse, apiResponse["first_name"], apiResponse["last_name"], entry, false).then(function (response) {
+                                            resolve("Success");
+                                        }).catch(function (error) {
+                                            reject(error);
+                                        });
+                                    }
                                 });
-                                prompt_1.present();
+                            }
+                            else if (apiResponse["first_name"] == "" || apiResponse["first_name"] == null || apiResponse["last_name"] == null || apiResponse["last_name"] == "") {
+                                that.requestDisplayNameValidation().then(function (nameResponse) {
+                                    that.signInWithFacebookCredentials(facebookCredential_1, apiResponse.email, nameResponse.first, nameResponse.last, entry, true).then(function (response) {
+                                        resolve("Success");
+                                    }).catch(function (error) {
+                                        reject(error);
+                                    });
+                                });
                             }
                             else {
-                                var name_1 = success.displayName.split(" ");
-                                first_name_1 = name_1[0];
-                                last_name_1 = name_1[1];
-                            }
-                            if (success.email == null || success.email == "") {
-                                var prompt_2 = _this.alertCtrl.create({
-                                    title: 'Please verify this information',
-                                    message: "",
-                                    enableBackdropDismiss: false,
-                                    inputs: [
-                                        {
-                                            name: 'email',
-                                            placeholder: 'Email'
-                                        },
-                                    ],
-                                    buttons: [
-                                        {
-                                            text: 'Save',
-                                            handler: function (data) {
-                                                email_1 = data['email'];
-                                            }
-                                        }
-                                    ]
-                                });
-                                prompt_2.present();
-                            }
-                            else {
-                                email_1 = success.email;
-                            }
-                            var promise_1 = new Promise(function (resolve, reject) {
-                                that.createAccountDatabase(email_1, first_name_1, last_name_1, success.uid)
-                                    .then(function (response) {
-                                    resolve();
+                                that.signInWithFacebookCredentials(facebookCredential_1, apiResponse["email"], apiResponse["first_name"], apiResponse["last_name"], entry, true).then(function (response) {
+                                    resolve("Success");
                                 }).catch(function (error) {
-                                    reject();
-                                    console.log(error); //do something better here? Not sure what would cause this
+                                    reject(error);
                                 });
-                            });
-                            promise_1.then(function (response) {
+                            }
+                        }
+                        else {
+                            that.signInWithFacebookCredentials(facebookCredential_1, "", "", "", entry, true).then(function (response) {
                                 resolve("Success");
                             }).catch(function (error) {
                                 reject(error);
-                                console.log(error); //do something better here? Not sure what would cause this
                             });
-                        }
-                        else {
-                            resolve("Success");
                         }
                     });
                 }
-            }).catch(function (error) { console.log("error" + error); });
+            });
         });
         return promise.then(function (response) {
             return response;
         }).catch(function (error) {
             return error; //not sure what this would be
+        });
+    };
+    UserService.prototype.signInWithFacebookCredentials = function (facebookCredential, email, first_name, last_name, entry, emailWasValid) {
+        var that = this;
+        var promise = new Promise(function (resolve, reject) {
+            that.dbAuth.auth.signInWithCredential(facebookCredential)
+                .then(function (success) {
+                if (!emailWasValid) {
+                    success.updateEmail(email).catch(function (error) {
+                        console.log("Error updating email: " + error);
+                    });
+                }
+                if (entry == "create") {
+                    var promise_1 = new Promise(function (resolve, reject) {
+                        that.createAccountDatabase(email, first_name, last_name, success.uid)
+                            .then(function (response) {
+                            resolve();
+                        }).catch(function (error) {
+                            reject();
+                            console.log(error); //do something better here? Not sure what would cause this
+                        });
+                    });
+                    promise_1.then(function (response) {
+                        resolve("Success");
+                    }).catch(function (error) {
+                        reject(error);
+                        console.log(error); //do something better here? Not sure what would cause this
+                    });
+                }
+                else {
+                    resolve("Success");
+                }
+            });
+        });
+        return promise.then(function (response) {
+            return response;
+        }).catch(function (error) {
+            return error; //not sure what this would be
+        });
+    };
+    UserService.prototype.requestEmailVerification = function () {
+        var that = this;
+        var email = "";
+        var promise = new Promise(function (resolve, reject) {
+            var prompt = that.alertCtrl.create({
+                title: 'Please verify this information',
+                message: "",
+                enableBackdropDismiss: false,
+                inputs: [
+                    {
+                        name: 'Email',
+                        placeholder: 'Email'
+                    },
+                ],
+                buttons: [
+                    {
+                        text: 'Save',
+                        handler: function (data) {
+                            //validate email address properly and stop from being empty
+                            console.log(data);
+                            email = data["Email"];
+                            resolve();
+                        }
+                    }
+                ]
+            });
+            prompt.present();
+        });
+        return promise.then(function () {
+            return email;
+        });
+    };
+    UserService.prototype.requestDisplayNameValidation = function () {
+        var nameObj = null;
+        var that = this;
+        var promise = new Promise(function (resolve, reject) {
+            var prompt = that.alertCtrl.create({
+                title: 'Please verify this information',
+                message: "",
+                enableBackdropDismiss: false,
+                inputs: [
+                    {
+                        name: 'first_name',
+                        placeholder: 'First name'
+                    },
+                    {
+                        name: 'last_name',
+                        placeholder: 'Last name'
+                    },
+                ],
+                buttons: [
+                    {
+                        text: 'Save',
+                        handler: function (data) {
+                            //validate (not empty)
+                            nameObj = data;
+                            resolve();
+                        }
+                    }
+                ]
+            });
+            prompt.present();
+        });
+        return promise.then(function () {
+            return nameObj;
         });
     };
     UserService.prototype.firebaseAuthenticationError = function (error) {

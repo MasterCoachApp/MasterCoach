@@ -4,25 +4,13 @@
     <list default="true" id="e7f57d27-d28c-4f55-a890-87bd4911cd01" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/.sourcemaps/main.js.map" afterPath="$PROJECT_DIR$/.sourcemaps/main.js.map" />
-      <change beforePath="$PROJECT_DIR$/platforms/browser/www/build/0.js" afterPath="$PROJECT_DIR$/platforms/browser/www/build/0.js" />
-      <change beforePath="$PROJECT_DIR$/platforms/browser/www/build/1.js" afterPath="$PROJECT_DIR$/platforms/browser/www/build/1.js" />
-      <change beforePath="$PROJECT_DIR$/platforms/browser/www/build/main.css" afterPath="$PROJECT_DIR$/platforms/browser/www/build/main.css" />
       <change beforePath="$PROJECT_DIR$/platforms/browser/www/build/main.js" afterPath="$PROJECT_DIR$/platforms/browser/www/build/main.js" />
       <change beforePath="$PROJECT_DIR$/platforms/browser/www/build/main.js.map" afterPath="$PROJECT_DIR$/platforms/browser/www/build/main.js.map" />
-      <change beforePath="$PROJECT_DIR$/platforms/browser/www/build/vendor.js" afterPath="$PROJECT_DIR$/platforms/browser/www/build/vendor.js" />
       <change beforePath="$PROJECT_DIR$/platforms/browser/www/build/vendor.js.map" afterPath="$PROJECT_DIR$/platforms/browser/www/build/vendor.js.map" />
       <change beforePath="$PROJECT_DIR$/platforms/ios/MasterCoach.xcworkspace/xcuserdata/jonahelbaz.xcuserdatad/UserInterfaceState.xcuserstate" afterPath="$PROJECT_DIR$/platforms/ios/MasterCoach.xcworkspace/xcuserdata/jonahelbaz.xcuserdatad/UserInterfaceState.xcuserstate" />
-      <change beforePath="$PROJECT_DIR$/platforms/ios/cordova/build-extras.xcconfig" afterPath="$PROJECT_DIR$/platforms/ios/cordova/build-extras.xcconfig" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Logins/create-account/create-account.html" afterPath="$PROJECT_DIR$/src/pages/Logins/create-account/create-account.html" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Logins/create-account/create-account.ts" afterPath="$PROJECT_DIR$/src/pages/Logins/create-account/create-account.ts" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Logins/login/login.html" afterPath="$PROJECT_DIR$/src/pages/Logins/login/login.html" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Logins/login/login.ts" afterPath="$PROJECT_DIR$/src/pages/Logins/login/login.ts" />
       <change beforePath="$PROJECT_DIR$/src/services/users.ts" afterPath="$PROJECT_DIR$/src/services/users.ts" />
-      <change beforePath="$PROJECT_DIR$/www/build/0.js" afterPath="$PROJECT_DIR$/www/build/0.js" />
-      <change beforePath="$PROJECT_DIR$/www/build/1.js" afterPath="$PROJECT_DIR$/www/build/1.js" />
       <change beforePath="$PROJECT_DIR$/www/build/main.js" afterPath="$PROJECT_DIR$/www/build/main.js" />
       <change beforePath="$PROJECT_DIR$/www/build/main.js.map" afterPath="$PROJECT_DIR$/www/build/main.js.map" />
-      <change beforePath="$PROJECT_DIR$/www/build/vendor.js" afterPath="$PROJECT_DIR$/www/build/vendor.js" />
       <change beforePath="$PROJECT_DIR$/www/build/vendor.js.map" afterPath="$PROJECT_DIR$/www/build/vendor.js.map" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -82,9 +70,12 @@
       <file leaf-file-name="users.ts" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/services/users.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="62">
-              <caret line="189" column="30" lean-forward="false" selection-start-line="189" selection-start-column="30" selection-end-line="189" selection-end-column="30" />
-              <folding />
+            <state relative-caret-position="262">
+              <caret line="127" column="77" lean-forward="false" selection-start-line="127" selection-start-column="77" selection-end-line="127" selection-end-column="77" />
+              <folding>
+                <element signature="e#0#41#0" expanded="true" />
+                <element signature="e#7064#7163#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -112,8 +103,8 @@
       <file leaf-file-name="login.ts" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/pages/Logins/login/login.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="293">
-              <caret line="76" column="47" lean-forward="false" selection-start-line="76" selection-start-column="47" selection-end-line="76" selection-end-column="47" />
+            <state relative-caret-position="308">
+              <caret line="77" column="36" lean-forward="false" selection-start-line="77" selection-start-column="29" selection-end-line="77" selection-end-column="36" />
               <folding>
                 <element signature="e#0#42#0" expanded="true" />
               </folding>
@@ -193,9 +184,10 @@
   <component name="NodeModulesDirectoryManager">
     <handled-path value="$PROJECT_DIR$/node_modules" />
   </component>
-  <component name="ProjectFrameBounds">
-    <option name="y" value="23" />
-    <option name="width" value="1440" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="9" />
+    <option name="y" value="35" />
+    <option name="width" value="1441" />
     <option name="height" value="817" />
   </component>
   <component name="ProjectView">
@@ -344,12 +336,12 @@
       <workItem from="1519506396050" duration="10018000" />
       <workItem from="1519532234806" duration="14009000" />
       <workItem from="1519576957446" duration="1616000" />
-      <workItem from="1519586130157" duration="7905000" />
+      <workItem from="1519586130157" duration="13984000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="33548000" />
+    <option name="totallyTimeSpent" value="39627000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="817" extended-state="6" />
@@ -404,7 +396,9 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager />
+    <breakpoint-manager>
+      <option name="time" value="1" />
+    </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
@@ -446,7 +440,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1110">
           <caret line="76" column="24" lean-forward="true" selection-start-line="76" selection-start-column="24" selection-end-line="76" selection-end-column="24" />
-          <folding />
+          <folding>
+            <element signature="e#0#41#0" expanded="true" />
+            <element signature="e#7064#7163#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -644,7 +641,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="375">
           <caret line="27" column="0" lean-forward="false" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="e#0#41#0" expanded="true" />
+            <element signature="e#7064#7163#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -797,16 +797,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/pages/Logins/login/login.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="293">
-          <caret line="76" column="47" lean-forward="false" selection-start-line="76" selection-start-column="47" selection-end-line="76" selection-end-column="47" />
-          <folding>
-            <element signature="e#0#42#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/pages/Logins/create-account/create-account.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="368">
@@ -817,11 +807,24 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/pages/Logins/login/login.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="308">
+          <caret line="77" column="36" lean-forward="false" selection-start-line="77" selection-start-column="29" selection-end-line="77" selection-end-column="36" />
+          <folding>
+            <element signature="e#0#42#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/services/users.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="62">
-          <caret line="189" column="30" lean-forward="false" selection-start-line="189" selection-start-column="30" selection-end-line="189" selection-end-column="30" />
-          <folding />
+        <state relative-caret-position="262">
+          <caret line="127" column="77" lean-forward="false" selection-start-line="127" selection-start-column="77" selection-end-line="127" selection-end-column="77" />
+          <folding>
+            <element signature="e#0#41#0" expanded="true" />
+            <element signature="e#7064#7163#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
