@@ -82,9 +82,8 @@ export class UserService {
           "First_name": firstName,
           "UserId": userId
         };
-
-        //push creates a unique key for the passed variable, although as of right now id like to try and make the key the userId.
-           let ref = that.db.database.ref("Users").push(
+        ß
+           let ref = that.db.database.ref("Users/"+userId).set(
                newUser
            ).then(response => {
                resolve();

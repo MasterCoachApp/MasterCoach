@@ -66,6 +66,12 @@ var UserService = (function () {
         this.dbAuth = dbAuth;
         this.db = db;
     }
+    // -------------------------///
+    //    Retrieve Users       ///
+    //-------------------------///
+    // -------------------------///
+    //    Authentication       ///
+    //-------------------------///
     UserService.prototype.authenticateUser = function (email, password) {
         var _this = this;
         var promise = new Promise(function (resolve, reject) {
@@ -113,6 +119,7 @@ var UserService = (function () {
             return error;
         });
     };
+    //attempt to add the created account to the real time database
     UserService.prototype.createAccountDatabase = function (email, firstName, lastName, userId) {
         var that = this;
         var promise = new Promise(function (resolve, reject) {
@@ -122,7 +129,8 @@ var UserService = (function () {
                 "First_name": firstName,
                 "UserId": userId
             };
-            var ref = that.db.database.ref("Users").push(newUser).then(function (response) {
+            ß;
+            var ref = that.db.database.ref("Users/" + userId).set(newUser).then(function (response) {
                 resolve();
             });
             reject();
@@ -135,9 +143,10 @@ var UserService = (function () {
     };
     UserService = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["A" /* Injectable */])(),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_angularfire2_auth__["a" /* AngularFireAuth */], __WEBPACK_IMPORTED_MODULE_2_angularfire2_database__["a" /* AngularFireDatabase */]])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_angularfire2_auth__["a" /* AngularFireAuth */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_angularfire2_auth__["a" /* AngularFireAuth */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2_angularfire2_database__["a" /* AngularFireDatabase */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2_angularfire2_database__["a" /* AngularFireDatabase */]) === "function" && _b || Object])
     ], UserService);
     return UserService;
+    var _a, _b;
 }());
 
 //# sourceMappingURL=users.js.map
@@ -187,6 +196,7 @@ var CreateAccountPage = (function () {
     }
     CreateAccountPage.prototype.createAccount = function () {
         var _this = this;
+        //validate entry
         if (this.password == "" || this.password == null || this.email == "" || this.email == null || this.firstName == null || this.lastName == null) {
             this.tools.presentToast("bottom", "You cannot leave any fields empty");
             return;
@@ -272,14 +282,16 @@ var __metadata = (this && this.__metadata) || function (k, v) {
  * Ionic pages and navigation.
  */
 var LoginPage = (function () {
-    function LoginPage(navCtrl, navParams, users, tools, keyboard) {
+    function LoginPage(navCtrl, navParams, users, tools, keyboard, platform) {
         this.navCtrl = navCtrl;
         this.navParams = navParams;
         this.users = users;
         this.tools = tools;
         this.keyboard = keyboard;
-        this.hasFocus = false;
-        keyboard.disableScroll(true);
+        this.hasFocus = false; //boolean to determine when email/password has focus
+        platform.ready().then(function () {
+            keyboard.disableScroll(true); //preventing keyboard induced overflow on a page that doesnt need it
+        });
     }
     LoginPage.prototype.login = function () {
         var _this = this;
@@ -301,7 +313,7 @@ var LoginPage = (function () {
                 });
             });
             promise.then(function () {
-                _this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_4__HomeTabs_tabs_tabs__["a" /* TabsPage */]);
+                _this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_4__HomeTabs_tabs_tabs__["a" /* TabsPage */]); //allow entry if successful login
             }).catch(function (error) {
                 if (error == "auth/invalid-email")
                     _this.tools.presentToast("bottom", 'Sorry, we don\'t know that email...yet! U+1F61C');
@@ -324,7 +336,7 @@ var LoginPage = (function () {
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
             selector: 'page-login',template:/*ion-inline-start:"/Users/jonahelbaz/Desktop/CoachingApp/MasterCoach/src/pages/Logins/login/login.html"*/'<!--\n  Generated template for the LoginPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n\n\n\n<ion-content padding style="background-color: #222222">\n\n  <div [ngClass]="hasFocus ? \'hidden\' : \'logo\'">\n    <img src="./assets/imgs/olympics.png"/>\n  </div>\n    <div style="margin-top: 10px;" [ngClass]="hasFocus ? \'\' : \'noDisplay\'">\n        <span style="font-weight: bold; font-size: 24px; color: white"> Log In</span>\n    </div>\n\n  <ion-row>\n    <ion-col>\n      <ion-input class="inputBox" [(ngModel)]="email" placeholder="Email" (focus)="hasFocus = true" (blur)="hasFocus = false"></ion-input>\n    </ion-col>\n  </ion-row>\n  <ion-row>\n    <ion-col>\n      <ion-input class="inputBox" [(ngModel)]="password" placeholder="Password" type="password" (focus)="hasFocus = true" (blur)="hasFocus = false"></ion-input>\n    </ion-col>\n  </ion-row>\n\n  <ion-row>\n    <ion-col class="loginButtonColumn">\n        <button class="loginButton" ion-button (click)="login()">Log In</button>\n    </ion-col>\n  </ion-row>\n    <ion-row>\n        <ion-col class="loginButtonColumn">\n            <button ion-button (click)="forgotPassword()" [ngClass]="hasFocus ? \'loginButton\' : \'noDisplay\'">Reset Password</button>\n        </ion-col>\n    </ion-row>\n\n  <ion-row>\n    <ion-col>\n        <hr data-content="OR" [ngClass]="hasFocus ? \'noDisplay\' : \'hr-text\'">\n    </ion-col>\n  </ion-row>\n\n    <ion-row>\n        <ion-col>\n            <button [ngClass]="hasFocus ? \'noDisplay\' : \'loginBtn loginBtn--facebook\'">\n                Log In with Facebook\n            </button>\n        </ion-col>\n    </ion-row>\n    <ion-row>\n        <ion-col>\n            <button [ngClass]="hasFocus ? \'noDisplay\' : \'loginBtn loginBtn--google\'">\n                Log In with Google\n            </button>\n        </ion-col>\n    </ion-row>\n\n  <ion-row>\n    <ion-col>\n      <button  [ngClass]="hasFocus ? \'noDisplay\' : \'create\'" (click)="createAccount()">\n      Create an account\n      </button>\n    </ion-col>\n  </ion-row>\n\n</ion-content>\n'/*ion-inline-end:"/Users/jonahelbaz/Desktop/CoachingApp/MasterCoach/src/pages/Logins/login/login.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2__services_users__["a" /* UserService */], __WEBPACK_IMPORTED_MODULE_3__services_tools__["a" /* Tools */], __WEBPACK_IMPORTED_MODULE_6__ionic_native_keyboard__["a" /* Keyboard */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2__services_users__["a" /* UserService */], __WEBPACK_IMPORTED_MODULE_3__services_tools__["a" /* Tools */], __WEBPACK_IMPORTED_MODULE_6__ionic_native_keyboard__["a" /* Keyboard */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* Platform */]])
     ], LoginPage);
     return LoginPage;
 }());
