@@ -1,0 +1,67 @@
+<!--
+  Generated template for the LoginPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+
+
+
+<ion-content padding style="background-color: #222222">
+
+  <div [ngClass]="hasFocus ? 'hidden' : 'logo'">
+    <img src="../../../assets/imgs/olympics.png"/>
+  </div>
+
+  <ion-row>
+    <ion-col>
+      <ion-input class="inputBox" [(ngModel)]="email" placeholder="Email" (focus)="hasFocus = true" (blur)="hasFocus = false"></ion-input>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col>
+      <ion-input class="inputBox" [(ngModel)]="password" placeholder="Password" type="password" (focus)="hasFocus = true" (blur)="hasFocus = false"></ion-input>
+    </ion-col>
+  </ion-row>
+
+  <ion-row>
+    <ion-col class="loginButtonColumn">
+        <button class="loginButton" ion-button (click)="login()">Log In</button>
+    </ion-col>
+  </ion-row>
+    <ion-row>
+        <ion-col class="loginButtonColumn">
+            <button ion-button (click)="forgotPassword()" [ngClass]="hasFocus ? 'loginButton' : 'hidden'">Reset Password</button>
+        </ion-col>
+    </ion-row>
+
+  <ion-row>
+    <ion-col>
+        <hr data-content="OR" [ngClass]="hasFocus ? 'hidden' : 'hr-text'">
+    </ion-col>
+  </ion-row>
+
+    <ion-row>
+        <ion-col>
+            <button [ngClass]="hasFocus ? 'hidden' : 'loginBtn loginBtn--facebook'">
+                Log In with Facebook
+            </button>
+        </ion-col>
+    </ion-row>
+    <ion-row>
+        <ion-col>
+            <button [ngClass]="hasFocus ? 'hidden' : 'loginBtn loginBtn--google'">
+                Log In with Google
+            </button>
+        </ion-col>
+    </ion-row>
+
+  <ion-row>
+    <ion-col>
+      <button  [ngClass]="hasFocus ? 'hidden' : 'create'" (click)="createAccount()">
+      Create an account
+      </button>
+    </ion-col>
+  </ion-row>
+
+</ion-content>

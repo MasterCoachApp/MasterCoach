@@ -1,24 +1,26 @@
-import { NgModule, ErrorHandler } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
-import { MyApp } from './app.component';
+import {ErrorHandler, NgModule} from '@angular/core';
+import {BrowserModule} from '@angular/platform-browser';
+import {IonicApp, IonicErrorHandler, IonicModule} from 'ionic-angular';
+import {MyApp} from './app.component';
 
-import { AboutPage } from '../pages/about/about';
-import { ContactPage } from '../pages/contact/contact';
-import { HomePage } from '../pages/home/home';
-import { TabsPage } from '../pages/tabs/tabs';
+import {AboutPage} from '../pages/HomeTabs/about/about';
+import {ContactPage} from '../pages/HomeTabs/contact/contact';
+import {HomePage} from '../pages/HomeTabs/home/home';
+import {TabsPage} from '../pages/HomeTabs/tabs/tabs';
 
-import { StatusBar } from '@ionic-native/status-bar';
-import { SplashScreen } from '@ionic-native/splash-screen';
+import {StatusBar} from '@ionic-native/status-bar';
+import {SplashScreen} from '@ionic-native/splash-screen';
 import {IonicStorageModule} from "@ionic/storage";
 
 import {AngularFireModule} from 'angularfire2';
 import {AngularFireDatabaseModule} from "angularfire2/database";
 import {FIREBASE_CONFIG} from "./firebase-credentials";
 import {AngularFireAuthModule} from "angularfire2/auth";
-import {LoginPage} from "../pages/login/login";
+import {LoginPage} from "../pages/Logins/login/login";
 import {UserService} from "../services/users";
 import {Tools} from "../services/tools";
+import {CreateAccountPage} from "../pages/Logins/create-account/create-account";
+import {Facebook} from "@ionic-native/facebook";
 
 @NgModule({
   declarations: [
@@ -27,7 +29,8 @@ import {Tools} from "../services/tools";
     ContactPage,
     HomePage,
     TabsPage,
-    LoginPage
+    LoginPage,
+    CreateAccountPage
   ],
   imports: [
     BrowserModule,
@@ -35,7 +38,8 @@ import {Tools} from "../services/tools";
     IonicStorageModule.forRoot(),
     AngularFireModule.initializeApp(FIREBASE_CONFIG),
     AngularFireDatabaseModule,
-    AngularFireAuthModule
+    AngularFireAuthModule,
+    AngularFireModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -44,14 +48,16 @@ import {Tools} from "../services/tools";
     ContactPage,
     HomePage,
     TabsPage,
-    LoginPage
+    LoginPage,
+    CreateAccountPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
+    Facebook,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-      UserService,
-      Tools
+    UserService,
+    Tools
   ]
 })
 export class AppModule {}

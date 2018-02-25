@@ -9,7 +9,7 @@
     <key>CFBundleIconFile</key>
     <string/>
     <key>CFBundleIdentifier</key>
-    <string>io.ionic.starter</string>
+    <string>io.ionic.coachingApp</string>
     <key>CFBundleInfoDictionaryVersion</key>
     <string>6.0</string>
     <key>CFBundleName</key>
