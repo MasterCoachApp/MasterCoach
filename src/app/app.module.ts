@@ -16,6 +16,9 @@ import {AngularFireModule} from 'angularfire2';
 import {AngularFireDatabaseModule} from "angularfire2/database";
 import {FIREBASE_CONFIG} from "./firebase-credentials";
 import {AngularFireAuthModule} from "angularfire2/auth";
+import {LoginPage} from "../pages/login/login";
+import {UserService} from "../services/users";
+import {Tools} from "../services/tools";
 
 @NgModule({
   declarations: [
@@ -23,7 +26,8 @@ import {AngularFireAuthModule} from "angularfire2/auth";
     AboutPage,
     ContactPage,
     HomePage,
-    TabsPage
+    TabsPage,
+    LoginPage
   ],
   imports: [
     BrowserModule,
@@ -39,12 +43,15 @@ import {AngularFireAuthModule} from "angularfire2/auth";
     AboutPage,
     ContactPage,
     HomePage,
-    TabsPage
+    TabsPage,
+    LoginPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+      UserService,
+      Tools
   ]
 })
 export class AppModule {}
