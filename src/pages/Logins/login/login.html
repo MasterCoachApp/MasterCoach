@@ -23,7 +23,7 @@
   </ion-row>
   <ion-row>
     <ion-col>
-      <ion-input class="inputBox" [(ngModel)]="password" placeholder="Password" type="password" (focus)="hasFocus = true" (blur)="hasFocus = false"></ion-input>
+      <ion-input class="inputBox" [(ngModel)]="password" placeholder="Password" type="password" (ionFocus)="hasFocus = true" (ionBlur)="hasFocus = false"></ion-input>
     </ion-col>
   </ion-row>
 
@@ -46,7 +46,7 @@
 
     <ion-row>
         <ion-col>
-            <button [ngClass]="hasFocus ? 'noDisplay' : 'loginBtn loginBtn--facebook'">
+            <button [ngClass]="hasFocus ? 'noDisplay' : 'loginBtn loginBtn--facebook'" (click)="loginWithFacebook()">
                 Log In with Facebook
             </button>
         </ion-col>
@@ -62,7 +62,7 @@
   <ion-row>
     <ion-col>
       <button  [ngClass]="hasFocus ? 'noDisplay' : 'create'" (click)="createAccount()">
-      Create an account
+      Create Account
       </button>
     </ion-col>
   </ion-row>

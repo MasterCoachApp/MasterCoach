@@ -25958,8 +25958,8 @@ page-login .create {
 }
 
 page-login .hidden {
-  -webkit-transition: all linear 0.1s;
-  transition: all linear 0.1s;
+  -webkit-transition: all linear 0.2s;
+  transition: all linear 0.2s;
   height: 0;
   width: 0;
   background-color: transparent;

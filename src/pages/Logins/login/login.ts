@@ -56,17 +56,7 @@ export class LoginPage {
         promise.then(() => {
             this.navCtrl.push(TabsPage); //allow entry if successful login
         }).catch(error => { //handle errors thrown by firebase
-            if (error == "auth/invalid-email")
-                this.tools.presentToast("bottom", 'Sorry, we don\'t know that email...yet! U+1F61C');
-
-            if (error == "auth/user-disabled")
-                this.tools.presentToast("bottom", "Sorry, looks like your account has been disabled U+1F613");
-
-            if (error == "auth/user-not-found")
-                this.tools.presentToast("bottom", "Sorry, user not found!");
-
-            if (error == "auth/wrong-password")
-                this.tools.presentToast("bottom", "Sorry, that password is incorrect!");
+            this.users.firebaseAuthenticationError(error);
         });
     }
     else {
@@ -76,6 +66,35 @@ export class LoginPage {
 
     createAccount() {
       this.navCtrl.push(CreateAccountPage);
+  }
+
+  loginWithFacebook() {
+      if(navigator.onLine) { //test for internet connection
+
+          let that = this;
+      let promise = new Promise((resolve, reject) => {
+
+          that.users.advanceWithFacebook("login").then(response => {
+             if(response != "Success") {
+                 reject(response);
+             }
+             else {
+                 resolve();
+             }
+          });
+
+      });
+
+      promise.then(() => {
+          this.navCtrl.push(TabsPage); //allow entry if successful login
+      }).catch(error => { //handle errors thrown by firebase
+          this.users.firebaseAuthenticationError(error);
+      });
+      }
+    else {
+        this.tools.presentToast("bottom", "Sorry, you're not connected to the internet");
+    }
+
   }
 
 

@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import {AlertController, IonicPage, NavController, NavParams} from 'ionic-angular';
 import {AngularFireAuth} from "angularfire2/auth";
 import {Facebook} from "@ionic-native/facebook";
 import * as firebase from 'firebase';
 import {Tools} from "../../../services/tools";
 import {UserService} from "../../../services/users";
+import {TabsPage} from "../../HomeTabs/tabs/tabs";
 
 /**
  * Generated class for the CreateAccountPage page.
@@ -27,7 +28,7 @@ export class CreateAccountPage {
     lastName: string;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private authdb: AngularFireAuth, private facebook: Facebook, public tools: Tools,
-              public users: UserService) {
+              public users: UserService, public alertCtrl: AlertController) {
 
   }
 
@@ -58,20 +59,9 @@ export class CreateAccountPage {
       });
 
       promise.then(response => {
-            this.navCtrl.pop();
+            this.navCtrl.push(TabsPage);
       }).catch(error => { //handle errors that firebase may throw when attempting to create an account
-
-          if (error == "auth/invalid-email")
-              this.tools.presentToast("bottom", 'Sorry, that email is invalid');
-
-          if (error == "auth/email-already-in-use")
-              this.tools.presentToast("bottom", "Sorry, looks like that email is already registered");
-
-          if (error == "auth/operation-not-allowed")
-              this.tools.presentToast("bottom", "Sorry, that action cannot be performed at this time");
-
-          if (error == "auth/weak-password")
-              this.tools.presentToast("bottom", "Sorry, that password is too weak. Make sure it contains at least six characters");
+          this.users.firebaseAuthenticationError(error);
 
           return;
       });
@@ -79,19 +69,33 @@ export class CreateAccountPage {
 
   }
 
-//
-//   createWithFacebook(): Promise<any> {
-//         return this.facebook.login(['email'])
-//             .then( response => {
-//             const facebookCredential = firebase.auth.FacebookAuthProvider
-//                 .credential(response.authResponse.accessToken);
-// console.log(facebookCredential);
-//                 this.authdb.auth.signInWithCredential(facebookCredential)
-//                 .then( success => {
-//                     console.log("Firebase success: " + JSON.stringify(success));
-//                 });
-//
-//         }).catch((error) => { console.log(error) });
-//   }
+
+  createWithFacebook(){
+      if(navigator.onLine) { //test for internet connection
+
+          let that = this;
+          let promise = new Promise((resolve, reject) => {
+
+              that.users.advanceWithFacebook("create").then(response => {
+                  if(response != "Success") {
+                      reject(response);
+                  }
+                  else {
+                      resolve();
+                  }
+              });
+
+          });
+
+          promise.then(() => {
+              this.navCtrl.push(TabsPage); //allow entry if successful login
+          }).catch(error => { //handle errors thrown by firebase
+              this.users.firebaseAuthenticationError(error);
+          });
+      }
+      else {
+          this.tools.presentToast("bottom", "Sorry, you're not connected to the internet");
+      }
+  }
 
 }
