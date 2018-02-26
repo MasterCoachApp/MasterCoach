@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
 import {IonicPage, NavController, NavParams, Platform, LoadingController} from 'ionic-angular';
-import {UserService} from "../../../services/users";
-import {Tools} from "../../../services/tools";
+
 import {TabsPage} from "../../HomeTabs/tabs/tabs";
 import {CreateAccountPage} from "../create-account/create-account";
 import {Keyboard} from "@ionic-native/keyboard";
 import {StatusBar} from "@ionic-native/status-bar";
+import {ToolsProvider} from "../../../providers/tools/tools";
+import {UsersProvider} from "../../../providers/users/users";
 
 /**
  * Generated class for the LoginPage page.
@@ -25,7 +26,7 @@ export class LoginPage {
   password: string;
   hasFocus: boolean;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public users: UserService, public tools: Tools, public keyboard: Keyboard, platform: Platform, public loadCtrl: LoadingController) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public users: UsersProvider, public tools: ToolsProvider, public keyboard: Keyboard, platform: Platform, public loadCtrl: LoadingController) {
     this.hasFocus = false; //boolean to determine when email/password has focus
       platform.ready().then(() => {
           keyboard.disableScroll(true) //preventing keyboard induced overflow on a page that doesnt need it

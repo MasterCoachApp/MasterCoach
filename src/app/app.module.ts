@@ -22,6 +22,8 @@ import {Tools} from "../services/tools";
 import {CreateAccountPage} from "../pages/Logins/create-account/create-account";
 import {Facebook} from "@ionic-native/facebook";
 import {Keyboard} from "@ionic-native/keyboard";
+import { UsersProvider } from '../providers/users/users';
+import { ToolsProvider } from '../providers/tools/tools';
 
 @NgModule({
   declarations: [
@@ -59,7 +61,9 @@ import {Keyboard} from "@ionic-native/keyboard";
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     UserService,
     Tools,
-    Keyboard
+    Keyboard,
+    UsersProvider,
+    ToolsProvider
   ]
 })
 export class AppModule {}
