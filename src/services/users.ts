@@ -129,31 +129,9 @@ export class UserService {
                         console.log('Facebook Id: ' + apiResponse.id);
                         console.log('Email: ' + apiResponse.email);
 
-                            if (apiResponse.email == "" || apiResponse.email == null) {
-                                that.requestEmailVerification().then(emailResponse => {
-                                    if(apiResponse["first_name"] == "" || apiResponse["first_name"] == null || apiResponse["last_name"] == null || apiResponse["last_name"] == "") {
-                                        that.requestDisplayNameValidation().then(nameResponse => {
-                                            that.signInWithFacebookCredentials(facebookCredential, emailResponse, nameResponse.first, nameResponse.last, false).then(response => {
-                                                resolve("Success");
-                                            }).catch(error =>{
-                                                reject(error);
-                                            });
-                                        });
-                                    }
-                                    else {
-                                        console.log(emailResponse);
-                                        that.signInWithFacebookCredentials(facebookCredential, emailResponse, apiResponse["first_name"], apiResponse["last_name"], false).then(response => {
-                                            resolve("Success");
-
-                                        }).catch(error =>{
-                                            reject(error);
-                                        });
-                                    }
-                                });
-                            }
-                            else if(apiResponse["first_name"] == "" || apiResponse["first_name"] == null || apiResponse["last_name"] == null || apiResponse["last_name"] == "") {
+                            if(apiResponse["first_name"] == "" || apiResponse["first_name"] == null || apiResponse["last_name"] == null || apiResponse["last_name"] == "") {
                                 that.requestDisplayNameValidation().then(nameResponse => {
-                                    that.signInWithFacebookCredentials(facebookCredential, apiResponse.email, nameResponse.first, nameResponse.last, true).then(response => {
+                                    that.signInWithFacebookCredentials(facebookCredential, apiResponse.email, nameResponse.first, nameResponse.last, ).then(response => {
                                         resolve("Success");
                                     }).catch(error =>{
                                         reject(error);
@@ -161,7 +139,7 @@ export class UserService {
                                 });
                             }
                             else {
-                                that.signInWithFacebookCredentials(facebookCredential, apiResponse["email"], apiResponse["first_name"], apiResponse["last_name"], true).then(response => {
+                                that.signInWithFacebookCredentials(facebookCredential, apiResponse["email"], apiResponse["first_name"], apiResponse["last_name"], ).then(response => {
                                     resolve("Success");
                                 }).catch(error => {
                                     reject(error);
@@ -179,20 +157,38 @@ export class UserService {
         });
     }
 
-    signInWithFacebookCredentials(facebookCredential, email, first_name, last_name, emailWasValid) {
+    signInWithFacebookCredentials(facebookCredential, email, first_name, last_name) {
         let that = this;
         let promise = new Promise( (resolve, reject) => {
 
             that.dbAuth.auth.signInWithCredential(facebookCredential)
             .then( success => {
-
-                if(!emailWasValid) {
-                    success.updateEmail(email).catch(error => {
+                if(success.email == null) {
+                    that.requestEmailVerification().then(emailResponse => {
+                    success.updateEmail(emailResponse).then(() => {
+                        let innerPromise = new Promise((resolve, reject) => {
+                            that.createAccountDatabase(emailResponse, first_name, last_name, success.uid)
+                                .then(response => {
+                                    resolve();
+                                }).catch(error => {
+                                reject();
+                                console.log(error); //do something better here? Not sure what would cause this
+                            });
+                        });
+                        innerPromise.then(response => {
+                            resolve("Success");
+                        }).catch(error => {
+                            reject(error);
+                            console.log(error); //do something better here? Not sure what would cause this
+                        });
+                    }).catch(error => {
                         console.log("Error updating email: " + error);
+                     });
                     });
-                }
 
-                    let promise = new Promise((resolve, reject) => {
+                }
+                else {
+                    let innerPromise = new Promise((resolve, reject) => {
                         that.createAccountDatabase(email, first_name, last_name, success.uid)
                             .then(response => {
                                 resolve();
@@ -201,12 +197,13 @@ export class UserService {
                             console.log(error); //do something better here? Not sure what would cause this
                         });
                     });
-                    promise.then(response => {
+                    innerPromise.then(response => {
                         resolve("Success");
                     }).catch(error => {
                         reject(error);
                         console.log(error); //do something better here? Not sure what would cause this
                     });
+                }
             });
     });
         return promise.then(response => {
