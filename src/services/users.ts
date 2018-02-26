@@ -5,7 +5,7 @@ import {TabsPage} from "../pages/HomeTabs/tabs/tabs";
 import * as firebase from "firebase";
 import {Facebook} from "@ionic-native/facebook";
 import {Tools} from "./tools";
-import {AlertController} from "ionic-angular";
+import {AlertController, LoadingController} from "ionic-angular";
 
 @Injectable()
 export class UserService {
@@ -289,8 +289,6 @@ export class UserService {
         });
     }
 
-
-
     firebaseAuthenticationError(error: string) {
 
         if (error == "auth/invalid-email")
@@ -318,5 +316,4 @@ export class UserService {
             this.tools.presentToast("bottom", "Sorry, that password is too weak. Make sure it contains at least six characters");
 
     }
-
 }

@@ -15,17 +15,17 @@ $app-direction: ltr;
 @import "ionic.globals";
 
 
+$toolbar-background: black;
+
 // Shared Variables
 // --------------------------------------------------
 // To customize the look and feel of this app, you can override
 // the Sass variables found in Ionic's source scss files.
 // To view all the possible Ionic variables, see:
 // http://ionicframework.com/docs/theming/overriding-ionic-variables/
-$tabs-background: black;
-$background-color: #222222;
-$text-color: white;
-$toolbar-background: black;
 
+$facebook-logo: url('../assets/imgs/facebook_button_icon.svg') 6px 6px no-repeat;
+$google-logo: url('../assets/imgs/google_button_icon.svg') 6px 6px no-repeat;
 
 
 
@@ -43,6 +43,15 @@ $colors: (
   danger:     #f53d3d,
   light:      #f4f4f4,
   dark:       #222,
+  /*facebook:   (
+    base: #4C69BA,
+    contrast: #ffffff
+  ),
+  google:     (
+    backgroundColor: #DD4B39,
+    contrast: #ffffff
+  )
+*/
 );
 
 
@@ -50,15 +59,14 @@ $colors: (
 // --------------------------------------------------
 // iOS only Sass variables can go here
 
-$tabs-ios-tab-icon-color: white;
-$tabs-ios-tab-text-color: white;
+
 
 
 // App Material Design Variables
 // --------------------------------------------------
 // Material Design only Sass variables can go here
-$tabs-md-tab-icon-color: white;
-$tabs-md-tab-text-color: white;
+// Input highlight mixin for focus, valid, and invalid states
+
 
 
 
