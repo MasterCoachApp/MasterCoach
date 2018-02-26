@@ -1,10 +1,10 @@
 import {Injectable} from "@angular/core";
-import {ToastController} from "ionic-angular";
+import {LoadingController, ToastController} from "ionic-angular";
 
 @Injectable()
 export class Tools {
 
-    constructor(public toastCtrl: ToastController) {
+    constructor(public toastCtrl: ToastController, public loadCtrl: LoadingController) {
 
     }
 
@@ -16,6 +16,14 @@ export class Tools {
             duration: 3000
         });
         toast.present();
+    }
+
+    presentLoading() {
+        let loading = this.loadCtrl.create({
+            dismissOnPageChange: true,
+            showBackdrop: false
+        });
+        return loading;
     }
 
 }
