@@ -119,7 +119,7 @@ var UserService = (function () {
         When theres missing information returned and the user is prompted for it, the system doesn't wait before proceeding.
         Furthermore i dont believe the checks for additional info even belong there. They should be cause before the signIn with credentials occurs.
     */
-    UserService.prototype.advanceWithFacebook = function (entry) {
+    UserService.prototype.advanceWithFacebook = function () {
         var that = this;
         var promise = new Promise(function (resolve, reject) {
             that.facebook.login(['email'])
@@ -131,47 +131,38 @@ var UserService = (function () {
                         console.log('Good to see you, ' + apiResponse["first_name"] + " " + apiResponse["last_name"]);
                         console.log('Facebook Id: ' + apiResponse.id);
                         console.log('Email: ' + apiResponse.email);
-                        if (entry == "create") {
-                            if (apiResponse.email == "" || apiResponse.email == null) {
-                                that.requestEmailVerification().then(function (emailResponse) {
-                                    if (apiResponse["first_name"] == "" || apiResponse["first_name"] == null || apiResponse["last_name"] == null || apiResponse["last_name"] == "") {
-                                        that.requestDisplayNameValidation().then(function (nameResponse) {
-                                            that.signInWithFacebookCredentials(facebookCredential_1, emailResponse, nameResponse.first, nameResponse.last, entry, false).then(function (response) {
-                                                resolve("Success");
-                                            }).catch(function (error) {
-                                                reject(error);
-                                            });
-                                        });
-                                    }
-                                    else {
-                                        console.log(emailResponse);
-                                        that.signInWithFacebookCredentials(facebookCredential_1, emailResponse, apiResponse["first_name"], apiResponse["last_name"], entry, false).then(function (response) {
+                        if (apiResponse.email == "" || apiResponse.email == null) {
+                            that.requestEmailVerification().then(function (emailResponse) {
+                                if (apiResponse["first_name"] == "" || apiResponse["first_name"] == null || apiResponse["last_name"] == null || apiResponse["last_name"] == "") {
+                                    that.requestDisplayNameValidation().then(function (nameResponse) {
+                                        that.signInWithFacebookCredentials(facebookCredential_1, emailResponse, nameResponse.first, nameResponse.last, false).then(function (response) {
                                             resolve("Success");
                                         }).catch(function (error) {
                                             reject(error);
                                         });
-                                    }
-                                });
-                            }
-                            else if (apiResponse["first_name"] == "" || apiResponse["first_name"] == null || apiResponse["last_name"] == null || apiResponse["last_name"] == "") {
-                                that.requestDisplayNameValidation().then(function (nameResponse) {
-                                    that.signInWithFacebookCredentials(facebookCredential_1, apiResponse.email, nameResponse.first, nameResponse.last, entry, true).then(function (response) {
+                                    });
+                                }
+                                else {
+                                    console.log(emailResponse);
+                                    that.signInWithFacebookCredentials(facebookCredential_1, emailResponse, apiResponse["first_name"], apiResponse["last_name"], false).then(function (response) {
                                         resolve("Success");
                                     }).catch(function (error) {
                                         reject(error);
                                     });
-                                });
-                            }
-                            else {
-                                that.signInWithFacebookCredentials(facebookCredential_1, apiResponse["email"], apiResponse["first_name"], apiResponse["last_name"], entry, true).then(function (response) {
+                                }
+                            });
+                        }
+                        else if (apiResponse["first_name"] == "" || apiResponse["first_name"] == null || apiResponse["last_name"] == null || apiResponse["last_name"] == "") {
+                            that.requestDisplayNameValidation().then(function (nameResponse) {
+                                that.signInWithFacebookCredentials(facebookCredential_1, apiResponse.email, nameResponse.first, nameResponse.last, true).then(function (response) {
                                     resolve("Success");
                                 }).catch(function (error) {
                                     reject(error);
                                 });
-                            }
+                            });
                         }
                         else {
-                            that.signInWithFacebookCredentials(facebookCredential_1, "", "", "", entry, true).then(function (response) {
+                            that.signInWithFacebookCredentials(facebookCredential_1, apiResponse["email"], apiResponse["first_name"], apiResponse["last_name"], true).then(function (response) {
                                 resolve("Success");
                             }).catch(function (error) {
                                 reject(error);
@@ -187,7 +178,7 @@ var UserService = (function () {
             return error; //not sure what this would be
         });
     };
-    UserService.prototype.signInWithFacebookCredentials = function (facebookCredential, email, first_name, last_name, entry, emailWasValid) {
+    UserService.prototype.signInWithFacebookCredentials = function (facebookCredential, email, first_name, last_name, emailWasValid) {
         var that = this;
         var promise = new Promise(function (resolve, reject) {
             that.dbAuth.auth.signInWithCredential(facebookCredential)
@@ -197,26 +188,21 @@ var UserService = (function () {
                         console.log("Error updating email: " + error);
                     });
                 }
-                if (entry == "create") {
-                    var promise_1 = new Promise(function (resolve, reject) {
-                        that.createAccountDatabase(email, first_name, last_name, success.uid)
-                            .then(function (response) {
-                            resolve();
-                        }).catch(function (error) {
-                            reject();
-                            console.log(error); //do something better here? Not sure what would cause this
-                        });
-                    });
-                    promise_1.then(function (response) {
-                        resolve("Success");
+                var promise = new Promise(function (resolve, reject) {
+                    that.createAccountDatabase(email, first_name, last_name, success.uid)
+                        .then(function (response) {
+                        resolve();
                     }).catch(function (error) {
-                        reject(error);
+                        reject();
                         console.log(error); //do something better here? Not sure what would cause this
                     });
-                }
-                else {
+                });
+                promise.then(function (response) {
                     resolve("Success");
-                }
+                }).catch(function (error) {
+                    reject(error);
+                    console.log(error); //do something better here? Not sure what would cause this
+                });
             });
         });
         return promise.then(function (response) {
@@ -312,9 +298,10 @@ var UserService = (function () {
     };
     UserService = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["A" /* Injectable */])(),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_angularfire2_auth__["a" /* AngularFireAuth */], __WEBPACK_IMPORTED_MODULE_2_angularfire2_database__["a" /* AngularFireDatabase */], __WEBPACK_IMPORTED_MODULE_4__ionic_native_facebook__["a" /* Facebook */], __WEBPACK_IMPORTED_MODULE_5__tools__["a" /* Tools */], __WEBPACK_IMPORTED_MODULE_6_ionic_angular__["a" /* AlertController */]])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_angularfire2_auth__["a" /* AngularFireAuth */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_angularfire2_auth__["a" /* AngularFireAuth */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2_angularfire2_database__["a" /* AngularFireDatabase */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2_angularfire2_database__["a" /* AngularFireDatabase */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_4__ionic_native_facebook__["a" /* Facebook */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__ionic_native_facebook__["a" /* Facebook */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_5__tools__["a" /* Tools */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5__tools__["a" /* Tools */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_6_ionic_angular__["a" /* AlertController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_6_ionic_angular__["a" /* AlertController */]) === "function" && _e || Object])
     ], UserService);
     return UserService;
+    var _a, _b, _c, _d, _e;
 }());
 
 //# sourceMappingURL=users.js.map
@@ -442,7 +429,7 @@ var CreateAccountPage = (function () {
         if (navigator.onLine) {
             var that_1 = this;
             var promise = new Promise(function (resolve, reject) {
-                that_1.users.advanceWithFacebook("create").then(function (response) {
+                that_1.users.advanceWithFacebook().then(function (response) {
                     if (response != "Success") {
                         reject(response);
                     }
@@ -465,10 +452,10 @@ var CreateAccountPage = (function () {
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
             selector: 'page-create-account',template:/*ion-inline-start:"/Users/jonahelbaz/Desktop/CoachingApp/MasterCoach/src/pages/Logins/create-account/create-account.html"*/'<!--\n  Generated template for the CreateAccountPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n      <ion-title>Sign up</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding style="background-color: #222222">\n\n    <ion-row>\n        <ion-col>\n            <button class="loginBtn loginBtn--facebook" (click)="createWithFacebook()">\n                Create with Facebook\n            </button>\n        </ion-col>\n    </ion-row>\n    <ion-row>\n        <ion-col>\n            <button class="loginBtn loginBtn--google">\n                Create with Google\n            </button>\n        </ion-col>\n    </ion-row>\n\n\n    <ion-row>\n        <ion-col>\n            <hr class="hr-text" data-content="OR">\n        </ion-col>\n    </ion-row>\n\n  <ion-row>\n    <ion-col>\n      <ion-input placeholder="First Name" class="createAccountInput" [(ngModel)]="firstName"></ion-input>\n    </ion-col>\n      <ion-col>\n          <ion-input placeholder="Last Name" class="createAccountInput" [(ngModel)]="lastName"></ion-input>\n      </ion-col>\n  </ion-row>\n  <ion-row>\n    <ion-col>\n      <ion-input placeholder="Email" class="createAccountInput" [(ngModel)]="email"></ion-input>\n    </ion-col>\n  </ion-row>\n  <ion-row>\n    <ion-col>\n      <ion-input placeholder="Password" type="password" class="createAccountInput" [(ngModel)]="password"></ion-input>\n    </ion-col>\n  </ion-row>\n  <ion-row>\n    <ion-col>\n      <ion-input placeholder="Re-enter Password" type="password" class="createAccountInput" [(ngModel)]="repassword"></ion-input>\n    </ion-col>\n  </ion-row>\n\n    <ion-row>\n        <ion-col style="text-align: center">\n            <button ion-button (click)="createAccount()">Create Account</button>\n        </ion-col>\n    </ion-row>\n\n</ion-content>\n'/*ion-inline-end:"/Users/jonahelbaz/Desktop/CoachingApp/MasterCoach/src/pages/Logins/create-account/create-account.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2_angularfire2_auth__["a" /* AngularFireAuth */], __WEBPACK_IMPORTED_MODULE_3__ionic_native_facebook__["a" /* Facebook */], __WEBPACK_IMPORTED_MODULE_4__services_tools__["a" /* Tools */],
-            __WEBPACK_IMPORTED_MODULE_5__services_users__["a" /* UserService */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */]])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_2_angularfire2_auth__["a" /* AngularFireAuth */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2_angularfire2_auth__["a" /* AngularFireAuth */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_3__ionic_native_facebook__["a" /* Facebook */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__ionic_native_facebook__["a" /* Facebook */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_4__services_tools__["a" /* Tools */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__services_tools__["a" /* Tools */]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_5__services_users__["a" /* UserService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5__services_users__["a" /* UserService */]) === "function" && _f || Object, typeof (_g = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */]) === "function" && _g || Object])
     ], CreateAccountPage);
     return CreateAccountPage;
+    var _a, _b, _c, _d, _e, _f, _g;
 }());
 
 //# sourceMappingURL=create-account.js.map
@@ -558,7 +545,7 @@ var LoginPage = (function () {
         if (navigator.onLine) {
             var that_2 = this;
             var promise = new Promise(function (resolve, reject) {
-                that_2.users.advanceWithFacebook("login").then(function (response) {
+                that_2.users.advanceWithFacebook().then(function (response) {
                     if (response != "Success") {
                         reject(response);
                     }
@@ -581,9 +568,10 @@ var LoginPage = (function () {
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
             selector: 'page-login',template:/*ion-inline-start:"/Users/jonahelbaz/Desktop/CoachingApp/MasterCoach/src/pages/Logins/login/login.html"*/'<!--\n  Generated template for the LoginPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n\n\n\n<ion-content padding style="background-color: #222222">\n\n  <div [ngClass]="hasFocus ? \'hidden\' : \'logo\'">\n    <img src="./assets/imgs/olympics.png"/>\n  </div>\n    <div style="margin-top: 10px;" [ngClass]="hasFocus ? \'\' : \'noDisplay\'">\n        <span style="font-weight: bold; font-size: 24px; color: white"> Log In</span>\n    </div>\n\n  <ion-row>\n    <ion-col>\n      <ion-input class="inputBox" [(ngModel)]="email" placeholder="Email" (focus)="hasFocus = true" (blur)="hasFocus = false"></ion-input>\n    </ion-col>\n  </ion-row>\n  <ion-row>\n    <ion-col>\n      <ion-input class="inputBox" [(ngModel)]="password" placeholder="Password" type="password" (ionFocus)="hasFocus = true" (ionBlur)="hasFocus = false"></ion-input>\n    </ion-col>\n  </ion-row>\n\n  <ion-row>\n    <ion-col class="loginButtonColumn">\n        <button class="loginButton" ion-button (click)="login()">Log In</button>\n    </ion-col>\n  </ion-row>\n    <ion-row>\n        <ion-col class="loginButtonColumn">\n            <button ion-button (click)="forgotPassword()" [ngClass]="hasFocus ? \'loginButton\' : \'noDisplay\'">Reset Password</button>\n        </ion-col>\n    </ion-row>\n\n  <ion-row>\n    <ion-col>\n        <hr data-content="OR" [ngClass]="hasFocus ? \'noDisplay\' : \'hr-text\'">\n    </ion-col>\n  </ion-row>\n\n    <ion-row>\n        <ion-col>\n            <button [ngClass]="hasFocus ? \'noDisplay\' : \'loginBtn loginBtn--facebook\'" (click)="loginWithFacebook()">\n                Log In with Facebook\n            </button>\n        </ion-col>\n    </ion-row>\n    <ion-row>\n        <ion-col>\n            <button [ngClass]="hasFocus ? \'noDisplay\' : \'loginBtn loginBtn--google\'">\n                Log In with Google\n            </button>\n        </ion-col>\n    </ion-row>\n\n  <ion-row>\n    <ion-col>\n      <button  [ngClass]="hasFocus ? \'noDisplay\' : \'create\'" (click)="createAccount()">\n      Create Account\n      </button>\n    </ion-col>\n  </ion-row>\n\n</ion-content>\n'/*ion-inline-end:"/Users/jonahelbaz/Desktop/CoachingApp/MasterCoach/src/pages/Logins/login/login.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2__services_users__["a" /* UserService */], __WEBPACK_IMPORTED_MODULE_3__services_tools__["a" /* Tools */], __WEBPACK_IMPORTED_MODULE_6__ionic_native_keyboard__["a" /* Keyboard */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* Platform */]])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_2__services_users__["a" /* UserService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__services_users__["a" /* UserService */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_3__services_tools__["a" /* Tools */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__services_tools__["a" /* Tools */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_6__ionic_native_keyboard__["a" /* Keyboard */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_6__ionic_native_keyboard__["a" /* Keyboard */]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* Platform */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* Platform */]) === "function" && _f || Object])
     ], LoginPage);
     return LoginPage;
+    var _a, _b, _c, _d, _e, _f;
 }());
 
 //# sourceMappingURL=login.js.map

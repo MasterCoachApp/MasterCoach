@@ -114,7 +114,7 @@ export class UserService {
         When theres missing information returned and the user is prompted for it, the system doesn't wait before proceeding.
         Furthermore i dont believe the checks for additional info even belong there. They should be cause before the signIn with credentials occurs.
     */
-    advanceWithFacebook(entry: string) {
+    advanceWithFacebook() {
         let that = this;
         let promise = new Promise( (resolve, reject) => {
             that.facebook.login(['email'])
@@ -129,12 +129,11 @@ export class UserService {
                         console.log('Facebook Id: ' + apiResponse.id);
                         console.log('Email: ' + apiResponse.email);
 
-                        if (entry == "create") {
                             if (apiResponse.email == "" || apiResponse.email == null) {
                                 that.requestEmailVerification().then(emailResponse => {
                                     if(apiResponse["first_name"] == "" || apiResponse["first_name"] == null || apiResponse["last_name"] == null || apiResponse["last_name"] == "") {
                                         that.requestDisplayNameValidation().then(nameResponse => {
-                                            that.signInWithFacebookCredentials(facebookCredential, emailResponse, nameResponse.first, nameResponse.last, entry, false).then(response => {
+                                            that.signInWithFacebookCredentials(facebookCredential, emailResponse, nameResponse.first, nameResponse.last, false).then(response => {
                                                 resolve("Success");
                                             }).catch(error =>{
                                                 reject(error);
@@ -143,7 +142,7 @@ export class UserService {
                                     }
                                     else {
                                         console.log(emailResponse);
-                                        that.signInWithFacebookCredentials(facebookCredential, emailResponse, apiResponse["first_name"], apiResponse["last_name"], entry, false).then(response => {
+                                        that.signInWithFacebookCredentials(facebookCredential, emailResponse, apiResponse["first_name"], apiResponse["last_name"], false).then(response => {
                                             resolve("Success");
 
                                         }).catch(error =>{
@@ -154,7 +153,7 @@ export class UserService {
                             }
                             else if(apiResponse["first_name"] == "" || apiResponse["first_name"] == null || apiResponse["last_name"] == null || apiResponse["last_name"] == "") {
                                 that.requestDisplayNameValidation().then(nameResponse => {
-                                    that.signInWithFacebookCredentials(facebookCredential, apiResponse.email, nameResponse.first, nameResponse.last, entry, true).then(response => {
+                                    that.signInWithFacebookCredentials(facebookCredential, apiResponse.email, nameResponse.first, nameResponse.last, true).then(response => {
                                         resolve("Success");
                                     }).catch(error =>{
                                         reject(error);
@@ -162,20 +161,12 @@ export class UserService {
                                 });
                             }
                             else {
-                                that.signInWithFacebookCredentials(facebookCredential, apiResponse["email"], apiResponse["first_name"], apiResponse["last_name"], entry, true).then(response => {
+                                that.signInWithFacebookCredentials(facebookCredential, apiResponse["email"], apiResponse["first_name"], apiResponse["last_name"], true).then(response => {
                                     resolve("Success");
                                 }).catch(error => {
                                     reject(error);
                                 });
                             }
-                        }
-                        else {
-                            that.signInWithFacebookCredentials(facebookCredential, "", "", "", entry, true).then(response => {
-                                resolve("Success");
-                            }).catch(error => {
-                                reject(error);
-                            });
-                        }
                     });
                 }
             });
@@ -188,7 +179,7 @@ export class UserService {
         });
     }
 
-    signInWithFacebookCredentials(facebookCredential, email, first_name, last_name, entry, emailWasValid) {
+    signInWithFacebookCredentials(facebookCredential, email, first_name, last_name, emailWasValid) {
         let that = this;
         let promise = new Promise( (resolve, reject) => {
 
@@ -200,8 +191,6 @@ export class UserService {
                         console.log("Error updating email: " + error);
                     });
                 }
-
-                if(entry == "create") {
 
                     let promise = new Promise((resolve, reject) => {
                         that.createAccountDatabase(email, first_name, last_name, success.uid)
@@ -218,10 +207,6 @@ export class UserService {
                         reject(error);
                         console.log(error); //do something better here? Not sure what would cause this
                     });
-                }
-                else {
-                    resolve("Success");
-                }
             });
     });
         return promise.then(response => {
