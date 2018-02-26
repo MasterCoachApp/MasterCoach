@@ -8,7 +8,6 @@ page-login {
     border: none;
     border-radius: 20px;
     padding-left: 20px;
-    color: white;
   }
 
   .logo {
@@ -56,7 +55,6 @@ page-login {
       content: attr(data-content);
       position: relative;
       display: inline-block;
-      color: white;
 
       padding: 0 .5em;
       line-height: 1.5em;
@@ -139,7 +137,6 @@ page-login {
     margin-top: 5px;
     font-size: 16px;
     background: none;
-    color: white
   }
 
   .hidden {

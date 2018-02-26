@@ -14,7 +14,6 @@ $app-direction: ltr;
 
 @import "ionic.globals";
 
-$toolbar-background: black;
 
 // Shared Variables
 // --------------------------------------------------
@@ -22,6 +21,10 @@ $toolbar-background: black;
 // the Sass variables found in Ionic's source scss files.
 // To view all the possible Ionic variables, see:
 // http://ionicframework.com/docs/theming/overriding-ionic-variables/
+$tabs-background: black;
+$background-color: #222222;
+$text-color: white;
+$toolbar-background: black;
 
 
 
@@ -47,13 +50,15 @@ $colors: (
 // --------------------------------------------------
 // iOS only Sass variables can go here
 
-
+$tabs-ios-tab-icon-color: white;
+$tabs-ios-tab-text-color: white;
 
 
 // App Material Design Variables
 // --------------------------------------------------
 // Material Design only Sass variables can go here
-
+$tabs-md-tab-icon-color: white;
+$tabs-md-tab-text-color: white;
 
 
 
