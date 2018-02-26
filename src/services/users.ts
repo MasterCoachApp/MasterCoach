@@ -79,6 +79,7 @@ export class UserService {
 
     //attempt to add the created account to the real time database
     createAccountDatabase(email: string, firstName: string, lastName: string, userId: string) {
+        console.log(email,firstName,lastName,userId);
         let that = this;
         let promise = new Promise( (resolve, reject) => {
         let newUser = { //store values in temporary object => should be modeled after real user object model
@@ -104,121 +105,71 @@ export class UserService {
     }
 
 
+    // -------------------------///
+    //   Media Authentication   ///
+    //-------------------------///
 
-    advanceWithFacebook(entry: string) {
+
+    /*Facebook service seems to work on all accounts except for:
+        When theres missing information returned and the user is prompted for it, the system doesn't wait before proceeding.
+        Furthermore i dont believe the checks for additional info even belong there. They should be cause before the signIn with credentials occurs.
+    */
+    advanceWithFacebook() {
         let that = this;
         let promise = new Promise( (resolve, reject) => {
             that.facebook.login(['email'])
             .then( response => {
                 if (response.status === 'connected') {
+
                     const facebookCredential = firebase.auth.FacebookAuthProvider.credential(response.authResponse.accessToken);
 
-                    that.facebook.api('/me', ['email']).then(response => {
+                    that.facebook.api('me?fields=id,name,email,first_name,last_name', ['email']).then(apiResponse => {
                         console.log(response);
-                        console.log('Good to see you, ' + response.name);
-                        console.log('Facebook Id: ' + response.id);
-                        console.log('Email: ' + response.emailVerified);
-                    });
+                        console.log('Good to see you, ' + apiResponse["first_name"] + " " + apiResponse["last_name"]);
+                        console.log('Facebook Id: ' + apiResponse.id);
+                        console.log('Email: ' + apiResponse.email);
 
-                    that.dbAuth.auth.signInWithCredential(facebookCredential)
-                        .then( success => {
+                            if (apiResponse.email == "" || apiResponse.email == null) {
+                                that.requestEmailVerification().then(emailResponse => {
+                                    if(apiResponse["first_name"] == "" || apiResponse["first_name"] == null || apiResponse["last_name"] == null || apiResponse["last_name"] == "") {
+                                        that.requestDisplayNameValidation().then(nameResponse => {
+                                            that.signInWithFacebookCredentials(facebookCredential, emailResponse, nameResponse.first, nameResponse.last, false).then(response => {
+                                                resolve("Success");
+                                            }).catch(error =>{
+                                                reject(error);
+                                            });
+                                        });
+                                    }
+                                    else {
+                                        console.log(emailResponse);
+                                        that.signInWithFacebookCredentials(facebookCredential, emailResponse, apiResponse["first_name"], apiResponse["last_name"], false).then(response => {
+                                            resolve("Success");
 
-                            if(entry == "create") {
-
-                                let first_name = "";
-                                let last_name = "";
-
-                                let email = "";
-
-                                //issues ==> we dont wait for the values to update with the alert
-
-                                if (success.displayName == null || success.displayName == "" || success.displayName.split(" ").length != 2) {
-
-                                        let prompt = this.alertCtrl.create({
-                                        title: 'Please verify this information',
-                                        message: "",
-                                        enableBackdropDismiss: false,
-                                        inputs: [
-                                            {
-                                                name: 'first_name',
-                                                placeholder: 'First name'
-                                            },
-                                            {
-                                                name: 'last_name',
-                                                placeholder: 'Last name'
-                                            },
-                                        ],
-                                        buttons: [
-                                            {
-                                                text: 'Save',
-                                                handler: data => {
-                                                    first_name = data['first_name'];
-                                                    last_name = data['last_name'];
-                                                }
-                                            }
-                                        ]
-                                    });
-                                    prompt.present();
-
-                                }
-                                else {
-                                    let name = success.displayName.split(" ");
-                                    first_name = name[0];
-                                    last_name = name[1];
-                                }
-
-                                if (success.email == null || success.email == "") {
-
-                                    let prompt = this.alertCtrl.create({
-                                        title: 'Please verify this information',
-                                        message: "",
-                                        enableBackdropDismiss: false,
-                                        inputs: [
-                                            {
-                                                name: 'email',
-                                                placeholder: 'Email'
-                                            },
-                                        ],
-                                        buttons: [
-                                            {
-                                                text: 'Save',
-                                                handler: data => {
-                                                    email = data['email'];
-                                                }
-                                            }
-                                        ]
-                                    });
-                                    prompt.present();
-
-                                }
-                                else {
-                                    email = success.email;
-                                }
-
-
-                                let promise = new Promise((resolve, reject) => {
-                                    that.createAccountDatabase(email, first_name, last_name, success.uid)
-                                        .then(response => {
-                                            resolve();
-                                        }).catch(error => {
-                                        reject();
-                                        console.log(error); //do something better here? Not sure what would cause this
-                                    });
+                                        }).catch(error =>{
+                                            reject(error);
+                                        });
+                                    }
                                 });
-                                promise.then(response => {
-                                    resolve("Success");
-                                }).catch(error => {
-                                    reject(error);
-                                    console.log(error); //do something better here? Not sure what would cause this
+                            }
+                            else if(apiResponse["first_name"] == "" || apiResponse["first_name"] == null || apiResponse["last_name"] == null || apiResponse["last_name"] == "") {
+                                that.requestDisplayNameValidation().then(nameResponse => {
+                                    that.signInWithFacebookCredentials(facebookCredential, apiResponse.email, nameResponse.first, nameResponse.last, true).then(response => {
+                                        resolve("Success");
+                                    }).catch(error =>{
+                                        reject(error);
+                                    });
                                 });
                             }
                             else {
-                                resolve("Success");
+                                that.signInWithFacebookCredentials(facebookCredential, apiResponse["email"], apiResponse["first_name"], apiResponse["last_name"], true).then(response => {
+                                    resolve("Success");
+                                }).catch(error => {
+                                    reject(error);
+                                });
                             }
-                        });
+                    });
                 }
-            }).catch((error) => {  console.log("error" + error) });
-
+            });
         });
 
         return promise.then(response => {
@@ -227,6 +178,117 @@ export class UserService {
             return error; //not sure what this would be
         });
     }
+
+    signInWithFacebookCredentials(facebookCredential, email, first_name, last_name, emailWasValid) {
+        let that = this;
+        let promise = new Promise( (resolve, reject) => {
+
+            that.dbAuth.auth.signInWithCredential(facebookCredential)
+            .then( success => {
+
+                if(!emailWasValid) {
+                    success.updateEmail(email).catch(error => {
+                        console.log("Error updating email: " + error);
+                    });
+                }
+
+                    let promise = new Promise((resolve, reject) => {
+                        that.createAccountDatabase(email, first_name, last_name, success.uid)
+                            .then(response => {
+                                resolve();
+                            }).catch(error => {
+                            reject();
+                            console.log(error); //do something better here? Not sure what would cause this
+                        });
+                    });
+                    promise.then(response => {
+                        resolve("Success");
+                    }).catch(error => {
+                        reject(error);
+                        console.log(error); //do something better here? Not sure what would cause this
+                    });
+            });
+    });
+        return promise.then(response => {
+            return response;
+        }).catch(error => {
+            return error; //not sure what this would be
+        });
+    }
+
+
+    requestEmailVerification()
+    {
+        let that = this;
+        let email = "";
+        let promise = new Promise( (resolve, reject) => {
+        let prompt = that.alertCtrl.create({
+            title: 'Please verify this information',
+            message: "",
+            enableBackdropDismiss: false,
+            inputs: [
+                {
+                    name: 'Email',
+                    placeholder: 'Email'
+                },
+            ],
+            buttons: [
+                {
+                    text: 'Save',
+                    handler: data => {
+                        //validate email address properly and stop from being empty
+                        console.log(data);
+                        email = data["Email"];
+                        resolve();
+                    }
+                }
+            ]
+        });
+        prompt.present();
+        });
+        return promise.then(() => {
+            return email;
+        });
+    }
+
+    requestDisplayNameValidation()
+    {
+        let nameObj = null;
+        let that = this;
+        let promise = new Promise( (resolve, reject) => {
+        let prompt = that.alertCtrl.create({
+            title: 'Please verify this information',
+            message: "",
+            enableBackdropDismiss: false,
+            inputs: [
+                {
+                    name: 'first_name',
+                    placeholder: 'First name'
+                },
+                {
+                    name: 'last_name',
+                    placeholder: 'Last name'
+                },
+            ],
+            buttons: [
+                {
+                    text: 'Save',
+                    handler: data => {
+                       //validate (not empty)
+                        nameObj = data;
+                        resolve();
+
+                    }
+                }
+            ]
+        });
+        prompt.present();
+    });
+    return promise.then(() => {
+        return nameObj;
+        });
+    }
+
 
 
     firebaseAuthenticationError(error: string) {

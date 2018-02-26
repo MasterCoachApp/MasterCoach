@@ -76,7 +76,7 @@ export class CreateAccountPage {
           let that = this;
           let promise = new Promise((resolve, reject) => {
 
-              that.users.advanceWithFacebook("create").then(response => {
+              that.users.advanceWithFacebook().then(response => {
                   if(response != "Success") {
                       reject(response);
                   }
