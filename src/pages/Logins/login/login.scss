@@ -111,7 +111,7 @@ page-login {
   }
   .loginBtn--facebook:before {
     border-right: #364e92 1px solid;
-    background: facebook-logo;
+    background: $facebook-logo;
   }
   .loginBtn--facebook:hover,
   .loginBtn--facebook:focus {
@@ -127,7 +127,7 @@ page-login {
   }
   .loginBtn--google:before {
     border-right: #BB3F30 1px solid;
-    background: google-logo;
+    background: $google-logo;
 
   }
   .loginBtn--google:hover,

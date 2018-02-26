@@ -1,8 +1,9 @@
-import {Injectable} from "@angular/core";
+import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
 import {LoadingController, ToastController} from "ionic-angular";
 
 @Injectable()
-export class Tools {
+export class ToolsProvider {
 
     constructor(public toastCtrl: ToastController, public loadCtrl: LoadingController) {
 

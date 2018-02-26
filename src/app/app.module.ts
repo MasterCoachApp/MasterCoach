@@ -17,11 +17,12 @@ import {AngularFireDatabaseModule} from "angularfire2/database";
 import {FIREBASE_CONFIG} from "./firebase-credentials";
 import {AngularFireAuthModule} from "angularfire2/auth";
 import {LoginPage} from "../pages/Logins/login/login";
-import {UserService} from "../services/users";
-import {Tools} from "../services/tools";
+
 import {CreateAccountPage} from "../pages/Logins/create-account/create-account";
 import {Facebook} from "@ionic-native/facebook";
 import {Keyboard} from "@ionic-native/keyboard";
+import { UsersProvider } from '../providers/users/users';
+import { ToolsProvider } from '../providers/tools/tools';
 
 @NgModule({
   declarations: [
@@ -57,9 +58,9 @@ import {Keyboard} from "@ionic-native/keyboard";
     SplashScreen,
     Facebook,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    UserService,
-    Tools,
-    Keyboard
+    Keyboard,
+    UsersProvider,
+    ToolsProvider
   ]
 })
 export class AppModule {}

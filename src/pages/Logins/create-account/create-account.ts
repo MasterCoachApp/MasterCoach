@@ -3,9 +3,10 @@ import {AlertController, IonicPage, NavController, NavParams} from 'ionic-angula
 import {AngularFireAuth} from "angularfire2/auth";
 import {Facebook} from "@ionic-native/facebook";
 import * as firebase from 'firebase';
-import {Tools} from "../../../services/tools";
-import {UserService} from "../../../services/users";
+
 import {TabsPage} from "../../HomeTabs/tabs/tabs";
+import { ToolsProvider } from "../../../providers/tools/tools";
+import { UsersProvider } from "../../../providers/users/users";
 
 /**
  * Generated class for the CreateAccountPage page.
@@ -27,8 +28,8 @@ export class CreateAccountPage {
     firstName: string;
     lastName: string;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private authdb: AngularFireAuth, private facebook: Facebook, public tools: Tools,
-              public users: UserService, public alertCtrl: AlertController) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private authdb: AngularFireAuth, private facebook: Facebook, public tools: ToolsProvider,
+              public users: UsersProvider, public alertCtrl: AlertController) {
 
   }
 

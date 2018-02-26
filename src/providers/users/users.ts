@@ -4,13 +4,13 @@ import {AngularFireDatabase} from "angularfire2/database";
 import {TabsPage} from "../pages/HomeTabs/tabs/tabs";
 import * as firebase from "firebase";
 import {Facebook} from "@ionic-native/facebook";
-import {Tools} from "./tools";
-import {AlertController, LoadingController} from "ionic-angular";
+import {ToolsProvider} from "../../providers/tools/tools";
+import {AlertController} from "ionic-angular";
 
 @Injectable()
-export class UserService {
+export class UsersProvider {
 
-    constructor(private dbAuth: AngularFireAuth, private db: AngularFireDatabase, private facebook: Facebook, public tools: Tools, public alertCtrl: AlertController) {
+    constructor(private dbAuth: AngularFireAuth, private db: AngularFireDatabase, private facebook: Facebook, public tools: ToolsProvider, public alertCtrl: AlertController) {
 
     }
 
@@ -82,18 +82,18 @@ export class UserService {
         console.log(email,firstName,lastName,userId);
         let that = this;
         let promise = new Promise( (resolve, reject) => {
-        let newUser = { //store values in temporary object => should be modeled after real user object model
-          "Email": email,
-          "Last_name": lastName,
-          "First_name": firstName,
-          "UserId": userId
-        };
-           let ref = that.db.database.ref("Users/"+userId).set(
-               newUser
-           ).then(response => {
-               resolve();
-           });
-           reject();
+            let newUser = { //store values in temporary object => should be modeled after real user object model
+                "Email": email,
+                "Last_name": lastName,
+                "First_name": firstName,
+                "UserId": userId
+            };
+            let ref = that.db.database.ref("Users/"+userId).set(
+                newUser
+            ).then(response => {
+                resolve();
+            });
+            reject();
 
         });
 
@@ -118,16 +118,16 @@ export class UserService {
         let that = this;
         let promise = new Promise( (resolve, reject) => {
             that.facebook.login(['email'])
-            .then( response => {
-                if (response.status === 'connected') {
+                .then( response => {
+                    if (response.status === 'connected') {
 
-                    const facebookCredential = firebase.auth.FacebookAuthProvider.credential(response.authResponse.accessToken);
+                        const facebookCredential = firebase.auth.FacebookAuthProvider.credential(response.authResponse.accessToken);
 
-                    that.facebook.api('me?fields=id,name,email,first_name,last_name', ['email']).then(apiResponse => {
-                        console.log(response);
-                        console.log('Good to see you, ' + apiResponse["first_name"] + " " + apiResponse["last_name"]);
-                        console.log('Facebook Id: ' + apiResponse.id);
-                        console.log('Email: ' + apiResponse.email);
+                        that.facebook.api('me?fields=id,name,email,first_name,last_name', ['email']).then(apiResponse => {
+                            console.log(response);
+                            console.log('Good to see you, ' + apiResponse["first_name"] + " " + apiResponse["last_name"]);
+                            console.log('Facebook Id: ' + apiResponse.id);
+                            console.log('Email: ' + apiResponse.email);
 
                             if(apiResponse["first_name"] == "" || apiResponse["first_name"] == null || apiResponse["last_name"] == null || apiResponse["last_name"] == "") {
                                 that.requestDisplayNameValidation().then(nameResponse => {
@@ -145,9 +145,9 @@ export class UserService {
                                     reject(error);
                                 });
                             }
-                    });
-                }
-            });
+                        });
+                    }
+                });
         });
 
         return promise.then(response => {
@@ -162,12 +162,34 @@ export class UserService {
         let promise = new Promise( (resolve, reject) => {
 
             that.dbAuth.auth.signInWithCredential(facebookCredential)
-            .then( success => {
-                if(success.email == null) {
-                    that.requestEmailVerification().then(emailResponse => {
-                    success.updateEmail(emailResponse).then(() => {
+                .then( success => {
+                    if(success.email == null) {
+                        that.requestEmailVerification().then(emailResponse => {
+                            success.updateEmail(emailResponse).then(() => {
+                                let innerPromise = new Promise((resolve, reject) => {
+                                    that.createAccountDatabase(emailResponse, first_name, last_name, success.uid)
+                                        .then(response => {
+                                            resolve();
+                                        }).catch(error => {
+                                        reject();
+                                        console.log(error); //do something better here? Not sure what would cause this
+                                    });
+                                });
+                                innerPromise.then(response => {
+                                    resolve("Success");
+                                }).catch(error => {
+                                    reject(error);
+                                    console.log(error); //do something better here? Not sure what would cause this
+                                });
+                            }).catch(error => {
+                                console.log("Error updating email: " + error);
+                            });
+                        });
+
+                    }
+                    else {
                         let innerPromise = new Promise((resolve, reject) => {
-                            that.createAccountDatabase(emailResponse, first_name, last_name, success.uid)
+                            that.createAccountDatabase(email, first_name, last_name, success.uid)
                                 .then(response => {
                                     resolve();
                                 }).catch(error => {
@@ -181,31 +203,9 @@ export class UserService {
                             reject(error);
                             console.log(error); //do something better here? Not sure what would cause this
                         });
-                    }).catch(error => {
-                        console.log("Error updating email: " + error);
-                     });
-                    });
-
-                }
-                else {
-                    let innerPromise = new Promise((resolve, reject) => {
-                        that.createAccountDatabase(email, first_name, last_name, success.uid)
-                            .then(response => {
-                                resolve();
-                            }).catch(error => {
-                            reject();
-                            console.log(error); //do something better here? Not sure what would cause this
-                        });
-                    });
-                    innerPromise.then(response => {
-                        resolve("Success");
-                    }).catch(error => {
-                        reject(error);
-                        console.log(error); //do something better here? Not sure what would cause this
-                    });
-                }
-            });
-    });
+                    }
+                });
+        });
         return promise.then(response => {
             return response;
         }).catch(error => {
@@ -219,29 +219,29 @@ export class UserService {
         let that = this;
         let email = "";
         let promise = new Promise( (resolve, reject) => {
-        let prompt = that.alertCtrl.create({
-            title: 'Please verify this information',
-            message: "",
-            enableBackdropDismiss: false,
-            inputs: [
-                {
-                    name: 'Email',
-                    placeholder: 'Email'
-                },
-            ],
-            buttons: [
-                {
-                    text: 'Save',
-                    handler: data => {
-                        //validate email address properly and stop from being empty
-                        console.log(data);
-                        email = data["Email"];
-                        resolve();
+            let prompt = that.alertCtrl.create({
+                title: 'Please verify this information',
+                message: "",
+                enableBackdropDismiss: false,
+                inputs: [
+                    {
+                        name: 'Email',
+                        placeholder: 'Email'
+                    },
+                ],
+                buttons: [
+                    {
+                        text: 'Save',
+                        handler: data => {
+                            //validate email address properly and stop from being empty
+                            console.log(data);
+                            email = data["Email"];
+                            resolve();
+                        }
                     }
-                }
-            ]
-        });
-        prompt.present();
+                ]
+            });
+            prompt.present();
         });
         return promise.then(() => {
             return email;
@@ -253,36 +253,36 @@ export class UserService {
         let nameObj = null;
         let that = this;
         let promise = new Promise( (resolve, reject) => {
-        let prompt = that.alertCtrl.create({
-            title: 'Please verify this information',
-            message: "",
-            enableBackdropDismiss: false,
-            inputs: [
-                {
-                    name: 'first_name',
-                    placeholder: 'First name'
-                },
-                {
-                    name: 'last_name',
-                    placeholder: 'Last name'
-                },
-            ],
-            buttons: [
-                {
-                    text: 'Save',
-                    handler: data => {
-                       //validate (not empty)
-                        nameObj = data;
-                        resolve();
+            let prompt = that.alertCtrl.create({
+                title: 'Please verify this information',
+                message: "",
+                enableBackdropDismiss: false,
+                inputs: [
+                    {
+                        name: 'first_name',
+                        placeholder: 'First name'
+                    },
+                    {
+                        name: 'last_name',
+                        placeholder: 'Last name'
+                    },
+                ],
+                buttons: [
+                    {
+                        text: 'Save',
+                        handler: data => {
+                            //validate (not empty)
+                            nameObj = data;
+                            resolve();
 
+                        }
                     }
-                }
-            ]
+                ]
+            });
+            prompt.present();
         });
-        prompt.present();
-    });
-    return promise.then(() => {
-        return nameObj;
+        return promise.then(() => {
+            return nameObj;
         });
     }
 
