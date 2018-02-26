@@ -4,11 +4,11 @@ import {AngularFireDatabase} from "angularfire2/database";
 import {TabsPage} from "../pages/HomeTabs/tabs/tabs";
 import * as firebase from "firebase";
 import {Facebook} from "@ionic-native/facebook";
-import {ToolsProvider} from "../providers/tools/tools";
+import {ToolsProvider} from "../../providers/tools/tools";
 import {AlertController} from "ionic-angular";
 
 @Injectable()
-export class UserService {
+export class UsersProvider {
 
     constructor(private dbAuth: AngularFireAuth, private db: AngularFireDatabase, private facebook: Facebook, public tools: ToolsProvider, public alertCtrl: AlertController) {
 
