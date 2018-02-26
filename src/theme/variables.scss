@@ -26,6 +26,10 @@ $toolbar-background: black;
 
 $facebook-logo: url('../assets/imgs/facebook_button_icon.svg') 6px 6px no-repeat;
 $google-logo: url('../assets/imgs/google_button_icon.svg') 6px 6px no-repeat;
+$tabs-background: black;
+$background-color: #222222;
+$text-color: white;
+$toolbar-background: black;
 
 
 
@@ -58,6 +62,8 @@ $colors: (
 // App iOS Variables
 // --------------------------------------------------
 // iOS only Sass variables can go here
+$tabs-ios-tab-icon-color: white;
+$tabs-ios-tab-text-color: white;
 
 
 
@@ -67,6 +73,8 @@ $colors: (
 // Material Design only Sass variables can go here
 // Input highlight mixin for focus, valid, and invalid states
 
+$tabs-md-tab-icon-color: white;
+$tabs-md-tab-text-color: white;
 
 
 

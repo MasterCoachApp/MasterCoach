@@ -58,11 +58,12 @@ export class LoginPage {
                   });
 
                   promise.then(() => {
+                      loading.dismiss();
                       this.navCtrl.push(TabsPage); //allow entry if successful login
                   }).catch(error => { //handle errors thrown by firebase
+                      loading.dismiss();
                       this.users.firebaseAuthenticationError(error);
                   });
-                  loading.dismiss();
           });
       }
       else {

@@ -11,7 +11,7 @@ import {Keyboard} from "@ionic-native/keyboard";
   templateUrl: 'app.html'
 })
 export class MyApp {
-  rootPage:any = TabsPage;
+  rootPage:any = LoginPage;
 
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen,keyboard: Keyboard) {
     platform.ready().then(() => {
