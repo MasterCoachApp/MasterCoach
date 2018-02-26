@@ -1,7 +1,6 @@
 import {Injectable} from "@angular/core";
 import {AngularFireAuth} from "angularfire2/auth";
 import {AngularFireDatabase} from "angularfire2/database";
-import {TabsPage} from "../pages/HomeTabs/tabs/tabs";
 import * as firebase from "firebase";
 import {Facebook} from "@ionic-native/facebook";
 import {ToolsProvider} from "../../providers/tools/tools";
@@ -234,15 +233,20 @@ export class UsersProvider {
                         text: 'Save',
                         handler: data => {
                             //validate email address properly and stop from being empty
-                            console.log(data);
-                            email = data["Email"];
-                            resolve();
+                            if(data.Email == "" || !this.tools.validateEmail(data.Email)) {
+                                prompt.setMessage("Please enter a valid email address");
+                                return false;
+                            }
+                            else {
+                                email = data["Email"];
+                                resolve();
+                            }
                         }
                     }
                 ]
             });
             prompt.present();
-        });
+            });
         return promise.then(() => {
             return email;
         });
@@ -271,7 +275,10 @@ export class UsersProvider {
                     {
                         text: 'Save',
                         handler: data => {
-                            //validate (not empty)
+                            if(data.first_name == "" || data.last_name == "") {
+                                prompt.setMessage("Please do not leave any fields empty");
+                                return false;
+                            }
                             nameObj = data;
                             resolve();
 
