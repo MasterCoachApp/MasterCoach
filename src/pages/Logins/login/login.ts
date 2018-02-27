@@ -1,12 +1,11 @@
-import { Component } from '@angular/core';
-import {IonicPage, NavController, NavParams, Platform, LoadingController} from 'ionic-angular';
+import {Component} from '@angular/core';
+import {IonicPage, LoadingController, NavController, NavParams, Platform} from 'ionic-angular';
 
 import {TabsPage} from "../../HomeTabs/tabs/tabs";
 import {CreateAccountPage} from "../create-account/create-account";
 import {Keyboard} from "@ionic-native/keyboard";
-import {StatusBar} from "@ionic-native/status-bar";
 import {ToolsProvider} from "../../../providers/tools/tools";
-import {UsersProvider} from "../../../providers/users/users";
+import {AuthenticationProvider} from "../../../providers/users/authentication";
 
 /**
  * Generated class for the LoginPage page.
@@ -26,16 +25,15 @@ export class LoginPage {
   password: string;
   hasFocus: boolean;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public users: UsersProvider, public tools: ToolsProvider, public keyboard: Keyboard, platform: Platform, public loadCtrl: LoadingController) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public authProvider: AuthenticationProvider, public tools: ToolsProvider, public keyboard: Keyboard, platform: Platform, public loadCtrl: LoadingController) {
     this.hasFocus = false; //boolean to determine when email/password has focus
       platform.ready().then(() => {
           keyboard.disableScroll(true) //preventing keyboard induced overflow on a page that doesnt need it
       });
     }
 
+
   login() {
-
-
       if (this.email == null || this.email == "" || this.password == null || this.password == "") {
           this.tools.presentToast("bottom", "Please enter an email and password.");
           return;
@@ -47,7 +45,7 @@ export class LoginPage {
 
           loading.present().then(()=> {
                   let promise = new Promise((resolve, reject) => {
-                      that.users.authenticateUser(that.email, that.password).then(response => { //full authentication process gets done in the user service
+                      that.authProvider.authenticateUser(that.email, that.password).then(response => { //full authentication process gets done in the user service
                           if (response != "Valid")
                               reject(response);
                           else
@@ -63,7 +61,7 @@ export class LoginPage {
                       this.navCtrl.push(TabsPage); //allow entry if successful login
                   }).catch(error => { //handle errors thrown by firebase
                       loading.dismiss();
-                      this.users.firebaseAuthenticationError(error);
+                      this.authProvider.firebaseAuthenticationError(error);
                   });
           });
       }
@@ -82,7 +80,7 @@ export class LoginPage {
           let that = this;
       let promise = new Promise((resolve, reject) => {
 
-          that.users.advanceWithFacebook().then(response => {
+          that.authProvider.advanceWithFacebook().then(response => {
              if(response != "Success") {
                  reject(response);
              }
@@ -96,7 +94,7 @@ export class LoginPage {
       promise.then(() => {
           this.navCtrl.push(TabsPage); //allow entry if successful login
       }).catch(error => { //handle errors thrown by firebase
-          this.users.firebaseAuthenticationError(error);
+          this.authProvider.firebaseAuthenticationError(error);
       });
       }
     else {

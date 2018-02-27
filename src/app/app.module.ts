@@ -23,6 +23,9 @@ import {Facebook} from "@ionic-native/facebook";
 import {Keyboard} from "@ionic-native/keyboard";
 import { UsersProvider } from '../providers/users/users';
 import { ToolsProvider } from '../providers/tools/tools';
+import {AuthenticationProvider} from "../providers/users/authentication";
+import {ForgotPasswordPage} from "../pages/Logins/forgot-password/forgot-password";
+import {ValidationProvider} from "../providers/tools/validations";
 
 @NgModule({
   declarations: [
@@ -32,7 +35,8 @@ import { ToolsProvider } from '../providers/tools/tools';
     HomePage,
     TabsPage,
     LoginPage,
-    CreateAccountPage
+    CreateAccountPage,
+    ForgotPasswordPage
   ],
   imports: [
     BrowserModule,
@@ -51,7 +55,8 @@ import { ToolsProvider } from '../providers/tools/tools';
     HomePage,
     TabsPage,
     LoginPage,
-    CreateAccountPage
+    CreateAccountPage,
+    ForgotPasswordPage
   ],
   providers: [
     StatusBar,
@@ -60,7 +65,9 @@ import { ToolsProvider } from '../providers/tools/tools';
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     Keyboard,
     UsersProvider,
-    ToolsProvider
+    ToolsProvider,
+    AuthenticationProvider,
+    ValidationProvider
   ]
 })
 export class AppModule {}

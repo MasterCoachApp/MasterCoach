@@ -1,12 +1,9 @@
-import { Component } from '@angular/core';
-import {AlertController, IonicPage, NavController, NavParams} from 'ionic-angular';
-import {AngularFireAuth} from "angularfire2/auth";
-import {Facebook} from "@ionic-native/facebook";
-import * as firebase from 'firebase';
+import {Component} from '@angular/core';
+import {IonicPage, NavController, NavParams} from 'ionic-angular';
 
 import {TabsPage} from "../../HomeTabs/tabs/tabs";
-import { ToolsProvider } from "../../../providers/tools/tools";
-import { UsersProvider } from "../../../providers/users/users";
+import {ToolsProvider} from "../../../providers/tools/tools";
+import {AuthenticationProvider} from "../../../providers/users/authentication";
 
 /**
  * Generated class for the CreateAccountPage page.
@@ -28,8 +25,7 @@ export class CreateAccountPage {
     firstName: string;
     lastName: string;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private authdb: AngularFireAuth, private facebook: Facebook, public tools: ToolsProvider,
-              public users: UsersProvider, public alertCtrl: AlertController) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public tools: ToolsProvider, public authProvider: AuthenticationProvider) {
 
   }
 
@@ -46,7 +42,7 @@ export class CreateAccountPage {
 
       let that = this;
       let promise = new Promise( (resolve, reject) => { //full create account process happening in the user service
-          that.users.createAccountAuthentication(that.email, that.password, that.firstName, that.lastName).then(response =>{
+          that.authProvider.createAccountAuthentication(that.email, that.password, that.firstName, that.lastName).then(response =>{
               if(response != "Validated") {
                   reject(response);
               }
@@ -62,7 +58,7 @@ export class CreateAccountPage {
       promise.then(response => {
             this.navCtrl.push(TabsPage);
       }).catch(error => { //handle errors that firebase may throw when attempting to create an account
-          this.users.firebaseAuthenticationError(error);
+          this.authProvider.firebaseAuthenticationError(error);
 
           return;
       });
@@ -77,7 +73,7 @@ export class CreateAccountPage {
           let that = this;
           let promise = new Promise((resolve, reject) => {
 
-              that.users.advanceWithFacebook().then(response => {
+              that.authProvider.advanceWithFacebook().then(response => {
                   if(response != "Success") {
                       reject(response);
                   }
@@ -91,7 +87,7 @@ export class CreateAccountPage {
           promise.then(() => {
               this.navCtrl.push(TabsPage); //allow entry if successful login
           }).catch(error => { //handle errors thrown by firebase
-              this.users.firebaseAuthenticationError(error);
+              this.authProvider.firebaseAuthenticationError(error);
           });
       }
       else {
