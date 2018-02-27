@@ -33,6 +33,12 @@ export class LoginPage {
       });
     }
 
+    testFocus() {
+      if(this.keyboard.onKeyboardHide()) {
+          this.hasFocus = false;
+      }
+    }
+
 
   login() {
       if (this.email == null || this.email == "" || this.password == null || this.password == "") {

@@ -18,12 +18,12 @@
 
   <ion-row>
     <ion-col>
-      <ion-input class="inputBox" [(ngModel)]="email" placeholder="Email" (focus)="hasFocus = true" (ionBlur)="hasFocus = false"></ion-input>
+      <ion-input class="inputBox" [(ngModel)]="email" placeholder="Email" (ionFocus)="hasFocus = true"></ion-input>
     </ion-col>
   </ion-row>
   <ion-row>
     <ion-col>
-      <ion-input class="inputBox" [(ngModel)]="password" placeholder="Password" type="password" (ionFocus)="hasFocus = true" (ionBlur)="hasFocus = false"></ion-input>
+      <ion-input class="inputBox" [(ngModel)]="password" placeholder="Password" type="password" (ionFocus)="hasFocus = true"></ion-input>
     </ion-col>
   </ion-row>
 
@@ -34,9 +34,12 @@
   </ion-row>
     <ion-row>
         <ion-col class="loginButtonColumn">
-            <button ion-button (click)="forgotPassword()" [ngClass]="hasFocus ? 'loginButton' : 'noDisplay'">Reset Password</button>
+            <button ion-button (click)="forgotPassword()" [ngClass]="hasFocus ? 'loginButton' : 'noDisplay'" (ionFocus)="hasFocus = true">Reset Password</button>
         </ion-col>
     </ion-row>
+
+
+            <div [ngClass]="hasFocus ? 'tapCatcher' : 'noDisplay'" (click)="hasFocus = false"></div>
 
   <ion-row>
     <ion-col>
