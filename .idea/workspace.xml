@@ -4,16 +4,17 @@
     <list default="true" id="e7f57d27-d28c-4f55-a890-87bd4911cd01" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/.sourcemaps/main.js.map" afterPath="$PROJECT_DIR$/.sourcemaps/main.js.map" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Logins/forgot-password/forgot-password.html" afterPath="$PROJECT_DIR$/src/pages/Logins/forgot-password/forgot-password.html" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Logins/forgot-password/forgot-password.scss" afterPath="$PROJECT_DIR$/src/pages/Logins/forgot-password/forgot-password.scss" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Logins/forgot-password/forgot-password.ts" afterPath="$PROJECT_DIR$/src/pages/Logins/forgot-password/forgot-password.ts" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/build/1.js" afterPath="$PROJECT_DIR$/platforms/browser/www/build/1.js" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/build/2.js" afterPath="$PROJECT_DIR$/platforms/browser/www/build/2.js" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/build/main.css" afterPath="$PROJECT_DIR$/platforms/browser/www/build/main.css" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/build/main.js" afterPath="$PROJECT_DIR$/platforms/browser/www/build/main.js" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/build/main.js.map" afterPath="$PROJECT_DIR$/platforms/browser/www/build/main.js.map" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/build/vendor.js" afterPath="$PROJECT_DIR$/platforms/browser/www/build/vendor.js" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/build/vendor.js.map" afterPath="$PROJECT_DIR$/platforms/browser/www/build/vendor.js.map" />
       <change beforePath="$PROJECT_DIR$/src/pages/Logins/login/login.html" afterPath="$PROJECT_DIR$/src/pages/Logins/login/login.html" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Logins/login/login.scss" afterPath="$PROJECT_DIR$/src/pages/Logins/login/login.scss" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Logins/login/login.ts" afterPath="$PROJECT_DIR$/src/pages/Logins/login/login.ts" />
-      <change beforePath="$PROJECT_DIR$/src/providers/users/authentication.ts" afterPath="$PROJECT_DIR$/src/providers/users/authentication.ts" />
       <change beforePath="$PROJECT_DIR$/www/build/0.js" afterPath="$PROJECT_DIR$/www/build/0.js" />
       <change beforePath="$PROJECT_DIR$/www/build/1.js" afterPath="$PROJECT_DIR$/www/build/1.js" />
-      <change beforePath="$PROJECT_DIR$/www/build/main.css" afterPath="$PROJECT_DIR$/www/build/main.css" />
+      <change beforePath="$PROJECT_DIR$/www/build/2.js" afterPath="$PROJECT_DIR$/www/build/2.js" />
       <change beforePath="$PROJECT_DIR$/www/build/main.js" afterPath="$PROJECT_DIR$/www/build/main.js" />
       <change beforePath="$PROJECT_DIR$/www/build/main.js.map" afterPath="$PROJECT_DIR$/www/build/main.js.map" />
       <change beforePath="$PROJECT_DIR$/www/build/vendor.js" afterPath="$PROJECT_DIR$/www/build/vendor.js" />
@@ -43,11 +44,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="login.html" pinned="false" current-in-tab="false">
+      <file leaf-file-name="login.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/pages/Logins/login/login.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="555">
-              <caret line="37" column="18" lean-forward="false" selection-start-line="37" selection-start-column="18" selection-end-line="37" selection-end-column="18" />
+            <state relative-caret-position="271">
+              <caret line="30" column="39" lean-forward="false" selection-start-line="30" selection-start-column="39" selection-end-line="30" selection-end-column="39" />
               <folding />
             </state>
           </provider>
@@ -65,10 +66,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="forgot-password.ts" pinned="false" current-in-tab="true">
+      <file leaf-file-name="forgot-password.ts" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/pages/Logins/forgot-password/forgot-password.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="550">
+            <state relative-caret-position="724">
               <caret line="65" column="43" lean-forward="false" selection-start-line="65" selection-start-column="43" selection-end-line="65" selection-end-column="43" />
               <folding>
                 <element signature="e#0#42#0" expanded="true" />
@@ -187,13 +188,13 @@
         <option value="$PROJECT_DIR$/src/pages/Logins/create-account/create-account.ts" />
         <option value="$PROJECT_DIR$/src/providers/users/users.ts" />
         <option value="$PROJECT_DIR$/src/providers/tools/validations.ts" />
-        <option value="$PROJECT_DIR$/src/pages/Logins/login/login.html" />
         <option value="$PROJECT_DIR$/src/providers/users/authentication.ts" />
         <option value="$PROJECT_DIR$/src/pages/Logins/login/login.ts" />
         <option value="$PROJECT_DIR$/src/pages/Logins/login/login.scss" />
         <option value="$PROJECT_DIR$/src/pages/Logins/forgot-password/forgot-password.scss" />
         <option value="$PROJECT_DIR$/src/pages/Logins/forgot-password/forgot-password.html" />
         <option value="$PROJECT_DIR$/src/pages/Logins/forgot-password/forgot-password.ts" />
+        <option value="$PROJECT_DIR$/src/pages/Logins/login/login.html" />
       </list>
     </option>
   </component>
@@ -208,7 +209,7 @@
   <component name="NodeModulesDirectoryManager">
     <handled-path value="$PROJECT_DIR$/node_modules" />
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="1">
     <option name="x" value="-4" />
     <option name="y" value="23" />
     <option name="width" value="1440" />
@@ -438,15 +439,16 @@
       <workItem from="1519661980529" duration="817000" />
       <workItem from="1519674129817" duration="2354000" />
       <workItem from="1519699404995" duration="1212000" />
-      <workItem from="1519700641538" duration="3000" />
+      <workItem from="1519700641538" duration="1256000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="51373000" />
+    <option name="totallyTimeSpent" value="52626000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-4" y="23" width="1440" height="813" extended-state="6" />
+    <frame x="-4" y="23" width="1440" height="813" extended-state="1" />
+    <editor active="true" />
     <layout>
       <window_info id="TypeScript" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18125" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -851,14 +853,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/pages/Logins/login/login.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="555">
-          <caret line="37" column="18" lean-forward="false" selection-start-line="37" selection-start-column="18" selection-end-line="37" selection-end-column="18" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/pages/Logins/forgot-password/forgot-password.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="420">
@@ -872,11 +866,19 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/pages/Logins/forgot-password/forgot-password.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="550">
+        <state relative-caret-position="724">
           <caret line="65" column="43" lean-forward="false" selection-start-line="65" selection-start-column="43" selection-end-line="65" selection-end-column="43" />
           <folding>
             <element signature="e#0#42#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pages/Logins/login/login.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="271">
+          <caret line="30" column="39" lean-forward="false" selection-start-line="30" selection-start-column="39" selection-end-line="30" selection-end-column="39" />
+          <folding />
         </state>
       </provider>
     </entry>

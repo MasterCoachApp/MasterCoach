@@ -25801,6 +25801,24 @@ page-create-account .loginBtn--google:focus {
   background: #E74B37;
 }
 
+page-forgot-password .inputBox {
+  border: none;
+  border-radius: 20px;
+  padding-left: 20px;
+  color: white;
+}
+
+page-forgot-password .loginButtonColumn {
+  text-align: center;
+}
+
+page-forgot-password .loginButton {
+  text-align: center;
+  width: 100%;
+  background-color: black;
+  border: 1px solid #48BBF8;
+}
+
 page-login {
   /* Shared */
   /* Facebook */
@@ -25816,7 +25834,6 @@ page-login .inputBox {
   border-radius: 20px;
   padding-left: 20px;
   color: white;
-  border-color: #3B55A0;
 }
 
 page-login .logo {
