@@ -6,6 +6,7 @@ import {CreateAccountPage} from "../create-account/create-account";
 import {Keyboard} from "@ionic-native/keyboard";
 import {ToolsProvider} from "../../../providers/tools/tools";
 import {AuthenticationProvider} from "../../../providers/users/authentication";
+import {ForgotPasswordPage} from "../forgot-password/forgot-password";
 
 /**
  * Generated class for the LoginPage page.
@@ -72,7 +73,11 @@ export class LoginPage {
 
     createAccount() {
       this.navCtrl.push(CreateAccountPage);
-  }
+    }
+
+    forgotPassword() {
+      this.navCtrl.push(ForgotPasswordPage);
+    }
 
   loginWithFacebook() {
       if(navigator.onLine) { //test for internet connection

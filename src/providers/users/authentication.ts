@@ -15,6 +15,9 @@ export class AuthenticationProvider {
     }
 
 
+    /*
+    https://firebase.google.com/docs/auth/web/manage-users?authuser=0
+     */
     forgotPassword(emailAddress: string) {
         let promise = new Promise((resolve, reject) => {
 
