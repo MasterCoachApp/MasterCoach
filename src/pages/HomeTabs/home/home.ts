@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import {MenuController, NavController} from 'ionic-angular';
 
 @Component({
   selector: 'page-home',
@@ -7,8 +7,21 @@ import { NavController } from 'ionic-angular';
 })
 export class HomePage {
 
-  constructor(public navCtrl: NavController) {
+    activeMenu: string;
 
+  constructor(public navCtrl: NavController, public menu: MenuController) {
+      this.menu1Active();
   }
+    menu1Active() {
+        this.activeMenu = 'mainCalendarMenu';
+        this.menu.enable(true, 'mainCalendarMenu');
+        this.menu.enable(false, 'filtersCalendarMenu');
+    }
+
+    menu2Active() {
+        this.activeMenu = 'filtersCalendarMenu';
+        this.menu.enable(false, 'mainCalendarMenu');
+        this.menu.enable(true, 'filtersCalendarMenu');
+    }
 
 }

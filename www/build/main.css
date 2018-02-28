@@ -25678,6 +25678,17 @@ ion-navbar.toolbar {
   min-height: calc(46px + env(safe-area-inset-bottom));
 }
 
+ion-label {
+  font-size: 14px;
+}
+
+.menuSectionHeader {
+  margin-top: 10px;
+  width: 100%;
+  background-color: #2b2b2b;
+  height: 40px;
+}
+
 page-create-account {
   /* Shared */
   /* Facebook */

@@ -11,15 +11,25 @@ import {Keyboard} from "@ionic-native/keyboard";
   templateUrl: 'app.html'
 })
 export class MyApp {
-  rootPage:any = LoginPage;
+  rootPage:any = TabsPage;
+
+  filterOpen: boolean;
+
 
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen,keyboard: Keyboard) {
     platform.ready().then(() => {
+        //Menu settings
+        this.setBaseMenuSettings();
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
         keyboard.hideKeyboardAccessoryBar(false);
         statusBar.styleDefault();
-      splashScreen.hide();
+        splashScreen.hide();
     });
   }
+
+  setBaseMenuSettings() {
+      this.filterOpen = true;
+  }
+
 }
