@@ -25988,3 +25988,9 @@ page-login .hidden {
 page-login .noDisplay {
   display: none;
 }
+
+page-login .tapCatcher {
+  background-color: #222222;
+  width: 100%;
+  height: 100%;
+}
