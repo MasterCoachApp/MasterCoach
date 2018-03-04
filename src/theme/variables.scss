@@ -24,11 +24,17 @@ $app-direction: ltr;
 $facebook-logo: url('../assets/imgs/facebook_button_icon.svg') 6px 6px no-repeat;
 $google-logo: url('../assets/imgs/google_button_icon.svg') 6px 6px no-repeat;
 $tabs-background: black;
-$background-color: #222222;
+$background-color: #161b1f;
 $text-color: white;
 $toolbar-background: black;
 
+$popover-md-width: 98%;
+$popover-ios-width: 98%;
+$popover-wp-width: 98%;
 
+$popover-md-min-height: wrap;
+$popover-ios-min-height: wrap;
+$popover-wp-min-height: wrap;
 
 // Named Color Variables
 // --------------------------------------------------
@@ -61,8 +67,14 @@ $colors: (
 // iOS only Sass variables can go here
 $tabs-ios-tab-icon-color: white;
 $tabs-ios-tab-text-color: white;
+$checkbox-ios-icon-size: 16px;
+$checkbox-ios-icon-checkmark-style: none;
 
+$alert-ios-background: #39393B;
+$alert-ios-radio-label-text-color: white;
+//$alert-ios-radio-label-text-color-checked:;
 
+$loading-ios-background-color: #39393B;
 
 
 // App Material Design Variables
@@ -73,13 +85,20 @@ $tabs-ios-tab-text-color: white;
 $tabs-md-tab-icon-color: white;
 $tabs-md-tab-text-color: white;
 
+$alert-md-background-color: #39393B;
+$alert-md-radio-label-text-color: white;
+
+$loading-md-background-color: #39393B;
 
 
 // App Windows Variables
 // --------------------------------------------------
 // Windows only Sass variables can go here
 
+$alert-wp-background-color: #39393B;
+$alert-wp-radio-label-text-color: white;
 
+$loading-wp-background-color: #39393B;
 
 
 // App Theme

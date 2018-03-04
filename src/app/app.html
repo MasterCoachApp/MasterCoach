@@ -5,56 +5,74 @@
         </ion-toolbar>
     </ion-header>
     <ion-content>
-                <ion-title class="menuSectionHeader">2018</ion-title>
-            <ion-title class="menuSectionHeader" (click)="filterOpen = !filterOpen">
-                <ion-icon item-left name="arrow-forward" *ngIf="!filterOpen"></ion-icon>
-                <ion-icon item-left name="arrow-down" *ngIf="filterOpen"></ion-icon>
+            <ion-item no-lines>
+                <ion-select [(ngModel)]="displayedYear" (ionChange)="this.setCalendarYear()">
+                    <ion-option *ngFor="let year of years">{{year}}</ion-option>
+                </ion-select>
+                <ion-icon item-right name="md-share" style="color: #488aff"></ion-icon>
+            </ion-item>
+        <ion-label class="menuSectionHeader"><ion-icon item-left name="create" style="color: #488aff"></ion-icon> &nbsp; Add New Training</ion-label>
+        <ion-label class="menuSectionHeader" (click)="collapsable.filter.main = !collapsable.filter.main">
+                <ion-icon item-left name="arrow-forward" *ngIf="!collapsable.filter.main"></ion-icon>
+                <ion-icon item-left name="arrow-down" *ngIf="collapsable.filter.main"></ion-icon>
                 Filters
-            </ion-title>
-            <ion-list no-lines id="filterList" class="accordion-list" *ngIf="filterOpen"> <!-- this right here -->
-                <ion-list-header>Event</ion-list-header>
-                <ion-item>
-                    <ion-label>Long Jump</ion-label>
-                    <ion-checkbox></ion-checkbox>
-                </ion-item>
-                <ion-item>
-                    <ion-label>High Jump</ion-label>
-                    <ion-checkbox></ion-checkbox>
-                </ion-item>
-                <ion-item>
-                    <ion-label>Triple Jump</ion-label>
-                    <ion-checkbox></ion-checkbox>
-                </ion-item>
-                <ion-item>
-                    <ion-label>Pole Vault</ion-label>
-                    <ion-checkbox></ion-checkbox>
-                </ion-item>
-                <ion-list-header>Training Result</ion-list-header>
-                <ion-item>
-                    <ion-label>Good</ion-label>
-                    <ion-checkbox></ion-checkbox>
-                </ion-item>
-                <ion-item>
-                    <ion-label>Neutral</ion-label>
-                    <ion-checkbox></ion-checkbox>
-                </ion-item>
-                <ion-item>
-                    <ion-label>Bad</ion-label>
-                    <ion-checkbox></ion-checkbox>
-                </ion-item>
-                <ion-list-header>Athlete</ion-list-header>
-                <ion-item>
-                    <ion-label>Jonah Elbaz</ion-label>
-                    <ion-checkbox></ion-checkbox>
-                </ion-item>
-                <ion-item>
-                    <ion-label>Dylan Golow</ion-label>
-                    <ion-checkbox></ion-checkbox>
-                </ion-item>
-                <ion-item>
-                    <ion-label>Alex Stathis</ion-label>
-                    <ion-checkbox></ion-checkbox>
-                </ion-item>
+            </ion-label>
+            <ion-list no-lines id="filterList" class="accordion-list" *ngIf="collapsable.filter.main">
+
+                <ion-list-header (click)="collapsable.filter.eventFilterOpen = !collapsable.filter.eventFilterOpen">
+                    Event
+                    <ion-icon item-left name="arrow-forward" *ngIf="!collapsable.filter.eventFilterOpen"></ion-icon>
+                    <ion-icon item-left name="arrow-down" *ngIf="collapsable.filter.eventFilterOpen"></ion-icon>
+                </ion-list-header>
+
+                <div *ngIf="collapsable.filter.eventFilterOpen">
+                    <ion-item *ngFor="let event of listOfEvents">
+                        <ion-label> {{event}}</ion-label>
+                        <ion-checkbox (click)="editEventsModel(event)"  [checked]="getEventFilterModel(event)"></ion-checkbox>
+                    </ion-item>
+                </div>
+
+                <ion-list-header (click)="collapsable.filter.trainingResultFilterOpen = !collapsable.filter.trainingResultFilterOpen">
+                    Training Result
+                    <ion-icon item-left name="arrow-forward" *ngIf="!collapsable.filter.trainingResultFilterOpen"></ion-icon>
+                    <ion-icon item-left name="arrow-down" *ngIf="collapsable.filter.trainingResultFilterOpen"></ion-icon>
+                </ion-list-header>
+
+                <div *ngIf="collapsable.filter.trainingResultFilterOpen">
+                    <ion-item>
+                        <ion-label>Good</ion-label>
+                        <ion-checkbox></ion-checkbox>
+                    </ion-item>
+                    <ion-item>
+                        <ion-label>Neutral</ion-label>
+                        <ion-checkbox></ion-checkbox>
+                    </ion-item>
+                    <ion-item>
+                        <ion-label>Bad</ion-label>
+                        <ion-checkbox></ion-checkbox>
+                    </ion-item>
+                </div>
+
+                <ion-list-header (click)="collapsable.filter.athleteFilterOpen = !collapsable.filter.athleteFilterOpen">
+                    Athlete
+                    <ion-icon item-left name="arrow-forward" *ngIf="!collapsable.filter.athleteFilterOpen"></ion-icon>
+                    <ion-icon item-left name="arrow-down" *ngIf="collapsable.filter.athleteFilterOpen"></ion-icon>
+                </ion-list-header>
+
+                <div *ngIf="collapsable.filter.athleteFilterOpen">
+                    <ion-item>
+                        <ion-label>Jonah Elbaz</ion-label>
+                        <ion-checkbox></ion-checkbox>
+                    </ion-item>
+                    <ion-item>
+                        <ion-label>Dylan Golow</ion-label>
+                        <ion-checkbox></ion-checkbox>
+                    </ion-item>
+                    <ion-item>
+                        <ion-label>Alex Stathis</ion-label>
+                        <ion-checkbox></ion-checkbox>
+                    </ion-item>
+                </div>
             </ion-list>
 
 

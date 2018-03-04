@@ -29,6 +29,12 @@
     },
     "ionic-plugin-keyboard": {
       "PACKAGE_NAME": "io.ionic.coachingApp"
+    },
+    "cordova-plugin-datepicker": {
+      "PACKAGE_NAME": "io.ionic.coachingApp"
+    },
+    "cordova-plugin-statusbar": {
+      "PACKAGE_NAME": "io.ionic.coachingApp"
     }
   },
   "dependent_plugins": {}
