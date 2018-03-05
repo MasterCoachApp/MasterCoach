@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
-import {LoadingController, ToastController} from "ionic-angular";
+import {Loading, LoadingController, ToastController} from "ionic-angular";
+import {DatePicker} from "@ionic-native/date-picker";
 
 @Injectable()
 export class ToolsProvider {
 
-    constructor(public toastCtrl: ToastController, public loadCtrl: LoadingController) {
+    constructor(public toastCtrl: ToastController, public loadCtrl: LoadingController, public datePicker: DatePicker) {
 
     }
 
@@ -18,12 +19,22 @@ export class ToolsProvider {
         toast.present();
     }
 
-    presentLoading() {
-        let loading = this.loadCtrl.create({
+    presentLoading(): Loading {
+        return this.loadCtrl.create({
             dismissOnPageChange: true,
             showBackdrop: false
         });
-        return loading;
+    }
+
+    showDatePicker() {
+        this.datePicker.show({
+            date: new Date(),
+            mode: 'date',
+            androidTheme: this.datePicker.ANDROID_THEMES.THEME_HOLO_DARK
+        }).then(
+            date => console.log('Got date: ', date),
+            err => console.log('Error occurred while getting date: ', err)
+        );
     }
 
 }

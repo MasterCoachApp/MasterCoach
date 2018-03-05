@@ -10,13 +10,13 @@ export class ValidationProvider {
 
     }
 
-    validateEmail(email) {
+    validateEmail(email): boolean  {
         let re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
         return re.test(String(email).toLowerCase());
     }
 
 
-    requestEmailVerification()
+    requestEmailVerification(): Promise<any>
     {
         let that = this;
         let email = "";
@@ -55,7 +55,7 @@ export class ValidationProvider {
         });
     }
 
-    requestDisplayNameValidation()
+    requestDisplayNameValidation(): Promise<any>
     {
         let nameObj = null;
         let that = this;

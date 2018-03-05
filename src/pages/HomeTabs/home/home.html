@@ -1,23 +1,64 @@
 <ion-header>
   <ion-navbar>
-    <ion-title>February</ion-title>
-  </ion-navbar>
-  <ion-scroll scrollX="true" style="width:100%; height: 60px; background: #0F0F11">
-    <ion-row nowrap no-lines >
-      <div *ngFor="">
-        <ion-item>
-          <button>
-
+      <ion-buttons left>
+          <button ion-button icon-only menuToggle>
+              <ion-icon name="menu"></ion-icon>
           </button>
-        </ion-item>
-      </div>
-    </ion-row>
-  </ion-scroll>
+      </ion-buttons>
+    <ion-title> {{this.monthInView}} {{this.calMenu.getDisplayedYear()}}</ion-title>
+      <ion-buttons end>
+          <button ion-button style="font-size: 14px;" (click)="showFullCalendar($event)">
+              Calendar
+          </button>
+      </ion-buttons>
+  </ion-navbar>
+  <!--<ion-scroll #scroll id="scrollView" scrollX="true" scrollY="false" style="width:100%; height: 100px; background: #0F0F11"> -->
+
+    <div class="scroll" id="calendarScroll">
+        <ion-row nowrap>
+          <div *ngFor="let date of this.calMenu.dateArray" class="expandedDate" (click)="selectDate(date)">
+            <ion-item no-lines [ngClass]="date.dateValue == this.dateSelected.dateValue ? 'expandedDate selected' : 'expandedDate'" id="{{date.date.toISOString().slice(0,10)}}">
+                <div>
+                    <ion-row>
+                        <ion-col [ngClass]="date.dateValue == this.dateSelected.dateValue ? 'selectedTitle' : 'dayValue'" >
+                            {{date.dayOfTheWeek}}
+                        </ion-col>
+                    </ion-row >
+                    <ion-row>
+                        <ion-col style="font-size: 14px !important;" [ngClass]="date.dateValue == this.dateSelected.dateValue ? 'selectedTitle' : 'dayValue'" >
+                            {{date.date.getDate()}}
+                        </ion-col>
+                    </ion-row>
+                </div>
+            </ion-item>
+          </div>
+        </ion-row>
+    </div>
+  <!--</ion-scroll>-->
 </ion-header>
 
 <ion-content padding>
-  <h3>You did not train today</h3>
+    <div>
+        <ion-row>
+            <ion-col>
+                <hr data-content="Planned" class="hr-text">
+            </ion-col>
+        </ion-row>
+        <ion-row *ngIf="this.dateSelected.content.planned != null">
+            <h3 class="nothingPlanned">You have no planned trainings</h3>
+        </ion-row>
 
+    </div>
+    <div class="executed">
+        <ion-row>
+            <ion-col>
+                <hr data-content="Executed" class="hr-text">
+            </ion-col>
+        </ion-row>
+        <ion-row *ngIf="this.dateSelected.content.executed != null">
+            <h3 class="nothingPlanned">You did not train today</h3>
+        </ion-row>
+    </div>
 </ion-content>
 
 

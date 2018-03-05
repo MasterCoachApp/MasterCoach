@@ -26,6 +26,10 @@ import { ToolsProvider } from '../providers/tools/tools';
 import {AuthenticationProvider} from "../providers/users/authentication";
 import {ForgotPasswordPage} from "../pages/Logins/forgot-password/forgot-password";
 import {ValidationProvider} from "../providers/tools/validations";
+import {CalendarMenu} from "../providers/menus/calendar-menu";
+import {DatePicker} from "@ionic-native/date-picker";
+import { CalendarModule } from 'ionic3-calendar-en';
+import {CalendarPopoverPage} from "../pages/calendar-popover/calendar-popover";
 
 @NgModule({
   declarations: [
@@ -36,7 +40,8 @@ import {ValidationProvider} from "../providers/tools/validations";
     TabsPage,
     LoginPage,
     CreateAccountPage,
-    ForgotPasswordPage
+    ForgotPasswordPage,
+    CalendarPopoverPage
   ],
   imports: [
     BrowserModule,
@@ -45,7 +50,8 @@ import {ValidationProvider} from "../providers/tools/validations";
     AngularFireModule.initializeApp(FIREBASE_CONFIG),
     AngularFireDatabaseModule,
     AngularFireAuthModule,
-    AngularFireModule
+    AngularFireModule,
+    CalendarModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -56,7 +62,8 @@ import {ValidationProvider} from "../providers/tools/validations";
     TabsPage,
     LoginPage,
     CreateAccountPage,
-    ForgotPasswordPage
+    ForgotPasswordPage,
+    CalendarPopoverPage
   ],
   providers: [
     StatusBar,
@@ -67,7 +74,9 @@ import {ValidationProvider} from "../providers/tools/validations";
     UsersProvider,
     ToolsProvider,
     AuthenticationProvider,
-    ValidationProvider
+    ValidationProvider,
+    CalendarMenu,
+    DatePicker
   ]
 })
 export class AppModule {}

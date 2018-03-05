@@ -40,6 +40,12 @@
     },
     "ionic-plugin-keyboard": {
       "PACKAGE_NAME": "io.ionic.coachingApp"
+    },
+    "cordova-plugin-datepicker": {
+      "PACKAGE_NAME": "io.ionic.coachingApp"
+    },
+    "cordova-plugin-statusbar": {
+      "PACKAGE_NAME": "io.ionic.coachingApp"
     }
   },
   "dependent_plugins": {},
@@ -58,6 +64,14 @@
       "pluginId": "cordova-plugin-splashscreen",
       "clobbers": [
         "navigator.splashscreen"
+      ]
+    },
+    {
+      "file": "plugins/cordova-plugin-statusbar/www/statusbar.js",
+      "id": "cordova-plugin-statusbar.statusbar",
+      "pluginId": "cordova-plugin-statusbar",
+      "clobbers": [
+        "window.StatusBar"
       ]
     }
   ]

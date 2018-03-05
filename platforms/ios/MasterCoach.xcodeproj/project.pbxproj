@@ -9,6 +9,7 @@
 		0207DA581B56EA530066E2B4 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0207DA571B56EA530066E2B4 /* Images.xcassets */; };
 		02DF9D2BB51444D3B2AB7210 /* CDVDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = EB81FCCE626748FCB86F1A8C /* CDVDevice.m */; };
 		038F3AA65A8247EE87A2C490 /* GCDWebServerFileRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FD1590F14B4403B8CE3B7D9 /* GCDWebServerFileRequest.m */; };
+		0CF258BA3F034ECDB156010B /* IonicKeyboard.m in Sources */ = {isa = PBXBuildFile; fileRef = 476471E30C664C1F90AE1AC0 /* IonicKeyboard.m */; };
 		1D3623260D0F684500981E51 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3623250D0F684500981E51 /* AppDelegate.m */; };
 		1D60589B0D05DD56006BFB54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
 		2937DA69156846499A9494A2 /* GCDWebServerResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 668CB44F57184A939F8A7A7A /* GCDWebServerResponse.m */; };
@@ -40,7 +41,9 @@
 		D74D61633F8B4DC39792DD43 /* GCDWebServerDataResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B58FEE7C99A4FE597415D64 /* GCDWebServerDataResponse.m */; };
 		E8A4C48F81C44B9A87D67D6F /* GCDWebServerDataRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = CC7E8240826E40829D913647 /* GCDWebServerDataRequest.m */; };
 		F7132289EDA843F3BDDA56AF /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 7001474989EC40B5813778AF /* libz.tbd */; };
-		0CF258BA3F034ECDB156010B /* IonicKeyboard.m in Sources */ = {isa = PBXBuildFile; fileRef = 476471E30C664C1F90AE1AC0 /* IonicKeyboard.m */; };
+		015EE93B033A4C77AC6A565E /* DatePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = E4F2417C176A464FA83B45D7 /* DatePicker.m */; };
+		4D2F95109D644F4E98378E60 /* DatePicker.xib in Resources */ = {isa = PBXBuildFile; fileRef = 56514B48FD5147AB930C0155 /* DatePicker.xib */; };
+		79A3969B36A44AE99E6B30A6 /* CDVStatusBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E6F5E7255C54AA7A711BDCE /* CDVStatusBar.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -96,8 +99,10 @@
 		37CD0E75B56D4992BA4CEA76 /* CDVWKProcessPoolFactory.h */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.h; name = CDVWKProcessPoolFactory.h; path = "cordova-plugin-ionic-webview/CDVWKProcessPoolFactory.h"; sourceTree = "<group>"; };
 		3E9F2540B86545BA8223E00D /* GCDWebServerConnection.h */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.h; name = GCDWebServerConnection.h; path = "cordova-plugin-ionic-webview/GCDWebServerConnection.h"; sourceTree = "<group>"; };
 		4590EB70C4F440D9836C9A7C /* CDVWKProcessPoolFactory.m */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.objc; name = CDVWKProcessPoolFactory.m; path = "cordova-plugin-ionic-webview/CDVWKProcessPoolFactory.m"; sourceTree = "<group>"; };
+		476471E30C664C1F90AE1AC0 /* IonicKeyboard.m */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.objc; name = IonicKeyboard.m; path = "ionic-plugin-keyboard/IonicKeyboard.m"; sourceTree = "<group>"; };
 		4C9E135D584A4FE9B4D1C351 /* FBSDKShareKit.framework */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = wrapper.framework; name = FBSDKShareKit.framework; path = "MasterCoach/Plugins/cordova-plugin-facebook4/FBSDKShareKit.framework"; sourceTree = "<group>"; };
 		4D47960753AB4708A36CA2D3 /* CDVWKWebViewEngine.h */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.h; name = CDVWKWebViewEngine.h; path = "cordova-plugin-ionic-webview/CDVWKWebViewEngine.h"; sourceTree = "<group>"; };
+		50D71F16F2ED44CC87D267CF /* IonicKeyboard.h */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.h; name = IonicKeyboard.h; path = "ionic-plugin-keyboard/IonicKeyboard.h"; sourceTree = "<group>"; };
 		50DE99CAD28B4C51A45D469B /* CDVViewController+SplashScreen.h */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.h; name = "CDVViewController+SplashScreen.h"; path = "cordova-plugin-splashscreen/CDVViewController+SplashScreen.h"; sourceTree = "<group>"; };
 		54EA0462CBDB4DBBA72E5983 /* GCDWebServerStreamedResponse.m */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.objc; name = GCDWebServerStreamedResponse.m; path = "cordova-plugin-ionic-webview/GCDWebServerStreamedResponse.m"; sourceTree = "<group>"; };
 		58C915BC101B4CE6AC675ED5 /* GCDWebServerFileResponse.h */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.h; name = GCDWebServerFileResponse.h; path = "cordova-plugin-ionic-webview/GCDWebServerFileResponse.h"; sourceTree = "<group>"; };
@@ -138,8 +143,11 @@
 		F8C3F5BCFB6A448E89891C45 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = wrapper.framework; name = FBSDKLoginKit.framework; path = "MasterCoach/Plugins/cordova-plugin-facebook4/FBSDKLoginKit.framework"; sourceTree = "<group>"; };
 		F919A8A86AB541DC8F8FB470 /* CDVViewController+SplashScreen.m */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.objc; name = "CDVViewController+SplashScreen.m"; path = "cordova-plugin-splashscreen/CDVViewController+SplashScreen.m"; sourceTree = "<group>"; };
 		FEB2283C17CA4C2C872CE1BC /* CDVSplashScreen.h */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.h; name = CDVSplashScreen.h; path = "cordova-plugin-splashscreen/CDVSplashScreen.h"; sourceTree = "<group>"; };
-		476471E30C664C1F90AE1AC0 /* IonicKeyboard.m */ = {isa = PBXFileReference; name = "IonicKeyboard.m"; path = "ionic-plugin-keyboard/IonicKeyboard.m"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; explicitFileType = undefined; includeInIndex = 0; };
-		50D71F16F2ED44CC87D267CF /* IonicKeyboard.h */ = {isa = PBXFileReference; name = "IonicKeyboard.h"; path = "ionic-plugin-keyboard/IonicKeyboard.h"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; explicitFileType = undefined; includeInIndex = 0; };
+		E4F2417C176A464FA83B45D7 /* DatePicker.m */ = {isa = PBXFileReference; name = "DatePicker.m"; path = "cordova-plugin-datepicker/DatePicker.m"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; explicitFileType = undefined; includeInIndex = 0; };
+		E72920872B69499E8277CA6D /* DatePicker.h */ = {isa = PBXFileReference; name = "DatePicker.h"; path = "cordova-plugin-datepicker/DatePicker.h"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; explicitFileType = undefined; includeInIndex = 0; };
+		56514B48FD5147AB930C0155 /* DatePicker.xib */ = {isa = PBXFileReference; name = "DatePicker.xib"; path = "DatePicker.xib"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = file.xib; explicitFileType = undefined; includeInIndex = 0; };
+		7E6F5E7255C54AA7A711BDCE /* CDVStatusBar.m */ = {isa = PBXFileReference; name = "CDVStatusBar.m"; path = "cordova-plugin-statusbar/CDVStatusBar.m"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; explicitFileType = undefined; includeInIndex = 0; };
+		8E9CC47D0BFE444084E8A196 /* CDVStatusBar.h */ = {isa = PBXFileReference; name = "CDVStatusBar.h"; path = "cordova-plugin-statusbar/CDVStatusBar.h"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -216,6 +224,7 @@
 				3047A50E1AB8057F00498E2A /* config */,
 				8D1107310486CEB800E47090 /* MasterCoach-Info.plist */,
 				6AFF5BF81D6E424B00AB3073 /* CDVLaunchScreen.storyboard */,
+				56514B48FD5147AB930C0155 /* DatePicker.xib */,
 			);
 			name = Resources;
 			path = MasterCoach/Resources;
@@ -302,6 +311,10 @@
 				50DE99CAD28B4C51A45D469B /* CDVViewController+SplashScreen.h */,
 				476471E30C664C1F90AE1AC0 /* IonicKeyboard.m */,
 				50D71F16F2ED44CC87D267CF /* IonicKeyboard.h */,
+				E4F2417C176A464FA83B45D7 /* DatePicker.m */,
+				E72920872B69499E8277CA6D /* DatePicker.h */,
+				7E6F5E7255C54AA7A711BDCE /* CDVStatusBar.m */,
+				8E9CC47D0BFE444084E8A196 /* CDVStatusBar.h */,
 			);
 			name = Plugins;
 			path = MasterCoach/Plugins;
@@ -347,7 +360,7 @@
 				LastUpgradeCheck = 510;
 				TargetAttributes = {
 					1D6058900D05DD3D006BFB54 = {
-						DevelopmentTeam = LMRS4J25GR;
+						DevelopmentTeam = ASQJ3L7765;
 					};
 				};
 			};
@@ -398,6 +411,7 @@
 				302D95F214D2391D003F00A1 /* MainViewController.xib in Resources */,
 				0207DA581B56EA530066E2B4 /* Images.xcassets in Resources */,
 				6AFF5BF91D6E424B00AB3073 /* CDVLaunchScreen.storyboard in Resources */,
+				4D2F95109D644F4E98378E60 /* DatePicker.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -451,6 +465,8 @@
 				8A0311B3A9E54909BA02AC6E /* CDVSplashScreen.m in Sources */,
 				4420C5B420C94D65B8CAA9A9 /* CDVViewController+SplashScreen.m in Sources */,
 				0CF258BA3F034ECDB156010B /* IonicKeyboard.m in Sources */,
+				015EE93B033A4C77AC6A565E /* DatePicker.m in Sources */,
+				79A3969B36A44AE99E6B30A6 /* CDVStatusBar.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -475,7 +491,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				COPY_PHASE_STRIP = NO;
-				DEVELOPMENT_TEAM = LMRS4J25GR;
+				DEVELOPMENT_TEAM = ASQJ3L7765;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"MasterCoach/Plugins/cordova-plugin-facebook4\"",
@@ -507,7 +523,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				COPY_PHASE_STRIP = YES;
-				DEVELOPMENT_TEAM = LMRS4J25GR;
+				DEVELOPMENT_TEAM = ASQJ3L7765;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"MasterCoach/Plugins/cordova-plugin-facebook4\"",

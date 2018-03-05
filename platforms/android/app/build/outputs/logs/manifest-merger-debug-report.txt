@@ -1,0 +1,200 @@
+-- Merging decision tree log ---
+manifest
+ADDED from /Users/jonahelbaz/Desktop/MasterCoach/platforms/android/app/src/main/AndroidManifest.xml:2:1-17:12
+INJECTED from /Users/jonahelbaz/Desktop/MasterCoach/platforms/android/app/src/main/AndroidManifest.xml:2:1-17:12
+INJECTED from /Users/jonahelbaz/Desktop/MasterCoach/platforms/android/app/src/main/AndroidManifest.xml:2:1-17:12
+INJECTED from /Users/jonahelbaz/Desktop/MasterCoach/platforms/android/app/src/main/AndroidManifest.xml:2:1-17:12
+MERGED from [com.facebook.android:facebook-android-sdk:4.31.0] /Users/jonahelbaz/.gradle/caches/transforms-1/files-1.1/facebook-android-sdk-4.31.0.aar/d50303b0658dfdd237d9f82c5779c0d3/AndroidManifest.xml:21:1-31:12
+MERGED from [:CordovaLib] /Users/jonahelbaz/Desktop/MasterCoach/platforms/android/CordovaLib/build/intermediates/manifests/full/debug/AndroidManifest.xml:20:1-27:12
+MERGED from [com.facebook.android:facebook-login:4.31.0] /Users/jonahelbaz/.gradle/caches/transforms-1/files-1.1/facebook-login-4.31.0.aar/6efffd12caff1f65b3a30468ef0357a8/AndroidManifest.xml:21:1-31:12
+MERGED from [com.facebook.android:facebook-share:4.31.0] /Users/jonahelbaz/.gradle/caches/transforms-1/files-1.1/facebook-share-4.31.0.aar/4242871fc018dfaab067b0859bbf877d/AndroidManifest.xml:21:1-31:12
+MERGED from [com.facebook.android:facebook-common:4.31.0] /Users/jonahelbaz/.gradle/caches/transforms-1/files-1.1/facebook-common-4.31.0.aar/c036c7d34ba9b9402f3bb79b356fc8f6/AndroidManifest.xml:21:1-36:12
+MERGED from [com.facebook.android:facebook-places:4.31.0] /Users/jonahelbaz/.gradle/caches/transforms-1/files-1.1/facebook-places-4.31.0.aar/4e4b86eb8d13dc39421173c281f38e48/AndroidManifest.xml:21:1-31:12
+MERGED from [com.facebook.android:facebook-applinks:4.31.0] /Users/jonahelbaz/.gradle/caches/transforms-1/files-1.1/facebook-applinks-4.31.0.aar/82efcf2f28829a7d21641449264146ae/AndroidManifest.xml:21:1-31:12
+MERGED from [com.facebook.android:facebook-messenger:4.31.0] /Users/jonahelbaz/.gradle/caches/transforms-1/files-1.1/facebook-messenger-4.31.0.aar/737ec3c7a74b0b869eab79ffa14662b9/AndroidManifest.xml:21:1-31:12
+MERGED from [com.facebook.android:facebook-core:4.31.0] /Users/jonahelbaz/.gradle/caches/transforms-1/files-1.1/facebook-core-4.31.0.aar/fa0ddd754d8be134d4657c27ab4a2055/AndroidManifest.xml:21:1-45:12
+MERGED from [com.android.support:support-v4:27.0.2] /Users/jonahelbaz/.gradle/caches/transforms-1/files-1.1/support-v4-27.0.2.aar/3d2d5ceae315caec7973e05d894ba562/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:appcompat-v7:27.0.2] /Users/jonahelbaz/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.0.2.aar/4e9861d5b4143e5383281c8fd547e3e6/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-fragment:27.0.2] /Users/jonahelbaz/.gradle/caches/transforms-1/files-1.1/support-fragment-27.0.2.aar/3263bc0cf9f9aa3acb7296cf2c2b9456/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-core-utils:27.0.2] /Users/jonahelbaz/.gradle/caches/transforms-1/files-1.1/support-core-utils-27.0.2.aar/96443d3a7c28f187157cba91dc573de4/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:cardview-v7:27.0.2] /Users/jonahelbaz/.gradle/caches/transforms-1/files-1.1/cardview-v7-27.0.2.aar/46b1eefa64f536639dafb3b48059dfbd/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:customtabs:27.0.2] /Users/jonahelbaz/.gradle/caches/transforms-1/files-1.1/customtabs-27.0.2.aar/56c1f9c6b1128e903e9b184efb087241/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-media-compat:27.0.2] /Users/jonahelbaz/.gradle/caches/transforms-1/files-1.1/support-media-compat-27.0.2.aar/546808b18ed4afd0c2a2ae0d97733257/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:animated-vector-drawable:27.0.2] /Users/jonahelbaz/.gradle/caches/transforms-1/files-1.1/animated-vector-drawable-27.0.2.aar/aede9cd7efb44f83c0d0523e08407dfd/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-core-ui:27.0.2] /Users/jonahelbaz/.gradle/caches/transforms-1/files-1.1/support-core-ui-27.0.2.aar/3f12e9438c41a1fbdcca7681244c62c5/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-vector-drawable:27.0.2] /Users/jonahelbaz/.gradle/caches/transforms-1/files-1.1/support-vector-drawable-27.0.2.aar/8464e9a5b2dfd873775bbc3b74acd094/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-compat:27.0.2] /Users/jonahelbaz/.gradle/caches/transforms-1/files-1.1/support-compat-27.0.2.aar/14bc14aec2edc21c74dc3b9fc7a72128/AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.lifecycle:runtime:1.0.3] /Users/jonahelbaz/.gradle/caches/transforms-1/files-1.1/runtime-1.0.3.aar/faa18344f4c091ef538e341b5e24f13e/AndroidManifest.xml:17:1-24:12
+INJECTED from /Users/jonahelbaz/Desktop/MasterCoach/platforms/android/app/src/main/AndroidManifest.xml:2:1-17:12
+INJECTED from /Users/jonahelbaz/Desktop/MasterCoach/platforms/android/app/src/main/AndroidManifest.xml:2:1-17:12
+INJECTED from /Users/jonahelbaz/Desktop/MasterCoach/platforms/android/app/src/main/AndroidManifest.xml:2:1-17:12
+	package
+		ADDED from /Users/jonahelbaz/Desktop/MasterCoach/platforms/android/app/src/main/AndroidManifest.xml:2:98-128
+		INJECTED from /Users/jonahelbaz/Desktop/MasterCoach/platforms/android/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/jonahelbaz/Desktop/MasterCoach/platforms/android/app/src/main/AndroidManifest.xml
+	android:versionName
+		ADDED from /Users/jonahelbaz/Desktop/MasterCoach/platforms/android/app/src/main/AndroidManifest.xml:2:70-97
+		INJECTED from /Users/jonahelbaz/Desktop/MasterCoach/platforms/android/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/jonahelbaz/Desktop/MasterCoach/platforms/android/app/src/main/AndroidManifest.xml
+	android:hardwareAccelerated
+		ADDED from /Users/jonahelbaz/Desktop/MasterCoach/platforms/android/app/src/main/AndroidManifest.xml:2:11-45
+	xmlns:android
+		ADDED from /Users/jonahelbaz/Desktop/MasterCoach/platforms/android/app/src/main/AndroidManifest.xml:2:129-187
+	android:versionCode
+		ADDED from /Users/jonahelbaz/Desktop/MasterCoach/platforms/android/app/src/main/AndroidManifest.xml:2:46-69
+		INJECTED from /Users/jonahelbaz/Desktop/MasterCoach/platforms/android/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/jonahelbaz/Desktop/MasterCoach/platforms/android/app/src/main/AndroidManifest.xml
+supports-screens
+ADDED from /Users/jonahelbaz/Desktop/MasterCoach/platforms/android/app/src/main/AndroidManifest.xml:3:5-191
+	android:largeScreens
+		ADDED from /Users/jonahelbaz/Desktop/MasterCoach/platforms/android/app/src/main/AndroidManifest.xml:3:49-76
+	android:smallScreens
+		ADDED from /Users/jonahelbaz/Desktop/MasterCoach/platforms/android/app/src/main/AndroidManifest.xml:3:132-159
+	android:normalScreens
+		ADDED from /Users/jonahelbaz/Desktop/MasterCoach/platforms/android/app/src/main/AndroidManifest.xml:3:77-105
+	android:xlargeScreens
+		ADDED from /Users/jonahelbaz/Desktop/MasterCoach/platforms/android/app/src/main/AndroidManifest.xml:3:160-188
+	android:resizeable
+		ADDED from /Users/jonahelbaz/Desktop/MasterCoach/platforms/android/app/src/main/AndroidManifest.xml:3:106-131
+	android:anyDensity
+		ADDED from /Users/jonahelbaz/Desktop/MasterCoach/platforms/android/app/src/main/AndroidManifest.xml:3:23-48
+uses-permission#android.permission.INTERNET
+ADDED from /Users/jonahelbaz/Desktop/MasterCoach/platforms/android/app/src/main/AndroidManifest.xml:4:5-67
+	android:name
+		ADDED from /Users/jonahelbaz/Desktop/MasterCoach/platforms/android/app/src/main/AndroidManifest.xml:4:22-64
+application
+ADDED from /Users/jonahelbaz/Desktop/MasterCoach/platforms/android/app/src/main/AndroidManifest.xml:5:5-15:19
+MERGED from [com.facebook.android:facebook-android-sdk:4.31.0] /Users/jonahelbaz/.gradle/caches/transforms-1/files-1.1/facebook-android-sdk-4.31.0.aar/d50303b0658dfdd237d9f82c5779c0d3/AndroidManifest.xml:28:5-29:19
+MERGED from [com.facebook.android:facebook-android-sdk:4.31.0] /Users/jonahelbaz/.gradle/caches/transforms-1/files-1.1/facebook-android-sdk-4.31.0.aar/d50303b0658dfdd237d9f82c5779c0d3/AndroidManifest.xml:28:5-29:19
+MERGED from [com.facebook.android:facebook-login:4.31.0] /Users/jonahelbaz/.gradle/caches/transforms-1/files-1.1/facebook-login-4.31.0.aar/6efffd12caff1f65b3a30468ef0357a8/AndroidManifest.xml:28:5-29:19
+MERGED from [com.facebook.android:facebook-login:4.31.0] /Users/jonahelbaz/.gradle/caches/transforms-1/files-1.1/facebook-login-4.31.0.aar/6efffd12caff1f65b3a30468ef0357a8/AndroidManifest.xml:28:5-29:19
+MERGED from [com.facebook.android:facebook-share:4.31.0] /Users/jonahelbaz/.gradle/caches/transforms-1/files-1.1/facebook-share-4.31.0.aar/4242871fc018dfaab067b0859bbf877d/AndroidManifest.xml:28:5-29:19
+MERGED from [com.facebook.android:facebook-share:4.31.0] /Users/jonahelbaz/.gradle/caches/transforms-1/files-1.1/facebook-share-4.31.0.aar/4242871fc018dfaab067b0859bbf877d/AndroidManifest.xml:28:5-29:19
+MERGED from [com.facebook.android:facebook-common:4.31.0] /Users/jonahelbaz/.gradle/caches/transforms-1/files-1.1/facebook-common-4.31.0.aar/c036c7d34ba9b9402f3bb79b356fc8f6/AndroidManifest.xml:28:5-34:19
+MERGED from [com.facebook.android:facebook-common:4.31.0] /Users/jonahelbaz/.gradle/caches/transforms-1/files-1.1/facebook-common-4.31.0.aar/c036c7d34ba9b9402f3bb79b356fc8f6/AndroidManifest.xml:28:5-34:19
+MERGED from [com.facebook.android:facebook-places:4.31.0] /Users/jonahelbaz/.gradle/caches/transforms-1/files-1.1/facebook-places-4.31.0.aar/4e4b86eb8d13dc39421173c281f38e48/AndroidManifest.xml:28:5-29:19
+MERGED from [com.facebook.android:facebook-places:4.31.0] /Users/jonahelbaz/.gradle/caches/transforms-1/files-1.1/facebook-places-4.31.0.aar/4e4b86eb8d13dc39421173c281f38e48/AndroidManifest.xml:28:5-29:19
+MERGED from [com.facebook.android:facebook-applinks:4.31.0] /Users/jonahelbaz/.gradle/caches/transforms-1/files-1.1/facebook-applinks-4.31.0.aar/82efcf2f28829a7d21641449264146ae/AndroidManifest.xml:28:5-29:19
+MERGED from [com.facebook.android:facebook-applinks:4.31.0] /Users/jonahelbaz/.gradle/caches/transforms-1/files-1.1/facebook-applinks-4.31.0.aar/82efcf2f28829a7d21641449264146ae/AndroidManifest.xml:28:5-29:19
+MERGED from [com.facebook.android:facebook-messenger:4.31.0] /Users/jonahelbaz/.gradle/caches/transforms-1/files-1.1/facebook-messenger-4.31.0.aar/737ec3c7a74b0b869eab79ffa14662b9/AndroidManifest.xml:28:5-29:19
+MERGED from [com.facebook.android:facebook-messenger:4.31.0] /Users/jonahelbaz/.gradle/caches/transforms-1/files-1.1/facebook-messenger-4.31.0.aar/737ec3c7a74b0b869eab79ffa14662b9/AndroidManifest.xml:28:5-29:19
+MERGED from [com.facebook.android:facebook-core:4.31.0] /Users/jonahelbaz/.gradle/caches/transforms-1/files-1.1/facebook-core-4.31.0.aar/fa0ddd754d8be134d4657c27ab4a2055/AndroidManifest.xml:28:5-43:19
+MERGED from [com.facebook.android:facebook-core:4.31.0] /Users/jonahelbaz/.gradle/caches/transforms-1/files-1.1/facebook-core-4.31.0.aar/fa0ddd754d8be134d4657c27ab4a2055/AndroidManifest.xml:28:5-43:19
+	android:supportsRtl
+		ADDED from /Users/jonahelbaz/Desktop/MasterCoach/platforms/android/app/src/main/AndroidManifest.xml:5:114-140
+	android:label
+		ADDED from /Users/jonahelbaz/Desktop/MasterCoach/platforms/android/app/src/main/AndroidManifest.xml:5:81-113
+	android:hardwareAccelerated
+		ADDED from /Users/jonahelbaz/Desktop/MasterCoach/platforms/android/app/src/main/AndroidManifest.xml:5:18-52
+	android:icon
+		ADDED from /Users/jonahelbaz/Desktop/MasterCoach/platforms/android/app/src/main/AndroidManifest.xml:5:53-80
+activity#io.ionic.coachingApp.MainActivity
+ADDED from /Users/jonahelbaz/Desktop/MasterCoach/platforms/android/app/src/main/AndroidManifest.xml:6:9-11:20
+	android:label
+		ADDED from /Users/jonahelbaz/Desktop/MasterCoach/platforms/android/app/src/main/AndroidManifest.xml:6:97-134
+	android:launchMode
+		ADDED from /Users/jonahelbaz/Desktop/MasterCoach/platforms/android/app/src/main/AndroidManifest.xml:6:135-165
+	android:windowSoftInputMode
+		ADDED from /Users/jonahelbaz/Desktop/MasterCoach/platforms/android/app/src/main/AndroidManifest.xml:6:257-299
+	android:configChanges
+		ADDED from /Users/jonahelbaz/Desktop/MasterCoach/platforms/android/app/src/main/AndroidManifest.xml:6:19-96
+	android:theme
+		ADDED from /Users/jonahelbaz/Desktop/MasterCoach/platforms/android/app/src/main/AndroidManifest.xml:6:194-256
+	android:name
+		ADDED from /Users/jonahelbaz/Desktop/MasterCoach/platforms/android/app/src/main/AndroidManifest.xml:6:166-193
+intent-filter#android.intent.action.MAIN+android.intent.category.LAUNCHER
+ADDED from /Users/jonahelbaz/Desktop/MasterCoach/platforms/android/app/src/main/AndroidManifest.xml:7:13-10:29
+	android:label
+		ADDED from /Users/jonahelbaz/Desktop/MasterCoach/platforms/android/app/src/main/AndroidManifest.xml:7:28-65
+action#android.intent.action.MAIN
+ADDED from /Users/jonahelbaz/Desktop/MasterCoach/platforms/android/app/src/main/AndroidManifest.xml:8:17-69
+	android:name
+		ADDED from /Users/jonahelbaz/Desktop/MasterCoach/platforms/android/app/src/main/AndroidManifest.xml:8:25-66
+category#android.intent.category.LAUNCHER
+ADDED from /Users/jonahelbaz/Desktop/MasterCoach/platforms/android/app/src/main/AndroidManifest.xml:9:17-77
+	android:name
+		ADDED from /Users/jonahelbaz/Desktop/MasterCoach/platforms/android/app/src/main/AndroidManifest.xml:9:27-74
+meta-data#com.facebook.sdk.ApplicationId
+ADDED from /Users/jonahelbaz/Desktop/MasterCoach/platforms/android/app/src/main/AndroidManifest.xml:12:9-102
+	android:value
+		ADDED from /Users/jonahelbaz/Desktop/MasterCoach/platforms/android/app/src/main/AndroidManifest.xml:12:66-99
+	android:name
+		ADDED from /Users/jonahelbaz/Desktop/MasterCoach/platforms/android/app/src/main/AndroidManifest.xml:12:20-65
+meta-data#com.facebook.sdk.ApplicationName
+ADDED from /Users/jonahelbaz/Desktop/MasterCoach/platforms/android/app/src/main/AndroidManifest.xml:13:9-106
+	android:value
+		ADDED from /Users/jonahelbaz/Desktop/MasterCoach/platforms/android/app/src/main/AndroidManifest.xml:13:68-103
+	android:name
+		ADDED from /Users/jonahelbaz/Desktop/MasterCoach/platforms/android/app/src/main/AndroidManifest.xml:13:20-67
+activity#com.facebook.FacebookActivity
+ADDED from /Users/jonahelbaz/Desktop/MasterCoach/platforms/android/app/src/main/AndroidManifest.xml:14:9-186
+MERGED from [com.facebook.android:facebook-common:4.31.0] /Users/jonahelbaz/.gradle/caches/transforms-1/files-1.1/facebook-common-4.31.0.aar/c036c7d34ba9b9402f3bb79b356fc8f6/AndroidManifest.xml:29:9-32:66
+MERGED from [com.facebook.android:facebook-common:4.31.0] /Users/jonahelbaz/.gradle/caches/transforms-1/files-1.1/facebook-common-4.31.0.aar/c036c7d34ba9b9402f3bb79b356fc8f6/AndroidManifest.xml:29:9-32:66
+	android:label
+		ADDED from /Users/jonahelbaz/Desktop/MasterCoach/platforms/android/app/src/main/AndroidManifest.xml:14:103-138
+	android:configChanges
+		ADDED from /Users/jonahelbaz/Desktop/MasterCoach/platforms/android/app/src/main/AndroidManifest.xml:14:19-102
+	android:theme
+		ADDED from [com.facebook.android:facebook-common:4.31.0] /Users/jonahelbaz/.gradle/caches/transforms-1/files-1.1/facebook-common-4.31.0.aar/c036c7d34ba9b9402f3bb79b356fc8f6/AndroidManifest.xml:32:13-63
+	android:name
+		ADDED from /Users/jonahelbaz/Desktop/MasterCoach/platforms/android/app/src/main/AndroidManifest.xml:14:139-183
+uses-sdk
+ADDED from /Users/jonahelbaz/Desktop/MasterCoach/platforms/android/app/src/main/AndroidManifest.xml:16:5-74
+MERGED from [com.facebook.android:facebook-android-sdk:4.31.0] /Users/jonahelbaz/.gradle/caches/transforms-1/files-1.1/facebook-android-sdk-4.31.0.aar/d50303b0658dfdd237d9f82c5779c0d3/AndroidManifest.xml:24:5-26:41
+MERGED from [com.facebook.android:facebook-android-sdk:4.31.0] /Users/jonahelbaz/.gradle/caches/transforms-1/files-1.1/facebook-android-sdk-4.31.0.aar/d50303b0658dfdd237d9f82c5779c0d3/AndroidManifest.xml:24:5-26:41
+MERGED from [:CordovaLib] /Users/jonahelbaz/Desktop/MasterCoach/platforms/android/CordovaLib/build/intermediates/manifests/full/debug/AndroidManifest.xml:25:5-44
+MERGED from [:CordovaLib] /Users/jonahelbaz/Desktop/MasterCoach/platforms/android/CordovaLib/build/intermediates/manifests/full/debug/AndroidManifest.xml:25:5-44
+MERGED from [com.facebook.android:facebook-login:4.31.0] /Users/jonahelbaz/.gradle/caches/transforms-1/files-1.1/facebook-login-4.31.0.aar/6efffd12caff1f65b3a30468ef0357a8/AndroidManifest.xml:24:5-26:41
+MERGED from [com.facebook.android:facebook-login:4.31.0] /Users/jonahelbaz/.gradle/caches/transforms-1/files-1.1/facebook-login-4.31.0.aar/6efffd12caff1f65b3a30468ef0357a8/AndroidManifest.xml:24:5-26:41
+MERGED from [com.facebook.android:facebook-share:4.31.0] /Users/jonahelbaz/.gradle/caches/transforms-1/files-1.1/facebook-share-4.31.0.aar/4242871fc018dfaab067b0859bbf877d/AndroidManifest.xml:24:5-26:41
+MERGED from [com.facebook.android:facebook-share:4.31.0] /Users/jonahelbaz/.gradle/caches/transforms-1/files-1.1/facebook-share-4.31.0.aar/4242871fc018dfaab067b0859bbf877d/AndroidManifest.xml:24:5-26:41
+MERGED from [com.facebook.android:facebook-common:4.31.0] /Users/jonahelbaz/.gradle/caches/transforms-1/files-1.1/facebook-common-4.31.0.aar/c036c7d34ba9b9402f3bb79b356fc8f6/AndroidManifest.xml:24:5-26:41
+MERGED from [com.facebook.android:facebook-common:4.31.0] /Users/jonahelbaz/.gradle/caches/transforms-1/files-1.1/facebook-common-4.31.0.aar/c036c7d34ba9b9402f3bb79b356fc8f6/AndroidManifest.xml:24:5-26:41
+MERGED from [com.facebook.android:facebook-places:4.31.0] /Users/jonahelbaz/.gradle/caches/transforms-1/files-1.1/facebook-places-4.31.0.aar/4e4b86eb8d13dc39421173c281f38e48/AndroidManifest.xml:24:5-26:41
+MERGED from [com.facebook.android:facebook-places:4.31.0] /Users/jonahelbaz/.gradle/caches/transforms-1/files-1.1/facebook-places-4.31.0.aar/4e4b86eb8d13dc39421173c281f38e48/AndroidManifest.xml:24:5-26:41
+MERGED from [com.facebook.android:facebook-applinks:4.31.0] /Users/jonahelbaz/.gradle/caches/transforms-1/files-1.1/facebook-applinks-4.31.0.aar/82efcf2f28829a7d21641449264146ae/AndroidManifest.xml:24:5-26:41
+MERGED from [com.facebook.android:facebook-applinks:4.31.0] /Users/jonahelbaz/.gradle/caches/transforms-1/files-1.1/facebook-applinks-4.31.0.aar/82efcf2f28829a7d21641449264146ae/AndroidManifest.xml:24:5-26:41
+MERGED from [com.facebook.android:facebook-messenger:4.31.0] /Users/jonahelbaz/.gradle/caches/transforms-1/files-1.1/facebook-messenger-4.31.0.aar/737ec3c7a74b0b869eab79ffa14662b9/AndroidManifest.xml:24:5-26:41
+MERGED from [com.facebook.android:facebook-messenger:4.31.0] /Users/jonahelbaz/.gradle/caches/transforms-1/files-1.1/facebook-messenger-4.31.0.aar/737ec3c7a74b0b869eab79ffa14662b9/AndroidManifest.xml:24:5-26:41
+MERGED from [com.facebook.android:facebook-core:4.31.0] /Users/jonahelbaz/.gradle/caches/transforms-1/files-1.1/facebook-core-4.31.0.aar/fa0ddd754d8be134d4657c27ab4a2055/AndroidManifest.xml:24:5-26:41
+MERGED from [com.facebook.android:facebook-core:4.31.0] /Users/jonahelbaz/.gradle/caches/transforms-1/files-1.1/facebook-core-4.31.0.aar/fa0ddd754d8be134d4657c27ab4a2055/AndroidManifest.xml:24:5-26:41
+MERGED from [com.android.support:support-v4:27.0.2] /Users/jonahelbaz/.gradle/caches/transforms-1/files-1.1/support-v4-27.0.2.aar/3d2d5ceae315caec7973e05d894ba562/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-v4:27.0.2] /Users/jonahelbaz/.gradle/caches/transforms-1/files-1.1/support-v4-27.0.2.aar/3d2d5ceae315caec7973e05d894ba562/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:appcompat-v7:27.0.2] /Users/jonahelbaz/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.0.2.aar/4e9861d5b4143e5383281c8fd547e3e6/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:appcompat-v7:27.0.2] /Users/jonahelbaz/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.0.2.aar/4e9861d5b4143e5383281c8fd547e3e6/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-fragment:27.0.2] /Users/jonahelbaz/.gradle/caches/transforms-1/files-1.1/support-fragment-27.0.2.aar/3263bc0cf9f9aa3acb7296cf2c2b9456/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-fragment:27.0.2] /Users/jonahelbaz/.gradle/caches/transforms-1/files-1.1/support-fragment-27.0.2.aar/3263bc0cf9f9aa3acb7296cf2c2b9456/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-utils:27.0.2] /Users/jonahelbaz/.gradle/caches/transforms-1/files-1.1/support-core-utils-27.0.2.aar/96443d3a7c28f187157cba91dc573de4/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-utils:27.0.2] /Users/jonahelbaz/.gradle/caches/transforms-1/files-1.1/support-core-utils-27.0.2.aar/96443d3a7c28f187157cba91dc573de4/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:cardview-v7:27.0.2] /Users/jonahelbaz/.gradle/caches/transforms-1/files-1.1/cardview-v7-27.0.2.aar/46b1eefa64f536639dafb3b48059dfbd/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:cardview-v7:27.0.2] /Users/jonahelbaz/.gradle/caches/transforms-1/files-1.1/cardview-v7-27.0.2.aar/46b1eefa64f536639dafb3b48059dfbd/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:customtabs:27.0.2] /Users/jonahelbaz/.gradle/caches/transforms-1/files-1.1/customtabs-27.0.2.aar/56c1f9c6b1128e903e9b184efb087241/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:customtabs:27.0.2] /Users/jonahelbaz/.gradle/caches/transforms-1/files-1.1/customtabs-27.0.2.aar/56c1f9c6b1128e903e9b184efb087241/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-media-compat:27.0.2] /Users/jonahelbaz/.gradle/caches/transforms-1/files-1.1/support-media-compat-27.0.2.aar/546808b18ed4afd0c2a2ae0d97733257/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-media-compat:27.0.2] /Users/jonahelbaz/.gradle/caches/transforms-1/files-1.1/support-media-compat-27.0.2.aar/546808b18ed4afd0c2a2ae0d97733257/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:animated-vector-drawable:27.0.2] /Users/jonahelbaz/.gradle/caches/transforms-1/files-1.1/animated-vector-drawable-27.0.2.aar/aede9cd7efb44f83c0d0523e08407dfd/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:animated-vector-drawable:27.0.2] /Users/jonahelbaz/.gradle/caches/transforms-1/files-1.1/animated-vector-drawable-27.0.2.aar/aede9cd7efb44f83c0d0523e08407dfd/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-ui:27.0.2] /Users/jonahelbaz/.gradle/caches/transforms-1/files-1.1/support-core-ui-27.0.2.aar/3f12e9438c41a1fbdcca7681244c62c5/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-ui:27.0.2] /Users/jonahelbaz/.gradle/caches/transforms-1/files-1.1/support-core-ui-27.0.2.aar/3f12e9438c41a1fbdcca7681244c62c5/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-vector-drawable:27.0.2] /Users/jonahelbaz/.gradle/caches/transforms-1/files-1.1/support-vector-drawable-27.0.2.aar/8464e9a5b2dfd873775bbc3b74acd094/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-vector-drawable:27.0.2] /Users/jonahelbaz/.gradle/caches/transforms-1/files-1.1/support-vector-drawable-27.0.2.aar/8464e9a5b2dfd873775bbc3b74acd094/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-compat:27.0.2] /Users/jonahelbaz/.gradle/caches/transforms-1/files-1.1/support-compat-27.0.2.aar/14bc14aec2edc21c74dc3b9fc7a72128/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-compat:27.0.2] /Users/jonahelbaz/.gradle/caches/transforms-1/files-1.1/support-compat-27.0.2.aar/14bc14aec2edc21c74dc3b9fc7a72128/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:runtime:1.0.3] /Users/jonahelbaz/.gradle/caches/transforms-1/files-1.1/runtime-1.0.3.aar/faa18344f4c091ef538e341b5e24f13e/AndroidManifest.xml:20:5-22:41
+MERGED from [android.arch.lifecycle:runtime:1.0.3] /Users/jonahelbaz/.gradle/caches/transforms-1/files-1.1/runtime-1.0.3.aar/faa18344f4c091ef538e341b5e24f13e/AndroidManifest.xml:20:5-22:41
+	android:targetSdkVersion
+		ADDED from /Users/jonahelbaz/Desktop/MasterCoach/platforms/android/app/src/main/AndroidManifest.xml:16:42-71
+	android:minSdkVersion
+		ADDED from /Users/jonahelbaz/Desktop/MasterCoach/platforms/android/app/src/main/AndroidManifest.xml:16:15-41
+activity#com.facebook.CustomTabMainActivity
+ADDED from [com.facebook.android:facebook-common:4.31.0] /Users/jonahelbaz/.gradle/caches/transforms-1/files-1.1/facebook-common-4.31.0.aar/c036c7d34ba9b9402f3bb79b356fc8f6/AndroidManifest.xml:33:9-71
+	android:name
+		ADDED from [com.facebook.android:facebook-common:4.31.0] /Users/jonahelbaz/.gradle/caches/transforms-1/files-1.1/facebook-common-4.31.0.aar/c036c7d34ba9b9402f3bb79b356fc8f6/AndroidManifest.xml:33:19-68
+provider#com.facebook.internal.FacebookInitProvider
+ADDED from [com.facebook.android:facebook-core:4.31.0] /Users/jonahelbaz/.gradle/caches/transforms-1/files-1.1/facebook-core-4.31.0.aar/fa0ddd754d8be134d4657c27ab4a2055/AndroidManifest.xml:39:9-42:40
+	android:authorities
+		ADDED from [com.facebook.android:facebook-core:4.31.0] /Users/jonahelbaz/.gradle/caches/transforms-1/files-1.1/facebook-core-4.31.0.aar/fa0ddd754d8be134d4657c27ab4a2055/AndroidManifest.xml:41:13-72
+	android:exported
+		ADDED from [com.facebook.android:facebook-core:4.31.0] /Users/jonahelbaz/.gradle/caches/transforms-1/files-1.1/facebook-core-4.31.0.aar/fa0ddd754d8be134d4657c27ab4a2055/AndroidManifest.xml:42:13-37
+	android:name
+		ADDED from [com.facebook.android:facebook-core:4.31.0] /Users/jonahelbaz/.gradle/caches/transforms-1/files-1.1/facebook-core-4.31.0.aar/fa0ddd754d8be134d4657c27ab4a2055/AndroidManifest.xml:40:13-70
