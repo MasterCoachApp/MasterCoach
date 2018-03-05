@@ -36,6 +36,7 @@ import * as _ from "lodash";
 })
 
 export class Calendar {
+    //Jonah is controlling this asset
 
     @Output() onDaySelect = new EventEmitter<dateObj>();
     @Output() onMonthSelect = new EventEmitter<any>();

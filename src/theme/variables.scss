@@ -90,7 +90,9 @@ $alert-md-radio-label-text-color: white;
 
 $loading-md-background-color: #39393B;
 
-
+$text-input-md-show-focus-highlight: false;
+$text-input-md-show-valid-highlight: false;
+$text-input-md-show-invalid-highlight: false;
 // App Windows Variables
 // --------------------------------------------------
 // Windows only Sass variables can go here
@@ -99,6 +101,8 @@ $alert-wp-background-color: #39393B;
 $alert-wp-radio-label-text-color: white;
 
 $loading-wp-background-color: #39393B;
+
+$text-input-wp-border-width: 0;
 
 
 // App Theme

@@ -6,17 +6,27 @@ page-login {
 
   .inputBox {
     border: none;
-    border-radius: 20px;
     padding-left: 20px;
     color: white;
+    max-width: 400px;
+    font-size: 12px;
+    padding-top: 0;
+    margin: 0;
   }
 
   .logo {
-    transition: all linear 0.1s;
+    transition: all linear 0.3s;
     padding-top: 25px;
-    padding-bottom: 50px;
-    width: 250px;
+    padding-bottom: 20px;
+    width: 100px;
     margin: auto;
+  }
+
+  ion-item {
+    max-width: 400px;
+    margin: auto !important;
+    border-width: 0.1px;
+    opacity: 0.5;
   }
 
   .loginButtonColumn {
@@ -26,6 +36,7 @@ page-login {
   .loginButton {
     text-align: center;
     width: 100%;
+    max-width: 400px;
     background-color: black;
     border: 1px solid #48BBF8;
   }
@@ -61,7 +72,7 @@ page-login {
       padding: 0 .5em;
       line-height: 1.5em;
       // this is really the only tricky part, you need to specify the background color of the container element...
-      background-color: #222222;
+      background-color: #161b1f;
     }
   }
 
@@ -83,6 +94,7 @@ page-login {
     font-size: 16px;
     color: #FFF;
     width: 100%;
+    max-width: 400px;
   }
   .loginBtn:before {
     content: "";
@@ -137,20 +149,18 @@ page-login {
   .create {
     padding: 15px;
     width: 100%;
-    margin-top: 5px;
+    max-width: 400px;
     font-size: 16px;
     background: none;
-    color: white
+    color: white;
   }
 
   .hidden {
     transition: all linear 0.2s;
+    opacity: 0;
+    width: 100px;
     height: 0;
-    width: 0;
-    background-color: transparent;
-    top:-200px;
-    left: 200px;
-    color: transparent;
+    margin: auto;
   }
 
   .noDisplay {
@@ -158,9 +168,9 @@ page-login {
   }
 
   .tapCatcher {
-    background-color: #222222;
+    background-color: #161b1f;
     width: 100%;
-    height: 100%;
+    height: 45%;
   }
 
 

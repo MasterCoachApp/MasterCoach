@@ -7,25 +7,28 @@
 
 
 
-<ion-content padding>
+<ion-content>
 
   <div [ngClass]="hasFocus ? 'hidden' : 'logo'">
-    <img src="./assets/imgs/olympics.png"/>
+    <img src="./assets/imgs/trackfield_large.png"/>
   </div>
-    <div style="margin-top: 10px;" [ngClass]="hasFocus ? '' : 'noDisplay'">
+    <div style="margin-top: 10px; text-align: center; margin-bottom: 10px" [ngClass]="hasFocus ? '' : 'noDisplay'">
         <span style="font-weight: bold; font-size: 24px;"> Log In</span>
     </div>
 
-  <ion-row>
-    <ion-col>
-      <ion-input class="inputBox" [(ngModel)]="email" placeholder="Email" (ionFocus)="hasFocus = true"></ion-input>
-    </ion-col>
-  </ion-row>
-  <ion-row>
-    <ion-col>
-      <ion-input class="inputBox" [(ngModel)]="password" placeholder="Password" type="password" (ionFocus)="hasFocus = true"></ion-input>
-    </ion-col>
-  </ion-row>
+    <ion-list>
+
+        <ion-item >
+            <ion-label floating style="color: gray;">Email</ion-label>
+            <ion-input class="inputBox" [(ngModel)]="email" (ionFocus)="hasFocus = true"></ion-input>
+        </ion-item>
+
+        <ion-item >
+            <ion-label floating style="color: gray; ">Password</ion-label>
+            <ion-input class="inputBox" [(ngModel)]="password" type="password" (ionFocus)="hasFocus = true"></ion-input>
+        </ion-item>
+
+    </ion-list>
 
   <ion-row>
     <ion-col class="loginButtonColumn">
@@ -41,21 +44,21 @@
 
             <div [ngClass]="hasFocus ? 'tapCatcher' : 'noDisplay'" (click)="hasFocus = false"></div>
 
-  <ion-row>
+  <ion-row style="margin-top: 5%;">
     <ion-col>
         <hr data-content="OR" [ngClass]="hasFocus ? 'noDisplay' : 'hr-text'">
     </ion-col>
   </ion-row>
 
-    <ion-row>
-        <ion-col>
+    <ion-row style="margin-top: 5%;">
+        <ion-col style="text-align: center">
             <button [ngClass]="hasFocus ? 'noDisplay' : 'loginBtn loginBtn--facebook'" (click)="loginWithFacebook()">
                 Log In with Facebook
             </button>
         </ion-col>
     </ion-row>
     <ion-row>
-        <ion-col>
+        <ion-col style="text-align: center">
             <button [ngClass]="hasFocus ? 'noDisplay' : 'loginBtn loginBtn--google'">
                 Log In with Google
             </button>
@@ -63,7 +66,7 @@
     </ion-row>
 
   <ion-row>
-    <ion-col>
+    <ion-col style="text-align: center">
       <button  [ngClass]="hasFocus ? 'noDisplay' : 'create'" (click)="createAccount()">
       Create Account
       </button>

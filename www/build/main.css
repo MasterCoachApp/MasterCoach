@@ -13139,63 +13139,6 @@ input.text-input:-webkit-autofill {
   margin: 6.5px 16px;
 }
 
-.item-md.item-input.item-input-has-focus .item-inner,
-.item-md.item-input.input-has-focus .item-inner {
-  border-bottom-color: #488aff;
-  -webkit-box-shadow: inset 0 -1px 0 0 #488aff;
-  box-shadow: inset 0 -1px 0 0 #488aff;
-}
-
-.list-md .item-input.item-input-has-focus:last-child,
-.list-md .item-input.input-has-focus:last-child {
-  border-bottom-color: #488aff;
-  -webkit-box-shadow: inset 0 -1px 0 0 #488aff;
-  box-shadow: inset 0 -1px 0 0 #488aff;
-}
-
-.list-md .item-input.item-input-has-focus:last-child .item-inner,
-.list-md .item-input.input-has-focus:last-child .item-inner {
-  -webkit-box-shadow: none;
-  box-shadow: none;
-}
-
-.item-md.item-input.ng-valid.item-input-has-value:not(.input-has-focus):not(.item-input-has-focus) .item-inner,
-.item-md.item-input.ng-valid.input-has-value:not(.input-has-focus):not(.item-input-has-focus) .item-inner {
-  border-bottom-color: #32db64;
-  -webkit-box-shadow: inset 0 -1px 0 0 #32db64;
-  box-shadow: inset 0 -1px 0 0 #32db64;
-}
-
-.list-md .item-input.ng-valid.item-input-has-value:not(.input-has-focus):not(.item-input-has-focus):last-child,
-.list-md .item-input.ng-valid.input-has-value:not(.input-has-focus):not(.item-input-has-focus):last-child {
-  border-bottom-color: #32db64;
-  -webkit-box-shadow: inset 0 -1px 0 0 #32db64;
-  box-shadow: inset 0 -1px 0 0 #32db64;
-}
-
-.list-md .item-input.ng-valid.item-input-has-value:not(.input-has-focus):not(.item-input-has-focus):last-child .item-inner,
-.list-md .item-input.ng-valid.input-has-value:not(.input-has-focus):not(.item-input-has-focus):last-child .item-inner {
-  -webkit-box-shadow: none;
-  box-shadow: none;
-}
-
-.item-md.item-input.ng-invalid.ng-touched:not(.input-has-focus):not(.item-input-has-focus) .item-inner {
-  border-bottom-color: #f53d3d;
-  -webkit-box-shadow: inset 0 -1px 0 0 #f53d3d;
-  box-shadow: inset 0 -1px 0 0 #f53d3d;
-}
-
-.list-md .item-input.ng-invalid.ng-touched:not(.input-has-focus):not(.item-input-has-focus):last-child {
-  border-bottom-color: #f53d3d;
-  -webkit-box-shadow: inset 0 -1px 0 0 #f53d3d;
-  box-shadow: inset 0 -1px 0 0 #f53d3d;
-}
-
-.list-md .item-input.ng-invalid.ng-touched:not(.input-has-focus):not(.item-input-has-focus):last-child .item-inner {
-  -webkit-box-shadow: none;
-  box-shadow: none;
-}
-
 .item-label-stacked .text-input-md,
 .item-label-floating .text-input-md {
   margin-left: 0;
@@ -13230,7 +13173,7 @@ input.text-input:-webkit-autofill {
   margin: 13px 8px;
   padding: 0 8px;
   width: calc(100% - 8px - 8px);
-  border: 2px solid rgba(0, 0, 0, 0.5);
+  border: 0 solid rgba(0, 0, 0, 0.5);
   line-height: 3rem;
 }
 
@@ -26019,18 +25962,28 @@ page-login ion-content {
 
 page-login .inputBox {
   border: none;
-  border-radius: 20px;
   padding-left: 20px;
   color: white;
+  max-width: 400px;
+  font-size: 12px;
+  padding-top: 0;
+  margin: 0;
 }
 
 page-login .logo {
-  -webkit-transition: all linear 0.1s;
-  transition: all linear 0.1s;
+  -webkit-transition: all linear 0.3s;
+  transition: all linear 0.3s;
   padding-top: 25px;
-  padding-bottom: 50px;
-  width: 250px;
+  padding-bottom: 20px;
+  width: 100px;
   margin: auto;
+}
+
+page-login ion-item {
+  max-width: 400px;
+  margin: auto !important;
+  border-width: 0.1px;
+  opacity: 0.5;
 }
 
 page-login .loginButtonColumn {
@@ -26040,6 +25993,7 @@ page-login .loginButtonColumn {
 page-login .loginButton {
   text-align: center;
   width: 100%;
+  max-width: 400px;
   background-color: black;
   border: 1px solid #48BBF8;
 }
@@ -26074,7 +26028,7 @@ page-login .hr-text:after {
   color: white;
   padding: 0 .5em;
   line-height: 1.5em;
-  background-color: #222222;
+  background-color: #161b1f;
 }
 
 page-login body {
@@ -26096,6 +26050,7 @@ page-login .loginBtn {
   font-size: 16px;
   color: #FFF;
   width: 100%;
+  max-width: 400px;
 }
 
 page-login .loginBtn:before {
@@ -26156,7 +26111,7 @@ page-login .loginBtn--google:focus {
 page-login .create {
   padding: 15px;
   width: 100%;
-  margin-top: 5px;
+  max-width: 400px;
   font-size: 16px;
   background: none;
   color: white;
@@ -26165,12 +26120,10 @@ page-login .create {
 page-login .hidden {
   -webkit-transition: all linear 0.2s;
   transition: all linear 0.2s;
+  opacity: 0;
+  width: 100px;
   height: 0;
-  width: 0;
-  background-color: transparent;
-  top: -200px;
-  left: 200px;
-  color: transparent;
+  margin: auto;
 }
 
 page-login .noDisplay {
@@ -26178,7 +26131,7 @@ page-login .noDisplay {
 }
 
 page-login .tapCatcher {
-  background-color: #222222;
+  background-color: #161b1f;
   width: 100%;
-  height: 100%;
+  height: 45%;
 }

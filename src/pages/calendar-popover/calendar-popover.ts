@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import {Component, ViewChild} from '@angular/core';
 import {IonicPage, NavController, NavParams, ViewController} from 'ionic-angular';
 import {CalendarDay} from "../../models/calendar-day";
+import {CalendarModule} from "ionic3-calendar-en";
 
 /**
  * Generated class for the CalendarPopoverPage page.
@@ -29,12 +30,17 @@ export class CalendarPopoverPage {
           {
               year: 2018,
               month: 2,
-              date: 4
+              date: 5
           },
           {
               year: 2018,
               month: 2,
-              date: 4
+              date: 8
+          },
+          {
+              year: 2018,
+              month: 2,
+              date: 9
           }
       ];
 
@@ -49,7 +55,7 @@ export class CalendarPopoverPage {
       let date = new Date();
       date.setMonth(event.month);
       console.log(date.getMonth());
-      date.setDate(event.date - 1);
+      date.setDate(event.date);
       this.dateClicked = new CalendarDay(date);
       if(this.x != 0)
         this.viewCtrl.dismiss(this.dateClicked);
@@ -58,6 +64,15 @@ export class CalendarPopoverPage {
 
     onMonthSelect(event) {
         console.log(event);
+    }
+
+    swipe(event, calendar) {
+        if(event.direction === 2) {
+            calendar.forward();
+        }
+        if(event.direction === 4) {
+            calendar.back();
+        }
     }
 
 }

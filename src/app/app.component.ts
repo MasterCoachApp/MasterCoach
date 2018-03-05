@@ -8,12 +8,13 @@ import {Keyboard} from "@ionic-native/keyboard";
 import {CalendarMenu} from "../providers/menus/calendar-menu";
 import {Events} from "../models/events";
 import {CalendarEvents} from "../models/calendar-events";
+import {LoginPage} from "../pages/Logins/login/login";
 
 @Component({
   templateUrl: 'app.html'
 })
 export class MyApp {
-  rootPage:any = TabsPage;
+  rootPage:any = LoginPage;
 
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen,keyboard: Keyboard, public calendarMenu: CalendarMenu) {
     platform.ready().then(() => {

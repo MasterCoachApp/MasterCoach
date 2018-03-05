@@ -45,7 +45,7 @@
     "ionic-angular": "3.9.2",
     "ionic-plugin-keyboard": "^2.2.1",
     "ionic3-calendar": "^1.1.6",
-    "ionic3-calendar-en": "^1.0.8",
+    "ionic3-calendar-en": "git+https://github.com/MasterCoachApp/ionic-calendar.git",
     "ionicons": "3.0.0",
     "node-sass": "4.7.2",
     "rxjs": "5.5.2",
