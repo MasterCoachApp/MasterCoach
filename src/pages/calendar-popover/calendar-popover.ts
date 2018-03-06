@@ -21,6 +21,8 @@ export class CalendarPopoverPage {
     dateClicked: CalendarDay;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public viewCtrl: ViewController) {
+
+      //The package takes events of this model as a passable object to determine what cells in the calendar get event blips
       this.currentEvents = [
           {
               year: 2018,
@@ -57,15 +59,16 @@ export class CalendarPopoverPage {
       console.log(date.getMonth());
       date.setDate(event.date);
       this.dateClicked = new CalendarDay(date);
-      if(this.x != 0)
+      if(this.x != 0) //This code gets ran on popover open because todays day gets selected, so the first one needs to be skipped.
         this.viewCtrl.dismiss(this.dateClicked);
       this.x++;
     }
 
     onMonthSelect(event) {
-        console.log(event);
+
     }
 
+    //When the popover experiences a swipe it changes the month. note that the method used is the only way to get a handle on the calendar object.
     swipe(event, calendar) {
         if(event.direction === 2) {
             calendar.forward();

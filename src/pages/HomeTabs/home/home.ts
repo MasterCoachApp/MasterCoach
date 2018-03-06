@@ -12,7 +12,6 @@ export class HomePage {
 
     activeMenu: string;
     date = new Date();
-    yearPicked: number = new Date().getFullYear();
     //I suspect hard-coding UTC time will cause problems for other time-zones
     //Without specifying it was putting the wrong date (+4:00)
     dateSelected: CalendarDay = new CalendarDay( new Date(this.date.getUTCFullYear(), this.date.getUTCMonth(), this.date.getUTCDate(), this.date.getUTCHours(), this.date.getUTCMinutes(), this.date.getUTCSeconds()));
@@ -32,7 +31,7 @@ export class HomePage {
             let todayItem = document.getElementById(this.dateSelected.dateValue);
             let scroll = document.getElementById("calendarScroll");
             if (todayItem != null && scroll != null) {
-                scroll.scrollLeft = todayItem.offsetLeft; //+3 to get the border of the element int he view
+                scroll.scrollLeft = todayItem.offsetLeft;
             }
             scroll.onscroll = () => {
                 this.determineViewedMonth();
@@ -54,6 +53,8 @@ export class HomePage {
             ev: myEvent
         });
 
+
+        //When the popover getsd dismissed, pull the selected date, make it the selected date for the page and scroll to it
         popover.onDidDismiss(data => {
             if(data != null) {
                 console.log(data);
@@ -61,13 +62,15 @@ export class HomePage {
                 let todayItem = document.getElementById(this.dateSelected.dateValue);
                 let scroll = document.getElementById("calendarScroll");
                 if (todayItem != null && scroll != null) {
-                    scroll.scrollLeft = todayItem.offsetLeft; //+3 to get the border of the element int he view
+                    scroll.scrollLeft = todayItem.offsetLeft;
                 }
                 this.monthInView = this.dateSelected.month;
             }
         });
     }
 
+
+    //by finding the current offset of the scroll bar, we can determine what month to display in the header
 
     determineViewedMonth() {
         let scroll = document.getElementById("calendarScroll");
