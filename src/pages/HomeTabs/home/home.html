@@ -5,27 +5,32 @@
               <ion-icon name="menu"></ion-icon>
           </button>
       </ion-buttons>
-    <ion-title> {{this.monthInView}} {{this.calMenu.getDisplayedYear()}}</ion-title>
-      <ion-buttons end>
-          <button ion-button style="font-size: 14px;" (click)="showFullCalendar($event)">
-              Calendar
+      <ion-buttons>
+          <button ion-button style="font-size: 14px;" (click)="displayFullCalendar = !displayFullCalendar">
+              <ion-title> {{this.monthInView}} {{this.calMenu.getDisplayedYear()}}</ion-title><ion-icon end name="md-arrow-dropdown"></ion-icon>
           </button>
       </ion-buttons>
   </ion-navbar>
-  <!--<ion-scroll #scroll id="scrollView" scrollX="true" scrollY="false" style="width:100%; height: 100px; background: #0F0F11"> -->
 
-    <div class="scroll" id="calendarScroll">
+    <ion-calendar [ngClass]="displayFullCalendar ? 'showingCalendar' : 'noDisplayTransition'" #calendar (swipe)="swipe($event, calendar)"
+                  (onMonthSelect)="onMonthSelect($event)"
+                  (onDaySelect)="onDaySelect($event)"
+                  [events]="currentEvents" >
+
+    </ion-calendar>
+
+    <div id="calendarScroll" class="scroll" >
         <ion-row nowrap>
           <div *ngFor="let date of this.calMenu.dateArray" class="expandedDate" (click)="selectDate(date)">
             <ion-item no-lines [ngClass]="date.dateValue == this.dateSelected.dateValue ? 'expandedDate selected' : 'expandedDate'" id="{{date.date.toISOString().slice(0,10)}}">
                 <div>
                     <ion-row>
-                        <ion-col [ngClass]="date.dateValue == this.dateSelected.dateValue ? 'selectedTitle' : 'dayValue'" >
+                        <ion-col [ngClass]="date.dateValue == this.dateSelected.dateValue ? 'selectedTitle' : 'dayValue'" color="primary">
                             {{date.dayOfTheWeek}}
                         </ion-col>
                     </ion-row >
                     <ion-row>
-                        <ion-col style="font-size: 14px !important;" [ngClass]="date.dateValue == this.dateSelected.dateValue ? 'selectedTitle' : 'dayValue'" >
+                        <ion-col style="font-size: 14px !important;" [ngClass]="date.dateValue == this.dateSelected.dateValue ? 'selectedTitle' : 'dayValue'" color="primary">
                             {{date.date.getDate()}}
                         </ion-col>
                     </ion-row>
@@ -34,10 +39,9 @@
           </div>
         </ion-row>
     </div>
-  <!--</ion-scroll>-->
 </ion-header>
 
-<ion-content padding>
+<ion-content padding [ngClass]="displayFullCalendar ? 'showingCalendarContent' : ''">
     <div>
         <ion-row>
             <ion-col>

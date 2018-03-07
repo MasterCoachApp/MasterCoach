@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {MenuController, NavController, Platform, PopoverController} from 'ionic-angular';
+import {MenuController, NavController, Platform, PopoverController, ViewController} from 'ionic-angular';
 import {CalendarDay} from "../../../models/calendar-day";
 import {CalendarPopoverPage} from "../../calendar-popover/calendar-popover";
 import {CalendarMenu} from "../../../providers/menus/calendar-menu";
@@ -12,14 +12,40 @@ export class HomePage {
 
     activeMenu: string;
     date = new Date();
-    yearPicked: number = new Date().getFullYear();
     //I suspect hard-coding UTC time will cause problems for other time-zones
     //Without specifying it was putting the wrong date (+4:00)
     dateSelected: CalendarDay = new CalendarDay( new Date(this.date.getUTCFullYear(), this.date.getUTCMonth(), this.date.getUTCDate(), this.date.getUTCHours(), this.date.getUTCMinutes(), this.date.getUTCSeconds()));
     monthInView: string = this.dateSelected.month;
 
-  constructor(public popoverCtrl: PopoverController, public navCtrl: NavController, public menu: MenuController, public platform: Platform, public calMenu: CalendarMenu) {
+    currentEvents: any[];
+    dateClicked: CalendarDay;
+    displayFullCalendar = false;
+
+  constructor(public popoverCtrl: PopoverController, public navCtrl: NavController, public menu: MenuController, public platform: Platform, public calMenu: CalendarMenu, public viewCtrl: ViewController) {
       this.activateMenu();
+
+      this.currentEvents = [
+          {
+              year: 2018,
+              month: 2,
+              date: 4
+          },
+          {
+              year: 2018,
+              month: 2,
+              date: 5
+          },
+          {
+              year: 2018,
+              month: 2,
+              date: 8
+          },
+          {
+              year: 2018,
+              month: 2,
+              date: 9
+          }
+      ];
   }
     activateMenu() {
         this.activeMenu = 'mainCalendarMenu';
@@ -40,32 +66,55 @@ export class HomePage {
         });
     }
 
+    //Full calendar
+    x = 0;
+
+    onDaySelect(event) {
+        let date = new Date();
+        date.setMonth(event.month);
+        console.log(date.getMonth());
+        date.setDate(event.date);
+        this.dateClicked = new CalendarDay(date);
+        if(this.x != 0) {
+            this.updateHorizontalCalendar(this.dateClicked);
+            this.displayFullCalendar = false;
+        }
+        this.x++;
+    }
+
+    updateHorizontalCalendar(data) {
+        if(data != null) {
+            console.log(data);
+            this.dateSelected = data;
+            let todayItem = document.getElementById(this.dateSelected.dateValue);
+            console.log(todayItem);
+            let scroll = document.getElementById("calendarScroll");
+            if (todayItem != null && scroll != null) {
+                scroll.scrollLeft = todayItem.offsetLeft;
+            }
+            this.monthInView = this.dateSelected.month;
+        }
+    }
+
+    onMonthSelect(event) {
+    }
+
+    swipe(event, calendar) {
+        if(event.direction === 2) {
+            calendar.forward();
+        }
+        if(event.direction === 4) {
+            calendar.back();
+        }
+    }
+
+
+    //
+
     selectDate(date: CalendarDay) {
         this.dateSelected = date;
         this.monthInView = date.month;
 
-    }
-
-    showFullCalendar(myEvent) {
-        let popover = this.popoverCtrl.create(CalendarPopoverPage, {dateSelected: this.dateSelected}, {
-            cssClass: 'calendarPopover'
-        });
-        popover.present({
-            ev: myEvent
-        });
-
-        popover.onDidDismiss(data => {
-            if(data != null) {
-                console.log(data);
-                this.dateSelected = data;
-                let todayItem = document.getElementById(this.dateSelected.dateValue);
-                let scroll = document.getElementById("calendarScroll");
-                if (todayItem != null && scroll != null) {
-                    scroll.scrollLeft = todayItem.offsetLeft; //+3 to get the border of the element int he view
-                }
-                this.monthInView = this.dateSelected.month;
-            }
-        });
     }
 
 

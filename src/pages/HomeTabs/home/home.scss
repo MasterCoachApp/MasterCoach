@@ -14,7 +14,7 @@ page-home {
   }
 
   .selected{
-    border-bottom: 4px solid #488aff !important;
+    border-bottom: 4px solid color($colors, primary) !important;
     background-color: #2c3035;
 
   }
@@ -32,7 +32,6 @@ page-home {
     padding: 0;
     font-size: 8px;
     text-align: center;
-    color: #488aff;
   }
 
   .executed {
@@ -45,10 +44,16 @@ page-home {
     color: gray;
   }
 
-  .calendarPopover .popover{
-    width: 100% !important;
-    height: 100%;
-    max-height: 100% !important;
+ .showingCalendar {
+   transition: all linear 0.2s;
+
+   color: white;
+   display: block;
+   opacity: 1;
+ }
+
+  .showingCalendarContent {
+    margin-top: 190px;
   }
 
   .hr-text {
@@ -65,7 +70,7 @@ page-home {
       content: '';
       // use the linear-gradient for the fading effect
       // use a solid background color for a solid bar
-      background: linear-gradient(to right, transparent, #488aff, transparent);
+      background: linear-gradient(to right, transparent, color($colors, primary), transparent);
       position: absolute;
       left: 0;
       top: 50%;

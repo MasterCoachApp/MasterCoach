@@ -14,6 +14,22 @@
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
 
+.menuIcon {
+  color: color($colors, primary);
+  padding-right: 15px;
+}
+.calendar-item {
+  padding-left: 25px;
+  padding-bottom: 10px;
+  font-size: 15px !important;
+  font-weight: lighter !important;
+
+}
+
+.filter {
+  opacity: 0.5;
+}
+
 .menuSectionHeader {
   margin-top: 10px;
   width: 100%;
@@ -27,6 +43,17 @@
   background: none;
   border: 0;
   margin: 0;
+}
+
+.noDisplay {
+  display: none;
+}
+
+.noDisplayTransition {
+  transition: all linear 0.1s;
+  display: block;
+  opacity: 0;
+  height: 0;
 }
 
 .md button {
@@ -55,4 +82,15 @@
 // Style Windows Phone buttons
 .wp ion-label {
   font-size: 14px;
+}
+
+.circleTab {
+  bottom: 15px;
+  margin-left: 43%;
+  position: absolute;
+}
+
+.homeFab {
+  background-color: black;
+  border: 1px solid color($colors, primary);
 }

@@ -30,6 +30,7 @@ import {CalendarMenu} from "../providers/menus/calendar-menu";
 import {DatePicker} from "@ionic-native/date-picker";
 import { CalendarModule } from 'ionic3-calendar-en';
 import {CalendarPopoverPage} from "../pages/calendar-popover/calendar-popover";
+import {StandardLoginPage} from "../pages/Logins/standard-login/standard-login";
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import {CalendarPopoverPage} from "../pages/calendar-popover/calendar-popover";
     LoginPage,
     CreateAccountPage,
     ForgotPasswordPage,
-    CalendarPopoverPage
+    CalendarPopoverPage,
+    StandardLoginPage
   ],
   imports: [
     BrowserModule,
@@ -63,7 +65,8 @@ import {CalendarPopoverPage} from "../pages/calendar-popover/calendar-popover";
     LoginPage,
     CreateAccountPage,
     ForgotPasswordPage,
-    CalendarPopoverPage
+    CalendarPopoverPage,
+    StandardLoginPage
   ],
   providers: [
     StatusBar,

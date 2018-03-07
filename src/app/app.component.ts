@@ -14,7 +14,7 @@ import {LoginPage} from "../pages/Logins/login/login";
   templateUrl: 'app.html'
 })
 export class MyApp {
-  rootPage:any = LoginPage;
+  rootPage:any = TabsPage;
 
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen,keyboard: Keyboard, public calendarMenu: CalendarMenu) {
     platform.ready().then(() => {
@@ -23,7 +23,7 @@ export class MyApp {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
         keyboard.hideKeyboardAccessoryBar(false);
-        statusBar.styleDefault();
+        statusBar.backgroundColorByName("white");
         splashScreen.hide();
     });
   }
@@ -41,12 +41,14 @@ export class MyApp {
           eventFilterOpen: false,
           trainingResultFilterOpen: false,
           athleteFilterOpen: false,
+          labelsFilterOpen: false
       },
     };
 
     displayedYear: number;
     years: number[];
     listOfEvents: string[];
+    listOfLabels: string[];
     events: CalendarEvents;
 
       setCalendarYear() {
@@ -58,6 +60,7 @@ export class MyApp {
           this.years = this.calendarMenu.getPossibleYears();
           this.events = this.calendarMenu.menuEvents;
           this.listOfEvents = this.events.getListOfEvents();
+          this.listOfLabels = this.calendarMenu.getLabels();
       }
 
 

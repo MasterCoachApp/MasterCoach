@@ -20,6 +20,10 @@ export class CalendarMenu {
         this.dateArray = this.getDates(new Date(currentYear.toString()+'-01-01'),new Date(currentYear.toString()+'-12-31'));
     }
 
+    getLabels() {
+        return ["Short approach LJ", "Competition style"];
+    }
+
     setDisplayYear(year: number) {
         this.displayedYear = year;
         this.dateArray = this.getDates(new Date(this.getDisplayedYear()+"-01-01"), new Date(this.getDisplayedYear()+"-12-31"));
