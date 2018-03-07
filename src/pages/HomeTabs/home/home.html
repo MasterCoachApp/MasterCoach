@@ -6,8 +6,9 @@
           </button>
       </ion-buttons>
       <ion-buttons>
-          <button ion-button style="font-size: 14px;" (click)="displayFullCalendar = !displayFullCalendar">
-              <ion-title> {{this.monthInView}} {{this.calMenu.getDisplayedYear()}}</ion-title><ion-icon end name="md-arrow-dropdown"></ion-icon>
+          <button ion-button style="font-size: 20px;" (click)="displayFullCalendar = !displayFullCalendar">
+              {{this.monthInView}}  {{this.calMenu.getDisplayedYear()}} &nbsp; <ion-icon name="md-arrow-dropdown"></ion-icon>
+
           </button>
       </ion-buttons>
   </ion-navbar>
@@ -18,7 +19,6 @@
                   [events]="currentEvents" >
 
     </ion-calendar>
-
     <div id="calendarScroll" class="scroll" >
         <ion-row nowrap>
           <div *ngFor="let date of this.calMenu.dateArray" class="expandedDate" (click)="selectDate(date)">

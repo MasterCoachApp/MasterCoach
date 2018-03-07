@@ -25666,7 +25666,7 @@ ion-calendar .calendar-row .today {
   color: #fff;
   -webkit-box-shadow: inset 0 0 10px #aaa;
   box-shadow: inset 0 0 10px #aaa;
-  background: #8496D2;
+  background: #46b592;
 }
 
 ion-calendar .calendar-row .eventBlip {
@@ -25716,6 +25716,18 @@ ion-calendar .calendar-row .select {
   background: none;
   border: 0;
   margin: 0;
+}
+
+.noDisplay {
+  display: none;
+}
+
+.noDisplayTransition {
+  -webkit-transition: all linear 0.1s;
+  transition: all linear 0.1s;
+  display: block;
+  opacity: 0;
+  height: 0;
 }
 
 .md button {
@@ -25796,10 +25808,16 @@ page-home .nothingPlanned {
   color: gray;
 }
 
-page-home .calendarPopover .popover {
-  width: 100% !important;
-  height: 100%;
-  max-height: 100% !important;
+page-home .showingCalendar {
+  -webkit-transition: all linear 0.2s;
+  transition: all linear 0.2s;
+  color: white;
+  display: block;
+  opacity: 1;
+}
+
+page-home .showingCalendarContent {
+  margin-top: 190px;
 }
 
 page-home .hr-text {
