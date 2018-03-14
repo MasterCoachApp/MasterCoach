@@ -31,6 +31,7 @@ import {DatePicker} from "@ionic-native/date-picker";
 import { CalendarModule } from 'ionic3-calendar-en';
 import {CalendarPopoverPage} from "../pages/calendar-popover/calendar-popover";
 import {StandardLoginPage} from "../pages/Logins/standard-login/standard-login";
+import {SettingsProvider} from "../providers/settings";
 
 @NgModule({
   declarations: [
@@ -79,7 +80,8 @@ import {StandardLoginPage} from "../pages/Logins/standard-login/standard-login";
     AuthenticationProvider,
     ValidationProvider,
     CalendarMenu,
-    DatePicker
+    DatePicker,
+    SettingsProvider
   ]
 })
 export class AppModule {}

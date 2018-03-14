@@ -14,16 +14,25 @@
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
 
+.share {
+  color: color($colors, primary);
+}
 .menuIcon {
   color: color($colors, primary);
+}
+
+.homeFab {
+  background-color: black;
+  border: 1px solid color($colors, primary);
+}
+
+.menuIcon {
   padding-right: 15px;
 }
 .calendar-item {
   padding-left: 25px;
   padding-bottom: 10px;
   font-size: 15px !important;
-  font-weight: lighter !important;
-
 }
 
 .filter {
@@ -88,9 +97,4 @@
   bottom: 15px;
   margin-left: 43%;
   position: absolute;
-}
-
-.homeFab {
-  background-color: black;
-  border: 1px solid color($colors, primary);
 }

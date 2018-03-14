@@ -2,21 +2,25 @@ import { Component } from '@angular/core';
 import { Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-
 import { TabsPage } from '../pages/HomeTabs/tabs/tabs';
 import {Keyboard} from "@ionic-native/keyboard";
 import {CalendarMenu} from "../providers/menus/calendar-menu";
-import {Events} from "../models/events";
 import {CalendarEvents} from "../models/calendar-events";
+import {SettingsProvider} from "../providers/settings";
 import {LoginPage} from "../pages/Logins/login/login";
 
 @Component({
   templateUrl: 'app.html'
 })
 export class MyApp {
+
+  //rootPage:any = LoginPage;
   rootPage:any = TabsPage;
 
-  constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen,keyboard: Keyboard, public calendarMenu: CalendarMenu) {
+    selectedTheme: String;
+
+  constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, keyboard: Keyboard, public calendarMenu: CalendarMenu, private settings: SettingsProvider) {
+      this.settings.getActiveTheme().subscribe(val => this.selectedTheme = val);
     platform.ready().then(() => {
         //Menu settings
         this.setBaseMenuSettings();

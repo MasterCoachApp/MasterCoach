@@ -4,6 +4,7 @@ import {TabsPage} from "../../HomeTabs/tabs/tabs";
 import {ForgotPasswordPage} from "../forgot-password/forgot-password";
 import {AuthenticationProvider} from "../../../providers/users/authentication";
 import {ToolsProvider} from "../../../providers/tools/tools";
+import {Storage} from "@ionic/storage";
 
 /**
  * Generated class for the StandardLoginPage page.
@@ -22,7 +23,7 @@ export class StandardLoginPage {
     email: string;
     password: string;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public authProvider: AuthenticationProvider, public tools: ToolsProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public authProvider: AuthenticationProvider, public tools: ToolsProvider, public storage: Storage) {
   }
 
     forgotPassword() {
@@ -54,8 +55,9 @@ export class StandardLoginPage {
 
                 promise.then(() => {
                     loading.dismiss();
+                    this.storage.set('user-email', this.email);
                     this.navCtrl.push(TabsPage); //allow entry if successful login
-                }).catch(error => { //handle errors thrown by firebase
+                }).catch(error => { //handle errors thrown by FireBase
                     loading.dismiss();
                     this.authProvider.firebaseAuthenticationError(error);
                 });

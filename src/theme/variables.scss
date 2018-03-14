@@ -14,29 +14,8 @@ $app-direction: ltr;
 
 @import "ionic.globals";
 
-// Shared Variables
-// --------------------------------------------------
-// To customize the look and feel of this app, you can override
-// the Sass variables found in Ionic's source scss files.
-// To view all the possible Ionic variables, see:
-// http://ionicframework.com/docs/theming/overriding-ionic-variables/
-
-$facebook-logo: url('../assets/imgs/facebook_button_icon.svg') 6px 6px no-repeat;
-$google-logo: url('../assets/imgs/google_button_icon.svg') 6px 6px no-repeat;
-$tabs-background: black;
-$background-color: #161b1f;
-$text-color: white;
-$toolbar-background: black;
-
-
-//temp
-$popover-md-width: 98%;
-$popover-ios-width: 98%;
-$popover-wp-width: 98%;
-
-$popover-md-min-height: wrap;
-$popover-ios-min-height: wrap;
-$popover-wp-min-height: wrap;
+@import "theme.light";
+@import "theme.dark";
 
 // Named Color Variables
 // --------------------------------------------------
@@ -46,40 +25,58 @@ $popover-wp-min-height: wrap;
 // colors so you can add, rename and remove colors as needed.
 // The "primary" color is the only required color in the map.
 
+
 $colors: (
   primary:    #8795CD,
   secondary:  #32db64,
   danger:     #f53d3d,
   light:      #f4f4f4,
-  dark:       #222,
-  /*facebook:   (
+  dark:       #000000,
+  background: #161b1f,
+  facebook:   (
     base: #4C69BA,
     contrast: #ffffff
   ),
   google:     (
-    backgroundColor: #DD4B39,
+    base: #DD4B39,
     contrast: #ffffff
   )
-*/
+
 );
 
+// Shared Variables
+// --------------------------------------------------
+// To customize the look and feel of this app, you can override
+// the Sass variables found in Ionic's source scss files.
+// To view all the possible Ionic variables, see:
+// http://ionicframework.com/docs/theming/overriding-ionic-variables/
+
+$font-family: Helvetica, Arial, sans-serif;
+
+
+$facebook-logo: url('../assets/imgs/facebook_button_icon.svg') 6px 6px no-repeat;
+$google-logo: url('../assets/imgs/google_button_icon.svg') 6px 6px no-repeat;
+$tabs-background: color($colors, dark);
+$background-color: color($colors, background);
+$text-color: color($colors, light);
+$toolbar-background: color($colors, dark);
 
 // App iOS Variables
 // --------------------------------------------------
 // iOS only Sass variables can go here
-$tabs-ios-tab-icon-color: white;
-$tabs-ios-tab-text-color: white;
+$tabs-ios-tab-icon-color: color($colors, light);
+$tabs-ios-tab-text-color: color($colors, light);
 $tabs-ios-tab-icon-color-active: color($colors, primary);
 $tabs-ios-tab-text-color-active: color($colors, primary);
 
 $checkbox-ios-icon-size: 16px;
 $checkbox-ios-icon-checkmark-style: none;
 
-$alert-ios-background: #39393B;
-$alert-ios-radio-label-text-color: white;
+$alert-ios-background: color($colors, dark);
+$alert-ios-radio-label-text-color: color($colors, light);
 //$alert-ios-radio-label-text-color-checked:;
 
-$loading-ios-background-color: #39393B;
+$loading-ios-background-color: color($colors, dark);;
 
 
 // App Material Design Variables
@@ -87,15 +84,15 @@ $loading-ios-background-color: #39393B;
 // Material Design only Sass variables can go here
 // Input highlight mixin for focus, valid, and invalid states
 
-$tabs-md-tab-icon-color: white;
-$tabs-md-tab-text-color: white;
+$tabs-md-tab-icon-color: color($colors, light);
+$tabs-md-tab-text-color: color($colors, light);
 $tabs-md-tab-icon-color-active: color($colors, primary);
 $tabs-md-tab-text-color-active: color($colors, primary);
 
-$alert-md-background-color: #39393B;
-$alert-md-radio-label-text-color: white;
+$alert-md-background-color: color($colors, dark);
+$alert-md-radio-label-text-color: color($colors, light);
 
-$loading-md-background-color: #39393B;
+$loading-md-background-color: color($colors, dark);
 
 $text-input-md-show-focus-highlight: false;
 $text-input-md-show-valid-highlight: false;
@@ -104,10 +101,10 @@ $text-input-md-show-invalid-highlight: false;
 // --------------------------------------------------
 // Windows only Sass variables can go here
 
-$alert-wp-background-color: #39393B;
-$alert-wp-radio-label-text-color: white;
+$alert-wp-background-color: color($colors, dark);
+$alert-wp-radio-label-text-color: color($colors, light);
 
-$loading-wp-background-color: #39393B;
+$loading-wp-background-color: color($colors, dark);
 
 $text-input-wp-border-width: 0;
 

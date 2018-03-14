@@ -18,7 +18,7 @@
                 <ion-icon item-left name="calendar" class="menuIcon"></ion-icon> This Week
             </ion-label>
             <ion-label no-lines class="calendar-item">
-                <ion-icon item-left name="information-circle" class="menuIcon"></ion-icon> What's Different?
+                <ion-icon item-left name="md-analytics" class="menuIcon"></ion-icon> Analytics
             </ion-label>
         </ion-list>
 
@@ -94,13 +94,13 @@
     <ion-footer>
     <ion-row>
         <ion-col style="text-align: center; font-size: 25px;">
-            <ion-icon item-right name="md-share" color="primary"></ion-icon>
+            <ion-icon item-right name="md-share" class="share"></ion-icon>
         </ion-col>
         <ion-col style="text-align: center; font-size: 30px;">
-            <ion-icon item-right name="ios-download-outline" color="primary"></ion-icon>
+            <ion-icon item-right name="ios-download-outline" class="share"></ion-icon>
         </ion-col>
     </ion-row>
         </ion-footer>
 </ion-menu>
 
-<ion-nav #content [root]="rootPage"></ion-nav>
+<ion-nav #content [root]="rootPage" [class]="selectedTheme"></ion-nav>

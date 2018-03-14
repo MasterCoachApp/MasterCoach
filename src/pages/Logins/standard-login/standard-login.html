@@ -23,14 +23,14 @@
 
   <ion-list>
 
-    <ion-item >
+    <ion-item>
       <ion-label floating style="color: gray;">Email</ion-label>
-      <ion-input class="inputBox" [(ngModel)]="email"></ion-input>
+      <ion-input class="inputBox" [(ngModel)]="email" (keyup.enter)="login()"></ion-input>
     </ion-item>
 
-    <ion-item >
+    <ion-item>
       <ion-label floating style="color: gray; ">Password</ion-label>
-      <ion-input class="inputBox" [(ngModel)]="password" type="password" ></ion-input>
+      <ion-input class="inputBox" [(ngModel)]="password" type="password" (keyup.enter)="login()"></ion-input>
     </ion-item>
 
   </ion-list>

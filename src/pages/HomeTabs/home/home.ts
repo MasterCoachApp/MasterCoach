@@ -1,8 +1,11 @@
 import {Component} from '@angular/core';
-import {MenuController, NavController, Platform, PopoverController, ViewController} from 'ionic-angular';
+import {App, MenuController, NavController, Platform, PopoverController, ViewController} from 'ionic-angular';
 import {CalendarDay} from "../../../models/calendar-day";
 import {CalendarPopoverPage} from "../../calendar-popover/calendar-popover";
 import {CalendarMenu} from "../../../providers/menus/calendar-menu";
+import {Storage} from "@ionic/storage";
+import {LoginPage} from "../../Logins/login/login";
+import {UsersProvider} from "../../../providers/users/users";
 
 @Component({
   selector: 'page-home',
@@ -21,7 +24,29 @@ export class HomePage {
     dateClicked: CalendarDay;
     displayFullCalendar = false;
 
-  constructor(public popoverCtrl: PopoverController, public navCtrl: NavController, public menu: MenuController, public platform: Platform, public calMenu: CalendarMenu, public viewCtrl: ViewController) {
+  constructor(public popoverCtrl: PopoverController, public navCtrl: NavController, public app: App, public storage: Storage, public user: UsersProvider, public menu: MenuController, public platform: Platform, public calMenu: CalendarMenu, public viewCtrl: ViewController) {
+
+      this.storage.get('user-email').then(email => {
+         if(email == null) {
+             this.app.getRootNav().push(LoginPage);
+         }
+         else {
+            user.retireveLoggedInUser(email).then(response => {
+               if(response == null) {
+                   console.log("Auto login failed to find existing user in db");
+                   this.app.getRootNav().push(LoginPage);
+               }
+               else {
+                   user.loggedIn = response;
+                   console.log(response);
+               }
+            }).catch(error=> {
+                console.log("Auto login failed to find existing user in db");
+                this.app.getRootNav().push(LoginPage);
+            });
+         }
+      });
+
       this.activateMenu();
 
       this.currentEvents = [
@@ -72,7 +97,6 @@ export class HomePage {
     onDaySelect(event) {
         let date = new Date();
         date.setMonth(event.month);
-        console.log(date.getMonth());
         date.setDate(event.date);
         this.dateClicked = new CalendarDay(date);
         if(this.x != 0) {
