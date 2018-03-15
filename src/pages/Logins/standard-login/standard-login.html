@@ -21,15 +21,15 @@
     <!--<span style="font-weight: bold; font-size: 24px;"> Log In</span>-->
   <!--</div>-->
 
-  <ion-list>
+  <ion-list no-lines>
 
-    <ion-item>
-      <ion-label floating style="color: gray;">Email</ion-label>
+    <ion-item no-lines>
+      <ion-label class="icon"><ion-icon name="md-person"></ion-icon></ion-label>
       <ion-input class="inputBox" [(ngModel)]="email" (keyup.enter)="login()"></ion-input>
     </ion-item>
 
-    <ion-item>
-      <ion-label floating style="color: gray; ">Password</ion-label>
+    <ion-item no-lines>
+      <ion-label class="icon"><ion-icon name="md-lock"></ion-icon></ion-label>
       <ion-input class="inputBox" [(ngModel)]="password" type="password" (keyup.enter)="login()"></ion-input>
     </ion-item>
 
@@ -37,7 +37,7 @@
 
   <ion-row>
     <ion-col class="loginButtonColumn">
-      <button class="loginButton" ion-button (click)="login()">Log In</button>
+      <button class="loginButton" ion-button (click)="login()">Sign In</button>
     </ion-col>
   </ion-row>
   <ion-row>

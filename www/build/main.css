@@ -33947,3 +33947,8 @@ page-standard-login .loginButton {
   width: 100%;
   max-width: 400px;
 }
+
+page-standard-login .icon {
+  color: #8795CD;
+  font-size: 20px;
+}

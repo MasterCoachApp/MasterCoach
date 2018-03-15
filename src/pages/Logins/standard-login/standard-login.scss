@@ -17,4 +17,11 @@ page-standard-login {
     width: 100%;
     max-width: 400px;
   }
+  .icon {
+    //background-color: darken(color($colors, background), 10%);
+    //padding: 3px;
+    //margin: 0;
+    color: color($colors, primary);
+    font-size: 20px;
+  }
 }
