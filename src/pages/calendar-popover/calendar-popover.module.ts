@@ -1,6 +1,6 @@
-import { NgModule } from '@angular/core';
-import { IonicPageModule } from 'ionic-angular';
-import { CalendarPopoverPage } from './calendar-popover';
+import {NgModule} from '@angular/core';
+import {IonicPageModule} from 'ionic-angular';
+import {CalendarPopoverPage} from './calendar-popover';
 
 @NgModule({
   declarations: [

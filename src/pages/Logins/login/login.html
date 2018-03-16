@@ -5,72 +5,105 @@
   Ionic pages and navigation.
 -->
 
-
-
 <ion-content>
-
-  <div [ngClass]="hasFocus ? 'hidden' : 'logo'">
-    <img src="./assets/imgs/trackfield_large.png"/>
-  </div>
-    <div style="margin-top: 10px; text-align: center; margin-bottom: 10px" [ngClass]="hasFocus ? '' : 'noDisplay'">
-        <span style="font-weight: bold; font-size: 24px;"> Log In</span>
+    <div [ngClass]="hasFocus ? 'hidden' : 'logo'">
+        <img src="./assets/imgs/hurdles_line.jpg"/>
     </div>
+  <!--<div [ngClass]="hasFocus ? 'hidden' : 'logo'">-->
+    <!--<img src="./assets/imgs/trackfield_large.png"/>-->
+  <!--</div>-->
+    <!--<div style="margin-top: 10px; text-align: center; margin-bottom: 10px" [ngClass]="hasFocus ? '' : 'noDisplay'">-->
+        <!--<span style="font-weight: bold; font-size: 24px;"> Log In</span>-->
+    <!--</div>-->
 
-    <ion-list>
+    <!--<ion-list>-->
 
-        <ion-item >
-            <ion-label floating style="color: gray;">Email</ion-label>
-            <ion-input class="inputBox" [(ngModel)]="email" (ionFocus)="hasFocus = true"></ion-input>
-        </ion-item>
+        <!--<ion-item >-->
+            <!--<ion-label floating style="color: gray;">Email</ion-label>-->
+            <!--<ion-input class="inputBox" [(ngModel)]="email" (ionFocus)="hasFocus = true"></ion-input>-->
+        <!--</ion-item>-->
 
-        <ion-item >
-            <ion-label floating style="color: gray; ">Password</ion-label>
-            <ion-input class="inputBox" [(ngModel)]="password" type="password" (ionFocus)="hasFocus = true"></ion-input>
-        </ion-item>
+        <!--<ion-item >-->
+            <!--<ion-label floating style="color: gray; ">Password</ion-label>-->
+            <!--<ion-input class="inputBox" [(ngModel)]="password" type="password" (ionFocus)="hasFocus = true"></ion-input>-->
+        <!--</ion-item>-->
 
-    </ion-list>
+    <!--</ion-list>-->
 
-  <ion-row>
-    <ion-col class="loginButtonColumn">
-        <button class="loginButton" ion-button (click)="login()">Log In</button>
-    </ion-col>
-  </ion-row>
-    <ion-row>
-        <ion-col class="loginButtonColumn">
-            <button ion-button (click)="forgotPassword()" [ngClass]="hasFocus ? 'loginButton' : 'noDisplay'" (ionFocus)="hasFocus = true">Reset Password</button>
-        </ion-col>
-    </ion-row>
+  <!--<ion-row>-->
+    <!--<ion-col class="loginButtonColumn">-->
+        <!--<button class="loginButton" ion-button (click)="login()">Log In</button>-->
+    <!--</ion-col>-->
+  <!--</ion-row>-->
+    <!--<ion-row>-->
+        <!--<ion-col class="loginButtonColumn">-->
+            <!--<button ion-button (click)="forgotPassword()" [ngClass]="hasFocus ? 'loginButton' : 'noDisplay'" (ionFocus)="hasFocus = true">Reset Password</button>-->
+        <!--</ion-col>-->
+    <!--</ion-row>-->
 
 
-            <div [ngClass]="hasFocus ? 'tapCatcher' : 'noDisplay'" (click)="hasFocus = false"></div>
+            <!--<div [ngClass]="hasFocus ? 'tapCatcher' : 'noDisplay'" (click)="hasFocus = false"></div>-->
 
-  <ion-row style="margin-top: 5%;">
-    <ion-col>
-        <hr data-content="OR" [ngClass]="hasFocus ? 'noDisplay' : 'hr-text'">
-    </ion-col>
-  </ion-row>
+  <!--<ion-row style="margin-top: 5%;">-->
+    <!--<ion-col>-->
+        <!--<hr data-content="OR" [ngClass]="hasFocus ? 'noDisplay' : 'hr-text'">-->
+    <!--</ion-col>-->
+  <!--</ion-row>-->
 
+    <!--<ion-row style="margin-top: 5%;">-->
+        <!--<ion-col style="text-align: center">-->
+            <!--<button [ngClass]="hasFocus ? 'noDisplay' : 'loginBtn loginBtn&#45;&#45;facebook'" (click)="loginWithFacebook()">-->
+                <!--Log In with Facebook-->
+            <!--</button>-->
+        <!--</ion-col>-->
+    <!--</ion-row>-->
+    <!--<ion-row>-->
+        <!--<ion-col style="text-align: center">-->
+            <!--<button [ngClass]="hasFocus ? 'noDisplay' : 'loginBtn loginBtn&#45;&#45;google'">-->
+                <!--Log In with Google-->
+            <!--</button>-->
+        <!--</ion-col>-->
+    <!--</ion-row>-->
+
+  <!--<ion-row>-->
+    <!--<ion-col style="text-align: center">-->
+      <!--<button  [ngClass]="hasFocus ? 'noDisplay' : 'create'" (click)="createAccount()">-->
+      <!--Create Account-->
+      <!--</button>-->
+    <!--</ion-col>-->
+  <!--</ion-row>-->
+
+<ion-footer>
     <ion-row style="margin-top: 5%;">
         <ion-col style="text-align: center">
             <button [ngClass]="hasFocus ? 'noDisplay' : 'loginBtn loginBtn--facebook'" (click)="loginWithFacebook()">
-                Log In with Facebook
+                Sign In with Facebook
             </button>
         </ion-col>
     </ion-row>
     <ion-row>
         <ion-col style="text-align: center">
+<<<<<<< HEAD
             <button [ngClass]="hasFocus ? 'noDisplay' : 'loginBtn loginBtn--google'" (click)="loginWithGoogle()">
                 Log In with Google
+=======
+            <button [ngClass]="hasFocus ? 'noDisplay' : 'loginBtn loginBtn--google'">
+                Sign In with Google
+>>>>>>> Calendar_Development
             </button>
         </ion-col>
     </ion-row>
 
-  <ion-row>
-    <ion-col style="text-align: center">
-      <button  [ngClass]="hasFocus ? 'noDisplay' : 'create'" (click)="createAccount()">
-      Create Account
-      </button>
-    </ion-col>
-  </ion-row>
-
-</ion-content>
+    <ion-row>
+        <ion-col style="text-align: center">
+            <button [ngClass]="hasFocus ? 'noDisplay' : 'create'" (click)="createAccount()">
+                Sign Up
+            </button>
+        </ion-col>
+        <ion-col>
+            <button  class="create" (click)="realLogin()">
+                Sign In
+            </button>
+        </ion-col>
+    </ion-row>
+</ion-footer>

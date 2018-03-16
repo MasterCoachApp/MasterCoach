@@ -1,6 +1,11 @@
-<ion-tabs style="color: black">
-  <ion-tab [root]="tab1Root"  tabTitle="Calendar" tabIcon="calendar" color="dark"></ion-tab>
-  <ion-tab [root]="tab3Root"  tabTitle="Archive" tabIcon="archive"></ion-tab>
+
+<ion-fab class="circleTab">
+  <button ion-fab class="homeFab"><ion-icon name="add"></ion-icon></button>
+</ion-fab>
+<ion-tabs tabsPlacement="bottom">
+  <ion-tab [root]="tab1Root"  tabTitle="Calendar" tabIcon="calendar"></ion-tab>
+  <ion-tab [root]="tab3Root"  tabTitle="Search" tabIcon="ios-search"></ion-tab>
+  <ion-tab></ion-tab>
   <ion-tab [root]="tab2Root"  tabTitle="Tools" tabIcon="calculator"></ion-tab>
   <ion-tab [root]="tab3Root"  tabTitle="Profile" tabIcon="person"></ion-tab>
 

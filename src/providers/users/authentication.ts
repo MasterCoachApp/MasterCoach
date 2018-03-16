@@ -7,11 +7,16 @@ import { GooglePlus } from '@ionic-native/google-plus';
 import {ToolsProvider} from "../tools/tools";
 import {AlertController} from "ionic-angular";
 import {ValidationProvider} from "../tools/validations";
+import {Storage} from "@ionic/storage";
 
 @Injectable()
 export class AuthenticationProvider {
 
+<<<<<<< HEAD
     constructor(private dbAuth: AngularFireAuth, private db: AngularFireDatabase, private facebook: Facebook, private google: GooglePlus, public tools: ToolsProvider, public alertCtrl: AlertController, public validation: ValidationProvider) {
+=======
+    constructor(private dbAuth: AngularFireAuth, private db: AngularFireDatabase, private facebook: Facebook, public storage: Storage, public tools: ToolsProvider, public alertCtrl: AlertController, public validation: ValidationProvider) {
+>>>>>>> Calendar_Development
 
     }
 
@@ -38,6 +43,8 @@ export class AuthenticationProvider {
         });
 
     }
+
+    // Firebase Authentication error list
 
     firebaseAuthenticationError(error: string) {
 
@@ -126,7 +133,6 @@ export class AuthenticationProvider {
 
     //attempt to add the created account to the real time database
     createAccountDatabase(email: string, firstName: string, lastName: string, userId: string) {
-        console.log(email,firstName,lastName,userId);
         let that = this;
         let promise = new Promise( (resolve, reject) => {
             let newUser = { //store values in temporary object => should be modeled after real user object model
@@ -211,13 +217,14 @@ export class AuthenticationProvider {
                                 let innerPromise = new Promise((resolve, reject) => {
                                     that.createAccountDatabase(emailResponse, first_name, last_name, success.uid)
                                         .then(response => {
-                                            resolve();
+                                            resolve(emailResponse);
                                         }).catch(error => {
                                         reject();
                                         console.log(error); //do something better here? Not sure what would cause this
                                     });
                                 });
                                 innerPromise.then(response => {
+                                    this.storage.set('user-email', response);
                                     resolve("Success");
                                 }).catch(error => {
                                     reject(error);

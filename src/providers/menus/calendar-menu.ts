@@ -1,8 +1,8 @@
 import {Injectable} from "@angular/core";
 import {ToolsProvider} from "../tools/tools";
 import {AlertController} from "ionic-angular";
-import {CalendarEvents} from "../../models/calendar-events";
-import {CalendarDay} from "../../models/calendar-day";
+import {CalendarEvents} from "../../models/calendar/menu-events";
+import {CalendarDay} from "../../models/calendar/calendar-day";
 
 
 @Injectable()
@@ -18,6 +18,10 @@ export class CalendarMenu {
         this.menuEvents = new CalendarEvents();
         let currentYear = this.getDisplayedYear();
         this.dateArray = this.getDates(new Date(currentYear.toString()+'-01-01'),new Date(currentYear.toString()+'-12-31'));
+    }
+
+    getLabels() {
+        return ["Short approach LJ", "Competition style"];
     }
 
     setDisplayYear(year: number) {

@@ -1,6 +1,6 @@
-import {Events} from "./events";
+import {Events} from "./track-events";
 
-export class CalendarEvents extends Events {
+export class MenuEvents extends Events {
 
 
     listOfEvents: string[];

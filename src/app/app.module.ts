@@ -21,16 +21,21 @@ import {LoginPage} from "../pages/Logins/login/login";
 import {CreateAccountPage} from "../pages/Logins/create-account/create-account";
 import {Facebook} from "@ionic-native/facebook";
 import {Keyboard} from "@ionic-native/keyboard";
-import { UsersProvider } from '../providers/users/users';
-import { ToolsProvider } from '../providers/tools/tools';
+import {UsersProvider} from '../providers/users/users';
+import {ToolsProvider} from '../providers/tools/tools';
 import {AuthenticationProvider} from "../providers/users/authentication";
 import {ForgotPasswordPage} from "../pages/Logins/forgot-password/forgot-password";
 import {ValidationProvider} from "../providers/tools/validations";
 import {CalendarMenu} from "../providers/menus/calendar-menu";
 import {DatePicker} from "@ionic-native/date-picker";
-import { CalendarModule } from 'ionic3-calendar-en';
+import {CalendarModule} from 'ionic3-calendar-en';
 import {CalendarPopoverPage} from "../pages/calendar-popover/calendar-popover";
+<<<<<<< HEAD
 import {GooglePlus} from "@ionic-native/google-plus";
+=======
+import {StandardLoginPage} from "../pages/Logins/standard-login/standard-login";
+import {SettingsProvider} from "../providers/settings";
+>>>>>>> Calendar_Development
 
 @NgModule({
   declarations: [
@@ -42,7 +47,8 @@ import {GooglePlus} from "@ionic-native/google-plus";
     LoginPage,
     CreateAccountPage,
     ForgotPasswordPage,
-    CalendarPopoverPage
+    CalendarPopoverPage,
+    StandardLoginPage
   ],
   imports: [
     BrowserModule,
@@ -64,7 +70,8 @@ import {GooglePlus} from "@ionic-native/google-plus";
     LoginPage,
     CreateAccountPage,
     ForgotPasswordPage,
-    CalendarPopoverPage
+    CalendarPopoverPage,
+    StandardLoginPage
   ],
   providers: [
     StatusBar,
@@ -78,8 +85,12 @@ import {GooglePlus} from "@ionic-native/google-plus";
     ValidationProvider,
     CalendarMenu,
     DatePicker,
+<<<<<<< HEAD
       GooglePlus
 
+=======
+    SettingsProvider
+>>>>>>> Calendar_Development
   ]
 })
 export class AppModule {}
