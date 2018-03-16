@@ -7,12 +7,19 @@
     "files": {}
   },
   "installed_plugins": {
+    "cordova-plugin-datepicker": {
+      "PACKAGE_NAME": "io.ionic.coachingApp"
+    },
     "cordova-plugin-device": {
       "PACKAGE_NAME": "io.ionic.coachingApp"
     },
     "cordova-plugin-facebook4": {
       "APP_ID": "569430143426412",
       "APP_NAME": "Master Coach",
+      "PACKAGE_NAME": "io.ionic.coachingApp"
+    },
+    "cordova-plugin-googleplus": {
+      "REVERSED_CLIENT_ID": "com.googleusercontent.apps.736172868611-iu6noqnvs6gd33p5c2bkmbeu7618ior9",
       "PACKAGE_NAME": "io.ionic.coachingApp"
     },
     "cordova-plugin-ionic-keyboard": {
@@ -24,16 +31,13 @@
     "cordova-plugin-splashscreen": {
       "PACKAGE_NAME": "io.ionic.coachingApp"
     },
+    "cordova-plugin-statusbar": {
+      "PACKAGE_NAME": "io.ionic.coachingApp"
+    },
     "cordova-plugin-whitelist": {
       "PACKAGE_NAME": "io.ionic.coachingApp"
     },
     "ionic-plugin-keyboard": {
-      "PACKAGE_NAME": "io.ionic.coachingApp"
-    },
-    "cordova-plugin-datepicker": {
-      "PACKAGE_NAME": "io.ionic.coachingApp"
-    },
-    "cordova-plugin-statusbar": {
       "PACKAGE_NAME": "io.ionic.coachingApp"
     }
   },

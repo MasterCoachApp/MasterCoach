@@ -13139,63 +13139,6 @@ input.text-input:-webkit-autofill {
   margin: 6.5px 16px;
 }
 
-.item-md.item-input.item-input-has-focus .item-inner,
-.item-md.item-input.input-has-focus .item-inner {
-  border-bottom-color: #488aff;
-  -webkit-box-shadow: inset 0 -1px 0 0 #488aff;
-  box-shadow: inset 0 -1px 0 0 #488aff;
-}
-
-.list-md .item-input.item-input-has-focus:last-child,
-.list-md .item-input.input-has-focus:last-child {
-  border-bottom-color: #488aff;
-  -webkit-box-shadow: inset 0 -1px 0 0 #488aff;
-  box-shadow: inset 0 -1px 0 0 #488aff;
-}
-
-.list-md .item-input.item-input-has-focus:last-child .item-inner,
-.list-md .item-input.input-has-focus:last-child .item-inner {
-  -webkit-box-shadow: none;
-  box-shadow: none;
-}
-
-.item-md.item-input.ng-valid.item-input-has-value:not(.input-has-focus):not(.item-input-has-focus) .item-inner,
-.item-md.item-input.ng-valid.input-has-value:not(.input-has-focus):not(.item-input-has-focus) .item-inner {
-  border-bottom-color: #32db64;
-  -webkit-box-shadow: inset 0 -1px 0 0 #32db64;
-  box-shadow: inset 0 -1px 0 0 #32db64;
-}
-
-.list-md .item-input.ng-valid.item-input-has-value:not(.input-has-focus):not(.item-input-has-focus):last-child,
-.list-md .item-input.ng-valid.input-has-value:not(.input-has-focus):not(.item-input-has-focus):last-child {
-  border-bottom-color: #32db64;
-  -webkit-box-shadow: inset 0 -1px 0 0 #32db64;
-  box-shadow: inset 0 -1px 0 0 #32db64;
-}
-
-.list-md .item-input.ng-valid.item-input-has-value:not(.input-has-focus):not(.item-input-has-focus):last-child .item-inner,
-.list-md .item-input.ng-valid.input-has-value:not(.input-has-focus):not(.item-input-has-focus):last-child .item-inner {
-  -webkit-box-shadow: none;
-  box-shadow: none;
-}
-
-.item-md.item-input.ng-invalid.ng-touched:not(.input-has-focus):not(.item-input-has-focus) .item-inner {
-  border-bottom-color: #f53d3d;
-  -webkit-box-shadow: inset 0 -1px 0 0 #f53d3d;
-  box-shadow: inset 0 -1px 0 0 #f53d3d;
-}
-
-.list-md .item-input.ng-invalid.ng-touched:not(.input-has-focus):not(.item-input-has-focus):last-child {
-  border-bottom-color: #f53d3d;
-  -webkit-box-shadow: inset 0 -1px 0 0 #f53d3d;
-  box-shadow: inset 0 -1px 0 0 #f53d3d;
-}
-
-.list-md .item-input.ng-invalid.ng-touched:not(.input-has-focus):not(.item-input-has-focus):last-child .item-inner {
-  -webkit-box-shadow: none;
-  box-shadow: none;
-}
-
 .item-label-stacked .text-input-md,
 .item-label-floating .text-input-md {
   margin-left: 0;
@@ -13230,7 +13173,7 @@ input.text-input:-webkit-autofill {
   margin: 13px 8px;
   padding: 0 8px;
   width: calc(100% - 8px - 8px);
-  border: 2px solid rgba(0, 0, 0, 0.5);
+  border: 0 solid rgba(0, 0, 0, 0.5);
   line-height: 3rem;
 }
 
@@ -16197,9 +16140,9 @@ ion-popover {
 
 .popover-ios .popover-content {
   border-radius: 10px;
-  width: 200px;
+  width: 98%;
   min-width: 0;
-  min-height: 0;
+  min-height: wrap;
   max-height: 90%;
   color: white;
   background: #161b1f;
@@ -16250,9 +16193,9 @@ ion-popover {
   border-radius: 2px;
   -webkit-transform-origin: left top;
   transform-origin: left top;
-  width: 250px;
+  width: 98%;
   min-width: 0;
-  min-height: 0;
+  min-height: wrap;
   max-height: 90%;
   color: white;
   background: #161b1f;
@@ -16270,9 +16213,9 @@ ion-popover {
   border-radius: 0;
   -webkit-transform-origin: left top;
   transform-origin: left top;
-  width: 200px;
+  width: 98%;
   min-width: 0;
-  min-height: 0;
+  min-height: wrap;
   max-height: 90%;
   border: 2px solid #ccc;
   color: white;
@@ -25678,6 +25621,72 @@ ion-navbar.toolbar {
   min-height: calc(46px + env(safe-area-inset-bottom));
 }
 
+ion-calendar {
+  font-family: Helvetica, Arial, sans-serif;
+}
+
+ion-calendar .center {
+  text-align: center;
+}
+
+ion-calendar .calendar-header-col {
+  font-size: 1rem;
+  color: #666;
+}
+
+ion-calendar .calendar-row:last-child {
+  border-bottom: 1px solid #eee;
+}
+
+ion-calendar .calendar-row .calendar-col {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  padding: 0.8rem;
+  font-size: 1.2rem;
+  border-left: 1px solid #eee;
+  border-top: 1px solid #eee;
+}
+
+ion-calendar .calendar-row .calendar-col:last-child {
+  border-right: 1px solid #eee;
+}
+
+ion-calendar .calendar-row .not-this-month {
+  color: #989898;
+  background: #eee;
+}
+
+ion-calendar .calendar-row .today {
+  color: #fff;
+  -webkit-box-shadow: inset 0 0 10px #aaa;
+  box-shadow: inset 0 0 10px #aaa;
+  background: #46b592;
+}
+
+ion-calendar .calendar-row .eventBlip {
+  background: #46b592;
+  width: 6.5px;
+  height: 6.5px;
+  display: inline-block;
+  border-radius: 6.5px;
+  position: absolute;
+  top: 3.5px;
+  right: 3.5px;
+}
+
+ion-calendar .calendar-row .select {
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  color: #fff;
+  background: #8496D2;
+}
+
 .menuSectionHeader {
   margin-top: 10px;
   width: 100%;
@@ -25759,6 +25768,12 @@ page-home .nothingPlanned {
   font-size: 14px;
   font-style: italic;
   color: gray;
+}
+
+page-home .calendarPopover .popover {
+  width: 100% !important;
+  height: 100%;
+  max-height: 100% !important;
 }
 
 page-home .hr-text {
@@ -25892,7 +25907,7 @@ page-create-account .loginBtn--facebook {
 
 page-create-account .loginBtn--facebook:before {
   border-right: #364e92 1px solid;
-  background: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/14082/icon_facebook.png") 6px 6px no-repeat;
+  background: url("../assets/imgs/facebook_button_icon.svg") 6px 6px no-repeat;
 }
 
 page-create-account .loginBtn--facebook:hover,
@@ -25909,7 +25924,7 @@ page-create-account .loginBtn--google {
 
 page-create-account .loginBtn--google:before {
   border-right: #BB3F30 1px solid;
-  background: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/14082/icon_google.png") 6px 6px no-repeat;
+  background: url("../assets/imgs/google_button_icon.svg") 6px 6px no-repeat;
 }
 
 page-create-account .loginBtn--google:hover,
@@ -25947,18 +25962,28 @@ page-login ion-content {
 
 page-login .inputBox {
   border: none;
-  border-radius: 20px;
   padding-left: 20px;
   color: white;
+  max-width: 400px;
+  font-size: 12px;
+  padding-top: 0;
+  margin: 0;
 }
 
 page-login .logo {
-  -webkit-transition: all linear 0.1s;
-  transition: all linear 0.1s;
+  -webkit-transition: all linear 0.3s;
+  transition: all linear 0.3s;
   padding-top: 25px;
-  padding-bottom: 50px;
-  width: 250px;
+  padding-bottom: 20px;
+  width: 100px;
   margin: auto;
+}
+
+page-login ion-item {
+  max-width: 400px;
+  margin: auto !important;
+  border-width: 0.1px;
+  opacity: 0.5;
 }
 
 page-login .loginButtonColumn {
@@ -25968,6 +25993,7 @@ page-login .loginButtonColumn {
 page-login .loginButton {
   text-align: center;
   width: 100%;
+  max-width: 400px;
   background-color: black;
   border: 1px solid #48BBF8;
 }
@@ -26002,7 +26028,7 @@ page-login .hr-text:after {
   color: white;
   padding: 0 .5em;
   line-height: 1.5em;
-  background-color: #222222;
+  background-color: #161b1f;
 }
 
 page-login body {
@@ -26024,6 +26050,7 @@ page-login .loginBtn {
   font-size: 16px;
   color: #FFF;
   width: 100%;
+  max-width: 400px;
 }
 
 page-login .loginBtn:before {
@@ -26084,7 +26111,7 @@ page-login .loginBtn--google:focus {
 page-login .create {
   padding: 15px;
   width: 100%;
-  margin-top: 5px;
+  max-width: 400px;
   font-size: 16px;
   background: none;
   color: white;
@@ -26093,12 +26120,10 @@ page-login .create {
 page-login .hidden {
   -webkit-transition: all linear 0.2s;
   transition: all linear 0.2s;
+  opacity: 0;
+  width: 100px;
   height: 0;
-  width: 0;
-  background-color: transparent;
-  top: -200px;
-  left: 200px;
-  color: transparent;
+  margin: auto;
 }
 
 page-login .noDisplay {
@@ -26106,7 +26131,7 @@ page-login .noDisplay {
 }
 
 page-login .tapCatcher {
-  background-color: #222222;
+  background-color: #161b1f;
   width: 100%;
-  height: 100%;
+  height: 45%;
 }

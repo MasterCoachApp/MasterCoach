@@ -30,6 +30,7 @@ import {CalendarMenu} from "../providers/menus/calendar-menu";
 import {DatePicker} from "@ionic-native/date-picker";
 import { CalendarModule } from 'ionic3-calendar-en';
 import {CalendarPopoverPage} from "../pages/calendar-popover/calendar-popover";
+import {GooglePlus} from "@ionic-native/google-plus";
 
 @NgModule({
   declarations: [
@@ -76,7 +77,9 @@ import {CalendarPopoverPage} from "../pages/calendar-popover/calendar-popover";
     AuthenticationProvider,
     ValidationProvider,
     CalendarMenu,
-    DatePicker
+    DatePicker,
+      GooglePlus
+
   ]
 })
 export class AppModule {}

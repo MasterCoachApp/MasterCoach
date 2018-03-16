@@ -23,6 +23,7 @@
     "@ionic-native/core": "4.4.0",
     "@ionic-native/date-picker": "^4.5.3",
     "@ionic-native/facebook": "^4.5.3",
+    "@ionic-native/google-plus": "4.5.3",
     "@ionic-native/keyboard": "^4.5.3",
     "@ionic-native/splash-screen": "4.4.0",
     "@ionic-native/status-bar": "4.4.0",
@@ -36,6 +37,7 @@
     "cordova-plugin-datepicker": "^0.9.3",
     "cordova-plugin-device": "2.0.1",
     "cordova-plugin-facebook4": "^1.9.1",
+    "cordova-plugin-googleplus": "5.2.1",
     "cordova-plugin-ionic-keyboard": "2.0.5",
     "cordova-plugin-ionic-webview": "1.1.16",
     "cordova-plugin-splashscreen": "5.0.2",
@@ -48,7 +50,7 @@
     "ionic3-calendar-en": "git+https://github.com/MasterCoachApp/ionic-calendar.git",
     "ionicons": "3.0.0",
     "node-sass": "4.7.2",
-    "rxjs": "5.5.2",
+    "rxjs": "5.5.6",
     "sw-toolbox": "3.6.0",
     "zone.js": "0.8.18"
   },
@@ -70,7 +72,10 @@
       },
       "ionic-plugin-keyboard": {},
       "cordova-plugin-datepicker": {},
-      "cordova-plugin-statusbar": {}
+      "cordova-plugin-statusbar": {},
+      "cordova-plugin-googleplus": {
+        "REVERSED_CLIENT_ID": "myreversedclientid"
+      }
     },
     "platforms": [
       "osx",

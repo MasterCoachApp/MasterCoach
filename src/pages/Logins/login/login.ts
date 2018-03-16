@@ -112,4 +112,33 @@ export class LoginPage {
         this.tools.presentToast("bottom", "Sorry, you're not connected to the internet");
     }
   }
+  // copied from above, likely to advance to same function after checking as separate function
+    loginWithGoogle() {
+       this.authProvider.advanceWithGoogle();
+        // if(navigator.onLine) { //test for internet connection
+        //
+        //     let that = this;
+        //     let promise = new Promise((resolve, reject) => {
+        //
+        //         that.authProvider.advanceWithGoogle().then(response => {
+        //             if(response != "Success") {
+        //                 reject(response);
+        //             }
+        //             else {
+        //                 resolve();
+        //             }
+        //         });
+        //
+        //     });
+        //
+        //     promise.then(() => {
+        //         this.navCtrl.push(TabsPage); //allow entry if successful login
+        //     }).catch(error => { //handle errors thrown by firebase
+        //         this.authProvider.firebaseAuthenticationError(error);
+        //     });
+        // }
+        // else {
+        //     this.tools.presentToast("bottom", "Sorry, you're not connected to the internet");
+        // }
+    }
 }

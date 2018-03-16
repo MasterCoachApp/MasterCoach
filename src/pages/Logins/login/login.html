@@ -59,7 +59,7 @@
     </ion-row>
     <ion-row>
         <ion-col style="text-align: center">
-            <button [ngClass]="hasFocus ? 'noDisplay' : 'loginBtn loginBtn--google'">
+            <button [ngClass]="hasFocus ? 'noDisplay' : 'loginBtn loginBtn--google'" (click)="loginWithGoogle()">
                 Log In with Google
             </button>
         </ion-col>

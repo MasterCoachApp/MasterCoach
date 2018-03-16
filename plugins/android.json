@@ -32,6 +32,9 @@
     },
     "cordova-plugin-whitelist": {
       "PACKAGE_NAME": "io.ionic.coachingApp"
+    },
+    "cordova-plugin-googleplus": {
+      "PACKAGE_NAME": "io.ionic.coachingApp"
     }
   },
   "dependent_plugins": {}
