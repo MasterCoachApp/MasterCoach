@@ -12,11 +12,8 @@ import {Storage} from "@ionic/storage";
 @Injectable()
 export class AuthenticationProvider {
 
-<<<<<<< HEAD
-    constructor(private dbAuth: AngularFireAuth, private db: AngularFireDatabase, private facebook: Facebook, private google: GooglePlus, public tools: ToolsProvider, public alertCtrl: AlertController, public validation: ValidationProvider) {
-=======
-    constructor(private dbAuth: AngularFireAuth, private db: AngularFireDatabase, private facebook: Facebook, public storage: Storage, public tools: ToolsProvider, public alertCtrl: AlertController, public validation: ValidationProvider) {
->>>>>>> Calendar_Development
+
+    constructor(private dbAuth: AngularFireAuth, private db: AngularFireDatabase, private facebook: Facebook, private google: GooglePlus, public storage: Storage, public tools: ToolsProvider, public alertCtrl: AlertController, public validation: ValidationProvider) {
 
     }
 

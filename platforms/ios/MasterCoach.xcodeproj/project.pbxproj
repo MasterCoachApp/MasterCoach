@@ -414,7 +414,7 @@
 				LastUpgradeCheck = 510;
 				TargetAttributes = {
 					1D6058900D05DD3D006BFB54 = {
-						DevelopmentTeam = X27U73UTY9;
+						DevelopmentTeam = ASQJ3L7765;
 					};
 				};
 			};
@@ -546,7 +546,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				COPY_PHASE_STRIP = NO;
-				DEVELOPMENT_TEAM = X27U73UTY9;
+				DEVELOPMENT_TEAM = ASQJ3L7765;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"MasterCoach/Plugins/cordova-plugin-facebook4\"",
@@ -585,7 +585,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				COPY_PHASE_STRIP = YES;
-				DEVELOPMENT_TEAM = X27U73UTY9;
+				DEVELOPMENT_TEAM = ASQJ3L7765;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"MasterCoach/Plugins/cordova-plugin-facebook4\"",
