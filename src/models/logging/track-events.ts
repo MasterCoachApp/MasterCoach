@@ -1,4 +1,4 @@
-import {ITrackEvents} from "./interfaces/events-Interface";
+import {ITrackEvents} from "./interfaces/track_events-Interface";
 
 export class TrackEvents implements ITrackEvents{
 
