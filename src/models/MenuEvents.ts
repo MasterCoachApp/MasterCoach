@@ -1,6 +1,6 @@
 import {Events} from "./events";
 
-export class CalendarEvents extends Events {
+export class MenuEvents extends Events {
 
 
     listOfEvents: string[];

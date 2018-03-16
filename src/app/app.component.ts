@@ -5,7 +5,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { TabsPage } from '../pages/HomeTabs/tabs/tabs';
 import {Keyboard} from "@ionic-native/keyboard";
 import {CalendarMenu} from "../providers/menus/calendar-menu";
-import {CalendarEvents} from "../models/calendar-events";
+import {CalendarEvents} from "../models/MenuEvents";
 import {SettingsProvider} from "../providers/settings";
 import {LoginPage} from "../pages/Logins/login/login";
 
