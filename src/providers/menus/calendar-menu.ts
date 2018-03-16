@@ -1,7 +1,7 @@
 import {Injectable} from "@angular/core";
 import {ToolsProvider} from "../tools/tools";
 import {AlertController} from "ionic-angular";
-import {CalendarEvents} from "../../models/MenuEvents";
+import {CalendarEvents} from "../../models/menu-events";
 import {CalendarDay} from "../../models/calendar-day";
 
 
