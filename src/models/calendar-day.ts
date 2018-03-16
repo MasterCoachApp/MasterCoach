@@ -1,5 +1,8 @@
+import {CalendarEvent} from './calendar-event';
+
 export class CalendarDay {
 
+    public calendarEvent: CalendarEvent;
 
     public date: Date;
     public dayOfTheWeek: string;
@@ -25,8 +28,13 @@ export class CalendarDay {
             executed: []
         };
 
+        this.calendarEvent = null;
+
     }
 
+    /*
+        Private Getters
+     */
     private getMonth(date: Date) {
         switch(date.getMonth()) {
             case 0:
@@ -73,6 +81,13 @@ export class CalendarDay {
             case 6:
                 return "Sat";
         }
+    }
+    /*
+        Public Setters
+     */
+    public setCalendarEvent(calendarEvent: CalendarEvent) {
+
+        this.calendarEvent = calendarEvent;
     }
 
 
