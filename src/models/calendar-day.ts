@@ -1,4 +1,4 @@
-import {CalendarEvent} from './calendar-event';
+import {CalendarEvent} from './logging/calendar-event';
 
 export class CalendarDay {
 

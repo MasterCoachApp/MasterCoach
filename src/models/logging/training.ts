@@ -1,5 +1,5 @@
-import {preMood} from '';
-import {postMood} from ''
+import {preMood} from 'training';
+import {postMood} from 'training'
 import {Activities} from "./activities";
 
 

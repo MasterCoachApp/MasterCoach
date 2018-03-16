@@ -1,4 +1,4 @@
-import {IEvents} from "./interfaces/events-Interface";
+import {IEvents} from "./logging/interfaces/events-Interface";
 
 export class Events implements IEvents{
 
