@@ -1,7 +1,6 @@
 import {Component} from '@angular/core';
 import {App, MenuController, NavController, Platform, PopoverController, ViewController} from 'ionic-angular';
 import {CalendarDay} from "../../../models/calendar/calendar-day";
-import {CalendarPopoverPage} from "../../calendar-popover/calendar-popover";
 import {CalendarMenu} from "../../../providers/menus/calendar-menu";
 import {Storage} from "@ionic/storage";
 import {LoginPage} from "../../Logins/login/login";
