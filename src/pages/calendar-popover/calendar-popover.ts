@@ -1,6 +1,6 @@
 import {Component, ViewChild} from '@angular/core';
 import {IonicPage, NavController, NavParams, ViewController} from 'ionic-angular';
-import {CalendarDay} from "../../models/calendar-day";
+import {CalendarDay} from "../../models/calendar/calendar-day";
 import {CalendarModule} from "ionic3-calendar-en";
 
 /**

@@ -1,4 +1,4 @@
-import {Events} from "../events";
+import {Events} from "./events";
 import {WarmUp} from 'activities';
 import {CoolDown} from 'activities';
 

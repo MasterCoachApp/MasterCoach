@@ -1,4 +1,4 @@
-import {Events} from "./events";
+import {Events} from "../logging/events";
 
 export class MenuEvents extends Events {
 
