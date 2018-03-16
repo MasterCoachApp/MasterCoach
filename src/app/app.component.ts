@@ -1,13 +1,12 @@
-import { Component } from '@angular/core';
-import { Platform } from 'ionic-angular';
-import { StatusBar } from '@ionic-native/status-bar';
-import { SplashScreen } from '@ionic-native/splash-screen';
-import { TabsPage } from '../pages/HomeTabs/tabs/tabs';
+import {Component} from '@angular/core';
+import {Platform} from 'ionic-angular';
+import {StatusBar} from '@ionic-native/status-bar';
+import {SplashScreen} from '@ionic-native/splash-screen';
+import {TabsPage} from '../pages/HomeTabs/tabs/tabs';
 import {Keyboard} from "@ionic-native/keyboard";
 import {CalendarMenu} from "../providers/menus/calendar-menu";
 import {CalendarEvents} from "../models/calendar/menu-events";
 import {SettingsProvider} from "../providers/settings";
-import {LoginPage} from "../pages/Logins/login/login";
 
 @Component({
   templateUrl: 'app.html'

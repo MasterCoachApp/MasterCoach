@@ -1,41 +1,41 @@
-import {preMood} from 'training';
-import {postMood} from 'training'
+import {postMood, preMood} from '';
 import {Activities} from "./activities";
+import {IEventsComponents} from "./interfaces/event-components";
 
 
-export class Training {
+export class Training implements IEventsComponents {
 
-    private pre_training: {
+    preCalEvent: {
         mood: preMood;
         notes: string;
         //add something to monitor pre-training pain
     };
 
-    private post_training: {
+    postCalEvent: {
                 mood: postMood;
                 notes: string;
                 //add something to monitor post training pain
     };
 
-    private training: {
+    mainCalEvent: {
               activities: Activities[];
               notes: string;
     };
 
     constructor() {
-        this.pre_training = {
+        this.preCalEvent = {
             mood: null,
             notes: null,
             //add something to monitor pre-training pain
         };
 
-        this.post_training = {
+        this.postCalEvent = {
             mood: null,
             notes: null,
             //add something to monitor post training pain
         };
 
-        this.training = {
+        this.mainCalEvent = {
             activities: null,
             notes: null
         };
@@ -45,14 +45,14 @@ export class Training {
     //Accessors
     //-----
 
-    public getPreTraining() {
-        return this.pre_training;
+    public getPreCalEvent() {
+        return this.preCalEvent;
     }
-    public getPostTraining() {
-        return this.post_training;
+    public getPostCalEvent() {
+        return this.postCalEvent;
     }
-    public getTraining() {
-        return this.training;
+    public getMainCalEvent() {
+        return this.mainCalEvent;
     }
 
 
@@ -60,21 +60,21 @@ export class Training {
     //Mutators
     //------
 
-    public setPreTraining(mood: preMood, notes: string) {
-        this.pre_training = {
+    public setPreCalEvent(mood: preMood, notes: string) {
+        this.preCalEvent = {
             mood: mood,
             notes: notes
         };
     }
-    public setPostTraining(mood: preMood, notes: string) {
-        this.post_training = {
+    public setPostCalEvent(mood: preMood, notes: string) {
+        this.postCalEvent = {
             mood: mood,
             notes: notes
         };
     }
-    public setTraining(activities: Activities, notes: string) {
-        this.training = {
-            activities: activities[],
+    public setMainCalEvent(activities: Activities[], notes: string) {
+        this.mainCalEvent = {
+            activities: activities,
             notes: notes
         };
     }

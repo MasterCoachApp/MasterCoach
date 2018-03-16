@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import {App, NavController} from 'ionic-angular';
 import {LoginPage} from "../../Logins/login/login";
 import {Storage} from "@ionic/storage";
