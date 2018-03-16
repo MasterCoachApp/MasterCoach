@@ -6,7 +6,6 @@ import {CreateAccountPage} from "../create-account/create-account";
 import {Keyboard} from "@ionic-native/keyboard";
 import {ToolsProvider} from "../../../providers/tools/tools";
 import {AuthenticationProvider} from "../../../providers/users/authentication";
-import {ForgotPasswordPage} from "../forgot-password/forgot-password";
 import {StandardLoginPage} from "../standard-login/standard-login";
 
 /**

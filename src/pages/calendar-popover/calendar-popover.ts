@@ -1,7 +1,6 @@
-import {Component, ViewChild} from '@angular/core';
+import {Component} from '@angular/core';
 import {IonicPage, NavController, NavParams, ViewController} from 'ionic-angular';
 import {CalendarDay} from "../../models/calendar-day";
-import {CalendarModule} from "ionic3-calendar-en";
 
 /**
  * Generated class for the CalendarPopoverPage page.

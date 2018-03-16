@@ -1,8 +1,7 @@
-import { Component } from '@angular/core';
-import {AlertController, IonicPage, NavController, NavParams} from 'ionic-angular';
+import {Component} from '@angular/core';
+import {AlertController, IonicPage, NavController} from 'ionic-angular';
 import {AuthenticationProvider} from "../../../providers/users/authentication";
 import {ToolsProvider} from "../../../providers/tools/tools";
-import {TabsPage} from "../../HomeTabs/tabs/tabs";
 
 /**
  * Generated class for the ForgotPasswordPage page.

@@ -1,6 +1,6 @@
-import {IEvents} from "./logging/interfaces/events-Interface";
+import {IEvents} from "./logging/interfaces/track_events-Interface";
 
-export class Events implements IEvents{
+export class TrackEvents implements ITrackEvents {
 
     public hundred: {
         [key: string]: any
