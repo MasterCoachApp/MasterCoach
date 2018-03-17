@@ -24,6 +24,50 @@
     <ion-item class="tab" align-items-stretch (click)="expand('pre')">
       <ion-label class="title">Pre-Training <ion-icon *ngIf="!this.preTrainingExpanded" class="drop" name="ios-arrow-down" end></ion-icon> <ion-icon *ngIf="this.preTrainingExpanded" class="drop" name="ios-arrow-up" end></ion-icon> </ion-label>
     </ion-item>
+    <ion-list *ngIf="!this.preTrainingExpanded">
+      <ion-item class="ionItemFix">
+        <ion-label item-start>Readiness</ion-label>
+        <ion-range min="0" max="5" [snaps]="true" steps="1" [pin]="true" right>
+          <ion-label range-left>0</ion-label>
+          <ion-label range-right>5</ion-label>
+        </ion-range>
+      </ion-item>
+      <ion-item>
+        <ion-label item-start>Energy</ion-label>
+        <ion-range min="0" max="5" [snaps]="true" steps="1" [pin]="true" right>
+          <ion-label range-left>0</ion-label>
+          <ion-label range-right>5</ion-label>
+        </ion-range>
+      </ion-item>
+      <ion-item>
+        <ion-label item-start>Hunger</ion-label>
+        <ion-range min="0" max="5" [snaps]="true" steps="1" [pin]="true" right>
+          <ion-label range-left>0</ion-label>
+          <ion-label range-right>5</ion-label>
+        </ion-range>
+      </ion-item>
+      <ion-item>
+        <ion-label item-start>Stress</ion-label>
+        <ion-range min="0" max="5" [snaps]="true" steps="1" [pin]="true" right>
+          <ion-label range-left>0</ion-label>
+          <ion-label range-right>5</ion-label>
+        </ion-range>
+      </ion-item>
+      <ion-item>
+        <ion-label item-start>Body State</ion-label>
+        <ion-range min="0" max="5" [snaps]="true" steps="1" [pin]="true" right>
+          <ion-label range-left>0</ion-label>
+          <ion-label range-right>5</ion-label>
+        </ion-range>
+      </ion-item>
+      <ion-item>
+        <ion-label>Pain <ion-icon name="medkit"></ion-icon></ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-label stacked>Thoughts</ion-label>
+        <ion-textarea class="openTextBox"></ion-textarea>
+      </ion-item>
+    </ion-list>
     <ion-item class="tab" (click)="expand('training')">>
       <ion-label class="title">Training <ion-icon *ngIf="!this.trainingExpanded" class="drop" name="ios-arrow-down" end></ion-icon> <ion-icon *ngIf="this.trainingExpanded" class="drop" name="ios-arrow-up" end></ion-icon></ion-label>
     </ion-item>

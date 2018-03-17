@@ -33966,3 +33966,21 @@ page-create-training .title {
 page-create-training .drop {
   color: #8795CD;
 }
+
+page-create-training .rangeText {
+  height: 100%;
+  display: block;
+  vertical-align: middle;
+}
+
+page-create-training .openTextBox {
+  background-color: white;
+  border-radius: 5px;
+  color: grey;
+  padding: 2px 7px 2px 7px;
+  margin: 2px;
+}
+
+page-create-training .ionItemFix {
+  margin: 2 2 2 2;
+}
