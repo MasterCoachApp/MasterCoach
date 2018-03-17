@@ -75,7 +75,9 @@ $checkbox-ios-icon-checkmark-style: none;
 
 $alert-ios-background: color($colors, dark);
 $alert-ios-radio-label-text-color: color($colors, light);
-//$alert-ios-radio-label-text-color-checked:;
+$alert-ios-checkbox-label-text-color: white;
+$alert-ios-checkbox-label-text-color-checked: white;
+$alert-ios-sub-title-text-color: white;
 
 $loading-ios-background-color: color($colors, dark);
 

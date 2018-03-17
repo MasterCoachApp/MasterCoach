@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import {AlertController, IonicPage, NavController, NavParams} from 'ionic-angular';
+import {Activities} from "../../../models/logging/activities/activities";
+import {TrackEvents} from "../../../models/logging/activities/track-events";
 
 /**
  * Generated class for the CreateTrainingPage page.
@@ -24,12 +26,17 @@ export class CreateTrainingPage {
     postThoughts: string;
     overallRating: number;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+    activities: Activities[];
+    listOfEvents: string[];
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController) {
       this.trainingExpanded = false;
       this.preTrainingExpanded = false;
       this.postTrainingExpanded = false;
 
       this.overallThoughtsExpanded = false;
+      this.activities = [];
+      this.listOfEvents = new TrackEvents().getListOfEvents();
   }
 
   expand(type: string) {
@@ -45,17 +52,44 @@ export class CreateTrainingPage {
               break;
       }
   }
-
-    displayText(type: string) {
-      switch(type) {
+  displayText(type: string) {
+      switch (type) {
           case 'overall':
-              this.overallThoughtsExpanded = !this.overallThoughtsExpanded;
+             this.overallThoughtsExpanded = !this.overallThoughtsExpanded;
       }
-    }
-
-
-  cancel() {
-    this.navCtrl.pop();
   }
+
+  addActivity() {
+
+      let alert = this.alertCtrl.create();
+      alert.setTitle('Which events would you like to add?');
+
+      this.listOfEvents.forEach( data => {
+          alert.addInput({
+              type: 'checkbox',
+              label: data,
+              value: data,
+              checked: false
+          });
+      });
+
+      alert.addButton('Cancel');
+      alert.addButton({
+          text: 'Add Events',
+          handler: data => {
+              console.log('Checkbox data:', data);
+              // this.activities;
+              // this.testCheckboxResult = data;
+          }
+      });
+      alert.present();
+  }
+
+
+
+
+  // cancel() {
+  //   this.navCtrl.pop();
+  // }
 
 }
