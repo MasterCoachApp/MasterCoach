@@ -1,7 +1,6 @@
-
 export class Qna {
-    public question: string;
-    public answer: any;
+    question: string;
+    answer: any;
 
     constructor(question: string, answer: any) {
         this.question = question;

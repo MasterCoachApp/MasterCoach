@@ -21,6 +21,8 @@ export class Competition implements IEventsComponents {
         notes: string;
     };
 
+    type = "Competition";
+
     constructor() {
         this.preCalEvent = {
             mood: null,

@@ -12,7 +12,7 @@ export class Training implements IEventsComponents {
     };
 
     postCalEvent: {
-        mood: Moods,
+        overallRating: number,
         notes: string
         //add something to monitor post training pain
     };
@@ -30,7 +30,7 @@ export class Training implements IEventsComponents {
         };
 
         this.postCalEvent = {
-            mood: null,
+            overallRating: null,
             notes: null,
             //add something to monitor post training pain
         };
@@ -40,6 +40,8 @@ export class Training implements IEventsComponents {
             notes: null
         };
     }
+
+    type = "Training";
 
     //-----
     //Accessors
@@ -66,9 +68,9 @@ export class Training implements IEventsComponents {
             notes: notes
         };
     }
-    public setPostCalEvent(mood: Moods, notes: string) {
+    public setPostCalEvent(overallRating: number, notes: string) {
         this.postCalEvent = {
-            mood: mood,
+            overallRating: overallRating,
             notes: notes
         };
     }

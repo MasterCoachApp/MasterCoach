@@ -33,6 +33,7 @@ import {GooglePlus} from "@ionic-native/google-plus";
 import {StandardLoginPage} from "../pages/Logins/standard-login/standard-login";
 import {SettingsProvider} from "../providers/settings";
 import {CreateTrainingPage} from "../pages/Training/create-training/create-training";
+import {EntryProvider} from "../providers/users/entries";
 
 @NgModule({
   declarations: [
@@ -83,7 +84,8 @@ import {CreateTrainingPage} from "../pages/Training/create-training/create-train
     CalendarMenu,
     DatePicker,
     GooglePlus,
-    SettingsProvider
+    SettingsProvider,
+    EntryProvider
   ]
 })
 export class AppModule {}

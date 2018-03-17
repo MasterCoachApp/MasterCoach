@@ -6,7 +6,7 @@ export class Moods implements ISurvey {
     surveyList: Qna[];
 
     constructor() {
-        this.surveyList = null;
+        this.surveyList = [];
     }
 
     /*

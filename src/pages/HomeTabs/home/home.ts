@@ -30,7 +30,7 @@ export class HomePage {
              this.app.getRootNav().push(LoginPage);
          }
          else {
-            user.retireveLoggedInUser(email).then(response => {
+            user.retrievedLoggedInUser(email).then(response => {
                if(response == null) {
                    console.log("Auto login failed to find existing user in db");
                    this.app.getRootNav().push(LoginPage);

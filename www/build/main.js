@@ -423,6 +423,152 @@ webpackContext.id = 1011;
 
 /***/ }),
 
+/***/ 1019:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return EntryProvider; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_angularfire2_database__ = __webpack_require__(177);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__users__ = __webpack_require__(429);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+var EntryProvider = (function () {
+    function EntryProvider(db, users) {
+        this.db = db;
+        this.users = users;
+    }
+    EntryProvider.prototype.createNewEntry = function (training) {
+        this.db.database.ref("Users/" + this.users.loggedIn.User_Id + "/Calendar").push(training).then(function () {
+            console.log("Success");
+        });
+    };
+    EntryProvider = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["A" /* Injectable */])(),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_angularfire2_database__["a" /* AngularFireDatabase */], __WEBPACK_IMPORTED_MODULE_2__users__["a" /* UsersProvider */]])
+    ], EntryProvider);
+    return EntryProvider;
+}());
+
+//# sourceMappingURL=entries.js.map
+
+/***/ }),
+
+/***/ 1020:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Training; });
+var Training = (function () {
+    function Training() {
+        this.preCalEvent = {
+            mood: null,
+            notes: null,
+        };
+        this.postCalEvent = {
+            mood: null,
+            notes: null,
+        };
+        this.mainCalEvent = {
+            activities: null,
+            notes: null
+        };
+    }
+    //-----
+    //Accessors
+    //-----
+    Training.prototype.getPreCalEvent = function () {
+        return this.preCalEvent;
+    };
+    Training.prototype.getPostCalEvent = function () {
+        return this.postCalEvent;
+    };
+    Training.prototype.getMainCalEvent = function () {
+        return this.mainCalEvent;
+    };
+    //-----
+    //Mutators
+    //------
+    Training.prototype.setPreCalEvent = function (mood, notes) {
+        this.preCalEvent = {
+            mood: mood,
+            notes: notes
+        };
+    };
+    Training.prototype.setPostCalEvent = function (mood, notes) {
+        this.postCalEvent = {
+            mood: mood,
+            notes: notes
+        };
+    };
+    Training.prototype.setMainCalEvent = function (activities, notes) {
+        this.mainCalEvent = {
+            activities: activities,
+            notes: notes
+        };
+    };
+    return Training;
+}());
+
+//# sourceMappingURL=training.js.map
+
+/***/ }),
+
+/***/ 1021:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Moods; });
+var Moods = (function () {
+    function Moods() {
+        this.surveyList = null;
+    }
+    /*
+        Public Getters
+     */
+    Moods.prototype.getSurveyList = function () {
+        return this.surveyList;
+    };
+    /*
+        Public Setters
+     */
+    Moods.prototype.addQuestion = function (question) {
+        this.surveyList.push(question);
+    };
+    return Moods;
+}());
+
+//# sourceMappingURL=moods.js.map
+
+/***/ }),
+
+/***/ 1022:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Qna; });
+var Qna = (function () {
+    function Qna(question, answer) {
+        this.question = question;
+        this.answer = answer;
+    }
+    return Qna;
+}());
+
+//# sourceMappingURL=qna.js.map
+
+/***/ }),
+
 /***/ 123:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -550,7 +696,12 @@ var LoginPage = (function () {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CreateTrainingPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(22);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__models_logging_activities_track_events__ = __webpack_require__(987);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_users_users__ = __webpack_require__(429);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_users_entries__ = __webpack_require__(1019);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__providers_tools_tools__ = __webpack_require__(50);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__models_logging_training__ = __webpack_require__(1020);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__models_logging_moods_moods__ = __webpack_require__(1021);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__models_logging_moods_qna__ = __webpack_require__(1022);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -563,6 +714,11 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
+
+
+
+
 /**
  * Generated class for the CreateTrainingPage page.
  *
@@ -570,17 +726,73 @@ var __metadata = (this && this.__metadata) || function (k, v) {
  * Ionic pages and navigation.
  */
 var CreateTrainingPage = (function () {
-    function CreateTrainingPage(navCtrl, navParams, alertCtrl) {
+    function CreateTrainingPage(navCtrl, navParams, users, training, tools) {
         this.navCtrl = navCtrl;
         this.navParams = navParams;
-        this.alertCtrl = alertCtrl;
+        this.users = users;
+        this.training = training;
+        this.tools = tools;
+        this.preTraining = {
+            readiness: {
+                key: "Readiness",
+                val: 0
+            },
+            hunger: {
+                key: "Hunger",
+                val: 0
+            },
+            stress: {
+                key: "Stress",
+                val: 0
+            },
+            bodyState: {
+                key: "Body State",
+                val: 0
+            },
+            energy: {
+                key: "Energy",
+                val: 0
+            },
+            preThoughts: {
+                key: "Thoughts",
+                val: ''
+            },
+        };
+        this.postTraining = {
+            postThoughts: '',
+            overallRating: 0
+        };
         this.trainingExpanded = false;
         this.preTrainingExpanded = false;
         this.postTrainingExpanded = false;
-        this.overallThoughtsExpanded = false;
-        this.activities = [];
-        this.listOfEvents = new __WEBPACK_IMPORTED_MODULE_2__models_logging_activities_track_events__["a" /* TrackEvents */]().getListOfEvents();
     }
+    CreateTrainingPage.prototype.createMood = function () {
+        var mood = new __WEBPACK_IMPORTED_MODULE_6__models_logging_moods_moods__["a" /* Moods */]();
+        var question = new __WEBPACK_IMPORTED_MODULE_7__models_logging_moods_qna__["a" /* Qna */](this.preTraining.energy.key, this.preTraining.energy.val);
+        mood.addQuestion(question);
+        question = new __WEBPACK_IMPORTED_MODULE_7__models_logging_moods_qna__["a" /* Qna */](this.preTraining.bodyState.key, this.preTraining.bodyState.val);
+        mood.addQuestion(question);
+        question = new __WEBPACK_IMPORTED_MODULE_7__models_logging_moods_qna__["a" /* Qna */](this.preTraining.stress.key, this.preTraining.stress.val);
+        mood.addQuestion(question);
+        question = new __WEBPACK_IMPORTED_MODULE_7__models_logging_moods_qna__["a" /* Qna */](this.preTraining.hunger.key, this.preTraining.hunger.val);
+        mood.addQuestion(question);
+        question = new __WEBPACK_IMPORTED_MODULE_7__models_logging_moods_qna__["a" /* Qna */](this.preTraining.readiness.key, this.preTraining.readiness.val);
+        mood.addQuestion(question);
+        return mood;
+    };
+    CreateTrainingPage.prototype.createNewTraining = function () {
+        var mood = this.createMood();
+        var newTraining = new __WEBPACK_IMPORTED_MODULE_5__models_logging_training__["a" /* Training */]();
+        newTraining.setPreCalEvent(mood, this.preTraining.preThoughts.val);
+        newTraining.setPostCalEvent(this.postTraining.overallRating, this.postTraining.postThoughts);
+        console.log(newTraining.getPreCalEvent().mood.surveyList);
+        if (navigator.onLine) {
+            this.training.createNewEntry(newTraining);
+        }
+        else {
+            this.tools.presentToast("bottom", "Sorry, you're not connected to the internet");
+        }
+    };
     CreateTrainingPage.prototype.expand = function (type) {
         switch (type) {
             case 'pre':
@@ -594,42 +806,17 @@ var CreateTrainingPage = (function () {
                 break;
         }
     };
-    CreateTrainingPage.prototype.displayText = function (type) {
-        switch (type) {
-            case 'overall':
-                this.overallThoughtsExpanded = !this.overallThoughtsExpanded;
-        }
-    };
-    CreateTrainingPage.prototype.addActivity = function () {
-        var alert = this.alertCtrl.create();
-        alert.setTitle('Which events would you like to add?');
-        this.listOfEvents.forEach(function (data) {
-            alert.addInput({
-                type: 'checkbox',
-                label: data,
-                value: data,
-                checked: false
-            });
-        });
-        alert.addButton('Cancel');
-        alert.addButton({
-            text: 'Add Events',
-            handler: function (data) {
-                console.log('Checkbox data:', data);
-                // this.activities;
-                // this.testCheckboxResult = data;
-            }
-        });
-        alert.present();
+    CreateTrainingPage.prototype.cancel = function () {
+        this.navCtrl.pop();
     };
     CreateTrainingPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-create-training',template:/*ion-inline-start:"/workspace/MasterCoach/src/pages/Training/create-training/create-training.html"*/'<!--\n  Generated template for the CreateTrainingPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-buttons left>\n      <button ion-button="arrow-back" color="primary" (click)="cancel()">\n        <ion-icon name="ios-arrow-down"></ion-icon>\n      </button>\n    </ion-buttons>\n    <ion-title>New Training</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content>\n\n  <ion-list no-lines>\n    <ion-item class="tab" align-items-stretch (click)="expand(\'pre\')">\n      <ion-label class="title">Pre-Training <ion-icon *ngIf="!this.preTrainingExpanded" class="drop" name="ios-arrow-down" end></ion-icon> <ion-icon *ngIf="this.preTrainingExpanded" class="drop" name="ios-arrow-up" end></ion-icon> </ion-label>\n    </ion-item>\n    <ion-list *ngIf="!this.preTrainingExpanded">\n      <ion-item class="ionItemFix">\n        <ion-label item-start>Readiness</ion-label>\n        <ion-range min="0" max="5" [snaps]="true" steps="1" [pin]="true" right>\n          <ion-label range-left>0</ion-label>\n          <ion-label range-right>5</ion-label>\n        </ion-range>\n      </ion-item>\n      <ion-item>\n        <ion-label item-start>Energy</ion-label>\n        <ion-range min="0" max="5" [snaps]="true" steps="1" [pin]="true" right>\n          <ion-label range-left>0</ion-label>\n          <ion-label range-right>5</ion-label>\n        </ion-range>\n      </ion-item>\n      <ion-item>\n        <ion-label item-start>Hunger</ion-label>\n        <ion-range min="0" max="5" [snaps]="true" steps="1" [pin]="true" right>\n          <ion-label range-left>0</ion-label>\n          <ion-label range-right>5</ion-label>\n        </ion-range>\n      </ion-item>\n      <ion-item>\n        <ion-label item-start>Stress</ion-label>\n        <ion-range min="0" max="5" [snaps]="true" steps="1" [pin]="true" right>\n          <ion-label range-left>0</ion-label>\n          <ion-label range-right>5</ion-label>\n        </ion-range>\n      </ion-item>\n      <ion-item>\n        <ion-label item-start>Body State</ion-label>\n        <ion-range min="0" max="5" [snaps]="true" steps="1" [pin]="true" right>\n          <ion-label range-left>0</ion-label>\n          <ion-label range-right>5</ion-label>\n        </ion-range>\n      </ion-item>\n      <ion-item>\n        <ion-label>Pain <ion-icon name="medkit"></ion-icon></ion-label>\n      </ion-item>\n      <ion-item>\n        <ion-label stacked>Thoughts</ion-label>\n        <ion-textarea class="openTextBox"></ion-textarea>\n      </ion-item>\n    </ion-list>\n    <ion-item class="tab" (click)="expand(\'training\')">>\n      <ion-label class="title">Training <ion-icon *ngIf="!this.trainingExpanded" class="drop" name="ios-arrow-down" end></ion-icon> <ion-icon *ngIf="this.trainingExpanded" class="drop" name="ios-arrow-up" end></ion-icon></ion-label>\n    </ion-item>\n    <ion-list *ngIf="!this.trainingExpanded">\n      <ion-label stacked>Activities</ion-label>\n      <ion-list>\n        <ion-item>\n          <ion-label><ion-icon name="ios-add" (click)="addActivity()"></ion-icon></ion-label>\n        </ion-item>\n\n        <!--<ion-item *ngFor="let event of activities.getEvents()">-->\n          <!--<ion-label>{{event.trackEvents}} with value: {{name:Value}} </ion-label>-->\n          <!--<ion-checkbox [(ngModel)]="name.Value" ></ion-checkbox>-->\n        <!--</ion-item>-->\n      </ion-list>\n    </ion-list>\n    <ion-item class="tab" (click)="expand(\'post\')">>\n      <ion-label class="title">Post-Training<ion-icon *ngIf="!this.postTrainingExpanded" class="drop" name="ios-arrow-down" end></ion-icon> <ion-icon *ngIf="this.postTrainingExpanded" class="drop" name="ios-arrow-up" end></ion-icon></ion-label>\n    </ion-item>\n    <div *ngIf="!this.postTrainingExpanded">\n     <ion-list no-lines>\n      <ion-item>\n        <ion-label item-start>Rate Your Training</ion-label>\n        <ion-range  min="0" max="5" [snaps]="true" steps="1" [pin]="true" [(ngModel)]="overallRating">\n          <ion-label range-left>0</ion-label>\n          <ion-label range-right>5</ion-label>\n        </ion-range>\n      </ion-item>\n       <ion-item no-lines>\n         <ion-label stacked>Overall Thoughts <ion-icon name="ios-expand"></ion-icon></ion-label>\n         <ion-textarea class="thoughts" [(ngModel)]="postThoughts"></ion-textarea>\n       </ion-item>\n     </ion-list>\n    </div>\n  </ion-list>\n\n</ion-content>\n'/*ion-inline-end:"/workspace/MasterCoach/src/pages/Training/create-training/create-training.html"*/,
+            selector: 'page-create-training',template:/*ion-inline-start:"/workspace/MasterCoach/src/pages/Training/create-training/create-training.html"*/'<!--\n  Generated template for the CreateTrainingPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-buttons left>\n      <button ion-button="arrow-back" color="primary" (click)="cancel()">\n        <ion-icon name="ios-arrow-down"></ion-icon>\n      </button>\n    </ion-buttons>\n    <ion-title>New Training</ion-title>\n      <ion-buttons right (click)="createNewTraining()">\n          <button ion-button="arrow-back" color="primary" (click)="cancel()">\n                Save\n          </button>\n      </ion-buttons>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content>\n\n  <ion-list no-lines>\n    <ion-item class="tab" align-items-stretch (click)="expand(\'pre\')">\n      <ion-label class="title">Pre-Training <ion-icon *ngIf="!this.preTrainingExpanded" class="drop" name="ios-arrow-down" end></ion-icon> <ion-icon *ngIf="this.preTrainingExpanded" class="drop" name="ios-arrow-up" end></ion-icon> </ion-label>\n    </ion-item>\n    <ion-list *ngIf="!this.preTrainingExpanded">\n      <ion-item class="ionItemFix">\n        <ion-label item-start>Readiness</ion-label>\n        <ion-range min="0" max="5" [snaps]="true" steps="1" [pin]="true" right [(ngModel)]="preTraining.readiness.val">\n          <ion-label range-left>0</ion-label>\n          <ion-label range-right>5</ion-label>\n        </ion-range>\n      </ion-item>\n      <ion-item>\n        <ion-label item-start>Energy</ion-label>\n        <ion-range min="0" max="5" [snaps]="true" steps="1" [pin]="true" right [(ngModel)]="preTraining.energy.val">\n          <ion-label range-left>0</ion-label>\n          <ion-label range-right>5</ion-label>\n        </ion-range>\n      </ion-item>\n      <ion-item>\n        <ion-label item-start>Hunger</ion-label>\n        <ion-range min="0" max="5" [snaps]="true" steps="1" [pin]="true" right [(ngModel)]="preTraining.hunger.val">\n          <ion-label range-left>0</ion-label>\n          <ion-label range-right>5</ion-label>\n        </ion-range>\n      </ion-item>\n      <ion-item>\n        <ion-label item-start>Stress</ion-label>\n        <ion-range min="0" max="5" [snaps]="true" steps="1" [pin]="true" right [(ngModel)]="preTraining.stress.val">\n          <ion-label range-left>0</ion-label>\n          <ion-label range-right>5</ion-label>\n        </ion-range>\n      </ion-item>\n      <ion-item>\n        <ion-label item-start>Body State</ion-label>\n        <ion-range min="0" max="5" [snaps]="true" steps="1" [pin]="true" right [(ngModel)]="preTraining.bodyState.val">\n          <ion-label range-left>0</ion-label>\n          <ion-label range-right>5</ion-label>\n        </ion-range>\n      </ion-item>\n      <ion-item>\n        <ion-label>Pain <ion-icon name="medkit"></ion-icon></ion-label>\n      </ion-item>\n      <ion-item>\n        <ion-label stacked>Thoughts</ion-label>\n        <ion-textarea class="openTextBox" [(ngModel)]="this.preTraining.preThoughts.val"></ion-textarea>\n      </ion-item>\n    </ion-list>\n    <ion-item class="tab" (click)="expand(\'training\')">>\n      <ion-label class="title">Training <ion-icon *ngIf="!this.trainingExpanded" class="drop" name="ios-arrow-down" end></ion-icon> <ion-icon *ngIf="this.trainingExpanded" class="drop" name="ios-arrow-up" end></ion-icon></ion-label>\n    </ion-item>\n    <ion-list *ngIf="!this.trainingExpanded">\n      <ion-label stacked>Activities</ion-label>\n      <ion-list>\n        <ion-item>\n          <ion-label><ion-icon name="ios-add" (click)="addActivity()"></ion-icon></ion-label>\n        </ion-item>\n\n        <!--<ion-item *ngFor="let event of activities.getEvents()">-->\n          <!--<ion-label>{{event.trackEvents}} with value: {{name:Value}} </ion-label>-->\n          <!--<ion-checkbox [(ngModel)]="name.Value" ></ion-checkbox>-->\n        <!--</ion-item>-->\n      </ion-list>\n    </ion-list>\n    <ion-item class="tab" (click)="expand(\'post\')">>\n      <ion-label class="title">Post-Training<ion-icon *ngIf="!this.postTrainingExpanded" class="drop" name="ios-arrow-down" end></ion-icon> <ion-icon *ngIf="this.postTrainingExpanded" class="drop" name="ios-arrow-up" end></ion-icon></ion-label>\n    </ion-item>\n    <div *ngIf="!this.postTrainingExpanded">\n     <ion-list no-lines>\n      <ion-item>\n        <ion-label item-start>Rate Your Training</ion-label>\n        <ion-range  min="0" max="5" [snaps]="true" steps="1" [pin]="true" [(ngModel)]="postTraining.overallRating">\n          <ion-label range-left>0</ion-label>\n          <ion-label range-right>5</ion-label>\n        </ion-range>\n      </ion-item>\n       <ion-item no-lines>\n         <ion-label stacked>Overall Thoughts <ion-icon name="ios-expand"></ion-icon></ion-label>\n         <ion-textarea class="thoughts" [(ngModel)]="postTraining.postThoughts"></ion-textarea>\n       </ion-item>\n     </ion-list>\n    </div>\n  </ion-list>\n\n</ion-content>\n'/*ion-inline-end:"/workspace/MasterCoach/src/pages/Training/create-training/create-training.html"*/,
         }),
-        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavParams */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */]) === "function" && _c || Object])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavParams */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_2__providers_users_users__["a" /* UsersProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__providers_users_users__["a" /* UsersProvider */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_3__providers_users_entries__["a" /* EntryProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__providers_users_entries__["a" /* EntryProvider */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_4__providers_tools_tools__["a" /* ToolsProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__providers_tools_tools__["a" /* ToolsProvider */]) === "function" && _e || Object])
     ], CreateTrainingPage);
     return CreateTrainingPage;
-    var _a, _b, _c;
+    var _a, _b, _c, _d, _e;
 }());
 
 //# sourceMappingURL=create-training.js.map
