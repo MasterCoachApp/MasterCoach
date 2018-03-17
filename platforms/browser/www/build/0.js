@@ -1,22 +1,14 @@
 webpackJsonp([0],{
 
-<<<<<<< HEAD
-/***/ 651:
-=======
-/***/ 653:
->>>>>>> Calendar_Development
+/***/ 1015:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CalendarPopoverPageModule", function() { return CalendarPopoverPageModule; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(16);
-<<<<<<< HEAD
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__calendar_popover__ = __webpack_require__(156);
-=======
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__calendar_popover__ = __webpack_require__(447);
->>>>>>> Calendar_Development
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CreateTrainingPageModule", function() { return CreateTrainingPageModule; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(22);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__create_training__ = __webpack_require__(123);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -26,23 +18,23 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var CalendarPopoverPageModule = (function () {
-    function CalendarPopoverPageModule() {
+var CreateTrainingPageModule = (function () {
+    function CreateTrainingPageModule() {
     }
-    CalendarPopoverPageModule = __decorate([
+    CreateTrainingPageModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* NgModule */])({
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_2__calendar_popover__["a" /* CalendarPopoverPage */],
+                __WEBPACK_IMPORTED_MODULE_2__create_training__["a" /* CreateTrainingPage */],
             ],
             imports: [
-                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__calendar_popover__["a" /* CalendarPopoverPage */]),
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__create_training__["a" /* CreateTrainingPage */]),
             ],
         })
-    ], CalendarPopoverPageModule);
-    return CalendarPopoverPageModule;
+    ], CreateTrainingPageModule);
+    return CreateTrainingPageModule;
 }());
 
-//# sourceMappingURL=calendar-popover.module.js.map
+//# sourceMappingURL=create-training.module.js.map
 
 /***/ })
 

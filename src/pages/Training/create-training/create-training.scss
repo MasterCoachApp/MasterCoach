@@ -26,4 +26,19 @@ page-create-training {
     padding-top: 0;
   }
 
+  .rangeText {
+    height: 100%;
+    display: block;
+    vertical-align: middle;
+  }
+  .openTextBox {
+    background-color: white;
+    border-radius: 5px;
+    color: grey;
+    padding: 2px 7px 2px 7px;
+    margin: 2px;
+  }
+  .ionItemFix {
+    margin: 2 2 2 2;
+  }
 }
