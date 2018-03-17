@@ -21,7 +21,7 @@ export class UsersProvider {
     //    Get User - Auto Login ///
     //-------------------------///
 
-    retireveLoggedInUser(email: string) {
+    retrievedLoggedInUser(email: string) {
         //email is a unique key value pair in the database
         let that = this;
         let userPromise = new Promise(function(resolve, reject) {
@@ -30,6 +30,7 @@ export class UsersProvider {
                 snapshot.forEach(snap => {
                    if(snap.child("Email").val().toUpperCase() == email.toUpperCase()) {
                         let user = new User(snap.child("Email").val(), snap.child("First_name").val(), snap.child("Last_name").val(), snap.child("UserId").val());
+                        this.loggedIn = user;
                         resolve(user);
                         return true;
                    }

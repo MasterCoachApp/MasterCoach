@@ -13,6 +13,11 @@
       </button>
     </ion-buttons>
     <ion-title>New Training</ion-title>
+      <ion-buttons right (click)="createNewTraining()">
+          <button ion-button="arrow-back" color="primary" (click)="cancel()">
+                Save
+          </button>
+      </ion-buttons>
   </ion-navbar>
 
 </ion-header>
@@ -27,35 +32,35 @@
     <ion-list *ngIf="!this.preTrainingExpanded">
       <ion-item class="ionItemFix">
         <ion-label item-start>Readiness</ion-label>
-        <ion-range min="0" max="5" [snaps]="true" steps="1" [pin]="true" right>
+        <ion-range min="0" max="5" [snaps]="true" steps="1" [pin]="true" right [(ngModel)]="preTraining.readiness.val">
           <ion-label range-left>0</ion-label>
           <ion-label range-right>5</ion-label>
         </ion-range>
       </ion-item>
       <ion-item>
         <ion-label item-start>Energy</ion-label>
-        <ion-range min="0" max="5" [snaps]="true" steps="1" [pin]="true" right>
+        <ion-range min="0" max="5" [snaps]="true" steps="1" [pin]="true" right [(ngModel)]="preTraining.energy.val">
           <ion-label range-left>0</ion-label>
           <ion-label range-right>5</ion-label>
         </ion-range>
       </ion-item>
       <ion-item>
         <ion-label item-start>Hunger</ion-label>
-        <ion-range min="0" max="5" [snaps]="true" steps="1" [pin]="true" right>
+        <ion-range min="0" max="5" [snaps]="true" steps="1" [pin]="true" right [(ngModel)]="preTraining.hunger.val">
           <ion-label range-left>0</ion-label>
           <ion-label range-right>5</ion-label>
         </ion-range>
       </ion-item>
       <ion-item>
         <ion-label item-start>Stress</ion-label>
-        <ion-range min="0" max="5" [snaps]="true" steps="1" [pin]="true" right>
+        <ion-range min="0" max="5" [snaps]="true" steps="1" [pin]="true" right [(ngModel)]="preTraining.stress.val">
           <ion-label range-left>0</ion-label>
           <ion-label range-right>5</ion-label>
         </ion-range>
       </ion-item>
       <ion-item>
         <ion-label item-start>Body State</ion-label>
-        <ion-range min="0" max="5" [snaps]="true" steps="1" [pin]="true" right>
+        <ion-range min="0" max="5" [snaps]="true" steps="1" [pin]="true" right [(ngModel)]="preTraining.bodyState.val">
           <ion-label range-left>0</ion-label>
           <ion-label range-right>5</ion-label>
         </ion-range>
@@ -65,7 +70,7 @@
       </ion-item>
       <ion-item>
         <ion-label stacked>Thoughts</ion-label>
-        <ion-textarea class="openTextBox"></ion-textarea>
+        <ion-textarea class="openTextBox" [(ngModel)]="this.preTraining.preThoughts.val"></ion-textarea>
       </ion-item>
     </ion-list>
     <ion-item class="tab" (click)="expand('training')">>
@@ -78,14 +83,14 @@
      <ion-list no-lines>
       <ion-item>
         <ion-label item-start>Rate Your Training</ion-label>
-        <ion-range  min="0" max="5" [snaps]="true" steps="1" [pin]="true" [(ngModel)]="overallRating">
+        <ion-range  min="0" max="5" [snaps]="true" steps="1" [pin]="true" [(ngModel)]="postTraining.overallRating">
           <ion-label range-left>0</ion-label>
           <ion-label range-right>5</ion-label>
         </ion-range>
       </ion-item>
        <ion-item no-lines>
          <ion-label stacked>Overall Thoughts <ion-icon name="ios-expand"></ion-icon></ion-label>
-         <ion-textarea class="thoughts" [(ngModel)]="postThoughts"></ion-textarea>
+         <ion-textarea class="thoughts" [(ngModel)]="postTraining.postThoughts"></ion-textarea>
        </ion-item>
      </ion-list>
    </div>

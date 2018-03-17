@@ -15,8 +15,8 @@ import {CreateTrainingPage} from "../pages/Training/create-training/create-train
 export class MyApp {
 
   //rootPage:any = LoginPage;
-  //rootPage:any = TabsPage;
-   rootPage:any = CreateTrainingPage;
+    rootPage:any = TabsPage;
+   //rootPage:any = CreateTrainingPage;
 
     selectedTheme: String;
 
