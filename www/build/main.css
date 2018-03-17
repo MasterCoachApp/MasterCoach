@@ -18925,12 +18925,12 @@ ion-range ion-icon {
 }
 
 .range-ios .range-knob {
-  left: 7px;
-  top: 7px;
+  left: 13.5px;
+  top: 13.5px;
   border-radius: 50%;
   position: absolute;
-  width: 28px;
-  height: 28px;
+  width: 15px;
+  height: 15px;
   background: #fff;
   -webkit-box-shadow: 0 3px 1px rgba(0, 0, 0, 0.1), 0 4px 8px rgba(0, 0, 0, 0.13), 0 0 0 1px rgba(0, 0, 0, 0.02);
   box-shadow: 0 3px 1px rgba(0, 0, 0, 0.1), 0 4px 8px rgba(0, 0, 0, 0.13), 0 0 0 1px rgba(0, 0, 0, 0.02);
@@ -33965,4 +33965,17 @@ page-create-training .title {
 
 page-create-training .drop {
   color: #8795CD;
+}
+
+page-create-training .thoughts {
+  background-color: white;
+  margin: 20px;
+  width: 90%;
+  max-width: 400px;
+  height: 100px;
+  border-radius: 5px;
+  color: black;
+  padding: 5px;
+  font-size: 12px;
+  padding-top: 0;
 }

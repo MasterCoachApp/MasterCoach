@@ -19,10 +19,17 @@ export class CreateTrainingPage {
     preTrainingExpanded: boolean;
     postTrainingExpanded: boolean;
 
+    overallThoughtsExpanded: boolean;
+
+    postThoughts: string;
+    overallRating: number;
+
   constructor(public navCtrl: NavController, public navParams: NavParams) {
       this.trainingExpanded = false;
       this.preTrainingExpanded = false;
       this.postTrainingExpanded = false;
+
+      this.overallThoughtsExpanded = false;
   }
 
   expand(type: string) {
@@ -38,6 +45,13 @@ export class CreateTrainingPage {
               break;
       }
   }
+
+    displayText(type: string) {
+      switch(type) {
+          case 'overall':
+              this.overallThoughtsExpanded = !this.overallThoughtsExpanded;
+      }
+    }
 
 
   cancel() {

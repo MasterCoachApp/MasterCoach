@@ -30,6 +30,21 @@
     <ion-item class="tab" (click)="expand('post')">>
       <ion-label class="title">Post-Training<ion-icon *ngIf="!this.postTrainingExpanded" class="drop" name="ios-arrow-down" end></ion-icon> <ion-icon *ngIf="this.postTrainingExpanded" class="drop" name="ios-arrow-up" end></ion-icon></ion-label>
     </ion-item>
+   <div *ngIf="!this.postTrainingExpanded">
+     <ion-list no-lines>
+      <ion-item>
+        <ion-label item-start>Rate Your Training</ion-label>
+        <ion-range  min="0" max="5" [snaps]="true" steps="1" [pin]="true" [(ngModel)]="overallRating">
+          <ion-label range-left>0</ion-label>
+          <ion-label range-right>5</ion-label>
+        </ion-range>
+      </ion-item>
+       <ion-item no-lines>
+         <ion-label stacked>Overall Thoughts <ion-icon name="ios-expand"></ion-icon></ion-label>
+         <ion-textarea class="thoughts" [(ngModel)]="postThoughts"></ion-textarea>
+       </ion-item>
+     </ion-list>
+   </div>
   </ion-list>
 
 </ion-content>
