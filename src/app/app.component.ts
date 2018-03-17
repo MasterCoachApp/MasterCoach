@@ -7,6 +7,7 @@ import {Keyboard} from "@ionic-native/keyboard";
 import {CalendarMenu} from "../providers/menus/calendar-menu";
 import {MenuEvents} from "../models/calendar/menu-events";
 import {SettingsProvider} from "../providers/settings";
+import {CreateTrainingPage} from "../pages/Training/create-training/create-training";
 
 @Component({
   templateUrl: 'app.html'
@@ -14,7 +15,8 @@ import {SettingsProvider} from "../providers/settings";
 export class MyApp {
 
   //rootPage:any = LoginPage;
-  rootPage:any = TabsPage;
+  //rootPage:any = TabsPage;
+   rootPage:any = CreateTrainingPage;
 
     selectedTheme: String;
 

@@ -32,6 +32,7 @@ import {CalendarModule} from 'ionic3-calendar-en';
 import {GooglePlus} from "@ionic-native/google-plus";
 import {StandardLoginPage} from "../pages/Logins/standard-login/standard-login";
 import {SettingsProvider} from "../providers/settings";
+import {CreateTrainingPage} from "../pages/Training/create-training/create-training";
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import {SettingsProvider} from "../providers/settings";
     LoginPage,
     CreateAccountPage,
     ForgotPasswordPage,
-    StandardLoginPage
+    StandardLoginPage,
+    CreateTrainingPage
   ],
   imports: [
     BrowserModule,
@@ -65,7 +67,8 @@ import {SettingsProvider} from "../providers/settings";
     LoginPage,
     CreateAccountPage,
     ForgotPasswordPage,
-    StandardLoginPage
+    StandardLoginPage,
+    CreateTrainingPage
   ],
   providers: [
     StatusBar,

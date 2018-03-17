@@ -15,11 +15,33 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class CreateTrainingPage {
 
+    trainingExpanded: boolean;
+    preTrainingExpanded: boolean;
+    postTrainingExpanded: boolean;
+
   constructor(public navCtrl: NavController, public navParams: NavParams) {
+      this.trainingExpanded = false;
+      this.preTrainingExpanded = false;
+      this.postTrainingExpanded = false;
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad CreateTrainingPage');
+  expand(type: string) {
+      switch(type) {
+          case 'pre':
+              this.preTrainingExpanded = !this.preTrainingExpanded;
+              break;
+          case 'post':
+              this.postTrainingExpanded = !this.postTrainingExpanded;
+              break;
+          case 'training':
+              this.trainingExpanded = !this.trainingExpanded;
+              break;
+      }
+  }
+
+
+  cancel() {
+    this.navCtrl.pop();
   }
 
 }

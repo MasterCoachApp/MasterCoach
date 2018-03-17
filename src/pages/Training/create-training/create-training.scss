@@ -1,3 +1,17 @@
 page-create-training {
 
+  .tab {
+    background-color: color($colors, dark);
+    margin-bottom: 7px;
+    margin-top: 7px;
+  }
+
+  .title {
+    width: 100%;
+  }
+
+  .drop {
+    color: color($colors, primary);
+  }
+
 }

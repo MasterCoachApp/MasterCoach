@@ -33952,3 +33952,17 @@ page-standard-login .icon {
   color: #8795CD;
   font-size: 20px;
 }
+
+page-create-training .tab {
+  background-color: #000000;
+  margin-bottom: 7px;
+  margin-top: 7px;
+}
+
+page-create-training .title {
+  width: 100%;
+}
+
+page-create-training .drop {
+  color: #8795CD;
+}
