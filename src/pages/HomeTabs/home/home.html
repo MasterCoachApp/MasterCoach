@@ -17,8 +17,8 @@
                   (onMonthSelect)="onMonthSelect($event)"
                   (onDaySelect)="onDaySelect($event)"
                   [events]="currentEvents" >
-
     </ion-calendar>
+
     <div id="calendarScroll" class="scroll" >
         <ion-row nowrap>
           <div *ngFor="let date of this.calMenu.dateArray" class="expandedDate" (click)="selectDate(date)">

@@ -1,17 +1,17 @@
-import {Activities} from "./activities";
+import {Activities} from "./activities/activities";
 import {IEventsComponents} from "./interfaces/event-components";
-import {postMood, preMood} from '';
+import {Moods} from "./moods/moods";
 
 export class Competition implements IEventsComponents {
 
     preCalEvent: {
-        mood: preMood;
+        mood: Moods;
         notes: string;
         //add something to monitor pre-training pain
     };
 
     postCalEvent: {
-        mood: postMood;
+        mood: Moods;
         notes: string;
         //add something to monitor post training pain
     };

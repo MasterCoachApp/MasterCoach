@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {App, MenuController, NavController, Platform, PopoverController, ViewController} from 'ionic-angular';
+import {App, MenuController, NavController, Platform, ViewController} from 'ionic-angular';
 import {CalendarDay} from "../../../models/calendar/calendar-day";
 import {CalendarMenu} from "../../../providers/menus/calendar-menu";
 import {Storage} from "@ionic/storage";
@@ -23,7 +23,7 @@ export class HomePage {
     dateClicked: CalendarDay;
     displayFullCalendar = false;
 
-  constructor(public popoverCtrl: PopoverController, public navCtrl: NavController, public app: App, public storage: Storage, public user: UsersProvider, public menu: MenuController, public platform: Platform, public calMenu: CalendarMenu, public viewCtrl: ViewController) {
+  constructor(public navCtrl: NavController, public app: App, public storage: Storage, public user: UsersProvider, public menu: MenuController, public platform: Platform, public calMenu: CalendarMenu, public viewCtrl: ViewController) {
 
       this.storage.get('user-email').then(email => {
          if(email == null) {
@@ -137,24 +137,6 @@ export class HomePage {
     selectDate(date: CalendarDay) {
         this.dateSelected = date;
         this.monthInView = date.month;
-
-<<<<<<< HEAD
-
-        //When the popover getsd dismissed, pull the selected date, make it the selected date for the page and scroll to it
-        popover.onDidDismiss(data => {
-            if(data != null) {
-                console.log(data);
-                this.dateSelected = data;
-                let todayItem = document.getElementById(this.dateSelected.dateValue);
-                let scroll = document.getElementById("calendarScroll");
-                if (todayItem != null && scroll != null) {
-                    scroll.scrollLeft = todayItem.offsetLeft;
-                }
-                this.monthInView = this.dateSelected.month;
-            }
-        });
-=======
->>>>>>> Calendar_Development
     }
 
 

@@ -1,18 +1,14 @@
 webpackJsonp([0],{
 
-<<<<<<< HEAD
-/***/ 651:
-=======
-/***/ 1013:
->>>>>>> Calendar_Development
+/***/ 1015:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CalendarPopoverPageModule", function() { return CalendarPopoverPageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "StandardLoginPageModule", function() { return StandardLoginPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(24);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__calendar_popover__ = __webpack_require__(593);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(25);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__standard_login__ = __webpack_require__(213);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -22,23 +18,23 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var CalendarPopoverPageModule = (function () {
-    function CalendarPopoverPageModule() {
+var StandardLoginPageModule = (function () {
+    function StandardLoginPageModule() {
     }
-    CalendarPopoverPageModule = __decorate([
+    StandardLoginPageModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* NgModule */])({
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_2__calendar_popover__["a" /* CalendarPopoverPage */],
+                __WEBPACK_IMPORTED_MODULE_2__standard_login__["a" /* StandardLoginPage */],
             ],
             imports: [
-                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__calendar_popover__["a" /* CalendarPopoverPage */]),
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__standard_login__["a" /* StandardLoginPage */]),
             ],
         })
-    ], CalendarPopoverPageModule);
-    return CalendarPopoverPageModule;
+    ], StandardLoginPageModule);
+    return StandardLoginPageModule;
 }());
 
-//# sourceMappingURL=calendar-popover.module.js.map
+//# sourceMappingURL=standard-login.module.js.map
 
 /***/ })
 

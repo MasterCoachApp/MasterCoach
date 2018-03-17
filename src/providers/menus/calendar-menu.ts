@@ -1,21 +1,21 @@
 import {Injectable} from "@angular/core";
 import {ToolsProvider} from "../tools/tools";
 import {AlertController} from "ionic-angular";
-import {CalendarEvents} from "../../models/calendar/menu-events";
 import {CalendarDay} from "../../models/calendar/calendar-day";
+import {MenuEvents} from "../../models/calendar/menu-events";
 
 
 @Injectable()
 export class CalendarMenu {
 
     displayedYear: number;
-    menuEvents: CalendarEvents;
+    menuEvents: MenuEvents;
     dateArray: CalendarDay[];
 
 
     constructor(public tools: ToolsProvider, public alertCtrl: AlertController) {
         this.displayedYear = (new Date()).getFullYear();
-        this.menuEvents = new CalendarEvents();
+        this.menuEvents = new MenuEvents();
         let currentYear = this.getDisplayedYear();
         this.dateArray = this.getDates(new Date(currentYear.toString()+'-01-01'),new Date(currentYear.toString()+'-12-31'));
     }

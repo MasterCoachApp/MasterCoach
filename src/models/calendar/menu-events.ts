@@ -1,7 +1,7 @@
-import {Events} from "./track-events";
+import {ITrackEvents} from "../logging/interfaces/track_events-Interface";
+import {TrackEvents} from "../logging/activities/track-events";
 
-export class MenuEvents extends Events {
-
+export class MenuEvents extends TrackEvents {
 
     listOfEvents: string[];
 

@@ -7,7 +7,7 @@ export class UsersProvider {
 
     loggedIn: User;
 
-    constructor(private db: AngularFireDatabase,) {
+    constructor(private db: AngularFireDatabase) {
 
     }
 

@@ -29,13 +29,9 @@ import {ValidationProvider} from "../providers/tools/validations";
 import {CalendarMenu} from "../providers/menus/calendar-menu";
 import {DatePicker} from "@ionic-native/date-picker";
 import {CalendarModule} from 'ionic3-calendar-en';
-import {CalendarPopoverPage} from "../pages/calendar-popover/calendar-popover";
-<<<<<<< HEAD
 import {GooglePlus} from "@ionic-native/google-plus";
-=======
 import {StandardLoginPage} from "../pages/Logins/standard-login/standard-login";
 import {SettingsProvider} from "../providers/settings";
->>>>>>> Calendar_Development
 
 @NgModule({
   declarations: [
@@ -47,7 +43,6 @@ import {SettingsProvider} from "../providers/settings";
     LoginPage,
     CreateAccountPage,
     ForgotPasswordPage,
-    CalendarPopoverPage,
     StandardLoginPage
   ],
   imports: [
@@ -70,7 +65,6 @@ import {SettingsProvider} from "../providers/settings";
     LoginPage,
     CreateAccountPage,
     ForgotPasswordPage,
-    CalendarPopoverPage,
     StandardLoginPage
   ],
   providers: [
@@ -85,12 +79,8 @@ import {SettingsProvider} from "../providers/settings";
     ValidationProvider,
     CalendarMenu,
     DatePicker,
-<<<<<<< HEAD
-      GooglePlus
-
-=======
+    GooglePlus,
     SettingsProvider
->>>>>>> Calendar_Development
   ]
 })
 export class AppModule {}

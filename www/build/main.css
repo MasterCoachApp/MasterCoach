@@ -33461,8 +33461,6 @@ ion-calendar .calendar-row .select {
   box-shadow: none;
   color: #fff;
   background: #8496D2;
-<<<<<<< HEAD
-=======
 }
 
 .share {
@@ -33490,7 +33488,6 @@ ion-calendar .calendar-row .select {
 
 .filter {
   opacity: 0.5;
->>>>>>> Calendar_Development
 }
 
 .menuSectionHeader {
@@ -33588,8 +33585,8 @@ page-home .executed {
 }
 
 page-home .showingCalendar {
-  -webkit-transition: all linear 0.2s;
-  transition: all linear 0.2s;
+  -webkit-transition: all linear 1s;
+  transition: all linear 1s;
   z-index: 1000;
   background-color: #161b1f;
   color: white;
