@@ -12,7 +12,7 @@ export class Activities {
     constructor() {
         this.warmUp = null;
         this.coolDown = null;
-        this.trackEvents = null;
+        this.trackEvents = [];
     }
 
 
@@ -34,6 +34,9 @@ export class Activities {
     }
     addEvents(event: TrackEvents) {
         this.trackEvents.push(event);
+    }
+    removeEvent(event: TrackEvents) {
+        this.trackEvents.splice(this.trackEvents.indexOf(event),1);
     }
     setEvents(trackEvents: TrackEvents[]) {
         this.trackEvents = trackEvents;

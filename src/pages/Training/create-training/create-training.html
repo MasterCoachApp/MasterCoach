@@ -32,9 +32,8 @@
         Pre-Training
         </ion-col>
         <ion-col style="text-align: right; width: 100%;" col-8>
-          <ion-icon style="text-align: right" *ngIf="!this.preTrainingExpanded" class="drop" name="ios-arrow-down">
-          <ion-icon *ngIf="this.preTrainingExpanded" class="drop" name="ios-arrow-up" right></ion-icon>
-          </ion-icon>
+          <ion-icon style="text-align: right" *ngIf="!this.preTrainingExpanded" class="drop" name="ios-arrow-forward"></ion-icon>
+          <ion-icon *ngIf="this.preTrainingExpanded" class="drop" name="ios-arrow-down" right></ion-icon>
         </ion-col>
       </ion-list-header>
     </ion-item>
@@ -88,24 +87,42 @@
         Training
       </ion-col>
       <ion-col style="text-align: right; width: 100%;" col-8>
-        <ion-icon style="text-align: right" *ngIf="!this.preTrainingExpanded" class="drop" name="ios-arrow-down">
-          <ion-icon *ngIf="this.preTrainingExpanded" class="drop" name="ios-arrow-up" right></ion-icon>
-        </ion-icon>
+        <ion-icon style="text-align: right" *ngIf="!this.trainingExpanded" class="drop" name="ios-arrow-forward"></ion-icon>
+        <ion-icon *ngIf="this.trainingExpanded" class="drop" name="ios-arrow-down" right></ion-icon>
       </ion-col>
       </ion-list-header>
     </ion-item>
     <ion-list *ngIf="this.trainingExpanded">
       <ion-label stacked>Activities</ion-label>
       <ion-list>
-        <ion-item>
-          <ion-label><ion-icon name="ios-add" (click)="addActivity()"></ion-icon></ion-label>
+        <ion-label stacked class="trainingHeaders">Warm Up</ion-label>
+        <ion-item *ngIf="!this.activities.warmUp">
+          <button ion-button (click)="addWarmUp()">Add Warm Up</button>
         </ion-item>
-
-        <!--<ion-item *ngFor="let event of activities.getEvents()">-->
-          <!--<ion-label>{{event.trackEvents}} with value: {{name:Value}} </ion-label>-->
-          <!--<ion-checkbox [(ngModel)]="name.Value" ></ion-checkbox>-->
-        <!--</ion-item>-->
+        <ion-item *ngIf="this.activities.warmUp">
+          <button ion-button (click)="addWarmUp()">Warm Up {{this.activities.warmUp}}<ion-icon class="trainingHeaders" name="close" (click)="activities.setWarmUp(null)"></ion-icon></button>
+        </ion-item>
+        <ion-label stacked class="trainingHeaders">Events</ion-label>
+        <ion-list *ngIf="activities.getEvents()">
+          <ion-item *ngFor="let event of activities.getEvents()">
+            <button ion-button>{{event}} <ion-icon name="close" class="trainingHeaders" (click)="activities.removeEvent(event)" ></ion-icon></button>
+          </ion-item>
+        </ion-list>
+        <ion-item>
+          <button ion-button (click)="addActivity()">Add Event</button>
+        </ion-item>
       </ion-list>
+      <ion-label stacked class="trainingHeaders">Cool Down</ion-label>
+      <ion-item *ngIf="!this.activities.coolDown">
+        <button ion-button (click)="addCoolDown()">Add Cool Down</button>
+      </ion-item>
+      <ion-item *ngIf="this.activities.coolDown">
+        <button ion-button (click)="addCoolDown()">Cool Down {{this.activities.coolDown}}<ion-icon class="trainingHeaders" name="close" (click)="activities.setCoolDown(null)"></ion-icon></button>
+      </ion-item>
+      <ion-item>
+        <ion-label stacked>Notes</ion-label>
+        <ion-textarea class="openTextBox" [(ngModel)]="this.mainTraining.mainTrainingNotes.val"></ion-textarea>
+      </ion-item>
     </ion-list>
     <ion-item class="tab" (click)="expand('post')">
       <ion-list-header>
@@ -113,9 +130,8 @@
         Post-Training
       </ion-col>
       <ion-col style="text-align: right; width: 100%;" col-8>
-        <ion-icon style="text-align: right" *ngIf="!this.preTrainingExpanded" class="drop" name="ios-arrow-down">
-          <ion-icon *ngIf="this.preTrainingExpanded" class="drop" name="ios-arrow-up" right></ion-icon>
-        </ion-icon>
+        <ion-icon style="text-align: right" *ngIf="!this.postTrainingExpanded" class="drop" name="ios-arrow-forward"></ion-icon>
+        <ion-icon *ngIf="this.postTrainingExpanded" class="drop" name="ios-arrow-down" right></ion-icon>
       </ion-col>
       </ion-list-header>
     </ion-item>

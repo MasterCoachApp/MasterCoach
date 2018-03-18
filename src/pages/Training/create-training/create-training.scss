@@ -4,6 +4,7 @@ page-create-training {
     background-color: color($colors, dark);
     margin-bottom: 7px;
     margin-top: 7px;
+    width: 100%;
   }
 
   .title {
@@ -40,6 +41,13 @@ page-create-training {
     margin: 2px;
   }
   .ionItemFix {
-    margin: 2px 2px 2px 2px;
+    margin: 1px 1px 1px 1px;
+  }
+  .alertCss {
+    background-color: #2c3035;
+    color: #ffffff;
+  }
+  .trainingHeaders {
+    padding-left: 10px;
   }
 }
