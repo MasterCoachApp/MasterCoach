@@ -20,7 +20,7 @@ import {TrackEvents} from "../../../models/logging/activities/track-events";
 @IonicPage()
 @Component({
     selector: 'page-create-training',
-    templateUrl: 'create-training.html',
+    templateUrl: 'create-training.html'
 })
 export class CreateTrainingPage {
 
@@ -33,7 +33,7 @@ export class CreateTrainingPage {
     postThoughts: string;
     overallRating: number;
 
-    activities: Activities[];
+    activities: Activities;
     listOfEvents: string[];
 
 
@@ -69,14 +69,17 @@ export class CreateTrainingPage {
         overallRating: 0
     };
 
+    mainTrainingNotes: string;
+
     constructor(public navCtrl: NavController, public navParams: NavParams, public users: UsersProvider, public training: EntryProvider, public alertCtrl: AlertController, public tools: ToolsProvider) {
         this.trainingExpanded = false;
         this.preTrainingExpanded = false;
         this.postTrainingExpanded = false;
 
         this.overallThoughtsExpanded = false;
-        this.activities = [];
+        this.activities = new Activities();
         this.listOfEvents = new TrackEvents().getListOfEvents();
+        this.mainTrainingNotes = null;
 
     }
 
@@ -102,6 +105,7 @@ export class CreateTrainingPage {
         let newTraining = new Training();
         newTraining.setPreCalEvent(mood, this.preTraining.preThoughts.val);
         newTraining.setPostCalEvent(this.postTraining.overallRating, this.postTraining.postThoughts);
+        newTraining.setMainCalEvent(this.activities, this.mainTrainingNotes);
 
         console.log(newTraining.getPreCalEvent().mood.surveyList);
 
@@ -130,8 +134,10 @@ export class CreateTrainingPage {
 
     addActivity() {
 
-        let alert = this.alertCtrl.create();
-        alert.setTitle('Which events would you like to add?');
+        let alert = this.alertCtrl.create({
+                cssClass: 'alertCss'
+        });
+        alert.setTitle('Which event does this belong to?');
 
         this.listOfEvents.forEach( data => {
             alert.addInput({
@@ -147,7 +153,74 @@ export class CreateTrainingPage {
             text: 'Add Events',
             handler: data => {
                 console.log('Checkbox data:', data);
-                // this.activities;
+                if (data != null) {
+                    data.forEach ( index => {
+                        this.activities.addEvents(index);
+                    });
+                }
+                // this.testCheckboxResult = data;
+            }
+        });
+        alert.present();
+    }
+
+    addWarmUp() {
+        let alert = this.alertCtrl.create({
+           title: 'Warm Up',
+
+        });
+        alert.addInput( {
+            type: 'radio',
+            label: 'A',
+            value: 'A',
+            checked: false
+        });
+        alert.addInput( {
+            type: 'radio',
+            label: 'B',
+            value: 'B',
+            checked: false
+        });
+        alert.addButton('Cancel');
+        alert.addButton({
+            text: 'Add',
+            handler: data => {
+                console.log('Checkbox data:', data);
+                if (data != null) {
+                    this.activities.setWarmUp(data);
+                }
+                // this.testCheckboxResult = data;
+            }
+        });
+        alert.present();
+
+    }
+
+    addCoolDown() {
+        let alert = this.alertCtrl.create({
+            title: 'Cool Down',
+
+        });
+        alert.addInput( {
+            type: 'radio',
+            label: 'A',
+            value: 'A',
+            checked: false
+        });
+        alert.addInput( {
+            type: 'radio',
+            label: 'B',
+            value: 'B',
+            checked: false
+        });
+        alert.addButton('Cancel');
+        alert.addButton({
+            text: 'Add',
+            handler: data => {
+                console.log('Checkbox data:', data);
+                if (data != null) {
+                    this.activities.setCoolDown(data);
+                }
                 // this.testCheckboxResult = data;
             }
         });
@@ -156,6 +229,10 @@ export class CreateTrainingPage {
 
     cancel() {
         this.navCtrl.pop();
+    }
+    // adding for testing data on page DG 2018-03-18
+    testConsole(data: any) {
+        console.log(data);
     }
 
 }

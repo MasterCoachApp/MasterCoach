@@ -27,7 +27,7 @@
 
   <ion-list no-lines>
     <ion-item class="tab" align-items-stretch (click)="expand('pre')">
-      <ion-label class="title">Pre-Training <ion-icon *ngIf="!this.preTrainingExpanded" class="drop" name="ios-arrow-down" end></ion-icon> <ion-icon *ngIf="this.preTrainingExpanded" class="drop" name="ios-arrow-up" end></ion-icon> </ion-label>
+      <ion-label class="title">Pre-Training <ion-icon *ngIf="!this.preTrainingExpanded" class="drop" name="ios-arrow-down" end></ion-icon><ion-icon *ngIf="this.preTrainingExpanded" class="drop" name="ios-arrow-forward" end></ion-icon> </ion-label>
     </ion-item>
     <ion-list *ngIf="!this.preTrainingExpanded">
       <ion-item class="ionItemFix">
@@ -74,23 +74,42 @@
       </ion-item>
     </ion-list>
     <ion-item class="tab" (click)="expand('training')">>
-      <ion-label class="title">Training <ion-icon *ngIf="!this.trainingExpanded" class="drop" name="ios-arrow-down" end></ion-icon> <ion-icon *ngIf="this.trainingExpanded" class="drop" name="ios-arrow-up" end></ion-icon></ion-label>
+      <ion-label class="title">Training <ion-icon *ngIf="!this.trainingExpanded" class="drop" name="ios-arrow-down" end></ion-icon> <ion-icon *ngIf="this.trainingExpanded" class="drop" name="ios-arrow-forward" end></ion-icon></ion-label>
     </ion-item>
     <ion-list *ngIf="!this.trainingExpanded">
-      <ion-label stacked>Activities</ion-label>
       <ion-list>
-        <ion-item>
-          <ion-label><ion-icon name="ios-add" (click)="addActivity()"></ion-icon></ion-label>
+        <ion-label stacked class="trainingHeaders">Warm Up</ion-label>
+        <ion-item *ngIf="!this.activities.warmUp">
+          <button ion-button (click)="addWarmUp()">Add Warm Up</button>
         </ion-item>
-
-        <!--<ion-item *ngFor="let event of activities.getEvents()">-->
-          <!--<ion-label>{{event.trackEvents}} with value: {{name:Value}} </ion-label>-->
-          <!--<ion-checkbox [(ngModel)]="name.Value" ></ion-checkbox>-->
-        <!--</ion-item>-->
+        <ion-item *ngIf="this.activities.warmUp">
+          <button ion-button (click)="addWarmUp()">Warm Up {{this.activities.warmUp}}<ion-icon class="trainingHeaders" name="close" (click)="activities.setWarmUp(null)"></ion-icon></button>
+        </ion-item>
+        <ion-label stacked class="trainingHeaders">Events</ion-label>
+        <ion-list *ngIf="activities.getEvents()">
+          <ion-item *ngFor="let event of activities.getEvents()">
+            <button ion-button>{{event}} <ion-icon name="close" class="trainingHeaders" (click)="activities.removeEvent(event)" ></ion-icon></button>
+          </ion-item>
+        </ion-list>
+        <ion-item>
+          <button ion-button (click)="addActivity()">Add Event</button>
+        </ion-item>
       </ion-list>
+      <ion-label stacked class="trainingHeaders">Cool Down</ion-label>
+      <ion-item *ngIf="!this.activities.coolDown">
+        <button ion-button (click)="addCoolDown()">Add Cool Down</button>
+      </ion-item>
+      <ion-item *ngIf="this.activities.coolDown">
+        <button ion-button (click)="addCoolDown()">Cool Down {{this.activities.coolDown}}<ion-icon class="trainingHeaders" name="close" (click)="activities.setCoolDown(null)"></ion-icon></button>
+      </ion-item>
+      <ion-item>
+        <ion-label stacked>Notes</ion-label>
+        <ion-textarea class="openTextBox" [(ngModel)]="this.mainTrainingNotes"></ion-textarea>
+      </ion-item>
     </ion-list>
+
     <ion-item class="tab" (click)="expand('post')">>
-      <ion-label class="title">Post-Training<ion-icon *ngIf="!this.postTrainingExpanded" class="drop" name="ios-arrow-down" end></ion-icon> <ion-icon *ngIf="this.postTrainingExpanded" class="drop" name="ios-arrow-up" end></ion-icon></ion-label>
+      <ion-label class="title">Post-Training<ion-icon *ngIf="!this.postTrainingExpanded" class="drop" name="ios-arrow-down" end></ion-icon> <ion-icon *ngIf="this.postTrainingExpanded" class="drop" name="ios-arrow-forward" end></ion-icon></ion-label>
     </ion-item>
     <div *ngIf="!this.postTrainingExpanded">
      <ion-list no-lines>

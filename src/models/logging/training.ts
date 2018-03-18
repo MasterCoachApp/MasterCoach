@@ -18,7 +18,7 @@ export class Training implements IEventsComponents {
     };
 
     mainCalEvent: {
-         activities: Activities[],
+         activities: Activities,
          notes: string
     };
 
@@ -74,7 +74,7 @@ export class Training implements IEventsComponents {
             notes: notes
         };
     }
-    public setMainCalEvent(activities: Activities[], notes: string) {
+    public setMainCalEvent(activities: Activities, notes: string) {
         this.mainCalEvent = {
             activities: activities,
             notes: notes
