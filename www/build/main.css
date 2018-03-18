@@ -4242,16 +4242,16 @@ ion-alert input {
 }
 
 .alert-input::-moz-placeholder {
-  color: #999;
+  color: white;
 }
 
 .alert-input:-ms-input-placeholder {
-  color: #999;
+  color: white;
 }
 
 .alert-input::-webkit-input-placeholder {
   text-indent: 0;
-  color: #999;
+  color: white;
 }
 
 .alert-button-group {
@@ -33957,6 +33957,7 @@ page-create-training .tab {
   background-color: #000000;
   margin-bottom: 7px;
   margin-top: 7px;
+  width: 100%;
 }
 
 page-create-training .title {
@@ -33995,5 +33996,14 @@ page-create-training .openTextBox {
 }
 
 page-create-training .ionItemFix {
-  margin: 2px 2px 2px 2px;
+  margin: 1px 1px 1px 1px;
+}
+
+page-create-training .alertCss {
+  background-color: #2c3035;
+  color: #ffffff;
+}
+
+page-create-training .trainingHeaders {
+  padding-left: 10px;
 }
