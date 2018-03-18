@@ -1,4 +1,4 @@
-import {Qna} from "../moods/qna";
+import {Qna} from "../qna";
 
 export interface ISurvey {
 

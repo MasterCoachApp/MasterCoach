@@ -1,14 +1,13 @@
 import {Component} from '@angular/core';
-import {AlertController, IonicPage, NavController, NavParams} from 'ionic-angular';
+import {AlertController, IonicPage, NavController, NavParams, Note} from 'ionic-angular';
 import {UsersProvider} from "../../../providers/users/users";
-import {TabsPage} from "../../HomeTabs/tabs/tabs";
 import {EntryProvider} from "../../../providers/users/entries";
 import {ToolsProvider} from "../../../providers/tools/tools";
 import {Training} from "../../../models/logging/training";
-import {Moods} from "../../../models/logging/moods/moods";
-import {Qna} from "../../../models/logging/moods/qna";
+import {Qna} from "../../../models/logging/qna";
 import {Activities} from "../../../models/logging/activities/activities";
 import {TrackEvents} from "../../../models/logging/activities/track-events";
+import {Notes} from "../../../models/logging/notes";
 
 /**
  * Generated class for the CreateTrainingPage page.
@@ -20,7 +19,7 @@ import {TrackEvents} from "../../../models/logging/activities/track-events";
 @IonicPage()
 @Component({
     selector: 'page-create-training',
-    templateUrl: 'create-training.html'
+    templateUrl: 'create-training.html',
 })
 export class CreateTrainingPage {
 
@@ -30,10 +29,7 @@ export class CreateTrainingPage {
 
     overallThoughtsExpanded: boolean;
 
-    postThoughts: string;
-    overallRating: number;
-
-    activities: Activities;
+    activities: Activities[];
     listOfEvents: string[];
 
 
@@ -65,11 +61,12 @@ export class CreateTrainingPage {
 
     };
     postTraining = {
-        postThoughts: '',
+        postThoughts: {
+            key: 'Thoughts',
+            val: ''
+        },
         overallRating: 0
     };
-
-    mainTrainingNotes: string;
 
     constructor(public navCtrl: NavController, public navParams: NavParams, public users: UsersProvider, public training: EntryProvider, public alertCtrl: AlertController, public tools: ToolsProvider) {
         this.trainingExpanded = false;
@@ -77,37 +74,43 @@ export class CreateTrainingPage {
         this.postTrainingExpanded = false;
 
         this.overallThoughtsExpanded = false;
-        this.activities = new Activities();
+        this.activities = [];
         this.listOfEvents = new TrackEvents().getListOfEvents();
-        this.mainTrainingNotes = null;
 
     }
 
-    createMood(): Moods {
-        let mood = new Moods();
+    createQnaArray(): Qna[] {
+        let qna: Qna[] = [];
         let question = new Qna(this.preTraining.energy.key, this.preTraining.energy.val);
-        mood.addQuestion(question);
+        qna.push(question);
         question = new Qna(this.preTraining.bodyState.key, this.preTraining.bodyState.val);
-        mood.addQuestion(question);
+        qna.push(question);
         question = new Qna(this.preTraining.stress.key, this.preTraining.stress.val);
-        mood.addQuestion(question);
+        qna.push(question);
         question = new Qna(this.preTraining.hunger.key, this.preTraining.hunger.val);
-        mood.addQuestion(question);
+        qna.push(question);
         question = new Qna(this.preTraining.readiness.key, this.preTraining.readiness.val);
-        mood.addQuestion(question);
-        return mood;
+        qna.push(question);
+        return qna;
     }
+
 
     createNewTraining() {
 
-        let mood = this.createMood();
+        let qna = this.createQnaArray();
+        let preNotes: Notes[] = [];
+        let postNotes: Notes[] = [];
+
+        let preNote = new Notes(this.preTraining.preThoughts.key, this.preTraining.preThoughts.val);
+        preNotes.push(preNote);
+
+        let postNote = new Notes(this.postTraining.postThoughts.key, this.postTraining.postThoughts.val);
+        postNotes.push(postNote);
 
         let newTraining = new Training();
-        newTraining.setPreCalEvent(mood, this.preTraining.preThoughts.val);
-        newTraining.setPostCalEvent(this.postTraining.overallRating, this.postTraining.postThoughts);
-        newTraining.setMainCalEvent(this.activities, this.mainTrainingNotes);
+        newTraining.setPreCalEvent(qna, preNotes);
+        newTraining.setPostCalEvent(this.postTraining.overallRating, postNotes);
 
-        console.log(newTraining.getPreCalEvent().mood.surveyList);
 
         if (navigator.onLine) {
             this.training.createNewEntry(newTraining);
@@ -134,10 +137,8 @@ export class CreateTrainingPage {
 
     addActivity() {
 
-        let alert = this.alertCtrl.create({
-                cssClass: 'alertCss'
-        });
-        alert.setTitle('Which event does this belong to?');
+        let alert = this.alertCtrl.create();
+        alert.setTitle('Which events would you like to add?');
 
         this.listOfEvents.forEach( data => {
             alert.addInput({
@@ -153,74 +154,7 @@ export class CreateTrainingPage {
             text: 'Add Events',
             handler: data => {
                 console.log('Checkbox data:', data);
-                if (data != null) {
-                    data.forEach ( index => {
-                        this.activities.addEvents(index);
-                    });
-                }
-                // this.testCheckboxResult = data;
-            }
-        });
-        alert.present();
-    }
-
-    addWarmUp() {
-        let alert = this.alertCtrl.create({
-           title: 'Warm Up',
-
-        });
-        alert.addInput( {
-            type: 'radio',
-            label: 'A',
-            value: 'A',
-            checked: false
-        });
-        alert.addInput( {
-            type: 'radio',
-            label: 'B',
-            value: 'B',
-            checked: false
-        });
-        alert.addButton('Cancel');
-        alert.addButton({
-            text: 'Add',
-            handler: data => {
-                console.log('Checkbox data:', data);
-                if (data != null) {
-                    this.activities.setWarmUp(data);
-                }
-                // this.testCheckboxResult = data;
-            }
-        });
-        alert.present();
-
-    }
-
-    addCoolDown() {
-        let alert = this.alertCtrl.create({
-            title: 'Cool Down',
-
-        });
-        alert.addInput( {
-            type: 'radio',
-            label: 'A',
-            value: 'A',
-            checked: false
-        });
-        alert.addInput( {
-            type: 'radio',
-            label: 'B',
-            value: 'B',
-            checked: false
-        });
-        alert.addButton('Cancel');
-        alert.addButton({
-            text: 'Add',
-            handler: data => {
-                console.log('Checkbox data:', data);
-                if (data != null) {
-                    this.activities.setCoolDown(data);
-                }
+                // this.activities;
                 // this.testCheckboxResult = data;
             }
         });
@@ -229,10 +163,6 @@ export class CreateTrainingPage {
 
     cancel() {
         this.navCtrl.pop();
-    }
-    // adding for testing data on page DG 2018-03-18
-    testConsole(data: any) {
-        console.log(data);
     }
 
 }

@@ -1,30 +1,31 @@
 import {Activities} from "./activities/activities";
 import {IEventsComponents} from "./interfaces/event-components";
-import {Moods} from "./moods/moods";
+import {Qna} from "./qna";
+import {Notes} from "./notes";
 
 
 export class Training implements IEventsComponents {
 
     preCalEvent: {
-        mood: Moods,
-        notes: string
+        survey: Qna[],
+        notes: Notes[]
         //add something to monitor pre-training pain
     };
 
     postCalEvent: {
         overallRating: number,
-        notes: string
+        notes: Notes[]
         //add something to monitor post training pain
     };
 
     mainCalEvent: {
-         activities: Activities,
-         notes: string
+         activities: Activities[],
+         notes: Notes[]
     };
 
     constructor() {
         this.preCalEvent = {
-            mood: null,
+            survey: null,
             notes: null,
             //add something to monitor pre-training pain
         };
@@ -62,19 +63,19 @@ export class Training implements IEventsComponents {
     //Mutators
     //------
 
-    public setPreCalEvent(mood: Moods, notes: string) {
+    public setPreCalEvent(qna: Qna[], notes: Notes[]) {
         this.preCalEvent = {
-            mood: mood,
+            survey: qna,
             notes: notes
         };
     }
-    public setPostCalEvent(overallRating: number, notes: string) {
+    public setPostCalEvent(overallRating: number, notes: Notes[]) {
         this.postCalEvent = {
             overallRating: overallRating,
             notes: notes
         };
     }
-    public setMainCalEvent(activities: Activities, notes: string) {
+    public setMainCalEvent(activities: Activities[], notes: Notes[]) {
         this.mainCalEvent = {
             activities: activities,
             notes: notes
