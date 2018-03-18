@@ -373,6 +373,40 @@ webpackContext.id = 1016;
 
 /***/ }),
 
+/***/ 1024:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Qna; });
+var Qna = (function () {
+    function Qna(question, answer) {
+        this.question = question;
+        this.answer = answer;
+    }
+    return Qna;
+}());
+
+//# sourceMappingURL=qna.js.map
+
+/***/ }),
+
+/***/ 1025:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Notes; });
+var Notes = (function () {
+    function Notes(question, answer) {
+        this.question = question;
+        this.answer = answer;
+    }
+    return Notes;
+}());
+
+//# sourceMappingURL=notes.js.map
+
+/***/ }),
+
 /***/ 120:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -979,10 +1013,10 @@ var ForgotPasswordPage = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_users_entries__ = __webpack_require__(431);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__providers_tools_tools__ = __webpack_require__(41);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__models_logging_training__ = __webpack_require__(990);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__models_logging_moods_moods__ = __webpack_require__(991);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__models_logging_moods_qna__ = __webpack_require__(992);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__models_logging_activities_activities__ = __webpack_require__(993);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__models_logging_activities_track_events__ = __webpack_require__(430);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__models_logging_qna__ = __webpack_require__(1024);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__models_logging_activities_activities__ = __webpack_require__(993);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__models_logging_activities_track_events__ = __webpack_require__(430);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__models_logging_notes__ = __webpack_require__(1025);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1043,38 +1077,54 @@ var CreateTrainingPage = (function () {
             },
         };
         this.postTraining = {
-            postThoughts: '',
+            postThoughts: {
+                key: 'Thoughts',
+                val: ''
+            },
             overallRating: 0
+        };
+        this.mainTraining = {
+            mainTrainingNotes: {
+                key: 'Notes',
+                val: ''
+            }
         };
         this.trainingExpanded = false;
         this.preTrainingExpanded = false;
         this.postTrainingExpanded = false;
         this.overallThoughtsExpanded = false;
-        this.activities = new __WEBPACK_IMPORTED_MODULE_8__models_logging_activities_activities__["a" /* Activities */]();
-        this.listOfEvents = new __WEBPACK_IMPORTED_MODULE_9__models_logging_activities_track_events__["a" /* TrackEvents */]().getListOfEvents();
-        this.mainTrainingNotes = null;
+        this.activities = new __WEBPACK_IMPORTED_MODULE_7__models_logging_activities_activities__["a" /* Activities */]();
+        this.listOfEvents = new __WEBPACK_IMPORTED_MODULE_8__models_logging_activities_track_events__["a" /* TrackEvents */]().getListOfEvents();
     }
-    CreateTrainingPage.prototype.createMood = function () {
-        var mood = new __WEBPACK_IMPORTED_MODULE_6__models_logging_moods_moods__["a" /* Moods */]();
-        var question = new __WEBPACK_IMPORTED_MODULE_7__models_logging_moods_qna__["a" /* Qna */](this.preTraining.energy.key, this.preTraining.energy.val);
-        mood.addQuestion(question);
-        question = new __WEBPACK_IMPORTED_MODULE_7__models_logging_moods_qna__["a" /* Qna */](this.preTraining.bodyState.key, this.preTraining.bodyState.val);
-        mood.addQuestion(question);
-        question = new __WEBPACK_IMPORTED_MODULE_7__models_logging_moods_qna__["a" /* Qna */](this.preTraining.stress.key, this.preTraining.stress.val);
-        mood.addQuestion(question);
-        question = new __WEBPACK_IMPORTED_MODULE_7__models_logging_moods_qna__["a" /* Qna */](this.preTraining.hunger.key, this.preTraining.hunger.val);
-        mood.addQuestion(question);
-        question = new __WEBPACK_IMPORTED_MODULE_7__models_logging_moods_qna__["a" /* Qna */](this.preTraining.readiness.key, this.preTraining.readiness.val);
-        mood.addQuestion(question);
-        return mood;
+    CreateTrainingPage.prototype.createQnaArray = function () {
+        var qna = [];
+        var question = new __WEBPACK_IMPORTED_MODULE_6__models_logging_qna__["a" /* Qna */](this.preTraining.energy.key, this.preTraining.energy.val);
+        qna.push(question);
+        question = new __WEBPACK_IMPORTED_MODULE_6__models_logging_qna__["a" /* Qna */](this.preTraining.bodyState.key, this.preTraining.bodyState.val);
+        qna.push(question);
+        question = new __WEBPACK_IMPORTED_MODULE_6__models_logging_qna__["a" /* Qna */](this.preTraining.stress.key, this.preTraining.stress.val);
+        qna.push(question);
+        question = new __WEBPACK_IMPORTED_MODULE_6__models_logging_qna__["a" /* Qna */](this.preTraining.hunger.key, this.preTraining.hunger.val);
+        qna.push(question);
+        question = new __WEBPACK_IMPORTED_MODULE_6__models_logging_qna__["a" /* Qna */](this.preTraining.readiness.key, this.preTraining.readiness.val);
+        qna.push(question);
+        return qna;
     };
     CreateTrainingPage.prototype.createNewTraining = function () {
-        var mood = this.createMood();
+        var qna = this.createQnaArray();
+        var preNotes = [];
+        var postNotes = [];
+        var mainNotes = [];
+        var preNote = new __WEBPACK_IMPORTED_MODULE_9__models_logging_notes__["a" /* Notes */](this.preTraining.preThoughts.key, this.preTraining.preThoughts.val);
+        preNotes.push(preNote);
+        var postNote = new __WEBPACK_IMPORTED_MODULE_9__models_logging_notes__["a" /* Notes */](this.postTraining.postThoughts.key, this.postTraining.postThoughts.val);
+        postNotes.push(postNote);
+        var mainNote = new __WEBPACK_IMPORTED_MODULE_9__models_logging_notes__["a" /* Notes */](this.mainTraining.mainTrainingNotes.key, this.mainTraining.mainTrainingNotes.val);
+        mainNotes.push(mainNote);
         var newTraining = new __WEBPACK_IMPORTED_MODULE_5__models_logging_training__["a" /* Training */]();
-        newTraining.setPreCalEvent(mood, this.preTraining.preThoughts.val);
-        newTraining.setPostCalEvent(this.postTraining.overallRating, this.postTraining.postThoughts);
-        newTraining.setMainCalEvent(this.activities, this.mainTrainingNotes);
-        console.log(newTraining.getPreCalEvent().mood.surveyList);
+        newTraining.setPreCalEvent(qna, preNotes);
+        newTraining.setPostCalEvent(this.postTraining.overallRating, postNotes);
+        newTraining.setMainCalEvent(this.activities, mainNotes);
         if (navigator.onLine) {
             this.training.createNewEntry(newTraining);
         }
@@ -1193,11 +1243,12 @@ var CreateTrainingPage = (function () {
     };
     CreateTrainingPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-create-training',template:/*ion-inline-start:"/workspace/MasterCoach/src/pages/Training/create-training/create-training.html"*/'<!--\n  Generated template for the CreateTrainingPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-buttons left>\n      <button ion-button="arrow-back" color="primary" (click)="cancel()">\n        <ion-icon name="ios-arrow-down"></ion-icon>\n      </button>\n    </ion-buttons>\n    <ion-title>New Training</ion-title>\n      <ion-buttons right (click)="createNewTraining()">\n          <button ion-button="arrow-back" color="primary" (click)="cancel()">\n                Save\n          </button>\n      </ion-buttons>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content>\n\n  <ion-list no-lines>\n    <ion-item class="tab" align-items-stretch (click)="expand(\'pre\')">\n      <ion-label class="title">Pre-Training <ion-icon *ngIf="!this.preTrainingExpanded" class="drop" name="ios-arrow-down" end></ion-icon><ion-icon *ngIf="this.preTrainingExpanded" class="drop" name="ios-arrow-forward" end></ion-icon> </ion-label>\n    </ion-item>\n    <ion-list *ngIf="!this.preTrainingExpanded">\n      <ion-item class="ionItemFix">\n        <ion-label item-start>Readiness</ion-label>\n        <ion-range min="0" max="5" [snaps]="true" steps="1" [pin]="true" right [(ngModel)]="preTraining.readiness.val">\n          <ion-label range-left>0</ion-label>\n          <ion-label range-right>5</ion-label>\n        </ion-range>\n      </ion-item>\n      <ion-item>\n        <ion-label item-start>Energy</ion-label>\n        <ion-range min="0" max="5" [snaps]="true" steps="1" [pin]="true" right [(ngModel)]="preTraining.energy.val">\n          <ion-label range-left>0</ion-label>\n          <ion-label range-right>5</ion-label>\n        </ion-range>\n      </ion-item>\n      <ion-item>\n        <ion-label item-start>Hunger</ion-label>\n        <ion-range min="0" max="5" [snaps]="true" steps="1" [pin]="true" right [(ngModel)]="preTraining.hunger.val">\n          <ion-label range-left>0</ion-label>\n          <ion-label range-right>5</ion-label>\n        </ion-range>\n      </ion-item>\n      <ion-item>\n        <ion-label item-start>Stress</ion-label>\n        <ion-range min="0" max="5" [snaps]="true" steps="1" [pin]="true" right [(ngModel)]="preTraining.stress.val">\n          <ion-label range-left>0</ion-label>\n          <ion-label range-right>5</ion-label>\n        </ion-range>\n      </ion-item>\n      <ion-item>\n        <ion-label item-start>Body State</ion-label>\n        <ion-range min="0" max="5" [snaps]="true" steps="1" [pin]="true" right [(ngModel)]="preTraining.bodyState.val">\n          <ion-label range-left>0</ion-label>\n          <ion-label range-right>5</ion-label>\n        </ion-range>\n      </ion-item>\n      <ion-item>\n        <ion-label>Pain <ion-icon name="medkit"></ion-icon></ion-label>\n      </ion-item>\n      <ion-item>\n        <ion-label stacked>Thoughts</ion-label>\n        <ion-textarea class="openTextBox" [(ngModel)]="this.preTraining.preThoughts.val"></ion-textarea>\n      </ion-item>\n    </ion-list>\n    <ion-item class="tab" (click)="expand(\'training\')">>\n      <ion-label class="title">Training <ion-icon *ngIf="!this.trainingExpanded" class="drop" name="ios-arrow-down" end></ion-icon> <ion-icon *ngIf="this.trainingExpanded" class="drop" name="ios-arrow-forward" end></ion-icon></ion-label>\n    </ion-item>\n    <ion-list *ngIf="!this.trainingExpanded">\n      <ion-list>\n        <ion-label stacked class="trainingHeaders">Warm Up</ion-label>\n        <ion-item *ngIf="!this.activities.warmUp">\n          <button ion-button (click)="addWarmUp()">Add Warm Up</button>\n        </ion-item>\n        <ion-item *ngIf="this.activities.warmUp">\n          <button ion-button (click)="addWarmUp()">Warm Up {{this.activities.warmUp}}<ion-icon class="trainingHeaders" name="close" (click)="activities.setWarmUp(null)"></ion-icon></button>\n        </ion-item>\n        <ion-label stacked class="trainingHeaders">Events</ion-label>\n        <ion-list *ngIf="activities.getEvents()">\n          <ion-item *ngFor="let event of activities.getEvents()">\n            <button ion-button>{{event}} <ion-icon name="close" class="trainingHeaders" (click)="activities.removeEvent(event)" ></ion-icon></button>\n          </ion-item>\n        </ion-list>\n        <ion-item>\n          <button ion-button (click)="addActivity()">Add Event</button>\n        </ion-item>\n      </ion-list>\n      <ion-label stacked class="trainingHeaders">Cool Down</ion-label>\n      <ion-item *ngIf="!this.activities.coolDown">\n        <button ion-button (click)="addCoolDown()">Add Cool Down</button>\n      </ion-item>\n      <ion-item *ngIf="this.activities.coolDown">\n        <button ion-button (click)="addCoolDown()">Cool Down {{this.activities.coolDown}}<ion-icon class="trainingHeaders" name="close" (click)="activities.setCoolDown(null)"></ion-icon></button>\n      </ion-item>\n      <ion-item>\n        <ion-label stacked>Notes</ion-label>\n        <ion-textarea class="openTextBox" [(ngModel)]="this.mainTrainingNotes"></ion-textarea>\n      </ion-item>\n    </ion-list>\n\n    <ion-item class="tab" (click)="expand(\'post\')">>\n      <ion-label class="title">Post-Training<ion-icon *ngIf="!this.postTrainingExpanded" class="drop" name="ios-arrow-down" end></ion-icon> <ion-icon *ngIf="this.postTrainingExpanded" class="drop" name="ios-arrow-forward" end></ion-icon></ion-label>\n    </ion-item>\n    <div *ngIf="!this.postTrainingExpanded">\n     <ion-list no-lines>\n      <ion-item>\n        <ion-label item-start>Rate Your Training</ion-label>\n        <ion-range  min="0" max="5" [snaps]="true" steps="1" [pin]="true" [(ngModel)]="postTraining.overallRating">\n          <ion-label range-left>0</ion-label>\n          <ion-label range-right>5</ion-label>\n        </ion-range>\n      </ion-item>\n       <ion-item no-lines>\n         <ion-label stacked>Overall Thoughts <ion-icon name="ios-expand"></ion-icon></ion-label>\n         <ion-textarea class="thoughts" [(ngModel)]="postTraining.postThoughts"></ion-textarea>\n       </ion-item>\n     </ion-list>\n    </div>\n  </ion-list>\n\n</ion-content>\n'/*ion-inline-end:"/workspace/MasterCoach/src/pages/Training/create-training/create-training.html"*/
+            selector: 'page-create-training',template:/*ion-inline-start:"/workspace/MasterCoach/src/pages/Training/create-training/create-training.html"*/'<!--\n  Generated template for the CreateTrainingPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-buttons left>\n      <button ion-button="arrow-back" color="primary" (click)="cancel()">\n        <ion-icon name="ios-arrow-down"></ion-icon>\n      </button>\n    </ion-buttons>\n    <ion-title>New Training</ion-title>\n      <ion-buttons right (click)="createNewTraining()">\n          <button ion-button="arrow-back" color="primary" (click)="cancel()">\n                Save\n          </button>\n      </ion-buttons>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content>\n\n  <ion-list no-lines>\n    <ion-item class="tab" align-items-stretch (click)="expand(\'pre\')">\n      <ion-list-header class="title">\n        <ion-col>\n        Pre-Training\n        </ion-col>\n        <ion-col style="text-align: right; width: 100%;" col-8>\n          <ion-icon style="text-align: right" *ngIf="!this.preTrainingExpanded" class="drop" name="ios-arrow-forward"></ion-icon>\n          <ion-icon *ngIf="this.preTrainingExpanded" class="drop" name="ios-arrow-down" right></ion-icon>\n        </ion-col>\n      </ion-list-header>\n    </ion-item>\n    <ion-list *ngIf="this.preTrainingExpanded">\n      <ion-item class="ionItemFix">\n        <ion-label item-start>Readiness</ion-label>\n        <ion-range min="0" max="5" [snaps]="true" steps="1" [pin]="true" right [(ngModel)]="preTraining.readiness.val">\n          <ion-label range-left>0</ion-label>\n          <ion-label range-right>5</ion-label>\n        </ion-range>\n      </ion-item>\n      <ion-item>\n        <ion-label item-start>Energy</ion-label>\n        <ion-range min="0" max="5" [snaps]="true" steps="1" [pin]="true" right [(ngModel)]="preTraining.energy.val">\n          <ion-label range-left>0</ion-label>\n          <ion-label range-right>5</ion-label>\n        </ion-range>\n      </ion-item>\n      <ion-item>\n        <ion-label item-start>Hunger</ion-label>\n        <ion-range min="0" max="5" [snaps]="true" steps="1" [pin]="true" right [(ngModel)]="preTraining.hunger.val">\n          <ion-label range-left>0</ion-label>\n          <ion-label range-right>5</ion-label>\n        </ion-range>\n      </ion-item>\n      <ion-item>\n        <ion-label item-start>Stress</ion-label>\n        <ion-range min="0" max="5" [snaps]="true" steps="1" [pin]="true" right [(ngModel)]="preTraining.stress.val">\n          <ion-label range-left>0</ion-label>\n          <ion-label range-right>5</ion-label>\n        </ion-range>\n      </ion-item>\n      <ion-item>\n        <ion-label item-start>Body State</ion-label>\n        <ion-range min="0" max="5" [snaps]="true" steps="1" [pin]="true" right [(ngModel)]="preTraining.bodyState.val">\n          <ion-label range-left>0</ion-label>\n          <ion-label range-right>5</ion-label>\n        </ion-range>\n      </ion-item>\n      <ion-item>\n        <ion-label>Pain <ion-icon name="medkit"></ion-icon></ion-label>\n      </ion-item>\n      <ion-item>\n        <ion-label stacked>Thoughts</ion-label>\n        <ion-textarea class="openTextBox" [(ngModel)]="this.preTraining.preThoughts.val"></ion-textarea>\n      </ion-item>\n    </ion-list>\n    <ion-item class="tab" (click)="expand(\'training\')">\n      <ion-list-header>\n      <ion-col>\n        Training\n      </ion-col>\n      <ion-col style="text-align: right; width: 100%;" col-8>\n        <ion-icon style="text-align: right" *ngIf="!this.trainingExpanded" class="drop" name="ios-arrow-forward"></ion-icon>\n        <ion-icon *ngIf="this.trainingExpanded" class="drop" name="ios-arrow-down" right></ion-icon>\n      </ion-col>\n      </ion-list-header>\n    </ion-item>\n    <ion-list *ngIf="this.trainingExpanded">\n      <ion-label stacked>Activities</ion-label>\n      <ion-list>\n        <ion-label stacked class="trainingHeaders">Warm Up</ion-label>\n        <ion-item *ngIf="!this.activities.warmUp">\n          <button ion-button (click)="addWarmUp()">Add Warm Up</button>\n        </ion-item>\n        <ion-item *ngIf="this.activities.warmUp">\n          <button ion-button (click)="addWarmUp()">Warm Up {{this.activities.warmUp}}<ion-icon class="trainingHeaders" name="close" (click)="activities.setWarmUp(null)"></ion-icon></button>\n        </ion-item>\n        <ion-label stacked class="trainingHeaders">Events</ion-label>\n        <ion-list *ngIf="activities.getEvents()">\n          <ion-item *ngFor="let event of activities.getEvents()">\n            <button ion-button>{{event}} <ion-icon name="close" class="trainingHeaders" (click)="activities.removeEvent(event)" ></ion-icon></button>\n          </ion-item>\n        </ion-list>\n        <ion-item>\n          <button ion-button (click)="addActivity()">Add Event</button>\n        </ion-item>\n      </ion-list>\n      <ion-label stacked class="trainingHeaders">Cool Down</ion-label>\n      <ion-item *ngIf="!this.activities.coolDown">\n        <button ion-button (click)="addCoolDown()">Add Cool Down</button>\n      </ion-item>\n      <ion-item *ngIf="this.activities.coolDown">\n        <button ion-button (click)="addCoolDown()">Cool Down {{this.activities.coolDown}}<ion-icon class="trainingHeaders" name="close" (click)="activities.setCoolDown(null)"></ion-icon></button>\n      </ion-item>\n      <ion-item>\n        <ion-label stacked>Notes</ion-label>\n        <ion-textarea class="openTextBox" [(ngModel)]="this.mainTraining.mainTrainingNotes.val"></ion-textarea>\n      </ion-item>\n    </ion-list>\n    <ion-item class="tab" (click)="expand(\'post\')">\n      <ion-list-header>\n      <ion-col>\n        Post-Training\n      </ion-col>\n      <ion-col style="text-align: right; width: 100%;" col-8>\n        <ion-icon style="text-align: right" *ngIf="!this.postTrainingExpanded" class="drop" name="ios-arrow-forward"></ion-icon>\n        <ion-icon *ngIf="this.postTrainingExpanded" class="drop" name="ios-arrow-down" right></ion-icon>\n      </ion-col>\n      </ion-list-header>\n    </ion-item>\n    <div *ngIf="this.postTrainingExpanded">\n     <ion-list no-lines>\n      <ion-item>\n        <ion-label item-start>Rate Your Training</ion-label>\n        <ion-range  min="0" max="5" [snaps]="true" steps="1" [pin]="true" [(ngModel)]="postTraining.overallRating">\n          <ion-label range-left>0</ion-label>\n          <ion-label range-right>5</ion-label>\n        </ion-range>\n      </ion-item>\n       <ion-item no-lines>\n         <ion-label stacked>Overall Thoughts <ion-icon name="ios-expand"></ion-icon></ion-label>\n         <ion-textarea class="thoughts" [(ngModel)]="postTraining.postThoughts.val"></ion-textarea>\n       </ion-item>\n     </ion-list>\n    </div>\n  </ion-list>\n\n</ion-content>\n'/*ion-inline-end:"/workspace/MasterCoach/src/pages/Training/create-training/create-training.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2__providers_users_users__["a" /* UsersProvider */], __WEBPACK_IMPORTED_MODULE_3__providers_users_entries__["a" /* EntryProvider */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */], __WEBPACK_IMPORTED_MODULE_4__providers_tools_tools__["a" /* ToolsProvider */]])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavParams */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_2__providers_users_users__["a" /* UsersProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__providers_users_users__["a" /* UsersProvider */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_3__providers_users_entries__["a" /* EntryProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__providers_users_entries__["a" /* EntryProvider */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_4__providers_tools_tools__["a" /* ToolsProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__providers_tools_tools__["a" /* ToolsProvider */]) === "function" && _f || Object])
     ], CreateTrainingPage);
     return CreateTrainingPage;
+    var _a, _b, _c, _d, _e, _f;
 }());
 
 //# sourceMappingURL=create-training.js.map
@@ -2646,7 +2697,7 @@ var Training = (function () {
     function Training() {
         this.type = "Training";
         this.preCalEvent = {
-            mood: null,
+            survey: null,
             notes: null,
         };
         this.postCalEvent = {
@@ -2673,9 +2724,9 @@ var Training = (function () {
     //-----
     //Mutators
     //------
-    Training.prototype.setPreCalEvent = function (mood, notes) {
+    Training.prototype.setPreCalEvent = function (qna, notes) {
         this.preCalEvent = {
-            mood: mood,
+            survey: qna,
             notes: notes
         };
     };
@@ -2695,51 +2746,6 @@ var Training = (function () {
 }());
 
 //# sourceMappingURL=training.js.map
-
-/***/ }),
-
-/***/ 991:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Moods; });
-var Moods = (function () {
-    function Moods() {
-        this.surveyList = [];
-    }
-    /*
-        Public Getters
-     */
-    Moods.prototype.getSurveyList = function () {
-        return this.surveyList;
-    };
-    /*
-        Public Setters
-     */
-    Moods.prototype.addQuestion = function (question) {
-        this.surveyList.push(question);
-    };
-    return Moods;
-}());
-
-//# sourceMappingURL=moods.js.map
-
-/***/ }),
-
-/***/ 992:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Qna; });
-var Qna = (function () {
-    function Qna(question, answer) {
-        this.question = question;
-        this.answer = answer;
-    }
-    return Qna;
-}());
-
-//# sourceMappingURL=qna.js.map
 
 /***/ }),
 

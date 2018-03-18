@@ -4242,16 +4242,16 @@ ion-alert input {
 }
 
 .alert-input::-moz-placeholder {
-  color: #999;
+  color: white;
 }
 
 .alert-input:-ms-input-placeholder {
-  color: #999;
+  color: white;
 }
 
 .alert-input::-webkit-input-placeholder {
   text-indent: 0;
-  color: #999;
+  color: white;
 }
 
 .alert-button-group {

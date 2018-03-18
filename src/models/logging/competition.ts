@@ -1,17 +1,17 @@
 import {Activities} from "./activities/activities";
 import {IEventsComponents} from "./interfaces/event-components";
-import {Moods} from "./moods/moods";
+import {Qna} from "./qna";
 
 export class Competition implements IEventsComponents {
 
     preCalEvent: {
-        mood: Moods;
+        survey: Qna[];
         notes: string;
         //add something to monitor pre-training pain
     };
 
     postCalEvent: {
-        mood: Moods;
+        survey: Qna[];
         notes: string;
         //add something to monitor post training pain
     };
@@ -25,13 +25,13 @@ export class Competition implements IEventsComponents {
 
     constructor() {
         this.preCalEvent = {
-            mood: null,
+            survey: null,
             notes: null,
             //add something to monitor pre-training pain
         };
 
         this.postCalEvent = {
-            mood: null,
+            survey: null,
             notes: null,
             //add something to monitor post training pain
         };
