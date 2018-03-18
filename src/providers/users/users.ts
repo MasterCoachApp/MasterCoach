@@ -30,7 +30,7 @@ export class UsersProvider {
                 snapshot.forEach(snap => {
                    if(snap.child("Email").val().toUpperCase() == email.toUpperCase()) {
                         let user = new User(snap.child("Email").val(), snap.child("First_name").val(), snap.child("Last_name").val(), snap.child("UserId").val());
-                        this.loggedIn = user;
+                        that.loggedIn = user;
                         resolve(user);
                         return true;
                    }

@@ -4322,7 +4322,7 @@ ion-alert input {
 
 .alert-ios .alert-sub-title {
   font-size: 14px;
-  color: #666;
+  color: white;
 }
 
 .alert-ios .alert-message,
@@ -4421,12 +4421,12 @@ ion-alert input {
   flex: 1;
   text-overflow: ellipsis;
   white-space: nowrap;
-  color: initial;
+  color: white;
   padding: 13px;
 }
 
 .alert-ios [aria-checked=true] .alert-checkbox-label {
-  color: initial;
+  color: white;
 }
 
 .alert-ios .alert-checkbox-icon {

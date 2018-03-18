@@ -8,14 +8,15 @@ import {CalendarMenu} from "../providers/menus/calendar-menu";
 import {MenuEvents} from "../models/calendar/menu-events";
 import {SettingsProvider} from "../providers/settings";
 import {CreateTrainingPage} from "../pages/Training/create-training/create-training";
+import {LoginPage} from "../pages/Logins/login/login";
 
 @Component({
   templateUrl: 'app.html'
 })
 export class MyApp {
 
-  //rootPage:any = LoginPage;
-    rootPage:any = TabsPage;
+  rootPage:any = LoginPage;
+    //rootPage:any = TabsPage;
    //rootPage:any = CreateTrainingPage;
 
     selectedTheme: String;

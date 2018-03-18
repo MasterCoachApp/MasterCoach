@@ -60,6 +60,7 @@ export class StandardLoginPage {
                 }).catch(error => { //handle errors thrown by FireBase
                     loading.dismiss();
                     this.authProvider.firebaseAuthenticationError(error);
+                    console.log('HELLO!');
                 });
             });
         }
