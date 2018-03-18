@@ -7,7 +7,7 @@
       </ion-buttons>
       <ion-buttons>
           <button ion-button style="font-size: 20px;" (click)="displayFullCalendar = !displayFullCalendar">
-              {{this.monthInView}}  {{this.calMenu.getDisplayedYear()}} &nbsp; <ion-icon name="md-arrow-dropdown"></ion-icon>
+              {{this.monthInView}}  {{this.calMenu.getDisplayedYear()}} &nbsp; <ion-icon *ngIf="!displayFullCalendar" name="md-arrow-dropdown"></ion-icon><ion-icon *ngIf="displayFullCalendar" name="md-arrow-dropup"></ion-icon>
 
           </button>
       </ion-buttons>
