@@ -71,7 +71,7 @@ export class MenuEvents extends TrackEvents {
     }
 
 
-    updateObeject(event: string, property: string) {
+    updateObject(event: string, property: string) {
         switch(event) {
             case "100m":
                 if(property == "displayed") {
