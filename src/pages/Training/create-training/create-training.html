@@ -27,9 +27,18 @@
 
   <ion-list no-lines>
     <ion-item class="tab" align-items-stretch (click)="expand('pre')">
-      <ion-label class="title">Pre-Training <ion-icon *ngIf="!this.preTrainingExpanded" class="drop" name="ios-arrow-down" end></ion-icon> <ion-icon *ngIf="this.preTrainingExpanded" class="drop" name="ios-arrow-up" end></ion-icon> </ion-label>
+      <ion-list-header class="title">
+        <ion-col>
+        Pre-Training
+        </ion-col>
+        <ion-col style="text-align: right; width: 100%;" col-8>
+          <ion-icon style="text-align: right" *ngIf="!this.preTrainingExpanded" class="drop" name="ios-arrow-down">
+          <ion-icon *ngIf="this.preTrainingExpanded" class="drop" name="ios-arrow-up" right></ion-icon>
+          </ion-icon>
+        </ion-col>
+      </ion-list-header>
     </ion-item>
-    <ion-list *ngIf="!this.preTrainingExpanded">
+    <ion-list *ngIf="this.preTrainingExpanded">
       <ion-item class="ionItemFix">
         <ion-label item-start>Readiness</ion-label>
         <ion-range min="0" max="5" [snaps]="true" steps="1" [pin]="true" right [(ngModel)]="preTraining.readiness.val">
@@ -73,10 +82,19 @@
         <ion-textarea class="openTextBox" [(ngModel)]="this.preTraining.preThoughts.val"></ion-textarea>
       </ion-item>
     </ion-list>
-    <ion-item class="tab" (click)="expand('training')">>
-      <ion-label class="title">Training <ion-icon *ngIf="!this.trainingExpanded" class="drop" name="ios-arrow-down" end></ion-icon> <ion-icon *ngIf="this.trainingExpanded" class="drop" name="ios-arrow-up" end></ion-icon></ion-label>
+    <ion-item class="tab" (click)="expand('training')">
+      <ion-list-header>
+      <ion-col>
+        Training
+      </ion-col>
+      <ion-col style="text-align: right; width: 100%;" col-8>
+        <ion-icon style="text-align: right" *ngIf="!this.preTrainingExpanded" class="drop" name="ios-arrow-down">
+          <ion-icon *ngIf="this.preTrainingExpanded" class="drop" name="ios-arrow-up" right></ion-icon>
+        </ion-icon>
+      </ion-col>
+      </ion-list-header>
     </ion-item>
-    <ion-list *ngIf="!this.trainingExpanded">
+    <ion-list *ngIf="this.trainingExpanded">
       <ion-label stacked>Activities</ion-label>
       <ion-list>
         <ion-item>
@@ -89,10 +107,19 @@
         <!--</ion-item>-->
       </ion-list>
     </ion-list>
-    <ion-item class="tab" (click)="expand('post')">>
-      <ion-label class="title">Post-Training<ion-icon *ngIf="!this.postTrainingExpanded" class="drop" name="ios-arrow-down" end></ion-icon> <ion-icon *ngIf="this.postTrainingExpanded" class="drop" name="ios-arrow-up" end></ion-icon></ion-label>
+    <ion-item class="tab" (click)="expand('post')">
+      <ion-list-header>
+      <ion-col>
+        Post-Training
+      </ion-col>
+      <ion-col style="text-align: right; width: 100%;" col-8>
+        <ion-icon style="text-align: right" *ngIf="!this.preTrainingExpanded" class="drop" name="ios-arrow-down">
+          <ion-icon *ngIf="this.preTrainingExpanded" class="drop" name="ios-arrow-up" right></ion-icon>
+        </ion-icon>
+      </ion-col>
+      </ion-list-header>
     </ion-item>
-    <div *ngIf="!this.postTrainingExpanded">
+    <div *ngIf="this.postTrainingExpanded">
      <ion-list no-lines>
       <ion-item>
         <ion-label item-start>Rate Your Training</ion-label>
@@ -103,7 +130,7 @@
       </ion-item>
        <ion-item no-lines>
          <ion-label stacked>Overall Thoughts <ion-icon name="ios-expand"></ion-icon></ion-label>
-         <ion-textarea class="thoughts" [(ngModel)]="postTraining.postThoughts"></ion-textarea>
+         <ion-textarea class="thoughts" [(ngModel)]="postTraining.postThoughts.val"></ion-textarea>
        </ion-item>
      </ion-list>
     </div>
