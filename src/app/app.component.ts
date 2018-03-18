@@ -70,7 +70,7 @@ export class MyApp {
 
 
     editEventsModel(event: string) {
-          let eventObject = this.events.updateObeject(event, "filtered");
+          let eventObject = this.events.updateObject(event, "filtered");
           this.calendarMenu.menuEvents = this.events;
     }
 
