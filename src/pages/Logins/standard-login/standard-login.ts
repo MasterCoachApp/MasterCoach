@@ -27,7 +27,7 @@ export class StandardLoginPage {
   }
 
     forgotPassword() {
-        this.navCtrl.push(ForgotPasswordPage);
+        this.navCtrl.push('ForgotPasswordPage');
     }
 
     login() {
@@ -48,7 +48,6 @@ export class StandardLoginPage {
                         else
                             resolve();
                     }).catch(error => {
-                        console.log(1);
                         reject(error);
                     });
                 });
@@ -56,7 +55,7 @@ export class StandardLoginPage {
                 promise.then(() => {
                     loading.dismiss();
                     this.storage.set('user-email', this.email);
-                    this.navCtrl.push(TabsPage); //allow entry if successful login
+                    this.navCtrl.push('TabsPage'); //allow entry if successful login
                 }).catch(error => { //handle errors thrown by FireBase
                     loading.dismiss();
                     this.authProvider.firebaseAuthenticationError(error);

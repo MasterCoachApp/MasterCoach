@@ -177,17 +177,17 @@ export class AuthenticationProvider {
                             if(apiResponse["first_name"] == "" || apiResponse["first_name"] == null || apiResponse["last_name"] == null || apiResponse["last_name"] == "") {
                                 that.validation.requestDisplayNameValidation().then(nameResponse => {
                                     that.signInWithFacebookCredentials(facebookCredential, apiResponse.email, nameResponse.first, nameResponse.last, ).then(response => {
-                                        resolve("Success");
+                                        resolve(apiResponse.email);
                                     }).catch(error =>{
-                                        reject(error);
+                                        reject(null);
                                     });
                                 });
                             }
                             else {
                                 that.signInWithFacebookCredentials(facebookCredential, apiResponse["email"], apiResponse["first_name"], apiResponse["last_name"], ).then(response => {
-                                    resolve("Success");
+                                    resolve(apiResponse['email']);
                                 }).catch(error => {
-                                    reject(error);
+                                    reject(null);
                                 });
                             }
                         });

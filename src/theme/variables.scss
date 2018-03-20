@@ -82,10 +82,10 @@ $loading-ios-background-color: color($colors, dark);
 
 $range-ios-knob-width: 15px;
 
-$alert-ios-checkbox-label-text-color: white;
-$alert-ios-checkbox-label-text-color-checked: white;
-$alert-ios-sub-title-text-color: white;
-$alert-ios-main-title-text-color: white;
+$alert-ios-checkbox-label-text-color: white !important;
+$alert-ios-checkbox-label-text-color-checked: white !important;
+$alert-ios-sub-title-text-color: white !important;
+$alert-ios-main-title-text-color: white !important;
 
 
 // App Material Design Variables

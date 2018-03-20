@@ -38,15 +38,15 @@ import {EntryProvider} from "../providers/users/entries";
 @NgModule({
   declarations: [
     MyApp,
-    AboutPage,
-    ContactPage,
-    HomePage,
-    TabsPage,
-    LoginPage,
-    CreateAccountPage,
-    ForgotPasswordPage,
-    StandardLoginPage,
-    CreateTrainingPage
+    // AboutPage,
+    // ContactPage,
+    // HomePage,
+    // TabsPage,
+    // LoginPage,
+    // CreateAccountPage,
+    // ForgotPasswordPage,
+    // StandardLoginPage,
+    // CreateTrainingPage
   ],
   imports: [
     BrowserModule,
@@ -61,15 +61,15 @@ import {EntryProvider} from "../providers/users/entries";
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    AboutPage,
-    ContactPage,
-    HomePage,
-    TabsPage,
-    LoginPage,
-    CreateAccountPage,
-    ForgotPasswordPage,
-    StandardLoginPage,
-    CreateTrainingPage
+    // AboutPage,
+    // ContactPage,
+    // HomePage,
+    // TabsPage,
+    // LoginPage,
+    // CreateAccountPage,
+    // ForgotPasswordPage,
+    // StandardLoginPage,
+    // CreateTrainingPage
   ],
   providers: [
     StatusBar,

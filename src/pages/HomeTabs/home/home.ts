@@ -1,11 +1,12 @@
 import {Component} from '@angular/core';
-import {App, MenuController, NavController, Platform, ViewController} from 'ionic-angular';
+import {App, IonicPage, MenuController, NavController, Platform, ViewController} from 'ionic-angular';
 import {CalendarDay} from "../../../models/calendar/calendar-day";
 import {CalendarMenu} from "../../../providers/menus/calendar-menu";
 import {Storage} from "@ionic/storage";
 import {LoginPage} from "../../Logins/login/login";
 import {UsersProvider} from "../../../providers/users/users";
 
+@IonicPage()
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
@@ -27,13 +28,13 @@ export class HomePage {
 
       this.storage.get('user-email').then(email => {
          if(email == null) {
-             this.app.getRootNav().push(LoginPage);
+             this.app.getRootNav().push('LoginPage');
          }
          else {
             user.retrievedLoggedInUser(email).then(response => {
                if(response == null) {
                    console.log("Auto login failed to find existing user in db");
-                   this.app.getRootNav().push(LoginPage);
+                   this.app.getRootNav().push('LoginPage');
                }
                else {
                    user.loggedIn = response;
@@ -41,9 +42,20 @@ export class HomePage {
                }
             }).catch(error=> {
                 console.log("Auto login failed to find existing user in db");
-                this.app.getRootNav().push(LoginPage);
+                this.app.getRootNav().push('LoginPage');
             });
          }
+      });
+
+      this.platform.ready().then((readySource) => {
+          let todayItem = document.getElementById(this.dateSelected.dateValue);
+          let scroll = document.getElementById("calendarScroll");
+          if (todayItem != null && scroll != null) {
+              scroll.scrollLeft = todayItem.offsetLeft;
+          }
+          scroll.onscroll = () => {
+              this.determineViewedMonth();
+          };
       });
 
       this.activateMenu();
@@ -77,19 +89,6 @@ export class HomePage {
         this.menu.enable(false, 'filtersCalendarMenu');
     }
 
-    ionViewDidLoad() {
-        this.platform.ready().then((readySource) => {
-            let todayItem = document.getElementById(this.dateSelected.dateValue);
-            let scroll = document.getElementById("calendarScroll");
-            if (todayItem != null && scroll != null) {
-                scroll.scrollLeft = todayItem.offsetLeft;
-            }
-            scroll.onscroll = () => {
-                this.determineViewedMonth();
-            };
-        });
-    }
-
     //Full calendar
     x = 0;
 
@@ -107,10 +106,8 @@ export class HomePage {
 
     updateHorizontalCalendar(data) {
         if(data != null) {
-            console.log(data);
             this.dateSelected = data;
             let todayItem = document.getElementById(this.dateSelected.dateValue);
-            console.log(todayItem);
             let scroll = document.getElementById("calendarScroll");
             if (todayItem != null && scroll != null) {
                 scroll.scrollLeft = todayItem.offsetLeft;
@@ -120,6 +117,7 @@ export class HomePage {
     }
 
     onMonthSelect(event) {
+
     }
 
     swipe(event, calendar) {

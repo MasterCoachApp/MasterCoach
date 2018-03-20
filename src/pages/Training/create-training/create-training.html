@@ -6,150 +6,178 @@
 -->
 <ion-header>
 
-  <ion-navbar>
-    <ion-buttons left>
-      <button ion-button="arrow-back" color="primary" (click)="cancel()">
-        <ion-icon name="ios-arrow-down"></ion-icon>
-      </button>
-    </ion-buttons>
-    <ion-title>New Training</ion-title>
-      <ion-buttons right (click)="createNewTraining()">
-          <button ion-button="arrow-back" color="primary" (click)="cancel()">
+    <ion-navbar>
+        <ion-buttons left>
+            <button ion-button="arrow-back" color="primary" (click)="cancel()">
+                <ion-icon name="ios-arrow-down"></ion-icon>
+            </button>
+        </ion-buttons>
+        <ion-title>New Training</ion-title>
+        <ion-buttons right (click)="createNewTraining()">
+            <button ion-button="arrow-back" color="primary" (click)="cancel()">
                 Save
-          </button>
-      </ion-buttons>
-  </ion-navbar>
+            </button>
+        </ion-buttons>
+    </ion-navbar>
 
 </ion-header>
 
 
 <ion-content>
 
-  <ion-list no-lines>
-    <ion-item class="tab" align-items-stretch (click)="expand('pre')">
-      <ion-list-header class="title">
-        <ion-col>
-        Pre-Training
-        </ion-col>
-        <ion-col style="text-align: right; width: 100%;" col-8>
-          <ion-icon style="text-align: right" *ngIf="!this.preTrainingExpanded" class="drop" name="ios-arrow-forward"></ion-icon>
-          <ion-icon *ngIf="this.preTrainingExpanded" class="drop" name="ios-arrow-down" right></ion-icon>
-        </ion-col>
-      </ion-list-header>
-    </ion-item>
-    <ion-list *ngIf="this.preTrainingExpanded">
-      <ion-item class="ionItemFix">
-        <ion-label item-start>Readiness</ion-label>
-        <ion-range min="0" max="5" [snaps]="true" steps="1" [pin]="true" right [(ngModel)]="preTraining.readiness.val">
-          <ion-label range-left>0</ion-label>
-          <ion-label range-right>5</ion-label>
-        </ion-range>
-      </ion-item>
-      <ion-item>
-        <ion-label item-start>Energy</ion-label>
-        <ion-range min="0" max="5" [snaps]="true" steps="1" [pin]="true" right [(ngModel)]="preTraining.energy.val">
-          <ion-label range-left>0</ion-label>
-          <ion-label range-right>5</ion-label>
-        </ion-range>
-      </ion-item>
-      <ion-item>
-        <ion-label item-start>Hunger</ion-label>
-        <ion-range min="0" max="5" [snaps]="true" steps="1" [pin]="true" right [(ngModel)]="preTraining.hunger.val">
-          <ion-label range-left>0</ion-label>
-          <ion-label range-right>5</ion-label>
-        </ion-range>
-      </ion-item>
-      <ion-item>
-        <ion-label item-start>Stress</ion-label>
-        <ion-range min="0" max="5" [snaps]="true" steps="1" [pin]="true" right [(ngModel)]="preTraining.stress.val">
-          <ion-label range-left>0</ion-label>
-          <ion-label range-right>5</ion-label>
-        </ion-range>
-      </ion-item>
-      <ion-item>
-        <ion-label item-start>Body State</ion-label>
-        <ion-range min="0" max="5" [snaps]="true" steps="1" [pin]="true" right [(ngModel)]="preTraining.bodyState.val">
-          <ion-label range-left>0</ion-label>
-          <ion-label range-right>5</ion-label>
-        </ion-range>
-      </ion-item>
-      <ion-item>
-        <ion-label>Pain <ion-icon name="medkit"></ion-icon></ion-label>
-      </ion-item>
-      <ion-item>
-        <ion-label stacked>Thoughts</ion-label>
-        <ion-textarea class="openTextBox" [(ngModel)]="this.preTraining.preThoughts.val"></ion-textarea>
-      </ion-item>
-    </ion-list>
-    <ion-item class="tab" (click)="expand('training')">
-      <ion-list-header>
-      <ion-col>
-        Training
-      </ion-col>
-      <ion-col style="text-align: right; width: 100%;" col-8>
-        <ion-icon style="text-align: right" *ngIf="!this.trainingExpanded" class="drop" name="ios-arrow-forward"></ion-icon>
-        <ion-icon *ngIf="this.trainingExpanded" class="drop" name="ios-arrow-down" right></ion-icon>
-      </ion-col>
-      </ion-list-header>
-    </ion-item>
-    <ion-list *ngIf="this.trainingExpanded">
-      <ion-label stacked>Activities</ion-label>
-      <ion-list>
-        <ion-label stacked class="trainingHeaders">Warm Up</ion-label>
-        <ion-item *ngIf="!this.activities.warmUp">
-          <button ion-button (click)="addWarmUp()">Add Warm Up</button>
-        </ion-item>
-        <ion-item *ngIf="this.activities.warmUp">
-          <button ion-button (click)="addWarmUp()">Warm Up {{this.activities.warmUp}}<ion-icon class="trainingHeaders" name="close" (click)="activities.setWarmUp(null)"></ion-icon></button>
-        </ion-item>
-        <ion-label stacked class="trainingHeaders">Events</ion-label>
-        <ion-list *ngIf="activities.getEvents()">
-          <ion-item *ngFor="let event of activities.getEvents()">
-            <button ion-button>{{event}} <ion-icon name="close" class="trainingHeaders" (click)="activities.removeEvent(event)" ></ion-icon></button>
-          </ion-item>
+    <ion-list no-lines>
+        <ion-list-header class="title" (click)="expand('pre')">
+            <ion-col>
+                Pre-Training
+            </ion-col>
+            <ion-col style="text-align: right; width: 100%;" col-8>
+                <ion-icon style="text-align: right" *ngIf="!preTrainingExpanded" class="drop"
+                          name="ios-arrow-forward"></ion-icon>
+                <ion-icon *ngIf="preTrainingExpanded" class="drop" name="ios-arrow-down" right></ion-icon>
+            </ion-col>
+        </ion-list-header>
+        <ion-list *ngIf="preTrainingExpanded">
+            <ion-item-group>
+            <ion-item class="ionItemCrop">
+                <ion-label item-start>Readiness</ion-label>
+                <ion-range min="0" max="5" [snaps]="true" steps="1" [pin]="true" right
+                           [(ngModel)]="preTraining.readiness.val" class="range">
+                    <ion-label range-left>0</ion-label>
+                    <ion-label range-right>5</ion-label>
+                </ion-range>
+            </ion-item>
+            <ion-item class="ionItemCrop">
+                <ion-label item-start>Energy</ion-label>
+                <ion-range min="0" max="5" [snaps]="true" steps="1" [pin]="true" right
+                           [(ngModel)]="preTraining.energy.val">
+                    <ion-label range-left>0</ion-label>
+                    <ion-label range-right>5</ion-label>
+                </ion-range>
+            </ion-item>
+            <ion-item class="ionItemCrop">
+                <ion-label item-start>Hunger</ion-label>
+                <ion-range min="0" max="5" [snaps]="true" steps="1" [pin]="true" right
+                           [(ngModel)]="preTraining.hunger.val">
+                    <ion-label range-left>0</ion-label>
+                    <ion-label range-right>5</ion-label>
+                </ion-range>
+            </ion-item>
+            <ion-item class="ionItemCrop">
+                <ion-label item-start>Stress</ion-label>
+                <ion-range min="0" max="5" [snaps]="true" steps="1" [pin]="true" right
+                           [(ngModel)]="preTraining.stress.val">
+                    <ion-label range-left>0</ion-label>
+                    <ion-label range-right>5</ion-label>
+                </ion-range>
+            </ion-item>
+            <ion-item class="ionItemCrop">
+                <ion-label item-start>Body State</ion-label>
+                <ion-range min="0" max="5" [snaps]="true" steps="1" [pin]="true" right
+                           [(ngModel)]="preTraining.bodyState.val">
+                    <ion-label range-left>0</ion-label>
+                    <ion-label range-right>5</ion-label>
+                </ion-range>
+            </ion-item>
+            <ion-item >
+                <ion-label>Pain
+                    <ion-icon name="medkit"></ion-icon>
+                </ion-label>
+            </ion-item>
+            <ion-item>
+                <ion-label stacked>Thoughts</ion-label>
+                <ion-textarea class="thoughts" [(ngModel)]="preTraining.preThoughts.val"></ion-textarea>
+            </ion-item>
+            </ion-item-group>
+
         </ion-list>
-        <ion-item>
-          <button ion-button (click)="addActivity()">Add Event</button>
-        </ion-item>
-      </ion-list>
-      <ion-label stacked class="trainingHeaders">Cool Down</ion-label>
-      <ion-item *ngIf="!this.activities.coolDown">
-        <button ion-button (click)="addCoolDown()">Add Cool Down</button>
-      </ion-item>
-      <ion-item *ngIf="this.activities.coolDown">
-        <button ion-button (click)="addCoolDown()">Cool Down {{this.activities.coolDown}}<ion-icon class="trainingHeaders" name="close" (click)="activities.setCoolDown(null)"></ion-icon></button>
-      </ion-item>
-      <ion-item>
-        <ion-label stacked>Notes</ion-label>
-        <ion-textarea class="openTextBox" [(ngModel)]="this.mainTraining.mainTrainingNotes.val"></ion-textarea>
-      </ion-item>
+
+
+        <ion-list-header (click)="expand('training')" class="title" >
+            <ion-col>
+                Training
+            </ion-col>
+            <ion-col style="text-align: right; width: 100%;" col-8>
+                <ion-icon style="text-align: right" *ngIf="!trainingExpanded" class="drop"
+                          name="ios-arrow-forward"></ion-icon>
+                <ion-icon *ngIf="trainingExpanded" class="drop" name="ios-arrow-down" right></ion-icon>
+            </ion-col>
+        </ion-list-header>
+        <ion-list *ngIf="trainingExpanded">
+            <ion-list>
+                <ion-label stacked class="trainingHeaders">Warm Up</ion-label>
+                <ion-item *ngIf="!mainTraining.activities.warmUp">
+                    <button ion-button (click)="addWarmUp()">Add Warm Up</button>
+                </ion-item>
+                <ion-item *ngIf="mainTraining.activities.warmUp">
+                    <button ion-button (click)="addWarmUp()">{{mainTraining.activities.warmUp}}
+                        <ion-icon class="trainingHeaders" name="close"
+                                  (click)="mainTraining.activities.setWarmUp(null)"></ion-icon>
+                    </button>
+                    <ion-note>View</ion-note>
+
+                </ion-item>
+                <ion-label stacked class="trainingHeaders">Events</ion-label>
+                <ion-list *ngIf="trainingEventList.length > 0">
+                    <ion-item>
+                        <div *ngFor="let event of trainingEventList">
+                            <button ion-button (click)="selectEventWorkout(event)">
+                                {{event}}
+                            </button>
+                            <ion-icon name="close" class="trainingHeaders"
+                                      (click)="removeLabel(event)"></ion-icon>
+                        </div>
+                    </ion-item>
+                </ion-list>
+                <ion-item>
+                    <button ion-button (click)="addActivity()">Add Event</button>
+                </ion-item>
+            </ion-list>
+            <ion-label stacked class="trainingHeaders">Cool Down</ion-label>
+            <ion-item *ngIf="!mainTraining.activities.coolDown">
+                <button ion-button (click)="addCoolDown()">Add Cool Down</button>
+            </ion-item>
+            <ion-item *ngIf="mainTraining.activities.coolDown">
+                <button ion-button (click)="addCoolDown()">{{mainTraining.activities.coolDown}}
+                    <ion-icon class="trainingHeaders" name="close"
+                              (click)="mainTraining.activities.setCoolDown(null)"></ion-icon>
+                </button>
+                <ion-note end>View</ion-note>
+            </ion-item>
+            <ion-item>
+                <ion-label stacked>Notes</ion-label>
+                <ion-textarea class="thoughts" [(ngModel)]="mainTraining.mainTrainingNotes.val"></ion-textarea>
+            </ion-item>
+        </ion-list>
+
+
+        <ion-list-header (click)="expand('post')" class="title" >
+            <ion-col>
+                Post-Training
+            </ion-col>
+            <ion-col style="text-align: right; width: 100%;" col-8>
+                <ion-icon style="text-align: right" *ngIf="!postTrainingExpanded" class="drop"
+                          name="ios-arrow-forward"></ion-icon>
+                <ion-icon *ngIf="postTrainingExpanded" class="drop" name="ios-arrow-down" right></ion-icon>
+            </ion-col>
+        </ion-list-header>
+        <div *ngIf="postTrainingExpanded">
+            <ion-list no-lines>
+                <ion-item>
+                    <ion-label item-start>Rate Your Training</ion-label>
+                    <ion-range min="0" max="5" [snaps]="true" steps="1" [pin]="true"
+                               [(ngModel)]="postTraining.overallRating">
+                        <ion-label range-left>0</ion-label>
+                        <ion-label range-right>5</ion-label>
+                    </ion-range>
+                </ion-item>
+                <ion-item no-lines>
+                    <ion-label stacked>Overall Thoughts
+                        <ion-icon name="ios-expand"></ion-icon>
+                    </ion-label>
+                    <ion-textarea class="thoughts" [(ngModel)]="postTraining.postThoughts.val"></ion-textarea>
+                </ion-item>
+            </ion-list>
+        </div>
     </ion-list>
-    <ion-item class="tab" (click)="expand('post')">
-      <ion-list-header>
-      <ion-col>
-        Post-Training
-      </ion-col>
-      <ion-col style="text-align: right; width: 100%;" col-8>
-        <ion-icon style="text-align: right" *ngIf="!this.postTrainingExpanded" class="drop" name="ios-arrow-forward"></ion-icon>
-        <ion-icon *ngIf="this.postTrainingExpanded" class="drop" name="ios-arrow-down" right></ion-icon>
-      </ion-col>
-      </ion-list-header>
-    </ion-item>
-    <div *ngIf="this.postTrainingExpanded">
-     <ion-list no-lines>
-      <ion-item>
-        <ion-label item-start>Rate Your Training</ion-label>
-        <ion-range  min="0" max="5" [snaps]="true" steps="1" [pin]="true" [(ngModel)]="postTraining.overallRating">
-          <ion-label range-left>0</ion-label>
-          <ion-label range-right>5</ion-label>
-        </ion-range>
-      </ion-item>
-       <ion-item no-lines>
-         <ion-label stacked>Overall Thoughts <ion-icon name="ios-expand"></ion-icon></ion-label>
-         <ion-textarea class="thoughts" [(ngModel)]="postTraining.postThoughts.val"></ion-textarea>
-       </ion-item>
-     </ion-list>
-    </div>
-  </ion-list>
 
 </ion-content>

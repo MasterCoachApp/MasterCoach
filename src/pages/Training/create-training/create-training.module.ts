@@ -9,5 +9,8 @@ import { CreateTrainingPage } from './create-training';
   imports: [
     IonicPageModule.forChild(CreateTrainingPage),
   ],
+  entryComponents: [
+    CreateTrainingPage,
+  ]
 })
 export class CreateTrainingPageModule {}

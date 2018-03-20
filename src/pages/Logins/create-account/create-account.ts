@@ -85,7 +85,7 @@ export class CreateAccountPage {
           });
 
           promise.then(() => {
-              this.navCtrl.push(TabsPage); //allow entry if successful login
+              this.navCtrl.push('TabsPage'); //allow entry if successful login
           }).catch(error => { //handle errors thrown by firebase
               this.authProvider.firebaseAuthenticationError(error);
           });
