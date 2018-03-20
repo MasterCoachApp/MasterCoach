@@ -4,11 +4,8 @@ import {UsersProvider} from "../../../providers/users/users";
 import {EntryProvider} from "../../../providers/users/entries";
 import {ToolsProvider} from "../../../providers/tools/tools";
 import {Training} from "../../../models/logging/training";
-import {Qna} from "../../../models/logging/qna";
 import {Activities} from "../../../models/logging/activities/activities";
 import {TrackEvents} from "../../../models/logging/activities/track-events";
-import {Notes} from "../../../models/logging/notes";
-import {LongJump} from "../../../models/TrackEventTrainings/LongJump";
 
 /**
  * Generated class for the CreateTrainingPage page.
@@ -63,7 +60,10 @@ export class CreateTrainingPage {
             key: 'Thoughts',
             val: ''
         },
-        overallRating: 0
+        rating: {
+          key: 'Overall',
+          val: 0
+        }
     };
 
     mainTraining = {
@@ -85,41 +85,31 @@ export class CreateTrainingPage {
         this.trainingEventList = [];
     }
 
-    createQnaArray(): Qna[] {
-        let qna: Qna[] = [];
-        let question = new Qna(this.preTraining.energy.key, this.preTraining.energy.val);
-        qna.push(question);
-        question = new Qna(this.preTraining.bodyState.key, this.preTraining.bodyState.val);
-        qna.push(question);
-        question = new Qna(this.preTraining.stress.key, this.preTraining.stress.val);
-        qna.push(question);
-        question = new Qna(this.preTraining.hunger.key, this.preTraining.hunger.val);
-        qna.push(question);
-        question = new Qna(this.preTraining.readiness.key, this.preTraining.readiness.val);
-        qna.push(question);
-        return qna;
+    addStandardPreTrainingSurveyQuestions(newTraining: Training){
+        newTraining.addPreSurveyQuestion(this.preTraining.energy.key, this.preTraining.energy.val);
+        newTraining.addPreSurveyQuestion(this.preTraining.bodyState.key, this.preTraining.bodyState.val);
+        newTraining.addPreSurveyQuestion(this.preTraining.stress.key, this.preTraining.stress.val);
+        newTraining.addPreSurveyQuestion(this.preTraining.hunger.key, this.preTraining.hunger.val);
+        newTraining.addPreSurveyQuestion(this.preTraining.readiness.key, this.preTraining.readiness.val);
+    }
+
+    addStandardPostTrainingSurveyQuestions(newTraining: Training){
+        newTraining.addPostSurveyQuestion(this.postTraining.rating.key, this.postTraining.rating.val);
     }
 
 
     createNewTraining() {
-
-        let qna = this.createQnaArray();
-        let preNotes: Notes[] = [];
-        let postNotes: Notes[] = [];
-        //let mainNotes: Notes[] = [];
-
-        let preNote = new Notes(this.preTraining.preThoughts.key, this.preTraining.preThoughts.val);
-        preNotes.push(preNote);
-
-        let postNote = new Notes(this.postTraining.postThoughts.key, this.postTraining.postThoughts.val);
-        postNotes.push(postNote);
-
         // let mainNote = new Notes(this.mainTraining.mainTrainingNotes.key, this.mainTraining.mainTrainingNotes.val);
         // mainNotes.push(mainNote);
 
         let newTraining = new Training();
-        newTraining.setPreCalEvent(qna, preNotes);
-        newTraining.setPostCalEvent(this.postTraining.overallRating, postNotes);
+        newTraining.addPreNote(this.preTraining.preThoughts.key, this.preTraining.preThoughts.val);
+        this.addStandardPreTrainingSurveyQuestions(newTraining);
+
+        newTraining.addPostNote(this.postTraining.postThoughts.key, this.postTraining.postThoughts.val);
+        this.addStandardPostTrainingSurveyQuestions(newTraining);
+
+
      //   newTraining.setMainCalEvent(this.mainTraining.activities, mainNotes);
 
 

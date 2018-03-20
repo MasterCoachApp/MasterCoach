@@ -165,7 +165,7 @@
                 <ion-item>
                     <ion-label item-start>Rate Your Training</ion-label>
                     <ion-range min="0" max="5" [snaps]="true" steps="1" [pin]="true"
-                               [(ngModel)]="postTraining.overallRating">
+                               [(ngModel)]="postTraining.rating.val">
                         <ion-label range-left>0</ion-label>
                         <ion-label range-right>5</ion-label>
                     </ion-range>
