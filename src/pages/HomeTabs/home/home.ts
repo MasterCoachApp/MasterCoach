@@ -23,7 +23,6 @@ export class HomePage {
     currentEvents: any[];
     dateClicked: CalendarDay;
     displayFullCalendar = false;
-
   constructor(public navCtrl: NavController, public app: App, public storage: Storage, public user: UsersProvider, public menu: MenuController, public platform: Platform, public calMenu: CalendarMenu, public viewCtrl: ViewController) {
 
       this.storage.get('user-email').then(email => {
@@ -45,17 +44,6 @@ export class HomePage {
                 this.app.getRootNav().push('LoginPage');
             });
          }
-      });
-
-      this.platform.ready().then((readySource) => {
-          let todayItem = document.getElementById(this.dateSelected.dateValue);
-          let scroll = document.getElementById("calendarScroll");
-          if (todayItem != null && scroll != null) {
-              scroll.scrollLeft = todayItem.offsetLeft;
-          }
-          scroll.onscroll = () => {
-              this.determineViewedMonth();
-          };
       });
 
       this.activateMenu();
@@ -87,6 +75,19 @@ export class HomePage {
         this.activeMenu = 'mainCalendarMenu';
         this.menu.enable(true, 'mainCalendarMenu');
         this.menu.enable(false, 'filtersCalendarMenu');
+    }
+
+    ionViewDidLoad() {
+        this.platform.ready().then((readySource) => {
+            let todayItem = document.getElementById(this.dateSelected.dateValue);
+            let scroll = document.getElementById("calendarScroll");
+            if (todayItem != null && scroll != null) {
+                scroll.scrollLeft = todayItem.offsetLeft;
+            }
+            scroll.onscroll = () => {
+                this.determineViewedMonth();
+            };
+        });
     }
 
     //Full calendar

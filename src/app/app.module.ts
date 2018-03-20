@@ -1,4 +1,4 @@
-import {ErrorHandler, NgModule} from '@angular/core';
+import {CUSTOM_ELEMENTS_SCHEMA, ErrorHandler, NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 import {IonicApp, IonicErrorHandler, IonicModule} from 'ionic-angular';
 import {MyApp} from './app.component';
@@ -55,8 +55,7 @@ import {EntryProvider} from "../providers/users/entries";
     AngularFireModule.initializeApp(FIREBASE_CONFIG),
     AngularFireDatabaseModule,
     AngularFireAuthModule,
-    AngularFireModule,
-    CalendarModule
+    AngularFireModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -86,6 +85,9 @@ import {EntryProvider} from "../providers/users/entries";
     GooglePlus,
     SettingsProvider,
     EntryProvider
-  ]
+  ],
+    schemas: [
+        CUSTOM_ELEMENTS_SCHEMA
+    ],
 })
 export class AppModule {}
