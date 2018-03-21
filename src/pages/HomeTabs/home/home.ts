@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {App, IonicPage, MenuController, NavController, Platform, ViewController} from 'ionic-angular';
+import {App, IonicPage, MenuController, ModalController, NavController, Platform, ViewController} from 'ionic-angular';
 import {CalendarDay} from "../../../models/calendar/calendar-day";
 import {CalendarMenu} from "../../../providers/menus/calendar-menu";
 import {Storage} from "@ionic/storage";
@@ -23,7 +23,7 @@ export class HomePage {
     currentEvents: any[];
     dateClicked: CalendarDay;
     displayFullCalendar = false;
-  constructor(public navCtrl: NavController, public app: App, public storage: Storage, public user: UsersProvider, public menu: MenuController, public platform: Platform, public calMenu: CalendarMenu, public viewCtrl: ViewController) {
+  constructor(public navCtrl: NavController, public app: App, public storage: Storage, public modalCtrl: ModalController, public user: UsersProvider, public menu: MenuController, public platform: Platform, public calMenu: CalendarMenu, public viewCtrl: ViewController) {
 
       this.storage.get('user-email').then(email => {
          if(email == null) {
@@ -88,6 +88,11 @@ export class HomePage {
                 this.determineViewedMonth();
             };
         });
+    }
+
+    createNewTraining(dateSelected: string) {
+        let profileModal = this.modalCtrl.create('CreateTrainingPage', {date: dateSelected});
+        profileModal.present();
     }
 
     //Full calendar

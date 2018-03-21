@@ -60,7 +60,7 @@
 
 .noDisplayTransition {
   transition: all linear 0.1s;
-  display: block;
+  //display: block; //this isnt right
   opacity: 0;
   height: 0;
 }

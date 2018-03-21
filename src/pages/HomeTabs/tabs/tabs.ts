@@ -19,9 +19,4 @@ export class TabsPage {
   constructor(public modalCtrl: ModalController) {
 
   }
-
-    createNewTraining() {
-        let profileModal = this.modalCtrl.create('CreateTrainingPage');
-        profileModal.present();
-    }
 }

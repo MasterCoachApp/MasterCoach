@@ -33512,7 +33512,6 @@ ion-calendar .calendar-row .select {
 .noDisplayTransition {
   -webkit-transition: all linear 0.1s;
   transition: all linear 0.1s;
-  display: block;
   opacity: 0;
   height: 0;
 }
@@ -33626,6 +33625,38 @@ page-home .hr-text:after {
   display: inline-block;
   padding: 0 .5em;
   line-height: 1.5em;
+}
+
+page-home ion-fab ion-icon {
+  color: #8795CD;
+}
+
+page-home ion-fab button {
+  -webkit-box-shadow: 0 4px 10px #6b6b6b;
+  box-shadow: 0 4px 10px #6b6b6b;
+}
+
+page-home ion-fab ion-fab-list button[ion-fab] {
+  text-align: center;
+  overflow: visible;
+}
+
+page-home ion-fab ion-fab-list button[ion-fab] div.label {
+  background-color: transparent !important;
+  color: #f4f4f4;
+  position: absolute;
+  right: 48px;
+  height: 24px;
+  line-height: 16px;
+  padding: 5px 8px 5px 8px;
+  margin-top: 8px;
+  border-radius: 5px;
+  -webkit-box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.14), 0 4px 5px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.14), 0 4px 5px rgba(0, 0, 0, 0.1);
+}
+
+page-home ion-fab .button-inner {
+  overflow: visible;
 }
 
 page-create-account {

@@ -11,7 +11,7 @@ webpackJsonp([1],{
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_users_entries__ = __webpack_require__(462);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__providers_tools_tools__ = __webpack_require__(85);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__models_logging_training__ = __webpack_require__(1026);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__models_logging_activities_activities__ = __webpack_require__(1028);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__models_logging_activities_activities__ = __webpack_require__(1027);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__models_logging_activities_track_events__ = __webpack_require__(460);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -238,10 +238,9 @@ var CreateTrainingPage = (function () {
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
             selector: 'page-create-training',template:/*ion-inline-start:"/Users/jonahelbaz/Desktop/MasterCoach/src/pages/Training/create-training/create-training.html"*/'<!--\n  Generated template for the CreateTrainingPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n    <ion-navbar>\n        <ion-buttons left>\n            <button ion-button="arrow-back" color="primary" (click)="cancel()">\n                <ion-icon name="ios-arrow-down"></ion-icon>\n            </button>\n        </ion-buttons>\n        <ion-title>New Training</ion-title>\n        <ion-buttons right (click)="createNewTraining()">\n            <button ion-button="arrow-back" color="primary" (click)="cancel()">\n                Save\n            </button>\n        </ion-buttons>\n    </ion-navbar>\n\n</ion-header>\n\n\n<ion-content>\n\n    <ion-list no-lines>\n        <ion-list-header class="title" (click)="expand(\'pre\')">\n            <ion-col>\n                Pre-Training\n            </ion-col>\n            <ion-col style="text-align: right; width: 100%;" col-8>\n                <ion-icon style="text-align: right" *ngIf="!preTrainingExpanded" class="drop"\n                          name="ios-arrow-forward"></ion-icon>\n                <ion-icon *ngIf="preTrainingExpanded" class="drop" name="ios-arrow-down" right></ion-icon>\n            </ion-col>\n        </ion-list-header>\n        <ion-list *ngIf="preTrainingExpanded">\n            <ion-item-group>\n            <ion-item class="ionItemCrop">\n                <ion-label item-start>Readiness</ion-label>\n                <ion-range min="0" max="5" [snaps]="true" steps="1" [pin]="true" right\n                           [(ngModel)]="preTraining.readiness.val" class="range">\n                    <ion-label range-left>0</ion-label>\n                    <ion-label range-right>5</ion-label>\n                </ion-range>\n            </ion-item>\n            <ion-item class="ionItemCrop">\n                <ion-label item-start>Energy</ion-label>\n                <ion-range min="0" max="5" [snaps]="true" steps="1" [pin]="true" right\n                           [(ngModel)]="preTraining.energy.val">\n                    <ion-label range-left>0</ion-label>\n                    <ion-label range-right>5</ion-label>\n                </ion-range>\n            </ion-item>\n            <ion-item class="ionItemCrop">\n                <ion-label item-start>Hunger</ion-label>\n                <ion-range min="0" max="5" [snaps]="true" steps="1" [pin]="true" right\n                           [(ngModel)]="preTraining.hunger.val">\n                    <ion-label range-left>0</ion-label>\n                    <ion-label range-right>5</ion-label>\n                </ion-range>\n            </ion-item>\n            <ion-item class="ionItemCrop">\n                <ion-label item-start>Stress</ion-label>\n                <ion-range min="0" max="5" [snaps]="true" steps="1" [pin]="true" right\n                           [(ngModel)]="preTraining.stress.val">\n                    <ion-label range-left>0</ion-label>\n                    <ion-label range-right>5</ion-label>\n                </ion-range>\n            </ion-item>\n            <ion-item class="ionItemCrop">\n                <ion-label item-start>Body State</ion-label>\n                <ion-range min="0" max="5" [snaps]="true" steps="1" [pin]="true" right\n                           [(ngModel)]="preTraining.bodyState.val">\n                    <ion-label range-left>0</ion-label>\n                    <ion-label range-right>5</ion-label>\n                </ion-range>\n            </ion-item>\n            <ion-item >\n                <ion-label>Pain\n                    <ion-icon name="medkit"></ion-icon>\n                </ion-label>\n            </ion-item>\n            <ion-item>\n                <ion-label stacked>Thoughts</ion-label>\n                <ion-textarea class="thoughts" [(ngModel)]="preTraining.preThoughts.val"></ion-textarea>\n            </ion-item>\n            </ion-item-group>\n\n        </ion-list>\n\n\n        <ion-list-header (click)="expand(\'training\')" class="title" >\n            <ion-col>\n                Training\n            </ion-col>\n            <ion-col style="text-align: right; width: 100%;" col-8>\n                <ion-icon style="text-align: right" *ngIf="!trainingExpanded" class="drop"\n                          name="ios-arrow-forward"></ion-icon>\n                <ion-icon *ngIf="trainingExpanded" class="drop" name="ios-arrow-down" right></ion-icon>\n            </ion-col>\n        </ion-list-header>\n        <ion-list *ngIf="trainingExpanded">\n            <ion-list>\n                <ion-label stacked class="trainingHeaders">Warm Up</ion-label>\n                <ion-item *ngIf="!mainTraining.activities.warmUp">\n                    <button ion-button (click)="addWarmUp()">Add Warm Up</button>\n                </ion-item>\n                <ion-item *ngIf="mainTraining.activities.warmUp">\n                    <button ion-button (click)="addWarmUp()">{{mainTraining.activities.warmUp}}\n                        <ion-icon class="trainingHeaders" name="close"\n                                  (click)="mainTraining.activities.setWarmUp(null)"></ion-icon>\n                    </button>\n                    <ion-note>View</ion-note>\n\n                </ion-item>\n                <ion-label stacked class="trainingHeaders">Events</ion-label>\n                <ion-list *ngIf="trainingEventList.length > 0">\n                    <ion-item>\n                        <div *ngFor="let event of trainingEventList">\n                            <button ion-button (click)="selectEventWorkout(event)">\n                                {{event}}\n                            </button>\n                            <ion-icon name="close" class="trainingHeaders"\n                                      (click)="removeLabel(event)"></ion-icon>\n                        </div>\n                    </ion-item>\n                </ion-list>\n                <ion-item>\n                    <button ion-button (click)="addActivity()">Add Event</button>\n                </ion-item>\n            </ion-list>\n            <ion-label stacked class="trainingHeaders">Cool Down</ion-label>\n            <ion-item *ngIf="!mainTraining.activities.coolDown">\n                <button ion-button (click)="addCoolDown()">Add Cool Down</button>\n            </ion-item>\n            <ion-item *ngIf="mainTraining.activities.coolDown">\n                <button ion-button (click)="addCoolDown()">{{mainTraining.activities.coolDown}}\n                    <ion-icon class="trainingHeaders" name="close"\n                              (click)="mainTraining.activities.setCoolDown(null)"></ion-icon>\n                </button>\n                <ion-note end>View</ion-note>\n            </ion-item>\n            <ion-item>\n                <ion-label stacked>Notes</ion-label>\n                <ion-textarea class="thoughts" [(ngModel)]="mainTraining.mainTrainingNotes.val"></ion-textarea>\n            </ion-item>\n        </ion-list>\n\n\n        <ion-list-header (click)="expand(\'post\')" class="title" >\n            <ion-col>\n                Post-Training\n            </ion-col>\n            <ion-col style="text-align: right; width: 100%;" col-8>\n                <ion-icon style="text-align: right" *ngIf="!postTrainingExpanded" class="drop"\n                          name="ios-arrow-forward"></ion-icon>\n                <ion-icon *ngIf="postTrainingExpanded" class="drop" name="ios-arrow-down" right></ion-icon>\n            </ion-col>\n        </ion-list-header>\n        <div *ngIf="postTrainingExpanded">\n            <ion-list no-lines>\n                <ion-item>\n                    <ion-label item-start>Rate Your Training</ion-label>\n                    <ion-range min="0" max="5" [snaps]="true" steps="1" [pin]="true"\n                               [(ngModel)]="postTraining.rating.val">\n                        <ion-label range-left>0</ion-label>\n                        <ion-label range-right>5</ion-label>\n                    </ion-range>\n                </ion-item>\n                <ion-item no-lines>\n                    <ion-label stacked>Overall Thoughts\n                        <ion-icon name="ios-expand"></ion-icon>\n                    </ion-label>\n                    <ion-textarea class="thoughts" [(ngModel)]="postTraining.postThoughts.val"></ion-textarea>\n                </ion-item>\n            </ion-list>\n        </div>\n    </ion-list>\n\n</ion-content>\n'/*ion-inline-end:"/Users/jonahelbaz/Desktop/MasterCoach/src/pages/Training/create-training/create-training.html"*/,
         }),
-        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavParams */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_2__providers_users_users__["a" /* UsersProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__providers_users_users__["a" /* UsersProvider */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_3__providers_users_entries__["a" /* EntryProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__providers_users_entries__["a" /* EntryProvider */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_4__providers_tools_tools__["a" /* ToolsProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__providers_tools_tools__["a" /* ToolsProvider */]) === "function" && _f || Object])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2__providers_users_users__["a" /* UsersProvider */], __WEBPACK_IMPORTED_MODULE_3__providers_users_entries__["a" /* EntryProvider */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */], __WEBPACK_IMPORTED_MODULE_4__providers_tools_tools__["a" /* ToolsProvider */]])
     ], CreateTrainingPage);
     return CreateTrainingPage;
-    var _a, _b, _c, _d, _e, _f;
 }());
 
 //# sourceMappingURL=create-training.js.map
@@ -257,50 +256,35 @@ var Training = (function () {
     function Training() {
         this.type = "Training";
         this.preCalEvent = {
-            survey: null,
-            notes: null,
+            survey: {},
+            notes: {},
         };
         this.postCalEvent = {
-            overallRating: null,
-            notes: null,
+            survey: {},
+            notes: {},
         };
         this.mainCalEvent = {
             activities: null,
-            notes: null
+            notes: {},
         };
     }
-    //-----
-    //Accessors
-    //-----
-    Training.prototype.getPreCalEvent = function () {
-        return this.preCalEvent;
+    Training.prototype.addPreNote = function (k, v) {
+        this.preCalEvent.notes[k] = v;
     };
-    Training.prototype.getPostCalEvent = function () {
-        return this.postCalEvent;
+    Training.prototype.addPostNote = function (k, v) {
+        this.postCalEvent.notes[k] = v;
     };
-    Training.prototype.getMainCalEvent = function () {
-        return this.mainCalEvent;
+    Training.prototype.addPreSurveyQuestion = function (k, v) {
+        this.preCalEvent.survey[k] = v;
     };
-    //-----
-    //Mutators
-    //------
-    Training.prototype.setPreCalEvent = function (qna, notes) {
-        this.preCalEvent = {
-            survey: qna,
-            notes: notes
-        };
+    Training.prototype.addPostSurveyQuestion = function (k, v) {
+        this.postCalEvent.survey[k] = v;
     };
-    Training.prototype.setPostCalEvent = function (overallRating, notes) {
-        this.postCalEvent = {
-            overallRating: overallRating,
-            notes: notes
-        };
+    Training.prototype.setMainCalEvent = function (activities) {
+        this.mainCalEvent.activities = activities;
     };
-    Training.prototype.setMainCalEvent = function (activities, notes) {
-        this.mainCalEvent = {
-            activities: activities,
-            notes: notes
-        };
+    Training.prototype.setMainCalNotes = function (k, v) {
+        this.mainCalEvent.notes[k] = v;
     };
     return Training;
 }());
@@ -309,7 +293,7 @@ var Training = (function () {
 
 /***/ }),
 
-/***/ 1028:
+/***/ 1027:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
