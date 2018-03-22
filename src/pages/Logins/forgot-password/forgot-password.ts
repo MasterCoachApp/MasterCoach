@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {AlertController, IonicPage, NavController} from 'ionic-angular';
+import {AlertController, IonicPage, MenuController, NavController} from 'ionic-angular';
 import {AuthenticationProvider} from "../../../providers/users/authentication";
 import {ToolsProvider} from "../../../providers/tools/tools";
 
@@ -19,7 +19,8 @@ export class ForgotPasswordPage {
 
   email: string;
 
-  constructor(public navCtrl: NavController, public authProvider: AuthenticationProvider, public tools: ToolsProvider, public alertCtrl: AlertController) {
+  constructor(public navCtrl: NavController, public authProvider: AuthenticationProvider, public tools: ToolsProvider, public alertCtrl: AlertController, public menu: MenuController ) {
+      menu.enable(false, 'mainCalendarMenu');
   }
 
     forgotPassword() {

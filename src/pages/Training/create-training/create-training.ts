@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
 import {
-    AlertController, IonicPage, NavController, NavParams, Note, PopoverController,
+    AlertController, IonicPage, MenuController, NavController, NavParams, Note, PopoverController,
     ViewController
 } from 'ionic-angular';
 import {UsersProvider} from "../../../providers/users/users";
@@ -82,13 +82,15 @@ export class CreateTrainingPage {
 
     trainingEventList: string[];
 
-    constructor(public navCtrl: NavController, public navParams: NavParams, public popoverCtrl: PopoverController, public users: UsersProvider, public training: EntryProvider, public alertCtrl: AlertController, public tools: ToolsProvider) {
+    constructor(public navCtrl: NavController, public menu: MenuController, public navParams: NavParams, public popoverCtrl: PopoverController, public users: UsersProvider, public training: EntryProvider, public alertCtrl: AlertController, public tools: ToolsProvider) {
+        menu.enable(false, 'mainCalendarMenu');
+
         this.trainingExpanded = true;
         this.preTrainingExpanded = false;
         this.postTrainingExpanded = false;
 
         this.listOfEvents = new TrackEvents().getListOfEvents();
-        this.trainingEventList = [];
+        this.trainingEventList = ["Long Jump", "High Jump", "Pole Vault", "Triple Jump"];
 
         this.expandPostThoughts = false;
     }

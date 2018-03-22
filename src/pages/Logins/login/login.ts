@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {IonicPage, LoadingController, NavController, NavParams, Platform} from 'ionic-angular';
+import {IonicPage, LoadingController, MenuController, NavController, NavParams, Platform} from 'ionic-angular';
 
 import {TabsPage} from "../../HomeTabs/tabs/tabs";
 import {CreateAccountPage} from "../create-account/create-account";
@@ -24,12 +24,12 @@ import {Storage} from "@ionic/storage";
 export class LoginPage {
 
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public authProvider: AuthenticationProvider, public storage: Storage, public tools: ToolsProvider, public keyboard: Keyboard, platform: Platform, public loadCtrl: LoadingController) {
+  constructor(public navCtrl: NavController, public menu: MenuController, public navParams: NavParams, public authProvider: AuthenticationProvider, public storage: Storage, public tools: ToolsProvider, public keyboard: Keyboard, platform: Platform, public loadCtrl: LoadingController) {
       platform.ready().then(() => {
           keyboard.disableScroll(true) //preventing keyboard induced overflow on a page that doesnt need it
       });
-    }
-
+      menu.enable(false, 'mainCalendarMenu');
+  }
 
     realLogin() {
       this.navCtrl.push('StandardLoginPage');

@@ -117,20 +117,91 @@
 
                 </ion-item>
                 <ion-label stacked class="trainingHeaders">Events</ion-label>
-                <ion-list *ngIf="trainingEventList.length > 0">
-                    <ion-item>
-                        <div *ngFor="let event of trainingEventList">
-                            <button ion-button (click)="selectEventWorkout(event)">
-                                {{event}}
-                            </button>
-                            <ion-icon name="close" class="trainingHeaders"
-                                      (click)="removeLabel(event)"></ion-icon>
-                        </div>
-                    </ion-item>
-                </ion-list>
-                <ion-item>
-                    <button ion-button (click)="addActivity()">Add Event</button>
-                </ion-item>
+                <div style="margin-top: 20px" *ngIf="trainingEventList.length > 0">
+                    <ion-grid>
+                        <ion-row>
+                            <ion-col col-1 style="margin-right: 20px">
+                                <button ion-button style="border-radius: 25px; width: 10px; height: 30px;">
+                                <ion-icon name="add"></ion-icon>
+                                </button>
+                            </ion-col>
+                            <ion-col col-10>
+                                <div class="scroll" nowrap>
+                                    <button ion-button class="label" *ngFor="let event of trainingEventList" (click)="removeLabel(event)">
+                                        {{event}}
+                                        <ion-icon name="close" class="trainingHeaders"></ion-icon>
+                                    </button>
+                                </div>
+                            </ion-col>
+                        </ion-row>
+                    </ion-grid>
+                    <ion-grid class="exerciseTable">
+                        <ion-row style="padding-bottom: 5px">Sprint Hurdles</ion-row>
+                        <ion-row>
+                            <ion-col class="exerciseCol exerciseHeader" col-1>
+                                #
+                            </ion-col>
+                            <ion-col class="exerciseCol exerciseHeader">
+                                Detail
+                            </ion-col>
+                            <ion-col class="exerciseCol exerciseHeader" col-3>
+                                Measure
+                            </ion-col>
+                            <ion-col class="exerciseCol exerciseHeader" col-2>
+                                Reps
+                            </ion-col>
+                            <ion-col class="exerciseCol" col-1>
+                                <ion-icon name="checkmark" style="font-size: 20px; padding: 0; font-weight: bold"></ion-icon>
+                            </ion-col>
+                        </ion-row>
+                        <ion-row>
+                            <ion-col class="exerciseCol" col-1>
+                                1
+                            </ion-col>
+                            <ion-col class="exerciseCol">
+                                With Blocks
+                            </ion-col>
+                            <ion-col class="exerciseCol" col-3>
+                                42"
+                            </ion-col>
+                            <ion-col class="exerciseCol" col-2>
+                                8
+                            </ion-col>
+                            <ion-col class="exerciseCol" col-1>
+                                <ion-checkbox></ion-checkbox>
+                            </ion-col>
+                        </ion-row>
+                        <ion-row>
+                            <ion-col class="exerciseCol" col-1>
+                                2
+                            </ion-col>
+                            <ion-col class="exerciseCol">
+                                Without Blocks
+                            </ion-col>
+                            <ion-col class="exerciseCol" col-3>
+                                39"
+                            </ion-col>
+                            <ion-col class="exerciseCol" col-2>
+                                8
+                            </ion-col>
+                            <ion-col class="exerciseCol" col-1>
+                                <ion-checkbox></ion-checkbox>
+                            </ion-col>
+                        </ion-row>
+                        <ion-row>
+                            <ion-col class="addSet">
+                                    ADD SET
+                            </ion-col>
+                        </ion-row>
+                    </ion-grid>
+                    <ion-grid style="width: 100%; border: 1px solid black; margin: 20px 5px 5px 5px;">
+                        <ion-row>
+                            <ion-col style="text-align: center; font-style: italic; opacity: 0.5" (click)="addActivity()">
+                                ADD EXERCISE
+                            </ion-col>
+                        </ion-row>
+                    </ion-grid>
+                </div>
             </ion-list>
             <ion-label stacked class="trainingHeaders">Cool Down</ion-label>
             <ion-item *ngIf="!mainTraining.activities.coolDown">

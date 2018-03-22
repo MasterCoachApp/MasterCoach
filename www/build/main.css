@@ -34047,6 +34047,42 @@ page-create-training .expand {
   display: none;
 }
 
+page-create-training .scroll {
+  overflow-x: auto;
+  white-space: nowrap;
+  overflow-y: hidden;
+}
+
+page-create-training .exerciseTable {
+  background-color: #161b1f;
+  color: #999999;
+}
+
+page-create-training .addSet {
+  text-align: center;
+  border: 1px solid #8795CD;
+  margin-top: 5px;
+}
+
+page-create-training .exerciseHeader {
+  font-style: italic;
+}
+
+page-create-training .exerciseCol {
+  background-color: white;
+  color: #999999;
+  border: 1px solid black;
+  text-align: center;
+}
+
+page-create-training .label {
+  font-size: 12px;
+}
+
+page-create-training .addSetButton {
+  width: 100%;
+}
+
 page-text-popover .popoverText {
   width: 100%;
   height: 100%;

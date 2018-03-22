@@ -74,7 +74,6 @@ export class HomePage {
     activateMenu() {
         this.activeMenu = 'mainCalendarMenu';
         this.menu.enable(true, 'mainCalendarMenu');
-        this.menu.enable(false, 'filtersCalendarMenu');
     }
 
     ionViewDidLoad() {

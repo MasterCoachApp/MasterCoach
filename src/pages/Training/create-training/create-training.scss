@@ -51,6 +51,40 @@ page-create-training {
   .expand {
    display: none;
   }
+  .scroll {
+    overflow-x: auto;
+    white-space: nowrap;
+    overflow-y: hidden;
+  }
 
+  .exerciseTable {
+    background-color: color($colors, background);
+    color: #999999;
+  }
+
+  .addSet {
+    text-align: center;
+    border: 1px solid color($colors, primary);
+    margin-top: 5px;
+  }
+
+  .exerciseHeader {
+    font-style: italic;
+  }
+
+   .exerciseCol {
+    background-color: white;
+    color: #999999;
+    border: 1px solid black;
+    text-align: center;
+   }
+
+  .label {
+    font-size: 12px;
+  }
+
+  .addSetButton {
+    width: 100%;
+  }
 
 }
