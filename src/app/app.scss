@@ -98,3 +98,13 @@
   margin-left: 43%;
   position: absolute;
 }
+
+.custom-popover .popover-content {
+  width: 95%;
+  max-width: 500px;
+  margin-left: 2.5%;
+  height: 30%;
+  background-color: white;
+  margin-top: 25%;
+  box-shadow: 5px 10px 18px #888888;
+}

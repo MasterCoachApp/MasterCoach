@@ -34,10 +34,12 @@ import {StandardLoginPage} from "../pages/Logins/standard-login/standard-login";
 import {SettingsProvider} from "../providers/settings";
 import {CreateTrainingPage} from "../pages/Training/create-training/create-training";
 import {EntryProvider} from "../providers/users/entries";
+import {TextPopoverPage} from "../pages/Training/text-popover/text-popover";
 
 @NgModule({
   declarations: [
     MyApp,
+      TextPopoverPage //why wont this popover lazy load in?
     // AboutPage,
     // ContactPage,
     // HomePage,
@@ -60,6 +62,7 @@ import {EntryProvider} from "../providers/users/entries";
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
+      TextPopoverPage
     // AboutPage,
     // ContactPage,
     // HomePage,

@@ -1,11 +1,15 @@
 import {Component} from '@angular/core';
-import {AlertController, IonicPage, NavController, NavParams, Note} from 'ionic-angular';
+import {
+    AlertController, IonicPage, NavController, NavParams, Note, PopoverController,
+    ViewController
+} from 'ionic-angular';
 import {UsersProvider} from "../../../providers/users/users";
 import {EntryProvider} from "../../../providers/users/entries";
 import {ToolsProvider} from "../../../providers/tools/tools";
 import {Training} from "../../../models/logging/training";
 import {Activities} from "../../../models/logging/activities/activities";
 import {TrackEvents} from "../../../models/logging/activities/track-events";
+import {TextPopoverPage} from "../text-popover/text-popover";
 
 /**
  * Generated class for the CreateTrainingPage page.
@@ -24,6 +28,8 @@ export class CreateTrainingPage {
     trainingExpanded: boolean;
     preTrainingExpanded: boolean;
     postTrainingExpanded: boolean;
+
+    expandPostThoughts: boolean;
 
     listOfEvents: string[];
 
@@ -76,13 +82,27 @@ export class CreateTrainingPage {
 
     trainingEventList: string[];
 
-    constructor(public navCtrl: NavController, public navParams: NavParams, public users: UsersProvider, public training: EntryProvider, public alertCtrl: AlertController, public tools: ToolsProvider) {
-        this.trainingExpanded = false;
+    constructor(public navCtrl: NavController, public navParams: NavParams, public popoverCtrl: PopoverController, public users: UsersProvider, public training: EntryProvider, public alertCtrl: AlertController, public tools: ToolsProvider) {
+        this.trainingExpanded = true;
         this.preTrainingExpanded = false;
         this.postTrainingExpanded = false;
 
         this.listOfEvents = new TrackEvents().getListOfEvents();
         this.trainingEventList = [];
+
+        this.expandPostThoughts = false;
+    }
+
+    expandTextArea() {
+        console.log(1);
+
+        this.expandPostThoughts = !this.expandPostThoughts;
+
+        let popover = this.popoverCtrl.create(TextPopoverPage, {},{cssClass: 'custom-popover'});
+        popover.present({
+            //ev: myEvent
+        });
+
     }
 
     addStandardPreTrainingSurveyQuestions(newTraining: Training){
