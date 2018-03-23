@@ -15,13 +15,10 @@ import {CreateTrainingPage} from "../pages/Training/create-training/create-train
 export class MyApp {
 
   //rootPage:any = LoginPage;
-   // rootPage:any = 'TabsPage';
-   rootPage:any = 'CreateTrainingPage';
-
-    selectedTheme: String;
+    rootPage:any = 'TabsPage';
+   //rootPage:any = 'CreateTrainingPage';
 
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, keyboard: Keyboard, public calendarMenu: CalendarMenu, private settings: SettingsProvider) {
-      this.settings.getActiveTheme().subscribe(val => this.selectedTheme = val);
     platform.ready().then(() => {
         //Menu settings
         this.setBaseMenuSettings();

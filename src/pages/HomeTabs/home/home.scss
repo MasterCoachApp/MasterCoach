@@ -1,39 +1,5 @@
 page-home {
 
-  .scroll {
-    overflow-x: auto;
-    white-space: nowrap;
-    overflow-y: hidden;
-  }
-
-  .expandedDate {
-    height: 50px;
-    width: 50px;
-    border: 1px solid black !important;
-    background-color: #32363c;
-  }
-
-  .selected{
-    border-bottom: 4px solid color($colors, primary) !important;
-    background-color:  #2c3035;
-
-  }
-
-  .dayValue {
-    width: 50px;
-    padding: 0;
-    font-size: 8px;
-    text-align: center;
-    color: #8a8d96;
-  }
-
-  .selectedTitle {
-    width: 50px;
-    padding: 0;
-    font-size: 8px;
-    text-align: center;
-  }
-
   .executed {
     margin-top: 50px;
   }

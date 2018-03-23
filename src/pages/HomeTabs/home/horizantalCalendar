@@ -1,0 +1,171 @@
+
+
+//In header of home.html (at bottom)
+
+
+    <!--<div id="calendarScroll" class="scroll" >-->
+        <ion-scroll scrollX="true">
+          <div *ngFor="let date of this.calMenu.dateArray" class="expandedDate" (click)="selectDate(date)">
+            <ion-item no-lines [ngClass]="date.dateValue == this.dateSelected.dateValue ? 'expandedDate selected' : 'expandedDate'" id="{{date.date.toISOString().slice(0,10)}}">
+                <div class="hCalendarContent">
+                    <ion-row>
+                        <ion-col [ngClass]="date.dateValue == this.dateSelected.dateValue ? 'selectedTitle' : 'dayValue'">
+                            {{date.dayOfTheWeek}}
+                        </ion-col>
+                    </ion-row>
+                    <ion-row>
+                        <ion-col style="font-size: 14px !important;" [ngClass]="date.dateValue == this.dateSelected.dateValue ? 'selectedTitle' : 'dayValue'" color="primary">
+                            {{date.date.getDate()}}
+                        </ion-col>
+                    </ion-row>
+                </div>
+            </ion-item>
+          </div>
+        </ion-scroll>
+    <!--</div>-->
+
+
+//home.css
+
+  .scroll {
+    overflow-x: auto;
+    white-space: nowrap;
+    overflow-y: hidden;
+  }
+
+  .expandedDate {
+    height: 50px;
+    width: 50px;
+    border: 1px solid black !important;
+    background-color: #32363c;
+  }
+
+  .selected{
+    border-bottom: 4px solid color($colors, primary) !important;
+    background-color:  #2c3035;
+
+  }
+
+  .dayValue {
+    width: 50px;
+    padding: 0;
+    font-size: 8px;
+    text-align: center;
+    color: #8a8d96;
+  }
+
+  .selectedTitle {
+    width: 50px;
+    padding: 0;
+    font-size: 8px;
+    text-align: center;
+  }
+
+
+//In Home.ts
+
+
+ionViewDidLoad() {
+        this.platform.ready().then((readySource) => {
+            let todayItem = document.getElementById(this.dateSelected.dateValue);
+            let scroll = document.getElementById("calendarScroll");
+            if (todayItem != null && scroll != null) {
+                scroll.scrollLeft = todayItem.offsetLeft;
+            }
+            scroll.onscroll = () => {
+                this.determineViewedMonth();
+            };
+        });
+    }
+
+ updateHorizontalCalendar(data) {
+        if(data != null) {
+            this.dateSelected = data;
+            let todayItem = document.getElementById(this.dateSelected.dateValue);
+            let scroll = document.getElementById("calendarScroll");
+            if (todayItem != null && scroll != null) {
+                scroll.scrollLeft = todayItem.offsetLeft;
+            }
+            this.monthInView = this.dateSelected.month;
+        }
+    }
+
+
+   //by finding the current offset of the scroll bar, we can determine what month to display in the horizontal scroll cal
+
+    determineViewedMonth() {
+        let scroll = document.getElementById("calendarScroll");
+
+        let jan = document.getElementById((new Date().getFullYear()).toString()+"-01-01");
+        let feb = document.getElementById((new Date().getFullYear()).toString()+"-02-01");
+
+        if(jan != null && feb != null && scroll.scrollLeft >= jan.offsetLeft && scroll.scrollLeft < feb.offsetLeft) {
+            this.monthInView = "January";
+            return;
+        }
+
+        let mar = document.getElementById((new Date().getFullYear()).toString()+"-03-01");
+        if(feb != null && mar != null && scroll.scrollLeft >= feb.offsetLeft && scroll.scrollLeft < mar.offsetLeft) {
+            this.monthInView = "February";
+            return;
+        }
+
+        let apr = document.getElementById((new Date().getFullYear()).toString()+"-04-01");
+        if(apr != null && mar != null && scroll.scrollLeft >= mar.offsetLeft && scroll.scrollLeft < apr.offsetLeft) {
+            this.monthInView = "March";
+            return;
+        }
+
+        let may = document.getElementById((new Date().getFullYear()).toString()+"-05-01");
+        if(apr != null && may != null && scroll.scrollLeft >= apr.offsetLeft && scroll.scrollLeft < may.offsetLeft) {
+            this.monthInView = "April";
+            return;
+        }
+
+        let jun = document.getElementById((new Date().getFullYear()).toString()+"-06-01");
+        if(jun != null && may != null && scroll.scrollLeft >= may.offsetLeft && scroll.scrollLeft < jun.offsetLeft) {
+            this.monthInView = "May";
+            return;
+        }
+
+        let jul = document.getElementById((new Date().getFullYear()).toString()+"-07-01");
+        if(jun != null && jul != null && scroll.scrollLeft >= jun.offsetLeft && scroll.scrollLeft < jul.offsetLeft) {
+            this.monthInView = "June";
+            return;
+        }
+
+        let aug = document.getElementById((new Date().getFullYear()).toString()+"-08-01");
+        if(aug != null && jul != null && scroll.scrollLeft >= jul.offsetLeft && scroll.scrollLeft < aug.offsetLeft) {
+            this.monthInView = "July";
+            return;
+        }
+
+        let sep = document.getElementById((new Date().getFullYear()).toString()+"-09-01");
+        if(aug != null && sep != null && scroll.scrollLeft >= aug.offsetLeft && scroll.scrollLeft < sep.offsetLeft) {
+            this.monthInView = "August";
+            return;
+        }
+
+        let oct = document.getElementById((new Date().getFullYear()).toString()+"-10-01");
+        if(oct != null && sep != null && scroll.scrollLeft >= sep.offsetLeft && scroll.scrollLeft < oct.offsetLeft) {
+            this.monthInView = "September";
+            return;
+        }
+
+        let nov = document.getElementById((new Date().getFullYear()).toString()+"-11-01");
+        if(oct != null && nov != null && scroll.scrollLeft >= oct.offsetLeft && scroll.scrollLeft < nov.offsetLeft) {
+            this.monthInView = "October";
+            return;
+        }
+
+        let dec = document.getElementById((new Date().getFullYear()).toString()+"-12-01");
+        if(dec != null && nov != null && scroll.scrollLeft >= nov.offsetLeft && scroll.scrollLeft < dec.offsetLeft) {
+            this.monthInView = "November";
+            return;
+        }
+
+        if(dec != null && scroll.scrollLeft >= dec.offsetLeft) {
+            this.monthInView = "December";
+            return;
+        }
+    }
