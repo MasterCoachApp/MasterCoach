@@ -1,15 +1,12 @@
 import {Component} from '@angular/core';
-import {
-    AlertController, IonicPage, MenuController, NavController, NavParams, Note, PopoverController,
-    ViewController
-} from 'ionic-angular';
+import {AlertController, IonicPage, MenuController, NavController, NavParams, PopoverController} from 'ionic-angular';
 import {UsersProvider} from "../../../providers/users/users";
 import {EntryProvider} from "../../../providers/users/entries";
 import {ToolsProvider} from "../../../providers/tools/tools";
-import {Training} from "../../../models/logging/training";
 import {Activities} from "../../../models/logging/activities/activities";
-import {TrackEvents} from "../../../models/logging/activities/track-events";
 import {TextPopoverPage} from "../text-popover/text-popover";
+import {LabelProvider} from "../../../providers/custom-survey-components/labels/labelProvider";
+import {TrainingProvider} from "../../../providers/custom-survey-components/trainings/trainingProvider";
 
 /**
  * Generated class for the CreateTrainingPage page.
@@ -34,43 +31,9 @@ export class CreateTrainingPage {
     listOfEvents: string[];
 
 
-    preTraining = {
-        readiness: {
-            key: "Readiness",
-            val: 0
-        },
-        hunger: {
-            key: "Hunger",
-            val: 0
-        },
-        stress: {
-            key: "Stress",
-            val: 0
-        },
-        bodyState: {
-            key: "Body State",
-            val: 0
-        },
-        energy: {
-            key: "Energy",
-            val: 0
-        },
-        preThoughts: {
-            key: "Thoughts",
-            val: ''
-        },
+    preTraining = this.trainings.preTraining;
 
-    };
-    postTraining = {
-        postThoughts: {
-            key: 'Thoughts',
-            val: ''
-        },
-        rating: {
-          key: 'Overall',
-          val: 0
-        }
-    };
+    postTraining = this.trainings.postTraining;
 
     mainTraining = {
         activities: new Activities(),
@@ -82,15 +45,15 @@ export class CreateTrainingPage {
 
     trainingEventList: string[];
 
-    constructor(public navCtrl: NavController, public menu: MenuController, public navParams: NavParams, public popoverCtrl: PopoverController, public users: UsersProvider, public training: EntryProvider, public alertCtrl: AlertController, public tools: ToolsProvider) {
+    constructor(public navCtrl: NavController, public menu: MenuController, public navParams: NavParams, public trainings: TrainingProvider, public labels: LabelProvider, public popoverCtrl: PopoverController, public users: UsersProvider, public training: EntryProvider, public alertCtrl: AlertController, public tools: ToolsProvider) {
         menu.enable(false, 'mainCalendarMenu');
 
         this.trainingExpanded = true;
         this.preTrainingExpanded = false;
         this.postTrainingExpanded = false;
 
-        this.listOfEvents = new TrackEvents().getListOfEvents();
-        this.trainingEventList = ["Long Jump", "High Jump", "Pole Vault", "Triple Jump"];
+        this.listOfEvents = labels.listOfLabels;
+        this.trainingEventList = ["Long Jump", "High Jump", "Pole Vault"]; //should be empty out of development
 
         this.expandPostThoughts = false;
     }
@@ -107,41 +70,43 @@ export class CreateTrainingPage {
 
     }
 
-    addStandardPreTrainingSurveyQuestions(newTraining: Training){
-        newTraining.addPreSurveyQuestion(this.preTraining.energy.key, this.preTraining.energy.val);
-        newTraining.addPreSurveyQuestion(this.preTraining.bodyState.key, this.preTraining.bodyState.val);
-        newTraining.addPreSurveyQuestion(this.preTraining.stress.key, this.preTraining.stress.val);
-        newTraining.addPreSurveyQuestion(this.preTraining.hunger.key, this.preTraining.hunger.val);
-        newTraining.addPreSurveyQuestion(this.preTraining.readiness.key, this.preTraining.readiness.val);
-    }
-
-    addStandardPostTrainingSurveyQuestions(newTraining: Training){
-        newTraining.addPostSurveyQuestion(this.postTraining.rating.key, this.postTraining.rating.val);
-    }
+    // addStandardPreTrainingSurveyQuestions(newTraining: Training){
+    //     newTraining.addPreSurveyQuestion(this.preTraining.energy.key, this.preTraining.energy.val);
+    //     newTraining.addPreSurveyQuestion(this.preTraining.bodyState.key, this.preTraining.bodyState.val);
+    //     newTraining.addPreSurveyQuestion(this.preTraining.stress.key, this.preTraining.stress.val);
+    //     newTraining.addPreSurveyQuestion(this.preTraining.hunger.key, this.preTraining.hunger.val);
+    //     newTraining.addPreSurveyQuestion(this.preTraining.readiness.key, this.preTraining.readiness.val);
+    // }
+    //
+    // addStandardPostTrainingSurveyQuestions(newTraining: Training){
+    //     newTraining.addPostSurveyQuestion(this.postTraining.rating.key, this.postTraining.rating.val);
+    // }
 
 
     createNewTraining() {
         // let mainNote = new Notes(this.mainTraining.mainTrainingNotes.key, this.mainTraining.mainTrainingNotes.val);
         // mainNotes.push(mainNote);
 
-        let newTraining = new Training();
-        newTraining.addPreNote(this.preTraining.preThoughts.key, this.preTraining.preThoughts.val);
-        this.addStandardPreTrainingSurveyQuestions(newTraining);
+        console.log(this.preTraining.getPreTraining());
 
-        newTraining.addPostNote(this.postTraining.postThoughts.key, this.postTraining.postThoughts.val);
-        this.addStandardPostTrainingSurveyQuestions(newTraining);
-
-
-     //   newTraining.setMainCalEvent(this.mainTraining.activities, mainNotes);
-
-
-
-        if (navigator.onLine) {
-            this.training.createNewEntry(newTraining);
-        }
-        else {
-            this.tools.presentToast("bottom", "Sorry, you're not connected to the internet");
-        }
+     //    let newTraining = new Training();
+     //    newTraining.addPreNote(this.preTraining.preThoughts.key, this.preTraining.preThoughts.val);
+     //    this.addStandardPreTrainingSurveyQuestions(newTraining);
+     //
+     //    newTraining.addPostNote(this.postTraining.postThoughts.key, this.postTraining.postThoughts.val);
+     //    this.addStandardPostTrainingSurveyQuestions(newTraining);
+     //
+     //
+     // //   newTraining.setMainCalEvent(this.mainTraining.activities, mainNotes);
+     //
+     //
+     //
+     //    if (navigator.onLine) {
+     //        this.training.createNewEntry(newTraining);
+     //    }
+     //    else {
+     //        this.tools.presentToast("bottom", "Sorry, you're not connected to the internet");
+     //    }
 
     }
 

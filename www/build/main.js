@@ -1,5 +1,128 @@
 webpackJsonp([10],{
 
+/***/ 1031:
+/***/ (function(module, exports) {
+
+throw new Error("Module parse failed: Unexpected character '@' (5:0)\nYou may need an appropriate loader to handle this file type.\n| import {LabelBank} from \"../../models/labels/label-bank\";\n| \n| @Injectable()\n| export class LabelProvider {\n| ");
+
+/***/ }),
+
+/***/ 1032:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return TrainingProvider; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__models_custom_survey_components_trainings_pre_training__ = __webpack_require__(1033);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__models_custom_survey_components_trainings_post_training__ = __webpack_require__(1034);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__models_custom_survey_components_trainings_post_training___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__models_custom_survey_components_trainings_post_training__);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+var TrainingProvider = (function () {
+    function TrainingProvider() {
+        this.preTraining = new __WEBPACK_IMPORTED_MODULE_1__models_custom_survey_components_trainings_pre_training__["a" /* PreTraining */]();
+        this.postTraining = new __WEBPACK_IMPORTED_MODULE_2__models_custom_survey_components_trainings_post_training__["PostTraining"]();
+        this.getCustomPostTraining();
+        this.getCustomPreTraining();
+    }
+    TrainingProvider.prototype.getCustomPostTraining = function () {
+    };
+    TrainingProvider.prototype.getCustomPreTraining = function () {
+    };
+    TrainingProvider = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["B" /* Injectable */])(),
+        __metadata("design:paramtypes", [])
+    ], TrainingProvider);
+    return TrainingProvider;
+}());
+
+//# sourceMappingURL=trainingProvider.js.map
+
+/***/ }),
+
+/***/ 1033:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return PreTraining; });
+var PreTraining = (function () {
+    function PreTraining() {
+        this.preTraining = {
+            readiness: {
+                key: "Readiness",
+                val: 0,
+                type: 'range'
+            },
+            hunger: {
+                key: "Hunger",
+                val: 0,
+                type: 'range'
+            },
+            stress: {
+                key: "Stress",
+                val: 0,
+                type: 'range'
+            },
+            bodyState: {
+                key: "Body State",
+                val: 0,
+                type: 'range'
+            },
+            energy: {
+                key: "Energy",
+                val: 0,
+                type: 'range'
+            },
+            preThoughts: {
+                key: "Thoughts",
+                val: '',
+                type: 'note'
+            },
+        };
+    }
+    PreTraining.prototype.getPreTraining = function () {
+        return this.preTraining;
+    };
+    PreTraining.prototype.addRange = function (key) {
+        var machineKey = key.replace(/ /g, '');
+        this.preTraining.machineKey = {
+            key: key,
+            val: 0,
+            type: 'range'
+        };
+    };
+    PreTraining.prototype.addNote = function (key) {
+        var machineKey = key.replace(/ /g, '');
+        this.preTraining.machineKey = {
+            key: key,
+            val: '',
+            type: 'note'
+        };
+    };
+    return PreTraining;
+}());
+
+//# sourceMappingURL=pre-training.js.map
+
+/***/ }),
+
+/***/ 1034:
+/***/ (function(module, exports) {
+
+throw new Error("Module parse failed: Unexpected token (4:12)\nYou may need an appropriate loader to handle this file type.\n| \n| \n|     private postTraining: {\n|         [key: string]: object\n|     };");
+
+/***/ }),
+
 /***/ 205:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -66,42 +189,9 @@ var UsersProvider = (function () {
 /***/ }),
 
 /***/ 206:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(module, exports) {
 
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return SettingsProvider; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_Rx__ = __webpack_require__(489);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_Rx___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_rxjs_Rx__);
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-var SettingsProvider = (function () {
-    function SettingsProvider() {
-        this.theme = new __WEBPACK_IMPORTED_MODULE_1_rxjs_Rx__["BehaviorSubject"]('dark-theme');
-    }
-    SettingsProvider.prototype.setActiveTheme = function (val) {
-        this.theme.next(val);
-    };
-    SettingsProvider.prototype.getActiveTheme = function () {
-        return this.theme.asObservable();
-    };
-    SettingsProvider = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["B" /* Injectable */])(),
-        __metadata("design:paramtypes", [])
-    ], SettingsProvider);
-    return SettingsProvider;
-}());
-
-//# sourceMappingURL=settings.js.map
+throw new Error("Module build failed: Error: ENOENT: no such file or directory, open '/Users/jonahelbaz/Desktop/MasterCoach/src/providers/settings.ts'");
 
 /***/ }),
 
@@ -136,7 +226,7 @@ var CalendarMenu = (function () {
         this.displayedYear = (new Date()).getFullYear();
         this.menuEvents = new __WEBPACK_IMPORTED_MODULE_4__models_calendar_menu_events__["a" /* MenuEvents */]();
         var currentYear = this.getDisplayedYear();
-        this.dateArray = this.getDates(new Date(currentYear.toString() + '-01-01'), new Date(currentYear.toString() + '-12-31'));
+        //this.dateArray = this.getDates(new Date(currentYear.toString()+'-01-01'),new Date(currentYear.toString()+'-12-31'));
     }
     CalendarMenu.prototype.getLabels = function () {
         return ["Short approach LJ", "Competition style"];
@@ -211,31 +301,31 @@ var map = {
 	],
 	"../pages/HomeTabs/home/home.module": [
 		881,
-		0
+		6
 	],
 	"../pages/HomeTabs/tabs/tabs.module": [
 		882,
-		6
+		5
 	],
 	"../pages/Logins/create-account/create-account.module": [
 		883,
-		3
+		2
 	],
 	"../pages/Logins/forgot-password/forgot-password.module": [
 		884,
-		5
+		4
 	],
 	"../pages/Logins/login/login.module": [
 		885,
-		2
+		1
 	],
 	"../pages/Logins/standard-login/standard-login.module": [
 		886,
-		4
+		3
 	],
 	"../pages/Training/create-training/create-training.module": [
 		887,
-		1
+		0
 	],
 	"../pages/Training/text-popover/text-popover.module": [
 		888,
@@ -693,74 +783,6 @@ var AuthenticationProvider = (function () {
 
 /***/ }),
 
-/***/ 460:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return TrackEvents; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__TrackEventTrainings_hundred__ = __webpack_require__(767);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__TrackEventTrainings_LongJump__ = __webpack_require__(768);
-
-
-var TrackEvents = (function () {
-    function TrackEvents() {
-        this.hundred = {
-            value: "100m",
-            defaultExercises: new __WEBPACK_IMPORTED_MODULE_0__TrackEventTrainings_hundred__["a" /* Hundred */]().listOfTrainings,
-        };
-        this.sprintHurdles = {
-            value: "110mH",
-            defaultExercises: new __WEBPACK_IMPORTED_MODULE_0__TrackEventTrainings_hundred__["a" /* Hundred */]().listOfTrainings,
-        };
-        this.fourHundred = {
-            value: "400m",
-            defaultExercises: new __WEBPACK_IMPORTED_MODULE_0__TrackEventTrainings_hundred__["a" /* Hundred */]().listOfTrainings,
-        };
-        this.fifteenHundred = {
-            value: "1500m",
-            defaultExercises: new __WEBPACK_IMPORTED_MODULE_0__TrackEventTrainings_hundred__["a" /* Hundred */]().listOfTrainings,
-        };
-        this.longJump = {
-            value: "Long Jump",
-            defaultExercises: new __WEBPACK_IMPORTED_MODULE_1__TrackEventTrainings_LongJump__["a" /* LongJump */]().listOfTrainings,
-        };
-        this.highJump = {
-            value: "High Jump",
-            defaultExercises: new __WEBPACK_IMPORTED_MODULE_0__TrackEventTrainings_hundred__["a" /* Hundred */]().listOfTrainings,
-        };
-        this.poleVault = {
-            value: "Pole Vault",
-            defaultExercises: new __WEBPACK_IMPORTED_MODULE_0__TrackEventTrainings_hundred__["a" /* Hundred */]().listOfTrainings,
-        };
-        this.javelin = {
-            value: "Javelin Throw",
-            defaultExercises: new __WEBPACK_IMPORTED_MODULE_0__TrackEventTrainings_hundred__["a" /* Hundred */]().listOfTrainings,
-        };
-        this.discus = {
-            value: "Discus Throw",
-            defaultExercises: new __WEBPACK_IMPORTED_MODULE_0__TrackEventTrainings_hundred__["a" /* Hundred */]().listOfTrainings,
-        };
-        this.shotput = {
-            value: "Shot Put",
-            defaultExercises: new __WEBPACK_IMPORTED_MODULE_0__TrackEventTrainings_hundred__["a" /* Hundred */]().listOfTrainings,
-        };
-        this.decathlon = {
-            value: "Decathlon",
-            defaultExercises: new __WEBPACK_IMPORTED_MODULE_0__TrackEventTrainings_hundred__["a" /* Hundred */]().listOfTrainings,
-        };
-        this.listOfEvents = ["100m", "110mH", "400m", "1500m", "Long Jump", "High Jump", "Pole Vault", "Discus Throw", "Javelin Throw", "Shot Put", "Decathlon"];
-    }
-    TrackEvents.prototype.getListOfEvents = function () {
-        return this.listOfEvents;
-    };
-    ;
-    return TrackEvents;
-}());
-
-//# sourceMappingURL=track-events.js.map
-
-/***/ }),
-
 /***/ 461:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -969,15 +991,18 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__providers_menus_calendar_menu__ = __webpack_require__(207);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__ionic_native_date_picker__ = __webpack_require__(363);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__ionic_native_google_plus__ = __webpack_require__(416);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__providers_settings__ = __webpack_require__(206);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__providers_users_entries__ = __webpack_require__(463);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__pages_Training_text_popover_text_popover__ = __webpack_require__(461);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__providers_users_entries__ = __webpack_require__(463);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__pages_Training_text_popover_text_popover__ = __webpack_require__(461);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__providers_custom_survey_components_labels_labelProvider__ = __webpack_require__(1031);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__providers_custom_survey_components_labels_labelProvider___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_22__providers_custom_survey_components_labels_labelProvider__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__providers_custom_survey_components_trainings_trainingProvider__ = __webpack_require__(1032);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
 
 
 
@@ -1008,7 +1033,7 @@ var AppModule = (function () {
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["J" /* NgModule */])({
             declarations: [
                 __WEBPACK_IMPORTED_MODULE_3__app_component__["a" /* MyApp */],
-                __WEBPACK_IMPORTED_MODULE_22__pages_Training_text_popover_text_popover__["a" /* TextPopoverPage */] //why wont this popover lazy load in?
+                __WEBPACK_IMPORTED_MODULE_21__pages_Training_text_popover_text_popover__["a" /* TextPopoverPage */] //why wont this popover lazy load in?
                 // AboutPage,
                 // ContactPage,
                 // HomePage,
@@ -1044,7 +1069,7 @@ var AppModule = (function () {
             bootstrap: [__WEBPACK_IMPORTED_MODULE_2_ionic_angular__["c" /* IonicApp */]],
             entryComponents: [
                 __WEBPACK_IMPORTED_MODULE_3__app_component__["a" /* MyApp */],
-                __WEBPACK_IMPORTED_MODULE_22__pages_Training_text_popover_text_popover__["a" /* TextPopoverPage */]
+                __WEBPACK_IMPORTED_MODULE_21__pages_Training_text_popover_text_popover__["a" /* TextPopoverPage */]
                 // AboutPage,
                 // ContactPage,
                 // HomePage,
@@ -1068,8 +1093,9 @@ var AppModule = (function () {
                 __WEBPACK_IMPORTED_MODULE_17__providers_menus_calendar_menu__["a" /* CalendarMenu */],
                 __WEBPACK_IMPORTED_MODULE_18__ionic_native_date_picker__["a" /* DatePicker */],
                 __WEBPACK_IMPORTED_MODULE_19__ionic_native_google_plus__["a" /* GooglePlus */],
-                __WEBPACK_IMPORTED_MODULE_20__providers_settings__["a" /* SettingsProvider */],
-                __WEBPACK_IMPORTED_MODULE_21__providers_users_entries__["a" /* EntryProvider */]
+                __WEBPACK_IMPORTED_MODULE_20__providers_users_entries__["a" /* EntryProvider */],
+                __WEBPACK_IMPORTED_MODULE_22__providers_custom_survey_components_labels_labelProvider__["LabelProvider"],
+                __WEBPACK_IMPORTED_MODULE_23__providers_custom_survey_components_trainings_trainingProvider__["a" /* TrainingProvider */]
             ],
             schemas: [
                 __WEBPACK_IMPORTED_MODULE_0__angular_core__["i" /* CUSTOM_ELEMENTS_SCHEMA */]
@@ -1088,201 +1114,23 @@ var AppModule = (function () {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MenuEvents; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__logging_activities_track_events__ = __webpack_require__(460);
-var __extends = (this && this.__extends) || (function () {
-    var extendStatics = Object.setPrototypeOf ||
-        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
-    return function (d, b) {
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
-
-var MenuEvents = (function (_super) {
-    __extends(MenuEvents, _super);
-    function MenuEvents() {
-        var _this = _super.call(this) || this;
-        _this.hundred.displayed = true;
-        _this.hundred.filtered = false;
-        _this.sprintHurdles.displayed = true;
-        _this.sprintHurdles.filtered = false;
-        _this.fourHundred.displayed = true;
-        _this.fourHundred.filtered = false;
-        _this.fifteenHundred.displayed = true;
-        _this.fifteenHundred.filtered = false;
-        _this.longJump.displayed = true;
-        _this.longJump.filtered = false;
-        _this.highJump.displayed = true;
-        _this.highJump.filtered = false;
-        _this.poleVault.displayed = true;
-        _this.poleVault.filtered = false;
-        _this.javelin.displayed = true;
-        _this.javelin.filtered = false;
-        _this.discus.displayed = true;
-        _this.discus.filtered = false;
-        _this.shotput.displayed = true;
-        _this.shotput.filtered = false;
-        _this.decathlon.displayed = true;
-        _this.decathlon.filtered = false;
-        return _this;
+var MenuEvents = (function () {
+    function MenuEvents(labels) {
+        var _this = this;
+        this.labels = labels;
+        labels.listOfLabels.forEach(function (label) {
+            _this.listOfEvents.push(label['value']);
+        });
     }
     MenuEvents.prototype.getFilterFromEvent = function (event) {
-        switch (event) {
-            case "100m":
-                return this.hundred.filtered;
-            case "110mH":
-                return this.sprintHurdles.filtered;
-            case "400m":
-                return this.fourHundred.filtered;
-            case "1500m":
-                return this.fifteenHundred.filtered;
-            case "Long Jump":
-                return this.longJump.filtered;
-            case "High Jump":
-                return this.highJump.filtered;
-            case "Pole Vault":
-                return this.poleVault.filtered;
-            case "Javelin Throw":
-                return this.javelin.filtered;
-            case "Discus Throw":
-                return this.discus.filtered;
-            case "Shot Put":
-                return this.shotput.filtered;
-            case "Decathlon":
-                return this.decathlon.filtered;
-        }
+        return true;
     };
     MenuEvents.prototype.updateObject = function (event, property) {
-        switch (event) {
-            case "100m":
-                if (property == "displayed") {
-                }
-                if (property == "filtered") {
-                    this.hundred.filtered = !this.hundred.filtered;
-                }
-                return this.hundred;
-            case "110mH":
-                if (property == "displayed") {
-                }
-                if (property == "filtered") {
-                    this.sprintHurdles.filtered = !this.sprintHurdles.filtered;
-                }
-                return this.sprintHurdles;
-            case "400m":
-                if (property == "displayed") {
-                }
-                if (property == "filtered") {
-                    this.fourHundred.filtered = !this.fourHundred.filtered;
-                }
-                return this.fourHundred;
-            case "1500m":
-                if (property == "displayed") {
-                }
-                if (property == "filtered") {
-                    this.fifteenHundred.filtered = !this.fifteenHundred.filtered;
-                }
-                return this.fifteenHundred;
-            case "Long Jump":
-                if (property == "displayed") {
-                }
-                if (property == "filtered") {
-                    this.longJump.filtered = !this.longJump.filtered;
-                }
-                return this.longJump;
-            case "High Jump":
-                if (property == "displayed") {
-                }
-                if (property == "filtered") {
-                    this.highJump.filtered = !this.highJump.filtered;
-                }
-                return this.highJump;
-            case "Pole Vault":
-                if (property == "displayed") {
-                }
-                if (property == "filtered") {
-                    this.poleVault.filtered = !this.poleVault.filtered;
-                }
-                return this.poleVault;
-            case "Javelin Throw":
-                if (property == "displayed") {
-                }
-                if (property == "filtered") {
-                    this.javelin.filtered = !this.javelin.filtered;
-                }
-                return this.javelin;
-            case "Discus Throw":
-                if (property == "displayed") {
-                }
-                if (property == "filtered") {
-                    this.discus.filtered = !this.discus.filtered;
-                }
-                return this.discus;
-            case "Shot Put":
-                if (property == "displayed") {
-                }
-                if (property == "filtered") {
-                    this.shotput.filtered = !this.shotput.filtered;
-                }
-                return this.shotput;
-            case "Decathlon":
-                if (property == "displayed") {
-                }
-                if (property == "filtered") {
-                    this.decathlon.filtered = !this.decathlon.filtered;
-                }
-                return this.decathlon;
-        }
     };
     return MenuEvents;
-}(__WEBPACK_IMPORTED_MODULE_0__logging_activities_track_events__["a" /* TrackEvents */]));
+}());
 
 //# sourceMappingURL=menu-events.js.map
-
-/***/ }),
-
-/***/ 767:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Hundred; });
-var Hundred = (function () {
-    function Hundred() {
-        this.listOfTrainings = [
-            "X meters - Starts",
-            "X meters - Tempo",
-            "X meters - Y %",
-            "X meters - Race",
-            "X meters"
-        ];
-    }
-    return Hundred;
-}());
-
-//# sourceMappingURL=hundred.js.map
-
-/***/ }),
-
-/***/ 768:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return LongJump; });
-var LongJump = (function () {
-    function LongJump() {
-        this.listOfTrainings = [
-            "X step - Full Jumps",
-            "X step - Takeoff",
-            "X step - Run Through",
-            "Two leg take off - Landing",
-            "Two leg take off - No Landing"
-        ];
-    }
-    return LongJump;
-}());
-
-//# sourceMappingURL=LongJump.js.map
 
 /***/ }),
 
@@ -1375,6 +1223,7 @@ var ToolsProvider = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ionic_native_keyboard__ = __webpack_require__(208);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__providers_menus_calendar_menu__ = __webpack_require__(207);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__providers_settings__ = __webpack_require__(206);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__providers_settings___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6__providers_settings__);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1441,9 +1290,10 @@ var MyApp = (function () {
     MyApp = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({template:/*ion-inline-start:"/Users/jonahelbaz/Desktop/MasterCoach/src/app/app.html"*/'<ion-menu [content]="content" type="reveal" id="mainCalendarMenu">\n    <ion-header>\n        <ion-toolbar>\n            <ion-label style="font-size: 14px; color: white; padding-left: 10px">Jonah Elbaz</ion-label>\n        </ion-toolbar>\n    </ion-header>\n    <ion-content>\n            <ion-item no-lines>\n                <ion-select [(ngModel)]="displayedYear" (ionChange)="this.setCalendarYear()">\n                    <ion-option *ngFor="let year of years">{{year}}</ion-option>\n                </ion-select>\n            </ion-item>\n        <ion-list no-lines id="calendarList">\n            <ion-label no-lines class="calendar-item">\n                <ion-icon item-left name="clock" class="menuIcon"></ion-icon> Today\n            </ion-label>\n            <ion-label no-lines class="calendar-item">\n                <ion-icon item-left name="calendar" class="menuIcon"></ion-icon> This Week\n            </ion-label>\n            <ion-label no-lines class="calendar-item">\n                <ion-icon item-left name="md-analytics" class="menuIcon"></ion-icon> Analytics\n            </ion-label>\n        </ion-list>\n\n        <ion-label class="menuSectionHeader" (click)="collapsable.filter.main = !collapsable.filter.main">\n                <ion-icon item-left name="ios-arrow-forward" *ngIf="!collapsable.filter.main"></ion-icon>\n                <ion-icon item-left name="ios-arrow-down" *ngIf="collapsable.filter.main"></ion-icon>\n                Filters\n            </ion-label>\n            <ion-list no-lines id="filterList" class="accordion-list" *ngIf="collapsable.filter.main">\n\n                <ion-label class="calendar-item filter" (click)="collapsable.filter.labelsFilterOpen = !collapsable.filter.labelsFilterOpen">\n                    Labels\n                </ion-label>\n\n                <div *ngIf="collapsable.filter.labelsFilterOpen">\n                    <ion-item *ngFor="let label of listOfLabels">\n                        <ion-label> {{label}}</ion-label>\n                        <ion-checkbox></ion-checkbox>\n                    </ion-item>\n                </div>\n\n                <ion-label class="calendar-item filter" (click)="collapsable.filter.eventFilterOpen = !collapsable.filter.eventFilterOpen">\n                    Event\n                </ion-label>\n\n                <div *ngIf="collapsable.filter.eventFilterOpen">\n                    <ion-item *ngFor="let event of listOfEvents">\n                        <ion-label> {{event}}</ion-label>\n                        <ion-checkbox (click)="editEventsModel(event)"  [checked]="getEventFilterModel(event)"></ion-checkbox>\n                    </ion-item>\n                </div>\n\n                <ion-label class="calendar-item filter" (click)="collapsable.filter.trainingResultFilterOpen = !collapsable.filter.trainingResultFilterOpen">\n                    Training Result\n                </ion-label>\n\n                <div *ngIf="collapsable.filter.trainingResultFilterOpen">\n                    <ion-item>\n                        <ion-label>Good</ion-label>\n                        <ion-checkbox></ion-checkbox>\n                    </ion-item>\n                    <ion-item>\n                        <ion-label>Neutral</ion-label>\n                        <ion-checkbox></ion-checkbox>\n                    </ion-item>\n                    <ion-item>\n                        <ion-label>Bad</ion-label>\n                        <ion-checkbox></ion-checkbox>\n                    </ion-item>\n                </div>\n\n                <ion-label class="calendar-item filter" (click)="collapsable.filter.athleteFilterOpen = !collapsable.filter.athleteFilterOpen">\n                    Athlete\n                </ion-label>\n\n                <div *ngIf="collapsable.filter.athleteFilterOpen">\n                    <ion-item>\n                        <ion-label>Jonah Elbaz</ion-label>\n                        <ion-checkbox></ion-checkbox>\n                    </ion-item>\n                    <ion-item>\n                        <ion-label>Dylan Golow</ion-label>\n                        <ion-checkbox></ion-checkbox>\n                    </ion-item>\n                    <ion-item>\n                        <ion-label>Alex Stathis</ion-label>\n                        <ion-checkbox></ion-checkbox>\n                    </ion-item>\n                </div>\n            </ion-list>\n\n    </ion-content>\n    <ion-footer>\n    <ion-row>\n        <ion-col style="text-align: center; font-size: 25px;">\n            <ion-icon item-right name="md-share" class="share"></ion-icon>\n        </ion-col>\n        <ion-col style="text-align: center; font-size: 30px;">\n            <ion-icon item-right name="ios-download-outline" class="share"></ion-icon>\n        </ion-col>\n    </ion-row>\n        </ion-footer>\n</ion-menu>\n\n<ion-nav #content [root]="rootPage"></ion-nav>\n'/*ion-inline-end:"/Users/jonahelbaz/Desktop/MasterCoach/src/app/app.html"*/
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* Platform */], __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__["a" /* StatusBar */], __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__["a" /* SplashScreen */], __WEBPACK_IMPORTED_MODULE_4__ionic_native_keyboard__["a" /* Keyboard */], __WEBPACK_IMPORTED_MODULE_5__providers_menus_calendar_menu__["a" /* CalendarMenu */], __WEBPACK_IMPORTED_MODULE_6__providers_settings__["a" /* SettingsProvider */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* Platform */], __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__["a" /* StatusBar */], __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__["a" /* SplashScreen */], __WEBPACK_IMPORTED_MODULE_4__ionic_native_keyboard__["a" /* Keyboard */], __WEBPACK_IMPORTED_MODULE_5__providers_menus_calendar_menu__["a" /* CalendarMenu */], typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_6__providers_settings__["SettingsProvider"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_6__providers_settings__["SettingsProvider"]) === "function" && _a || Object])
     ], MyApp);
     return MyApp;
+    var _a;
 }());
 
 //# sourceMappingURL=app.component.js.map

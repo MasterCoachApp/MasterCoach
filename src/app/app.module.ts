@@ -20,9 +20,10 @@ import {ValidationProvider} from "../providers/tools/validations";
 import {CalendarMenu} from "../providers/menus/calendar-menu";
 import {DatePicker} from "@ionic-native/date-picker";
 import {GooglePlus} from "@ionic-native/google-plus";
-import {SettingsProvider} from "../providers/settings";
 import {EntryProvider} from "../providers/users/entries";
 import {TextPopoverPage} from "../pages/Training/text-popover/text-popover";
+import {LabelProvider} from "../providers/custom-survey-components/labels/labelProvider";
+import {TrainingProvider} from "../providers/custom-survey-components/trainings/trainingProvider";
 
 @NgModule({
   declarations: [
@@ -74,8 +75,9 @@ import {TextPopoverPage} from "../pages/Training/text-popover/text-popover";
     CalendarMenu,
     DatePicker,
     GooglePlus,
-    SettingsProvider,
-    EntryProvider
+    EntryProvider,
+    LabelProvider,
+    TrainingProvider
   ],
     schemas: [
         CUSTOM_ELEMENTS_SCHEMA

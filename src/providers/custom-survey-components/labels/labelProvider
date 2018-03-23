@@ -1,0 +1,13 @@
+import {Injectable} from '@angular/core';
+import {Label} from "../../models/labels/label";
+import {LabelBank} from "../../models/labels/label-bank";
+
+@Injectable()
+export class LabelProvider {
+
+    listOfLabels: Label[];
+
+    constructor() {
+        this.listOfLabels = new LabelBank().labelBank;
+    }
+}
