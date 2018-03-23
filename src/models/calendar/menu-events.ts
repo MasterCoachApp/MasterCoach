@@ -1,22 +1,11 @@
 
 import {LabelProvider} from "../../providers/custom-survey-components/labels/labelProvider";
+import {Label} from "../custom-survey-components/labels/label";
 
 export class MenuEvents {
-    listOfEvents: string[];
+    labelList: Label[];
 
-    constructor(public labels: LabelProvider) {
-        labels.listOfLabels.forEach(label => {
-           this.listOfEvents.push(label['value']);
-        });
-    }
-
-    getFilterFromEvent(event: string): boolean {
-
-        return true;
-    }
-
-
-    updateObject(event: string, property: string) {
-
+    constructor(public labels: Label[]) {
+        this.labelList = labels;
     }
 }

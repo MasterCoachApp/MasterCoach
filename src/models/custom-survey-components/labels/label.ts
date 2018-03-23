@@ -5,7 +5,9 @@ export class Label {
     };
 
     constructor(name: string){
-         this.label['value'] = name;
+        this.label = {
+            value: name
+        };
     }
 
 }

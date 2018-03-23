@@ -3,6 +3,7 @@ import {ToolsProvider} from "../tools/tools";
 import {AlertController} from "ionic-angular";
 import {CalendarDay} from "../../models/calendar/calendar-day";
 import {MenuEvents} from "../../models/calendar/menu-events";
+import {LabelProvider} from "../custom-survey-components/labels/labelProvider";
 
 
 @Injectable()
@@ -13,15 +14,11 @@ export class CalendarMenu {
     dateArray: CalendarDay[];
 
 
-    constructor(public tools: ToolsProvider, public alertCtrl: AlertController) {
+    constructor(public tools: ToolsProvider, public alertCtrl: AlertController, public labels: LabelProvider) {
         this.displayedYear = (new Date()).getFullYear();
-        this.menuEvents = new MenuEvents();
+        this.menuEvents = new MenuEvents(labels.listOfLabels);
         let currentYear = this.getDisplayedYear();
         this.dateArray = this.getDates(new Date(currentYear.toString()+'-01-01'),new Date(currentYear.toString()+'-12-31'));
-    }
-
-    getLabels() {
-        return ["Short approach LJ", "Competition style"];
     }
 
     setDisplayYear(year: number) {

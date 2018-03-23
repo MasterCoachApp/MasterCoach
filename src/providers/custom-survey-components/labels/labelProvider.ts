@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
-import {Label} from "../../models/labels/label";
-import {LabelBank} from "../../models/labels/label-bank";
+import {LabelBank} from "../../../models/custom-survey-components/labels/label-bank";
+import {Label} from "../../../models/custom-survey-components/labels/label";
 
 @Injectable()
 export class LabelProvider {

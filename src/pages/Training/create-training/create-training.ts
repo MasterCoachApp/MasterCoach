@@ -7,6 +7,8 @@ import {Activities} from "../../../models/logging/activities/activities";
 import {TextPopoverPage} from "../text-popover/text-popover";
 import {LabelProvider} from "../../../providers/custom-survey-components/labels/labelProvider";
 import {TrainingProvider} from "../../../providers/custom-survey-components/trainings/trainingProvider";
+import {Label} from "../../../models/custom-survey-components/labels/label";
+import {Training} from "../../../models/logging/training";
 
 /**
  * Generated class for the CreateTrainingPage page.
@@ -28,12 +30,20 @@ export class CreateTrainingPage {
 
     expandPostThoughts: boolean;
 
-    listOfEvents: string[];
+    listOfEvents: Label[];
 
 
-    preTraining = this.trainings.preTraining;
+    preTraining = this.trainings.preTraining.getPreTraining();
+    postTraining = this.trainings.postTraining.getPostTraining();
 
-    postTraining = this.trainings.postTraining;
+    preTrainingDivide: {
+        range: object[],
+        notes: object[]
+    };
+    postTrainingDivide: {
+        range: object[],
+        notes: object[]
+    };
 
     mainTraining = {
         activities: new Activities(),
@@ -56,10 +66,32 @@ export class CreateTrainingPage {
         this.trainingEventList = ["Long Jump", "High Jump", "Pole Vault"]; //should be empty out of development
 
         this.expandPostThoughts = false;
+        this.preTrainingDivide = {range: [], notes:[] };
+        this.postTrainingDivide = {range: [], notes:[] };
+
+        for (let key in this.preTraining) {
+            if (this.preTraining.hasOwnProperty(key)) {
+                    if(this.preTraining[key]['type'] == "range") {
+                        this.preTrainingDivide.range.push(this.preTraining[key]);
+                    }
+                    if(this.preTraining[key]['type'] == "note") {
+                        this.preTrainingDivide.notes.push(this.preTraining[key]);
+                    }
+            }
+        }
+        for (let key in this.postTraining) {
+            if (this.postTraining.hasOwnProperty(key)) {
+                if(this.postTraining[key]['type'] == "range") {
+                    this.postTrainingDivide.range.push(this.postTraining[key]);
+                }
+                if(this.postTraining[key]['type'] == "note") {
+                    this.postTrainingDivide.notes.push(this.postTraining[key]);
+                }
+            }
+        }
     }
 
     expandTextArea() {
-        console.log(1);
 
         this.expandPostThoughts = !this.expandPostThoughts;
 
@@ -70,43 +102,32 @@ export class CreateTrainingPage {
 
     }
 
-    // addStandardPreTrainingSurveyQuestions(newTraining: Training){
-    //     newTraining.addPreSurveyQuestion(this.preTraining.energy.key, this.preTraining.energy.val);
-    //     newTraining.addPreSurveyQuestion(this.preTraining.bodyState.key, this.preTraining.bodyState.val);
-    //     newTraining.addPreSurveyQuestion(this.preTraining.stress.key, this.preTraining.stress.val);
-    //     newTraining.addPreSurveyQuestion(this.preTraining.hunger.key, this.preTraining.hunger.val);
-    //     newTraining.addPreSurveyQuestion(this.preTraining.readiness.key, this.preTraining.readiness.val);
-    // }
-    //
-    // addStandardPostTrainingSurveyQuestions(newTraining: Training){
-    //     newTraining.addPostSurveyQuestion(this.postTraining.rating.key, this.postTraining.rating.val);
-    // }
-
 
     createNewTraining() {
-        // let mainNote = new Notes(this.mainTraining.mainTrainingNotes.key, this.mainTraining.mainTrainingNotes.val);
-        // mainNotes.push(mainNote);
 
-        console.log(this.preTraining.getPreTraining());
+        let newTraining = new Training();
+        this.preTrainingDivide.notes.forEach(note =>{
+            newTraining.addPreNote(note['key'], note['val']);
+        });
+        this.preTrainingDivide.range.forEach(range =>{
+            newTraining.addPreRange(range['key'], range['val']);
+        });
 
-     //    let newTraining = new Training();
-     //    newTraining.addPreNote(this.preTraining.preThoughts.key, this.preTraining.preThoughts.val);
-     //    this.addStandardPreTrainingSurveyQuestions(newTraining);
-     //
-     //    newTraining.addPostNote(this.postTraining.postThoughts.key, this.postTraining.postThoughts.val);
-     //    this.addStandardPostTrainingSurveyQuestions(newTraining);
-     //
-     //
-     // //   newTraining.setMainCalEvent(this.mainTraining.activities, mainNotes);
-     //
-     //
-     //
-     //    if (navigator.onLine) {
-     //        this.training.createNewEntry(newTraining);
-     //    }
-     //    else {
-     //        this.tools.presentToast("bottom", "Sorry, you're not connected to the internet");
-     //    }
+        this.postTrainingDivide.notes.forEach(note =>{
+            newTraining.addPostNote(note['key'], note['val']);
+        });
+        this.postTrainingDivide.range.forEach(range =>{
+            newTraining.addPostRange(range['key'], range['val']);
+        });
+
+     //   newTraining.setMainCalEvent(this.mainTraining.activities, mainNotes);
+
+        if (navigator.onLine) {
+            this.training.createNewEntry(newTraining);
+        }
+        else {
+            this.tools.presentToast("bottom", "Sorry, you're not connected to the internet");
+        }
 
     }
 
@@ -144,8 +165,8 @@ export class CreateTrainingPage {
         this.listOfEvents.forEach( data => {
             alert.addInput({
                 type: 'checkbox',
-                label: data,
-                value: data,
+                label: data.label['value'],
+                value: data.label['value'],
                 checked: false
             });
         });

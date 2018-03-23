@@ -37,58 +37,19 @@
             </ion-col>
         </ion-list-header>
         <ion-list *ngIf="preTrainingExpanded">
-            <ion-item-group>
-            <ion-item class="ionItemCrop">
-                <ion-label item-start>Readiness</ion-label>
-                <ion-range min="0" max="5" [snaps]="true" steps="1" [pin]="true" right
-                           [(ngModel)]="preTraining.readiness.val" class="range">
+          <ion-item-group>
+            <ion-item class="ionItemCrop" *ngFor="let title of preTrainingDivide.range">
+                <ion-label item-start>{{title["key"]}}</ion-label>
+                <ion-range min="0" max="5" [snaps]="true" steps="1" [pin]="true" right class="range" [(ngModel)]="title['val']">
                     <ion-label range-left>0</ion-label>
                     <ion-label range-right>5</ion-label>
                 </ion-range>
             </ion-item>
-            <ion-item class="ionItemCrop">
-                <ion-label item-start>Energy</ion-label>
-                <ion-range min="0" max="5" [snaps]="true" steps="1" [pin]="true" right
-                           [(ngModel)]="preTraining.energy.val">
-                    <ion-label range-left>0</ion-label>
-                    <ion-label range-right>5</ion-label>
-                </ion-range>
-            </ion-item>
-            <ion-item class="ionItemCrop">
-                <ion-label item-start>Hunger</ion-label>
-                <ion-range min="0" max="5" [snaps]="true" steps="1" [pin]="true" right
-                           [(ngModel)]="preTraining.hunger.val">
-                    <ion-label range-left>0</ion-label>
-                    <ion-label range-right>5</ion-label>
-                </ion-range>
-            </ion-item>
-            <ion-item class="ionItemCrop">
-                <ion-label item-start>Stress</ion-label>
-                <ion-range min="0" max="5" [snaps]="true" steps="1" [pin]="true" right
-                           [(ngModel)]="preTraining.stress.val">
-                    <ion-label range-left>0</ion-label>
-                    <ion-label range-right>5</ion-label>
-                </ion-range>
-            </ion-item>
-            <ion-item class="ionItemCrop">
-                <ion-label item-start>Body State</ion-label>
-                <ion-range min="0" max="5" [snaps]="true" steps="1" [pin]="true" right
-                           [(ngModel)]="preTraining.bodyState.val">
-                    <ion-label range-left>0</ion-label>
-                    <ion-label range-right>5</ion-label>
-                </ion-range>
-            </ion-item>
-            <ion-item >
-                <ion-label>Pain
-                    <ion-icon name="medkit"></ion-icon>
-                </ion-label>
-            </ion-item>
-            <ion-item>
-                <ion-label stacked>Thoughts</ion-label>
-                <ion-textarea class="thoughts" [(ngModel)]="preTraining.preThoughts.val"></ion-textarea>
-            </ion-item>
-            </ion-item-group>
-
+              <ion-item *ngFor="let title of preTrainingDivide.notes">
+                  <ion-label stacked> {{title["key"]}} </ion-label>
+                  <ion-textarea class="thoughts" [(ngModel)]="title['val']"></ion-textarea>
+              </ion-item>
+          </ion-item-group>
         </ion-list>
 
 
@@ -121,7 +82,7 @@
                     <ion-grid>
                         <ion-row>
                             <ion-col col-1 style="margin-right: 20px">
-                                <button ion-button style="border-radius: 25px; width: 10px; height: 30px;">
+                                <button ion-button style="border-radius: 25px; width: 10px; height: 30px;" (click)="addActivity()">
                                 <ion-icon name="add"></ion-icon>
                                 </button>
                             </ion-col>
@@ -232,22 +193,19 @@
             </ion-col>
         </ion-list-header>
         <div *ngIf="postTrainingExpanded">
-            <ion-list no-lines>
-                <ion-item>
-                    <ion-label item-start>Rate Your Training</ion-label>
-                    <ion-range min="0" max="5" [snaps]="true" steps="1" [pin]="true"
-                               [(ngModel)]="postTraining.rating.val">
+            <ion-item-group>
+                <ion-item class="ionItemCrop" *ngFor="let title of postTrainingDivide.range">
+                    <ion-label item-start>{{title["key"]}}</ion-label>
+                    <ion-range min="0" max="5" [snaps]="true" steps="1" [pin]="true" right class="range" [(ngModel)]="title['val']">
                         <ion-label range-left>0</ion-label>
                         <ion-label range-right>5</ion-label>
                     </ion-range>
                 </ion-item>
-                <ion-item no-lines (click)="expandTextArea()">
-                    <ion-label stacked>Overall Thoughts
-                        <ion-icon name="ios-expand"></ion-icon>
-                    </ion-label>
-                    <ion-textarea class="thoughts" [ngClass]="expandPostThoughts ? 'thoughts expand' : 'expand'" [(ngModel)]="postTraining.postThoughts.val"></ion-textarea>
+                <ion-item *ngFor="let title of postTrainingDivide.notes">
+                    <ion-label stacked> {{title["key"]}} </ion-label>
+                    <ion-textarea class="thoughts" [(ngModel)]="title['val']"></ion-textarea>
                 </ion-item>
-            </ion-list>
+            </ion-item-group>
         </div>
     </ion-list>
 

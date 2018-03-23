@@ -6,8 +6,8 @@ import {TabsPage} from '../pages/HomeTabs/tabs/tabs';
 import {Keyboard} from "@ionic-native/keyboard";
 import {CalendarMenu} from "../providers/menus/calendar-menu";
 import {MenuEvents} from "../models/calendar/menu-events";
-import {SettingsProvider} from "../providers/settings";
-import {CreateTrainingPage} from "../pages/Training/create-training/create-training";
+import {LabelProvider} from "../providers/custom-survey-components/labels/labelProvider";
+import {Label} from "../models/custom-survey-components/labels/label";
 
 @Component({
   templateUrl: 'app.html'
@@ -18,7 +18,7 @@ export class MyApp {
     rootPage:any = 'TabsPage';
    //rootPage:any = 'CreateTrainingPage';
 
-  constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, keyboard: Keyboard, public calendarMenu: CalendarMenu, private settings: SettingsProvider) {
+  constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, keyboard: Keyboard, public calendarMenu: CalendarMenu, private labels: LabelProvider) {
     platform.ready().then(() => {
         //Menu settings
         this.setBaseMenuSettings();
@@ -49,9 +49,7 @@ export class MyApp {
 
     displayedYear: number;
     years: number[];
-    listOfEvents: string[];
-    listOfLabels: string[];
-    events: MenuEvents;
+    listOfLabels: Label[];
 
       setCalendarYear() {
           this.calendarMenu.setDisplayYear(this.displayedYear);
@@ -60,20 +58,7 @@ export class MyApp {
       setBaseMenuSettings() {
           this.displayedYear = this.calendarMenu.getDisplayedYear();
           this.years = this.calendarMenu.getPossibleYears();
-          this.events = this.calendarMenu.menuEvents;
-          this.listOfEvents = this.events.getListOfEvents();
-          this.listOfLabels = this.calendarMenu.getLabels();
+          this.listOfLabels = this.calendarMenu.menuEvents.labelList;
       }
-
-
-    editEventsModel(event: string) {
-          let eventObject = this.events.updateObject(event, "filtered");
-          this.calendarMenu.menuEvents = this.events;
-    }
-
-    getEventFilterModel(event: string) {
-          return this.events.getFilterFromEvent(event);
-    }
-
 
 }

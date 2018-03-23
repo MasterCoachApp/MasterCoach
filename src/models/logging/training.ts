@@ -5,7 +5,7 @@ import {IEventsComponents} from "./interfaces/event-components";
 export class Training implements IEventsComponents {
 
     preCalEvent: {
-        survey: {
+        range: {
             [key: string]: any
         },
         notes:{
@@ -15,7 +15,7 @@ export class Training implements IEventsComponents {
     };
 
     postCalEvent: {
-        survey: {
+        range: {
             [key: string]: any
         },
         notes: {
@@ -33,13 +33,13 @@ export class Training implements IEventsComponents {
 
     constructor() {
         this.preCalEvent = {
-            survey: {},
+            range: {},
             notes: {},
             //add something to monitor pre-training pain
         };
 
         this.postCalEvent = {
-            survey: {},
+            range: {},
             notes: {},
             //add something to monitor post training pain
         };
@@ -60,12 +60,12 @@ export class Training implements IEventsComponents {
         this.postCalEvent.notes[k] = v;
     }
 
-    addPreSurveyQuestion(k: string, v: any) {
-        this.preCalEvent.survey[k] = v;
+    addPreRange(k: string, v: any) {
+        this.preCalEvent.range[k] = v;
     }
 
-    addPostSurveyQuestion(k: string, v: any) {
-        this.postCalEvent.survey[k] = v;
+    addPostRange(k: string, v: any) {
+        this.postCalEvent.range[k] = v;
     }
 
     setMainCalEvent(activities: Activities) {
