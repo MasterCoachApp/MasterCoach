@@ -1,0 +1,24 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title>
+            Profile
+        </ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content>
+    <ion-list>
+        <ion-list-header>{{user.First_name}} {{user.Last_name}}</ion-list-header>
+        <ion-item>
+            <ion-avatar class="avatar">
+                <img src="http://www.precision-spine.com/wp-content/uploads/2015/09/person-icon.png"/>
+            </ion-avatar>
+        </ion-item>
+        <ion-item>
+            <button ion-button style="background: none" (click)="signOut()">
+                <ion-icon name="ionic" item-start></ion-icon>
+                Sign out
+            </button>
+        </ion-item>
+    </ion-list>
+</ion-content>

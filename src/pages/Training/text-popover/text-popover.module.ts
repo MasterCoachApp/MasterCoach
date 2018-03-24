@@ -1,6 +1,6 @@
-import { NgModule } from '@angular/core';
-import { IonicPageModule } from 'ionic-angular';
-import { TextPopoverPage } from './text-popover';
+import {NgModule} from '@angular/core';
+import {IonicPageModule} from 'ionic-angular';
+import {TextPopoverPage} from './text-popover';
 
 @NgModule({
   declarations: [

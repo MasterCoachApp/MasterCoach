@@ -1,0 +1,67 @@
+<!--
+  Generated template for the ToolsPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title start>Tools</ion-title>
+    <ion-buttons end>
+      <button ion-button end>
+        <ion-icon style="font-size: 30px; margin-right: 15px;" color="primary" name="ios-archive-outline"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+  <ion-list-header>Score Calculators</ion-list-header>
+
+  <ion-list>
+    <ion-note>Mercier</ion-note>
+    <ion-item class="listItem">
+      <ion-label>Indoor</ion-label>
+    </ion-item>
+    <ion-item class="listItem">
+      <ion-label>Outdoor</ion-label>
+    </ion-item>
+  </ion-list>
+
+  <ion-list>
+    <ion-note>MEN</ion-note>
+    <ion-item tappable (click)="displayCalculator('decathlon')" class="listItem">
+      <ion-label>Decathlon</ion-label>
+    </ion-item>
+    <ion-item class="listItem">
+      <ion-label>Heptathlon</ion-label>
+    </ion-item>
+    <ion-item class="listItem">
+      <ion-label>Pentathlon</ion-label>
+    </ion-item>
+  </ion-list>
+
+  <ion-list>
+    <ion-note>Women</ion-note>
+    <ion-item class="listItem">
+      <ion-label>Heptathlon</ion-label>
+    </ion-item>
+    <ion-item class="listItem">
+      <ion-label>Pentathlon</ion-label>
+    </ion-item>
+    <ion-item class="listItem">
+      <ion-label>Pentathlon (Indoor)</ion-label>
+    </ion-item>
+  </ion-list>
+
+  <ion-list-header>Unit Converter</ion-list-header>
+  <ion-list>
+    <ion-item class="listItem">
+      Converter
+    </ion-item>
+  </ion-list>
+
+</ion-content>

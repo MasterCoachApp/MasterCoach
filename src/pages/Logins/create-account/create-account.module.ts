@@ -1,7 +1,7 @@
 import {NgModule} from '@angular/core';
 import {IonicPageModule} from 'ionic-angular';
 import {CreateAccountPage} from './create-account';
-import {LoginPage} from "../login/login";
+import {ForgotPasswordPage} from "../forgot-password/forgot-password";
 
 @NgModule({
   declarations: [
@@ -9,6 +9,9 @@ import {LoginPage} from "../login/login";
   ],
   imports: [
     IonicPageModule.forChild(CreateAccountPage),
-  ]
+  ],
+    entryComponents: [
+        CreateAccountPage,
+    ]
 })
 export class CreateAccountPageModule {}

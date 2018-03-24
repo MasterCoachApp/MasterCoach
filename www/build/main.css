@@ -33536,6 +33536,40 @@ page-home ion-fab .button-inner {
   overflow: visible;
 }
 
+page-profile .avatar {
+  max-width: 100px !important;
+  max-height: 100px !important;
+  height: 100px !important;
+  width: 100px !important;
+}
+
+page-decathlon-calculator ion-row {
+  padding-bottom: 2px;
+  border-bottom: 1px solid white;
+}
+
+page-decathlon-calculator .output {
+  text-align: center;
+}
+
+page-decathlon-calculator ion-input {
+  margin-left: 40px;
+}
+
+page-decathlon-calculator ion-col {
+  height: 40px;
+}
+
+page-decathlon-calculator .outputResult {
+  border: none !important;
+  height: 30px;
+}
+
+page-tools .listItem:hover {
+  cursor: pointer;
+  background-color: #8795CD;
+}
+
 page-create-account {
   /* Shared */
   /* Facebook */

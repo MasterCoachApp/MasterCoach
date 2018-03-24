@@ -5,7 +5,6 @@ import {SplashScreen} from '@ionic-native/splash-screen';
 import {TabsPage} from '../pages/HomeTabs/tabs/tabs';
 import {Keyboard} from "@ionic-native/keyboard";
 import {CalendarMenu} from "../providers/menus/calendar-menu";
-import {MenuEvents} from "../models/calendar/menu-events";
 import {LabelProvider} from "../providers/custom-survey-components/labels/labelProvider";
 import {Label} from "../models/custom-survey-components/labels/label";
 
