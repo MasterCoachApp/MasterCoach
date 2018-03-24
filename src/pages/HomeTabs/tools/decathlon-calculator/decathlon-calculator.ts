@@ -15,11 +15,22 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class DecathlonCalculatorPage {
 
+    inputs: {
+       hundred: string,
+    };
+
   constructor(public navCtrl: NavController, public navParams: NavParams) {
+      this.inputs = {
+          hundred: '0.00',
+      };
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad DecathlonCalculatorPage');
-  }
+    updateText(value: string) {
+      switch(value) {
+          case '100m':
+            if(this.inputs.hundred.length == 4) break;
+
+      }
+    }
 
 }
