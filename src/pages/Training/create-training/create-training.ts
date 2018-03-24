@@ -24,10 +24,6 @@ import {Training} from "../../../models/logging/training";
 })
 export class CreateTrainingPage {
 
-    trainingExpanded: boolean;
-    preTrainingExpanded: boolean;
-    postTrainingExpanded: boolean;
-
     expandPostThoughts: boolean;
 
     listOfEvents: Label[];
@@ -58,10 +54,6 @@ export class CreateTrainingPage {
     constructor(public navCtrl: NavController, public menu: MenuController, public navParams: NavParams, public trainings: TrainingProvider, public labels: LabelProvider, public popoverCtrl: PopoverController, public users: UsersProvider, public training: EntryProvider, public alertCtrl: AlertController, public tools: ToolsProvider) {
         menu.enable(false, 'mainCalendarMenu');
 
-        this.trainingExpanded = true;
-        this.preTrainingExpanded = false;
-        this.postTrainingExpanded = false;
-
         this.listOfEvents = labels.listOfLabels;
         this.trainingEventList = ["Long Jump", "High Jump", "Pole Vault"]; //should be empty out of development
 
@@ -90,6 +82,18 @@ export class CreateTrainingPage {
             }
         }
     }
+
+    toggleGroup = function(group) {
+        if (this.isGroupShown(group)) {
+            this.shownGroup = null;
+        } else {
+            this.shownGroup = group;
+        }
+    };
+
+    isGroupShown = function(group) {
+        return this.shownGroup === group;
+    };
 
     expandTextArea() {
 
@@ -129,20 +133,6 @@ export class CreateTrainingPage {
             this.tools.presentToast("bottom", "Sorry, you're not connected to the internet");
         }
 
-    }
-
-    expand(type: string) {
-        switch (type) {
-            case 'pre':
-                this.preTrainingExpanded = !this.preTrainingExpanded;
-                break;
-            case 'post':
-                this.postTrainingExpanded = !this.postTrainingExpanded;
-                break;
-            case 'training':
-                this.trainingExpanded = !this.trainingExpanded;
-                break;
-        }
     }
 
     selectEventWorkout(value: string) {

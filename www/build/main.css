@@ -33908,8 +33908,10 @@ page-create-training .workoutOption {
   text-align: left;
 }
 
-page-create-training .expand {
-  display: none;
+page-create-training .notClosed {
+  -webkit-transition: all linear 0.1s;
+  transition: all linear 0.1s;
+  display: block;
 }
 
 page-create-training .scroll {
@@ -33946,6 +33948,23 @@ page-create-training .label {
 
 page-create-training .addSetButton {
   width: 100%;
+}
+
+page-create-training .list .item.item-accordion {
+  -webkit-transition: all linear 5s;
+  transition: all linear 5s;
+  line-height: 38px;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+page-create-training .list .item.item-accordion.ng-hide {
+  line-height: 0;
+}
+
+page-create-training .list .item.item-accordion.ng-hide-add,
+page-create-training .list .item.item-accordion.ng-hide-remove {
+  display: block !important;
 }
 
 page-text-popover .popoverText {

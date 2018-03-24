@@ -26,44 +26,44 @@
 <ion-content>
 
     <ion-list no-lines>
-        <ion-list-header class="title" (click)="expand('pre')">
+        <ion-list-header class="title item-stable" (click)="toggleGroup('preTraining')">
             <ion-col>
                 Pre-Training
             </ion-col>
             <ion-col style="text-align: right; width: 100%;" col-8>
-                <ion-icon style="text-align: right" *ngIf="!preTrainingExpanded" class="drop"
+                <ion-icon style="text-align: right"  *ngIf="!isGroupShown('preTraining')" class="drop"
                           name="ios-arrow-forward"></ion-icon>
-                <ion-icon *ngIf="preTrainingExpanded" class="drop" name="ios-arrow-down" right></ion-icon>
+                <ion-icon  *ngIf="isGroupShown('preTraining')" class="drop" name="ios-arrow-down" right></ion-icon>
             </ion-col>
         </ion-list-header>
-        <ion-list *ngIf="preTrainingExpanded">
-          <ion-item-group>
-            <ion-item class="ionItemCrop" *ngFor="let title of preTrainingDivide.range">
+          <ion-item-group class="item-accordion" *ngIf="isGroupShown('preTraining')">
+
+              <div  *ngFor="let title of preTrainingDivide.range">
+            <ion-item class="ionItemCrop">
                 <ion-label item-start>{{title["key"]}}</ion-label>
                 <ion-range min="0" max="5" [snaps]="true" steps="1" [pin]="true" right class="range" [(ngModel)]="title['val']">
                     <ion-label range-left>0</ion-label>
                     <ion-label range-right>5</ion-label>
                 </ion-range>
             </ion-item>
+              </div>
               <ion-item *ngFor="let title of preTrainingDivide.notes">
                   <ion-label stacked> {{title["key"]}} </ion-label>
                   <ion-textarea class="thoughts" [(ngModel)]="title['val']"></ion-textarea>
               </ion-item>
           </ion-item-group>
-        </ion-list>
 
-
-        <ion-list-header (click)="expand('training')" class="title" >
+        <ion-list-header class="title item-stable" (click)="toggleGroup('training')">
             <ion-col>
                 Training
             </ion-col>
             <ion-col style="text-align: right; width: 100%;" col-8>
-                <ion-icon style="text-align: right" *ngIf="!trainingExpanded" class="drop"
+                <ion-icon style="text-align: right"  *ngIf="!isGroupShown('training')" class="drop"
                           name="ios-arrow-forward"></ion-icon>
-                <ion-icon *ngIf="trainingExpanded" class="drop" name="ios-arrow-down" right></ion-icon>
+                <ion-icon  *ngIf="isGroupShown('training')" class="drop" name="ios-arrow-down" right></ion-icon>
             </ion-col>
         </ion-list-header>
-        <ion-list *ngIf="trainingExpanded">
+        <ion-list class="item-accordion" *ngIf="isGroupShown('training')">
             <ion-list>
                 <ion-label stacked class="trainingHeaders">Warm Up</ion-label>
                 <ion-item *ngIf="!mainTraining.activities.warmUp">
@@ -182,17 +182,17 @@
         </ion-list>
 
 
-        <ion-list-header (click)="expand('post')" class="title" >
+        <ion-list-header class="title item-stable" (click)="toggleGroup('postTraining')">
             <ion-col>
                 Post-Training
             </ion-col>
             <ion-col style="text-align: right; width: 100%;" col-8>
-                <ion-icon style="text-align: right" *ngIf="!postTrainingExpanded" class="drop"
+                <ion-icon style="text-align: right" *ngIf="!isGroupShown('postTraining')" class="drop"
                           name="ios-arrow-forward"></ion-icon>
-                <ion-icon *ngIf="postTrainingExpanded" class="drop" name="ios-arrow-down" right></ion-icon>
+                <ion-icon *ngIf="isGroupShown('postTraining')" class="drop" name="ios-arrow-down" right></ion-icon>
             </ion-col>
         </ion-list-header>
-        <div *ngIf="postTrainingExpanded">
+        <div class="item-accordion" *ngIf="isGroupShown('postTraining')">
             <ion-item-group>
                 <ion-item class="ionItemCrop" *ngFor="let title of postTrainingDivide.range">
                     <ion-label item-start>{{title["key"]}}</ion-label>
