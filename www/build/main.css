@@ -33550,6 +33550,7 @@ page-decathlon-calculator ion-row {
 
 page-decathlon-calculator .output {
   text-align: center;
+  color: white;
 }
 
 page-decathlon-calculator ion-input {

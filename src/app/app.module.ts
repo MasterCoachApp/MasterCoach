@@ -24,6 +24,7 @@ import {EntryProvider} from "../providers/users/entries";
 import {TextPopoverPage} from "../pages/Training/text-popover/text-popover";
 import {LabelProvider} from "../providers/custom-survey-components/labels/labelProvider";
 import {TrainingProvider} from "../providers/custom-survey-components/trainings/trainingProvider";
+import {MenPointsProvider} from "../providers/tools/calculators/mens";
 
 @NgModule({
   declarations: [
@@ -77,7 +78,8 @@ import {TrainingProvider} from "../providers/custom-survey-components/trainings/
     GooglePlus,
     EntryProvider,
     LabelProvider,
-    TrainingProvider
+    TrainingProvider,
+    MenPointsProvider
   ],
     schemas: [
         CUSTOM_ELEMENTS_SCHEMA

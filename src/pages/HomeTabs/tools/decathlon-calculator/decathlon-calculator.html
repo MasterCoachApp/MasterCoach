@@ -7,7 +7,17 @@
 <ion-header>
 
     <ion-navbar>
+        <ion-buttons left (click)="cancel()">
+            <button ion-button="arrow-back" color="primary">
+                <ion-icon name="ios-arrow-down"></ion-icon>
+            </button>
+        </ion-buttons>
         <ion-title>Decathlon</ion-title>
+        <ion-buttons right (click)="save()">
+            <button ion-button="arrow-back" color="primary">
+                Save
+            </button>
+        </ion-buttons>
     </ion-navbar>
 
 </ion-header>
@@ -21,10 +31,10 @@
                 <ion-label>100m</ion-label>
             </ion-col>
             <ion-col>
-                <ion-input value="0.00" [(ngModel)]="inputs.hundred" (ionChange)="updateText('decathlon')"></ion-input>
+                <ion-input maxlength="5" [(ngModel)]="inputs.hundred" (ionFocus)="updateTextFocus('hundred')" (ionBlur)="updateTextBlur('hundred')" (ionChange)="updateScore()"  (keypress)="isNumber($event)"></ion-input>
             </ion-col>
             <ion-col>
-                <ion-label class="output">0</ion-label>
+                <ion-input [readonly]="true" class="output" [(ngModel)]="outputs.hundred" (ionFocus)="false"></ion-input>
             </ion-col>
         </ion-row>
         <ion-row class="row">
@@ -32,10 +42,10 @@
                 <ion-label>Long Jump</ion-label>
             </ion-col>
             <ion-col>
-                <ion-input value="0.00"></ion-input>
+                <ion-input maxlength="5" [(ngModel)]="inputs.lj" (ionFocus)="updateTextFocus('lj')" (ionBlur)="updateTextBlur('lj')" (ionChange)="updateScore()"  (keypress)="isNumber($event)"></ion-input>
             </ion-col>
             <ion-col>
-                <ion-label class="output">0</ion-label>
+                <ion-input [readonly]="true" l class="output" [(ngModel)]="outputs.lj"></ion-input>
             </ion-col>
         </ion-row>
         <ion-row>
@@ -43,10 +53,10 @@
                 <ion-label>Shot Put</ion-label>
             </ion-col>
             <ion-col>
-                <ion-input value="0.00"></ion-input>
+                <ion-input maxlength="5" [(ngModel)]="inputs.sp" (ionFocus)="updateTextFocus('sp')" (ionBlur)="updateTextBlur('sp')" (ionChange)="updateScore()"  (keypress)="isNumber($event)"></ion-input>
             </ion-col>
             <ion-col>
-                <ion-label class="output">0</ion-label>
+                <ion-input [readonly]="true" class="output" [(ngModel)]="outputs.sp"></ion-input>
             </ion-col>
         </ion-row>
         <ion-row>
@@ -54,10 +64,10 @@
                 <ion-label>High Jump</ion-label>
             </ion-col>
             <ion-col>
-                <ion-input value="0.00"></ion-input>
+                <ion-input maxlength="5" [(ngModel)]="inputs.hj" (ionFocus)="updateTextFocus('hj')" (ionBlur)="updateTextBlur('hj')" (ionChange)="updateScore()"  (keypress)="isNumber($event)"></ion-input>
             </ion-col>
             <ion-col>
-                <ion-label class="output">0</ion-label>
+                <ion-input [readonly]="true" class="output" [(ngModel)]="outputs.hj"></ion-input>
             </ion-col>
         </ion-row>
         <ion-row>
@@ -65,10 +75,10 @@
                 <ion-label>400m</ion-label>
             </ion-col>
             <ion-col>
-                <ion-input value="0.00"></ion-input>
+                <ion-input maxlength="5" [(ngModel)]="inputs.four" (ionFocus)="updateTextFocus('four')" (ionBlur)="updateTextBlur('four')" (ionChange)="updateScore()"  (keypress)="isNumber($event)"></ion-input>
             </ion-col>
             <ion-col>
-                <ion-label class="output">0</ion-label>
+                <ion-input [readonly]="true" class="output" [(ngModel)]="outputs.four"></ion-input>
             </ion-col>
         </ion-row>
         <ion-row>
@@ -76,10 +86,10 @@
                 <ion-label>110mH</ion-label>
             </ion-col>
             <ion-col>
-                <ion-input value="0.00"></ion-input>
+                <ion-input maxlength="5" [(ngModel)]="inputs.hurdles" (ionFocus)="updateTextFocus('hurdles')" (ionBlur)="updateTextBlur('hurdles')" (ionChange)="updateScore()"  (keypress)="isNumber($event)"></ion-input>
             </ion-col>
             <ion-col>
-                <ion-label class="output">0</ion-label>
+                <ion-input [readonly]="true" class="output" [(ngModel)]="outputs.hurdles"></ion-input>
             </ion-col>
         </ion-row>
         <ion-row>
@@ -87,10 +97,10 @@
                 <ion-label>Discus Throw</ion-label>
             </ion-col>
             <ion-col>
-                <ion-input value="0.00"></ion-input>
+                <ion-input maxlength="5" [(ngModel)]="inputs.dt" (ionFocus)="updateTextFocus('dt')" (ionBlur)="updateTextBlur('dt')" (ionChange)="updateScore()"  (keypress)="isNumber($event)"></ion-input>
             </ion-col>
             <ion-col>
-                <ion-label class="output">0</ion-label>
+                <ion-input [readonly]="true" class="output" [(ngModel)]="outputs.dt"></ion-input>
             </ion-col>
         </ion-row>
         <ion-row>
@@ -98,10 +108,10 @@
                 <ion-label>Pole Vault</ion-label>
             </ion-col>
             <ion-col>
-                <ion-input value="0.00"></ion-input>
+                <ion-input maxlength="5" [(ngModel)]="inputs.pv" (ionFocus)="updateTextFocus('pv')" (ionBlur)="updateTextBlur('pv')" (ionChange)="updateScore()"  (keypress)="isNumber($event)"></ion-input>
             </ion-col>
             <ion-col>
-                <ion-label class="output">0</ion-label>
+                <ion-input [readonly]="true" class="output" [(ngModel)]="outputs.pv"></ion-input>
             </ion-col>
         </ion-row>
         <ion-row>
@@ -109,10 +119,10 @@
                 <ion-label>Javelin Throw</ion-label>
             </ion-col>
             <ion-col>
-                <ion-input value="0.00"></ion-input>
+                <ion-input maxlength="5" [(ngModel)]="inputs.jt" (ionFocus)="updateTextFocus('jt')" (ionBlur)="updateTextBlur('jt')" (ionChange)="updateScore()"  (keypress)="isNumber($event)"></ion-input>
             </ion-col>
             <ion-col>
-                <ion-label class="output">0</ion-label>
+                <ion-input [readonly]="true" class="output" [(ngModel)]="outputs.jt"></ion-input>
             </ion-col>
         </ion-row>
         <ion-row>
@@ -120,19 +130,10 @@
                 <ion-label>1500m</ion-label>
             </ion-col>
             <ion-col>
-                <ion-input value="0.00"></ion-input>
+                <ion-input maxlength="8" [(ngModel)]="inputs.fifteen" (ionFocus)="updateTextFocus('fifteen')" (ionBlur)="updateTextBlur('fifteen')" (ionChange)="updateScore()"  (keypress)="isTime($event)"></ion-input>
             </ion-col>
             <ion-col>
-                <ion-label class="output">0</ion-label>
-            </ion-col>
-        </ion-row>
-        <ion-row class="outputResult">
-            <ion-col col-4></ion-col>
-            <ion-col col-5>
-                <ion-label>Total Score:</ion-label>
-            </ion-col>
-            <ion-col col-2>
-                <ion-label class="output">0</ion-label>
+                <ion-input [readonly]="true" class="output" [(ngModel)]="outputs.fifteen"></ion-input>
             </ion-col>
         </ion-row>
         <ion-row class="outputResult">
@@ -141,7 +142,7 @@
                 <ion-label>Score Day 1:</ion-label>
             </ion-col>
             <ion-col col-2>
-                <ion-label class="output">0</ion-label>
+                <ion-input [readonly]="true" class="output" [(ngModel)]="outputs.dayOne"></ion-input>
             </ion-col>
         </ion-row>
         <ion-row class="outputResult">
@@ -150,7 +151,16 @@
                 <ion-label>Score Day 2:</ion-label>
             </ion-col>
             <ion-col col-2>
-                <ion-label class="output">0</ion-label>
+                <ion-input [readonly]="true" class="output" [(ngModel)]="outputs.dayTwo"></ion-input>
+            </ion-col>
+        </ion-row>
+        <ion-row class="outputResult">
+            <ion-col col-4></ion-col>
+            <ion-col col-5>
+                <ion-label>Total Score:</ion-label>
+            </ion-col>
+            <ion-col col-2>
+                <ion-input [readonly]="true" class="output" [(ngModel)]="outputs.total"></ion-input>
             </ion-col>
         </ion-row>
     </ion-list>
