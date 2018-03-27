@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {IonicPage, LoadingController, NavController, NavParams, Platform} from 'ionic-angular';
+import {IonicPage, LoadingController, MenuController, NavController, NavParams, Platform} from 'ionic-angular';
 
 import {TabsPage} from "../../HomeTabs/tabs/tabs";
 import {CreateAccountPage} from "../create-account/create-account";
@@ -7,6 +7,7 @@ import {Keyboard} from "@ionic-native/keyboard";
 import {ToolsProvider} from "../../../providers/tools/tools";
 import {AuthenticationProvider} from "../../../providers/users/authentication";
 import {StandardLoginPage} from "../standard-login/standard-login";
+import {Storage} from "@ionic/storage";
 
 /**
  * Generated class for the LoginPage page.
@@ -23,19 +24,19 @@ import {StandardLoginPage} from "../standard-login/standard-login";
 export class LoginPage {
 
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public authProvider: AuthenticationProvider, public tools: ToolsProvider, public keyboard: Keyboard, platform: Platform, public loadCtrl: LoadingController) {
+  constructor(public navCtrl: NavController, public menu: MenuController, public navParams: NavParams, public authProvider: AuthenticationProvider, public storage: Storage, public tools: ToolsProvider, public keyboard: Keyboard, platform: Platform, public loadCtrl: LoadingController) {
       platform.ready().then(() => {
           keyboard.disableScroll(true) //preventing keyboard induced overflow on a page that doesnt need it
       });
-    }
-
+      menu.enable(false, 'mainCalendarMenu');
+  }
 
     realLogin() {
-      this.navCtrl.push(StandardLoginPage);
+      this.navCtrl.push('StandardLoginPage');
     }
 
     createAccount() {
-      this.navCtrl.push(CreateAccountPage);
+      this.navCtrl.push('CreateAccountPage');
     }
 
 
@@ -46,10 +47,11 @@ export class LoginPage {
       let promise = new Promise((resolve, reject) => {
 
           that.authProvider.advanceWithFacebook().then(response => {
-             if(response != "Success") {
+             if(response == null) {
                  reject(response);
              }
              else {
+                 this.storage.set('user-email', response);
                  resolve();
              }
           });

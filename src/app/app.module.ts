@@ -1,12 +1,7 @@
-import {ErrorHandler, NgModule} from '@angular/core';
+import {CUSTOM_ELEMENTS_SCHEMA, ErrorHandler, NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 import {IonicApp, IonicErrorHandler, IonicModule} from 'ionic-angular';
 import {MyApp} from './app.component';
-
-import {AboutPage} from '../pages/HomeTabs/about/about';
-import {ContactPage} from '../pages/HomeTabs/contact/contact';
-import {HomePage} from '../pages/HomeTabs/home/home';
-import {TabsPage} from '../pages/HomeTabs/tabs/tabs';
 
 import {StatusBar} from '@ionic-native/status-bar';
 import {SplashScreen} from '@ionic-native/splash-screen';
@@ -16,37 +11,33 @@ import {AngularFireModule} from 'angularfire2';
 import {AngularFireDatabaseModule} from "angularfire2/database";
 import {FIREBASE_CONFIG} from "./firebase-credentials";
 import {AngularFireAuthModule} from "angularfire2/auth";
-import {LoginPage} from "../pages/Logins/login/login";
-
-import {CreateAccountPage} from "../pages/Logins/create-account/create-account";
 import {Facebook} from "@ionic-native/facebook";
 import {Keyboard} from "@ionic-native/keyboard";
 import {UsersProvider} from '../providers/users/users';
 import {ToolsProvider} from '../providers/tools/tools';
 import {AuthenticationProvider} from "../providers/users/authentication";
-import {ForgotPasswordPage} from "../pages/Logins/forgot-password/forgot-password";
 import {ValidationProvider} from "../providers/tools/validations";
 import {CalendarMenu} from "../providers/menus/calendar-menu";
 import {DatePicker} from "@ionic-native/date-picker";
-import {CalendarModule} from 'ionic3-calendar-en';
 import {GooglePlus} from "@ionic-native/google-plus";
-import {StandardLoginPage} from "../pages/Logins/standard-login/standard-login";
-import {SettingsProvider} from "../providers/settings";
-import {CreateTrainingPage} from "../pages/Training/create-training/create-training";
 import {EntryProvider} from "../providers/users/entries";
+import {TextPopoverPage} from "../pages/Training/text-popover/text-popover";
+import {LabelProvider} from "../providers/custom-survey-components/labels/labelProvider";
+import {TrainingProvider} from "../providers/custom-survey-components/trainings/trainingProvider";
 
 @NgModule({
   declarations: [
     MyApp,
-    AboutPage,
-    ContactPage,
-    HomePage,
-    TabsPage,
-    LoginPage,
-    CreateAccountPage,
-    ForgotPasswordPage,
-    StandardLoginPage,
-    CreateTrainingPage
+      TextPopoverPage //why wont this popover lazy load in?
+    // AboutPage,
+    // ContactPage,
+    // HomePage,
+    // TabsPage,
+    // LoginPage,
+    // CreateAccountPage,
+    // ForgotPasswordPage,
+    // StandardLoginPage,
+    // CreateTrainingPage
   ],
   imports: [
     BrowserModule,
@@ -55,21 +46,21 @@ import {EntryProvider} from "../providers/users/entries";
     AngularFireModule.initializeApp(FIREBASE_CONFIG),
     AngularFireDatabaseModule,
     AngularFireAuthModule,
-    AngularFireModule,
-    CalendarModule
+    AngularFireModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    AboutPage,
-    ContactPage,
-    HomePage,
-    TabsPage,
-    LoginPage,
-    CreateAccountPage,
-    ForgotPasswordPage,
-    StandardLoginPage,
-    CreateTrainingPage
+      TextPopoverPage
+    // AboutPage,
+    // ContactPage,
+    // HomePage,
+    // TabsPage,
+    // LoginPage,
+    // CreateAccountPage,
+    // ForgotPasswordPage,
+    // StandardLoginPage,
+    // CreateTrainingPage
   ],
   providers: [
     StatusBar,
@@ -84,8 +75,12 @@ import {EntryProvider} from "../providers/users/entries";
     CalendarMenu,
     DatePicker,
     GooglePlus,
-    SettingsProvider,
-    EntryProvider
-  ]
+    EntryProvider,
+    LabelProvider,
+    TrainingProvider
+  ],
+    schemas: [
+        CUSTOM_ELEMENTS_SCHEMA
+    ],
 })
 export class AppModule {}

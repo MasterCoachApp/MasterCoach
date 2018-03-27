@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
-import { CreateTrainingPage } from './create-training';
+import {CreateTrainingPage} from './create-training';
 
 @NgModule({
   declarations: [
@@ -9,5 +9,8 @@ import { CreateTrainingPage } from './create-training';
   imports: [
     IonicPageModule.forChild(CreateTrainingPage),
   ],
+  entryComponents: [
+    CreateTrainingPage,
+  ]
 })
 export class CreateTrainingPageModule {}

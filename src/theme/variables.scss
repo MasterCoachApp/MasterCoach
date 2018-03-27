@@ -14,9 +14,6 @@ $app-direction: ltr;
 
 @import "ionic.globals";
 
-@import "theme.light";
-@import "theme.dark";
-
 // Named Color Variables
 // --------------------------------------------------
 // Named colors makes it easy to reuse colors on various components.
@@ -62,6 +59,10 @@ $text-color: color($colors, light);
 $toolbar-background: color($colors, dark);
 $alert-input-placeholder-color: white;
 
+//$popover-ios-width: 100%;
+//$popover-ios-height: 80%;
+//$popover-title: none;
+
 
 // App iOS Variables
 // --------------------------------------------------
@@ -82,10 +83,10 @@ $loading-ios-background-color: color($colors, dark);
 
 $range-ios-knob-width: 15px;
 
-$alert-ios-checkbox-label-text-color: white;
-$alert-ios-checkbox-label-text-color-checked: white;
-$alert-ios-sub-title-text-color: white;
-$alert-ios-main-title-text-color: white;
+$alert-ios-checkbox-label-text-color: white !important;
+$alert-ios-checkbox-label-text-color-checked: white !important;
+$alert-ios-sub-title-text-color: white !important;
+$alert-ios-main-title-text-color: white !important;
 
 
 // App Material Design Variables

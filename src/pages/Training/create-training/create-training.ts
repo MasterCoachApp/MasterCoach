@@ -1,13 +1,14 @@
 import {Component} from '@angular/core';
-import {AlertController, IonicPage, NavController, NavParams, Note} from 'ionic-angular';
+import {AlertController, IonicPage, MenuController, NavController, NavParams, PopoverController} from 'ionic-angular';
 import {UsersProvider} from "../../../providers/users/users";
 import {EntryProvider} from "../../../providers/users/entries";
 import {ToolsProvider} from "../../../providers/tools/tools";
-import {Training} from "../../../models/logging/training";
-import {Qna} from "../../../models/logging/qna";
 import {Activities} from "../../../models/logging/activities/activities";
-import {TrackEvents} from "../../../models/logging/activities/track-events";
-import {Notes} from "../../../models/logging/notes";
+import {TextPopoverPage} from "../text-popover/text-popover";
+import {LabelProvider} from "../../../providers/custom-survey-components/labels/labelProvider";
+import {TrainingProvider} from "../../../providers/custom-survey-components/trainings/trainingProvider";
+import {Label} from "../../../models/custom-survey-components/labels/label";
+import {Training} from "../../../models/logging/training";
 
 /**
  * Generated class for the CreateTrainingPage page.
@@ -23,107 +24,107 @@ import {Notes} from "../../../models/logging/notes";
 })
 export class CreateTrainingPage {
 
-    trainingExpanded: boolean;
-    preTrainingExpanded: boolean;
-    postTrainingExpanded: boolean;
+    expandPostThoughts: boolean;
 
-    overallThoughtsExpanded: boolean;
-
-    activities: Activities;
-    listOfEvents: string[];
+    listOfEvents: Label[];
 
 
-    preTraining = {
-        readiness: {
-            key: "Readiness",
-            val: 0
-        },
-        hunger: {
-            key: "Hunger",
-            val: 0
-        },
-        stress: {
-            key: "Stress",
-            val: 0
-        },
-        bodyState: {
-            key: "Body State",
-            val: 0
-        },
-        energy: {
-            key: "Energy",
-            val: 0
-        },
-        preThoughts: {
-            key: "Thoughts",
-            val: ''
-        },
+    preTraining = this.trainings.preTraining.getPreTraining();
+    postTraining = this.trainings.postTraining.getPostTraining();
 
+    preTrainingDivide: {
+        range: object[],
+        notes: object[]
     };
-    postTraining = {
-        postThoughts: {
-            key: 'Thoughts',
-            val: ''
-        },
-        overallRating: 0
+    postTrainingDivide: {
+        range: object[],
+        notes: object[]
     };
 
     mainTraining = {
+        activities: new Activities(),
         mainTrainingNotes: {
             key: 'Notes',
             val: ''
         }
     };
 
-    constructor(public navCtrl: NavController, public navParams: NavParams, public users: UsersProvider, public training: EntryProvider, public alertCtrl: AlertController, public tools: ToolsProvider) {
-        this.trainingExpanded = false;
-        this.preTrainingExpanded = false;
-        this.postTrainingExpanded = false;
+    trainingEventList: string[];
 
-        this.overallThoughtsExpanded = false;
-        this.activities = new Activities();
-        this.listOfEvents = new TrackEvents().getListOfEvents();
+    constructor(public navCtrl: NavController, public menu: MenuController, public navParams: NavParams, public trainings: TrainingProvider, public labels: LabelProvider, public popoverCtrl: PopoverController, public users: UsersProvider, public training: EntryProvider, public alertCtrl: AlertController, public tools: ToolsProvider) {
+        menu.enable(false, 'mainCalendarMenu');
 
+        this.listOfEvents = labels.listOfLabels;
+        this.trainingEventList = ["Long Jump", "High Jump", "Pole Vault"]; //should be empty out of development
+
+        this.expandPostThoughts = false;
+        this.preTrainingDivide = {range: [], notes:[] };
+        this.postTrainingDivide = {range: [], notes:[] };
+
+        for (let key in this.preTraining) {
+            if (this.preTraining.hasOwnProperty(key)) {
+                    if(this.preTraining[key]['type'] == "range") {
+                        this.preTrainingDivide.range.push(this.preTraining[key]);
+                    }
+                    if(this.preTraining[key]['type'] == "note") {
+                        this.preTrainingDivide.notes.push(this.preTraining[key]);
+                    }
+            }
+        }
+        for (let key in this.postTraining) {
+            if (this.postTraining.hasOwnProperty(key)) {
+                if(this.postTraining[key]['type'] == "range") {
+                    this.postTrainingDivide.range.push(this.postTraining[key]);
+                }
+                if(this.postTraining[key]['type'] == "note") {
+                    this.postTrainingDivide.notes.push(this.postTraining[key]);
+                }
+            }
+        }
     }
 
-    createQnaArray(): Qna[] {
-        let qna: Qna[] = [];
-        let question = new Qna(this.preTraining.energy.key, this.preTraining.energy.val);
-        qna.push(question);
-        question = new Qna(this.preTraining.bodyState.key, this.preTraining.bodyState.val);
-        qna.push(question);
-        question = new Qna(this.preTraining.stress.key, this.preTraining.stress.val);
-        qna.push(question);
-        question = new Qna(this.preTraining.hunger.key, this.preTraining.hunger.val);
-        qna.push(question);
-        question = new Qna(this.preTraining.readiness.key, this.preTraining.readiness.val);
-        qna.push(question);
-        return qna;
+    toggleGroup = function(group) {
+        if (this.isGroupShown(group)) {
+            this.shownGroup = null;
+        } else {
+            this.shownGroup = group;
+        }
+    };
+
+    isGroupShown = function(group) {
+        return this.shownGroup === group;
+    };
+
+    expandTextArea() {
+
+        this.expandPostThoughts = !this.expandPostThoughts;
+
+        let popover = this.popoverCtrl.create(TextPopoverPage, {},{cssClass: 'custom-popover'});
+        popover.present({
+            //ev: myEvent
+        });
+
     }
 
 
     createNewTraining() {
 
-        let qna = this.createQnaArray();
-        let preNotes: Notes[] = [];
-        let postNotes: Notes[] = [];
-        let mainNotes: Notes[] = [];
-
-        let preNote = new Notes(this.preTraining.preThoughts.key, this.preTraining.preThoughts.val);
-        preNotes.push(preNote);
-
-        let postNote = new Notes(this.postTraining.postThoughts.key, this.postTraining.postThoughts.val);
-        postNotes.push(postNote);
-
-        let mainNote = new Notes(this.mainTraining.mainTrainingNotes.key, this.mainTraining.mainTrainingNotes.val);
-        mainNotes.push(mainNote);
-
         let newTraining = new Training();
-        newTraining.setPreCalEvent(qna, preNotes);
-        newTraining.setPostCalEvent(this.postTraining.overallRating, postNotes);
-        newTraining.setMainCalEvent(this.activities, mainNotes);
+        this.preTrainingDivide.notes.forEach(note =>{
+            newTraining.addPreNote(note['key'], note['val']);
+        });
+        this.preTrainingDivide.range.forEach(range =>{
+            newTraining.addPreRange(range['key'], range['val']);
+        });
 
+        this.postTrainingDivide.notes.forEach(note =>{
+            newTraining.addPostNote(note['key'], note['val']);
+        });
+        this.postTrainingDivide.range.forEach(range =>{
+            newTraining.addPostRange(range['key'], range['val']);
+        });
 
+     //   newTraining.setMainCalEvent(this.mainTraining.activities, mainNotes);
 
         if (navigator.onLine) {
             this.training.createNewEntry(newTraining);
@@ -134,22 +135,18 @@ export class CreateTrainingPage {
 
     }
 
-    expand(type: string) {
-        switch (type) {
-            case 'pre':
-                this.preTrainingExpanded = !this.preTrainingExpanded;
-                break;
-            case 'post':
-                this.postTrainingExpanded = !this.postTrainingExpanded;
-                break;
-            case 'training':
-                this.trainingExpanded = !this.trainingExpanded;
-                break;
-        }
+    selectEventWorkout(value: string) {
+
     }
 
-    addActivity() {
+    removeLabel(event: string) {
+        //Remove label from UI
+        this.trainingEventList.splice(this.trainingEventList.indexOf(event),1);
 
+    }
+
+
+    addActivity() {
         let alert = this.alertCtrl.create({
             cssClass: 'alertCss'
         });
@@ -158,8 +155,8 @@ export class CreateTrainingPage {
         this.listOfEvents.forEach( data => {
             alert.addInput({
                 type: 'checkbox',
-                label: data,
-                value: data,
+                label: data.label['value'],
+                value: data.label['value'],
                 checked: false
             });
         });
@@ -171,12 +168,13 @@ export class CreateTrainingPage {
                 console.log('Checkbox data:', data);
                 if (data != null) {
                     data.forEach ( index => {
-                        this.activities.addEvents(index);
+                        this.trainingEventList.push(index);
                     });
                 }
                 // this.testCheckboxResult = data;
             }
         });
+
         alert.present();
     }
 
@@ -187,14 +185,14 @@ export class CreateTrainingPage {
         });
         alert.addInput( {
             type: 'radio',
-            label: 'A',
-            value: 'A',
+            label: 'Warm up A',
+            value: 'Warm up A',
             checked: false
         });
         alert.addInput( {
             type: 'radio',
-            label: 'B',
-            value: 'B',
+            label: 'Warm up B',
+            value: 'Warm up B',
             checked: false
         });
         alert.addButton('Cancel');
@@ -203,7 +201,7 @@ export class CreateTrainingPage {
             handler: data => {
                 console.log('Checkbox data:', data);
                 if (data != null) {
-                    this.activities.setWarmUp(data);
+                    this.mainTraining.activities.setWarmUp(data);
                 }
                 // this.testCheckboxResult = data;
             }
@@ -219,14 +217,14 @@ export class CreateTrainingPage {
         });
         alert.addInput( {
             type: 'radio',
-            label: 'A',
-            value: 'A',
+            label: 'Cool down A',
+            value: 'Cool down A',
             checked: false
         });
         alert.addInput( {
             type: 'radio',
-            label: 'B',
-            value: 'B',
+            label: 'Cool down B',
+            value: 'Cool down B',
             checked: false
         });
         alert.addButton('Cancel');
@@ -235,7 +233,7 @@ export class CreateTrainingPage {
             handler: data => {
                 console.log('Checkbox data:', data);
                 if (data != null) {
-                    this.activities.setCoolDown(data);
+                    this.mainTraining.activities.setCoolDown(data);
                 }
                 // this.testCheckboxResult = data;
             }

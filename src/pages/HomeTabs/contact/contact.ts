@@ -1,8 +1,9 @@
 import {Component} from '@angular/core';
-import {App, NavController} from 'ionic-angular';
+import {App, IonicPage, NavController} from 'ionic-angular';
 import {LoginPage} from "../../Logins/login/login";
 import {Storage} from "@ionic/storage";
 
+@IonicPage()
 @Component({
   selector: 'page-contact',
   templateUrl: 'contact.html'
@@ -16,7 +17,7 @@ export class ContactPage {
     signOut() {
     //not yet definable
         this.storage.remove("user-email");
-        this.app.getRootNav().push(LoginPage);
+        this.app.getRootNav().push('LoginPage');
     }
 
 }

@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {IonicPage, NavController, NavParams} from 'ionic-angular';
+import {IonicPage, MenuController, NavController, NavParams} from 'ionic-angular';
 
 import {TabsPage} from "../../HomeTabs/tabs/tabs";
 import {ToolsProvider} from "../../../providers/tools/tools";
@@ -25,7 +25,8 @@ export class CreateAccountPage {
     firstName: string;
     lastName: string;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public tools: ToolsProvider, public authProvider: AuthenticationProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public tools: ToolsProvider, public authProvider: AuthenticationProvider, public menu: MenuController) {
+      menu.enable(false, 'mainCalendarMenu');
 
   }
 
@@ -85,7 +86,7 @@ export class CreateAccountPage {
           });
 
           promise.then(() => {
-              this.navCtrl.push(TabsPage); //allow entry if successful login
+              this.navCtrl.push('TabsPage'); //allow entry if successful login
           }).catch(error => { //handle errors thrown by firebase
               this.authProvider.firebaseAuthenticationError(error);
           });

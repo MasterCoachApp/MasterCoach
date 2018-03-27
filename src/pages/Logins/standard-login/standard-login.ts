@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {IonicPage, NavController, NavParams} from 'ionic-angular';
+import {IonicPage, MenuController, NavController, NavParams} from 'ionic-angular';
 import {TabsPage} from "../../HomeTabs/tabs/tabs";
 import {ForgotPasswordPage} from "../forgot-password/forgot-password";
 import {AuthenticationProvider} from "../../../providers/users/authentication";
@@ -23,11 +23,12 @@ export class StandardLoginPage {
     email: string;
     password: string;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public authProvider: AuthenticationProvider, public tools: ToolsProvider, public storage: Storage) {
+  constructor(public navCtrl: NavController, public menu: MenuController, public navParams: NavParams, public authProvider: AuthenticationProvider, public tools: ToolsProvider, public storage: Storage) {
+      menu.enable(false, 'mainCalendarMenu');
   }
 
     forgotPassword() {
-        this.navCtrl.push(ForgotPasswordPage);
+        this.navCtrl.push('ForgotPasswordPage');
     }
 
     login() {
@@ -48,7 +49,6 @@ export class StandardLoginPage {
                         else
                             resolve();
                     }).catch(error => {
-                        console.log(1);
                         reject(error);
                     });
                 });
@@ -56,7 +56,7 @@ export class StandardLoginPage {
                 promise.then(() => {
                     loading.dismiss();
                     this.storage.set('user-email', this.email);
-                    this.navCtrl.push(TabsPage); //allow entry if successful login
+                    this.navCtrl.push('TabsPage'); //allow entry if successful login
                 }).catch(error => { //handle errors thrown by FireBase
                     loading.dismiss();
                     this.authProvider.firebaseAuthenticationError(error);

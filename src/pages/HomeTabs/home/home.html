@@ -13,35 +13,31 @@
       </ion-buttons>
   </ion-navbar>
 
-    <ion-calendar [ngClass]="displayFullCalendar ? 'showingCalendar' : 'noDisplayTransition'" #calendar (swipe)="swipe($event, calendar)"
+    <ion-calendar [ngClass]="displayFullCalendar ? 'showingCalendar' : 'noDisplay'" #calendar (swipe)="swipe($event, calendar)"
                   (onMonthSelect)="onMonthSelect($event)"
                   (onDaySelect)="onDaySelect($event)"
                   [events]="currentEvents" >
     </ion-calendar>
-
-    <div id="calendarScroll" class="scroll" >
-        <ion-row nowrap>
-          <div *ngFor="let date of this.calMenu.dateArray" class="expandedDate" (click)="selectDate(date)">
-            <ion-item no-lines [ngClass]="date.dateValue == this.dateSelected.dateValue ? 'expandedDate selected' : 'expandedDate'" id="{{date.date.toISOString().slice(0,10)}}">
-                <div class="hCalendarContent">
-                    <ion-row>
-                        <ion-col [ngClass]="date.dateValue == this.dateSelected.dateValue ? 'selectedTitle' : 'dayValue'">
-                            {{date.dayOfTheWeek}}
-                        </ion-col>
-                    </ion-row >
-                    <ion-row>
-                        <ion-col style="font-size: 14px !important;" [ngClass]="date.dateValue == this.dateSelected.dateValue ? 'selectedTitle' : 'dayValue'" color="primary">
-                            {{date.date.getDate()}}
-                        </ion-col>
-                    </ion-row>
-                </div>
-            </ion-item>
-          </div>
-        </ion-row>
-    </div>
 </ion-header>
 
 <ion-content padding [ngClass]="displayFullCalendar ? 'showingCalendarContent' : ''">
+    <ion-fab class="circleTab" right bottom>
+        <button ion-fab class="homeFab"><ion-icon name="add"></ion-icon></button>
+        <ion-fab-list side="top">
+            <button ion-fab class="noButton" (click)="createNewTraining(dateSelected)">
+                <ion-icon name="ios-bicycle"></ion-icon>
+                <div class="label">Training</div>
+            </button>
+            <button ion-fab class="noButton">
+                <ion-icon name="ios-trophy"></ion-icon>
+                <div class="label">Competition</div>
+            </button>
+            <button ion-fab class="noButton">
+                <ion-icon name="ios-medkit"></ion-icon>
+                <div class="label">Rehabilitation</div>
+            </button>
+        </ion-fab-list>
+    </ion-fab>
     <div>
         <ion-row>
             <ion-col>
