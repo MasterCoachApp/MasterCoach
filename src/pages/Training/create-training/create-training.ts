@@ -1,5 +1,8 @@
 import {Component} from '@angular/core';
-import {AlertController, IonicPage, MenuController, NavController, NavParams, PopoverController} from 'ionic-angular';
+import {
+    AlertController, IonicPage, MenuController, ModalController, NavController, NavParams,
+    PopoverController
+} from 'ionic-angular';
 import {UsersProvider} from "../../../providers/users/users";
 import {EntryProvider} from "../../../providers/users/entries";
 import {ToolsProvider} from "../../../providers/tools/tools";
@@ -9,6 +12,7 @@ import {LabelProvider} from "../../../providers/custom-survey-components/labels/
 import {TrainingProvider} from "../../../providers/custom-survey-components/trainings/trainingProvider";
 import {Label} from "../../../models/custom-survey-components/labels/label";
 import {Training} from "../../../models/logging/training";
+import {ExerciseTable} from "../../../models/logging/activities/exercise-table";
 
 /**
  * Generated class for the CreateTrainingPage page.
@@ -27,7 +31,6 @@ export class CreateTrainingPage {
     expandPostThoughts: boolean;
 
     listOfEvents: Label[];
-
 
     preTraining = this.trainings.preTraining.getPreTraining();
     postTraining = this.trainings.postTraining.getPostTraining();
@@ -51,7 +54,7 @@ export class CreateTrainingPage {
 
     trainingEventList: string[];
 
-    constructor(public navCtrl: NavController, public menu: MenuController, public navParams: NavParams, public trainings: TrainingProvider, public labels: LabelProvider, public popoverCtrl: PopoverController, public users: UsersProvider, public training: EntryProvider, public alertCtrl: AlertController, public tools: ToolsProvider) {
+    constructor(public navCtrl: NavController, public modalCtrl: ModalController, public menu: MenuController, public navParams: NavParams, public trainings: TrainingProvider, public labels: LabelProvider, public popoverCtrl: PopoverController, public users: UsersProvider, public training: EntryProvider, public alertCtrl: AlertController, public tools: ToolsProvider) {
         menu.enable(false, 'mainCalendarMenu');
 
         this.listOfEvents = labels.listOfLabels;
@@ -124,7 +127,7 @@ export class CreateTrainingPage {
             newTraining.addPostRange(range['key'], range['val']);
         });
 
-     //   newTraining.setMainCalEvent(this.mainTraining.activities, mainNotes);
+       newTraining.setMainCalEvent(this.mainTraining.activities);
 
         if (navigator.onLine) {
             this.training.createNewEntry(newTraining);
@@ -146,7 +149,60 @@ export class CreateTrainingPage {
     }
 
 
-    addActivity() {
+    addExercise() {
+        // let exerciseModal = this.modalCtrl.create({
+        //
+        // });
+        //
+        // exerciseModal.onDidDismiss( data => {
+        //
+        //
+        //     this.mainTraining.activities.addExercises();
+        // })
+        //
+        //
+        // this.mainTraining.activities.addExercises()
+
+        let alert = this.alertCtrl.create({
+            cssClass: 'alertCss'
+        });
+        alert.setTitle('Please select a training to add:');
+
+        // alert.addInput( {
+        //     // add foreach of a list of exercises later
+        //     // add modal window that walks through creating the new table with its settings later
+        //     type: 'checkbox',
+        //     label: 'Sprint Hurdles',
+        //     value: 'Sprint Hurdles',
+        //     checked: false
+        // });
+        this.listOfEvents.forEach( data => {
+            alert.addInput({
+                type: 'checkbox',
+                label: data.label['value'],
+                value: data.label['value'],
+                checked: false
+            });
+        });
+
+        alert.addButton('Cancel');
+        alert.addButton({
+            text: 'Add Exercise',
+            handler: data => {
+                console.log('Checkbox data [ADD EXERCISE]:', data);
+                if (data != null) {
+                    // data.forEach ( index => {
+                    this.mainTraining.activities.addExercises(data);
+                    // });
+                }
+                // this.testCheckboxResult = data;
+            }
+        });
+
+        alert.present();
+    }
+
+    addLabel(exercise: ExerciseTable) {
         let alert = this.alertCtrl.create({
             cssClass: 'alertCss'
         });
@@ -163,13 +219,13 @@ export class CreateTrainingPage {
 
         alert.addButton('Cancel');
         alert.addButton({
-            text: 'Add Events',
+            text: 'Add Labels',
             handler: data => {
-                console.log('Checkbox data:', data);
+                console.log('Checkbox data [LABELS]:', data);
                 if (data != null) {
-                    data.forEach ( index => {
-                        this.trainingEventList.push(index);
-                    });
+                    // data.forEach ( index => {
+                        this.mainTraining.activities.exercises[this.mainTraining.activities.exercises.indexOf(exercise)].addLabels(data);
+                    // });
                 }
                 // this.testCheckboxResult = data;
             }

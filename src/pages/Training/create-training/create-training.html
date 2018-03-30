@@ -77,19 +77,19 @@
                     <ion-note>View</ion-note>
 
                 </ion-item>
-                <ion-label stacked class="trainingHeaders">Events</ion-label>
-                <div style="margin-top: 20px" *ngIf="trainingEventList.length > 0">
+                <ion-label stacked class="trainingHeaders">Training</ion-label>
+                <div style="margin-top: 20px" *ngFor="let exercise of mainTraining.activities.exercises">
                     <ion-grid>
                         <ion-row>
                             <ion-col col-1 style="margin-right: 20px">
-                                <button ion-button style="border-radius: 25px; width: 10px; height: 30px;" (click)="addActivity()">
+                                <button ion-button style="border-radius: 25px; width: 10px; height: 30px;" (click)="addLabel(exercise)">
                                 <ion-icon name="add"></ion-icon>
                                 </button>
                             </ion-col>
                             <ion-col col-10>
                                 <div class="scroll" nowrap>
-                                    <button ion-button class="label" *ngFor="let event of trainingEventList" (click)="removeLabel(event)">
-                                        {{event}}
+                                    <button ion-button class="label" *ngFor="let label of exercise.labels" (click)="removeLabel(label)">
+                                        {{label}}
                                         <ion-icon name="close" class="trainingHeaders"></ion-icon>
                                     </button>
                                 </div>
@@ -97,7 +97,7 @@
                         </ion-row>
                     </ion-grid>
                     <ion-grid class="exerciseTable">
-                        <ion-row style="padding-bottom: 5px">Sprint Hurdles</ion-row>
+                        <ion-row style="padding-bottom: 5px">{{exercise.exerciseName}}</ion-row>
                         <ion-row>
                             <ion-col class="exerciseCol exerciseHeader" col-1>
                                 #
@@ -155,14 +155,14 @@
                             </ion-col>
                         </ion-row>
                     </ion-grid>
-                    <ion-grid style="width: 100%; border: 1px solid black; margin: 20px 5px 5px 5px;">
-                        <ion-row>
-                            <ion-col style="text-align: center; font-style: italic; opacity: 0.5" (click)="addActivity()">
-                                ADD EXERCISE
-                            </ion-col>
-                        </ion-row>
-                    </ion-grid>
                 </div>
+                <ion-grid style="width: 100%; border: 1px solid black; margin: 20px 5px 5px 5px;">
+                    <ion-row>
+                        <ion-col style="text-align: center; font-style: italic; opacity: 0.5" (click)="addExercise()">
+                            ADD EXERCISE
+                        </ion-col>
+                    </ion-row>
+                </ion-grid>
             </ion-list>
             <ion-label stacked class="trainingHeaders">Cool Down</ion-label>
             <ion-item *ngIf="!mainTraining.activities.coolDown">
