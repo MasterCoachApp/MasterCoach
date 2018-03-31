@@ -61,20 +61,15 @@ page-create-training {
     color: #999999;
   }
 
-  .addSet {
-    text-align: center;
-    border: 1px solid color($colors, primary);
-    margin-top: 5px;
-  }
-
   .exerciseHeader {
     font-style: italic;
+    text-align: center;
   }
 
    .exerciseCol {
     background-color: white;
     color: #999999;
-    border: 1px solid black;
+    border: 0.5px solid black;
     text-align: center;
    }
 
@@ -82,10 +77,23 @@ page-create-training {
     font-size: 12px;
   }
 
-  .addSetButton {
+  .addSet {
+    text-align: center;
+    border: 1px solid color($colors, primary);
+    margin-top: 5px;
+    font-size: 10px;
     width: 100%;
   }
 
+  .addExercise {
+    color: white;
+    border: 1px solid lightblue;
+    text-align: center;
+    opacity: 0.5;
+    width: 100%;
+    margin: 10px 5px 5px 5px;
+    line-height: 24px;
+  }
 
   .list .item.item-accordion {
     transition: all linear 5s;

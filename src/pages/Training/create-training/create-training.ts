@@ -13,6 +13,8 @@ import {TrainingProvider} from "../../../providers/custom-survey-components/trai
 import {Label} from "../../../models/custom-survey-components/labels/label";
 import {Training} from "../../../models/logging/training";
 import {ExerciseTable} from "../../../models/logging/activities/exercise-table";
+import {ExerciseSet} from "../../../models/logging/activities/exercise-set";
+import {expressionChangedAfterItHasBeenCheckedError} from "@angular/core/src/view/errors";
 
 /**
  * Generated class for the CreateTrainingPage page.
@@ -84,6 +86,8 @@ export class CreateTrainingPage {
                 }
             }
         }
+
+        this.mainTraining.activities = new Activities();
     }
 
     toggleGroup = function(group) {
@@ -142,9 +146,10 @@ export class CreateTrainingPage {
 
     }
 
-    removeLabel(event: string) {
+    removeLabel(label: Label, exercise: ExerciseTable) {
         //Remove label from UI
-        this.trainingEventList.splice(this.trainingEventList.indexOf(event),1);
+        // this.trainingEventList.splice(this.trainingEventList.indexOf(event),1);
+        this.mainTraining.activities.exercises[this.mainTraining.activities.exercises.indexOf(exercise)].removeLabel(label);
 
     }
 
@@ -176,6 +181,7 @@ export class CreateTrainingPage {
         //     value: 'Sprint Hurdles',
         //     checked: false
         // });
+        // ADDING with this list of track events for now until we get an exercise library up and running
         this.listOfEvents.forEach( data => {
             alert.addInput({
                 type: 'checkbox',
@@ -191,15 +197,21 @@ export class CreateTrainingPage {
             handler: data => {
                 console.log('Checkbox data [ADD EXERCISE]:', data);
                 if (data != null) {
-                    // data.forEach ( index => {
                     this.mainTraining.activities.addExercises(data);
-                    // });
                 }
-                // this.testCheckboxResult = data;
             }
         });
 
         alert.present();
+    }
+
+    addSet(exercise: ExerciseTable) {
+        this.mainTraining.activities.exercises[this.mainTraining.activities.exercises.indexOf(exercise)].addSet();
+    }
+
+    deleteSet(set: ExerciseSet, exercise: ExerciseTable) {
+        let exerciseIndex = this.mainTraining.activities.exercises.indexOf(exercise);
+        this.mainTraining.activities.exercises[exerciseIndex].deleteSet(set);
     }
 
     addLabel(exercise: ExerciseTable) {

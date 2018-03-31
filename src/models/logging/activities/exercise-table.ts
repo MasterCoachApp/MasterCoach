@@ -1,6 +1,8 @@
 import {ITable} from "../interfaces/table-interface";
 import {Label} from "../../custom-survey-components/labels/label";
 import {ExerciseTableTypes} from "../tables/exercise-table-types";
+import {ExerciseSet} from "./exercise-set";
+import {ExerciseTableColumn} from "./exercise-table-column";
 
 export class ExerciseTable {
     // export class ExerciseTable implements ITable { // maybe replace with this later when I want to enforce an interface
@@ -9,9 +11,11 @@ export class ExerciseTable {
     public exerciseName: string;
     public tableType: string;
     public tableHeaders: string[];
-    public sets: any[]; // need to make this a Set[]
+    public sets: ExerciseSet[]; // need to make this a Set[] - DONE
     public notes: string;
     public pinnedNotes: string;
+    public columnMap: ExerciseTableColumn;
+    public showNotes: boolean;
 
     public table: {};
 
@@ -25,8 +29,11 @@ export class ExerciseTable {
         this.tableType = null;
         this.tableHeaders = ['#', 'Detail', 'Measure', 'Reps']; // hard coded for now
         this.sets = [];
+        this.sets.push(new ExerciseSet(1));
         this.notes = null;
         this.pinnedNotes = null;
+        this.columnMap = new ExerciseTableColumn();
+        this.showNotes = false;
 
         this.table = this.makeTable();
     }
@@ -64,6 +71,22 @@ export class ExerciseTable {
         console.log(this);
         // add first set here
     }
+    addSet() {
+        let lastSetNumber = this.sets[this.sets.length - 1]['setNumber'];
 
+        this.sets.push(new ExerciseSet(lastSetNumber + 1));
+    }
+
+    deleteSet(set: ExerciseSet) {
+        this.sets.splice(this.sets.indexOf(set),1);
+    }
+
+    toggleComplete(set: ExerciseSet) {
+        this.sets[this.sets.indexOf(set)].complete = !this.sets[this.sets.indexOf(set)].complete;
+    }
+
+    showNotesTooltip() {
+        this.showNotes = !this.showNotes;
+    }
 
 }
