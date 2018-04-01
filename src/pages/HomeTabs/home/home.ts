@@ -13,7 +13,6 @@ import {UsersProvider} from "../../../providers/users/users";
 })
 export class HomePage {
 
-    activeMenu: string;
     date = new Date();
     //I suspect hard-coding UTC time will cause problems for other time-zones
     //Without specifying it was putting the wrong date (+4:00)
@@ -23,7 +22,10 @@ export class HomePage {
     currentEvents: any[];
     dateClicked: CalendarDay;
     displayFullCalendar = false;
-  constructor(public navCtrl: NavController, public app: App, public storage: Storage, public modalCtrl: ModalController, public user: UsersProvider, public menu: MenuController, public platform: Platform, public calMenu: CalendarMenu, public viewCtrl: ViewController) {
+
+    datesThisYear: CalendarDay[];
+
+    constructor(public navCtrl: NavController, public app: App, public storage: Storage, public modalCtrl: ModalController, public user: UsersProvider, public menu: MenuController, public platform: Platform, public calMenu: CalendarMenu, public viewCtrl: ViewController) {
 
       this.storage.get('user-email').then(email => {
          if(email == null) {
@@ -70,21 +72,44 @@ export class HomePage {
               date: 9
           }
       ];
+      this.datesThisYear = [];
+      let iterator = 0;
+      calMenu.dateArray.forEach(date => {
+          if(iterator <= 70) {
+              this.datesThisYear.push(date);
+          }
+          iterator += 1;
+      });
   }
     activateMenu() {
-        this.activeMenu = 'mainCalendarMenu';
         this.menu.enable(true, 'mainCalendarMenu');
     }
 
 
     createNewTraining(dateSelected: string) {
-        let profileModal = this.modalCtrl.create('CreateTrainingPage', {date: dateSelected});
-        profileModal.present();
+        this.navCtrl.push('CreateTrainingPage', {date: dateSelected});
+        // profileModal.onDidDismiss(() => {
+        //     this.activateMenu();
+        // });
     }
 
-    //Full calendar
-    x = 0;
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    // ------------- Full calendar ---------------------
+    x = 0;
     onDaySelect(event) {
         let date = new Date();
         date.setMonth(event.month);
@@ -110,15 +135,11 @@ export class HomePage {
         }
     }
 
-
-    //
-
     selectDate(date: CalendarDay) {
         this.dateSelected = date;
         this.monthInView = date.month;
     }
 
-
-
+    //-------------------
 
 }

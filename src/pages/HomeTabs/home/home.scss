@@ -1,7 +1,10 @@
 page-home {
+  .dateCol {
+    margin-left: 0;
+  }
 
-  .executed {
-    margin-top: 50px;
+  .date {
+    font-size: 20px;
   }
 
  .showingCalendar {
@@ -12,6 +15,11 @@ page-home {
    display: block;
    opacity: 1;
  }
+
+  .nothingPlanned {
+    opacity: 0.1;
+    font-style: italic;
+  }
 
   .showingCalendarContent {
     margin-top: 190px;
@@ -38,10 +46,11 @@ page-home {
       height: 1px;
     }
     &:after {
+      background: color($colors, background);
+
       content: attr(data-content);
       position: relative;
       display: inline-block;
-
       padding: 0 .5em;
       line-height: 1.5em;
       // this is really the only tricky part, you need to specify the background color of the container element...

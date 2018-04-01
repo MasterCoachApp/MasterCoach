@@ -1,28 +1,90 @@
 <ion-header>
-  <ion-navbar>
-      <ion-buttons left>
-          <button ion-button icon-only menuToggle>
-              <ion-icon name="menu"></ion-icon>
-          </button>
-      </ion-buttons>
-      <ion-buttons>
-          <button ion-button style="font-size: 20px;" (click)="displayFullCalendar = !displayFullCalendar">
-              {{this.monthInView}}  {{this.calMenu.getDisplayedYear()}} &nbsp; <ion-icon *ngIf="!displayFullCalendar" name="md-arrow-dropdown"></ion-icon><ion-icon *ngIf="displayFullCalendar" name="md-arrow-dropup"></ion-icon>
+    <ion-navbar>
+        <ion-buttons left>
+            <button ion-button menuToggle>
+                <ion-icon name="menu"></ion-icon>
+            </button>
+        </ion-buttons>
+        <ion-buttons>
+            <button ion-button style="font-size: 20px;" (click)="displayFullCalendar = !displayFullCalendar">
+                {{this.monthInView}} &nbsp;
+                <ion-icon *ngIf="!displayFullCalendar" name="md-arrow-dropdown"></ion-icon>
+                <ion-icon *ngIf="displayFullCalendar" name="md-arrow-dropup"></ion-icon>
 
-          </button>
-      </ion-buttons>
-  </ion-navbar>
+            </button>
+        </ion-buttons>
+    </ion-navbar>
 
-    <ion-calendar [ngClass]="displayFullCalendar ? 'showingCalendar' : 'noDisplay'" #calendar (swipe)="swipe($event, calendar)"
+    <ion-calendar [ngClass]="displayFullCalendar ? 'showingCalendar' : 'noDisplay'" #calendar
+                  (swipe)="swipe($event, calendar)"
                   (onMonthSelect)="onMonthSelect($event)"
                   (onDaySelect)="onDaySelect($event)"
-                  [events]="currentEvents" >
+                  [events]="currentEvents">
     </ion-calendar>
 </ion-header>
 
-<ion-content padding [ngClass]="displayFullCalendar ? 'showingCalendarContent' : ''">
+<ion-content [ngClass]="displayFullCalendar ? 'showingCalendarContent' : ''">
+    <ion-list no-lines no-border>
+        <ion-item *ngFor="let date of datesThisYear">
+            <ion-row>
+                <ion-col col-3 class="dateCol">
+                    <ion-list-header left text-capitalize="none">
+                        <table>
+                            <tr class="date">
+                                <th>{{date.date.getDate()}}</th>
+                            </tr>
+                            <tr class="day">
+                                <th>{{date.dayOfTheWeek}}</th>
+                            </tr>
+                        </table>
+                    </ion-list-header>
+                </ion-col>
+                <ion-col col-9>
+                    <!--<div>-->
+                        <!--&lt;!&ndash;Planned content&ndash;&gt;-->
+                        <!--<div *ngIf="this.dateSelected.content.planned.length == 0 || this.content.planned == null">-->
+                            <!--<ion-row>-->
+                                <!--<ion-col>-->
+                                    <!--<hr data-content="Planned" class="hr-text">-->
+                                <!--</ion-col>-->
+                            <!--</ion-row>-->
+                            <!--<ion-row>-->
+                                <!--<h3 class="nothingPlanned">You have no planned trainings</h3>-->
+                            <!--</ion-row>-->
+                        <!--</div>-->
+                        <!--<div *ngIf="this.dateSelected.content.planned.length > 0">-->
+
+                        <!--</div>-->
+                        <!--&lt;!&ndash;&ndash;&gt;-->
+                    <!--</div>-->
+
+                    <div>
+                        <!--Executed content-->
+                        <div class="executed"
+                             *ngIf="this.dateSelected.content.executed.length == 0 || this.content.executed == null">
+                            <ion-row>
+                                <ion-col>
+                                    <hr data-content="Executed" class="hr-text">
+                                </ion-col>
+                            </ion-row>
+                            <ion-row>
+                                <h3 class="nothingPlanned">You did not train today</h3>
+                            </ion-row>
+                        </div>
+                        <div class="executed" *ngIf="this.dateSelected.content.executed.length > 0">
+
+                        </div>
+                        <!---->
+                    </div>
+                </ion-col>
+            </ion-row>
+        </ion-item>
+    </ion-list>
+
     <ion-fab class="circleTab" right bottom>
-        <button ion-fab class="homeFab"><ion-icon name="add"></ion-icon></button>
+        <button ion-fab class="homeFab">
+            <ion-icon name="add"></ion-icon>
+        </button>
         <ion-fab-list side="top">
             <button ion-fab class="noButton" (click)="createNewTraining(dateSelected)">
                 <ion-icon name="ios-bicycle"></ion-icon>
@@ -38,27 +100,6 @@
             </button>
         </ion-fab-list>
     </ion-fab>
-    <div>
-        <ion-row>
-            <ion-col>
-                <hr data-content="Planned" class="hr-text">
-            </ion-col>
-        </ion-row>
-        <ion-row *ngIf="this.dateSelected.content.planned != null">
-            <h3 class="nothingPlanned">You have no planned trainings</h3>
-        </ion-row>
-
-    </div>
-    <div class="executed">
-        <ion-row>
-            <ion-col>
-                <hr data-content="Executed" class="hr-text">
-            </ion-col>
-        </ion-row>
-        <ion-row *ngIf="this.dateSelected.content.executed != null">
-            <h3 class="nothingPlanned">You did not train today</h3>
-        </ion-row>
-    </div>
 </ion-content>
 
 

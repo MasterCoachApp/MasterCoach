@@ -33455,8 +33455,12 @@ ion-calendar .calendar-row .select {
   box-shadow: 5px 10px 18px #888888;
 }
 
-page-home .executed {
-  margin-top: 50px;
+page-home .dateCol {
+  margin-left: 0;
+}
+
+page-home .date {
+  font-size: 20px;
 }
 
 page-home .showingCalendar {
@@ -33467,6 +33471,11 @@ page-home .showingCalendar {
   color: white;
   display: block;
   opacity: 1;
+}
+
+page-home .nothingPlanned {
+  opacity: 0.1;
+  font-style: italic;
 }
 
 page-home .showingCalendarContent {
@@ -33496,6 +33505,7 @@ page-home .hr-text:before {
 }
 
 page-home .hr-text:after {
+  background: #161b1f;
   content: attr(data-content);
   position: relative;
   display: inline-block;

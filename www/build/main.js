@@ -830,6 +830,11 @@ var EntryProvider = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__models_custom_survey_components_trainings_pre_training__ = __webpack_require__(500);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__models_custom_survey_components_trainings_post_training__ = __webpack_require__(501);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_angularfire2_database__ = __webpack_require__(74);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__models_logging_training__ = __webpack_require__(674);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__models_logging_activities_activities__ = __webpack_require__(670);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__models_logging_activities_warm_up__ = __webpack_require__(675);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__models_logging_activities_cool_down__ = __webpack_require__(676);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -842,8 +847,14 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
+
+
+
+
 var TrainingProvider = (function () {
-    function TrainingProvider() {
+    function TrainingProvider(db) {
+        this.db = db;
         this.preTraining = new __WEBPACK_IMPORTED_MODULE_1__models_custom_survey_components_trainings_pre_training__["a" /* PreTraining */]();
         this.postTraining = new __WEBPACK_IMPORTED_MODULE_2__models_custom_survey_components_trainings_post_training__["a" /* PostTraining */]();
         this.getCustomPostTraining();
@@ -853,11 +864,62 @@ var TrainingProvider = (function () {
     };
     TrainingProvider.prototype.getCustomPreTraining = function () {
     };
+    /*
+    I have yet to decide if its worth continuously observing
+     */
+    TrainingProvider.prototype.getUserTrainings = function (user) {
+        var listOfTrainings = [];
+        var that = this;
+        var userPromise = new Promise(function (resolve, reject) {
+            var idRef = that.db.database.ref("Users/" + user.User_Id + "/Calendar");
+            idRef.on('value', function (snapshot) {
+                snapshot.forEach(function (snap) {
+                    var training = new __WEBPACK_IMPORTED_MODULE_4__models_logging_training__["a" /* Training */]();
+                    var post = snap.child("postCalEvent");
+                    var pre = snap.child("preCalEvent");
+                    var main = snap.child("mainCalEvent");
+                    post.child("notes").forEach(function (note) {
+                        training.addPostNote(note.key, note.val());
+                        return false;
+                    });
+                    post.child("range").forEach(function (value) {
+                        training.addPostRange(value.key, value.val());
+                        return false;
+                    });
+                    pre.child("notes").forEach(function (note) {
+                        training.addPreNote(note.key, note.val());
+                        return false;
+                    });
+                    pre.child("range").forEach(function (value) {
+                        training.addPreRange(value.key, value.val());
+                        return false;
+                    });
+                    main.child("notes").forEach(function (note) {
+                        training.addMainCalNote(note.key, note.val());
+                        return false;
+                    });
+                    var activity = new __WEBPACK_IMPORTED_MODULE_5__models_logging_activities_activities__["a" /* Activities */]();
+                    activity.warmUp = new __WEBPACK_IMPORTED_MODULE_6__models_logging_activities_warm_up__["a" /* WarmUp */](main.child("activities").child("warmup").val());
+                    activity.coolDown = new __WEBPACK_IMPORTED_MODULE_7__models_logging_activities_cool_down__["a" /* CoolDown */](main.child("activities").child("cooldown").val());
+                    main.child("activities").child("exercises").forEach(function (exercise) {
+                        return false;
+                    });
+                    return false;
+                });
+            });
+        });
+        return userPromise.then(function (response) {
+            return response;
+        }).catch(function () {
+            return null;
+        });
+    };
     TrainingProvider = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["B" /* Injectable */])(),
-        __metadata("design:paramtypes", [])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_3_angularfire2_database__["a" /* AngularFireDatabase */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3_angularfire2_database__["a" /* AngularFireDatabase */]) === "function" && _a || Object])
     ], TrainingProvider);
     return TrainingProvider;
+    var _a;
 }());
 
 //# sourceMappingURL=trainingProvider.js.map
@@ -1362,6 +1424,237 @@ var ToolsProvider = (function () {
 }());
 
 //# sourceMappingURL=tools.js.map
+
+/***/ }),
+
+/***/ 670:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Activities; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__track_events__ = __webpack_require__(671);
+
+var Activities = (function () {
+    function Activities() {
+        this.warmUp = null;
+        this.coolDown = null;
+        this.trackEvents = new __WEBPACK_IMPORTED_MODULE_0__track_events__["a" /* TrackEvents */]();
+    }
+    Activities.prototype.getEvents = function () {
+        return this.trackEvents;
+    };
+    Activities.prototype.getCoolDown = function () {
+        return this.coolDown;
+    };
+    Activities.prototype.getWarmUp = function () {
+        return this.warmUp;
+    };
+    Activities.prototype.setCoolDown = function (coolDown) {
+        this.coolDown = coolDown;
+    };
+    Activities.prototype.setWarmUp = function (warmUp) {
+        this.warmUp = warmUp;
+    };
+    Activities.prototype.removeEvent = function (event) {
+        //this.trackEvents.splice(this.trackEvents.indexOf(event),1);
+    };
+    Activities.prototype.setEvents = function (trackEvents) {
+        this.trackEvents = trackEvents;
+    };
+    return Activities;
+}());
+
+//# sourceMappingURL=activities.js.map
+
+/***/ }),
+
+/***/ 671:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return TrackEvents; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__TrackEventTrainings_hundred__ = __webpack_require__(672);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__TrackEventTrainings_LongJump__ = __webpack_require__(673);
+
+
+var TrackEvents = (function () {
+    function TrackEvents() {
+        this.hundred = {
+            value: "100m",
+            defaultExercises: new __WEBPACK_IMPORTED_MODULE_0__TrackEventTrainings_hundred__["a" /* Hundred */]().listOfTrainings,
+        };
+        this.sprintHurdles = {
+            value: "110mH",
+            defaultExercises: new __WEBPACK_IMPORTED_MODULE_0__TrackEventTrainings_hundred__["a" /* Hundred */]().listOfTrainings,
+        };
+        this.fourHundred = {
+            value: "400m",
+            defaultExercises: new __WEBPACK_IMPORTED_MODULE_0__TrackEventTrainings_hundred__["a" /* Hundred */]().listOfTrainings,
+        };
+        this.fifteenHundred = {
+            value: "1500m",
+            defaultExercises: new __WEBPACK_IMPORTED_MODULE_0__TrackEventTrainings_hundred__["a" /* Hundred */]().listOfTrainings,
+        };
+        this.longJump = {
+            value: "Long Jump",
+            defaultExercises: new __WEBPACK_IMPORTED_MODULE_1__TrackEventTrainings_LongJump__["a" /* LongJump */]().listOfTrainings,
+        };
+        this.highJump = {
+            value: "High Jump",
+            defaultExercises: new __WEBPACK_IMPORTED_MODULE_0__TrackEventTrainings_hundred__["a" /* Hundred */]().listOfTrainings,
+        };
+        this.poleVault = {
+            value: "Pole Vault",
+            defaultExercises: new __WEBPACK_IMPORTED_MODULE_0__TrackEventTrainings_hundred__["a" /* Hundred */]().listOfTrainings,
+        };
+        this.javelin = {
+            value: "Javelin Throw",
+            defaultExercises: new __WEBPACK_IMPORTED_MODULE_0__TrackEventTrainings_hundred__["a" /* Hundred */]().listOfTrainings,
+        };
+        this.discus = {
+            value: "Discus Throw",
+            defaultExercises: new __WEBPACK_IMPORTED_MODULE_0__TrackEventTrainings_hundred__["a" /* Hundred */]().listOfTrainings,
+        };
+        this.shotput = {
+            value: "Shot Put",
+            defaultExercises: new __WEBPACK_IMPORTED_MODULE_0__TrackEventTrainings_hundred__["a" /* Hundred */]().listOfTrainings,
+        };
+        this.decathlon = {
+            value: "Decathlon",
+            defaultExercises: new __WEBPACK_IMPORTED_MODULE_0__TrackEventTrainings_hundred__["a" /* Hundred */]().listOfTrainings,
+        };
+        this.listOfEvents = ["100m", "110mH", "400m", "1500m", "Long Jump", "High Jump", "Pole Vault", "Discus Throw", "Javelin Throw", "Shot Put", "Decathlon"];
+    }
+    TrackEvents.prototype.getListOfEvents = function () {
+        return this.listOfEvents;
+    };
+    ;
+    return TrackEvents;
+}());
+
+//# sourceMappingURL=track-events.js.map
+
+/***/ }),
+
+/***/ 672:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Hundred; });
+var Hundred = (function () {
+    function Hundred() {
+        this.listOfTrainings = [
+            "X meters - Starts",
+            "X meters - Tempo",
+            "X meters - Y %",
+            "X meters - Race",
+            "X meters"
+        ];
+    }
+    return Hundred;
+}());
+
+//# sourceMappingURL=hundred.js.map
+
+/***/ }),
+
+/***/ 673:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return LongJump; });
+var LongJump = (function () {
+    function LongJump() {
+        this.listOfTrainings = [
+            "X step - Full Jumps",
+            "X step - Takeoff",
+            "X step - Run Through",
+            "Two leg take off - Landing",
+            "Two leg take off - No Landing"
+        ];
+    }
+    return LongJump;
+}());
+
+//# sourceMappingURL=LongJump.js.map
+
+/***/ }),
+
+/***/ 674:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Training; });
+var Training = (function () {
+    function Training() {
+        this.type = "Training";
+        this.preCalEvent = {
+            range: {},
+            notes: {},
+        };
+        this.postCalEvent = {
+            range: {},
+            notes: {},
+        };
+        this.mainCalEvent = {
+            activities: null,
+            notes: {},
+        };
+    }
+    Training.prototype.addPreNote = function (k, v) {
+        this.preCalEvent.notes[k] = v;
+    };
+    Training.prototype.addPostNote = function (k, v) {
+        this.postCalEvent.notes[k] = v;
+    };
+    Training.prototype.addPreRange = function (k, v) {
+        this.preCalEvent.range[k] = v;
+    };
+    Training.prototype.addPostRange = function (k, v) {
+        this.postCalEvent.range[k] = v;
+    };
+    Training.prototype.addMainCalActivity = function (activities) {
+        this.mainCalEvent.activities = activities;
+    };
+    Training.prototype.addMainCalNote = function (k, v) {
+        this.mainCalEvent.notes[k] = v;
+    };
+    return Training;
+}());
+
+//# sourceMappingURL=training.js.map
+
+/***/ }),
+
+/***/ 675:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return WarmUp; });
+var WarmUp = (function () {
+    function WarmUp(name) {
+        this.name = name;
+    }
+    return WarmUp;
+}());
+
+//# sourceMappingURL=warm-up.js.map
+
+/***/ }),
+
+/***/ 676:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CoolDown; });
+var CoolDown = (function () {
+    function CoolDown(name) {
+        this.name = name;
+    }
+    return CoolDown;
+}());
+
+//# sourceMappingURL=cool-down.js.map
 
 /***/ }),
 

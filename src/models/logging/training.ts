@@ -68,11 +68,11 @@ export class Training implements IEventsComponents {
         this.postCalEvent.range[k] = v;
     }
 
-    setMainCalEvent(activities: Activities) {
+    addMainCalActivity(activities: Activities) {
         this.mainCalEvent.activities = activities;
     }
 
-    setMainCalNotes(k: string, v: string) {
+    addMainCalNote(k: string, v: string) {
         this.mainCalEvent.notes[k] = v;
     }
 

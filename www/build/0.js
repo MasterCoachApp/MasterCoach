@@ -16426,7 +16426,7 @@ var HomePage = (function () {
         this.dateSelected = new __WEBPACK_IMPORTED_MODULE_2__models_calendar_calendar_day__["a" /* CalendarDay */](new Date(this.date.getUTCFullYear(), this.date.getUTCMonth(), this.date.getUTCDate(), this.date.getUTCHours(), this.date.getUTCMinutes(), this.date.getUTCSeconds()));
         this.monthInView = this.dateSelected.month;
         this.displayFullCalendar = false;
-        //Full calendar
+        // ------------- Full calendar ---------------------
         this.x = 0;
         this.storage.get('user-email').then(function (email) {
             if (email == null) {
@@ -16471,14 +16471,23 @@ var HomePage = (function () {
                 date: 9
             }
         ];
+        this.datesThisYear = [];
+        var iterator = 0;
+        calMenu.dateArray.forEach(function (date) {
+            if (iterator <= 70) {
+                _this.datesThisYear.push(date);
+            }
+            iterator += 1;
+        });
     }
     HomePage.prototype.activateMenu = function () {
-        this.activeMenu = 'mainCalendarMenu';
         this.menu.enable(true, 'mainCalendarMenu');
     };
     HomePage.prototype.createNewTraining = function (dateSelected) {
-        var profileModal = this.modalCtrl.create('CreateTrainingPage', { date: dateSelected });
-        profileModal.present();
+        this.navCtrl.push('CreateTrainingPage', { date: dateSelected });
+        // profileModal.onDidDismiss(() => {
+        //     this.activateMenu();
+        // });
     };
     HomePage.prototype.onDaySelect = function (event) {
         var date = new Date();
@@ -16501,14 +16510,13 @@ var HomePage = (function () {
             calendar.back();
         }
     };
-    //
     HomePage.prototype.selectDate = function (date) {
         this.dateSelected = date;
         this.monthInView = date.month;
     };
     HomePage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-            selector: 'page-home',template:/*ion-inline-start:"/Users/jonahelbaz/Desktop/MasterCoach/src/pages/HomeTabs/home/home.html"*/'<ion-header>\n  <ion-navbar>\n      <ion-buttons left>\n          <button ion-button icon-only menuToggle>\n              <ion-icon name="menu"></ion-icon>\n          </button>\n      </ion-buttons>\n      <ion-buttons>\n          <button ion-button style="font-size: 20px;" (click)="displayFullCalendar = !displayFullCalendar">\n              {{this.monthInView}}  {{this.calMenu.getDisplayedYear()}} &nbsp; <ion-icon *ngIf="!displayFullCalendar" name="md-arrow-dropdown"></ion-icon><ion-icon *ngIf="displayFullCalendar" name="md-arrow-dropup"></ion-icon>\n\n          </button>\n      </ion-buttons>\n  </ion-navbar>\n\n    <ion-calendar [ngClass]="displayFullCalendar ? \'showingCalendar\' : \'noDisplay\'" #calendar (swipe)="swipe($event, calendar)"\n                  (onMonthSelect)="onMonthSelect($event)"\n                  (onDaySelect)="onDaySelect($event)"\n                  [events]="currentEvents" >\n    </ion-calendar>\n</ion-header>\n\n<ion-content padding [ngClass]="displayFullCalendar ? \'showingCalendarContent\' : \'\'">\n    <ion-fab class="circleTab" right bottom>\n        <button ion-fab class="homeFab"><ion-icon name="add"></ion-icon></button>\n        <ion-fab-list side="top">\n            <button ion-fab class="noButton" (click)="createNewTraining(dateSelected)">\n                <ion-icon name="ios-bicycle"></ion-icon>\n                <div class="label">Training</div>\n            </button>\n            <button ion-fab class="noButton">\n                <ion-icon name="ios-trophy"></ion-icon>\n                <div class="label">Competition</div>\n            </button>\n            <button ion-fab class="noButton">\n                <ion-icon name="ios-medkit"></ion-icon>\n                <div class="label">Rehabilitation</div>\n            </button>\n        </ion-fab-list>\n    </ion-fab>\n    <div>\n        <ion-row>\n            <ion-col>\n                <hr data-content="Planned" class="hr-text">\n            </ion-col>\n        </ion-row>\n        <ion-row *ngIf="this.dateSelected.content.planned != null">\n            <h3 class="nothingPlanned">You have no planned trainings</h3>\n        </ion-row>\n\n    </div>\n    <div class="executed">\n        <ion-row>\n            <ion-col>\n                <hr data-content="Executed" class="hr-text">\n            </ion-col>\n        </ion-row>\n        <ion-row *ngIf="this.dateSelected.content.executed != null">\n            <h3 class="nothingPlanned">You did not train today</h3>\n        </ion-row>\n    </div>\n</ion-content>\n\n\n'/*ion-inline-end:"/Users/jonahelbaz/Desktop/MasterCoach/src/pages/HomeTabs/home/home.html"*/
+            selector: 'page-home',template:/*ion-inline-start:"/Users/jonahelbaz/Desktop/MasterCoach/src/pages/HomeTabs/home/home.html"*/'<ion-header>\n    <ion-navbar>\n        <ion-buttons left>\n            <button ion-button menuToggle>\n                <ion-icon name="menu"></ion-icon>\n            </button>\n        </ion-buttons>\n        <ion-buttons>\n            <button ion-button style="font-size: 20px;" (click)="displayFullCalendar = !displayFullCalendar">\n                {{this.monthInView}} &nbsp;\n                <ion-icon *ngIf="!displayFullCalendar" name="md-arrow-dropdown"></ion-icon>\n                <ion-icon *ngIf="displayFullCalendar" name="md-arrow-dropup"></ion-icon>\n\n            </button>\n        </ion-buttons>\n    </ion-navbar>\n\n    <ion-calendar [ngClass]="displayFullCalendar ? \'showingCalendar\' : \'noDisplay\'" #calendar\n                  (swipe)="swipe($event, calendar)"\n                  (onMonthSelect)="onMonthSelect($event)"\n                  (onDaySelect)="onDaySelect($event)"\n                  [events]="currentEvents">\n    </ion-calendar>\n</ion-header>\n\n<ion-content [ngClass]="displayFullCalendar ? \'showingCalendarContent\' : \'\'">\n    <ion-list no-lines no-border>\n        <ion-item *ngFor="let date of datesThisYear">\n            <ion-row>\n                <ion-col col-3 class="dateCol">\n                    <ion-list-header left text-capitalize="none">\n                        <table>\n                            <tr class="date">\n                                <th>{{date.date.getDate()}}</th>\n                            </tr>\n                            <tr class="day">\n                                <th>{{date.dayOfTheWeek}}</th>\n                            </tr>\n                        </table>\n                    </ion-list-header>\n                </ion-col>\n                <ion-col col-9>\n                    <!--<div>-->\n                        <!--&lt;!&ndash;Planned content&ndash;&gt;-->\n                        <!--<div *ngIf="this.dateSelected.content.planned.length == 0 || this.content.planned == null">-->\n                            <!--<ion-row>-->\n                                <!--<ion-col>-->\n                                    <!--<hr data-content="Planned" class="hr-text">-->\n                                <!--</ion-col>-->\n                            <!--</ion-row>-->\n                            <!--<ion-row>-->\n                                <!--<h3 class="nothingPlanned">You have no planned trainings</h3>-->\n                            <!--</ion-row>-->\n                        <!--</div>-->\n                        <!--<div *ngIf="this.dateSelected.content.planned.length > 0">-->\n\n                        <!--</div>-->\n                        <!--&lt;!&ndash;&ndash;&gt;-->\n                    <!--</div>-->\n\n                    <div>\n                        <!--Executed content-->\n                        <div class="executed"\n                             *ngIf="this.dateSelected.content.executed.length == 0 || this.content.executed == null">\n                            <ion-row>\n                                <ion-col>\n                                    <hr data-content="Executed" class="hr-text">\n                                </ion-col>\n                            </ion-row>\n                            <ion-row>\n                                <h3 class="nothingPlanned">You did not train today</h3>\n                            </ion-row>\n                        </div>\n                        <div class="executed" *ngIf="this.dateSelected.content.executed.length > 0">\n\n                        </div>\n                        <!---->\n                    </div>\n                </ion-col>\n            </ion-row>\n        </ion-item>\n    </ion-list>\n\n    <ion-fab class="circleTab" right bottom>\n        <button ion-fab class="homeFab">\n            <ion-icon name="add"></ion-icon>\n        </button>\n        <ion-fab-list side="top">\n            <button ion-fab class="noButton" (click)="createNewTraining(dateSelected)">\n                <ion-icon name="ios-bicycle"></ion-icon>\n                <div class="label">Training</div>\n            </button>\n            <button ion-fab class="noButton">\n                <ion-icon name="ios-trophy"></ion-icon>\n                <div class="label">Competition</div>\n            </button>\n            <button ion-fab class="noButton">\n                <ion-icon name="ios-medkit"></ion-icon>\n                <div class="label">Rehabilitation</div>\n            </button>\n        </ion-fab-list>\n    </ion-fab>\n</ion-content>\n\n\n'/*ion-inline-end:"/Users/jonahelbaz/Desktop/MasterCoach/src/pages/HomeTabs/home/home.html"*/
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* App */], __WEBPACK_IMPORTED_MODULE_4__ionic_storage__["b" /* Storage */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* ModalController */], __WEBPACK_IMPORTED_MODULE_5__providers_users_users__["a" /* UsersProvider */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* MenuController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* Platform */], __WEBPACK_IMPORTED_MODULE_3__providers_menus_calendar_menu__["a" /* CalendarMenu */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["o" /* ViewController */]])
     ], HomePage);
