@@ -1,27 +1,25 @@
-import {ITable} from "../interfaces/table-interface";
+import {IExerciseTable} from "../interfaces/exercise-table-interface";
 import {Label} from "../../custom-survey-components/labels/label";
 import {ExerciseTableTypes} from "../tables/exercise-table-types";
 import {ExerciseSet} from "./exercise-set";
 import {ExerciseTableColumn} from "./exercise-table-column";
+import {ExerciseCategory} from "./exercise-category";
 
-export class ExerciseTable {
+export class ExerciseTable implements IExerciseTable{
     // export class ExerciseTable implements ITable { // maybe replace with this later when I want to enforce an interface
 
     public labels: Label[];
     public exerciseName: string;
+    public exerciseCategory: any;
     public tableType: string;
     public tableHeaders: string[];
     public sets: ExerciseSet[]; // need to make this a Set[] - DONE
     public notes: string;
     public pinnedNotes: string;
-    public columnMap: ExerciseTableColumn;
     public showNotes: boolean;
 
-    public table: {};
+    //public columnMap: columnMap;
 
-    getTable(): {} {
-        return this.table;
-    };
 
     constructor() {
         this.labels = [];
@@ -32,23 +30,10 @@ export class ExerciseTable {
         this.sets.push(new ExerciseSet(1));
         this.notes = null;
         this.pinnedNotes = null;
-        this.columnMap = new ExerciseTableColumn();
         this.showNotes = false;
+        this.exerciseCategory = new ExerciseCategory().discus;
 
-        this.table = this.makeTable();
-    }
-
-    makeTable() {
-        let table = {
-            labels: this.labels,
-            tableType: this.tableType,
-            exerciseName: this.exerciseName,
-            sets: this.sets,
-            notes: this.notes,
-            pinnedNotes: this.pinnedNotes
-        };
-
-        return table;
+        // this.columnMap = new ExerciseTableColumn();
     }
 
     addLabels(labelsToAdd: Label[]) {

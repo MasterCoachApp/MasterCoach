@@ -3,7 +3,7 @@ import {ToolsProvider} from "../tools/tools";
 import {AlertController} from "ionic-angular";
 import {CalendarDay} from "../../models/calendar/calendar-day";
 import {MenuEvents} from "../../models/calendar/menu-events";
-import {LabelProvider} from "../custom-survey-components/labels/labelProvider";
+import {LabelProvider} from "../training/labels/labelProvider";
 
 
 @Injectable()

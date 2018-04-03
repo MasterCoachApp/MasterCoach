@@ -20,15 +20,15 @@ import {ValidationProvider} from "../providers/tools/validations";
 import {CalendarMenu} from "../providers/menus/calendar-menu";
 import {DatePicker} from "@ionic-native/date-picker";
 import {GooglePlus} from "@ionic-native/google-plus";
-import {EntryProvider} from "../providers/users/entries";
 import {TextPopoverPage} from "../pages/Training/text-popover/text-popover";
-import {LabelProvider} from "../providers/custom-survey-components/labels/labelProvider";
-import {TrainingProvider} from "../providers/custom-survey-components/trainings/trainingProvider";
+import {LabelProvider} from "../providers/training/labels/labelProvider";
+import {TrainingProvider} from "../providers/training/trainings/trainingProvider";
+import {MyPipe} from "../pipes/my/my";
 
 @NgModule({
   declarations: [
     MyApp,
-      TextPopoverPage //why wont this popover lazy load in?
+      TextPopoverPage, //why wont this popover lazy load in?
     // AboutPage,
     // ContactPage,
     // HomePage,
@@ -75,7 +75,6 @@ import {TrainingProvider} from "../providers/custom-survey-components/trainings/
     CalendarMenu,
     DatePicker,
     GooglePlus,
-    EntryProvider,
     LabelProvider,
     TrainingProvider
   ],

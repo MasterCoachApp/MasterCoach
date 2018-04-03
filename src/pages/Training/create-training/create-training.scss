@@ -69,25 +69,49 @@ page-create-training {
    .exerciseCol {
     background-color: white;
     color: #999999;
-    border: 0.5px solid black;
+    border: 0.1px solid grey;
     text-align: center;
    }
 
-  .label {
+  .exerciseTableLabel {
     font-size: 12px;
+    height: 20px;
+    padding: 5%;
+  }
+
+  .exerciseTableIcon {
+    border-radius: 25px;
+    width: 10px;
+    height: 30px;
+  }
+  .tableCheckbox {
+
   }
 
   .addSet {
     text-align: center;
     border: 1px solid color($colors, primary);
-    margin-top: 5px;
+    //margin: 5px;
     font-size: 10px;
     width: 100%;
   }
 
+  .addWarmUpCoolDown {
+    text-align: center;
+    border: 1px solid color($colors, primary);
+    margin: 5px;
+    font-size: 10px;
+    width: 100%;
+  }
+
+  .warmUpCard {
+    //box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    box-shadow: 0 1px 1px 0 #999999, 0 1px 1px 0 #999999;
+  }
+
   .addExercise {
     color: white;
-    border: 1px solid lightblue;
+    border: 1px solid color($colors, primary);
     text-align: center;
     opacity: 0.5;
     width: 100%;

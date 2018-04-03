@@ -4,17 +4,17 @@ import {
     PopoverController
 } from 'ionic-angular';
 import {UsersProvider} from "../../../providers/users/users";
-import {EntryProvider} from "../../../providers/users/entries";
 import {ToolsProvider} from "../../../providers/tools/tools";
 import {Activities} from "../../../models/logging/activities/activities";
 import {TextPopoverPage} from "../text-popover/text-popover";
-import {LabelProvider} from "../../../providers/custom-survey-components/labels/labelProvider";
-import {TrainingProvider} from "../../../providers/custom-survey-components/trainings/trainingProvider";
+import {LabelProvider} from "../../../providers/training/labels/labelProvider";
+import {TrainingProvider} from "../../../providers/training/trainings/trainingProvider";
 import {Label} from "../../../models/custom-survey-components/labels/label";
 import {Training} from "../../../models/logging/training";
 import {ExerciseTable} from "../../../models/logging/activities/exercise-table";
 import {ExerciseSet} from "../../../models/logging/activities/exercise-set";
 import {expressionChangedAfterItHasBeenCheckedError} from "@angular/core/src/view/errors";
+import {ExerciseCategory} from "../../../models/logging/activities/exercise-category";
 
 /**
  * Generated class for the CreateTrainingPage page.
@@ -28,6 +28,8 @@ import {expressionChangedAfterItHasBeenCheckedError} from "@angular/core/src/vie
     selector: 'page-create-training',
     templateUrl: 'create-training.html',
 })
+
+
 export class CreateTrainingPage {
 
     expandPostThoughts: boolean;
@@ -56,11 +58,14 @@ export class CreateTrainingPage {
 
     trainingEventList: string[];
 
-    constructor(public navCtrl: NavController, public modalCtrl: ModalController, public menu: MenuController, public navParams: NavParams, public trainings: TrainingProvider, public labels: LabelProvider, public popoverCtrl: PopoverController, public users: UsersProvider, public training: EntryProvider, public alertCtrl: AlertController, public tools: ToolsProvider) {
+    // exerciseKeys: string[];
+
+    constructor(public navCtrl: NavController, public modalCtrl: ModalController, public menu: MenuController, public navParams: NavParams, public trainings: TrainingProvider, public labels: LabelProvider, public popoverCtrl: PopoverController, public users: UsersProvider, public alertCtrl: AlertController, public tools: ToolsProvider) {
         menu.enable(false, 'mainCalendarMenu');
 
         this.listOfEvents = labels.listOfLabels;
         this.trainingEventList = ["Long Jump", "High Jump", "Pole Vault"]; //should be empty out of development
+        // this.exerciseKeys = [];
 
         this.expandPostThoughts = false;
         this.preTrainingDivide = {range: [], notes:[] };
@@ -88,6 +93,8 @@ export class CreateTrainingPage {
         }
 
         this.mainTraining.activities = new Activities();
+        let temp = new ExerciseCategory();
+        console.log(temp.tripleJump.name);
     }
 
     toggleGroup = function(group) {
@@ -134,7 +141,7 @@ export class CreateTrainingPage {
        newTraining.setMainCalEvent(this.mainTraining.activities);
 
         if (navigator.onLine) {
-            this.training.createNewEntry(newTraining);
+            this.trainings.createNewEntry(newTraining);
         }
         else {
             this.tools.presentToast("bottom", "Sorry, you're not connected to the internet");
@@ -149,7 +156,7 @@ export class CreateTrainingPage {
     removeLabel(label: Label, exercise: ExerciseTable) {
         //Remove label from UI
         // this.trainingEventList.splice(this.trainingEventList.indexOf(event),1);
-        this.mainTraining.activities.exercises[this.mainTraining.activities.exercises.indexOf(exercise)].removeLabel(label);
+        this.mainTraining.activities.exercises[exercise.exerciseName].removeLabel(label);
 
     }
 
@@ -206,12 +213,11 @@ export class CreateTrainingPage {
     }
 
     addSet(exercise: ExerciseTable) {
-        this.mainTraining.activities.exercises[this.mainTraining.activities.exercises.indexOf(exercise)].addSet();
+        this.mainTraining.activities.exercises[exercise.exerciseName].addSet();
     }
 
     deleteSet(set: ExerciseSet, exercise: ExerciseTable) {
-        let exerciseIndex = this.mainTraining.activities.exercises.indexOf(exercise);
-        this.mainTraining.activities.exercises[exerciseIndex].deleteSet(set);
+        this.mainTraining.activities.exercises[exercise.exerciseName].deleteSet(set);
     }
 
     addLabel(exercise: ExerciseTable) {
@@ -236,7 +242,7 @@ export class CreateTrainingPage {
                 console.log('Checkbox data [LABELS]:', data);
                 if (data != null) {
                     // data.forEach ( index => {
-                        this.mainTraining.activities.exercises[this.mainTraining.activities.exercises.indexOf(exercise)].addLabels(data);
+                        this.mainTraining.activities.exercises[exercise.exerciseName].addLabels(data);
                     // });
                 }
                 // this.testCheckboxResult = data;
@@ -315,6 +321,15 @@ export class CreateTrainingPage {
     // adding for testing data on page DG 2018-03-18
     testConsole(data: any) {
         console.log(data);
+    }
+    tooltip(){
+        this.tools.toastCtrl.create({
+            message: 'One day this will be a popover tooltip',
+            duration: 3000
+        }).present();
+    }
+    objectKeys(obj) {
+        return Object.keys(obj);
     }
 
 }

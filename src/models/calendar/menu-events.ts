@@ -1,5 +1,5 @@
 
-import {LabelProvider} from "../../providers/custom-survey-components/labels/labelProvider";
+import {LabelProvider} from "../../providers/training/labels/labelProvider";
 import {Label} from "../custom-survey-components/labels/label";
 
 export class MenuEvents {
