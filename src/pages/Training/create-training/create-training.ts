@@ -1,20 +1,22 @@
 import {Component} from '@angular/core';
 import {
     AlertController, IonicPage, MenuController, ModalController, NavController, NavParams,
-    PopoverController
+    PopoverController, ViewController
 } from 'ionic-angular';
 import {UsersProvider} from "../../../providers/users/users";
 import {ToolsProvider} from "../../../providers/tools/tools";
-import {Activities} from "../../../models/logging/activities/activities";
+import {Activities} from "../../../models/logging/create-training/activities";
 import {TextPopoverPage} from "../text-popover/text-popover";
 import {LabelProvider} from "../../../providers/training/labels/labelProvider";
 import {TrainingProvider} from "../../../providers/training/trainings/trainingProvider";
 import {Label} from "../../../models/custom-survey-components/labels/label";
 import {Training} from "../../../models/logging/training";
-import {ExerciseTable} from "../../../models/logging/activities/exercise-table";
-import {ExerciseSet} from "../../../models/logging/activities/exercise-set";
+import {ExerciseTable} from "../../../models/logging/create-training/exercise-table";
+import {ExerciseSet} from "../../../models/logging/create-training/exercise-set";
 import {expressionChangedAfterItHasBeenCheckedError} from "@angular/core/src/view/errors";
-import {ExerciseCategory} from "../../../models/logging/activities/exercise-category";
+import {ExerciseCategory} from "../../../models/logging/create-training/exercise-category";
+import {AddExercisePage} from "../../add-exercise/add-exercise";
+import {Exercise} from "../../../models/logging/exercises/exercise";
 
 /**
  * Generated class for the CreateTrainingPage page.
@@ -58,9 +60,13 @@ export class CreateTrainingPage {
 
     trainingEventList: string[];
 
+    trainingMorningAfternoonEvening: string;
+    trainingDateHour: number;
+    trainingDate: string;
+
     // exerciseKeys: string[];
 
-    constructor(public navCtrl: NavController, public modalCtrl: ModalController, public menu: MenuController, public navParams: NavParams, public trainings: TrainingProvider, public labels: LabelProvider, public popoverCtrl: PopoverController, public users: UsersProvider, public alertCtrl: AlertController, public tools: ToolsProvider) {
+    constructor(public navCtrl: NavController, public viewCtrl: ViewController, public modalCtrl: ModalController, public menu: MenuController, public navParams: NavParams, public trainings: TrainingProvider, public labels: LabelProvider, public popoverCtrl: PopoverController, public users: UsersProvider, public alertCtrl: AlertController, public tools: ToolsProvider) {
         menu.enable(false, 'mainCalendarMenu');
 
         this.listOfEvents = labels.listOfLabels;
@@ -93,8 +99,16 @@ export class CreateTrainingPage {
         }
 
         this.mainTraining.activities = new Activities();
-        let temp = new ExerciseCategory();
-        console.log(temp.tripleJump.name);
+
+        // this.trainingDate = new Date().toISOString();
+        this.trainingDateHour = new Date().getHours(); // not UTC because we want the time zone localized
+        if (this.trainingDateHour < 12) {
+            this.trainingMorningAfternoonEvening = 'Morning';
+        } else if (this.trainingDateHour < 5) {
+            this.trainingMorningAfternoonEvening = 'Afternoon';
+        } else {
+            this.trainingMorningAfternoonEvening = 'Evening';
+        }
     }
 
     toggleGroup = function(group) {
@@ -142,6 +156,7 @@ export class CreateTrainingPage {
 
         if (navigator.onLine) {
             this.trainings.createNewEntry(newTraining);
+            this.viewCtrl.dismiss();
         }
         else {
             this.tools.presentToast("bottom", "Sorry, you're not connected to the internet");
@@ -155,69 +170,73 @@ export class CreateTrainingPage {
 
     removeLabel(label: Label, exercise: ExerciseTable) {
         //Remove label from UI
-        // this.trainingEventList.splice(this.trainingEventList.indexOf(event),1);
-        this.mainTraining.activities.exercises[exercise.exerciseName].removeLabel(label);
+        this.mainTraining.activities.exercises[exercise.exerciseCategory.category.name][exercise.exerciseName].removeLabel(label);
 
     }
 
 
     addExercise() {
-        // let exerciseModal = this.modalCtrl.create({
-        //
-        // });
-        //
-        // exerciseModal.onDidDismiss( data => {
-        //
-        //
-        //     this.mainTraining.activities.addExercises();
-        // })
-        //
-        //
-        // this.mainTraining.activities.addExercises()
+        let addExerciseModal = this.modalCtrl.create(
+            'AddExercisePage',
+            );
 
-        let alert = this.alertCtrl.create({
-            cssClass: 'alertCss'
-        });
-        alert.setTitle('Please select a training to add:');
 
-        // alert.addInput( {
-        //     // add foreach of a list of exercises later
-        //     // add modal window that walks through creating the new table with its settings later
-        //     type: 'checkbox',
-        //     label: 'Sprint Hurdles',
-        //     value: 'Sprint Hurdles',
-        //     checked: false
-        // });
-        // ADDING with this list of track events for now until we get an exercise library up and running
-        this.listOfEvents.forEach( data => {
-            alert.addInput({
-                type: 'checkbox',
-                label: data.label['value'],
-                value: data.label['value'],
-                checked: false
-            });
-        });
-
-        alert.addButton('Cancel');
-        alert.addButton({
-            text: 'Add Exercise',
-            handler: data => {
-                console.log('Checkbox data [ADD EXERCISE]:', data);
-                if (data != null) {
-                    this.mainTraining.activities.addExercises(data);
-                }
+        addExerciseModal.onDidDismiss( data => {
+            if (data) {
+                this.mainTraining.activities.addExercises(data);
             }
         });
 
-        alert.present();
+        addExerciseModal.present();
+
+
+
+
+
+        // // alert placeholder to add trainings
+        // let alert = this.alertCtrl.create({
+        //     cssClass: 'alertCss'
+        // });
+        // alert.setTitle('Please select a training to add:');
+        //
+        // // alert.addInput( {
+        // //     // add foreach of a list of exercises later
+        // //     // add modal window that walks through creating the new table with its settings later
+        // //     type: 'checkbox',
+        // //     label: 'Sprint Hurdles',
+        // //     value: 'Sprint Hurdles',
+        // //     checked: false
+        // // });
+        // // ADDING with this list of track events for now until we get an exercise library up and running
+        // this.listOfEvents.forEach( data => {
+        //     alert.addInput({
+        //         type: 'checkbox',
+        //         label: data.label['value'],
+        //         value: data.label['value'],
+        //         checked: false
+        //     });
+        // });
+        //
+        // alert.addButton('Cancel');
+        // alert.addButton({
+        //     text: 'Add Exercise',
+        //     handler: data => {
+        //         console.log('Checkbox data [ADD EXERCISE]:', data);
+        //         if (data != null) {
+        //             this.mainTraining.activities.addExercises(data);
+        //         }
+        //     }
+        // });
+        //
+        // alert.present();
     }
 
     addSet(exercise: ExerciseTable) {
-        this.mainTraining.activities.exercises[exercise.exerciseName].addSet();
+        this.mainTraining.activities.exercises[exercise.exerciseCategory.category.name][exercise.exerciseName].addSet();
     }
 
     deleteSet(set: ExerciseSet, exercise: ExerciseTable) {
-        this.mainTraining.activities.exercises[exercise.exerciseName].deleteSet(set);
+        this.mainTraining.activities.exercises[exercise.exerciseCategory.category.name][exercise.exerciseName].deleteSet(set);
     }
 
     addLabel(exercise: ExerciseTable) {
@@ -242,7 +261,7 @@ export class CreateTrainingPage {
                 console.log('Checkbox data [LABELS]:', data);
                 if (data != null) {
                     // data.forEach ( index => {
-                        this.mainTraining.activities.exercises[exercise.exerciseName].addLabels(data);
+                        this.mainTraining.activities.exercises[exercise.exerciseCategory.category.name][exercise.exerciseName].addLabels(data);
                     // });
                 }
                 // this.testCheckboxResult = data;

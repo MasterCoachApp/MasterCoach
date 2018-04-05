@@ -2,6 +2,7 @@ import {WarmUp} from "./warm-up";
 import {CoolDown} from "./cool-down";
 import {TrackEvents} from "./track-events";
 import {ExerciseTable} from "./exercise-table";
+import {Exercise} from "../exercises/exercise";
 
 export class Activities {
 
@@ -9,7 +10,9 @@ export class Activities {
     coolDown: CoolDown;
     // trackEvents: TrackEvents;
     exercises: {
-        [key: string] : ExerciseTable
+        [key: string] : { // exerciseCategory.category.name
+            [key: string]: ExerciseTable
+        }
     };
 
     constructor() {
@@ -44,11 +47,11 @@ export class Activities {
         // this.trackEvents = trackEvents;
     }
 
-    addExercises(exercises: string[]) {
+    addExercises(exercises: Exercise[]) {
         exercises.forEach( data => {
-            let newExercise = new ExerciseTable();
-            newExercise.setName(data);
-            this.exercises[newExercise.exerciseName] = newExercise;
+            let newExerciseTable = new ExerciseTable(data);
+            this.exercises[newExerciseTable.exerciseCategory.category.name] = {};
+            this.exercises[newExerciseTable.exerciseCategory.category.name][newExerciseTable.exerciseName] = newExerciseTable;
             console.log('Exercises :', exercises);
         });
     }

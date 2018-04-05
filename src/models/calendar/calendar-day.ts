@@ -8,6 +8,7 @@ export class CalendarDay {
     public dayOfTheWeek: string;
     public month: string;
     public dateValue: string;
+    public timeOfDayFormatted: string;
 
     public content: {
         planned: any[],
@@ -22,6 +23,8 @@ export class CalendarDay {
         this.dayOfTheWeek = this.getDayOfWeek(this.date);
         this.month = this.getMonth(this.date);
         this.dateValue = date.toISOString().slice(0, 10);
+        this.timeOfDayFormatted = ''+ date.getHours() + ':' + date.getMinutes();
+
 
         this.content = {
             planned: [],

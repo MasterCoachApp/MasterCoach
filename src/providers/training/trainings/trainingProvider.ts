@@ -27,12 +27,12 @@ export class TrainingProvider {
     createNewEntry(training: Training) {
 
         // let tempTraining = {
-        //     exerciseTables: training.mainCalEvent.activities.exercises,//filterTrainingDetails(training)
+        //     exerciseTables: training.mainCalEvent.create-training.exercises,//filterTrainingDetails(training)
         // };
         //
         // let exerciseTable = {
-        //     exercises: training.mainCalEvent.activities
-        //     labels: training.mainCalEvent.activities.exercises
+        //     exercises: training.mainCalEvent.create-training
+        //     labels: training.mainCalEvent.create-training.exercises
         // };
 
         this.db.database.ref("Users/" + this.users.loggedIn.User_Id + "/Calendar").push(

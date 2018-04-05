@@ -1,4 +1,4 @@
-import {Activities} from "./activities/activities";
+import {Activities} from "./create-training/activities";
 import {IEventsComponents} from "./interfaces/event-components";
 
 export class Competition implements IEventsComponents {
