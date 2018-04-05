@@ -1,4 +1,4 @@
-import {RoutineCategory} from "../create-training/routine-category";
+import {RoutineCategory} from "../routines/routine-category";
 import {ExerciseTable} from "../create-training/exercise-table";
 
 export interface IRoutine {

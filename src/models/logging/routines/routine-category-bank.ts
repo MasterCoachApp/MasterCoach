@@ -1,7 +1,8 @@
 import {RoutineCategory} from "./routine-category";
 
 export class RoutineCategoryBank {
-    routineCategoryBank: RoutineCategory[];
+
+    routineCategoryBank: RoutineCategory[] = [];
 
     routineCategoryList: ['Warm Up', 'Cool Down', 'Training', 'Rehab'];
 

@@ -38,9 +38,9 @@ export class ExerciseBank {
         ];
     }
 
-    addExercise(exerciseName: string, exerciseCat: ExerciseCategory, exerciseTableType: ExerciseTableType) {
+    addExercise(exercise: Exercise) {
         this.exerciseBank.push(
-            new Exercise(exerciseName, exerciseCat, exerciseTableType)
+            new Exercise(exercise.exerciseName, exercise.exerciseCategory, exercise.exerciseTableType)
         );
     }
 

@@ -1,5 +1,5 @@
 import {RoutineCategory} from "./routine-category";
-import {ExerciseTable} from "./exercise-table";
+import {ExerciseTable} from "../create-training/exercise-table";
 
 export class Routine {
     routineName: string;
