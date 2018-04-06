@@ -1,0 +1,25 @@
+page-add-exercise {
+  ion-content {
+    background-color: white;
+  }
+  ion-list-header {
+    color: white;
+  }
+  .listAZ {
+    border: none;
+  }
+
+  .list .item.item-accordion {
+    transition: all linear 5s;
+    line-height: 38px;
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+  .list .item.item-accordion.ng-hide {
+    line-height: 0;
+  }
+  .list .item.item-accordion.ng-hide-add,
+  .list .item.item-accordion.ng-hide-remove {
+    display: block !important;
+  }
+}
