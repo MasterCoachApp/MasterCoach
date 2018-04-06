@@ -24,6 +24,7 @@ import {TextPopoverPage} from "../pages/Training/text-popover/text-popover";
 import {LabelProvider} from "../providers/training/labels/labelProvider";
 import {TrainingProvider} from "../providers/training/trainings/trainingProvider";
 import {MyPipe} from "../pipes/my/my";
+import {ExerciseProvider} from "../providers/training/exercises/exerciseProvider";
 
 @NgModule({
   declarations: [
@@ -76,7 +77,8 @@ import {MyPipe} from "../pipes/my/my";
     DatePicker,
     GooglePlus,
     LabelProvider,
-    TrainingProvider
+    TrainingProvider,
+      ExerciseProvider
   ],
     schemas: [
         CUSTOM_ELEMENTS_SCHEMA

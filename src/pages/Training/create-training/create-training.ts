@@ -15,7 +15,7 @@ import {ExerciseTable} from "../../../models/logging/create-training/exercise-ta
 import {ExerciseSet} from "../../../models/logging/create-training/exercise-set";
 import {expressionChangedAfterItHasBeenCheckedError} from "@angular/core/src/view/errors";
 import {ExerciseCategory} from "../../../models/logging/create-training/exercise-category";
-import {AddExercisePage} from "../../add-exercise/add-exercise";
+import {AddExercisePage} from "../../Exercises/add-exercise/add-exercise";
 import {Exercise} from "../../../models/logging/exercises/exercise";
 
 /**

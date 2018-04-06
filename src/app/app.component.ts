@@ -17,8 +17,9 @@ import {Label} from "../models/custom-survey-components/labels/label";
 export class MyApp {
 
   // rootPage:any = 'LoginPage';
-    rootPage:any = 'TabsPage';
-   // rootPage:any = 'CreateTrainingPage';
+  //   rootPage:any = 'TabsPage';
+   rootPage:any = 'CreateTrainingPage';
+    // rootPage:any = 'CreateExercisePage'
 
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, keyboard: Keyboard, public calendarMenu: CalendarMenu, private labels: LabelProvider) {
     platform.ready().then(() => {
