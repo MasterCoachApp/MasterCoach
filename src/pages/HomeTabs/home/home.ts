@@ -8,11 +8,9 @@ import {CalendarMenu} from "../../../providers/menus/calendar-menu";
 import {Storage} from "@ionic/storage";
 import {LoginPage} from "../../Logins/login/login";
 import {UsersProvider} from "../../../providers/users/users";
-import {TrainingProvider} from "../../../providers/custom-survey-components/trainings/trainingProvider";
-import {TabsPage} from "../tabs/tabs";
 import {ToolsProvider} from "../../../providers/tools/tools";
 import {Training} from "../../../models/logging/training";
-import {Activities} from "../../../models/logging/activities/activities";
+import {TrainingProvider} from "../../../providers/training/trainings/trainingProvider";
 
 @IonicPage()
 @Component({

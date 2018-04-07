@@ -9,27 +9,31 @@ export class CalendarDay {
     public dayOfTheWeek: string;
     public month: string;
     public dateValue: string;
-    public timeOfDayFormatted: string;
+    public lastDay: string;
 
-    public content: Training[] = [];
+    public content: Training[];
 
 
     constructor(date: Date) {
         this.date = date;
-      //  this.date.setDate(date.getUTCDate());
         this.dayOfTheWeek = this.getDayOfWeek(this.date);
         this.month = this.getMonth(this.date);
         this.dateValue = date.toISOString().slice(0, 10);
-        this.timeOfDayFormatted = ''+ date.getHours() + ':' + date.getMinutes();
 
+        this.content = [];
         this.calendarEvent = null;
-
     }
+
 
     /*
         Private Getters
      */
     private getMonth(date: Date) {
+        let newDate = new Date(date.getFullYear(), date.getMonth(), date.getDate());
+        newDate.setMonth(newDate.getMonth() + 1);
+        newDate.setDate(0);
+        this.lastDay = String(newDate.getDate());
+
         switch(date.getMonth()) {
             case 0:
                 return "January";
@@ -76,13 +80,5 @@ export class CalendarDay {
                 return "Sat";
         }
     }
-    /*
-        Public Setters
-     */
-    public setCalendarEvent(calendarEvent: CalendarEvent) {
-
-        this.calendarEvent = calendarEvent;
-    }
-
 
 }

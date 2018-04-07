@@ -6,36 +6,23 @@ import {ExerciseCategory} from "./exercise-category";
 import {ExerciseTableType} from "./exercise-table-type";
 import {Exercise} from "../exercises/exercise";
 
-export class ExerciseTable implements IExerciseTable{
+export class ExerciseTable extends Exercise implements IExerciseTable{
 
     labels: Label[];
-    exercise: Exercise; // exercise should have category and table type > table headers
+    sets: ExerciseSet[];
+
     // exerciseName: string; // exercise.exerciseName
     // exerciseCategory: ExerciseCategory; // exercise.exerciseCategory
-    // tableType: ExerciseTableType; // exercise.tableType
-    sets: ExerciseSet[];
+    // exerciseTableType: ExerciseTableType; // exercise.tableType
     // notes: string;
     // pinnedNotes: string;
 
     // tableHeaderList: string[];
 
-
     constructor(exercise: Exercise) {
+        super(exercise.exerciseName, exercise.exerciseCategory, exercise.exerciseTableType);
         this.labels = [];
-        this.exercise = exercise;
-        // this.exerciseCategory = exercise.exerciseCategory; // exercise.exerciseCategory
-        // this.exerciseName = exercise.exerciseName; // exercise.exerciseName
-        // this.tableType = exercise.exerciseTableType; // exercise.exerciseTableType
-        // this.tableHeaderList = ['#', 'Detail', 'Measure', 'Reps']; // hard coded for now, switch to take form ExerciseTableType
-        // this.tableHeaderList = exercise.exerciseTableType.tableHeaderList; // this is the way we will be going!
         this.sets = [new ExerciseSet(1)];
-        // this.sets.push(new ExerciseSet(1));
-        // this.notes = null;
-        // this.pinnedNotes = null;
-        // this.showNotes = false;
-        // this.exerciseCategory = new ExerciseCategory().discus;
-
-        // this.columnMap = new ExerciseTableColumn();
     }
 
     addLabels(labelsToAdd: Label[]) {
@@ -48,15 +35,6 @@ export class ExerciseTable implements IExerciseTable{
         this.labels.splice(this.labels.indexOf(label),1);
     }
 
-    // setTableHeaders(tableType: ExerciseTableTypes) {
-    //
-    // }
-    //
-    // setName(exerciseName: string) {
-    //     this.exerciseName = exerciseName;
-    //     console.log(this);
-    //     // add first set here
-    // }
     addSet() {
         let lastSetNumber = this.sets[this.sets.length - 1]['setNumber'];
 

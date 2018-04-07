@@ -1,7 +1,13 @@
 import {Component} from '@angular/core';
 import {
-    AlertController, IonicPage, MenuController, ModalController, NavController, NavParams,
-    PopoverController, ViewController
+    AlertController,
+    IonicPage,
+    MenuController,
+    ModalController,
+    NavController,
+    NavParams,
+    PopoverController,
+    ViewController
 } from 'ionic-angular';
 import {UsersProvider} from "../../../providers/users/users";
 import {ToolsProvider} from "../../../providers/tools/tools";
@@ -12,11 +18,7 @@ import {Label} from "../../../models/custom-survey-components/labels/label";
 import {Training} from "../../../models/logging/training";
 import {ExerciseTable} from "../../../models/logging/create-training/exercise-table";
 import {ExerciseSet} from "../../../models/logging/create-training/exercise-set";
-import {expressionChangedAfterItHasBeenCheckedError} from "@angular/core/src/view/errors";
 import {AddExercisePage} from "../../Exercises/add-exercise/add-exercise";
-import {Exercise} from "../../../models/logging/exercises/exercise";
-import {CoolDown} from "../../../models/logging/create-training/cool-down";
-import {WarmUp} from "../../../models/logging/create-training/warm-up";
 
 /**
  * Generated class for the CreateTrainingPage page.
@@ -186,14 +188,14 @@ export class CreateTrainingPage {
 
         let currentCategory = '';
         this.training.mainCalEvent.exercises.forEach(data => {
-            if (data.exercise.exerciseCategory.category.name != currentCategory) {
-                currentCategory = data.exercise.exerciseCategory.category.name;
+            if (data.exerciseCategory.category.name != currentCategory) {
+                currentCategory = data.exerciseCategory.category.name;
                 if (this.exercisesByCategory.hasOwnProperty(currentCategory)) {
                     this.exercisesByCategory[currentCategory + ' B'] = [data];
                 } else {
                     this.exercisesByCategory[currentCategory] = [data];
                 }
-            } else if (data.exercise.exerciseCategory.category.name == currentCategory) {
+            } else if (data.exerciseCategory.category.name == currentCategory) {
                 this.exercisesByCategory[currentCategory].push(data);
             }
         });
@@ -263,7 +265,7 @@ export class CreateTrainingPage {
             handler: data => {
                 console.log('Checkbox data:', data);
                 if (data != null) {
-                    this.training.setWarmUp(data);
+                    this.training.mainCalEvent.warmUp = data;
                 }
                 // this.testCheckboxResult = data;
             }
@@ -295,7 +297,7 @@ export class CreateTrainingPage {
             handler: data => {
                 console.log('Checkbox data:', data);
                 if (data != null) {
-                    this.training.setCoolDown(data);
+                    this.training.mainCalEvent.coolDown = data;
                 }
                 // this.testCheckboxResult = data;
             }

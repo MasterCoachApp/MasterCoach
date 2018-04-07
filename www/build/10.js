@@ -1,14 +1,14 @@
 webpackJsonp([10],{
 
-/***/ 530:
+/***/ 535:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SelectExerciseCategoryPageModule", function() { return SelectExerciseCategoryPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(35);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__select_exercise_category__ = __webpack_require__(669);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(43);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__select_exercise_category__ = __webpack_require__(674);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -27,7 +27,7 @@ var SelectExerciseCategoryPageModule = (function () {
                 __WEBPACK_IMPORTED_MODULE_2__select_exercise_category__["a" /* SelectExerciseCategoryPage */],
             ],
             imports: [
-                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__select_exercise_category__["a" /* SelectExerciseCategoryPage */]),
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__select_exercise_category__["a" /* SelectExerciseCategoryPage */]),
             ],
         })
     ], SelectExerciseCategoryPageModule);
@@ -38,14 +38,14 @@ var SelectExerciseCategoryPageModule = (function () {
 
 /***/ }),
 
-/***/ 669:
+/***/ 674:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return SelectExerciseCategoryPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(35);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_training_exercises_exerciseProvider__ = __webpack_require__(318);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(43);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_training_exercises_exerciseProvider__ = __webpack_require__(325);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -82,9 +82,9 @@ var SelectExerciseCategoryPage = (function () {
     };
     SelectExerciseCategoryPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-            selector: 'page-select-exercise-category',template:/*ion-inline-start:"/workspace/MasterCoach/src/pages/Exercises/select-exercise-category/select-exercise-category.html"*/'<!--\n  Generated template for the SelectExerciseCategoryPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-buttons left>\n      <button ion-button="Back" color="primary" (click)="cancel()"><ion-icon name="ios-arrow-back"></ion-icon>\n      </button>\n    </ion-buttons>\n    <ion-title>SelectExerciseCategory</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n  <ion-list>\n    <button ion-item detail-none *ngFor="let category of banks.exerciseCategoryBank.exerciseCategoryBank" (click)="selectCategory(category)">\n      {{category.category.name}}\n    </button>\n  </ion-list>\n</ion-content>\n'/*ion-inline-end:"/workspace/MasterCoach/src/pages/Exercises/select-exercise-category/select-exercise-category.html"*/,
+            selector: 'page-select-exercise-category',template:/*ion-inline-start:"/Users/jonahelbaz/Desktop/MasterCoach/src/pages/Exercises/select-exercise-category/select-exercise-category.html"*/'<!--\n  Generated template for the SelectExerciseCategoryPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-buttons left>\n      <button ion-button="Back" color="primary" (click)="cancel()"><ion-icon name="ios-arrow-back"></ion-icon>\n      </button>\n    </ion-buttons>\n    <ion-title>SelectExerciseCategory</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n  <ion-list>\n    <button ion-item detail-none *ngFor="let category of banks.exerciseCategoryBank.exerciseCategoryBank" (click)="selectCategory(category)">\n      {{category.category.name}}\n    </button>\n  </ion-list>\n</ion-content>\n'/*ion-inline-end:"/Users/jonahelbaz/Desktop/MasterCoach/src/pages/Exercises/select-exercise-category/select-exercise-category.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2__providers_training_exercises_exerciseProvider__["a" /* ExerciseProvider */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["o" /* ViewController */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2__providers_training_exercises_exerciseProvider__["a" /* ExerciseProvider */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["p" /* ViewController */]])
     ], SelectExerciseCategoryPage);
     return SelectExerciseCategoryPage;
 }());

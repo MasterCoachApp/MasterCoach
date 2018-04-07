@@ -1,14 +1,14 @@
 webpackJsonp([11],{
 
-/***/ 529:
+/***/ 534:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CreateExercisePageModule", function() { return CreateExercisePageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(35);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__create_exercise__ = __webpack_require__(668);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(43);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__create_exercise__ = __webpack_require__(673);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -27,7 +27,7 @@ var CreateExercisePageModule = (function () {
                 __WEBPACK_IMPORTED_MODULE_2__create_exercise__["a" /* CreateExercisePage */],
             ],
             imports: [
-                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__create_exercise__["a" /* CreateExercisePage */]),
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__create_exercise__["a" /* CreateExercisePage */]),
             ],
         })
     ], CreateExercisePageModule);
@@ -38,15 +38,15 @@ var CreateExercisePageModule = (function () {
 
 /***/ }),
 
-/***/ 668:
+/***/ 673:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CreateExercisePage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(35);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__models_logging_exercises_exercise__ = __webpack_require__(321);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_training_exercises_exerciseProvider__ = __webpack_require__(318);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(43);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__models_logging_exercises_exercise__ = __webpack_require__(88);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_training_exercises_exerciseProvider__ = __webpack_require__(325);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -110,9 +110,9 @@ var CreateExercisePage = (function () {
     };
     CreateExercisePage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-            selector: 'page-create-exercise',template:/*ion-inline-start:"/workspace/MasterCoach/src/pages/Exercises/create-exercise/create-exercise.html"*/'<!--\n  Generated template for the CreateExercisePage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-buttons left>\n      <button ion-button="Cancel" color="primary" (click)="cancel()">Cancel\n      </button>\n    </ion-buttons>\n    <ion-title> New Exercise</ion-title>\n    <ion-buttons right>\n      <button ion-button="Cancel" color="primary" (click)="createExerciseAndDismiss()">Create\n      </button>\n    </ion-buttons>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content no-padding>\n  <ion-list style="padding-top: 10px">\n    <ion-item>\n      <ion-label item-content>Name</ion-label>\n      <ion-input item-content type="text" placeholder="Enter a name" [(ngModel)]="exerciseName" right>\n        {{exerciseName}}\n      </ion-input>\n    </ion-item>\n    <button ion-item detail-push (click)="presentExerciseCategoryModal()">\n      <ion-label>Category</ion-label>\n      <ion-label class="newLabel" *ngIf="exerciseCategory" right>{{exerciseCategory.category.name}}</ion-label>\n    </button>\n    <button ion-item detail-push (click)="presentExerciseTableTypeModal()">\n      <ion-label>Type</ion-label>\n      <ion-label class="newLabel" *ngIf="exerciseTableType" right>{{exerciseTableType.tableTypeName}}</ion-label>\n    </button>\n  </ion-list>\n\n  <!--<ion-grid style="padding: 0; width: 100%; margin: 0;">-->\n    <!--<ion-row ion-item>-->\n      <!--<ion-col item-content left><ion-label>Name</ion-label></ion-col>-->\n      <!--<ion-col item-content col-8>-->\n        <!--<ion-input type="text" placeholder="Enter a name" [(ngModel)]="exerciseName">-->\n          <!--{{exerciseName}}-->\n        <!--</ion-input>-->\n      <!--</ion-col>-->\n    <!--</ion-row>-->\n    <!--<ion-row ion-item detail-push (click)="presentExerciseCategoryModal()">-->\n      <!--<ion-col item-content left><ion-label>Category</ion-label></ion-col>-->\n      <!--<ion-col item-content right class="newLabel" *ngIf="exerciseCategory">{{exerciseCategory.category.name}}</ion-col>-->\n    <!--</ion-row>-->\n    <!--<ion-row ion-item detail-push (click)="presentExerciseTableTypeModal()">-->\n      <!--<ion-col item-content left><ion-label>Type</ion-label></ion-col>-->\n      <!--<ion-col item-content right class="newLabel" *ngIf="exerciseTableType">{{exerciseTableType.tableTypeName}}</ion-col>-->\n    <!--</ion-row>-->\n  <!--</ion-grid>-->\n</ion-content>\n'/*ion-inline-end:"/workspace/MasterCoach/src/pages/Exercises/create-exercise/create-exercise.html"*/,
+            selector: 'page-create-exercise',template:/*ion-inline-start:"/Users/jonahelbaz/Desktop/MasterCoach/src/pages/Exercises/create-exercise/create-exercise.html"*/'<!--\n  Generated template for the CreateExercisePage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-buttons left>\n      <button ion-button="Cancel" color="primary" (click)="cancel()">Cancel\n      </button>\n    </ion-buttons>\n    <ion-title> New Exercise</ion-title>\n    <ion-buttons right>\n      <button ion-button="Cancel" color="primary" (click)="createExerciseAndDismiss()">Create\n      </button>\n    </ion-buttons>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content no-padding>\n  <ion-list style="padding-top: 10px">\n    <ion-item>\n      <ion-label item-content>Name</ion-label>\n      <ion-input item-content type="text" placeholder="Enter a name" [(ngModel)]="exerciseName" right>\n        {{exerciseName}}\n      </ion-input>\n    </ion-item>\n    <button ion-item detail-push (click)="presentExerciseCategoryModal()">\n      <ion-label>Category</ion-label>\n      <ion-label class="newLabel" *ngIf="exerciseCategory" right>{{exerciseCategory.category.name}}</ion-label>\n    </button>\n    <button ion-item detail-push (click)="presentExerciseTableTypeModal()">\n      <ion-label>Type</ion-label>\n      <ion-label class="newLabel" *ngIf="exerciseTableType" right>{{exerciseTableType.tableTypeName}}</ion-label>\n    </button>\n  </ion-list>\n\n  <!--<ion-grid style="padding: 0; width: 100%; margin: 0;">-->\n    <!--<ion-row ion-item>-->\n      <!--<ion-col item-content left><ion-label>Name</ion-label></ion-col>-->\n      <!--<ion-col item-content col-8>-->\n        <!--<ion-input type="text" placeholder="Enter a name" [(ngModel)]="exerciseName">-->\n          <!--{{exerciseName}}-->\n        <!--</ion-input>-->\n      <!--</ion-col>-->\n    <!--</ion-row>-->\n    <!--<ion-row ion-item detail-push (click)="presentExerciseCategoryModal()">-->\n      <!--<ion-col item-content left><ion-label>Category</ion-label></ion-col>-->\n      <!--<ion-col item-content right class="newLabel" *ngIf="exerciseCategory">{{exerciseCategory.category.name}}</ion-col>-->\n    <!--</ion-row>-->\n    <!--<ion-row ion-item detail-push (click)="presentExerciseTableTypeModal()">-->\n      <!--<ion-col item-content left><ion-label>Type</ion-label></ion-col>-->\n      <!--<ion-col item-content right class="newLabel" *ngIf="exerciseTableType">{{exerciseTableType.tableTypeName}}</ion-col>-->\n    <!--</ion-row>-->\n  <!--</ion-grid>-->\n</ion-content>\n'/*ion-inline-end:"/Users/jonahelbaz/Desktop/MasterCoach/src/pages/Exercises/create-exercise/create-exercise.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavParams */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["o" /* ViewController */], __WEBPACK_IMPORTED_MODULE_3__providers_training_exercises_exerciseProvider__["a" /* ExerciseProvider */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* ModalController */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* NavParams */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["p" /* ViewController */], __WEBPACK_IMPORTED_MODULE_3__providers_training_exercises_exerciseProvider__["a" /* ExerciseProvider */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* ModalController */]])
     ], CreateExercisePage);
     return CreateExercisePage;
 }());

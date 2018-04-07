@@ -4,12 +4,15 @@ import {PostTraining} from "../../../models/custom-survey-components/trainings/p
 import {Training} from "../../../models/logging/training";
 import {UsersProvider} from "../../users/users";
 import {AngularFireDatabase} from "angularfire2/database";
-import {ExerciseTable} from "../../../models/logging/activities/exercise-table";
 import {User} from "../../../models/users/user";
-import {ExerciseSet} from "../../../models/logging/activities/exercise-set";
 import {WarmUp} from "../../../models/logging/create-training/warm-up";
 import {CoolDown} from "../../../models/logging/create-training/cool-down";
 import {CalendarMenu} from "../../menus/calendar-menu";
+import {Exercise} from "../../../models/logging/exercises/exercise";
+import {ExerciseTableType} from "../../../models/logging/create-training/exercise-table-type";
+import {ExerciseTable} from "../../../models/logging/create-training/exercise-table";
+import {ExerciseSet} from "../../../models/logging/create-training/exercise-set";
+import {ExerciseCategory} from "../../../models/logging/create-training/exercise-category";
 
 @Injectable()
 export class TrainingProvider {
@@ -39,9 +42,9 @@ export class TrainingProvider {
             let exerciseTable = {
                 sets: data.sets,
                 labels: data.labels,
-                exerciseName: data.exercise.exerciseName,
-                category: data.exercise.exerciseCategory.category.name,
-                exerciseTableType: data.exercise.exerciseTableType
+                exerciseName: data.exerciseName,
+                category: data.exerciseCategory.category.name,
+                exerciseTableType: data.exerciseTableType
             };
             filteredExerciseTableArray.push(exerciseTable);
         });
@@ -70,7 +73,8 @@ export class TrainingProvider {
     getUserTrainings(user: User) {
         let listOfTrainings = [];
         let that = this;
-        let userPromise = new Promise(function (resolve, reject) {
+        let userPromise: Promise<any>;
+        userPromise = new Promise(function (resolve, reject) {
             let idRef = that.db.database.ref("Users/" + user.User_Id + "/Calendar");
             idRef.on('value', snapshot => {
                 snapshot.forEach(snap => {
@@ -108,11 +112,16 @@ export class TrainingProvider {
                     training.mainCalEvent.warmUp = new WarmUp(main.child("warmUp").val());
                     training.mainCalEvent.coolDown = new CoolDown(main.child("coolDown").val());
                     main.child("exercises").forEach(exercises => {
-                        let table = new ExerciseTable();
+                        // let headers = exercises.child("exerciseTableType").child("tableHeaderList").val();
+                        // let headerList: string[] = [];
+                        // headers.forEach(header => {
+                        //     headerList.push(header);
+                        // });
+                        // let tableType = new ExerciseTableType(exercises.child("exerciseTableType").child("tableTypeName").val(), headerList);
+                        let ex = new Exercise(exercises.child("exerciseName").val(), new ExerciseCategory(exercises.child("category").val()), null);
+                        let table = new ExerciseTable(ex);
                         table.sets = [];
                         table.labels = [];
-                        table.exerciseName = exercises.child("exerciseName").val();
-                        table.category = exercises.child("category").val();
 
                         exercises.child("labels").forEach(label => {
                             table.labels.push(label.val());
