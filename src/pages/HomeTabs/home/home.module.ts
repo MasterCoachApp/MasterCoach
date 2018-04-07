@@ -2,7 +2,6 @@ import {IonicPageModule} from "ionic-angular";
 import {CUSTOM_ELEMENTS_SCHEMA, NgModule} from "@angular/core";
 import {HomePage} from "./home";
 import {CalendarModule} from "ionic3-calendar-en";
-import {PipesModule} from "../../../pipes/pipes.module";
 
 @NgModule({
     declarations: [
@@ -10,7 +9,10 @@ import {PipesModule} from "../../../pipes/pipes.module";
     ],
     imports: [
         IonicPageModule.forChild(HomePage),
-        PipesModule
+        CalendarModule,
+    ],
+    schemas: [
+        CUSTOM_ELEMENTS_SCHEMA
     ]
 })
 export class HomePageModule {}

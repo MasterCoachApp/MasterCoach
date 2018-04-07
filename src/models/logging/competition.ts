@@ -1,5 +1,7 @@
-import {Activities} from "./activities/activities";
+import {Activities} from "./create-training/activities";
 import {IEventsComponents} from "./interfaces/event-components";
+import {CoolDown} from "./create-training/cool-down";
+import {WarmUp} from "./create-training/warm-up";
 
 export class Competition implements IEventsComponents {
 
@@ -24,7 +26,9 @@ export class Competition implements IEventsComponents {
     };
 
     mainCalEvent: {
-        activities: Activities,
+        warmUp: WarmUp,
+        coolDown: CoolDown,
+        events: TrackEvent[],
         notes: {
             [key: string]: any
         }
@@ -46,7 +50,9 @@ export class Competition implements IEventsComponents {
         };
 
         this.mainCalEvent = {
-            activities: null,
+            warmUp: null,
+            coolDown: null,
+            events: [],
             notes: {},
         };
     }

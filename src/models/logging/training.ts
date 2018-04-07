@@ -1,7 +1,9 @@
 import {IEventsComponents} from "./interfaces/event-components";
-import {WarmUp} from "./activities/warm-up";
-import {CoolDown} from "./activities/cool-down";
-import {ExerciseTable} from "./activities/exercise-table";
+import {CoolDown} from "./create-training/cool-down";
+import {WarmUp} from "./create-training/warm-up";
+import {ExerciseTable} from "./create-training/exercise-table";
+import {Exercise} from "./exercises/exercise";
+
 
 export class Training implements IEventsComponents {
 
@@ -29,17 +31,20 @@ export class Training implements IEventsComponents {
         warmUp: WarmUp,
         coolDown: CoolDown,
         exercises: ExerciseTable[],
+        // categories: {
+        //     [key: string] : { // exerciseCategory.category.name
+        //         [key: string]: ExerciseTable
+        //     }
+        // },
         notes: {
             [key: string]: any
         }
     };
-    categories: string[]; //list of all categories the exercises in this training contain
     trainingDate: string;
     trainingTime: string;
 
 
     constructor() {
-        this.categories = [];
         this.preCalEvent = {
             range: {},
             notes: {},
@@ -53,14 +58,14 @@ export class Training implements IEventsComponents {
         };
 
         this.mainCalEvent = {
-            warmUp: WarmUp,
-            coolDown: CoolDown,
+            warmUp: null,
+            coolDown: null,
             exercises: [],
             notes: {}
         };
         let date = new Date();
         this.trainingDate = date.toISOString().slice(0, 10);
-        this.trainingTime = ''+ date.getHours() + ':' + date.getMinutes();
+        this.trainingTime = date.toDateString().slice(20,21);
     }
 
     type = "Training";
@@ -81,17 +86,28 @@ export class Training implements IEventsComponents {
         this.postCalEvent.range[k] = v;
     }
 
-    addMainCalNote(k: string, v: string) {
-        this.mainCalEvent.notes[k] = v;
-    }
-
-     getCategories() {
-        this.mainCalEvent.exercises.forEach(exercise => {
-           if(this.categories.indexOf(exercise.category) < 0) {
-               this.categories.push(exercise.category);
-           }
+    addExercises(exercises: Exercise[]) {
+        exercises.forEach( data => {
+            let newExerciseTable = new ExerciseTable(data);
+            this.mainCalEvent.exercises.push(newExerciseTable);
+            console.log('Exercises :', exercises);
+            console.log('this.main.exercises', this.mainCalEvent.exercises);
         });
     }
 
+    removeExerciseTable(exerciseTable: ExerciseTable) {
+        this.mainCalEvent.exercises.splice(this.mainCalEvent.exercises.indexOf(exerciseTable), 1);
+    }
+
+    setMainCalNotes(k: string, v: string) {
+        this.mainCalEvent.notes[k] = v;
+    }
+
+    setCoolDown(coolDown: CoolDown) {
+        this.mainCalEvent.coolDown = coolDown;
+    }
+    setWarmUp(warmUp: WarmUp) {
+        this.mainCalEvent.warmUp = warmUp;
+    }
 
 }

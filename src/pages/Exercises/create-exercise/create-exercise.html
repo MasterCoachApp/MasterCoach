@@ -1,0 +1,60 @@
+<!--
+  Generated template for the CreateExercisePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-buttons left>
+      <button ion-button="Cancel" color="primary" (click)="cancel()">Cancel
+      </button>
+    </ion-buttons>
+    <ion-title> New Exercise</ion-title>
+    <ion-buttons right>
+      <button ion-button="Cancel" color="primary" (click)="createExerciseAndDismiss()">Create
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content no-padding>
+  <ion-list style="padding-top: 10px">
+    <ion-item>
+      <ion-label item-content>Name</ion-label>
+      <ion-input item-content type="text" placeholder="Enter a name" [(ngModel)]="exerciseName" right>
+        {{exerciseName}}
+      </ion-input>
+    </ion-item>
+    <button ion-item detail-push (click)="presentExerciseCategoryModal()">
+      <ion-label>Category</ion-label>
+      <ion-label class="newLabel" *ngIf="exerciseCategory" right>{{exerciseCategory.category.name}}</ion-label>
+    </button>
+    <button ion-item detail-push (click)="presentExerciseTableTypeModal()">
+      <ion-label>Type</ion-label>
+      <ion-label class="newLabel" *ngIf="exerciseTableType" right>{{exerciseTableType.tableTypeName}}</ion-label>
+    </button>
+  </ion-list>
+
+  <!--<ion-grid style="padding: 0; width: 100%; margin: 0;">-->
+    <!--<ion-row ion-item>-->
+      <!--<ion-col item-content left><ion-label>Name</ion-label></ion-col>-->
+      <!--<ion-col item-content col-8>-->
+        <!--<ion-input type="text" placeholder="Enter a name" [(ngModel)]="exerciseName">-->
+          <!--{{exerciseName}}-->
+        <!--</ion-input>-->
+      <!--</ion-col>-->
+    <!--</ion-row>-->
+    <!--<ion-row ion-item detail-push (click)="presentExerciseCategoryModal()">-->
+      <!--<ion-col item-content left><ion-label>Category</ion-label></ion-col>-->
+      <!--<ion-col item-content right class="newLabel" *ngIf="exerciseCategory">{{exerciseCategory.category.name}}</ion-col>-->
+    <!--</ion-row>-->
+    <!--<ion-row ion-item detail-push (click)="presentExerciseTableTypeModal()">-->
+      <!--<ion-col item-content left><ion-label>Type</ion-label></ion-col>-->
+      <!--<ion-col item-content right class="newLabel" *ngIf="exerciseTableType">{{exerciseTableType.tableTypeName}}</ion-col>-->
+    <!--</ion-row>-->
+  <!--</ion-grid>-->
+</ion-content>

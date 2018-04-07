@@ -1,0 +1,75 @@
+<!--
+  Generated template for the AddExercisePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-buttons left>
+      <button ion-button="Cancel" color="primary" (click)="cancel()">Cancel
+      </button>
+    </ion-buttons>
+    <ion-title>AddExercise</ion-title>
+    <ion-buttons right>
+      <button *ngIf="exerciseBankSorted.length != 0" ion-button="Submit" color="primary" (click)="addExercisesAndDismiss()">Add
+      </button>
+      <button *ngIf="exerciseBankSorted.length == 0" ion-button="Submit" color="primary" (click)="createExercise(searchQuery)">New
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-searchbar (ionInput)="filterItems(searchQuery)" [(ngModel)]="searchQuery" autocomplete="on" placeholder="Filter exercises" [showCancelButton]="shouldShowCancel" [animated]="true">
+  </ion-searchbar>
+
+  <ion-segment [(ngModel)]="exerciseFilter" (click)="toggleFilterIsCategory()">
+    <ion-segment-button value="Recent">
+      Recent
+    </ion-segment-button>
+    <ion-segment-button value="Category">
+      Category
+    </ion-segment-button>
+    <ion-segment-button value="A-Z">
+      A-Z
+    </ion-segment-button>
+  </ion-segment>
+  <div [ngClass]="filterIsCategory ? 'categoryToggle': 'noDisplay'">
+    <ion-grid  no-lines>
+      <!--<ion-grid *ngIf="exerciseFilter == 'Category'" no-lines>-->
+
+      <ion-row justify-content-center>
+        <ion-col style="text-align: right" col-4><ion-label>Hide All</ion-label></ion-col>
+        <ion-col style="text-align: center; margin: 0;" col-2><ion-toggle (click)="toggleAllCategories()"></ion-toggle></ion-col>
+        <ion-col style="text-align: left; margin-left: 5px" col-4><ion-label>Show All</ion-label></ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+
+  <ion-list class="searchList" *ngIf="exerciseFilter == 'Recent'">
+      <ion-item>
+          We need to make a provider that searches and sorts exercises by most recent, remember no duplicates!
+      </ion-item>
+  </ion-list>
+  <ion-list class="searchList" *ngIf="exerciseFilter == 'Category'" style="text-line-through-color: grey;">
+    <div *ngFor="let exerciseCategory of exerciseCategoryBankFiltered">
+      <button ion-item detail-none (click)="toggleCategoryShow(exerciseCategory)">{{exerciseCategory.category.name}}<ion-icon class="categoryArrow" *ngIf="categoryShow[exerciseCategory.category.name]" name="ios-arrow-down" primary></ion-icon><ion-icon class="categoryArrow" primary *ngIf="!categoryShow[exerciseCategory.category.name]" name="ios-arrow-forward"></ion-icon></button>
+      <ion-list *ngIf="categoryShow[exerciseCategory.category.name]">
+        <div *ngFor="let exercise of exerciseBankSorted">
+          <ion-item *ngIf="exercise.exerciseCategory.category.name == exerciseCategory.category.name">
+            {{exercise.exerciseName}} <ion-icon></ion-icon>
+          </ion-item>
+        </div>
+      </ion-list>
+    </div>
+  </ion-list>
+  <ion-list class="searchList" *ngIf="exerciseFilter == 'A-Z'">
+    <ion-item *ngFor="let exercise of exerciseBankSorted" (click)="selectExercise(exercise)">
+      {{exercise.exerciseName}} ({{exercise.exerciseCategory.category.name}})
+    </ion-item>
+  </ion-list>
+</ion-content>

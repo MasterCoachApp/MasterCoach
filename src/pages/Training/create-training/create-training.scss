@@ -31,6 +31,9 @@ page-create-training {
 
   .ionItemCrop {
     height: 50px;
+    width: 100%;
+    padding-left: 15px;
+    vertical-align: center;
   }
   .alertCss {
     background-color: #2c3035;
@@ -59,33 +62,74 @@ page-create-training {
   .exerciseTable {
     background-color: color($colors, background);
     color: #999999;
-  }
-
-  .addSet {
-    text-align: center;
-    border: 1px solid color($colors, primary);
-    margin-top: 5px;
+    border-collapse: collapse;
   }
 
   .exerciseHeader {
     font-style: italic;
+    text-align: center;
   }
 
    .exerciseCol {
     background-color: white;
     color: #999999;
-    border: 1px solid black;
+    border: solid thin grey;
     text-align: center;
    }
 
-  .label {
+  .exerciseTableLabel {
     font-size: 12px;
+    height: 20px;
+    padding: 5%;
   }
 
-  .addSetButton {
+  .exerciseTableIcon {
+    border-radius: 25px;
+    width: 10px;
+    height: 30px;
+  }
+  .tableCheckbox {
+
+  }
+  .ion-checkbox {
+    background-color: white;
+  }
+
+  .addSet {
+    text-align: center;
+    border: 1px solid color($colors, primary);
+    //margin: 5px;
+    font-size: 10px;
     width: 100%;
   }
 
+  .addWarmUpCoolDown {
+    text-align: center;
+    border: 1px solid color($colors, primary);
+    //border: 1px solid blue;
+
+    //background-color: grey;
+    //color: color($colors, primary);
+    //color: royalblue;
+    margin: 5px;
+    font-size: 10px;
+    width: 100%;
+  }
+
+  .warmUpCard {
+    //box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    box-shadow: 0 1px 1px 0 #999999, 0 1px 1px 0 #999999;
+  }
+
+  .addExercise {
+    color: white;
+    border: 1px solid color($colors, primary);
+    text-align: center;
+    //opacity: 0.5;
+    width: 100%;
+    margin: 10px 5px 5px 5px;
+    line-height: 24px;
+  }
 
   .list .item.item-accordion {
     transition: all linear 5s;

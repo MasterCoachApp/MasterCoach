@@ -1,0 +1,40 @@
+page-add-exercise {
+  ion-content {
+    background-color: white;
+  }
+  ion-list-header {
+    color: white;
+  }
+
+  .list .item.item-accordion {
+    transition: all linear 5s;
+    line-height: 38px;
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+  .list .item.item-accordion.ng-hide {
+    line-height: 0;
+  }
+  .list .item.item-accordion.ng-hide-add,
+  .list .item.item-accordion.ng-hide-remove {
+    display: block !important;
+  }
+  .searchList {
+    padding: 5px 0 0 0;
+  }
+  .categoryArrow {
+    padding-left: 20px;
+    align-content: right;
+  }
+  .noDisplay {
+    line-height: 0;
+    transition: line-height linear 1s;
+  }
+  .categoryToggle {
+    line-height: 10px;
+    transition: all linear 5s;
+    padding-top: 5px;
+    padding-left: 0;
+
+  }
+}

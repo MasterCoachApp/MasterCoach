@@ -5,27 +5,25 @@
   Ionic pages and navigation.
 -->
 <ion-header>
-
     <ion-navbar>
         <ion-buttons left>
-            <button ion-button="arrow-back" color="primary" (click)="cancel()">
+            <button ion-button color="primary" (click)="cancel()">
                 <ion-icon name="ios-arrow-down"></ion-icon>
             </button>
         </ion-buttons>
-        <ion-title>New Training</ion-title>
-        <ion-buttons right (click)="createNewTraining()">
-            <button ion-button="arrow-back" color="primary" (click)="cancel()">
+        <ion-title>{{trainingMorningAfternoonEvening}} Training</ion-title>
+        <ion-buttons right>
+            <button ion-button color="primary" (click)="createNewTraining()">
                 Save
             </button>
         </ion-buttons>
     </ion-navbar>
-
 </ion-header>
 
 
 <ion-content>
-
     <ion-list no-lines>
+        <!--PRE TRAINING-->
         <ion-list-header class="title item-stable" (click)="toggleGroup('preTraining')">
             <ion-col>
                 Pre-Training
@@ -36,23 +34,27 @@
                 <ion-icon  *ngIf="isGroupShown('preTraining')" class="drop" name="ios-arrow-down" right></ion-icon>
             </ion-col>
         </ion-list-header>
-          <ion-item-group class="item-accordion" *ngIf="isGroupShown('preTraining')">
+        <div class="item-accordion" *ngIf="isGroupShown('preTraining')">
+            <ion-grid>
+                <ion-row class="ionItemCrop" *ngFor="let title of preTrainingDivide.range" align-items-center>
+                    <ion-col col-4 left>{{title["key"]}}</ion-col>
+                    <ion-col col-8 right>
+                        <ion-range min="0" max="5" [snaps]="true" steps="1" [pin]="true" right class="range" [(ngModel)]="title['val']">
+                            <ion-label range-left>0</ion-label>
+                            <ion-label range-right>5</ion-label>
+                        </ion-range>
+                    </ion-col>
+                </ion-row>
+              </ion-grid>
+            <ion-list>
+                <ion-item *ngFor="let title of preTrainingDivide.notes">
+                    <ion-label stacked> {{title["key"]}} </ion-label>
+                    <ion-textarea class="thoughts" [(ngModel)]="title['val']"></ion-textarea>
+                </ion-item>
+            </ion-list>
+        </div>
 
-              <div  *ngFor="let title of preTrainingDivide.range">
-            <ion-item class="ionItemCrop">
-                <ion-label item-start>{{title["key"]}}</ion-label>
-                <ion-range min="0" max="5" [snaps]="true" steps="1" [pin]="true" right class="range" [(ngModel)]="title['val']">
-                    <ion-label range-left>0</ion-label>
-                    <ion-label range-right>5</ion-label>
-                </ion-range>
-            </ion-item>
-              </div>
-              <ion-item *ngFor="let title of preTrainingDivide.notes">
-                  <ion-label stacked> {{title["key"]}} </ion-label>
-                  <ion-textarea class="thoughts" [(ngModel)]="title['val']"></ion-textarea>
-              </ion-item>
-          </ion-item-group>
-
+        <!--TRAINING-->
         <ion-list-header class="title item-stable" (click)="toggleGroup('training')">
             <ion-col>
                 Training
@@ -66,122 +68,124 @@
         <ion-list class="item-accordion" *ngIf="isGroupShown('training')">
             <ion-list>
                 <ion-label stacked class="trainingHeaders">Warm Up</ion-label>
-                <ion-item *ngIf="!mainTraining.activities.warmUp">
-                    <button ion-button (click)="addWarmUp()">Add Warm Up</button>
-                </ion-item>
-                <ion-item *ngIf="mainTraining.activities.warmUp">
-                    <button ion-button (click)="addWarmUp()">{{mainTraining.activities.warmUp}}
+                <ion-row *ngIf="!training.mainCalEvent.warmUp">
+                    <ion-col class="addWarmUpCoolDown" (click)="addWarmUp()">
+                        + Add Warm Up
+                    </ion-col>
+                </ion-row>
+                <ion-item *ngIf="training.mainCalEvent.warmUp">
+                    <button ion-button (click)="addWarmUp()">{{training.mainCalEvent.warmUp}}
                         <ion-icon class="trainingHeaders" name="close"
-                                  (click)="mainTraining.activities.setWarmUp(null)"></ion-icon>
+                                  (click)="training.setWarmUp(null)">
+                        </ion-icon>
                     </button>
-                    <ion-note>View</ion-note>
-
                 </ion-item>
-                <ion-label stacked class="trainingHeaders">Events</ion-label>
-                <div style="margin-top: 20px" *ngIf="trainingEventList.length > 0">
-                    <ion-grid>
-                        <ion-row>
-                            <ion-col col-1 style="margin-right: 20px">
-                                <button ion-button style="border-radius: 25px; width: 10px; height: 30px;" (click)="addActivity()">
-                                <ion-icon name="add"></ion-icon>
-                                </button>
+                <ion-label stacked class="trainingHeaders">Training</ion-label>
+                <div *ngFor="let exercise of training.mainCalEvent.exercises ; let i = index">
+                    <ion-grid class="exerciseTable" no-margin>
+                        <ion-row *ngIf="i >= 1 && training.mainCalEvent.exercises[i].exercise.exerciseCategory !== training.mainCalEvent.exercises[i-1].exercise.exerciseCategory">
+                            <ion-col style="font-size: large" left>
+                                {{exercise.exercise.exerciseCategory.category.name}}
                             </ion-col>
-                            <ion-col col-10>
-                                <div class="scroll" nowrap>
-                                    <button ion-button class="label" *ngFor="let event of trainingEventList" (click)="removeLabel(event)">
-                                        {{event}}
-                                        <ion-icon name="close" class="trainingHeaders"></ion-icon>
+                        </ion-row>
+                        <ion-row *ngIf="i == 0">
+                            <ion-col style="font-size: large" left>
+                                {{exercise.exercise.exerciseCategory.category.name}}
+                            </ion-col>
+                        </ion-row>
+                        <!--<div *ngFor="let exercise of exercisesByCategory[exerciseCategory]">-->
+                            <ion-row style="padding-bottom: 5px; width: 100%;" nowrap align-items-center justify-content-between>
+                                <ion-col style="font-size: medium" left>{{exercise.exercise.exerciseName}}</ion-col>
+                                <ion-col col-1 style="margin-right: 20px">
+                                    <button ion-button class="exerciseTableIcon" (click)="addLabel(exercise)">
+                                        <ion-icon name="pricetags"></ion-icon>
                                     </button>
-                                </div>
-                            </ion-col>
-                        </ion-row>
-                    </ion-grid>
-                    <ion-grid class="exerciseTable">
-                        <ion-row style="padding-bottom: 5px">Sprint Hurdles</ion-row>
-                        <ion-row>
-                            <ion-col class="exerciseCol exerciseHeader" col-1>
-                                #
-                            </ion-col>
-                            <ion-col class="exerciseCol exerciseHeader">
-                                Detail
-                            </ion-col>
-                            <ion-col class="exerciseCol exerciseHeader" col-3>
-                                Measure
-                            </ion-col>
-                            <ion-col class="exerciseCol exerciseHeader" col-2>
-                                Reps
-                            </ion-col>
-                            <ion-col class="exerciseCol" col-1>
-                                <ion-icon name="checkmark" style="font-size: 20px; padding: 0; font-weight: bold"></ion-icon>
-                            </ion-col>
-                        </ion-row>
-                        <ion-row>
-                            <ion-col class="exerciseCol" col-1>
-                                1
-                            </ion-col>
-                            <ion-col class="exerciseCol">
-                                With Blocks
-                            </ion-col>
-                            <ion-col class="exerciseCol" col-3>
-                                42"
-                            </ion-col>
-                            <ion-col class="exerciseCol" col-2>
-                                8
-                            </ion-col>
-                            <ion-col class="exerciseCol" col-1>
-                                <ion-checkbox></ion-checkbox>
-                            </ion-col>
-                        </ion-row>
-                        <ion-row>
-                            <ion-col class="exerciseCol" col-1>
-                                2
-                            </ion-col>
-                            <ion-col class="exerciseCol">
-                                Without Blocks
-                            </ion-col>
-                            <ion-col class="exerciseCol" col-3>
-                                39"
-                            </ion-col>
-                            <ion-col class="exerciseCol" col-2>
-                                8
-                            </ion-col>
-                            <ion-col class="exerciseCol" col-1>
-                                <ion-checkbox></ion-checkbox>
-                            </ion-col>
-                        </ion-row>
-                        <ion-row>
-                            <ion-col class="addSet">
-                                    ADD SET
-                            </ion-col>
-                        </ion-row>
-                    </ion-grid>
-                    <ion-grid style="width: 100%; border: 1px solid black; margin: 20px 5px 5px 5px;">
-                        <ion-row>
-                            <ion-col style="text-align: center; font-style: italic; opacity: 0.5" (click)="addActivity()">
-                                ADD EXERCISE
-                            </ion-col>
-                        </ion-row>
+                                </ion-col>
+                                <ion-col col-6 *ngIf="exercise.labels.length > 0">
+                                    <div class="scroll">
+                                        <button ion-button class="exerciseTableLabel" *ngFor="let label of exercise.labels" (click)="removeLabel(label, exercise)">
+                                            {{label}}
+                                            <ion-icon name="close" class="trainingHeaders"></ion-icon>
+                                        </button>
+                                    </div>
+                                </ion-col>
+                                <ion-col col-1 right style="margin-right: 20px">
+                                    <button ion-button style="border-radius: 25px; width: 10px; height: 30px;" (click)="tooltip()">
+                                        <ion-icon name="md-create"></ion-icon>
+                                    </button>
+                                </ion-col>
+                                <!--<ion-col right><ion-icon ion-button icon-only name="alert"></ion-icon></ion-col>-->
+                                <!--<ion-col><ion-note>NOTE</ion-note></ion-col>-->
+                                <!--<ion-col><ion-option>option</ion-option></ion-col>-->
+                            </ion-row>
+                            <ion-row no-margin no-border>
+                                <!--<ion-col *ngFor="let column of exercise.tableHeaders" col-{{exercise.columnMap[column]}}>{{column}}</ion-col>-->
+                                <!--ngStyle="width: exercise.columnMap[column]"-->
+                                <!--<ion-col style="text-align: center" *ngFor="let column of exercise.tableHeaders">{{column}}</ion-col>-->
+                                <ion-col class="exerciseHeader" col-1>#</ion-col>
+                                <ion-col class="exerciseHeader">Detail</ion-col>
+                                <ion-col class="exerciseHeader" col-3>Measure</ion-col>
+                                <ion-col class="exerciseHeader" col-2>Reps</ion-col>
+                                <ion-col class="exerciseHeader" col-1>
+                                    <ion-icon name="checkmark-outline" style="font-size: 20px; padding: 0; font-weight: bold"></ion-icon>
+                                </ion-col>
+                            </ion-row>
+
+                    <!--<ion-row *ngFor="let set of exercise.sets">-->
+                    <!--<ion-col *ngFor="let key of exercise.sets[set]" class="exerciseCol exerciseHeader"><ion-input>{{set[key]}}</ion-input></ion-col>-->
+
+                    <!--&lt;!&ndash;<ion-col *ngFor="let key of mainTraining.create-training.exercises[exercise].sets[set].keys()" class="exerciseCol exerciseHeader"><ion-input>{{set[key]}}</ion-input></ion-col>&ndash;&gt;-->
+                    <!--<ion-col class="exerciseCol" col-1>-->
+                    <!--<ion-checkbox name="checkmark" style="font-size: 20px; padding: 0; font-weight: bold" [(ngModel)]="set.complete"></ion-checkbox>-->
+                    <!--</ion-col>-->
+                    <!--</ion-row>-->
+                    <!--BEST VERSION BELOW-->
+
+                            <ion-row *ngFor="let set of exercise.sets" no-padding no-margin align-items-stretch>
+                                <ion-col class="exerciseCol" no-margin  col-1>{{set.setNumber}}</ion-col>
+                                <ion-col class="exerciseCol"><ion-input text-center no-margin placeholder="Detail" [(ngModel)]="set.detail"></ion-input></ion-col>
+                                <ion-col class="exerciseCol" col-3><ion-input text-center no-margin placeholder="Measure" [(ngModel)]="set.measure"></ion-input></ion-col>
+                                <ion-col class="exerciseCol" col-2><ion-input text-center no-margin placeholder="Reps" [(ngModel)]="set.reps"></ion-input></ion-col>
+                                <ion-col class="exerciseCol" no-margin col-1>
+                                    <ion-checkbox style="font-size: 10px;" no-padding no-margin [checked]="false" [(ngModel)]="set.complete"></ion-checkbox>
+                                </ion-col>
+                            </ion-row>
+                            <ion-row>
+                                <ion-col text-capitalize class="addSet" (click)="addSet(exercise)">
+                                        + ADD SET
+                                </ion-col>
+                            </ion-row>
+                        <!--</div>-->
                     </ion-grid>
                 </div>
+
+                <ion-grid class="exerciseTable" no-padding>
+                    <ion-row>
+                        <ion-col text-capitalize class="addExercise" (click)="addExercise()">
+                            + ADD EXERCISE
+                        </ion-col>
+                    </ion-row>
+                </ion-grid>
             </ion-list>
             <ion-label stacked class="trainingHeaders">Cool Down</ion-label>
-            <ion-item *ngIf="!mainTraining.activities.coolDown">
-                <button ion-button (click)="addCoolDown()">Add Cool Down</button>
-            </ion-item>
-            <ion-item *ngIf="mainTraining.activities.coolDown">
-                <button ion-button (click)="addCoolDown()">{{mainTraining.activities.coolDown}}
+            <ion-row *ngIf="!training.mainCalEvent.coolDown">
+                <ion-col text-capitalize class="addWarmUpCoolDown" (click)="addCoolDown()">
+                    + Add Cool Down
+                </ion-col>
+            </ion-row>
+            <ion-item *ngIf="training.mainCalEvent.coolDown">
+                <ion-card class="warmUpCard" ion-button (click)="addCoolDown()">{{training.mainCalEvent.coolDown}}
                     <ion-icon class="trainingHeaders" name="close"
-                              (click)="mainTraining.activities.setCoolDown(null)"></ion-icon>
-                </button>
-                <ion-note end>View</ion-note>
+                              (click)="training.setCoolDown(null)"></ion-icon>
+                </ion-card>
             </ion-item>
             <ion-item>
                 <ion-label stacked>Notes</ion-label>
-                <ion-textarea class="thoughts" [(ngModel)]="mainTraining.mainTrainingNotes.val"></ion-textarea>
+                <ion-textarea class="thoughts" [(ngModel)]="training.mainCalEvent.notes.val"></ion-textarea>
             </ion-item>
         </ion-list>
 
-
+        <!--POST TRAINING-->
         <ion-list-header class="title item-stable" (click)="toggleGroup('postTraining')">
             <ion-col>
                 Post-Training
@@ -193,19 +197,23 @@
             </ion-col>
         </ion-list-header>
         <div class="item-accordion" *ngIf="isGroupShown('postTraining')">
-            <ion-item-group>
-                <ion-item class="ionItemCrop" *ngFor="let title of postTrainingDivide.range">
-                    <ion-label item-start>{{title["key"]}}</ion-label>
-                    <ion-range min="0" max="5" [snaps]="true" steps="1" [pin]="true" right class="range" [(ngModel)]="title['val']">
-                        <ion-label range-left>0</ion-label>
-                        <ion-label range-right>5</ion-label>
-                    </ion-range>
-                </ion-item>
+            <ion-grid>
+                <ion-row class="ionItemCrop" *ngFor="let title of postTrainingDivide.range" align-items-center>
+                    <ion-col col-4 left>{{title["key"]}}</ion-col>
+                    <ion-col col-8 right>
+                        <ion-range min="0" max="5" [snaps]="true" steps="1" [pin]="true" right class="range" [(ngModel)]="title['val']">
+                            <ion-label range-left>0</ion-label>
+                            <ion-label range-right>5</ion-label>
+                        </ion-range>
+                    </ion-col>
+                </ion-row>
+            </ion-grid>
+            <ion-list>
                 <ion-item *ngFor="let title of postTrainingDivide.notes">
                     <ion-label stacked> {{title["key"]}} </ion-label>
                     <ion-textarea class="thoughts" [(ngModel)]="title['val']"></ion-textarea>
                 </ion-item>
-            </ion-item-group>
+            </ion-list>
         </div>
     </ion-list>
 

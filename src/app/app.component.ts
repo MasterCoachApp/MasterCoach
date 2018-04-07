@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+ import {Component, Pipe} from '@angular/core';
 import {Platform} from 'ionic-angular';
 import {StatusBar} from '@ionic-native/status-bar';
 import {SplashScreen} from '@ionic-native/splash-screen';
@@ -6,17 +6,20 @@ import {TabsPage} from '../pages/HomeTabs/tabs/tabs';
 import {Keyboard} from "@ionic-native/keyboard";
 import {CalendarMenu} from "../providers/menus/calendar-menu";
 import {MenuEvents} from "../models/calendar/menu-events";
-import {LabelProvider} from "../providers/custom-survey-components/labels/labelProvider";
+import {LabelProvider} from "../providers/training/labels/labelProvider";
 import {Label} from "../models/custom-survey-components/labels/label";
+ import {LoginPage} from "../pages/Logins/login/login";
 
 @Component({
   templateUrl: 'app.html'
 })
+
 export class MyApp {
 
-  //rootPage:any = LoginPage;
+  // rootPage:any = 'LoginPage';
     rootPage:any = 'TabsPage';
-   //rootPage:any = 'CreateTrainingPage';
+   // rootPage:any = 'CreateTrainingPage';
+    // rootPage:any = 'CreateExercisePage'
 
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, keyboard: Keyboard, public calendarMenu: CalendarMenu, private labels: LabelProvider) {
     platform.ready().then(() => {
@@ -27,6 +30,7 @@ export class MyApp {
         keyboard.hideKeyboardAccessoryBar(false);
         statusBar.backgroundColorByName("white");
         splashScreen.hide();
+
     });
   }
 

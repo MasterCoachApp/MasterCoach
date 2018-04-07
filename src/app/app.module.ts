@@ -20,70 +20,68 @@ import {ValidationProvider} from "../providers/tools/validations";
 import {CalendarMenu} from "../providers/menus/calendar-menu";
 import {DatePicker} from "@ionic-native/date-picker";
 import {GooglePlus} from "@ionic-native/google-plus";
-import {EntryProvider} from "../providers/users/entries";
 import {TextPopoverPage} from "../pages/Training/text-popover/text-popover";
-import {LabelProvider} from "../providers/custom-survey-components/labels/labelProvider";
-import {TrainingProvider} from "../providers/custom-survey-components/trainings/trainingProvider";
-import {CalendarModule} from "ionic3-calendar-en";
+import {LabelProvider} from "../providers/training/labels/labelProvider";
+import {TrainingProvider} from "../providers/training/trainings/trainingProvider";
+import {MyPipe} from "../pipes/my/my";
+import {ExerciseProvider} from "../providers/training/exercises/exerciseProvider";
 
 @NgModule({
-    declarations: [
-        MyApp,
-        TextPopoverPage,
-        // AboutPage,
-        // ContactPage,
-        // HomePage,
-        // TabsPage,
-        // LoginPage,
-        // CreateAccountPage,
-        // ForgotPasswordPage,
-        // StandardLoginPage,
-        // CreateTrainingPage
-    ],
-    imports: [
-        BrowserModule,
-        IonicModule.forRoot(MyApp),
-        IonicStorageModule.forRoot(),
-        AngularFireModule.initializeApp(FIREBASE_CONFIG),
-        AngularFireDatabaseModule,
-        AngularFireAuthModule,
-        AngularFireModule,
-        CalendarModule
-    ],
-    bootstrap: [IonicApp],
-    entryComponents: [
-        MyApp,
-        TextPopoverPage
-        // AboutPage,
-        // ContactPage,
-        // HomePage,
-        // TabsPage,
-        // LoginPage,
-        // CreateAccountPage,
-        // ForgotPasswordPage,
-        // StandardLoginPage,
-        // CreateTrainingPage
-    ],
-    providers: [
-        StatusBar,
-        SplashScreen,
-        Facebook,
-        {provide: ErrorHandler, useClass: IonicErrorHandler},
-        Keyboard,
-        UsersProvider,
-        ToolsProvider,
-        AuthenticationProvider,
-        ValidationProvider,
-        CalendarMenu,
-        DatePicker,
-        GooglePlus,
-        EntryProvider,
-        LabelProvider,
-        TrainingProvider
-    ],
+  declarations: [
+    MyApp,
+      TextPopoverPage, //why wont this popover lazy load in?
+    // AboutPage,
+    // ContactPage,
+    // HomePage,
+    // TabsPage,
+    // LoginPage,
+    // CreateAccountPage,
+    // ForgotPasswordPage,
+    // StandardLoginPage,
+    // CreateTrainingPage
+  ],
+  imports: [
+    BrowserModule,
+    IonicModule.forRoot(MyApp),
+    IonicStorageModule.forRoot(),
+    AngularFireModule.initializeApp(FIREBASE_CONFIG),
+    AngularFireDatabaseModule,
+    AngularFireAuthModule,
+    AngularFireModule
+  ],
+  bootstrap: [IonicApp],
+  entryComponents: [
+    MyApp,
+      TextPopoverPage
+    // AboutPage,
+    // ContactPage,
+    // HomePage,
+    // TabsPage,
+    // LoginPage,
+    // CreateAccountPage,
+    // ForgotPasswordPage,
+    // StandardLoginPage,
+    // CreateTrainingPage
+  ],
+  providers: [
+    StatusBar,
+    SplashScreen,
+    Facebook,
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    Keyboard,
+    UsersProvider,
+    ToolsProvider,
+    AuthenticationProvider,
+    ValidationProvider,
+    CalendarMenu,
+    DatePicker,
+    GooglePlus,
+    LabelProvider,
+    TrainingProvider,
+      ExerciseProvider
+  ],
     schemas: [
         CUSTOM_ELEMENTS_SCHEMA
     ],
 })
-export class AppModule {
-}
+export class AppModule {}
