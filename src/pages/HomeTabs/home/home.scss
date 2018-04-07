@@ -1,28 +1,25 @@
 page-home {
-  .dateCol {
-    margin-left: 0;
+
+  .tableCol {
+    margin: 0;
+    padding: 0;
   }
 
   .date {
     font-size: 20px;
   }
+  .selectedDate {
+    font-size: 20px;
+    color: color($colors, primary);
+  }
 
- .showingCalendar {
-   transition: all linear 1s;
-   z-index: 1000;
-   background-color: #161b1f;
-   color: white;
-   display: block;
-   opacity: 1;
- }
+  .daySelected {
+    color: color($colors, primary);
+  }
 
   .nothingPlanned {
     opacity: 0.1;
     font-style: italic;
-  }
-
-  .showingCalendarContent {
-    margin-top: 190px;
   }
 
   .hr-text {
@@ -57,6 +54,9 @@ page-home {
     }
   }
 
+  .blurContent {
+    filter: blur(3px);
+  }
 
   ion-fab {
     ion-icon {
@@ -92,5 +92,20 @@ page-home {
     }
   }
 
+  .categoryHeader {
+    font-size: 16px;
+    padding-left: 5px;
+  }
+
+  .exerciseHeader {
+    padding-left: 15px;
+  }
+
+  .trainingCard {
+    background-color: darken(color($colors, background), 5%);
+    width: 100%;
+    border-radius: 10px;
+    padding: 5px 5px 15px 8px;
+  }
 
 }

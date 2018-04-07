@@ -10,20 +10,63 @@ import {LabelProvider} from "../custom-survey-components/labels/labelProvider";
 export class CalendarMenu {
 
     displayedYear: number;
+    displayedMonth: string;
     menuEvents: MenuEvents;
-    dateArray: CalendarDay[];
 
+    datesArray: {
+        datesThisMonth: CalendarDay[],
+        datesLastMonth: CalendarDay[],
+        datesNextMonth: CalendarDay[],
+        currentMonth: CalendarDay[];
+    };
 
-    constructor(public tools: ToolsProvider, public alertCtrl: AlertController, public labels: LabelProvider) {
+    monthsArray: {
+        thisMonth: string,
+        lastMonth: string,
+        nextMonth: string,
+        currentMonth: string,
+    };
+
+    constructor(public tools: ToolsProvider, public labels: LabelProvider) {
+
+        this.datesArray = {
+            datesThisMonth: [],
+            datesLastMonth: [],
+            datesNextMonth: [],
+            currentMonth: []
+        };
+
+        this.monthsArray = {
+            thisMonth: "",
+            lastMonth: "",
+            nextMonth: "",
+            currentMonth: ""
+        };
+
         this.displayedYear = (new Date()).getFullYear();
         this.menuEvents = new MenuEvents(labels.listOfLabels);
-        let currentYear = this.getDisplayedYear();
-        this.dateArray = this.getDates(new Date(currentYear.toString()+'-01-01'),new Date(currentYear.toString()+'-12-31'));
+
+        this.setThisMonth(new Date());
+        this.setLastMonth(new Date());
+        this.setNextMonth(new Date());
+
+        this.datesArray.currentMonth = this.datesArray.datesThisMonth;
+        this.monthsArray.currentMonth = this.monthsArray.thisMonth;
+
+
+        // console.log(this.monthsArray.lastMonth);
+        // console.log(this.monthsArray.thisMonth);
+        // console.log(this.monthsArray.nextMonth);
+        //
+        // console.log(this.datesArray.datesLastMonth);
+        // console.log(this.datesArray.datesThisMonth);
+        // console.log(this.datesArray.datesNextMonth);
+
+
     }
 
     setDisplayYear(year: number) {
         this.displayedYear = year;
-        this.dateArray = this.getDates(new Date(this.getDisplayedYear()+"-01-01"), new Date(this.getDisplayedYear()+"-12-31"));
     }
 
     getDisplayedYear(): number {
@@ -32,26 +75,47 @@ export class CalendarMenu {
 
     getPossibleYears(): number[] {
         let years: number[] = [];
-        for(let i = this.displayedYear; i>= 1970; i--) {
+        for (let i = this.displayedYear; i >= 1970; i--) {
             years.push(i);
         }
         return years;
     }
 
-    getDates(startDate, endDate) {
-        let dates = [],
-            currentDate = startDate,
-            addDays = function(days) {
-                let date = new Date(this.valueOf());
-                date.setDate(date.getDate() + days);
-                return date;
-            };
-        while (currentDate <= endDate) {
-            let day = new CalendarDay(currentDate);
-            dates.push(day);
-            currentDate = addDays.call(currentDate, 1);
+    setNextMonth(date: Date) {
+        date.setMonth(date.getMonth() + 1);
+
+        this.monthsArray.nextMonth = new CalendarDay(date).month;
+
+        let month = date.getMonth();
+        this.datesArray.datesNextMonth = this.getDatesInMonth(month, date.getFullYear());
+    }
+
+    setThisMonth(date: Date) {
+        let calDay = new CalendarDay(date);
+        this.displayedMonth = calDay.month;
+        this.monthsArray.thisMonth = calDay.month;
+
+        let month = date.getMonth();
+        this.datesArray.datesThisMonth = this.getDatesInMonth(month, date.getFullYear());
+    }
+
+    setLastMonth(date: Date) {
+        date.setMonth(date.getMonth() - 1);
+
+        this.monthsArray.lastMonth = new CalendarDay(date).month;
+
+        let month = date.getMonth();
+        this.datesArray.datesLastMonth = this.getDatesInMonth(month, date.getFullYear());
+    }
+
+    getDatesInMonth(month, year) {
+        let date = new Date(year, month, 1);
+        let days = [];
+        while (date.getMonth() === month) {
+            days.push(new CalendarDay(new Date(date)));
+            date.setDate(date.getDate() + 1);
         }
-        return dates;
-    };
+        return days;
+    }
 
 }

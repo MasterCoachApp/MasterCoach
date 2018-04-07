@@ -5,22 +5,17 @@
         </ion-toolbar>
     </ion-header>
     <ion-content>
+        <ion-calendar></ion-calendar>
+        <!--<ion-calendar [ngClass]="displayFullCalendar ? 'showingCalendar' : 'noDisplay'" #calendar-->
+        <!--(swipe)="swipe($event, calendar)"-->
+        <!--(onMonthSelect)="onMonthSelect($event)"-->
+        <!--(onDaySelect)="onDaySelect($event)">-->
+        <!--</ion-calendar>-->
             <ion-item no-lines>
                 <ion-select [(ngModel)]="displayedYear" (ionChange)="this.setCalendarYear()">
                     <ion-option *ngFor="let year of years">{{year}}</ion-option>
                 </ion-select>
             </ion-item>
-        <ion-list no-lines id="calendarList">
-            <ion-label no-lines class="calendar-item">
-                <ion-icon item-left name="clock" class="menuIcon"></ion-icon> Today
-            </ion-label>
-            <ion-label no-lines class="calendar-item">
-                <ion-icon item-left name="calendar" class="menuIcon"></ion-icon> This Week
-            </ion-label>
-            <ion-label no-lines class="calendar-item">
-                <ion-icon item-left name="md-analytics" class="menuIcon"></ion-icon> Analytics
-            </ion-label>
-        </ion-list>
 
         <ion-label class="menuSectionHeader" (click)="collapsable.filter.main = !collapsable.filter.main">
                 <ion-icon item-left name="ios-arrow-forward" *ngIf="!collapsable.filter.main"></ion-icon>

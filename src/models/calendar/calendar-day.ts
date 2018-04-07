@@ -1,4 +1,6 @@
 import {CalendarEvent} from '../logging/calendar-event';
+import {TrainingProvider} from "../../providers/custom-survey-components/trainings/trainingProvider";
+import {Training} from "../logging/training";
 
 export class CalendarDay {
 
@@ -8,58 +10,66 @@ export class CalendarDay {
     public dayOfTheWeek: string;
     public month: string;
     public dateValue: string;
+    public lastDay: string;
 
-    public content: {
-        planned: any[],
-        executed: any[],
-        [key: string]: any;
-    };
+    public content: Training[];
 
 
     constructor(date: Date) {
         this.date = date;
-      //  this.date.setDate(date.getUTCDate());
         this.dayOfTheWeek = this.getDayOfWeek(this.date);
         this.month = this.getMonth(this.date);
         this.dateValue = date.toISOString().slice(0, 10);
 
-        this.content = {
-            planned: [],
-            executed: []
-        };
-
+        this.content = [];
         this.calendarEvent = null;
-
     }
+
 
     /*
         Private Getters
      */
     private getMonth(date: Date) {
+        let newDate = new Date(date.getFullYear(), date.getMonth(), date.getDate());
+        newDate.setMonth(newDate.getMonth() + 1);
+        newDate.setDate(0);
+        this.lastDay = String(newDate.getDate());
+
         switch(date.getMonth()) {
             case 0:
                 return "January";
             case 1:
+                this.lastDay ="28";
                 return "February";
             case 2:
+                this.lastDay ="31";
                 return "March";
             case 3:
+                this.lastDay ="30";
                 return "April";
             case 4:
+                this.lastDay ="31";
                 return "May";
             case 5:
+                this.lastDay ="30";
                 return "June";
             case 6:
+                this.lastDay ="30";
                 return "July";
             case 7:
+                this.lastDay ="31";
                 return "August";
             case 8:
+                this.lastDay ="30";
                 return "September";
             case 9:
+                this.lastDay ="31";
                 return "October";
             case 10:
+                this.lastDay ="30";
                 return "November";
             case 11:
+                this.lastDay ="31";
                 return "December";
         }
     }
@@ -82,13 +92,5 @@ export class CalendarDay {
                 return "Sat";
         }
     }
-    /*
-        Public Setters
-     */
-    public setCalendarEvent(calendarEvent: CalendarEvent) {
-
-        this.calendarEvent = calendarEvent;
-    }
-
 
 }

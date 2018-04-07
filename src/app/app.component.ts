@@ -61,4 +61,41 @@ export class MyApp {
           this.listOfLabels = this.calendarMenu.menuEvents.labelList;
       }
 
+
+
+    // ------------- Full calendar ---------------------
+    // x = 0;
+    // onDaySelect(event) {
+    //     let date = new Date();
+    //     date.setMonth(event.month);
+    //     date.setDate(event.date);
+    //     this.dateClicked = new CalendarDay(date);
+    //     if(this.x != 0) {
+    //         //this.updateHorizontalCalendar(this.dateClicked);
+    //         this.displayFullCalendar = false;
+    //     }
+    //     this.x++;//fix dat for real
+    // }
+    //
+    // onMonthSelect(event) {
+    //
+    // }
+    //
+    // swipe(event, calendar) {
+    //     if(event.direction === 2) {
+    //         calendar.forward();
+    //     }
+    //     if(event.direction === 4) {
+    //         calendar.back();
+    //     }
+    // }
+    //
+    // selectDate(date: CalendarDay) {
+    //     this.dateSelected = date;
+    //     this.monthInView = date.month;
+    // }
+    //
+
+    //-------------------
+
 }

@@ -24,11 +24,12 @@ import {EntryProvider} from "../providers/users/entries";
 import {TextPopoverPage} from "../pages/Training/text-popover/text-popover";
 import {LabelProvider} from "../providers/custom-survey-components/labels/labelProvider";
 import {TrainingProvider} from "../providers/custom-survey-components/trainings/trainingProvider";
+import {CalendarModule} from "ionic3-calendar-en";
 
 @NgModule({
   declarations: [
     MyApp,
-      TextPopoverPage //why wont this popover lazy load in?
+      TextPopoverPage,
     // AboutPage,
     // ContactPage,
     // HomePage,
@@ -46,7 +47,8 @@ import {TrainingProvider} from "../providers/custom-survey-components/trainings/
     AngularFireModule.initializeApp(FIREBASE_CONFIG),
     AngularFireDatabaseModule,
     AngularFireAuthModule,
-    AngularFireModule
+    AngularFireModule,
+      CalendarModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [

@@ -1,14 +1,14 @@
 webpackJsonp([1],{
 
-/***/ 529:
+/***/ 663:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CreateTrainingPageModule", function() { return CreateTrainingPageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LoginPageModule", function() { return LoginPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(35);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__create_training__ = __webpack_require__(669);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(37);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__login__ = __webpack_require__(675);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -18,44 +18,78 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var CreateTrainingPageModule = (function () {
-    function CreateTrainingPageModule() {
+var LoginPageModule = (function () {
+    function LoginPageModule() {
     }
-    CreateTrainingPageModule = __decorate([
+    LoginPageModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["J" /* NgModule */])({
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_2__create_training__["a" /* CreateTrainingPage */],
+                __WEBPACK_IMPORTED_MODULE_2__login__["a" /* LoginPage */],
             ],
             imports: [
-                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__create_training__["a" /* CreateTrainingPage */]),
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__login__["a" /* LoginPage */]),
             ],
             entryComponents: [
-                __WEBPACK_IMPORTED_MODULE_2__create_training__["a" /* CreateTrainingPage */],
+                __WEBPACK_IMPORTED_MODULE_2__login__["a" /* LoginPage */],
             ]
         })
-    ], CreateTrainingPageModule);
-    return CreateTrainingPageModule;
+    ], LoginPageModule);
+    return LoginPageModule;
 }());
 
-//# sourceMappingURL=create-training.module.js.map
+//# sourceMappingURL=login.module.js.map
 
 /***/ }),
 
-/***/ 669:
+/***/ 667:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CreateTrainingPage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return TabsPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(35);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_users_users__ = __webpack_require__(152);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_users_entries__ = __webpack_require__(319);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__providers_tools_tools__ = __webpack_require__(66);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__models_logging_activities_activities__ = __webpack_require__(670);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__text_popover_text_popover__ = __webpack_require__(317);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__providers_custom_survey_components_labels_labelProvider__ = __webpack_require__(88);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__providers_custom_survey_components_trainings_trainingProvider__ = __webpack_require__(320);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__models_logging_training__ = __webpack_require__(674);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(37);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+var TabsPage = (function () {
+    function TabsPage(modalCtrl) {
+        this.modalCtrl = modalCtrl;
+        this.tab1Root = 'HomePage';
+        this.tab2Root = 'AboutPage';
+        this.tab3Root = 'ContactPage';
+    }
+    TabsPage = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({template:/*ion-inline-start:"/Users/jonahelbaz/Desktop/MasterCoach/src/pages/HomeTabs/tabs/tabs.html"*/'<ion-tabs tabsPlacement="bottom">\n  <ion-tab [root]="tab1Root" tabTitle="Calendar" tabIcon="calendar"></ion-tab>\n  <ion-tab [root]="tab3Root" tabTitle="Search" tabIcon="ios-search"></ion-tab>\n  <ion-tab [root]="tab2Root" tabTitle="Tools" tabIcon="calculator"></ion-tab>\n  <ion-tab [root]="tab3Root" tabTitle="Profile" tabIcon="person"></ion-tab>\n</ion-tabs>\n'/*ion-inline-end:"/Users/jonahelbaz/Desktop/MasterCoach/src/pages/HomeTabs/tabs/tabs.html"*/
+        }),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* ModalController */]])
+    ], TabsPage);
+    return TabsPage;
+}());
+
+//# sourceMappingURL=tabs.js.map
+
+/***/ }),
+
+/***/ 675:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return LoginPage; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(37);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__HomeTabs_tabs_tabs__ = __webpack_require__(667);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_keyboard__ = __webpack_require__(155);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__providers_tools_tools__ = __webpack_require__(68);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__providers_users_authentication__ = __webpack_require__(443);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__ionic_storage__ = __webpack_require__(152);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -72,213 +106,97 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-
-
-
 /**
- * Generated class for the CreateTrainingPage page.
+ * Generated class for the LoginPage page.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
  */
-var CreateTrainingPage = (function () {
-    function CreateTrainingPage(navCtrl, menu, navParams, trainings, labels, popoverCtrl, users, training, alertCtrl, tools) {
+var LoginPage = (function () {
+    function LoginPage(navCtrl, menu, navParams, authProvider, storage, tools, keyboard, platform, loadCtrl) {
         this.navCtrl = navCtrl;
         this.menu = menu;
         this.navParams = navParams;
-        this.trainings = trainings;
-        this.labels = labels;
-        this.popoverCtrl = popoverCtrl;
-        this.users = users;
-        this.training = training;
-        this.alertCtrl = alertCtrl;
+        this.authProvider = authProvider;
+        this.storage = storage;
         this.tools = tools;
-        this.preTraining = this.trainings.preTraining.getPreTraining();
-        this.postTraining = this.trainings.postTraining.getPostTraining();
-        this.mainTraining = {
-            activities: new __WEBPACK_IMPORTED_MODULE_5__models_logging_activities_activities__["a" /* Activities */](),
-            mainTrainingNotes: {
-                key: 'Notes',
-                val: ''
-            }
-        };
-        this.toggleGroup = function (group) {
-            if (this.isGroupShown(group)) {
-                this.shownGroup = null;
-            }
-            else {
-                this.shownGroup = group;
-            }
-        };
-        this.isGroupShown = function (group) {
-            return this.shownGroup === group;
-        };
+        this.keyboard = keyboard;
+        this.loadCtrl = loadCtrl;
+        platform.ready().then(function () {
+            keyboard.disableScroll(true); //preventing keyboard induced overflow on a page that doesnt need it
+        });
         menu.enable(false, 'mainCalendarMenu');
-        this.listOfEvents = labels.listOfLabels;
-        this.trainingEventList = ["Long Jump", "High Jump", "Pole Vault"]; //should be empty out of development
-        this.expandPostThoughts = false;
-        this.preTrainingDivide = { range: [], notes: [] };
-        this.postTrainingDivide = { range: [], notes: [] };
-        for (var key in this.preTraining) {
-            if (this.preTraining.hasOwnProperty(key)) {
-                if (this.preTraining[key]['type'] == "range") {
-                    this.preTrainingDivide.range.push(this.preTraining[key]);
-                }
-                if (this.preTraining[key]['type'] == "note") {
-                    this.preTrainingDivide.notes.push(this.preTraining[key]);
-                }
-            }
-        }
-        for (var key in this.postTraining) {
-            if (this.postTraining.hasOwnProperty(key)) {
-                if (this.postTraining[key]['type'] == "range") {
-                    this.postTrainingDivide.range.push(this.postTraining[key]);
-                }
-                if (this.postTraining[key]['type'] == "note") {
-                    this.postTrainingDivide.notes.push(this.postTraining[key]);
-                }
-            }
-        }
     }
-    CreateTrainingPage.prototype.expandTextArea = function () {
-        this.expandPostThoughts = !this.expandPostThoughts;
-        var popover = this.popoverCtrl.create(__WEBPACK_IMPORTED_MODULE_6__text_popover_text_popover__["a" /* TextPopoverPage */], {}, { cssClass: 'custom-popover' });
-        popover.present({});
+    LoginPage.prototype.realLogin = function () {
+        this.navCtrl.push('StandardLoginPage');
     };
-    CreateTrainingPage.prototype.createNewTraining = function () {
-        var newTraining = new __WEBPACK_IMPORTED_MODULE_9__models_logging_training__["a" /* Training */]();
-        this.preTrainingDivide.notes.forEach(function (note) {
-            newTraining.addPreNote(note['key'], note['val']);
-        });
-        this.preTrainingDivide.range.forEach(function (range) {
-            newTraining.addPreRange(range['key'], range['val']);
-        });
-        this.postTrainingDivide.notes.forEach(function (note) {
-            newTraining.addPostNote(note['key'], note['val']);
-        });
-        this.postTrainingDivide.range.forEach(function (range) {
-            newTraining.addPostRange(range['key'], range['val']);
-        });
-        //   newTraining.setMainCalEvent(this.mainTraining.activities, mainNotes);
+    LoginPage.prototype.createAccount = function () {
+        this.navCtrl.push('CreateAccountPage');
+    };
+    LoginPage.prototype.loginWithFacebook = function () {
+        var _this = this;
         if (navigator.onLine) {
-            this.training.createNewEntry(newTraining);
+            var that_1 = this;
+            var promise = new Promise(function (resolve, reject) {
+                that_1.authProvider.advanceWithFacebook().then(function (response) {
+                    if (response == null) {
+                        reject(response);
+                    }
+                    else {
+                        _this.storage.set('user-email', response);
+                        resolve();
+                    }
+                });
+            });
+            promise.then(function () {
+                _this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_2__HomeTabs_tabs_tabs__["a" /* TabsPage */]); //allow entry if successful login
+            }).catch(function (error) {
+                _this.authProvider.firebaseAuthenticationError(error);
+            });
         }
         else {
             this.tools.presentToast("bottom", "Sorry, you're not connected to the internet");
         }
     };
-    CreateTrainingPage.prototype.selectEventWorkout = function (value) {
+    // copied from above, likely to advance to same function after checking as separate function
+    LoginPage.prototype.loginWithGoogle = function () {
+        this.authProvider.advanceWithGoogle();
+        // if(navigator.onLine) { //test for internet connection
+        //
+        //     let that = this;
+        //     let promise = new Promise((resolve, reject) => {
+        //
+        //         that.authProvider.advanceWithGoogle().then(response => {
+        //             if(response != "Success") {
+        //                 reject(response);
+        //             }
+        //             else {
+        //                 resolve();
+        //             }
+        //         });
+        //
+        //     });
+        //
+        //     promise.then(() => {
+        //         this.navCtrl.push(TabsPage); //allow entry if successful login
+        //     }).catch(error => { //handle errors thrown by firebase
+        //         this.authProvider.firebaseAuthenticationError(error);
+        //     });
+        // }
+        // else {
+        //     this.tools.presentToast("bottom", "Sorry, you're not connected to the internet");
+        // }
     };
-    CreateTrainingPage.prototype.removeLabel = function (event) {
-        //Remove label from UI
-        this.trainingEventList.splice(this.trainingEventList.indexOf(event), 1);
-    };
-    CreateTrainingPage.prototype.addActivity = function () {
-        var _this = this;
-        var alert = this.alertCtrl.create({
-            cssClass: 'alertCss'
-        });
-        alert.setTitle('Which event does this belong to?');
-        this.listOfEvents.forEach(function (data) {
-            alert.addInput({
-                type: 'checkbox',
-                label: data.label['value'],
-                value: data.label['value'],
-                checked: false
-            });
-        });
-        alert.addButton('Cancel');
-        alert.addButton({
-            text: 'Add Events',
-            handler: function (data) {
-                console.log('Checkbox data:', data);
-                if (data != null) {
-                    data.forEach(function (index) {
-                        _this.trainingEventList.push(index);
-                    });
-                }
-                // this.testCheckboxResult = data;
-            }
-        });
-        alert.present();
-    };
-    CreateTrainingPage.prototype.addWarmUp = function () {
-        var _this = this;
-        var alert = this.alertCtrl.create({
-            title: 'Warm Up',
-        });
-        alert.addInput({
-            type: 'radio',
-            label: 'Warm up A',
-            value: 'Warm up A',
-            checked: false
-        });
-        alert.addInput({
-            type: 'radio',
-            label: 'Warm up B',
-            value: 'Warm up B',
-            checked: false
-        });
-        alert.addButton('Cancel');
-        alert.addButton({
-            text: 'Add',
-            handler: function (data) {
-                console.log('Checkbox data:', data);
-                if (data != null) {
-                    _this.mainTraining.activities.setWarmUp(data);
-                }
-                // this.testCheckboxResult = data;
-            }
-        });
-        alert.present();
-    };
-    CreateTrainingPage.prototype.addCoolDown = function () {
-        var _this = this;
-        var alert = this.alertCtrl.create({
-            title: 'Cool Down',
-        });
-        alert.addInput({
-            type: 'radio',
-            label: 'Cool down A',
-            value: 'Cool down A',
-            checked: false
-        });
-        alert.addInput({
-            type: 'radio',
-            label: 'Cool down B',
-            value: 'Cool down B',
-            checked: false
-        });
-        alert.addButton('Cancel');
-        alert.addButton({
-            text: 'Add',
-            handler: function (data) {
-                console.log('Checkbox data:', data);
-                if (data != null) {
-                    _this.mainTraining.activities.setCoolDown(data);
-                }
-                // this.testCheckboxResult = data;
-            }
-        });
-        alert.present();
-    };
-    CreateTrainingPage.prototype.cancel = function () {
-        this.navCtrl.pop();
-    };
-    // adding for testing data on page DG 2018-03-18
-    CreateTrainingPage.prototype.testConsole = function (data) {
-        console.log(data);
-    };
-    CreateTrainingPage = __decorate([
+    LoginPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-            selector: 'page-create-training',template:/*ion-inline-start:"/Users/jonahelbaz/Desktop/MasterCoach/src/pages/Training/create-training/create-training.html"*/'<!--\n  Generated template for the CreateTrainingPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n    <ion-navbar>\n        <ion-buttons left>\n            <button ion-button="arrow-back" color="primary" (click)="cancel()">\n                <ion-icon name="ios-arrow-down"></ion-icon>\n            </button>\n        </ion-buttons>\n        <ion-title>New Training</ion-title>\n        <ion-buttons right (click)="createNewTraining()">\n            <button ion-button="arrow-back" color="primary" (click)="cancel()">\n                Save\n            </button>\n        </ion-buttons>\n    </ion-navbar>\n\n</ion-header>\n\n\n<ion-content>\n\n    <ion-list no-lines>\n        <ion-list-header class="title item-stable" (click)="toggleGroup(\'preTraining\')">\n            <ion-col>\n                Pre-Training\n            </ion-col>\n            <ion-col style="text-align: right; width: 100%;" col-8>\n                <ion-icon style="text-align: right"  *ngIf="!isGroupShown(\'preTraining\')" class="drop"\n                          name="ios-arrow-forward"></ion-icon>\n                <ion-icon  *ngIf="isGroupShown(\'preTraining\')" class="drop" name="ios-arrow-down" right></ion-icon>\n            </ion-col>\n        </ion-list-header>\n          <ion-item-group class="item-accordion" *ngIf="isGroupShown(\'preTraining\')">\n\n              <div  *ngFor="let title of preTrainingDivide.range">\n            <ion-item class="ionItemCrop">\n                <ion-label item-start>{{title["key"]}}</ion-label>\n                <ion-range min="0" max="5" [snaps]="true" steps="1" [pin]="true" right class="range" [(ngModel)]="title[\'val\']">\n                    <ion-label range-left>0</ion-label>\n                    <ion-label range-right>5</ion-label>\n                </ion-range>\n            </ion-item>\n              </div>\n              <ion-item *ngFor="let title of preTrainingDivide.notes">\n                  <ion-label stacked> {{title["key"]}} </ion-label>\n                  <ion-textarea class="thoughts" [(ngModel)]="title[\'val\']"></ion-textarea>\n              </ion-item>\n          </ion-item-group>\n\n        <ion-list-header class="title item-stable" (click)="toggleGroup(\'training\')">\n            <ion-col>\n                Training\n            </ion-col>\n            <ion-col style="text-align: right; width: 100%;" col-8>\n                <ion-icon style="text-align: right"  *ngIf="!isGroupShown(\'training\')" class="drop"\n                          name="ios-arrow-forward"></ion-icon>\n                <ion-icon  *ngIf="isGroupShown(\'training\')" class="drop" name="ios-arrow-down" right></ion-icon>\n            </ion-col>\n        </ion-list-header>\n        <ion-list class="item-accordion" *ngIf="isGroupShown(\'training\')">\n            <ion-list>\n                <ion-label stacked class="trainingHeaders">Warm Up</ion-label>\n                <ion-item *ngIf="!mainTraining.activities.warmUp">\n                    <button ion-button (click)="addWarmUp()">Add Warm Up</button>\n                </ion-item>\n                <ion-item *ngIf="mainTraining.activities.warmUp">\n                    <button ion-button (click)="addWarmUp()">{{mainTraining.activities.warmUp}}\n                        <ion-icon class="trainingHeaders" name="close"\n                                  (click)="mainTraining.activities.setWarmUp(null)"></ion-icon>\n                    </button>\n                    <ion-note>View</ion-note>\n\n                </ion-item>\n                <ion-label stacked class="trainingHeaders">Events</ion-label>\n                <div style="margin-top: 20px" *ngIf="trainingEventList.length > 0">\n                    <ion-grid>\n                        <ion-row>\n                            <ion-col col-1 style="margin-right: 20px">\n                                <button ion-button style="border-radius: 25px; width: 10px; height: 30px;" (click)="addActivity()">\n                                <ion-icon name="add"></ion-icon>\n                                </button>\n                            </ion-col>\n                            <ion-col col-10>\n                                <div class="scroll" nowrap>\n                                    <button ion-button class="label" *ngFor="let event of trainingEventList" (click)="removeLabel(event)">\n                                        {{event}}\n                                        <ion-icon name="close" class="trainingHeaders"></ion-icon>\n                                    </button>\n                                </div>\n                            </ion-col>\n                        </ion-row>\n                    </ion-grid>\n                    <ion-grid class="exerciseTable">\n                        <ion-row style="padding-bottom: 5px">Sprint Hurdles</ion-row>\n                        <ion-row>\n                            <ion-col class="exerciseCol exerciseHeader" col-1>\n                                #\n                            </ion-col>\n                            <ion-col class="exerciseCol exerciseHeader">\n                                Detail\n                            </ion-col>\n                            <ion-col class="exerciseCol exerciseHeader" col-3>\n                                Measure\n                            </ion-col>\n                            <ion-col class="exerciseCol exerciseHeader" col-2>\n                                Reps\n                            </ion-col>\n                            <ion-col class="exerciseCol" col-1>\n                                <ion-icon name="checkmark" style="font-size: 20px; padding: 0; font-weight: bold"></ion-icon>\n                            </ion-col>\n                        </ion-row>\n                        <ion-row>\n                            <ion-col class="exerciseCol" col-1>\n                                1\n                            </ion-col>\n                            <ion-col class="exerciseCol">\n                                With Blocks\n                            </ion-col>\n                            <ion-col class="exerciseCol" col-3>\n                                42"\n                            </ion-col>\n                            <ion-col class="exerciseCol" col-2>\n                                8\n                            </ion-col>\n                            <ion-col class="exerciseCol" col-1>\n                                <ion-checkbox></ion-checkbox>\n                            </ion-col>\n                        </ion-row>\n                        <ion-row>\n                            <ion-col class="exerciseCol" col-1>\n                                2\n                            </ion-col>\n                            <ion-col class="exerciseCol">\n                                Without Blocks\n                            </ion-col>\n                            <ion-col class="exerciseCol" col-3>\n                                39"\n                            </ion-col>\n                            <ion-col class="exerciseCol" col-2>\n                                8\n                            </ion-col>\n                            <ion-col class="exerciseCol" col-1>\n                                <ion-checkbox></ion-checkbox>\n                            </ion-col>\n                        </ion-row>\n                        <ion-row>\n                            <ion-col class="addSet">\n                                    ADD SET\n                            </ion-col>\n                        </ion-row>\n                    </ion-grid>\n                    <ion-grid style="width: 100%; border: 1px solid black; margin: 20px 5px 5px 5px;">\n                        <ion-row>\n                            <ion-col style="text-align: center; font-style: italic; opacity: 0.5" (click)="addActivity()">\n                                ADD EXERCISE\n                            </ion-col>\n                        </ion-row>\n                    </ion-grid>\n                </div>\n            </ion-list>\n            <ion-label stacked class="trainingHeaders">Cool Down</ion-label>\n            <ion-item *ngIf="!mainTraining.activities.coolDown">\n                <button ion-button (click)="addCoolDown()">Add Cool Down</button>\n            </ion-item>\n            <ion-item *ngIf="mainTraining.activities.coolDown">\n                <button ion-button (click)="addCoolDown()">{{mainTraining.activities.coolDown}}\n                    <ion-icon class="trainingHeaders" name="close"\n                              (click)="mainTraining.activities.setCoolDown(null)"></ion-icon>\n                </button>\n                <ion-note end>View</ion-note>\n            </ion-item>\n            <ion-item>\n                <ion-label stacked>Notes</ion-label>\n                <ion-textarea class="thoughts" [(ngModel)]="mainTraining.mainTrainingNotes.val"></ion-textarea>\n            </ion-item>\n        </ion-list>\n\n\n        <ion-list-header class="title item-stable" (click)="toggleGroup(\'postTraining\')">\n            <ion-col>\n                Post-Training\n            </ion-col>\n            <ion-col style="text-align: right; width: 100%;" col-8>\n                <ion-icon style="text-align: right" *ngIf="!isGroupShown(\'postTraining\')" class="drop"\n                          name="ios-arrow-forward"></ion-icon>\n                <ion-icon *ngIf="isGroupShown(\'postTraining\')" class="drop" name="ios-arrow-down" right></ion-icon>\n            </ion-col>\n        </ion-list-header>\n        <div class="item-accordion" *ngIf="isGroupShown(\'postTraining\')">\n            <ion-item-group>\n                <ion-item class="ionItemCrop" *ngFor="let title of postTrainingDivide.range">\n                    <ion-label item-start>{{title["key"]}}</ion-label>\n                    <ion-range min="0" max="5" [snaps]="true" steps="1" [pin]="true" right class="range" [(ngModel)]="title[\'val\']">\n                        <ion-label range-left>0</ion-label>\n                        <ion-label range-right>5</ion-label>\n                    </ion-range>\n                </ion-item>\n                <ion-item *ngFor="let title of postTrainingDivide.notes">\n                    <ion-label stacked> {{title["key"]}} </ion-label>\n                    <ion-textarea class="thoughts" [(ngModel)]="title[\'val\']"></ion-textarea>\n                </ion-item>\n            </ion-item-group>\n        </div>\n    </ion-list>\n\n</ion-content>\n'/*ion-inline-end:"/Users/jonahelbaz/Desktop/MasterCoach/src/pages/Training/create-training/create-training.html"*/,
+            selector: 'page-login',template:/*ion-inline-start:"/Users/jonahelbaz/Desktop/MasterCoach/src/pages/Logins/login/login.html"*/'<!--\n  Generated template for the LoginPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n\n<ion-content>\n    <div [ngClass]="hasFocus ? \'hidden\' : \'logo\'">\n        <img src="./assets/imgs/hurdles_line.jpg"/>\n    </div>\n  <!--<div [ngClass]="hasFocus ? \'hidden\' : \'logo\'">-->\n    <!--<img src="./assets/imgs/trackfield_large.png"/>-->\n  <!--</div>-->\n    <!--<div style="margin-top: 10px; text-align: center; margin-bottom: 10px" [ngClass]="hasFocus ? \'\' : \'noDisplay\'">-->\n        <!--<span style="font-weight: bold; font-size: 24px;"> Log In</span>-->\n    <!--</div>-->\n\n    <!--<ion-list>-->\n\n        <!--<ion-item >-->\n            <!--<ion-label floating style="color: gray;">Email</ion-label>-->\n            <!--<ion-input class="inputBox" [(ngModel)]="email" (ionFocus)="hasFocus = true"></ion-input>-->\n        <!--</ion-item>-->\n\n        <!--<ion-item >-->\n            <!--<ion-label floating style="color: gray; ">Password</ion-label>-->\n            <!--<ion-input class="inputBox" [(ngModel)]="password" type="password" (ionFocus)="hasFocus = true"></ion-input>-->\n        <!--</ion-item>-->\n\n    <!--</ion-list>-->\n\n  <!--<ion-row>-->\n    <!--<ion-col class="loginButtonColumn">-->\n        <!--<button class="loginButton" ion-button (click)="login()">Log In</button>-->\n    <!--</ion-col>-->\n  <!--</ion-row>-->\n    <!--<ion-row>-->\n        <!--<ion-col class="loginButtonColumn">-->\n            <!--<button ion-button (click)="forgotPassword()" [ngClass]="hasFocus ? \'loginButton\' : \'noDisplay\'" (ionFocus)="hasFocus = true">Reset Password</button>-->\n        <!--</ion-col>-->\n    <!--</ion-row>-->\n\n\n            <!--<div [ngClass]="hasFocus ? \'tapCatcher\' : \'noDisplay\'" (click)="hasFocus = false"></div>-->\n\n  <!--<ion-row style="margin-top: 5%;">-->\n    <!--<ion-col>-->\n        <!--<hr data-content="OR" [ngClass]="hasFocus ? \'noDisplay\' : \'hr-text\'">-->\n    <!--</ion-col>-->\n  <!--</ion-row>-->\n\n    <!--<ion-row style="margin-top: 5%;">-->\n        <!--<ion-col style="text-align: center">-->\n            <!--<button [ngClass]="hasFocus ? \'noDisplay\' : \'loginBtn loginBtn&#45;&#45;facebook\'" (click)="loginWithFacebook()">-->\n                <!--Log In with Facebook-->\n            <!--</button>-->\n        <!--</ion-col>-->\n    <!--</ion-row>-->\n    <!--<ion-row>-->\n        <!--<ion-col style="text-align: center">-->\n            <!--<button [ngClass]="hasFocus ? \'noDisplay\' : \'loginBtn loginBtn&#45;&#45;google\'">-->\n                <!--Log In with Google-->\n            <!--</button>-->\n        <!--</ion-col>-->\n    <!--</ion-row>-->\n\n  <!--<ion-row>-->\n    <!--<ion-col style="text-align: center">-->\n      <!--<button  [ngClass]="hasFocus ? \'noDisplay\' : \'create\'" (click)="createAccount()">-->\n      <!--Create Account-->\n      <!--</button>-->\n    <!--</ion-col>-->\n  <!--</ion-row>-->\n\n<ion-footer>\n    <ion-row style="margin-top: 5%;">\n        <ion-col style="text-align: center">\n            <button [ngClass]="hasFocus ? \'noDisplay\' : \'loginBtn loginBtn--facebook\'" (click)="loginWithFacebook()">\n                Sign In with Facebook\n            </button>\n        </ion-col>\n    </ion-row>\n    <ion-row>\n        <ion-col style="text-align: center">\n            <button [ngClass]="hasFocus ? \'noDisplay\' : \'loginBtn loginBtn--google\'" (click)="loginWithGoogle()">\n                Log In with Google\n            </button>\n        </ion-col>\n    </ion-row>\n\n    <ion-row>\n        <ion-col style="text-align: center">\n            <button [ngClass]="hasFocus ? \'noDisplay\' : \'create\'" (click)="createAccount()">\n                Sign Up\n            </button>\n        </ion-col>\n        <ion-col>\n            <button  class="create" (click)="realLogin()">\n                Sign In\n            </button>\n        </ion-col>\n    </ion-row>\n</ion-footer>\n'/*ion-inline-end:"/Users/jonahelbaz/Desktop/MasterCoach/src/pages/Logins/login/login.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* MenuController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavParams */], __WEBPACK_IMPORTED_MODULE_8__providers_custom_survey_components_trainings_trainingProvider__["a" /* TrainingProvider */], __WEBPACK_IMPORTED_MODULE_7__providers_custom_survey_components_labels_labelProvider__["a" /* LabelProvider */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* PopoverController */], __WEBPACK_IMPORTED_MODULE_2__providers_users_users__["a" /* UsersProvider */], __WEBPACK_IMPORTED_MODULE_3__providers_users_entries__["a" /* EntryProvider */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */], __WEBPACK_IMPORTED_MODULE_4__providers_tools_tools__["a" /* ToolsProvider */]])
-    ], CreateTrainingPage);
-    return CreateTrainingPage;
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* MenuController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* NavParams */], __WEBPACK_IMPORTED_MODULE_5__providers_users_authentication__["a" /* AuthenticationProvider */], __WEBPACK_IMPORTED_MODULE_6__ionic_storage__["b" /* Storage */], __WEBPACK_IMPORTED_MODULE_4__providers_tools_tools__["a" /* ToolsProvider */], __WEBPACK_IMPORTED_MODULE_3__ionic_native_keyboard__["a" /* Keyboard */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* Platform */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* LoadingController */]])
+    ], LoginPage);
+    return LoginPage;
 }());
 
-//# sourceMappingURL=create-training.js.map
+//# sourceMappingURL=login.js.map
 
 /***/ })
 

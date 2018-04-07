@@ -1,145 +1,233 @@
-import {Component} from '@angular/core';
-import {App, IonicPage, MenuController, ModalController, NavController, Platform, ViewController} from 'ionic-angular';
+import {Component, ViewChild} from '@angular/core';
+import {
+    App, Content, IonicPage, MenuController, ModalController, NavController, Platform,
+    ViewController
+} from 'ionic-angular';
 import {CalendarDay} from "../../../models/calendar/calendar-day";
 import {CalendarMenu} from "../../../providers/menus/calendar-menu";
 import {Storage} from "@ionic/storage";
 import {LoginPage} from "../../Logins/login/login";
 import {UsersProvider} from "../../../providers/users/users";
+import {TrainingProvider} from "../../../providers/custom-survey-components/trainings/trainingProvider";
+import {TabsPage} from "../tabs/tabs";
+import {ToolsProvider} from "../../../providers/tools/tools";
+import {Training} from "../../../models/logging/training";
+import {Activities} from "../../../models/logging/activities/activities";
 
 @IonicPage()
 @Component({
-  selector: 'page-home',
-  templateUrl: 'home.html'
+    selector: 'page-home',
+    templateUrl: 'home.html'
 })
 export class HomePage {
 
-    date = new Date();
-    //I suspect hard-coding UTC time will cause problems for other time-zones
-    //Without specifying it was putting the wrong date (+4:00)
-    dateSelected: CalendarDay = new CalendarDay( new Date(this.date.getUTCFullYear(), this.date.getUTCMonth(), this.date.getUTCDate(), this.date.getUTCHours(), this.date.getUTCMinutes(), this.date.getUTCSeconds()));
-    monthInView: string = this.dateSelected.month;
+    @ViewChild(Content) content: Content;
 
-    currentEvents: any[];
-    dateClicked: CalendarDay;
-    displayFullCalendar = false;
+    today: CalendarDay = new CalendarDay(new Date());
+    dateInView: Date = this.today.date;
+    monthInView: string = this.today.month;
+    datesThisMonth: CalendarDay[] = [];
+    listOfTrainings: Training[] = [];
 
-    datesThisYear: CalendarDay[];
+    constructor(public navCtrl: NavController, public app: App, public storage: Storage, public tools: ToolsProvider, public modalCtrl: ModalController, public user: UsersProvider, public menu: MenuController, public platform: Platform, public calMenu: CalendarMenu, public viewCtrl: ViewController, public training: TrainingProvider) {
+        //this.datesThisMonth = this.calMenu.datesArray.datesThisMonth;
 
-    constructor(public navCtrl: NavController, public app: App, public storage: Storage, public modalCtrl: ModalController, public user: UsersProvider, public menu: MenuController, public platform: Platform, public calMenu: CalendarMenu, public viewCtrl: ViewController) {
-
-      this.storage.get('user-email').then(email => {
-         if(email == null) {
-             this.app.getRootNav().push('LoginPage');
-         }
-         else {
-            user.retrievedLoggedInUser(email).then(response => {
-               if(response == null) {
-                   console.log("Auto login failed to find existing user in db");
-                   this.app.getRootNav().push('LoginPage');
-               }
-               else {
-                   user.loggedIn = response;
-                   console.log(response);
-               }
-            }).catch(error=> {
-                console.log("Auto login failed to find existing user in db");
+        this.storage.get('user-email').then(email => {
+            if (email == null) {
                 this.app.getRootNav().push('LoginPage');
-            });
-         }
-      });
+            }
+            else {
+                user.retrievedLoggedInUser(email).then(response => {
+                    if (response == null) {
+                        console.log("Auto login failed to find existing user in db");
+                        this.app.getRootNav().push('LoginPage');
+                    }
+                    else {
+                          user.loggedIn = response;
+                          this.setCalendarEvents();
+                    }
+                }).catch(error => {
+                    console.log("Auto login failed to find existing user in db");
+                    this.app.getRootNav().push('LoginPage');
+                });
+            }
+        });
 
-      this.activateMenu();
+        this.activateMenu();
+    }
 
-      this.currentEvents = [
-          {
-              year: 2018,
-              month: 2,
-              date: 4
-          },
-          {
-              year: 2018,
-              month: 2,
-              date: 5
-          },
-          {
-              year: 2018,
-              month: 2,
-              date: 8
-          },
-          {
-              year: 2018,
-              month: 2,
-              date: 9
-          }
-      ];
-      this.datesThisYear = [];
-      let iterator = 0;
-      calMenu.dateArray.forEach(date => {
-          if(iterator <= 70) {
-              this.datesThisYear.push(date);
-          }
-          iterator += 1;
-      });
-  }
+    ionViewDidLoad() {
+        setTimeout(() => {
+            this.scrollTo(this.today.dateValue);
+        }, 0);
+    }
+
     activateMenu() {
         this.menu.enable(true, 'mainCalendarMenu');
     }
 
+    goToToday() {
+        if (this.dateInView.getMonth() != (new Date).getMonth()) {
+            this.datesThisMonth = this.calMenu.datesArray.currentMonth;
+            this.calMenu.datesArray.datesThisMonth = this.calMenu.datesArray.currentMonth;
+            this.calMenu.monthsArray.thisMonth = this.calMenu.monthsArray.currentMonth;
+
+            this.calMenu.setLastMonth(new Date());
+            this.calMenu.setNextMonth(new Date());
+
+            this.today = new CalendarDay(new Date());
+            this.dateInView = new Date();
+            this.monthInView = this.today.month;
+
+            this.scrollTo(this.today.dateValue);
+
+            //  this.getCalendarEvents();
+        }
+        else {
+            this.scrollTo(this.today.dateValue);
+        }
+
+    }
+
+    changMonth(sign: string) {
+
+        if (sign == "plus") {
+            let newDate = new Date(this.dateInView.getFullYear(), this.dateInView.getMonth() + 1, this.dateInView.getDate());
+            this.calMenu.datesArray.datesLastMonth = this.calMenu.datesArray.datesThisMonth;
+            this.calMenu.monthsArray.lastMonth = this.calMenu.monthsArray.thisMonth;
+
+            this.calMenu.datesArray.datesThisMonth = this.calMenu.datesArray.datesNextMonth;
+            this.calMenu.monthsArray.thisMonth = this.calMenu.monthsArray.nextMonth;
+
+            this.datesThisMonth = this.calMenu.datesArray.datesThisMonth;
+            this.monthInView = this.calMenu.monthsArray.thisMonth;
+
+            this.dateInView = new Date(newDate.getFullYear(), newDate.getMonth(), newDate.getDate());
+
+            this.calMenu.setDisplayYear(this.dateInView.getFullYear());
+
+            //set next month values
+            this.calMenu.setNextMonth(newDate);
+
+            this.calMenu.datesArray.datesNextMonth.forEach(date => {
+                this.listOfTrainings.forEach(training => {
+                    if (training.date == date.dateValue) {
+                        date.content.push(training);
+                    }
+                });
+            });
+
+
+            // console.log("Forward - Last: " + this.calMenu.monthsArray.lastMonth);
+            // console.log("Forward - This: " + this.calMenu.monthsArray.thisMonth);
+            // console.log("Forward - Next: " + this.calMenu.monthsArray.nextMonth);
+            // this.getCalendarEvents();
+
+        }
+        if (sign == "minus") {
+            let newDate = new Date(this.dateInView.getFullYear(), this.dateInView.getMonth() - 1, this.dateInView.getDate());
+
+            this.calMenu.datesArray.datesNextMonth = this.calMenu.datesArray.datesThisMonth;
+            this.calMenu.monthsArray.nextMonth = this.calMenu.monthsArray.thisMonth;
+
+            this.calMenu.datesArray.datesThisMonth = this.calMenu.datesArray.datesLastMonth;
+            this.calMenu.monthsArray.thisMonth = this.calMenu.monthsArray.lastMonth;
+
+            this.datesThisMonth = this.calMenu.datesArray.datesThisMonth;
+            this.monthInView = this.calMenu.monthsArray.thisMonth;
+
+            //set last month values
+
+            this.dateInView = new Date(newDate.getFullYear(), newDate.getMonth(), newDate.getDate());
+
+            this.calMenu.setDisplayYear(this.dateInView.getFullYear());
+
+            this.calMenu.setLastMonth(newDate);
+
+            this.calMenu.datesArray.datesLastMonth.forEach(date => {
+                this.listOfTrainings.forEach(training => {
+                    if (training.date == date.dateValue) {
+                        date.content.push(training);
+                    }
+                });
+            });
+
+            // console.log("Backwards - Last: " + this.calMenu.monthsArray.lastMonth);
+            // console.log("Backwards - This: " + this.calMenu.monthsArray.thisMonth);
+            // console.log("Backwards - Next: " + this.calMenu.monthsArray.nextMonth);
+
+            //this.getCalendarEvents();
+        }
+
+        this.content.scrollToTop(0);
+    }
 
     createNewTraining(dateSelected: string) {
         this.navCtrl.push('CreateTrainingPage', {date: dateSelected});
-        // profileModal.onDidDismiss(() => {
-        //     this.activateMenu();
-        // });
     }
 
+    setCalendarEvents() {
+            if(this.user.loggedIn != null) {
+                    let that = this;
+                    let promise = new Promise((resolve, reject) => {
+                        that.training.getUserTrainings(this.user.loggedIn).then(response => {
+                            console.log(response);
+                            if (response != "Success") {
+                                reject(response);
+                            }
+                            else {
+                                resolve();
+                            }
+                        });
+                    });
 
+                    promise.then(() => {
+                        this.listOfTrainings = this.training.listOfTrainings;
 
+                        this.calMenu.datesArray.datesThisMonth.forEach(date => {
+                            this.listOfTrainings.forEach(training => {
+                                if (training.date == date.dateValue) {
+                                    date.content.push(training);
+                                }
+                            });
+                        });
 
+                        this.calMenu.datesArray.currentMonth = this.calMenu.datesArray.datesThisMonth;
+                        this.datesThisMonth = this.calMenu.datesArray.datesThisMonth;
 
+                        setTimeout(() => {
+                            this.scrollTo(this.today.dateValue);
+                        }, 0);
 
+                        console.log(this.datesThisMonth);
 
+                        this.calMenu.datesArray.datesLastMonth.forEach(date => {
+                            this.listOfTrainings.forEach(training => {
+                                if (training.date == date.dateValue) {
+                                    date.content.push(training);
+                                }
+                            });
+                        });
+                        this.calMenu.datesArray.datesNextMonth.forEach(date => {
+                            this.listOfTrainings.forEach(training => {
+                                if (training.date == date.dateValue) {
+                                    date.content.push(training);
+                                }
+                            });
+                        });
+                    }).catch(error => {
+                        console.log(error);
+                        that.tools.presentToast("bottom", "There was an unexpected error retrieving your calendar information.");
+                    });
+                }
+            }
 
-
-
-
-
-
-
-
-
-    // ------------- Full calendar ---------------------
-    x = 0;
-    onDaySelect(event) {
-        let date = new Date();
-        date.setMonth(event.month);
-        date.setDate(event.date);
-        this.dateClicked = new CalendarDay(date);
-        if(this.x != 0) {
-            //this.updateHorizontalCalendar(this.dateClicked);
-            this.displayFullCalendar = false;
+    scrollTo(elementId: string) {
+        let doc = document.getElementById(elementId);
+        if (doc != null) {
+            let yOffset = doc.offsetTop;
+            this.content.scrollTo(0, yOffset, 0);
+            document.getElementById("calendarList").scrollTo(0, yOffset);
         }
-        this.x++;//fix dat for real
     }
-
-    onMonthSelect(event) {
-
-    }
-
-    swipe(event, calendar) {
-        if(event.direction === 2) {
-            calendar.forward();
-        }
-        if(event.direction === 4) {
-            calendar.back();
-        }
-    }
-
-    selectDate(date: CalendarDay) {
-        this.dateSelected = date;
-        this.monthInView = date.month;
-    }
-
-    //-------------------
-
 }
