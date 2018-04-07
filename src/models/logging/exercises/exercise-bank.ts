@@ -16,24 +16,34 @@ export class ExerciseBank {
 
     constructor() {
         this.exerciseBank = [
-            new Exercise('General Runway',
+            new Exercise('Long Jump Runway',
                 this.exerciseCategoryBank.exerciseCategoryBank.find(x => x.category.name === 'Long Jump'),
                 this.exerciseTableTypeBank.exerciseTableTypeBank.find(x => x.tableTypeName == 'Runway')
             ),
-            new Exercise('General Runway',
+            new Exercise('Triple Runway',
                 this.exerciseCategoryBank.exerciseCategoryBank.find(x => x.category.name === 'Triple Jump'),
                 this.exerciseTableTypeBank.exerciseTableTypeBank.find(x => x.tableTypeName == 'Runway')
             ),
-            new Exercise('General Runway',
+            new Exercise('Javelin Runway',
                 this.exerciseCategoryBank.exerciseCategoryBank.find(x => x.category.name === 'Javelin'),
                 this.exerciseTableTypeBank.exerciseTableTypeBank.find(x => x.tableTypeName == 'Runway')
             ),
             new Exercise('Running',
                 this.exerciseCategoryBank.exerciseCategoryBank.find(x => x.category.name === 'Sprints'),
                 this.exerciseTableTypeBank.exerciseTableTypeBank.find(x => x.tableTypeName == 'Running')
-            )
-            // new Exercise('General Runway', ExerciseCategoryBank['Long Jump'], ExerciseTableTypeBank['Runway']),
-            // new Exercise('General Runway', ExerciseCategoryBank['Long Jump'], ExerciseTableTypeBank['Runway']),
+            ),
+            new Exercise('Hurdle Hops',
+                this.exerciseCategoryBank.exerciseCategoryBank.find(x => x.category.name === 'Plyometrics'),
+                this.exerciseTableTypeBank.exerciseTableTypeBank.find(x => x.tableTypeName == 'Running')
+            ),
+            new Exercise('Overhead Throw',
+                this.exerciseCategoryBank.exerciseCategoryBank.find(x => x.category.name === 'Medicine Ball'),
+                this.exerciseTableTypeBank.exerciseTableTypeBank.find(x => x.tableTypeName == 'Running')
+            ),
+            new Exercise('Running',
+                this.exerciseCategoryBank.exerciseCategoryBank.find(x => x.category.name === 'Sprints'),
+                this.exerciseTableTypeBank.exerciseTableTypeBank.find(x => x.tableTypeName == 'Running')
+            ),
 
         ];
     }

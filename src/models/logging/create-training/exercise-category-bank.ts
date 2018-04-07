@@ -9,7 +9,7 @@ export class ExerciseCategoryBank {
         [key: string]: ExerciseCategory
     }
 
-    exerciseCategoryList = ['Sprints', 'Long Sprints', 'Distance', 'Long Jump', 'High Jump', 'Pole Vault','Triple Jump', 'Sprint Hurdles', '400m Hurdles','Javelin','Weights','Plyometrics'];
+    exerciseCategoryList = ['Sprints', 'Long Sprints', 'Distance', 'Long Jump', 'High Jump', 'Pole Vault','Triple Jump', 'Sprint Hurdles', '400m Hurdles','Javelin','Weights','Plyometrics','Medicine Ball'];
 
     constructor() {
         for (let i = 0; i < this.exerciseCategoryList.length; i++) {

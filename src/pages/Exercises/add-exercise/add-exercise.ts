@@ -21,52 +21,68 @@ import {ExerciseProvider} from "../../../providers/training/exercises/exercisePr
 export class AddExercisePage {
 
   exerciseFilter: string;
-  exercisesToAdd: Exercise[];
-  exerciseCategoryBank: ExerciseCategory[] = new ExerciseCategoryBank().exerciseCategoryBank;
-  exerciseCategoryBankSorted: ExerciseCategory[];
-  exerciseBank: Exercise[] = new ExerciseBank().exerciseBank;
+  exercisesToAdd: Exercise[] = [];
+  exerciseCategoryBank: ExerciseCategory[];
+  // exerciseBank: Exercise[];
   exerciseBankSorted: Exercise[];
-  exerciseRecentBank: Exercise[]; // currently will be empty
-  listShown: Exercise[];
+  exerciseRecentBank: Exercise[] = []; // currently will be empty
   searchQuery: string = '';
+  filterIsCategory: boolean
 
   categoryShow: {
     [key: string]: boolean
   } = {};
 
+  showAllCategories: boolean;
+
+  exerciseCategoryBankFiltered: ExerciseCategory[];
 
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public viewCtrl: ViewController, public modalCtrl: ModalController, public banks: ExerciseProvider) {
     this.exerciseFilter = 'Category';
     this.exercisesToAdd = [];
     // this.exerciseBank = new ExerciseBank();
-    this.exerciseCategoryBankSorted = this.exerciseCategoryBank.sort((a,b) => {
-        if(a.category.name < b.category.name) return -1;
-        if(a.category.name > b.category.name) return 1;
-        return 0;
-    });
-    this.exerciseRecentBank = [];
-    // this.exerciseBankSorted = this.exerciseBank.sort((a,b) => {
-    //   if(a.exerciseName < b.exerciseName) return -1;
-    //   if(a.exerciseName > b.exerciseName) return 1;
-    //   return 0;
+    // this.exerciseCategoryBankSorted = this.exerciseCategoryBank.sort((a,b) => {
+    //     if(a.category.name < b.category.name) return -1;
+    //     if(a.category.name > b.category.name) return 1;
+    //     return 0;
     // });
+    this.exerciseRecentBank = []; // to be completed
+
     this.initializeExerciseBankSorted();
+    this.initializeExerciseCategoryBank();
 
     console.log('exerciseBankSorted',this.exerciseBankSorted);
-    console.log('exerciseBank',this.exerciseBank);
-
+    // console.log('exerciseBank',this.exerciseBank);
+    console.log('CATEGORY BANK',this.exerciseCategoryBank); // sorted
     this.exerciseCategoryBank.forEach(data =>
         this.categoryShow[data.category.name] = false
     );
     console.log('categoryShow', this.categoryShow);
 
+    this.showAllCategories = false;
+
 
   }
 
   initializeExerciseBankSorted() {
-      this.exerciseBankSorted = this.sortAlphabetical(this.banks.exerciseBank.exerciseBank, 'exerciseName');
+      // this.exerciseBankSorted = this.sortAlphabetical(this.banks.exerciseBank, 'exerciseName');
+      this.exerciseBankSorted = this.banks.exerciseBank.exerciseBank;
+
   }
+
+  initializeExerciseCategoryBank(){ // filtered and sorted
+      // this.exerciseCategoryBankFiltered = this.retrieveFilteredCategories().sort((a,b) => {
+      //     if(a.category.name < b.category.name) return -1;
+      //     if(a.category.name > b.category.name) return 1;
+      //     return 0;
+      // });
+      this.exerciseCategoryBank = this.banks.exerciseCategoryBank.exerciseCategoryBank;
+      this.exerciseCategoryBankFiltered = this.retrieveFilteredCategories();
+      console.log('FILTERED CAT BANK',this.exerciseCategoryBankFiltered);
+
+
+      }
 
   filterItems(searchQuery: string) {
       // Reset items back to all of the items
@@ -80,7 +96,24 @@ export class AddExercisePage {
           this.exerciseBankSorted = this.exerciseBankSorted.filter((exercise) => {
               return (exercise.exerciseName.toLowerCase().indexOf(val.toLowerCase()) > -1);
           });
+          this.initializeExerciseCategoryBank();
       }
+      this.initializeExerciseCategoryBank();
+  }
+
+  retrieveFilteredCategories() {
+
+      let tempCategoryBank = [];
+
+      for (let i = 0; i < this.exerciseBankSorted.length; i++) {
+          if (tempCategoryBank.indexOf(this.exerciseBankSorted[i].exerciseCategory) > -1) {
+              continue;
+          } else {
+              tempCategoryBank.push(this.exerciseBankSorted[i].exerciseCategory);
+          }
+      }
+
+      return tempCategoryBank;
   }
 
   sortAlphabetical(arrayOfObjects: any[], property: any) {
@@ -93,12 +126,25 @@ export class AddExercisePage {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad AddExercisePage');
+    // console.log('ionViewDidLoad AddExercisePage');
   }
+
   toggleCategoryShow(exerciseCategory: ExerciseCategory) {
     this.categoryShow[exerciseCategory.category.name] = !this.categoryShow[exerciseCategory.category.name];
     console.log(this.categoryShow[exerciseCategory.category.name]);
+  }
 
+  toggleAllCategories() {
+      this.showAllCategories = !this.showAllCategories;
+      this.exerciseCategoryBank.forEach(data => {
+          this.categoryShow[data.category.name] = this.showAllCategories;
+          console.log(data.category.name);
+          console.log(this.showAllCategories);
+      });
+  }
+
+  toggleFilterIsCategory() {
+      this.filterIsCategory = (this.exerciseFilter == 'Category');
   }
 
   createExercise(searchQuery: string) {
@@ -106,25 +152,18 @@ export class AddExercisePage {
           'CreateExercisePage',
           {searchQuery: searchQuery}
       );
-
-
       createExerciseModal.onDidDismiss( data => {
           if (data) {
               this.selectExercise(data);
               this.filterItems(searchQuery);
           }
       });
-
       createExerciseModal.present();
   }
 
   selectExercise(exercise: Exercise) {
-    // exercise.forEach(data => {
-    //     this.exercisesToAdd.push(exercise);
-    // });
-    // let indexOfExercise = this.exercisesToAdd.find(x => (x.exerciseName == exercise.exerciseName));
-    let indexOfExercise = this.exercisesToAdd.indexOf(exercise);
 
+    let indexOfExercise = this.exercisesToAdd.indexOf(exercise);
 
     if (indexOfExercise == -1) {
         this.exercisesToAdd.push(exercise);
@@ -135,6 +174,7 @@ export class AddExercisePage {
     }
     console.log('exercisesToAdd',this.exercisesToAdd);
   }
+
   addExercisesAndDismiss() {
     this.viewCtrl.dismiss(this.exercisesToAdd);
   }

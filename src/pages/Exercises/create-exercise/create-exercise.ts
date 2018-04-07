@@ -49,19 +49,20 @@ export class CreateExercisePage {
               this.exerciseCategory = data;
           }
       });
-    categoryModal.present()
+    categoryModal.present();
   }
-    presentExerciseTableTypeModal() {
-        let tableTypeModal = this.modalCtrl.create(
-            'SelectExerciseTableTypePage'
-        );
-        tableTypeModal.onDidDismiss( data => {
-            if (data) {
-                this.exerciseTableType = data;
-            }
-        });
-        tableTypeModal.present()
-    }
+
+  presentExerciseTableTypeModal() {
+    let tableTypeModal = this.modalCtrl.create(
+        'SelectExerciseTableTypePage'
+    );
+    tableTypeModal.onDidDismiss( data => {
+        if (data) {
+            this.exerciseTableType = data;
+        }
+    });
+    tableTypeModal.present();
+  }
 
   cancel() {
     this.navCtrl.pop();

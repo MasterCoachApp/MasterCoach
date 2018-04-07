@@ -47,14 +47,14 @@ export class Activities {
         // this.trackEvents = trackEvents;
     }
 
-    addExercises(exercises: Exercise[]) {
-        exercises.forEach( data => {
-            let newExerciseTable = new ExerciseTable(data);
-            this.exercises[newExerciseTable.exerciseCategory.category.name] = {};
-            this.exercises[newExerciseTable.exerciseCategory.category.name][newExerciseTable.exerciseName] = newExerciseTable;
-            console.log('Exercises :', exercises);
-        });
-    }
+    // addExercises(exercises: Exercise[]) {
+    //     exercises.forEach( data => {
+    //         let newExerciseTable = new ExerciseTable(data);
+    //         this.exercises[newExerciseTable.exercise.exerciseCategory.category.name] = {};
+    //         this.exercises[newExerciseTable.exerciseCategory.category.name][newExerciseTable.exerciseName] = newExerciseTable;
+    //         console.log('Exercises :', exercises);
+    //     });
+    // }
 
     removeExercise(exerciseToDelete: ExerciseTable) { // this will need to take a unique ID eventually to prevent weird behaviour when deleting an exercise from a training where you have the same exercise twice, I think?
         //this.exercises.splice(this.exercises.indexOf(exerciseToDelete),1)

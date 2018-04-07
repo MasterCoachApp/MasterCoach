@@ -10,28 +10,28 @@ export class ExerciseTable implements IExerciseTable{
 
     labels: Label[];
     exercise: Exercise; // exercise should have category and table type > table headers
-    exerciseName: string; // exercise.exerciseName
-    exerciseCategory: ExerciseCategory; // exercise.exerciseCategory
-    tableType: ExerciseTableType; // exercise.tableType
+    // exerciseName: string; // exercise.exerciseName
+    // exerciseCategory: ExerciseCategory; // exercise.exerciseCategory
+    // tableType: ExerciseTableType; // exercise.tableType
     sets: ExerciseSet[];
-    notes: string;
-    pinnedNotes: string;
+    // notes: string;
+    // pinnedNotes: string;
 
-    tableHeaderList: string[];
+    // tableHeaderList: string[];
 
 
     constructor(exercise: Exercise) {
         this.labels = [];
         this.exercise = exercise;
-        this.exerciseCategory = exercise.exerciseCategory; // exercise.exerciseCategory
-        this.exerciseName = exercise.exerciseName; // exercise.exerciseName
-        this.tableType = exercise.exerciseTableType; // exercise.exerciseTableType
-        this.tableHeaderList = ['#', 'Detail', 'Measure', 'Reps']; // hard coded for now, switch to take form ExerciseTableType
+        // this.exerciseCategory = exercise.exerciseCategory; // exercise.exerciseCategory
+        // this.exerciseName = exercise.exerciseName; // exercise.exerciseName
+        // this.tableType = exercise.exerciseTableType; // exercise.exerciseTableType
+        // this.tableHeaderList = ['#', 'Detail', 'Measure', 'Reps']; // hard coded for now, switch to take form ExerciseTableType
         // this.tableHeaderList = exercise.exerciseTableType.tableHeaderList; // this is the way we will be going!
         this.sets = [new ExerciseSet(1)];
         // this.sets.push(new ExerciseSet(1));
-        this.notes = null;
-        this.pinnedNotes = null;
+        // this.notes = null;
+        // this.pinnedNotes = null;
         // this.showNotes = false;
         // this.exerciseCategory = new ExerciseCategory().discus;
 

@@ -8,11 +8,11 @@ export interface IExerciseTable {
 
     labels: Label[];
     exercise: Exercise; // exercise should have category and table type > table headers
-    exerciseName: string; // exercise.exerciseName
-    exerciseCategory: ExerciseCategory; // exercise.exerciseCategory
-    tableType: ExerciseTableType; // exercise.tableType
+    // exerciseName: string; // exercise.exerciseName
+    // exerciseCategory: ExerciseCategory; // exercise.exerciseCategory
+    // tableType: ExerciseTableType; // exercise.tableType
     sets: ExerciseSet[];
-    notes: string;
-    pinnedNotes: string;
+    // notes: string;
+    // pinnedNotes: string;
 
 }

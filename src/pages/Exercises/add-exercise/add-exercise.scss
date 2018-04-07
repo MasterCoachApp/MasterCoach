@@ -5,9 +5,6 @@ page-add-exercise {
   ion-list-header {
     color: white;
   }
-  .listAZ {
-    border: none;
-  }
 
   .list .item.item-accordion {
     transition: all linear 5s;
@@ -21,5 +18,23 @@ page-add-exercise {
   .list .item.item-accordion.ng-hide-add,
   .list .item.item-accordion.ng-hide-remove {
     display: block !important;
+  }
+  .searchList {
+    padding: 5px 0 0 0;
+  }
+  .categoryArrow {
+    padding-left: 20px;
+    align-content: right;
+  }
+  .noDisplay {
+    line-height: 0;
+    transition: line-height linear 1s;
+  }
+  .categoryToggle {
+    line-height: 10px;
+    transition: all linear 5s;
+    padding-top: 5px;
+    padding-left: 0;
+
   }
 }

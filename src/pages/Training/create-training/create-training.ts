@@ -5,7 +5,6 @@ import {
 } from 'ionic-angular';
 import {UsersProvider} from "../../../providers/users/users";
 import {ToolsProvider} from "../../../providers/tools/tools";
-import {Activities} from "../../../models/logging/create-training/activities";
 import {TextPopoverPage} from "../text-popover/text-popover";
 import {LabelProvider} from "../../../providers/training/labels/labelProvider";
 import {TrainingProvider} from "../../../providers/training/trainings/trainingProvider";
@@ -14,9 +13,10 @@ import {Training} from "../../../models/logging/training";
 import {ExerciseTable} from "../../../models/logging/create-training/exercise-table";
 import {ExerciseSet} from "../../../models/logging/create-training/exercise-set";
 import {expressionChangedAfterItHasBeenCheckedError} from "@angular/core/src/view/errors";
-import {ExerciseCategory} from "../../../models/logging/create-training/exercise-category";
 import {AddExercisePage} from "../../Exercises/add-exercise/add-exercise";
 import {Exercise} from "../../../models/logging/exercises/exercise";
+import {CoolDown} from "../../../models/logging/create-training/cool-down";
+import {WarmUp} from "../../../models/logging/create-training/warm-up";
 
 /**
  * Generated class for the CreateTrainingPage page.
@@ -50,13 +50,19 @@ export class CreateTrainingPage {
         notes: object[]
     };
 
-    mainTraining = {
-        activities: new Activities(),
-        mainTrainingNotes: {
-            key: 'Notes',
-            val: ''
-        }
-    };
+    training: Training;
+
+    // mainTraining: {
+    //     warmUp: WarmUp,
+    //     coolDown: CoolDown,
+    //     exercises: {
+    //         [key:string]:ExerciseTable
+    //     },
+    //     mainTrainingNotes: {
+    //         key: 'Notes',
+    //         val: ''
+    //     }
+    // };
 
     trainingEventList: string[];
 
@@ -98,7 +104,7 @@ export class CreateTrainingPage {
             }
         }
 
-        this.mainTraining.activities = new Activities();
+        // this.mainTraining.exercises = {};
 
         // this.trainingDate = new Date().toISOString();
         this.trainingDateHour = new Date().getHours(); // not UTC because we want the time zone localized
@@ -109,6 +115,8 @@ export class CreateTrainingPage {
         } else {
             this.trainingMorningAfternoonEvening = 'Evening';
         }
+
+        this.training = new Training();
     }
 
     toggleGroup = function(group) {
@@ -152,7 +160,7 @@ export class CreateTrainingPage {
             newTraining.addPostRange(range['key'], range['val']);
         });
 
-       newTraining.setMainCalEvent(this.mainTraining.activities);
+       newTraining.setMainCalEvent(this.training.mainCalEvent.categories);
 
         if (navigator.onLine) {
             this.trainings.createNewEntry(newTraining);
@@ -168,9 +176,9 @@ export class CreateTrainingPage {
 
     }
 
-    removeLabel(label: Label, exercise: ExerciseTable) {
+    removeLabel(label: Label, exerciseTable: ExerciseTable) {
         //Remove label from UI
-        this.mainTraining.activities.exercises[exercise.exerciseCategory.category.name][exercise.exerciseName].removeLabel(label);
+        this.training.mainCalEvent.categories[exerciseTable.exercise.exerciseCategory.category.name][exerciseTable.exercise.exerciseName].removeLabel(label);
 
     }
 
@@ -183,7 +191,7 @@ export class CreateTrainingPage {
 
         addExerciseModal.onDidDismiss( data => {
             if (data) {
-                this.mainTraining.activities.addExercises(data);
+                this.training.setMainCalEvent(data);
             }
         });
 
@@ -231,12 +239,12 @@ export class CreateTrainingPage {
         // alert.present();
     }
 
-    addSet(exercise: ExerciseTable) {
-        this.mainTraining.activities.exercises[exercise.exerciseCategory.category.name][exercise.exerciseName].addSet();
+    addSet(exerciseTable: ExerciseTable) {
+        this.training.mainCalEvent.categories[exerciseTable.exercise.exerciseCategory.category.name][exerciseTable.exercise.exerciseName].addSet();
     }
 
-    deleteSet(set: ExerciseSet, exercise: ExerciseTable) {
-        this.mainTraining.activities.exercises[exercise.exerciseCategory.category.name][exercise.exerciseName].deleteSet(set);
+    deleteSet(set: ExerciseSet, exerciseTable: ExerciseTable) {
+        this.training.mainCalEvent.categories[exerciseTable.exercise.exerciseCategory.category.name][exerciseTable.exercise.exerciseName].deleteSet(set);
     }
 
     addLabel(exercise: ExerciseTable) {
@@ -261,7 +269,7 @@ export class CreateTrainingPage {
                 console.log('Checkbox data [LABELS]:', data);
                 if (data != null) {
                     // data.forEach ( index => {
-                        this.mainTraining.activities.exercises[exercise.exerciseCategory.category.name][exercise.exerciseName].addLabels(data);
+                        this.training.mainCalEvent.categories[exercise.exercise.exerciseCategory.category.name][exercise.exercise.exerciseName].addLabels(data);
                     // });
                 }
                 // this.testCheckboxResult = data;
@@ -294,7 +302,7 @@ export class CreateTrainingPage {
             handler: data => {
                 console.log('Checkbox data:', data);
                 if (data != null) {
-                    this.mainTraining.activities.setWarmUp(data);
+                    this.training.setWarmUp(data);
                 }
                 // this.testCheckboxResult = data;
             }
@@ -326,7 +334,7 @@ export class CreateTrainingPage {
             handler: data => {
                 console.log('Checkbox data:', data);
                 if (data != null) {
-                    this.mainTraining.activities.setCoolDown(data);
+                    this.training.setCoolDown(data);
                 }
                 // this.testCheckboxResult = data;
             }
