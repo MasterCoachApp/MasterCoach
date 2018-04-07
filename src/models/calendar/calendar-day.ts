@@ -1,4 +1,5 @@
 import {CalendarEvent} from '../logging/calendar-event';
+import {Training} from "../logging/training";
 
 export class CalendarDay {
 
@@ -10,11 +11,7 @@ export class CalendarDay {
     public dateValue: string;
     public timeOfDayFormatted: string;
 
-    public content: {
-        planned: any[],
-        executed: any[],
-        [key: string]: any;
-    };
+    public content: Training[] = [];
 
 
     constructor(date: Date) {
@@ -24,12 +21,6 @@ export class CalendarDay {
         this.month = this.getMonth(this.date);
         this.dateValue = date.toISOString().slice(0, 10);
         this.timeOfDayFormatted = ''+ date.getHours() + ':' + date.getMinutes();
-
-
-        this.content = {
-            planned: [],
-            executed: []
-        };
 
         this.calendarEvent = null;
 
