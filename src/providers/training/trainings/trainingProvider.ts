@@ -26,17 +26,32 @@ export class TrainingProvider {
 
     createNewEntry(training: Training) {
 
-        // let tempTraining = {
-        //     exerciseTables: training.mainCalEvent.create-training.exercises,//filterTrainingDetails(training)
-        // };
-        //
-        // let exerciseTable = {
-        //     exercises: training.mainCalEvent.create-training
-        //     labels: training.mainCalEvent.create-training.exercises
-        // };
+        let filteredExerciseTableArray = []
+
+        training.mainCalEvent.exercises.forEach(data => {
+            let exerciseTable = {
+                sets: data.sets,
+                labels: data.labels,
+                exerciseName: data.exercise.exerciseName,
+                category: data.exercise.exerciseCategory.category.name,
+                exerciseTableType: data.exercise.exerciseTableType
+            };
+            filteredExerciseTableArray.push(exerciseTable);
+        });
+
+        let reformattedTraining = {
+            preCalEvent: training.mainCalEvent,
+            postCalEvenet: training.postCalEvent,
+            mainCalEvent: {
+                warmUp: training.mainCalEvent.warmUp,
+                coolDown: training.mainCalEvent.coolDown,
+                exercises: filteredExerciseTableArray
+            }
+        };
 
         this.db.database.ref("Users/" + this.users.loggedIn.User_Id + "/Calendar").push(
-            training
+            // training
+            reformattedTraining
         ).then(() => {
             console.log("Success");
         });

@@ -52,17 +52,7 @@ export class CreateTrainingPage {
 
     training: Training;
 
-    // mainTraining: {
-    //     warmUp: WarmUp,
-    //     coolDown: CoolDown,
-    //     exercises: {
-    //         [key:string]:ExerciseTable
-    //     },
-    //     mainTrainingNotes: {
-    //         key: 'Notes',
-    //         val: ''
-    //     }
-    // };
+    exercisesByCategory: any = {};
 
     trainingEventList: string[];
 
@@ -103,10 +93,9 @@ export class CreateTrainingPage {
                 }
             }
         }
+        this.training = new Training();
+        this.updateExercisesByCategory();
 
-        // this.mainTraining.exercises = {};
-
-        // this.trainingDate = new Date().toISOString();
         this.trainingDateHour = new Date().getHours(); // not UTC because we want the time zone localized
         if (this.trainingDateHour < 12) {
             this.trainingMorningAfternoonEvening = 'Morning';
@@ -116,7 +105,7 @@ export class CreateTrainingPage {
             this.trainingMorningAfternoonEvening = 'Evening';
         }
 
-        this.training = new Training();
+
     }
 
     toggleGroup = function(group) {
@@ -142,7 +131,6 @@ export class CreateTrainingPage {
 
     }
 
-
     createNewTraining() {
 
         let newTraining = new Training();
@@ -160,7 +148,7 @@ export class CreateTrainingPage {
             newTraining.addPostRange(range['key'], range['val']);
         });
 
-       newTraining.setMainCalEvent(this.training.mainCalEvent.categories);
+       newTraining.mainCalEvent.exercises = this.training.mainCalEvent.exercises;
 
         if (navigator.onLine) {
             this.trainings.createNewEntry(newTraining);
@@ -172,16 +160,11 @@ export class CreateTrainingPage {
 
     }
 
-    selectEventWorkout(value: string) {
-
-    }
-
     removeLabel(label: Label, exerciseTable: ExerciseTable) {
         //Remove label from UI
-        this.training.mainCalEvent.categories[exerciseTable.exercise.exerciseCategory.category.name][exerciseTable.exercise.exerciseName].removeLabel(label);
+        this.training.mainCalEvent.exercises[this.training.mainCalEvent.exercises.indexOf(exerciseTable)].removeLabel(label);
 
     }
-
 
     addExercise() {
         let addExerciseModal = this.modalCtrl.create(
@@ -191,63 +174,41 @@ export class CreateTrainingPage {
 
         addExerciseModal.onDidDismiss( data => {
             if (data) {
-                this.training.setMainCalEvent(data);
+                this.training.addExercises(data);
+                // this.updateExercisesByCategory();
             }
         });
 
         addExerciseModal.present();
+    }
 
+    updateExercisesByCategory() {
 
-
-
-
-        // // alert placeholder to add trainings
-        // let alert = this.alertCtrl.create({
-        //     cssClass: 'alertCss'
-        // });
-        // alert.setTitle('Please select a training to add:');
-        //
-        // // alert.addInput( {
-        // //     // add foreach of a list of exercises later
-        // //     // add modal window that walks through creating the new table with its settings later
-        // //     type: 'checkbox',
-        // //     label: 'Sprint Hurdles',
-        // //     value: 'Sprint Hurdles',
-        // //     checked: false
-        // // });
-        // // ADDING with this list of track events for now until we get an exercise library up and running
-        // this.listOfEvents.forEach( data => {
-        //     alert.addInput({
-        //         type: 'checkbox',
-        //         label: data.label['value'],
-        //         value: data.label['value'],
-        //         checked: false
-        //     });
-        // });
-        //
-        // alert.addButton('Cancel');
-        // alert.addButton({
-        //     text: 'Add Exercise',
-        //     handler: data => {
-        //         console.log('Checkbox data [ADD EXERCISE]:', data);
-        //         if (data != null) {
-        //             this.mainTraining.activities.addExercises(data);
-        //         }
-        //     }
-        // });
-        //
-        // alert.present();
+        let currentCategory = '';
+        this.training.mainCalEvent.exercises.forEach(data => {
+            if (data.exercise.exerciseCategory.category.name != currentCategory) {
+                currentCategory = data.exercise.exerciseCategory.category.name;
+                if (this.exercisesByCategory.hasOwnProperty(currentCategory)) {
+                    this.exercisesByCategory[currentCategory + ' B'] = [data];
+                } else {
+                    this.exercisesByCategory[currentCategory] = [data];
+                }
+            } else if (data.exercise.exerciseCategory.category.name == currentCategory) {
+                this.exercisesByCategory[currentCategory].push(data);
+            }
+        });
+        console.log('updateExercises', this.exercisesByCategory);
     }
 
     addSet(exerciseTable: ExerciseTable) {
-        this.training.mainCalEvent.categories[exerciseTable.exercise.exerciseCategory.category.name][exerciseTable.exercise.exerciseName].addSet();
+        this.training.mainCalEvent.exercises[this.training.mainCalEvent.exercises.indexOf(exerciseTable)].addSet();
     }
 
     deleteSet(set: ExerciseSet, exerciseTable: ExerciseTable) {
-        this.training.mainCalEvent.categories[exerciseTable.exercise.exerciseCategory.category.name][exerciseTable.exercise.exerciseName].deleteSet(set);
+        this.training.mainCalEvent.exercises[this.training.mainCalEvent.exercises.indexOf(exerciseTable)].deleteSet(set);
     }
 
-    addLabel(exercise: ExerciseTable) {
+    addLabel(exerciseTable: ExerciseTable) {
         let alert = this.alertCtrl.create({
             cssClass: 'alertCss'
         });
@@ -269,7 +230,7 @@ export class CreateTrainingPage {
                 console.log('Checkbox data [LABELS]:', data);
                 if (data != null) {
                     // data.forEach ( index => {
-                        this.training.mainCalEvent.categories[exercise.exercise.exerciseCategory.category.name][exercise.exercise.exerciseName].addLabels(data);
+                        this.training.mainCalEvent.exercises[this.training.mainCalEvent.exercises.indexOf(exerciseTable)].addLabels(data);
                     // });
                 }
                 // this.testCheckboxResult = data;
