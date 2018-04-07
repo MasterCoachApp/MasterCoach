@@ -2,44 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e7f57d27-d28c-4f55-a890-87bd4911cd01" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/.sourcemaps/0.js.map" afterPath="$PROJECT_DIR$/.sourcemaps/0.js.map" />
-      <change beforePath="$PROJECT_DIR$/.sourcemaps/1.js.map" afterPath="$PROJECT_DIR$/.sourcemaps/1.js.map" />
-      <change beforePath="$PROJECT_DIR$/.sourcemaps/2.js.map" afterPath="$PROJECT_DIR$/.sourcemaps/2.js.map" />
-      <change beforePath="$PROJECT_DIR$/.sourcemaps/3.js.map" afterPath="$PROJECT_DIR$/.sourcemaps/3.js.map" />
-      <change beforePath="$PROJECT_DIR$/.sourcemaps/main.js.map" afterPath="$PROJECT_DIR$/.sourcemaps/main.js.map" />
-      <change beforePath="$PROJECT_DIR$/platforms/ios/MasterCoach.xcworkspace/xcuserdata/jonahelbaz.xcuserdatad/UserInterfaceState.xcuserstate" afterPath="$PROJECT_DIR$/platforms/ios/MasterCoach.xcworkspace/xcuserdata/jonahelbaz.xcuserdatad/UserInterfaceState.xcuserstate" />
-      <change beforePath="$PROJECT_DIR$/src/app/app.component.ts" afterPath="$PROJECT_DIR$/src/app/app.component.ts" />
-      <change beforePath="$PROJECT_DIR$/src/app/app.html" afterPath="$PROJECT_DIR$/src/app/app.html" />
-      <change beforePath="$PROJECT_DIR$/src/app/app.module.ts" afterPath="$PROJECT_DIR$/src/app/app.module.ts" />
-      <change beforePath="$PROJECT_DIR$/src/models/calendar/calendar-day.ts" afterPath="$PROJECT_DIR$/src/models/calendar/calendar-day.ts" />
-      <change beforePath="$PROJECT_DIR$/src/models/logging/activities/activities.ts" afterPath="$PROJECT_DIR$/src/models/logging/activities/activities.ts" />
-      <change beforePath="$PROJECT_DIR$/src/models/logging/training.ts" afterPath="$PROJECT_DIR$/src/models/logging/training.ts" />
-      <change beforePath="$PROJECT_DIR$/src/pages/HomeTabs/home/home.html" afterPath="$PROJECT_DIR$/src/pages/HomeTabs/home/home.html" />
-      <change beforePath="$PROJECT_DIR$/src/pages/HomeTabs/home/home.module.ts" afterPath="$PROJECT_DIR$/src/pages/HomeTabs/home/home.module.ts" />
-      <change beforePath="$PROJECT_DIR$/src/pages/HomeTabs/home/home.scss" afterPath="$PROJECT_DIR$/src/pages/HomeTabs/home/home.scss" />
-      <change beforePath="$PROJECT_DIR$/src/pages/HomeTabs/home/home.ts" afterPath="$PROJECT_DIR$/src/pages/HomeTabs/home/home.ts" />
-      <change beforePath="$PROJECT_DIR$/src/providers/custom-survey-components/trainings/trainingProvider.ts" afterPath="$PROJECT_DIR$/src/providers/custom-survey-components/trainings/trainingProvider.ts" />
-      <change beforePath="$PROJECT_DIR$/src/providers/menus/calendar-menu.ts" afterPath="$PROJECT_DIR$/src/providers/menus/calendar-menu.ts" />
       <change beforePath="$PROJECT_DIR$/www/build/0.js" afterPath="$PROJECT_DIR$/www/build/0.js" />
       <change beforePath="$PROJECT_DIR$/www/build/0.js.map" afterPath="$PROJECT_DIR$/www/build/0.js.map" />
-      <change beforePath="$PROJECT_DIR$/www/build/1.js" afterPath="$PROJECT_DIR$/www/build/1.js" />
-      <change beforePath="$PROJECT_DIR$/www/build/1.js.map" afterPath="$PROJECT_DIR$/www/build/1.js.map" />
-      <change beforePath="$PROJECT_DIR$/www/build/2.js" afterPath="$PROJECT_DIR$/www/build/2.js" />
-      <change beforePath="$PROJECT_DIR$/www/build/2.js.map" afterPath="$PROJECT_DIR$/www/build/2.js.map" />
-      <change beforePath="$PROJECT_DIR$/www/build/3.js" afterPath="$PROJECT_DIR$/www/build/3.js" />
-      <change beforePath="$PROJECT_DIR$/www/build/3.js.map" afterPath="$PROJECT_DIR$/www/build/3.js.map" />
-      <change beforePath="$PROJECT_DIR$/www/build/4.js" afterPath="$PROJECT_DIR$/www/build/4.js" />
-      <change beforePath="$PROJECT_DIR$/www/build/5.js" afterPath="$PROJECT_DIR$/www/build/5.js" />
-      <change beforePath="$PROJECT_DIR$/www/build/6.js" afterPath="$PROJECT_DIR$/www/build/6.js" />
-      <change beforePath="$PROJECT_DIR$/www/build/7.js" afterPath="$PROJECT_DIR$/www/build/7.js" />
-      <change beforePath="$PROJECT_DIR$/www/build/8.js" afterPath="$PROJECT_DIR$/www/build/8.js" />
-      <change beforePath="$PROJECT_DIR$/www/build/9.js" afterPath="$PROJECT_DIR$/www/build/9.js" />
-      <change beforePath="$PROJECT_DIR$/www/build/main.css" afterPath="$PROJECT_DIR$/www/build/main.css" />
       <change beforePath="$PROJECT_DIR$/www/build/main.js" afterPath="$PROJECT_DIR$/www/build/main.js" />
       <change beforePath="$PROJECT_DIR$/www/build/main.js.map" afterPath="$PROJECT_DIR$/www/build/main.js.map" />
-      <change beforePath="$PROJECT_DIR$/www/build/vendor.js" afterPath="$PROJECT_DIR$/www/build/vendor.js" />
-      <change beforePath="$PROJECT_DIR$/www/build/vendor.js.map" afterPath="$PROJECT_DIR$/www/build/vendor.js.map" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -82,7 +48,7 @@
         <entry file="file://$PROJECT_DIR$/src/pages/HomeTabs/home/home.ts">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="348">
-              <caret line="196" column="0" lean-forward="true" selection-start-line="196" selection-start-column="0" selection-end-line="196" selection-end-column="0" />
+              <caret line="196" column="0" lean-forward="false" selection-start-line="196" selection-start-column="0" selection-end-line="196" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -92,7 +58,7 @@
         <entry file="file://$PROJECT_DIR$/src/providers/menus/calendar-menu.ts">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="1335">
-              <caret line="94" column="29" lean-forward="true" selection-start-line="94" selection-start-column="29" selection-end-line="94" selection-end-column="29" />
+              <caret line="94" column="29" lean-forward="false" selection-start-line="94" selection-start-column="29" selection-end-line="94" selection-end-column="29" />
               <folding />
             </state>
           </provider>
@@ -102,7 +68,7 @@
         <entry file="file://$PROJECT_DIR$/src/models/calendar/calendar-day.ts">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="135">
-              <caret line="11" column="22" lean-forward="true" selection-start-line="11" selection-start-column="22" selection-end-line="11" selection-end-column="22" />
+              <caret line="11" column="22" lean-forward="false" selection-start-line="11" selection-start-column="22" selection-end-line="11" selection-end-column="22" />
               <folding />
             </state>
           </provider>
@@ -111,7 +77,7 @@
       <file leaf-file-name="trainingProvider.ts" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/providers/custom-survey-components/trainings/trainingProvider.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="250">
+            <state relative-caret-position="464">
               <caret line="85" column="71" lean-forward="false" selection-start-line="85" selection-start-column="71" selection-end-line="85" selection-end-column="71" />
               <folding />
             </state>
@@ -122,7 +88,7 @@
         <entry file="file://$PROJECT_DIR$/src/models/logging/training.ts">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="405">
-              <caret line="32" column="18" lean-forward="true" selection-start-line="32" selection-start-column="18" selection-end-line="32" selection-end-column="18" />
+              <caret line="32" column="18" lean-forward="false" selection-start-line="32" selection-start-column="18" selection-end-line="32" selection-end-column="18" />
               <folding />
             </state>
           </provider>
@@ -680,12 +646,12 @@
       <workItem from="1522872121069" duration="15000" />
       <workItem from="1522874522011" duration="21495000" />
       <workItem from="1522992459598" duration="4154000" />
-      <workItem from="1523048307762" duration="5785000" />
+      <workItem from="1523048307762" duration="5923000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="298518000" />
+    <option name="totallyTimeSpent" value="298656000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="822" extended-state="6" />
@@ -1012,7 +978,7 @@
     <entry file="file://$PROJECT_DIR$/src/models/calendar/calendar-day.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="135">
-          <caret line="11" column="22" lean-forward="true" selection-start-line="11" selection-start-column="22" selection-end-line="11" selection-end-column="22" />
+          <caret line="11" column="22" lean-forward="false" selection-start-line="11" selection-start-column="22" selection-end-line="11" selection-end-column="22" />
           <folding />
         </state>
       </provider>
@@ -1020,7 +986,7 @@
     <entry file="file://$PROJECT_DIR$/src/providers/menus/calendar-menu.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1335">
-          <caret line="94" column="29" lean-forward="true" selection-start-line="94" selection-start-column="29" selection-end-line="94" selection-end-column="29" />
+          <caret line="94" column="29" lean-forward="false" selection-start-line="94" selection-start-column="29" selection-end-line="94" selection-end-column="29" />
           <folding />
         </state>
       </provider>
@@ -1049,7 +1015,7 @@
     <entry file="file://$PROJECT_DIR$/src/pages/HomeTabs/home/home.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="348">
-          <caret line="196" column="0" lean-forward="true" selection-start-line="196" selection-start-column="0" selection-end-line="196" selection-end-column="0" />
+          <caret line="196" column="0" lean-forward="false" selection-start-line="196" selection-start-column="0" selection-end-line="196" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -1057,7 +1023,7 @@
     <entry file="file://$PROJECT_DIR$/src/models/logging/training.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="405">
-          <caret line="32" column="18" lean-forward="true" selection-start-line="32" selection-start-column="18" selection-end-line="32" selection-end-column="18" />
+          <caret line="32" column="18" lean-forward="false" selection-start-line="32" selection-start-column="18" selection-end-line="32" selection-end-column="18" />
           <folding />
         </state>
       </provider>
@@ -1072,7 +1038,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/providers/custom-survey-components/trainings/trainingProvider.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="250">
+        <state relative-caret-position="464">
           <caret line="85" column="71" lean-forward="false" selection-start-line="85" selection-start-column="71" selection-end-line="85" selection-end-column="71" />
           <folding />
         </state>

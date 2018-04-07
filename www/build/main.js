@@ -897,15 +897,17 @@ var TrainingProvider = (function () {
                         return false;
                     });
                     var activity = new __WEBPACK_IMPORTED_MODULE_5__models_logging_activities_activities__["a" /* Activities */]();
-                    activity.warmUp = new __WEBPACK_IMPORTED_MODULE_6__models_logging_activities_warm_up__["a" /* WarmUp */](main.child("warmup").val());
-                    activity.coolDown = new __WEBPACK_IMPORTED_MODULE_7__models_logging_activities_cool_down__["a" /* CoolDown */](main.child("cooldown").val());
+                    activity.warmUp = new __WEBPACK_IMPORTED_MODULE_6__models_logging_activities_warm_up__["a" /* WarmUp */](main.child("activities").child("warmup").val());
+                    activity.coolDown = new __WEBPACK_IMPORTED_MODULE_7__models_logging_activities_cool_down__["a" /* CoolDown */](main.child("activities").child("cooldown").val());
                     var exercises = {};
-                    main.child("categories").forEach(function (categories) {
-                        categories.forEach(function (exercise) {
-                            exercises[categories.key][exercise.key] = new __WEBPACK_IMPORTED_MODULE_8__models_logging_activities_exercise_table__["a" /* ExerciseTable */]();
-                            exercises[categories.key][exercise.key].category = exercise.child("exercise").child("category").val();
-                            exercises[categories.key][exercise.key].exerciseName = exercise.key;
-                            exercises[categories.key][exercise.key].sets = [];
+                    main.child("activities").child("exercises").forEach(function (event) {
+                        exercises[event.key] = new __WEBPACK_IMPORTED_MODULE_8__models_logging_activities_exercise_table__["a" /* ExerciseTable */]();
+                        exercises[event.key].tableSet = new __WEBPACK_IMPORTED_MODULE_5__models_logging_activities_activities__["a" /* Activities */]();
+                        event.forEach(function (exercise) {
+                            exercises[event.key].tableSet.exercises[exercise.key] = new __WEBPACK_IMPORTED_MODULE_8__models_logging_activities_exercise_table__["a" /* ExerciseTable */]();
+                            exercises[event.key].tableSet.exercises[exercise.key].category = exercise.child("category").val();
+                            exercises[event.key].tableSet.exercises[exercise.key].exerciseName = exercise.key;
+                            exercises[event.key].tableSet.exercises[exercise.key].sets = [];
                             exercise.forEach(function (set) {
                                 if (set.key != "labels" && set.key != "category") {
                                     var newSet = new __WEBPACK_IMPORTED_MODULE_9__models_logging_activities_exercise_set__["a" /* ExerciseSet */](set.child("setNumber").val());
@@ -914,11 +916,11 @@ var TrainingProvider = (function () {
                                     newSet.measure = set.child("measure").val();
                                     newSet.reps = set.child("reps").val();
                                     newSet.setNumber = set.child("setNumber").val();
-                                    exercises[categories.key].tableSet.exercises[exercise.key].sets.push(newSet);
+                                    exercises[event.key].tableSet.exercises[exercise.key].sets.push(newSet);
                                 }
                                 else if (set.key == "labels") {
                                     set.forEach(function (label) {
-                                        exercises[categories.key].tableSet.exercises[exercise.key].labels.push(new __WEBPACK_IMPORTED_MODULE_10__models_custom_survey_components_labels_label__["a" /* Label */](label.val()));
+                                        exercises[event.key].tableSet.exercises[exercise.key].labels.push(new __WEBPACK_IMPORTED_MODULE_10__models_custom_survey_components_labels_label__["a" /* Label */](label.val()));
                                         return false;
                                     });
                                 }
@@ -946,10 +948,9 @@ var TrainingProvider = (function () {
     };
     TrainingProvider = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["B" /* Injectable */])(),
-        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_3_angularfire2_database__["a" /* AngularFireDatabase */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3_angularfire2_database__["a" /* AngularFireDatabase */]) === "function" && _a || Object])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_3_angularfire2_database__["a" /* AngularFireDatabase */]])
     ], TrainingProvider);
     return TrainingProvider;
-    var _a;
 }());
 
 //# sourceMappingURL=trainingProvider.js.map
@@ -1015,7 +1016,10 @@ var CalendarDay = (function () {
         this.dayOfTheWeek = this.getDayOfWeek(this.date);
         this.month = this.getMonth(this.date);
         this.dateValue = date.toISOString().slice(0, 10);
-        this.content = [];
+        this.content = {
+            planned: [],
+            executed: []
+        };
         this.calendarEvent = null;
     }
     /*
@@ -1094,15 +1098,10 @@ var CalendarDay = (function () {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Training; });
-throw new Error("Cannot find module \"./create-training/cool-down\"");
-throw new Error("Cannot find module \"./create-training/warm-up\"");
-throw new Error("Cannot find module \"./create-training/exercise-table\"");
-
-
-
 var Training = (function () {
     function Training() {
-        this.type = "Training";
+        this.date = new Date().toISOString().slice(0, 10);
+        this.categoryList = [];
         this.preCalEvent = {
             range: {},
             notes: {},
@@ -1112,14 +1111,9 @@ var Training = (function () {
             notes: {},
         };
         this.mainCalEvent = {
-            warmUp: __WEBPACK_IMPORTED_MODULE_1__create_training_warm_up__["WarmUp"],
-            coolDown: __WEBPACK_IMPORTED_MODULE_0__create_training_cool_down__["CoolDown"],
-            categories: {},
-            notes: {}
+            activities: null,
+            notes: {},
         };
-        var date = new Date();
-        this.trainingDate = date.toISOString().slice(0, 10);
-        this.trainingTime = '' + date.getHours() + ':' + date.getMinutes();
     }
     Training.prototype.addPreNote = function (k, v) {
         this.preCalEvent.notes[k] = v;
@@ -1133,23 +1127,11 @@ var Training = (function () {
     Training.prototype.addPostRange = function (k, v) {
         this.postCalEvent.range[k] = v;
     };
-    Training.prototype.setMainCalEvent = function (exercises) {
-        var _this = this;
-        exercises.forEach(function (data) {
-            var newExerciseTable = new __WEBPACK_IMPORTED_MODULE_2__create_training_exercise_table__["ExerciseTable"](data);
-            _this.mainCalEvent.categories[newExerciseTable.exercise.exerciseCategory.category.name] = {};
-            _this.mainCalEvent.categories[newExerciseTable.exercise.exerciseCategory.category.name][newExerciseTable.exercise.exerciseName] = newExerciseTable;
-            console.log('Exercises :', exercises);
-        });
+    Training.prototype.addMainCalActivity = function (activities) {
+        this.mainCalEvent.activities = activities;
     };
-    Training.prototype.setMainCalNotes = function (k, v) {
+    Training.prototype.addMainCalNote = function (k, v) {
         this.mainCalEvent.notes[k] = v;
-    };
-    Training.prototype.setCoolDown = function (coolDown) {
-        this.mainCalEvent.coolDown = coolDown;
-    };
-    Training.prototype.setWarmUp = function (warmUp) {
-        this.mainCalEvent.warmUp = warmUp;
     };
     return Training;
 }());
