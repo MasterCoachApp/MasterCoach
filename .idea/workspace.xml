@@ -3,41 +3,13 @@
   <component name="ChangeListManager">
     <list default="true" id="e7f57d27-d28c-4f55-a890-87bd4911cd01" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/src/models/calendar/calendar-day.ts" afterPath="$PROJECT_DIR$/src/models/calendar/calendar-day.ts" />
-      <change beforePath="$PROJECT_DIR$/src/models/logging/activities/activities.ts" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/models/logging/activities/exercise-set.ts" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/models/logging/activities/exercise-table.ts" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/models/logging/create-training/exercise-table.ts" afterPath="$PROJECT_DIR$/src/models/logging/create-training/exercise-table.ts" />
-      <change beforePath="$PROJECT_DIR$/src/models/logging/interfaces/exercise-table-interface.ts" afterPath="$PROJECT_DIR$/src/models/logging/interfaces/exercise-table-interface.ts" />
-      <change beforePath="$PROJECT_DIR$/src/models/logging/training.ts" afterPath="$PROJECT_DIR$/src/models/logging/training.ts" />
-      <change beforePath="$PROJECT_DIR$/src/pages/HomeTabs/home/home.ts" afterPath="$PROJECT_DIR$/src/pages/HomeTabs/home/home.ts" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Training/create-training/create-training.ts" afterPath="$PROJECT_DIR$/src/pages/Training/create-training/create-training.ts" />
-      <change beforePath="$PROJECT_DIR$/src/providers/custom-survey-components/trainings/trainingProvider.ts" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/pages/HomeTabs/home/home.html" afterPath="$PROJECT_DIR$/src/pages/HomeTabs/home/home.html" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Training/create-training/create-training.html" afterPath="$PROJECT_DIR$/src/pages/Training/create-training/create-training.html" />
       <change beforePath="$PROJECT_DIR$/src/providers/training/trainings/trainingProvider.ts" afterPath="$PROJECT_DIR$/src/providers/training/trainings/trainingProvider.ts" />
       <change beforePath="$PROJECT_DIR$/www/build/0.js" afterPath="$PROJECT_DIR$/www/build/0.js" />
-      <change beforePath="$PROJECT_DIR$/www/build/0.js.map" afterPath="$PROJECT_DIR$/www/build/0.js.map" />
       <change beforePath="$PROJECT_DIR$/www/build/1.js" afterPath="$PROJECT_DIR$/www/build/1.js" />
-      <change beforePath="$PROJECT_DIR$/www/build/1.js.map" afterPath="$PROJECT_DIR$/www/build/1.js.map" />
-      <change beforePath="$PROJECT_DIR$/www/build/10.js" afterPath="$PROJECT_DIR$/www/build/10.js" />
-      <change beforePath="$PROJECT_DIR$/www/build/11.js" afterPath="$PROJECT_DIR$/www/build/11.js" />
-      <change beforePath="$PROJECT_DIR$/www/build/12.js" afterPath="$PROJECT_DIR$/www/build/12.js" />
-      <change beforePath="$PROJECT_DIR$/www/build/13.js" afterPath="$PROJECT_DIR$/www/build/13.js" />
-      <change beforePath="$PROJECT_DIR$/www/build/2.js" afterPath="$PROJECT_DIR$/www/build/2.js" />
-      <change beforePath="$PROJECT_DIR$/www/build/2.js.map" afterPath="$PROJECT_DIR$/www/build/2.js.map" />
-      <change beforePath="$PROJECT_DIR$/www/build/3.js" afterPath="$PROJECT_DIR$/www/build/3.js" />
-      <change beforePath="$PROJECT_DIR$/www/build/3.js.map" afterPath="$PROJECT_DIR$/www/build/3.js.map" />
-      <change beforePath="$PROJECT_DIR$/www/build/4.js" afterPath="$PROJECT_DIR$/www/build/4.js" />
-      <change beforePath="$PROJECT_DIR$/www/build/5.js" afterPath="$PROJECT_DIR$/www/build/5.js" />
-      <change beforePath="$PROJECT_DIR$/www/build/6.js" afterPath="$PROJECT_DIR$/www/build/6.js" />
-      <change beforePath="$PROJECT_DIR$/www/build/7.js" afterPath="$PROJECT_DIR$/www/build/7.js" />
-      <change beforePath="$PROJECT_DIR$/www/build/8.js" afterPath="$PROJECT_DIR$/www/build/8.js" />
-      <change beforePath="$PROJECT_DIR$/www/build/9.js" afterPath="$PROJECT_DIR$/www/build/9.js" />
-      <change beforePath="$PROJECT_DIR$/www/build/main.css" afterPath="$PROJECT_DIR$/www/build/main.css" />
       <change beforePath="$PROJECT_DIR$/www/build/main.js" afterPath="$PROJECT_DIR$/www/build/main.js" />
       <change beforePath="$PROJECT_DIR$/www/build/main.js.map" afterPath="$PROJECT_DIR$/www/build/main.js.map" />
-      <change beforePath="$PROJECT_DIR$/www/build/vendor.js" afterPath="$PROJECT_DIR$/www/build/vendor.js" />
-      <change beforePath="$PROJECT_DIR$/www/build/vendor.js.map" afterPath="$PROJECT_DIR$/www/build/vendor.js.map" />
-      <change beforePath="$PROJECT_DIR$/www/index.html" afterPath="$PROJECT_DIR$/www/index.html" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -66,7 +38,7 @@
       <file leaf-file-name="home.ts" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/pages/HomeTabs/home/home.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="420">
+            <state relative-caret-position="343">
               <caret line="29" column="326" lean-forward="false" selection-start-line="29" selection-start-column="326" selection-end-line="29" selection-end-column="326" />
               <folding>
                 <element signature="e#0#51#0" expanded="true" />
@@ -78,7 +50,7 @@
       <file leaf-file-name="create-training.ts" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/pages/Training/create-training/create-training.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1404">
+            <state relative-caret-position="949">
               <caret line="296" column="30" lean-forward="false" selection-start-line="296" selection-start-column="30" selection-end-line="296" selection-end-column="30" />
               <folding>
                 <element signature="e#0#40#0" expanded="true" />
@@ -87,23 +59,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="exercise-table-interface.ts" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/models/logging/interfaces/exercise-table-interface.ts">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="135">
-              <caret line="9" column="0" lean-forward="false" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
-              <folding>
-                <element signature="e#0#66#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="trainingProvider.ts" pinned="false" current-in-tab="true">
+      <file leaf-file-name="trainingProvider.ts" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/providers/training/trainings/trainingProvider.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="397">
-              <caret line="131" column="29" lean-forward="false" selection-start-line="131" selection-start-column="29" selection-end-line="131" selection-end-column="29" />
+            <state relative-caret-position="219">
+              <caret line="121" column="151" lean-forward="false" selection-start-line="121" selection-start-column="151" selection-end-line="121" selection-end-column="151" />
               <folding>
                 <element signature="e#0#41#0" expanded="true" />
               </folding>
@@ -111,11 +71,31 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="home.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/pages/HomeTabs/home/home.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="266">
+              <caret line="57" column="46" lean-forward="false" selection-start-line="57" selection-start-column="46" selection-end-line="57" selection-end-column="46" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="create-training.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/pages/Training/create-training/create-training.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="172">
+              <caret line="70" column="32" lean-forward="false" selection-start-line="70" selection-start-column="32" selection-end-line="70" selection-end-column="32" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="training.ts" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/models/logging/training.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="87" column="0" lean-forward="false" selection-start-line="87" selection-start-column="0" selection-end-line="87" selection-end-column="0" />
+            <state relative-caret-position="286">
+              <caret line="29" column="14" lean-forward="false" selection-start-line="29" selection-start-column="8" selection-end-line="29" selection-end-column="14" />
               <folding>
                 <element signature="e#0#64#0" expanded="true" />
               </folding>
@@ -123,18 +103,8 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="exercise-table-type.ts" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/models/logging/create-training/exercise-table-type.ts">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="105">
-              <caret line="7" column="51" lean-forward="false" selection-start-line="7" selection-start-column="30" selection-end-line="7" selection-end-column="51" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="exercise-table-type-bank.ts" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/models/logging/create-training/exercise-table-type-bank.ts">
+      <file leaf-file-name="cool-down.ts" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/models/logging/create-training/cool-down.ts">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="0">
               <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -239,7 +209,6 @@
         <option value="$PROJECT_DIR$/src/models/calendar/menu-events.ts" />
         <option value="$PROJECT_DIR$/src/models/custom-survey-components/labels/label.ts" />
         <option value="$PROJECT_DIR$/src/pages/Training/create-training/create-training.scss" />
-        <option value="$PROJECT_DIR$/src/pages/Training/create-training/create-training.html" />
         <option value="$PROJECT_DIR$/src/models/logging/activities/warm-up.ts" />
         <option value="$PROJECT_DIR$/src/models/logging/activities/cool-down.ts" />
         <option value="$PROJECT_DIR$/src/models/logging/activities/exercise-set.ts" />
@@ -249,7 +218,6 @@
         <option value="$PROJECT_DIR$/src/models/logging/activities/activities.ts" />
         <option value="$PROJECT_DIR$/src/pages/HomeTabs/home/home.scss" />
         <option value="$PROJECT_DIR$/src/models/logging/activities/exercise-table.ts" />
-        <option value="$PROJECT_DIR$/src/pages/HomeTabs/home/home.html" />
         <option value="$PROJECT_DIR$/src/app/app.scss" />
         <option value="$PROJECT_DIR$/src/providers/custom-survey-components/labels/labelProvider.ts" />
         <option value="$PROJECT_DIR$/src/providers/menus/calendar-menu.ts" />
@@ -264,6 +232,8 @@
         <option value="$PROJECT_DIR$/src/pages/HomeTabs/home/home.ts" />
         <option value="$PROJECT_DIR$/src/pages/Training/create-training/create-training.ts" />
         <option value="$PROJECT_DIR$/src/providers/training/trainings/trainingProvider.ts" />
+        <option value="$PROJECT_DIR$/src/pages/HomeTabs/home/home.html" />
+        <option value="$PROJECT_DIR$/src/pages/Training/create-training/create-training.html" />
       </list>
     </option>
   </component>
@@ -865,7 +835,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="309034000" />
+    <option name="totallyTimeSpent" value="309951000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="822" extended-state="6" />
@@ -945,7 +915,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/models/logging/activities/warm-up.ts" />
     <entry file="file://$PROJECT_DIR$/src/models/logging/treatment.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -1067,17 +1036,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/pages/Training/create-training/create-training.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="447">
-          <caret line="96" column="39" lean-forward="false" selection-start-line="96" selection-start-column="39" selection-end-line="96" selection-end-column="39" />
-          <folding>
-            <element signature="n#style#0;n#ion-col#0;n#ion-row#2;n#ion-grid#0;n#div#0;n#ion-list#0;n#ion-list#0;n#ion-list#0;n#ion-content#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#ion-icon#0;n#ion-col#1;n#ion-list-header#2;n#ion-list#0;n#ion-content#0;n#!!top" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/models/logging/activities/track-events.ts" />
     <entry file="file://$PROJECT_DIR$/src/pages/HomeTabs/tabs/tabs.html">
       <provider selected="true" editor-type-id="text-editor">
@@ -1105,16 +1063,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/pages/HomeTabs/home/home.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="74">
-          <caret line="5" column="21" lean-forward="false" selection-start-line="5" selection-start-column="21" selection-end-line="5" selection-end-column="21" />
-          <folding>
-            <element signature="n#style#0;n#button#0;n#ion-title#0;n#ion-navbar#0;n#ion-header#0;n#!!top" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1216,7 +1164,7 @@
         <state relative-caret-position="135">
           <caret line="9" column="0" lean-forward="false" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
           <folding>
-            <element signature="e#0#66#0" expanded="true" />
+            <element signature="e#0#66#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1255,16 +1203,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/models/logging/training.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="87" column="0" lean-forward="false" selection-start-line="87" selection-start-column="0" selection-end-line="87" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#64#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/models/logging/exercises/exercise.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="135">
@@ -1285,19 +1223,27 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/pages/HomeTabs/home/home.ts">
+    <entry file="file://$PROJECT_DIR$/src/providers/training/trainings/trainingProvider.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="29" column="326" lean-forward="false" selection-start-line="29" selection-start-column="326" selection-end-line="29" selection-end-column="326" />
+        <state relative-caret-position="219">
+          <caret line="121" column="151" lean-forward="false" selection-start-line="121" selection-start-column="151" selection-end-line="121" selection-end-column="151" />
           <folding>
-            <element signature="e#0#51#0" expanded="true" />
+            <element signature="e#0#41#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pages/HomeTabs/home/home.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="266">
+          <caret line="57" column="46" lean-forward="false" selection-start-line="57" selection-start-column="46" selection-end-line="57" selection-end-column="46" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/pages/Training/create-training/create-training.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1404">
+        <state relative-caret-position="949">
           <caret line="296" column="30" lean-forward="false" selection-start-line="296" selection-start-column="30" selection-end-line="296" selection-end-column="30" />
           <folding>
             <element signature="e#0#40#0" expanded="true" />
@@ -1305,13 +1251,39 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/providers/training/trainings/trainingProvider.ts">
+    <entry file="file://$PROJECT_DIR$/src/models/logging/training.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="397">
-          <caret line="131" column="29" lean-forward="false" selection-start-line="131" selection-start-column="29" selection-end-line="131" selection-end-column="29" />
+        <state relative-caret-position="286">
+          <caret line="29" column="14" lean-forward="false" selection-start-line="29" selection-start-column="8" selection-end-line="29" selection-end-column="14" />
           <folding>
-            <element signature="e#0#41#0" expanded="true" />
+            <element signature="e#0#64#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/models/logging/create-training/cool-down.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pages/HomeTabs/home/home.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="343">
+          <caret line="29" column="326" lean-forward="false" selection-start-line="29" selection-start-column="326" selection-end-line="29" selection-end-column="326" />
+          <folding>
+            <element signature="e#0#51#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pages/Training/create-training/create-training.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="172">
+          <caret line="70" column="32" lean-forward="false" selection-start-line="70" selection-start-column="32" selection-end-line="70" selection-end-column="32" />
+          <folding />
         </state>
       </provider>
     </entry>

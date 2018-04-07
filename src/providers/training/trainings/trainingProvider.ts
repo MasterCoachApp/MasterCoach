@@ -112,13 +112,14 @@ export class TrainingProvider {
                     training.mainCalEvent.warmUp = new WarmUp(main.child("warmUp").val());
                     training.mainCalEvent.coolDown = new CoolDown(main.child("coolDown").val());
                     main.child("exercises").forEach(exercises => {
-                        // let headers = exercises.child("exerciseTableType").child("tableHeaderList").val();
-                        // let headerList: string[] = [];
-                        // headers.forEach(header => {
-                        //     headerList.push(header);
-                        // });
-                        // let tableType = new ExerciseTableType(exercises.child("exerciseTableType").child("tableTypeName").val(), headerList);
-                        let ex = new Exercise(exercises.child("exerciseName").val(), new ExerciseCategory(exercises.child("category").val()), null);
+                        let headers = exercises.child("exerciseTableType").child("tableHeaderList");
+                        let headerList: string[] = [];
+                        headers.forEach(header => {
+                            headerList.push(header.val());
+                            return false;
+                        });
+                        let tableType = new ExerciseTableType(exercises.child("exerciseTableType").child("tableTypeName").val(), headerList);
+                        let ex = new Exercise(exercises.child("exerciseName").val(), new ExerciseCategory(exercises.child("category").val()), tableType);
                         let table = new ExerciseTable(ex);
                         table.sets = [];
                         table.labels = [];

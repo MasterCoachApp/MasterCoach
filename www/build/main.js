@@ -952,9 +952,10 @@ var AuthenticationProvider = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__models_logging_create_training_cool_down__ = __webpack_require__(265);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__menus_calendar_menu__ = __webpack_require__(89);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__models_logging_exercises_exercise__ = __webpack_require__(88);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__models_logging_create_training_exercise_table__ = __webpack_require__(266);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__models_logging_create_training_exercise_set__ = __webpack_require__(267);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__models_logging_create_training_exercise_category__ = __webpack_require__(211);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__models_logging_create_training_exercise_table_type__ = __webpack_require__(213);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__models_logging_create_training_exercise_table__ = __webpack_require__(266);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__models_logging_create_training_exercise_set__ = __webpack_require__(267);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__models_logging_create_training_exercise_category__ = __webpack_require__(211);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -964,6 +965,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+
 
 
 
@@ -1058,14 +1060,15 @@ var TrainingProvider = (function () {
                     training.mainCalEvent.warmUp = new __WEBPACK_IMPORTED_MODULE_6__models_logging_create_training_warm_up__["a" /* WarmUp */](main.child("warmUp").val());
                     training.mainCalEvent.coolDown = new __WEBPACK_IMPORTED_MODULE_7__models_logging_create_training_cool_down__["a" /* CoolDown */](main.child("coolDown").val());
                     main.child("exercises").forEach(function (exercises) {
-                        // let headers = exercises.child("exerciseTableType").child("tableHeaderList").val();
-                        // let headerList: string[] = [];
-                        // headers.forEach(header => {
-                        //     headerList.push(header);
-                        // });
-                        // let tableType = new ExerciseTableType(exercises.child("exerciseTableType").child("tableTypeName").val(), headerList);
-                        var ex = new __WEBPACK_IMPORTED_MODULE_9__models_logging_exercises_exercise__["a" /* Exercise */](exercises.child("exerciseName").val(), new __WEBPACK_IMPORTED_MODULE_12__models_logging_create_training_exercise_category__["a" /* ExerciseCategory */](exercises.child("category").val()), null);
-                        var table = new __WEBPACK_IMPORTED_MODULE_10__models_logging_create_training_exercise_table__["a" /* ExerciseTable */](ex);
+                        var headers = exercises.child("exerciseTableType").child("tableHeaderList");
+                        var headerList = [];
+                        headers.forEach(function (header) {
+                            headerList.push(header.val());
+                            return false;
+                        });
+                        var tableType = new __WEBPACK_IMPORTED_MODULE_10__models_logging_create_training_exercise_table_type__["a" /* ExerciseTableType */](exercises.child("exerciseTableType").child("tableTypeName").val(), headerList);
+                        var ex = new __WEBPACK_IMPORTED_MODULE_9__models_logging_exercises_exercise__["a" /* Exercise */](exercises.child("exerciseName").val(), new __WEBPACK_IMPORTED_MODULE_13__models_logging_create_training_exercise_category__["a" /* ExerciseCategory */](exercises.child("category").val()), tableType);
+                        var table = new __WEBPACK_IMPORTED_MODULE_11__models_logging_create_training_exercise_table__["a" /* ExerciseTable */](ex);
                         table.sets = [];
                         table.labels = [];
                         exercises.child("labels").forEach(function (label) {
@@ -1073,7 +1076,7 @@ var TrainingProvider = (function () {
                             return false;
                         });
                         exercises.child("sets").forEach(function (set) {
-                            var newSet = new __WEBPACK_IMPORTED_MODULE_11__models_logging_create_training_exercise_set__["a" /* ExerciseSet */](set.child("setNumber").val());
+                            var newSet = new __WEBPACK_IMPORTED_MODULE_12__models_logging_create_training_exercise_set__["a" /* ExerciseSet */](set.child("setNumber").val());
                             newSet.detail = set.child("detail").val();
                             newSet.complete = set.child("complete").val();
                             newSet.measure = set.child("measure").val();

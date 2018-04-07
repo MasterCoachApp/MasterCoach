@@ -60,7 +60,7 @@
                                 <div *ngFor="let cat of event.categories" style="padding-bottom: 12px">
                                     <span class="categoryHeader">{{cat}}</span>
                                     <div *ngFor="let exercise of event.mainCalEvent.exercises">
-                                        <ion-note class="exerciseHeader" *ngIf="exercise.category == cat">
+                                        <ion-note class="exerciseHeader" *ngIf="exercise.exerciseCategory.category.name == cat">
                                             {{exercise.exerciseName}}
                                         </ion-note>
                                     </div>

@@ -68,34 +68,34 @@
         <ion-list class="item-accordion" *ngIf="isGroupShown('training')">
             <ion-list>
                 <ion-label stacked class="trainingHeaders">Warm Up</ion-label>
-                <ion-row *ngIf="!training.mainCalEvent.warmUp">
+                <ion-row *ngIf="training.mainCalEvent.warmUp.name != ''">
                     <ion-col class="addWarmUpCoolDown" (click)="addWarmUp()">
                         + Add Warm Up
                     </ion-col>
                 </ion-row>
-                <ion-item *ngIf="training.mainCalEvent.warmUp">
-                    <button ion-button (click)="addWarmUp()">{{training.mainCalEvent.warmUp}}
+                <ion-item *ngIf="training.mainCalEvent.warmUp.name == ''">
+                    <button ion-button (click)="addWarmUp()">{{training.mainCalEvent.warmUp.name}}
                         <ion-icon class="trainingHeaders" name="close"
-                                  (click)="training.setWarmUp(null)">
+                                  (click)="addWarmUp()">
                         </ion-icon>
                     </button>
                 </ion-item>
                 <ion-label stacked class="trainingHeaders">Training</ion-label>
                 <div *ngFor="let exercise of training.mainCalEvent.exercises ; let i = index">
                     <ion-grid class="exerciseTable" no-margin>
-                        <ion-row *ngIf="i >= 1 && training.mainCalEvent.exercises[i].exercise.exerciseCategory !== training.mainCalEvent.exercises[i-1].exercise.exerciseCategory">
+                        <ion-row *ngIf="i >= 1 && training.mainCalEvent.exercises[i].exerciseCategory !== training.mainCalEvent.exercises[i-1].exerciseCategory">
                             <ion-col style="font-size: large" left>
-                                {{exercise.exercise.exerciseCategory.category.name}}
+                                {{exercise.exerciseCategory.category.name}}
                             </ion-col>
                         </ion-row>
                         <ion-row *ngIf="i == 0">
                             <ion-col style="font-size: large" left>
-                                {{exercise.exercise.exerciseCategory.category.name}}
+                                {{exercise.exerciseCategory.category.name}}
                             </ion-col>
                         </ion-row>
                         <!--<div *ngFor="let exercise of exercisesByCategory[exerciseCategory]">-->
                             <ion-row style="padding-bottom: 5px; width: 100%;" nowrap align-items-center justify-content-between>
-                                <ion-col style="font-size: medium" left>{{exercise.exercise.exerciseName}}</ion-col>
+                                <ion-col style="font-size: medium" left>{{exercise.exerciseName}}</ion-col>
                                 <ion-col col-1 style="margin-right: 20px">
                                     <button ion-button class="exerciseTableIcon" (click)="addLabel(exercise)">
                                         <ion-icon name="pricetags"></ion-icon>
@@ -168,20 +168,20 @@
                 </ion-grid>
             </ion-list>
             <ion-label stacked class="trainingHeaders">Cool Down</ion-label>
-            <ion-row *ngIf="!training.mainCalEvent.coolDown">
+            <ion-row *ngIf="training.mainCalEvent.coolDown.name != ''">
                 <ion-col text-capitalize class="addWarmUpCoolDown" (click)="addCoolDown()">
                     + Add Cool Down
                 </ion-col>
             </ion-row>
-            <ion-item *ngIf="training.mainCalEvent.coolDown">
-                <ion-card class="warmUpCard" ion-button (click)="addCoolDown()">{{training.mainCalEvent.coolDown}}
+            <ion-item *ngIf="training.mainCalEvent.coolDown.name == ''">
+                <ion-card class="warmUpCard" ion-button (click)="addCoolDown()">{{training.mainCalEvent.coolDown.name}}
                     <ion-icon class="trainingHeaders" name="close"
-                              (click)="training.setCoolDown(null)"></ion-icon>
+                              (click)="training.mainCalEvent.coolDown.name = ''"></ion-icon>
                 </ion-card>
             </ion-item>
             <ion-item>
                 <ion-label stacked>Notes</ion-label>
-                <ion-textarea class="thoughts" [(ngModel)]="training.mainCalEvent.notes.val"></ion-textarea>
+                <ion-textarea class="thoughts" [(ngModel)]="training.mainCalEvent.notes['main']"></ion-textarea>
             </ion-item>
         </ion-list>
 
