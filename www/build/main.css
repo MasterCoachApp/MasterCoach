@@ -9461,7 +9461,7 @@ ion-card-content {
   border-width: 1px;
   border-top-width: 0;
   border-left-width: 0;
-  border-style: none;
+  border-style: solid;
   border-color: #fff;
   -webkit-transform: rotate(45deg);
   transform: rotate(45deg);
@@ -33455,6 +33455,68 @@ ion-calendar .calendar-row .select {
   box-shadow: 5px 10px 18px #888888;
 }
 
+page-add-exercise ion-content {
+  background-color: white;
+}
+
+page-add-exercise ion-list-header {
+  color: white;
+}
+
+page-add-exercise .list .item.item-accordion {
+  -webkit-transition: all linear 5s;
+  transition: all linear 5s;
+  line-height: 38px;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+page-add-exercise .list .item.item-accordion.ng-hide {
+  line-height: 0;
+}
+
+page-add-exercise .list .item.item-accordion.ng-hide-add,
+page-add-exercise .list .item.item-accordion.ng-hide-remove {
+  display: block !important;
+}
+
+page-add-exercise .searchList {
+  padding: 5px 0 0 0;
+}
+
+page-add-exercise .categoryArrow {
+  padding-left: 20px;
+  -webkit-align-content: right;
+  -ms-flex-line-pack: right;
+  align-content: right;
+}
+
+page-add-exercise .noDisplay {
+  line-height: 0;
+  -webkit-transition: line-height linear 1s;
+  transition: line-height linear 1s;
+}
+
+page-add-exercise .categoryToggle {
+  line-height: 10px;
+  -webkit-transition: all linear 5s;
+  transition: all linear 5s;
+  padding-top: 5px;
+  padding-left: 0;
+}
+
+page-create-exercise ion-input {
+  font-size: medium;
+  padding-left: 60px;
+  text-align: right;
+}
+
+page-create-exercise .newLabel {
+  opacity: 0.7;
+  font-size: medium;
+  text-align: right;
+}
+
 page-home .executed {
   margin-top: 50px;
 }
@@ -33892,6 +33954,9 @@ page-create-training .rangeText {
 
 page-create-training .ionItemCrop {
   height: 50px;
+  width: 100%;
+  padding-left: 15px;
+  vertical-align: center;
 }
 
 page-create-training .alertCss {
@@ -33923,31 +33988,64 @@ page-create-training .scroll {
 page-create-training .exerciseTable {
   background-color: #161b1f;
   color: #999999;
-}
-
-page-create-training .addSet {
-  text-align: center;
-  border: 1px solid #8795CD;
-  margin-top: 5px;
+  border-collapse: collapse;
 }
 
 page-create-training .exerciseHeader {
   font-style: italic;
+  text-align: center;
 }
 
 page-create-training .exerciseCol {
   background-color: white;
   color: #999999;
-  border: 1px solid black;
+  border: solid thin grey;
   text-align: center;
 }
 
-page-create-training .label {
+page-create-training .exerciseTableLabel {
   font-size: 12px;
+  height: 20px;
+  padding: 5%;
 }
 
-page-create-training .addSetButton {
+page-create-training .exerciseTableIcon {
+  border-radius: 25px;
+  width: 10px;
+  height: 30px;
+}
+
+page-create-training .ion-checkbox {
+  background-color: white;
+}
+
+page-create-training .addSet {
+  text-align: center;
+  border: 1px solid #8795CD;
+  font-size: 10px;
   width: 100%;
+}
+
+page-create-training .addWarmUpCoolDown {
+  text-align: center;
+  border: 1px solid #8795CD;
+  margin: 5px;
+  font-size: 10px;
+  width: 100%;
+}
+
+page-create-training .warmUpCard {
+  -webkit-box-shadow: 0 1px 1px 0 #999999, 0 1px 1px 0 #999999;
+  box-shadow: 0 1px 1px 0 #999999, 0 1px 1px 0 #999999;
+}
+
+page-create-training .addExercise {
+  color: white;
+  border: 1px solid #8795CD;
+  text-align: center;
+  width: 100%;
+  margin: 10px 5px 5px 5px;
+  line-height: 24px;
 }
 
 page-create-training .list .item.item-accordion {
