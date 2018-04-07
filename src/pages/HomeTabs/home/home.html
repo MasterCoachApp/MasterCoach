@@ -5,7 +5,7 @@
                 <ion-icon name="menu"></ion-icon>
             </button>
         </ion-buttons>
-        <ion-title><button style="font-size: 20px; background: none" (click)="changMonth('minus')"><ion-icon color="primary" name="md-arrow-dropleft"></ion-icon></button>  {{monthInView}} {{dateInView.getFullYear()}} <button style="font-size: 20px; background: none" (click)="changMonth('plus')"><ion-icon color="primary" name="md-arrow-dropright"></ion-icon> </button>
+        <ion-title><button style="font-size: 20px; background: none" (click)="changMonth('minus')"><ion-icon color="primary" name="md-arrow-dropleft"></ion-icon></button>  <button (click)="this.content.scrollToTop(200)" style="font-size: 16px; background: none; color: white;">{{monthInView}} {{dateInView.getFullYear()}}</button> <button style="font-size: 20px; background: none" (click)="changMonth('plus')"><ion-icon color="primary" name="md-arrow-dropright"></ion-icon> </button>
         </ion-title>
         <ion-buttons end (click)="goToToday()">
             <button ion-button>
@@ -16,8 +16,12 @@
 </ion-header>
 
 <ion-content>
+    <ion-refresher (ionRefresh)="setCalendarEvents($event)">
+        <ion-refresher-content></ion-refresher-content>
+    </ion-refresher>
     <ion-list no-lines no-border id="calendarList">
-        <ion-item *ngFor="let date of datesThisMonth" id="{{date.dateValue}}">
+        <ion-item-sliding #item no-border *ngFor="let date of datesThisMonth" id="{{date.dateValue}}">
+        <ion-item>
             <ion-row>
                 <ion-col col-2 class="tableCol">
                     <div left text-capitalize="none">
@@ -53,11 +57,11 @@
                                         <ion-list-header class="header">{{event.time}}</ion-list-header>
                                     </ion-col>
                                 </ion-row>
-                                <div *ngFor="let cat of event.mainCalEvent.activities.exercises | keys" style="padding-bottom: 12px">
+                                <div *ngFor="let cat of event.categories" style="padding-bottom: 12px">
                                     <span class="categoryHeader">{{cat}}</span>
-                                    <div *ngFor="let key of event.mainCalEvent.activities.exercises[cat].tableSet.exercises | keys">
-                                        <ion-note class="exerciseHeader">
-                                            {{key}}
+                                    <div *ngFor="let exercise of event.mainCalEvent.exercises">
+                                        <ion-note class="exerciseHeader" *ngIf="exercise.category == cat">
+                                            {{exercise.exerciseName}}
                                         </ion-note>
                                     </div>
                                 </div>
@@ -67,6 +71,14 @@
                 </ion-col>
             </ion-row>
         </ion-item>
+            <ion-item-options side="right">
+                <button ion-button >Labels</button>
+                <button ion-button color="secondary">View</button>
+            </ion-item-options>
+            <ion-item-options side="left">
+                <button ion-button color="danger">Delete</button>
+            </ion-item-options>
+        </ion-item-sliding>
     </ion-list>
 
     <ion-fab class="circleTab" right bottom>

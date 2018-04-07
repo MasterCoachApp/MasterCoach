@@ -1,5 +1,4 @@
 import {CalendarEvent} from '../logging/calendar-event';
-import {TrainingProvider} from "../../providers/custom-survey-components/trainings/trainingProvider";
 import {Training} from "../logging/training";
 
 export class CalendarDay {

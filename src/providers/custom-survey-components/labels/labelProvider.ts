@@ -10,4 +10,5 @@ export class LabelProvider {
     constructor() {
         this.listOfLabels = new LabelBank().labelBank;
     }
+
 }

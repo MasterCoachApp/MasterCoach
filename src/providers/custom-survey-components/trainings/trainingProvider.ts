@@ -10,6 +10,7 @@ import {CoolDown} from "../../../models/logging/activities/cool-down";
 import {ExerciseTable} from "../../../models/logging/activities/exercise-table";
 import {ExerciseSet} from "../../../models/logging/activities/exercise-set";
 import {Label} from "../../../models/custom-survey-components/labels/label";
+import {CalendarMenu} from "../../menus/calendar-menu";
 
 @Injectable()
 export class TrainingProvider {
@@ -18,7 +19,7 @@ export class TrainingProvider {
     preTraining = new PreTraining();
     postTraining = new PostTraining();
 
-    constructor(private db: AngularFireDatabase) {
+    constructor(private db: AngularFireDatabase, public calMenu: CalendarMenu) {
         this.getCustomPostTraining();
         this.getCustomPreTraining();
         this.listOfTrainings = [];
@@ -49,8 +50,8 @@ export class TrainingProvider {
                     let main = snap.child("mainCalEvent");
 
                     training.type = snap.child("type").val();
-                    training.date = snap.child("trainingDate").val();
-                    training.time = snap.child("trainingTime").val();
+                    training.trainingDate = snap.child("trainingDate").val();
+                    training.trainingTime = snap.child("trainingTime").val();
 
                     post.child("notes").forEach(note => {
                         training.addPostNote(note.key, note.val());
@@ -74,42 +75,36 @@ export class TrainingProvider {
                         return false;
                     });
 
-                    let activity = new Activities();
-                    activity.warmUp = new WarmUp(main.child("warmup").val());
-                    activity.coolDown = new CoolDown(main.child("cooldown").val());
-                    let exercises = {};
-                    main.child("categories").forEach(categories => {
-                        categories.forEach(exercise => {
-                            exercises[categories.key][exercise.key]= new ExerciseTable();
-                            exercises[categories.key][exercise.key].category = exercise.child("exercise").child("category").val();
-                            exercises[categories.key][exercise.key].exerciseName = exercise.key;
-                            exercises[categories.key][exercise.key].sets = [];
-                            exercise.forEach(set => {
-                                if (set.key != "labels" && set.key != "category") {
-                                    let newSet = new ExerciseSet(set.child("setNumber").val());
-                                    newSet.detail = set.child("detail").val();
-                                    newSet.complete = set.child("complete").val();
-                                    newSet.measure = set.child("measure").val();
-                                    newSet.reps = set.child("reps").val();
-                                    newSet.setNumber = set.child("setNumber").val();
-                                    exercises[categories.key].tableSet.exercises[exercise.key].sets.push(newSet);
-                                }
-                                else if (set.key == "labels") {
-                                    set.forEach(label => {
-                                        exercises[categories.key].tableSet.exercises[exercise.key].labels.push(new Label(label.val()));
-                                        return false;
-                                    });
-                                }
+                    training.mainCalEvent.warmUp = new WarmUp(main.child("warmUp").val());
+                    training.mainCalEvent.coolDown = new CoolDown(main.child("coolDown").val());
+                    main.child("exercises").forEach(exercises => {
+                            let table = new ExerciseTable();
+                            table.sets = [];
+                            table.labels = [];
+                            table.exerciseName = exercises.child("exerciseName").val();
+                            table.category = exercises.child("category").val();
+
+                            exercises.child("labels").forEach(label => {
+                                table.labels.push(label.val());
                                 return false;
                             });
-                            return false;
-                        });
+
+                            exercises.child("sets").forEach(set => {
+                                let newSet = new ExerciseSet(set.child("setNumber").val());
+                                newSet.detail = set.child("detail").val();
+                                newSet.complete = set.child("complete").val();
+                                newSet.measure = set.child("measure").val();
+                                newSet.reps = set.child("reps").val();
+                                newSet.setNumber = set.child("setNumber").val();
+                                table.sets.push(newSet);
+                                return false;
+                            });
+                            training.mainCalEvent.exercises.push(table);
                         return false;
                     });
-                    activity.exercises = exercises;
-                    training.mainCalEvent.activities = activity;
 
                     listOfTrainings.push(training);
+                    training.getCategories();
                     return false;
                 });
                 that.listOfTrainings = listOfTrainings;
@@ -121,6 +116,40 @@ export class TrainingProvider {
         }).catch(error => {
             console.log(error);
             return error;
+        });
+    }
+
+
+    setEventsNextMonth() {
+        this.calMenu.datesArray.datesNextMonth.forEach(date => {
+            date.content = [];
+            this.listOfTrainings.forEach(training => {
+                if (training.trainingDate == date.dateValue) {
+                    date.content.push(training);
+                }
+            });
+        });
+    }
+
+    setEventsLastMonth() {
+        this.calMenu.datesArray.datesLastMonth.forEach(date => {
+            date.content = [];
+            this.listOfTrainings.forEach(training => {
+                if (training.trainingDate == date.dateValue) {
+                    date.content.push(training);
+                }
+            });
+        });
+    }
+
+    setEventsCurrentMonth() {
+        this.calMenu.datesArray.datesThisMonth.forEach(date => {
+            date.content = [];
+            this.listOfTrainings.forEach(training => {
+                if (training.trainingDate == date.dateValue) {
+                    date.content.push(training);
+                }
+            });
         });
     }
 

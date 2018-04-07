@@ -8,7 +8,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CreateTrainingPageModule", function() { return CreateTrainingPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(37);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__create_training__ = __webpack_require__(677);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__create_training__ = __webpack_require__(676);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -41,7 +41,7 @@ var CreateTrainingPageModule = (function () {
 
 /***/ }),
 
-/***/ 677:
+/***/ 676:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -51,7 +51,7 @@ var CreateTrainingPageModule = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_users_users__ = __webpack_require__(153);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_users_entries__ = __webpack_require__(449);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__providers_tools_tools__ = __webpack_require__(68);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__models_logging_activities_activities__ = __webpack_require__(448);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__models_logging_activities_activities__ = __webpack_require__(677);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__text_popover_text_popover__ = __webpack_require__(445);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__providers_custom_survey_components_labels_labelProvider__ = __webpack_require__(89);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__providers_custom_survey_components_trainings_trainingProvider__ = __webpack_require__(444);
@@ -279,6 +279,60 @@ var CreateTrainingPage = (function () {
 }());
 
 //# sourceMappingURL=create-training.js.map
+
+/***/ }),
+
+/***/ 677:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Activities; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__exercise_table__ = __webpack_require__(448);
+
+var Activities = (function () {
+    function Activities() {
+        this.warmUp = null;
+        this.coolDown = null;
+        this.exercises = {};
+    }
+    // addExercise()
+    Activities.prototype.getEvents = function () {
+        // return this.trackEvents;
+    };
+    Activities.prototype.getCoolDown = function () {
+        return this.coolDown;
+    };
+    Activities.prototype.getWarmUp = function () {
+        return this.warmUp;
+    };
+    Activities.prototype.setCoolDown = function (coolDown) {
+        this.coolDown = coolDown;
+    };
+    Activities.prototype.setWarmUp = function (warmUp) {
+        this.warmUp = warmUp;
+    };
+    Activities.prototype.removeEvent = function (event) {
+        //this.trackEvents.splice(this.trackEvents.indexOf(event),1);
+    };
+    Activities.prototype.setEvents = function (trackEvents) {
+        // this.trackEvents = trackEvents;
+    };
+    Activities.prototype.addExercises = function (exercises) {
+        var _this = this;
+        exercises.forEach(function (data) {
+            var newExercise = new __WEBPACK_IMPORTED_MODULE_0__exercise_table__["a" /* ExerciseTable */]();
+            newExercise.setName(data);
+            _this.exercises[newExercise.exerciseName] = newExercise;
+            console.log('Exercises :', exercises);
+        });
+    };
+    Activities.prototype.removeExercise = function (exerciseToDelete) {
+        //this.exercises.splice(this.exercises.indexOf(exerciseToDelete),1)
+    };
+    return Activities;
+}());
+
+//# sourceMappingURL=activities.js.map
 
 /***/ })
 

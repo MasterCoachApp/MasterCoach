@@ -75,7 +75,7 @@ export class CalendarMenu {
 
     getPossibleYears(): number[] {
         let years: number[] = [];
-        for (let i = this.displayedYear; i >= 1970; i--) {
+        for (let i = this.displayedYear + 5; i >= 1970; i--) {
             years.push(i);
         }
         return years;
@@ -87,7 +87,7 @@ export class CalendarMenu {
         this.monthsArray.nextMonth = new CalendarDay(date).month;
 
         let month = date.getMonth();
-        this.datesArray.datesNextMonth = this.getDatesInMonth(month, date.getFullYear());
+        this.datesArray.datesNextMonth = this.getDatesInMonth(month, this.displayedYear);
     }
 
     setThisMonth(date: Date) {
@@ -96,7 +96,7 @@ export class CalendarMenu {
         this.monthsArray.thisMonth = calDay.month;
 
         let month = date.getMonth();
-        this.datesArray.datesThisMonth = this.getDatesInMonth(month, date.getFullYear());
+        this.datesArray.datesThisMonth = this.getDatesInMonth(month, this.displayedYear);
     }
 
     setLastMonth(date: Date) {
@@ -105,7 +105,7 @@ export class CalendarMenu {
         this.monthsArray.lastMonth = new CalendarDay(date).month;
 
         let month = date.getMonth();
-        this.datesArray.datesLastMonth = this.getDatesInMonth(month, date.getFullYear());
+        this.datesArray.datesLastMonth = this.getDatesInMonth(month, this.displayedYear);
     }
 
     getDatesInMonth(month, year) {

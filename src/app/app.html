@@ -1,7 +1,12 @@
 <ion-menu [content]="content" type="reveal" id="mainCalendarMenu">
     <ion-header>
         <ion-toolbar>
-            <ion-label style="font-size: 14px; color: white; padding-left: 10px">Jonah Elbaz</ion-label>
+            <ion-item no-lines color="dark">
+                <ion-label style="font-size: 14px; color: white; padding-left: 10px;">Jonah Elbaz</ion-label>
+                <ion-select [(ngModel)]="this.calendarMenu.displayedYear" (ionChange)="this.setCalendarYear()">
+                    <ion-option *ngFor="let year of years">{{year}}</ion-option>
+                </ion-select>
+            </ion-item>
         </ion-toolbar>
     </ion-header>
     <ion-content>
@@ -11,16 +16,11 @@
         <!--(onMonthSelect)="onMonthSelect($event)"-->
         <!--(onDaySelect)="onDaySelect($event)">-->
         <!--</ion-calendar>-->
-            <ion-item no-lines>
-                <ion-select [(ngModel)]="displayedYear" (ionChange)="this.setCalendarYear()">
-                    <ion-option *ngFor="let year of years">{{year}}</ion-option>
-                </ion-select>
-            </ion-item>
 
-        <ion-label class="menuSectionHeader" (click)="collapsable.filter.main = !collapsable.filter.main">
-                <ion-icon item-left name="ios-arrow-forward" *ngIf="!collapsable.filter.main"></ion-icon>
-                <ion-icon item-left name="ios-arrow-down" *ngIf="collapsable.filter.main"></ion-icon>
+           <ion-label class="menuSectionHeader" (click)="collapsable.filter.main = !collapsable.filter.main">
                 Filters
+               <ion-icon class="arrowIcon" item-left name="ios-arrow-forward" *ngIf="!collapsable.filter.main"></ion-icon>
+               <ion-icon class="arrowIcon" item-left name="ios-arrow-down" *ngIf="collapsable.filter.main"></ion-icon>
             </ion-label>
             <ion-list no-lines id="filterList" class="accordion-list" *ngIf="collapsable.filter.main">
 
@@ -33,10 +33,6 @@
                         <ion-checkbox></ion-checkbox>
                     </ion-item>
                 </div>
-                <ion-label class="calendar-item filter" (click)="collapsable.filter.trainingResultFilterOpen = !collapsable.filter.trainingResultFilterOpen">
-                    Training Result
-                </ion-label>
-
                 <ion-label class="calendar-item filter" (click)="collapsable.filter.athleteFilterOpen = !collapsable.filter.athleteFilterOpen">
                     Athlete
                 </ion-label>

@@ -2,52 +2,17 @@ import {Label} from "../../custom-survey-components/labels/label";
 import {ExerciseSet} from "./exercise-set";
 
 export class ExerciseTable {
-    // export class ExerciseTable implements ITable { // maybe replace with this later when I want to enforce an interface
 
     public labels: Label[];
     public exerciseName: string;
     public category: string;
-    public array: string[];
-   // public tableType: string;
-    //public tableHeaders: string[];
-    public sets: ExerciseSet[]; // need to make this a Set[] - DONE
-    //public notes: string;
-    //public pinnedNotes: string;
-    //public showNotes: boolean;
-    // public columnMap: ExerciseTableColumn;
-
-    // public table: {};
-
-    // getTable(): {} {
-        // return this.table;
-    // };
+    public sets: ExerciseSet[];
 
     constructor() {
         this.labels = [];
         this.exerciseName = null;
         this.sets = [new ExerciseSet(1)];
         this.category = "";
-        this.array = [];
-        // this.tableType = null;
-        // this.tableHeaders = ['#', 'Detail', 'Measure', 'Reps']; // hard coded for now
-        // this.notes = null;
-        // this.pinnedNotes = null;
-        // this.showNotes = false;
-
-        // this.table = this.makeTable();
-    }
-
-    makeTable() {
-        let table = {
-            labels: this.labels,
-            //tableType: this.tableType,
-            exerciseName: this.exerciseName,
-            sets: this.sets,
-           // notes: this.notes,
-            //pinnedNotes: this.pinnedNotes
-        };
-
-        return table;
     }
 
     addLabels(labelsToAdd: Label[]) {

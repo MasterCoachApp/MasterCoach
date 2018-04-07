@@ -27,62 +27,63 @@ import {TrainingProvider} from "../providers/custom-survey-components/trainings/
 import {CalendarModule} from "ionic3-calendar-en";
 
 @NgModule({
-  declarations: [
-    MyApp,
-      TextPopoverPage,
-    // AboutPage,
-    // ContactPage,
-    // HomePage,
-    // TabsPage,
-    // LoginPage,
-    // CreateAccountPage,
-    // ForgotPasswordPage,
-    // StandardLoginPage,
-    // CreateTrainingPage
-  ],
-  imports: [
-    BrowserModule,
-    IonicModule.forRoot(MyApp),
-    IonicStorageModule.forRoot(),
-    AngularFireModule.initializeApp(FIREBASE_CONFIG),
-    AngularFireDatabaseModule,
-    AngularFireAuthModule,
-    AngularFireModule,
-      CalendarModule
-  ],
-  bootstrap: [IonicApp],
-  entryComponents: [
-    MyApp,
-      TextPopoverPage
-    // AboutPage,
-    // ContactPage,
-    // HomePage,
-    // TabsPage,
-    // LoginPage,
-    // CreateAccountPage,
-    // ForgotPasswordPage,
-    // StandardLoginPage,
-    // CreateTrainingPage
-  ],
-  providers: [
-    StatusBar,
-    SplashScreen,
-    Facebook,
-    {provide: ErrorHandler, useClass: IonicErrorHandler},
-    Keyboard,
-    UsersProvider,
-    ToolsProvider,
-    AuthenticationProvider,
-    ValidationProvider,
-    CalendarMenu,
-    DatePicker,
-    GooglePlus,
-    EntryProvider,
-    LabelProvider,
-    TrainingProvider
-  ],
+    declarations: [
+        MyApp,
+        TextPopoverPage,
+        // AboutPage,
+        // ContactPage,
+        // HomePage,
+        // TabsPage,
+        // LoginPage,
+        // CreateAccountPage,
+        // ForgotPasswordPage,
+        // StandardLoginPage,
+        // CreateTrainingPage
+    ],
+    imports: [
+        BrowserModule,
+        IonicModule.forRoot(MyApp),
+        IonicStorageModule.forRoot(),
+        AngularFireModule.initializeApp(FIREBASE_CONFIG),
+        AngularFireDatabaseModule,
+        AngularFireAuthModule,
+        AngularFireModule,
+        CalendarModule
+    ],
+    bootstrap: [IonicApp],
+    entryComponents: [
+        MyApp,
+        TextPopoverPage
+        // AboutPage,
+        // ContactPage,
+        // HomePage,
+        // TabsPage,
+        // LoginPage,
+        // CreateAccountPage,
+        // ForgotPasswordPage,
+        // StandardLoginPage,
+        // CreateTrainingPage
+    ],
+    providers: [
+        StatusBar,
+        SplashScreen,
+        Facebook,
+        {provide: ErrorHandler, useClass: IonicErrorHandler},
+        Keyboard,
+        UsersProvider,
+        ToolsProvider,
+        AuthenticationProvider,
+        ValidationProvider,
+        CalendarMenu,
+        DatePicker,
+        GooglePlus,
+        EntryProvider,
+        LabelProvider,
+        TrainingProvider
+    ],
     schemas: [
         CUSTOM_ELEMENTS_SCHEMA
     ],
 })
-export class AppModule {}
+export class AppModule {
+}

@@ -41,9 +41,8 @@ export class MyApp {
       filter: {
           main: true,
           eventFilterOpen: false,
-          trainingResultFilterOpen: false,
           athleteFilterOpen: false,
-          labelsFilterOpen: false
+          labelsFilterOpen: true
       },
     };
 
@@ -52,7 +51,8 @@ export class MyApp {
     listOfLabels: Label[];
 
       setCalendarYear() {
-          this.calendarMenu.setDisplayYear(this.displayedYear);
+          this.calendarMenu.displayedYear = this.displayedYear;
+         // this.calendarMenu.
       }
 
       setBaseMenuSettings() {

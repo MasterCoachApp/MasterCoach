@@ -1,10 +1,7 @@
-import {Activities} from "./create-training/activities";
 import {IEventsComponents} from "./interfaces/event-components";
-import {CoolDown} from "./create-training/cool-down";
-import {WarmUp} from "./create-training/warm-up";
-import {ExerciseTable} from "./create-training/exercise-table";
-import {Exercise} from "./exercises/exercise";
-
+import {WarmUp} from "./activities/warm-up";
+import {CoolDown} from "./activities/cool-down";
+import {ExerciseTable} from "./activities/exercise-table";
 
 export class Training implements IEventsComponents {
 
@@ -31,20 +28,18 @@ export class Training implements IEventsComponents {
     mainCalEvent: {
         warmUp: WarmUp,
         coolDown: CoolDown,
-        categories: {
-            [key: string] : { // exerciseCategory.category.name
-                [key: string]: ExerciseTable
-            }
-        },
+        exercises: ExerciseTable[],
         notes: {
             [key: string]: any
         }
     };
+    categories: string[]; //list of all categories the exercises in this training contain
     trainingDate: string;
     trainingTime: string;
 
 
     constructor() {
+        this.categories = [];
         this.preCalEvent = {
             range: {},
             notes: {},
@@ -60,7 +55,7 @@ export class Training implements IEventsComponents {
         this.mainCalEvent = {
             warmUp: WarmUp,
             coolDown: CoolDown,
-            categories: {},
+            exercises: [],
             notes: {}
         };
         let date = new Date();
@@ -86,24 +81,17 @@ export class Training implements IEventsComponents {
         this.postCalEvent.range[k] = v;
     }
 
-    setMainCalEvent(exercises: Exercise[]) {
-        exercises.forEach( data => {
-            let newExerciseTable = new ExerciseTable(data);
-            this.mainCalEvent.categories[newExerciseTable.exercise.exerciseCategory.category.name] = {};
-            this.mainCalEvent.categories[newExerciseTable.exercise.exerciseCategory.category.name][newExerciseTable.exercise.exerciseName] = newExerciseTable;
-            console.log('Exercises :', exercises);
-        });
-    }
-
-    setMainCalNotes(k: string, v: string) {
+    addMainCalNote(k: string, v: string) {
         this.mainCalEvent.notes[k] = v;
     }
 
-    setCoolDown(coolDown: CoolDown) {
-        this.mainCalEvent.coolDown = coolDown;
+     getCategories() {
+        this.mainCalEvent.exercises.forEach(exercise => {
+           if(this.categories.indexOf(exercise.category) < 0) {
+               this.categories.push(exercise.category);
+           }
+        });
     }
-    setWarmUp(warmUp: WarmUp) {
-        this.mainCalEvent.warmUp = warmUp;
-    }
+
 
 }

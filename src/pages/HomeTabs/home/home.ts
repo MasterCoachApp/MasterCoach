@@ -44,7 +44,7 @@ export class HomePage {
                     }
                     else {
                           user.loggedIn = response;
-                          this.setCalendarEvents();
+                          this.setCalendarEvents(null);
                     }
                 }).catch(error => {
                     console.log("Auto login failed to find existing user in db");
@@ -79,9 +79,14 @@ export class HomePage {
             this.dateInView = new Date();
             this.monthInView = this.today.month;
 
+            this.training.setEventsCurrentMonth();
+            this.training.setEventsNextMonth();
+            this.training.setEventsLastMonth();
+
+            this.calMenu.displayedYear = this.dateInView.getFullYear();
+
             this.scrollTo(this.today.dateValue);
 
-            //  this.getCalendarEvents();
         }
         else {
             this.scrollTo(this.today.dateValue);
@@ -109,19 +114,12 @@ export class HomePage {
             //set next month values
             this.calMenu.setNextMonth(newDate);
 
-            this.calMenu.datesArray.datesNextMonth.forEach(date => {
-                this.listOfTrainings.forEach(training => {
-                    if (training.date == date.dateValue) {
-                        date.content.push(training);
-                    }
-                });
-            });
+            this.training.setEventsNextMonth();
 
+            this.calMenu.displayedYear = this.dateInView.getFullYear();
 
-            // console.log("Forward - Last: " + this.calMenu.monthsArray.lastMonth);
-            // console.log("Forward - This: " + this.calMenu.monthsArray.thisMonth);
-            // console.log("Forward - Next: " + this.calMenu.monthsArray.nextMonth);
-            // this.getCalendarEvents();
+            console.log(this.calMenu.displayedYear);
+
 
         }
         if (sign == "minus") {
@@ -144,19 +142,10 @@ export class HomePage {
 
             this.calMenu.setLastMonth(newDate);
 
-            this.calMenu.datesArray.datesLastMonth.forEach(date => {
-                this.listOfTrainings.forEach(training => {
-                    if (training.date == date.dateValue) {
-                        date.content.push(training);
-                    }
-                });
-            });
+            this.training.setEventsLastMonth();
 
-            // console.log("Backwards - Last: " + this.calMenu.monthsArray.lastMonth);
-            // console.log("Backwards - This: " + this.calMenu.monthsArray.thisMonth);
-            // console.log("Backwards - Next: " + this.calMenu.monthsArray.nextMonth);
+            this.calMenu.displayedYear = this.dateInView.getFullYear();
 
-            //this.getCalendarEvents();
         }
 
         this.content.scrollToTop(0);
@@ -166,7 +155,7 @@ export class HomePage {
         this.navCtrl.push('CreateTrainingPage', {date: dateSelected});
     }
 
-    setCalendarEvents() {
+    setCalendarEvents(event) {
             if(this.user.loggedIn != null) {
                     let that = this;
                     let promise = new Promise((resolve, reject) => {
@@ -184,13 +173,7 @@ export class HomePage {
                     promise.then(() => {
                         this.listOfTrainings = this.training.listOfTrainings;
 
-                        this.calMenu.datesArray.datesThisMonth.forEach(date => {
-                            this.listOfTrainings.forEach(training => {
-                                if (training.date == date.dateValue) {
-                                    date.content.push(training);
-                                }
-                            });
-                        });
+                        this.training.setEventsCurrentMonth();
 
                         this.calMenu.datesArray.currentMonth = this.calMenu.datesArray.datesThisMonth;
                         this.datesThisMonth = this.calMenu.datesArray.datesThisMonth;
@@ -199,23 +182,18 @@ export class HomePage {
                             this.scrollTo(this.today.dateValue);
                         }, 0);
 
-                        console.log(this.datesThisMonth);
+                        this.training.setEventsLastMonth();
 
-                        this.calMenu.datesArray.datesLastMonth.forEach(date => {
-                            this.listOfTrainings.forEach(training => {
-                                if (training.date == date.dateValue) {
-                                    date.content.push(training);
-                                }
-                            });
-                        });
-                        this.calMenu.datesArray.datesNextMonth.forEach(date => {
-                            this.listOfTrainings.forEach(training => {
-                                if (training.date == date.dateValue) {
-                                    date.content.push(training);
-                                }
-                            });
-                        });
+                        this.training.setEventsNextMonth();
+
+                        if(event != null) {
+                            event.complete();
+                        }
+
                     }).catch(error => {
+                        if(event != null) {
+                            event.complete();
+                        }
                         console.log(error);
                         that.tools.presentToast("bottom", "There was an unexpected error retrieving your calendar information.");
                     });
