@@ -25,6 +25,7 @@ import {LabelProvider} from "../providers/training/labels/labelProvider";
 import {TrainingProvider} from "../providers/training/trainings/trainingProvider";
 import {MyPipe} from "../pipes/my/my";
 import {ExerciseProvider} from "../providers/training/exercises/exerciseProvider";
+import {CalendarModule} from "ionic3-calendar-en";
 
 @NgModule({
   declarations: [
@@ -47,7 +48,8 @@ import {ExerciseProvider} from "../providers/training/exercises/exerciseProvider
     AngularFireModule.initializeApp(FIREBASE_CONFIG),
     AngularFireDatabaseModule,
     AngularFireAuthModule,
-    AngularFireModule
+    AngularFireModule,
+      CalendarModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -78,7 +80,7 @@ import {ExerciseProvider} from "../providers/training/exercises/exerciseProvider
     GooglePlus,
     LabelProvider,
     TrainingProvider,
-      ExerciseProvider
+    ExerciseProvider
   ],
     schemas: [
         CUSTOM_ELEMENTS_SCHEMA
