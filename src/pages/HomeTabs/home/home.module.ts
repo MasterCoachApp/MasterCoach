@@ -9,10 +9,6 @@ import {CalendarModule} from "ionic3-calendar-en";
     ],
     imports: [
         IonicPageModule.forChild(HomePage),
-        CalendarModule,
     ],
-    schemas: [
-        CUSTOM_ELEMENTS_SCHEMA
-    ]
 })
 export class HomePageModule {}
