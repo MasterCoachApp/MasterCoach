@@ -94,6 +94,10 @@ export class HomePage {
 
     changMonth(sign: string) {
 
+        if(this.listOfTrainings == null || this.listOfTrainings.length == 0) {
+            return;
+        }
+
         if (sign == "plus") {
             let newDate = new Date(this.dateInView.getFullYear(), this.dateInView.getMonth() + 1, this.dateInView.getDate());
             this.calMenu.datesArray.datesLastMonth = this.calMenu.datesArray.datesThisMonth;
@@ -152,6 +156,9 @@ export class HomePage {
     createNewTraining(dateSelected: string) {
         let createTrainingModal = this.modalCtrl.create('CreateTrainingPage', {date: dateSelected});
         createTrainingModal.present();
+        createTrainingModal.onDidDismiss(() => {
+                this.menu.enable(true, 'mainCalendarMenu');
+        });
     }
 
     setCalendarEvents(event) {

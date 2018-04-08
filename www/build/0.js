@@ -1,14 +1,15 @@
 webpackJsonp([0],{
 
-/***/ 539:
+/***/ 675:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "HomePageModule", function() { return HomePageModule; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_ionic_angular__ = __webpack_require__(43);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__home__ = __webpack_require__(678);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CreateTrainingPageModule", function() { return CreateTrainingPageModule; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(37);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__create_training__ = __webpack_require__(689);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__pipes_pipes_module__ = __webpack_require__(690);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -18,39 +19,44 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var HomePageModule = (function () {
-    function HomePageModule() {
+
+var CreateTrainingPageModule = (function () {
+    function CreateTrainingPageModule() {
     }
-    HomePageModule = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["J" /* NgModule */])({
+    CreateTrainingPageModule = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["J" /* NgModule */])({
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_2__home__["a" /* HomePage */],
+                __WEBPACK_IMPORTED_MODULE_2__create_training__["a" /* CreateTrainingPage */],
             ],
             imports: [
-                __WEBPACK_IMPORTED_MODULE_0_ionic_angular__["g" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__home__["a" /* HomePage */]),
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__create_training__["a" /* CreateTrainingPage */]),
+                __WEBPACK_IMPORTED_MODULE_3__pipes_pipes_module__["a" /* PipesModule */]
             ],
+            entryComponents: [
+                __WEBPACK_IMPORTED_MODULE_2__create_training__["a" /* CreateTrainingPage */],
+            ]
         })
-    ], HomePageModule);
-    return HomePageModule;
+    ], CreateTrainingPageModule);
+    return CreateTrainingPageModule;
 }());
 
-//# sourceMappingURL=home.module.js.map
+//# sourceMappingURL=create-training.module.js.map
 
 /***/ }),
 
-/***/ 678:
+/***/ 689:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return HomePage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CreateTrainingPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(43);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__models_calendar_calendar_day__ = __webpack_require__(329);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_menus_calendar_menu__ = __webpack_require__(89);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ionic_storage__ = __webpack_require__(153);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__providers_users_users__ = __webpack_require__(154);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__providers_tools_tools__ = __webpack_require__(66);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__providers_training_trainings_trainingProvider__ = __webpack_require__(327);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(37);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_users_users__ = __webpack_require__(155);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_tools_tools__ = __webpack_require__(67);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__text_popover_text_popover__ = __webpack_require__(452);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__providers_training_labels_labelProvider__ = __webpack_require__(91);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__providers_training_trainings_trainingProvider__ = __webpack_require__(451);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__models_logging_training__ = __webpack_require__(454);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -68,175 +74,334 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-var HomePage = (function () {
-    function HomePage(navCtrl, app, storage, tools, modalCtrl, user, menu, platform, calMenu, viewCtrl, training) {
-        //this.datesThisMonth = this.calMenu.datesArray.datesThisMonth;
-        var _this = this;
+/**
+ * Generated class for the CreateTrainingPage page.
+ *
+ * See https://ionicframework.com/docs/components/#navigation for more info on
+ * Ionic pages and navigation.
+ */
+var CreateTrainingPage = (function () {
+    // exerciseKeys: string[];
+    function CreateTrainingPage(navCtrl, viewCtrl, modalCtrl, menu, navParams, trainings, labels, popoverCtrl, users, alertCtrl, tools) {
         this.navCtrl = navCtrl;
-        this.app = app;
-        this.storage = storage;
-        this.tools = tools;
-        this.modalCtrl = modalCtrl;
-        this.user = user;
-        this.menu = menu;
-        this.platform = platform;
-        this.calMenu = calMenu;
         this.viewCtrl = viewCtrl;
-        this.training = training;
-        this.today = new __WEBPACK_IMPORTED_MODULE_2__models_calendar_calendar_day__["a" /* CalendarDay */](new Date());
-        this.dateInView = this.today.date;
-        this.monthInView = this.today.month;
-        this.datesThisMonth = [];
-        this.listOfTrainings = [];
-        this.storage.get('user-email').then(function (email) {
-            if (email == null) {
-                _this.app.getRootNav().push('LoginPage');
+        this.modalCtrl = modalCtrl;
+        this.menu = menu;
+        this.navParams = navParams;
+        this.trainings = trainings;
+        this.labels = labels;
+        this.popoverCtrl = popoverCtrl;
+        this.users = users;
+        this.alertCtrl = alertCtrl;
+        this.tools = tools;
+        this.preTraining = this.trainings.preTraining.getPreTraining();
+        this.postTraining = this.trainings.postTraining.getPostTraining();
+        this.exercisesByCategory = {};
+        this.toggleGroup = function (group) {
+            if (this.isGroupShown(group)) {
+                this.shownGroup = null;
             }
             else {
-                user.retrievedLoggedInUser(email).then(function (response) {
-                    if (response == null) {
-                        console.log("Auto login failed to find existing user in db");
-                        _this.app.getRootNav().push('LoginPage');
-                    }
-                    else {
-                        user.loggedIn = response;
-                        _this.setCalendarEvents(null);
-                    }
-                }).catch(function (error) {
-                    console.log("Auto login failed to find existing user in db");
-                    _this.app.getRootNav().push('LoginPage');
-                });
+                this.shownGroup = group;
             }
-        });
-        this.activateMenu();
-    }
-    HomePage.prototype.ionViewDidLoad = function () {
-        var _this = this;
-        setTimeout(function () {
-            _this.scrollTo(_this.today.dateValue);
-        }, 0);
-    };
-    HomePage.prototype.activateMenu = function () {
-        this.menu.enable(true, 'mainCalendarMenu');
-    };
-    HomePage.prototype.goToToday = function () {
-        if (this.dateInView.getMonth() != (new Date).getMonth()) {
-            this.datesThisMonth = this.calMenu.datesArray.currentMonth;
-            this.calMenu.datesArray.datesThisMonth = this.calMenu.datesArray.currentMonth;
-            this.calMenu.monthsArray.thisMonth = this.calMenu.monthsArray.currentMonth;
-            this.calMenu.setLastMonth(new Date());
-            this.calMenu.setNextMonth(new Date());
-            this.today = new __WEBPACK_IMPORTED_MODULE_2__models_calendar_calendar_day__["a" /* CalendarDay */](new Date());
-            this.dateInView = new Date();
-            this.monthInView = this.today.month;
-            this.training.setEventsCurrentMonth();
-            this.training.setEventsNextMonth();
-            this.training.setEventsLastMonth();
-            this.calMenu.displayedYear = this.dateInView.getFullYear();
-            this.scrollTo(this.today.dateValue);
+        };
+        this.isGroupShown = function (group) {
+            return this.shownGroup === group;
+        };
+        menu.enable(false, 'mainCalendarMenu');
+        this.listOfEvents = labels.listOfLabels;
+        this.trainingEventList = ["Long Jump", "High Jump", "Pole Vault"]; //should be empty out of development
+        // this.exerciseKeys = [];
+        this.expandPostThoughts = false;
+        this.preTrainingDivide = { range: [], notes: [] };
+        this.postTrainingDivide = { range: [], notes: [] };
+        for (var key in this.preTraining) {
+            if (this.preTraining.hasOwnProperty(key)) {
+                if (this.preTraining[key]['type'] == "range") {
+                    this.preTrainingDivide.range.push(this.preTraining[key]);
+                }
+                if (this.preTraining[key]['type'] == "note") {
+                    this.preTrainingDivide.notes.push(this.preTraining[key]);
+                }
+            }
+        }
+        for (var key in this.postTraining) {
+            if (this.postTraining.hasOwnProperty(key)) {
+                if (this.postTraining[key]['type'] == "range") {
+                    this.postTrainingDivide.range.push(this.postTraining[key]);
+                }
+                if (this.postTraining[key]['type'] == "note") {
+                    this.postTrainingDivide.notes.push(this.postTraining[key]);
+                }
+            }
+        }
+        this.training = new __WEBPACK_IMPORTED_MODULE_7__models_logging_training__["a" /* Training */]();
+        this.updateExercisesByCategory();
+        this.trainingDateHour = new Date().getHours(); // not UTC because we want the time zone localized
+        if (this.trainingDateHour < 12) {
+            this.trainingMorningAfternoonEvening = 'Morning';
+        }
+        else if (this.trainingDateHour < 5) {
+            this.trainingMorningAfternoonEvening = 'Afternoon';
         }
         else {
-            this.scrollTo(this.today.dateValue);
+            this.trainingMorningAfternoonEvening = 'Evening';
+        }
+    }
+    CreateTrainingPage.prototype.expandTextArea = function () {
+        this.expandPostThoughts = !this.expandPostThoughts;
+        var popover = this.popoverCtrl.create(__WEBPACK_IMPORTED_MODULE_4__text_popover_text_popover__["a" /* TextPopoverPage */], {}, { cssClass: 'custom-popover' });
+        popover.present({});
+    };
+    CreateTrainingPage.prototype.createNewTraining = function () {
+        var newTraining = new __WEBPACK_IMPORTED_MODULE_7__models_logging_training__["a" /* Training */]();
+        this.preTrainingDivide.notes.forEach(function (note) {
+            newTraining.addPreNote(note['key'], note['val']);
+        });
+        this.preTrainingDivide.range.forEach(function (range) {
+            newTraining.addPreRange(range['key'], range['val']);
+        });
+        this.postTrainingDivide.notes.forEach(function (note) {
+            newTraining.addPostNote(note['key'], note['val']);
+        });
+        this.postTrainingDivide.range.forEach(function (range) {
+            newTraining.addPostRange(range['key'], range['val']);
+        });
+        newTraining.mainCalEvent.exercises = this.training.mainCalEvent.exercises;
+        if (navigator.onLine) {
+            this.trainings.createNewEntry(newTraining);
+            this.viewCtrl.dismiss();
+        }
+        else {
+            this.tools.presentToast("bottom", "Sorry, you're not connected to the internet");
         }
     };
-    HomePage.prototype.changMonth = function (sign) {
-        if (sign == "plus") {
-            var newDate = new Date(this.dateInView.getFullYear(), this.dateInView.getMonth() + 1, this.dateInView.getDate());
-            this.calMenu.datesArray.datesLastMonth = this.calMenu.datesArray.datesThisMonth;
-            this.calMenu.monthsArray.lastMonth = this.calMenu.monthsArray.thisMonth;
-            this.calMenu.datesArray.datesThisMonth = this.calMenu.datesArray.datesNextMonth;
-            this.calMenu.monthsArray.thisMonth = this.calMenu.monthsArray.nextMonth;
-            this.datesThisMonth = this.calMenu.datesArray.datesThisMonth;
-            this.monthInView = this.calMenu.monthsArray.thisMonth;
-            this.dateInView = new Date(newDate.getFullYear(), newDate.getMonth(), newDate.getDate());
-            this.calMenu.setDisplayYear(this.dateInView.getFullYear());
-            //set next month values
-            this.calMenu.setNextMonth(newDate);
-            this.training.setEventsNextMonth();
-            this.calMenu.displayedYear = this.dateInView.getFullYear();
-            console.log(this.calMenu.displayedYear);
-        }
-        if (sign == "minus") {
-            var newDate = new Date(this.dateInView.getFullYear(), this.dateInView.getMonth() - 1, this.dateInView.getDate());
-            this.calMenu.datesArray.datesNextMonth = this.calMenu.datesArray.datesThisMonth;
-            this.calMenu.monthsArray.nextMonth = this.calMenu.monthsArray.thisMonth;
-            this.calMenu.datesArray.datesThisMonth = this.calMenu.datesArray.datesLastMonth;
-            this.calMenu.monthsArray.thisMonth = this.calMenu.monthsArray.lastMonth;
-            this.datesThisMonth = this.calMenu.datesArray.datesThisMonth;
-            this.monthInView = this.calMenu.monthsArray.thisMonth;
-            //set last month values
-            this.dateInView = new Date(newDate.getFullYear(), newDate.getMonth(), newDate.getDate());
-            this.calMenu.setDisplayYear(this.dateInView.getFullYear());
-            this.calMenu.setLastMonth(newDate);
-            this.training.setEventsLastMonth();
-            this.calMenu.displayedYear = this.dateInView.getFullYear();
-        }
-        this.content.scrollToTop(0);
+    CreateTrainingPage.prototype.removeLabel = function (label, exerciseTable) {
+        //Remove label from UI
+        this.training.mainCalEvent.exercises[this.training.mainCalEvent.exercises.indexOf(exerciseTable)].removeLabel(label);
     };
-    HomePage.prototype.createNewTraining = function (dateSelected) {
-        var createTrainingModal = this.modalCtrl.create('CreateTrainingPage', { date: dateSelected });
-        createTrainingModal.present();
-    };
-    HomePage.prototype.setCalendarEvents = function (event) {
+    CreateTrainingPage.prototype.addExercise = function () {
         var _this = this;
-        if (this.user.loggedIn != null) {
-            var that_1 = this;
-            var promise = new Promise(function (resolve, reject) {
-                that_1.training.getUserTrainings(_this.user.loggedIn).then(function (response) {
-                    console.log(response);
-                    if (response != "Success") {
-                        reject(response);
-                    }
-                    else {
-                        resolve();
-                    }
-                });
-            });
-            promise.then(function () {
-                _this.listOfTrainings = _this.training.listOfTrainings;
-                _this.training.setEventsCurrentMonth();
-                _this.calMenu.datesArray.currentMonth = _this.calMenu.datesArray.datesThisMonth;
-                _this.datesThisMonth = _this.calMenu.datesArray.datesThisMonth;
-                setTimeout(function () {
-                    _this.scrollTo(_this.today.dateValue);
-                }, 0);
-                _this.training.setEventsLastMonth();
-                _this.training.setEventsNextMonth();
-                if (event != null) {
-                    event.complete();
-                }
-            }).catch(function (error) {
-                if (event != null) {
-                    event.complete();
-                }
-                console.log(error);
-                that_1.tools.presentToast("bottom", "There was an unexpected error retrieving your calendar information.");
-            });
-        }
+        var addExerciseModal = this.modalCtrl.create('AddExercisePage');
+        addExerciseModal.onDidDismiss(function (data) {
+            if (data) {
+                _this.training.addExercises(data);
+                // this.updateExercisesByCategory();
+            }
+        });
+        addExerciseModal.present();
     };
-    HomePage.prototype.scrollTo = function (elementId) {
-        var doc = document.getElementById(elementId);
-        if (doc != null) {
-            var yOffset = doc.offsetTop;
-            this.content.scrollTo(0, yOffset, 0);
-            document.getElementById("calendarList").scrollTo(0, yOffset);
-        }
+    CreateTrainingPage.prototype.updateExercisesByCategory = function () {
+        var _this = this;
+        var currentCategory = '';
+        this.training.mainCalEvent.exercises.forEach(function (data) {
+            if (data.exerciseCategory.category.name != currentCategory) {
+                currentCategory = data.exerciseCategory.category.name;
+                if (_this.exercisesByCategory.hasOwnProperty(currentCategory)) {
+                    _this.exercisesByCategory[currentCategory + ' B'] = [data];
+                }
+                else {
+                    _this.exercisesByCategory[currentCategory] = [data];
+                }
+            }
+            else if (data.exerciseCategory.category.name == currentCategory) {
+                _this.exercisesByCategory[currentCategory].push(data);
+            }
+        });
+        console.log('updateExercises', this.exercisesByCategory);
     };
-    __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_9" /* ViewChild */])(__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["c" /* Content */]),
-        __metadata("design:type", typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["c" /* Content */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["c" /* Content */]) === "function" && _a || Object)
-    ], HomePage.prototype, "content", void 0);
-    HomePage = __decorate([
+    CreateTrainingPage.prototype.addSet = function (exerciseTable) {
+        this.training.mainCalEvent.exercises[this.training.mainCalEvent.exercises.indexOf(exerciseTable)].addSet();
+    };
+    CreateTrainingPage.prototype.deleteSet = function (set, exerciseTable) {
+        this.training.mainCalEvent.exercises[this.training.mainCalEvent.exercises.indexOf(exerciseTable)].deleteSet(set);
+    };
+    CreateTrainingPage.prototype.addLabel = function (exerciseTable) {
+        var _this = this;
+        var alert = this.alertCtrl.create({
+            cssClass: 'alertCss'
+        });
+        alert.setTitle('Which event does this belong to?');
+        this.listOfEvents.forEach(function (data) {
+            alert.addInput({
+                type: 'checkbox',
+                label: data.label['value'],
+                value: data.label['value'],
+                checked: false
+            });
+        });
+        alert.addButton('Cancel');
+        alert.addButton({
+            text: 'Add Labels',
+            handler: function (data) {
+                console.log('Checkbox data [LABELS]:', data);
+                if (data != null) {
+                    // data.forEach ( index => {
+                    _this.training.mainCalEvent.exercises[_this.training.mainCalEvent.exercises.indexOf(exerciseTable)].addLabels(data);
+                    // });
+                }
+                // this.testCheckboxResult = data;
+            }
+        });
+        alert.present();
+    };
+    CreateTrainingPage.prototype.addWarmUp = function () {
+        var _this = this;
+        var alert = this.alertCtrl.create({
+            title: 'Warm Up',
+        });
+        alert.addInput({
+            type: 'radio',
+            label: 'Warm up A',
+            value: 'Warm up A',
+            checked: false
+        });
+        alert.addInput({
+            type: 'radio',
+            label: 'Warm up B',
+            value: 'Warm up B',
+            checked: false
+        });
+        alert.addButton('Cancel');
+        alert.addButton({
+            text: 'Add',
+            handler: function (data) {
+                console.log('Checkbox data:', data);
+                if (data != null) {
+                    _this.training.mainCalEvent.warmUp = data;
+                }
+                // this.testCheckboxResult = data;
+            }
+        });
+        alert.present();
+    };
+    CreateTrainingPage.prototype.addCoolDown = function () {
+        var _this = this;
+        var alert = this.alertCtrl.create({
+            title: 'Cool Down',
+        });
+        alert.addInput({
+            type: 'radio',
+            label: 'Cool down A',
+            value: 'Cool down A',
+            checked: false
+        });
+        alert.addInput({
+            type: 'radio',
+            label: 'Cool down B',
+            value: 'Cool down B',
+            checked: false
+        });
+        alert.addButton('Cancel');
+        alert.addButton({
+            text: 'Add',
+            handler: function (data) {
+                console.log('Checkbox data:', data);
+                if (data != null) {
+                    _this.training.mainCalEvent.coolDown = data;
+                }
+                // this.testCheckboxResult = data;
+            }
+        });
+        alert.present();
+    };
+    CreateTrainingPage.prototype.cancel = function () {
+        this.navCtrl.pop();
+    };
+    // adding for testing data on page DG 2018-03-18
+    CreateTrainingPage.prototype.testConsole = function (data) {
+        console.log(data);
+    };
+    CreateTrainingPage.prototype.tooltip = function () {
+        this.tools.toastCtrl.create({
+            message: 'One day this will be a popover tooltip',
+            duration: 3000
+        }).present();
+    };
+    CreateTrainingPage.prototype.objectKeys = function (obj) {
+        return Object.keys(obj);
+    };
+    CreateTrainingPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-            selector: 'page-home',template:/*ion-inline-start:"/Users/jonahelbaz/Desktop/MasterCoach/src/pages/HomeTabs/home/home.html"*/'<ion-header>\n    <ion-navbar>\n        <ion-buttons left>\n            <button ion-button menuToggle>\n                <ion-icon name="menu"></ion-icon>\n            </button>\n        </ion-buttons>\n        <ion-title><button style="font-size: 20px; background: none" (click)="changMonth(\'minus\')"><ion-icon color="primary" name="md-arrow-dropleft"></ion-icon></button>  <button (click)="this.content.scrollToTop(200)" style="font-size: 16px; background: none; color: white;">{{monthInView}} {{dateInView.getFullYear()}}</button> <button style="font-size: 20px; background: none" (click)="changMonth(\'plus\')"><ion-icon color="primary" name="md-arrow-dropright"></ion-icon> </button>\n        </ion-title>\n        <ion-buttons end (click)="goToToday()">\n            <button ion-button>\n                <ion-icon item-left name="clock" class="menuIcon"></ion-icon>\n            </button>\n        </ion-buttons>\n    </ion-navbar>\n</ion-header>\n\n<ion-content>\n    <ion-refresher (ionRefresh)="setCalendarEvents($event)">\n        <ion-refresher-content></ion-refresher-content>\n    </ion-refresher>\n    <ion-list no-lines no-border id="calendarList">\n        <ion-item-sliding #item no-border *ngFor="let date of datesThisMonth" id="{{date.dateValue}}">\n        <ion-item>\n            <ion-row>\n                <ion-col col-2 class="tableCol">\n                    <div left text-capitalize="none">\n                        <table>\n                            <tr [ngClass]="today.dateValue == date.dateValue ? \'selectedDate\' : \'date\'">\n                                <th>{{date.date.getDate()}}</th>\n                            </tr>\n                            <tr [ngClass]="today.dateValue == date.dateValue ? \'daySelected\' : \'day\'">\n                                <th>{{date.dayOfTheWeek}}</th>\n                            </tr>\n                        </table>\n                    </div>\n                </ion-col>\n                <ion-col col-10 class="tableCol">\n                    <div class="executed" *ngIf="date.content.length == 0">\n                        <ion-row>\n                            <ion-col>\n                                <hr data-content="" class="hr-text">\n                            </ion-col>\n                        </ion-row>\n                        <ion-row>\n                            <h3 class="nothingPlanned">You did not train today</h3>\n                        </ion-row>\n                    </div>\n                    <div class="executed">\n                        <div *ngFor="let event of date.content">\n                            <ion-card class="trainingCard">\n                                <ion-row>\n                                    <ion-col>\n                                        <ion-list-header class="header">{{event.type}}</ion-list-header>\n                                    </ion-col>\n                                    <ion-col style="text-align: right">\n                                        <ion-list-header class="header">{{event.time}}</ion-list-header>\n                                    </ion-col>\n                                </ion-row>\n                                <div *ngFor="let cat of event.categories" style="padding-bottom: 12px">\n                                    <span class="categoryHeader">{{cat}}</span>\n                                    <div *ngFor="let exercise of event.mainCalEvent.exercises">\n                                        <ion-note class="exerciseHeader" *ngIf="exercise.exerciseCategory.category.name == cat">\n                                            {{exercise.exerciseName}}\n                                        </ion-note>\n                                    </div>\n                                </div>\n                            </ion-card>\n                        </div>\n                    </div>\n                </ion-col>\n            </ion-row>\n        </ion-item>\n            <ion-item-options side="right">\n                <button ion-button >Labels</button>\n                <button ion-button color="secondary">View</button>\n            </ion-item-options>\n            <ion-item-options side="left">\n                <button ion-button color="danger">Delete</button>\n            </ion-item-options>\n        </ion-item-sliding>\n    </ion-list>\n\n    <ion-fab class="circleTab" right bottom>\n        <button ion-fab class="homeFab">\n            <ion-icon name="add"></ion-icon>\n        </button>\n        <ion-fab-list side="top">\n            <button ion-fab class="noButton" (click)="createNewTraining(today)">\n                <ion-icon name="ios-bicycle"></ion-icon>\n                <div class="label">Training</div>\n            </button>\n            <button ion-fab class="noButton">\n                <ion-icon name="ios-trophy"></ion-icon>\n                <div class="label">Competition</div>\n            </button>\n            <button ion-fab class="noButton">\n                <ion-icon name="ios-medkit"></ion-icon>\n                <div class="label">Rehabilitation</div>\n            </button>\n        </ion-fab-list>\n    </ion-fab>\n</ion-content>\n\n\n'/*ion-inline-end:"/Users/jonahelbaz/Desktop/MasterCoach/src/pages/HomeTabs/home/home.html"*/
+            selector: 'page-create-training',template:/*ion-inline-start:"/Users/jonahelbaz/Desktop/MasterCoach/src/pages/Training/create-training/create-training.html"*/'<!--\n  Generated template for the CreateTrainingPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n    <ion-navbar>\n        <ion-buttons left>\n            <button ion-button color="primary" (click)="cancel()">\n                <ion-icon name="ios-arrow-down"></ion-icon>\n            </button>\n        </ion-buttons>\n        <ion-title>{{trainingMorningAfternoonEvening}} Training</ion-title>\n        <ion-buttons right>\n            <button ion-button color="primary" (click)="createNewTraining()">\n                Save\n            </button>\n        </ion-buttons>\n    </ion-navbar>\n</ion-header>\n\n\n<ion-content>\n    <ion-list no-lines>\n        <!--PRE TRAINING-->\n        <ion-list-header class="title item-stable" (click)="toggleGroup(\'preTraining\')">\n            <ion-col>\n                Pre-Training\n            </ion-col>\n            <ion-col style="text-align: right; width: 100%;" col-8>\n                <ion-icon style="text-align: right"  *ngIf="!isGroupShown(\'preTraining\')" class="drop"\n                          name="ios-arrow-forward"></ion-icon>\n                <ion-icon  *ngIf="isGroupShown(\'preTraining\')" class="drop" name="ios-arrow-down" right></ion-icon>\n            </ion-col>\n        </ion-list-header>\n        <div class="item-accordion" *ngIf="isGroupShown(\'preTraining\')">\n            <ion-grid>\n                <ion-row class="ionItemCrop" *ngFor="let title of preTrainingDivide.range" align-items-center>\n                    <ion-col col-4 left>{{title["key"]}}</ion-col>\n                    <ion-col col-8 right>\n                        <ion-range min="0" max="5" [snaps]="true" steps="1" [pin]="true" right class="range" [(ngModel)]="title[\'val\']">\n                            <ion-label range-left>0</ion-label>\n                            <ion-label range-right>5</ion-label>\n                        </ion-range>\n                    </ion-col>\n                </ion-row>\n              </ion-grid>\n            <ion-list>\n                <ion-item *ngFor="let title of preTrainingDivide.notes">\n                    <ion-label stacked> {{title["key"]}} </ion-label>\n                    <ion-textarea class="thoughts" [(ngModel)]="title[\'val\']"></ion-textarea>\n                </ion-item>\n            </ion-list>\n        </div>\n\n        <!--TRAINING-->\n        <ion-list-header class="title item-stable" (click)="toggleGroup(\'training\')">\n            <ion-col>\n                Training\n            </ion-col>\n            <ion-col style="text-align: right; width: 100%;" col-8>\n                <ion-icon style="text-align: right"  *ngIf="!isGroupShown(\'training\')" class="drop"\n                          name="ios-arrow-forward"></ion-icon>\n                <ion-icon  *ngIf="isGroupShown(\'training\')" class="drop" name="ios-arrow-down" right></ion-icon>\n            </ion-col>\n        </ion-list-header>\n        <ion-list class="item-accordion" *ngIf="isGroupShown(\'training\')">\n            <ion-list>\n                <ion-label stacked class="trainingHeaders">Warm Up</ion-label>\n                <ion-row *ngIf="training.mainCalEvent.warmUp.name != \'\'">\n                    <ion-col class="addWarmUpCoolDown" (click)="addWarmUp()">\n                        + Add Warm Up\n                    </ion-col>\n                </ion-row>\n                <ion-item *ngIf="training.mainCalEvent.warmUp.name == \'\'">\n                    <button ion-button (click)="addWarmUp()">{{training.mainCalEvent.warmUp.name}}\n                        <ion-icon class="trainingHeaders" name="close"\n                                  (click)="addWarmUp()">\n                        </ion-icon>\n                    </button>\n                </ion-item>\n                <ion-label stacked class="trainingHeaders">Training</ion-label>\n                <div *ngFor="let exercise of training.mainCalEvent.exercises ; let i = index">\n                    <ion-grid class="exerciseTable" no-margin>\n                        <ion-row *ngIf="i >= 1 && training.mainCalEvent.exercises[i].exerciseCategory !== training.mainCalEvent.exercises[i-1].exerciseCategory">\n                            <ion-col style="font-size: large" left>\n                                {{exercise.exerciseCategory.category.name}}\n                            </ion-col>\n                        </ion-row>\n                        <ion-row *ngIf="i == 0">\n                            <ion-col style="font-size: large" left>\n                                {{exercise.exerciseCategory.category.name}}\n                            </ion-col>\n                        </ion-row>\n                        <!--<div *ngFor="let exercise of exercisesByCategory[exerciseCategory]">-->\n                            <ion-row style="padding-bottom: 5px; width: 100%;" nowrap align-items-center justify-content-between>\n                                <ion-col style="font-size: medium" left>{{exercise.exerciseName}}</ion-col>\n                                <ion-col col-1 style="margin-right: 20px">\n                                    <button ion-button class="exerciseTableIcon" (click)="addLabel(exercise)">\n                                        <ion-icon name="pricetags"></ion-icon>\n                                    </button>\n                                </ion-col>\n                                <ion-col col-6 *ngIf="exercise.labels.length > 0">\n                                    <div class="scroll">\n                                        <button ion-button class="exerciseTableLabel" *ngFor="let label of exercise.labels" (click)="removeLabel(label, exercise)">\n                                            {{label}}\n                                            <ion-icon name="close" class="trainingHeaders"></ion-icon>\n                                        </button>\n                                    </div>\n                                </ion-col>\n                                <ion-col col-1 right style="margin-right: 20px">\n                                    <button ion-button style="border-radius: 25px; width: 10px; height: 30px;" (click)="tooltip()">\n                                        <ion-icon name="md-create"></ion-icon>\n                                    </button>\n                                </ion-col>\n                                <!--<ion-col right><ion-icon ion-button icon-only name="alert"></ion-icon></ion-col>-->\n                                <!--<ion-col><ion-note>NOTE</ion-note></ion-col>-->\n                                <!--<ion-col><ion-option>option</ion-option></ion-col>-->\n                            </ion-row>\n                            <ion-row no-margin no-border>\n                                <!--<ion-col *ngFor="let column of exercise.tableHeaders" col-{{exercise.columnMap[column]}}>{{column}}</ion-col>-->\n                                <!--ngStyle="width: exercise.columnMap[column]"-->\n                                <!--<ion-col style="text-align: center" *ngFor="let column of exercise.tableHeaders">{{column}}</ion-col>-->\n                                <ion-col class="exerciseHeader" col-1>#</ion-col>\n                                <ion-col class="exerciseHeader">Detail</ion-col>\n                                <ion-col class="exerciseHeader" col-3>Measure</ion-col>\n                                <ion-col class="exerciseHeader" col-2>Reps</ion-col>\n                                <ion-col class="exerciseHeader" col-1>\n                                    <ion-icon name="checkmark-outline" style="font-size: 20px; padding: 0; font-weight: bold"></ion-icon>\n                                </ion-col>\n                            </ion-row>\n\n                    <!--<ion-row *ngFor="let set of exercise.sets">-->\n                    <!--<ion-col *ngFor="let key of exercise.sets[set]" class="exerciseCol exerciseHeader"><ion-input>{{set[key]}}</ion-input></ion-col>-->\n\n                    <!--&lt;!&ndash;<ion-col *ngFor="let key of mainTraining.create-training.exercises[exercise].sets[set].keys()" class="exerciseCol exerciseHeader"><ion-input>{{set[key]}}</ion-input></ion-col>&ndash;&gt;-->\n                    <!--<ion-col class="exerciseCol" col-1>-->\n                    <!--<ion-checkbox name="checkmark" style="font-size: 20px; padding: 0; font-weight: bold" [(ngModel)]="set.complete"></ion-checkbox>-->\n                    <!--</ion-col>-->\n                    <!--</ion-row>-->\n                    <!--BEST VERSION BELOW-->\n\n                            <ion-row *ngFor="let set of exercise.sets" no-padding no-margin align-items-stretch>\n                                <ion-col class="exerciseCol" no-margin  col-1>{{set.setNumber}}</ion-col>\n                                <ion-col class="exerciseCol"><ion-input text-center no-margin placeholder="Detail" [(ngModel)]="set.detail"></ion-input></ion-col>\n                                <ion-col class="exerciseCol" col-3><ion-input text-center no-margin placeholder="Measure" [(ngModel)]="set.measure"></ion-input></ion-col>\n                                <ion-col class="exerciseCol" col-2><ion-input text-center no-margin placeholder="Reps" [(ngModel)]="set.reps"></ion-input></ion-col>\n                                <ion-col class="exerciseCol" no-margin col-1>\n                                    <ion-checkbox style="font-size: 10px;" no-padding no-margin [checked]="false" [(ngModel)]="set.complete"></ion-checkbox>\n                                </ion-col>\n                            </ion-row>\n                            <ion-row>\n                                <ion-col text-capitalize class="addSet" (click)="addSet(exercise)">\n                                        + ADD SET\n                                </ion-col>\n                            </ion-row>\n                        <!--</div>-->\n                    </ion-grid>\n                </div>\n\n                <ion-grid class="exerciseTable" no-padding>\n                    <ion-row>\n                        <ion-col text-capitalize class="addExercise" (click)="addExercise()">\n                            + ADD EXERCISE\n                        </ion-col>\n                    </ion-row>\n                </ion-grid>\n            </ion-list>\n            <ion-label stacked class="trainingHeaders">Cool Down</ion-label>\n            <ion-row *ngIf="training.mainCalEvent.coolDown.name != \'\'">\n                <ion-col text-capitalize class="addWarmUpCoolDown" (click)="addCoolDown()">\n                    + Add Cool Down\n                </ion-col>\n            </ion-row>\n            <ion-item *ngIf="training.mainCalEvent.coolDown.name == \'\'">\n                <ion-card class="warmUpCard" ion-button (click)="addCoolDown()">{{training.mainCalEvent.coolDown.name}}\n                    <ion-icon class="trainingHeaders" name="close"\n                              (click)="training.mainCalEvent.coolDown.name = \'\'"></ion-icon>\n                </ion-card>\n            </ion-item>\n            <ion-item>\n                <ion-label stacked>Notes</ion-label>\n                <ion-textarea class="thoughts" [(ngModel)]="training.mainCalEvent.notes[\'main\']"></ion-textarea>\n            </ion-item>\n        </ion-list>\n\n        <!--POST TRAINING-->\n        <ion-list-header class="title item-stable" (click)="toggleGroup(\'postTraining\')">\n            <ion-col>\n                Post-Training\n            </ion-col>\n            <ion-col style="text-align: right; width: 100%;" col-8>\n                <ion-icon style="text-align: right" *ngIf="!isGroupShown(\'postTraining\')" class="drop"\n                          name="ios-arrow-forward"></ion-icon>\n                <ion-icon *ngIf="isGroupShown(\'postTraining\')" class="drop" name="ios-arrow-down" right></ion-icon>\n            </ion-col>\n        </ion-list-header>\n        <div class="item-accordion" *ngIf="isGroupShown(\'postTraining\')">\n            <ion-grid>\n                <ion-row class="ionItemCrop" *ngFor="let title of postTrainingDivide.range" align-items-center>\n                    <ion-col col-4 left>{{title["key"]}}</ion-col>\n                    <ion-col col-8 right>\n                        <ion-range min="0" max="5" [snaps]="true" steps="1" [pin]="true" right class="range" [(ngModel)]="title[\'val\']">\n                            <ion-label range-left>0</ion-label>\n                            <ion-label range-right>5</ion-label>\n                        </ion-range>\n                    </ion-col>\n                </ion-row>\n            </ion-grid>\n            <ion-list>\n                <ion-item *ngFor="let title of postTrainingDivide.notes">\n                    <ion-label stacked> {{title["key"]}} </ion-label>\n                    <ion-textarea class="thoughts" [(ngModel)]="title[\'val\']"></ion-textarea>\n                </ion-item>\n            </ion-list>\n        </div>\n    </ion-list>\n\n</ion-content>\n'/*ion-inline-end:"/Users/jonahelbaz/Desktop/MasterCoach/src/pages/Training/create-training/create-training.html"*/,
         }),
-        __metadata("design:paramtypes", [typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavController */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* App */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* App */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_4__ionic_storage__["b" /* Storage */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__ionic_storage__["b" /* Storage */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_6__providers_tools_tools__["a" /* ToolsProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_6__providers_tools_tools__["a" /* ToolsProvider */]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* ModalController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* ModalController */]) === "function" && _f || Object, typeof (_g = typeof __WEBPACK_IMPORTED_MODULE_5__providers_users_users__["a" /* UsersProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5__providers_users_users__["a" /* UsersProvider */]) === "function" && _g || Object, typeof (_h = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* MenuController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* MenuController */]) === "function" && _h || Object, typeof (_j = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* Platform */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* Platform */]) === "function" && _j || Object, typeof (_k = typeof __WEBPACK_IMPORTED_MODULE_3__providers_menus_calendar_menu__["a" /* CalendarMenu */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__providers_menus_calendar_menu__["a" /* CalendarMenu */]) === "function" && _k || Object, typeof (_l = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["p" /* ViewController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["p" /* ViewController */]) === "function" && _l || Object, typeof (_m = typeof __WEBPACK_IMPORTED_MODULE_7__providers_training_trainings_trainingProvider__["a" /* TrainingProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_7__providers_training_trainings_trainingProvider__["a" /* TrainingProvider */]) === "function" && _m || Object])
-    ], HomePage);
-    return HomePage;
-    var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k, _l, _m;
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["p" /* ViewController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* ModalController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* MenuController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* NavParams */], __WEBPACK_IMPORTED_MODULE_6__providers_training_trainings_trainingProvider__["a" /* TrainingProvider */], __WEBPACK_IMPORTED_MODULE_5__providers_training_labels_labelProvider__["a" /* LabelProvider */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* PopoverController */], __WEBPACK_IMPORTED_MODULE_2__providers_users_users__["a" /* UsersProvider */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */], __WEBPACK_IMPORTED_MODULE_3__providers_tools_tools__["a" /* ToolsProvider */]])
+    ], CreateTrainingPage);
+    return CreateTrainingPage;
 }());
 
-//# sourceMappingURL=home.js.map
+//# sourceMappingURL=create-training.js.map
+
+/***/ }),
+
+/***/ 690:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return PipesModule; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__my_my__ = __webpack_require__(691);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+
+
+var PipesModule = (function () {
+    function PipesModule() {
+    }
+    PipesModule = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["J" /* NgModule */])({
+            declarations: [__WEBPACK_IMPORTED_MODULE_1__my_my__["a" /* MyPipe */]],
+            imports: [],
+            exports: [__WEBPACK_IMPORTED_MODULE_1__my_my__["a" /* MyPipe */]]
+        })
+    ], PipesModule);
+    return PipesModule;
+}());
+
+//# sourceMappingURL=pipes.module.js.map
+
+/***/ }),
+
+/***/ 691:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MyPipe; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+
+/**
+ * Generated class for the MyPipe pipe.
+ *
+ * See https://angular.io/api/core/Pipe for more info on Angular Pipes.
+ */
+var MyPipe = (function () {
+    function MyPipe() {
+    }
+    /**
+     * Takes an object and returns its keys
+     */
+    MyPipe.prototype.transform = function (value, args) {
+        return Object.keys(value);
+    };
+    MyPipe = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["T" /* Pipe */])({
+            name: 'keys',
+        })
+    ], MyPipe);
+    return MyPipe;
+}());
+
+//# sourceMappingURL=my.js.map
 
 /***/ })
 
