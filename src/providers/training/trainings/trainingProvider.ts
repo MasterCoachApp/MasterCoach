@@ -50,7 +50,7 @@ export class TrainingProvider {
         });
 
         let reformattedTraining = {
-            preCalEvent: training.mainCalEvent,
+            preCalEvent: training.preCalEvent,
             postCalEvent: training.postCalEvent,
             mainCalEvent: {
                 warmUp: training.mainCalEvent.warmUp,

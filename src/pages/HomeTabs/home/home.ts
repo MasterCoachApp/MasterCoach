@@ -150,7 +150,9 @@ export class HomePage {
     }
 
     createNewTraining(dateSelected: string) {
-        this.navCtrl.push('CreateTrainingPage', {date: dateSelected});
+        let createTrainingModal = this.modalCtrl.create('CreateTrainingPage', {date: dateSelected});
+
+        createTrainingModal.present();
     }
 
     setCalendarEvents(event) {
