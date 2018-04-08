@@ -54,8 +54,8 @@ export class Training implements IEventsComponents {
         };
 
         this.mainCalEvent = {
-            warmUp: WarmUp,
-            coolDown: CoolDown,
+            warmUp: null,
+            coolDown: null,
             exercises: [],
             notes: {}
         };

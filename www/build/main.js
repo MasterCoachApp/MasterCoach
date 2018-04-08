@@ -1006,7 +1006,7 @@ var TrainingProvider = (function () {
             filteredExerciseTableArray.push(exerciseTable);
         });
         var reformattedTraining = {
-            preCalEvent: training.mainCalEvent,
+            preCalEvent: training.preCalEvent,
             postCalEvent: training.postCalEvent,
             mainCalEvent: {
                 warmUp: training.mainCalEvent.warmUp,
@@ -1138,9 +1138,10 @@ var TrainingProvider = (function () {
     };
     TrainingProvider = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["B" /* Injectable */])(),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_5_angularfire2_database__["a" /* AngularFireDatabase */], __WEBPACK_IMPORTED_MODULE_4__users_users__["a" /* UsersProvider */], __WEBPACK_IMPORTED_MODULE_8__menus_calendar_menu__["a" /* CalendarMenu */]])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_5_angularfire2_database__["a" /* AngularFireDatabase */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5_angularfire2_database__["a" /* AngularFireDatabase */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_4__users_users__["a" /* UsersProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__users_users__["a" /* UsersProvider */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_8__menus_calendar_menu__["a" /* CalendarMenu */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_8__menus_calendar_menu__["a" /* CalendarMenu */]) === "function" && _c || Object])
     ], TrainingProvider);
     return TrainingProvider;
+    var _a, _b, _c;
 }());
 
 //# sourceMappingURL=trainingProvider.js.map
@@ -1274,11 +1275,7 @@ var CalendarDay = (function () {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Training; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__create_training_warm_up__ = __webpack_require__(265);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__create_training_cool_down__ = __webpack_require__(266);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__create_training_exercise_table__ = __webpack_require__(267);
-
-
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__create_training_exercise_table__ = __webpack_require__(267);
 
 var Training = (function () {
     function Training() {
@@ -1293,8 +1290,8 @@ var Training = (function () {
             notes: {},
         };
         this.mainCalEvent = {
-            warmUp: __WEBPACK_IMPORTED_MODULE_0__create_training_warm_up__["a" /* WarmUp */],
-            coolDown: __WEBPACK_IMPORTED_MODULE_1__create_training_cool_down__["a" /* CoolDown */],
+            warmUp: null,
+            coolDown: null,
             exercises: [],
             notes: {}
         };
@@ -1328,7 +1325,7 @@ var Training = (function () {
     Training.prototype.addExercises = function (exercises) {
         var _this = this;
         exercises.forEach(function (data) {
-            var newExerciseTable = new __WEBPACK_IMPORTED_MODULE_2__create_training_exercise_table__["a" /* ExerciseTable */](data);
+            var newExerciseTable = new __WEBPACK_IMPORTED_MODULE_0__create_training_exercise_table__["a" /* ExerciseTable */](data);
             _this.mainCalEvent.exercises.push(newExerciseTable);
             console.log('Exercises :', exercises);
             console.log('this.main.exercises', _this.mainCalEvent.exercises);

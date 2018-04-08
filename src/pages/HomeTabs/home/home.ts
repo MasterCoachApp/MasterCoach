@@ -155,6 +155,7 @@ export class HomePage {
 
     createNewTraining(dateSelected: string) {
         let createTrainingModal = this.modalCtrl.create('CreateTrainingPage', {date: dateSelected});
+
         createTrainingModal.present();
         createTrainingModal.onDidDismiss(() => {
                 this.menu.enable(true, 'mainCalendarMenu');
