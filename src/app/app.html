@@ -30,7 +30,7 @@
                 <div *ngIf="collapsable.filter.labelsFilterOpen">
                     <ion-item *ngFor="let label of listOfLabels">
                         <ion-label> {{label.label['value']}}</ion-label>
-                        <ion-checkbox></ion-checkbox>
+                        <ion-checkbox (click)="updateLabelFilters(label)"></ion-checkbox>
                     </ion-item>
                 </div>
                 <ion-label class="calendar-item filter" (click)="collapsable.filter.athleteFilterOpen = !collapsable.filter.athleteFilterOpen">

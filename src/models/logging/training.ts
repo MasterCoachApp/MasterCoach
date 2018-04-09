@@ -37,10 +37,12 @@ export class Training implements IEventsComponents {
     categories: string[]; //list of all categories the exercises in this training contain
     trainingDate: string;
     trainingTime: string;
+    id: string;
 
 
     constructor() {
         this.categories = [];
+        this.id = "";
         this.preCalEvent = {
             range: {},
             notes: {},

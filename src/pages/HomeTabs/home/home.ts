@@ -11,6 +11,7 @@ import {UsersProvider} from "../../../providers/users/users";
 import {ToolsProvider} from "../../../providers/tools/tools";
 import {Training} from "../../../models/logging/training";
 import {TrainingProvider} from "../../../providers/training/trainings/trainingProvider";
+import {LabelProvider} from "../../../providers/training/labels/labelProvider";
 
 @IonicPage()
 @Component({
@@ -27,7 +28,7 @@ export class HomePage {
     datesThisMonth: CalendarDay[] = [];
     listOfTrainings: Training[] = [];
 
-    constructor(public navCtrl: NavController, public app: App, public storage: Storage, public tools: ToolsProvider, public modalCtrl: ModalController, public user: UsersProvider, public menu: MenuController, public platform: Platform, public calMenu: CalendarMenu, public viewCtrl: ViewController, public training: TrainingProvider) {
+    constructor(public navCtrl: NavController, public app: App, public storage: Storage, public tools: ToolsProvider, public modalCtrl: ModalController, public user: UsersProvider, public menu: MenuController, public platform: Platform, public calMenu: CalendarMenu, public viewCtrl: ViewController, public training: TrainingProvider, public labels: LabelProvider) {
         //this.datesThisMonth = this.calMenu.datesArray.datesThisMonth;
 
         this.storage.get('user-email').then(email => {

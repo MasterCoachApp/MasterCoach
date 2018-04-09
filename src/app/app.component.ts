@@ -9,6 +9,7 @@ import {MenuEvents} from "../models/calendar/menu-events";
 import {LabelProvider} from "../providers/training/labels/labelProvider";
 import {Label} from "../models/custom-survey-components/labels/label";
  import {LoginPage} from "../pages/Logins/login/login";
+ import {TrainingProvider} from "../providers/training/trainings/trainingProvider";
 
 @Component({
   templateUrl: 'app.html'
@@ -21,7 +22,7 @@ export class MyApp {
    // rootPage:any = 'CreateTrainingPage';
     // rootPage:any = 'CreateExercisePage'
 
-  constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, keyboard: Keyboard, public calendarMenu: CalendarMenu, private labels: LabelProvider) {
+  constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, keyboard: Keyboard, public calendarMenu: CalendarMenu, private labels: LabelProvider, public training: TrainingProvider) {
     platform.ready().then(() => {
         //Menu settings
         this.setBaseMenuSettings();
@@ -52,8 +53,8 @@ export class MyApp {
 
     displayedYear: number;
     years: number[];
-    listOfLabels: Label[];
-
+    listOfLabels: Label[] = [];
+    labelFilters: Label[] = [];
       setCalendarYear() {
           this.calendarMenu.displayedYear = this.displayedYear;
          // this.calendarMenu.
@@ -62,9 +63,19 @@ export class MyApp {
       setBaseMenuSettings() {
           this.displayedYear = this.calendarMenu.getDisplayedYear();
           this.years = this.calendarMenu.getPossibleYears();
-          this.listOfLabels = this.calendarMenu.menuEvents.labelList;
+          this.listOfLabels = this.labels.listOfLabels;
       }
 
+    updateLabelFilters(filter: Label) {
+       if(this.labelFilters.indexOf(filter) < 0) {
+           this.labelFilters.push(filter);
+       }
+       else {
+           this.labelFilters.splice(this.labelFilters.indexOf(filter), 1);
+       }
+       this.labels.labelFilters = this.labelFilters;
+       this.labels.updateFilteredTrainingList(this.training.listOfTrainings);
+    }
 
 
     // ------------- Full calendar ---------------------

@@ -20,7 +20,7 @@
     <ion-refresher (ionRefresh)="setCalendarEvents($event)">
         <ion-refresher-content></ion-refresher-content>
     </ion-refresher>
-    <ion-list no-lines no-border id="calendarList">
+    <ion-list no-lines no-border id="calendarList" *ngIf="labels.labelFilters.length == 0">
         <ion-item-sliding #item no-border *ngFor="let date of datesThisMonth" id="{{date.dateValue}}">
         <ion-item>
             <ion-row>
@@ -72,6 +72,60 @@
                 </ion-col>
             </ion-row>
         </ion-item>
+            <ion-item-options side="right">
+                <button ion-button >Labels</button>
+                <button ion-button color="secondary">View</button>
+            </ion-item-options>
+            <ion-item-options side="left">
+                <button ion-button color="danger">Delete</button>
+            </ion-item-options>
+        </ion-item-sliding>
+    </ion-list>
+
+
+    <ion-list no-lines no-border *ngIf="labels.labelFilters.length > 0">
+        <ion-item-sliding #item no-border *ngFor="let training of labels.filteredTrainingList" id="{{training.id}}">
+            <ion-item>
+                <ion-row>
+                    <ion-col col-2 class="tableCol">
+                        <div left text-capitalize="none">
+                            <table>
+                                <tr [ngClass]="today.dateValue == training.trainingDate ? 'selectedDate' : 'date'">
+                                    <th>*10*</th>
+                                </tr>
+                                <tr [ngClass]="today.dateValue == training.trainingDate ? 'daySelected' : 'day'">
+                                    <th>*April*</th>
+                                </tr>
+                            </table>
+                        </div>
+                    </ion-col>
+                    <ion-col col-10 class="tableCol">
+                        <div class="executed">
+                            <div *ngFor="let event of training.mainCalEvent.exercises">
+                                {{event.type}}
+                                <ion-card class="trainingCard">
+                                    <ion-row>
+                                        <ion-col>
+                                            <ion-list-header class="header">{{event.type}}</ion-list-header>
+                                        </ion-col>
+                                        <ion-col style="text-align: right">
+                                            <ion-list-header class="header">{{event.time}}</ion-list-header>
+                                        </ion-col>
+                                    </ion-row>
+                                    <div *ngFor="let cat of event.categories" style="padding-bottom: 12px">
+                                        <span class="categoryHeader">{{cat}}</span>
+                                        <div *ngFor="let exercise of event.mainCalEvent.exercises">
+                                            <ion-note class="exerciseHeader" *ngIf="exercise.exerciseCategory.category.name == cat">
+                                                {{exercise.exerciseName}}
+                                            </ion-note>
+                                        </div>
+                                    </div>
+                                </ion-card>
+                            </div>
+                        </div>
+                    </ion-col>
+                </ion-row>
+            </ion-item>
             <ion-item-options side="right">
                 <button ion-button >Labels</button>
                 <button ion-button color="secondary">View</button>

@@ -10,4 +10,8 @@ export class Label {
         };
     }
 
+    getValue() {
+        return this.label.value;
+    }
+
 }

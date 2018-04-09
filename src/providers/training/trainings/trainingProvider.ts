@@ -7,12 +7,12 @@ import {AngularFireDatabase} from "angularfire2/database";
 import {User} from "../../../models/users/user";
 import {WarmUp} from "../../../models/logging/create-training/warm-up";
 import {CoolDown} from "../../../models/logging/create-training/cool-down";
-import {CalendarMenu} from "../../menus/calendar-menu";
 import {Exercise} from "../../../models/logging/exercises/exercise";
 import {ExerciseTableType} from "../../../models/logging/create-training/exercise-table-type";
 import {ExerciseTable} from "../../../models/logging/create-training/exercise-table";
 import {ExerciseSet} from "../../../models/logging/create-training/exercise-set";
 import {ExerciseCategory} from "../../../models/logging/create-training/exercise-category";
+import {CalendarMenu} from "../../menus/calendar-menu";
 
 @Injectable()
 export class TrainingProvider {
@@ -21,7 +21,7 @@ export class TrainingProvider {
     postTraining = new PostTraining();
     listOfTrainings: Training[];
 
-    constructor(private db: AngularFireDatabase, public users: UsersProvider, public calMenu: CalendarMenu) {
+    constructor(public calMenu: CalendarMenu, private db: AngularFireDatabase, public users: UsersProvider)  {
         this.getCustomPostTraining();
         this.getCustomPreTraining();
     }
@@ -33,6 +33,7 @@ export class TrainingProvider {
     getCustomPreTraining() {
 
     }
+
 
     createNewEntry(training: Training) {
 
@@ -86,6 +87,7 @@ export class TrainingProvider {
                     training.type = snap.child("type").val();
                     training.trainingDate = snap.child("trainingDate").val();
                     training.trainingTime = snap.child("trainingTime").val();
+                    training.id = snap.key;
 
                     post.child("notes").forEach(note => {
                         training.addPostNote(note.key, note.val());
