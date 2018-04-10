@@ -29,7 +29,6 @@ export class HomePage {
     listOfTrainings: Training[] = [];
 
     constructor(public navCtrl: NavController, public app: App, public storage: Storage, public tools: ToolsProvider, public modalCtrl: ModalController, public user: UsersProvider, public menu: MenuController, public platform: Platform, public calMenu: CalendarMenu, public viewCtrl: ViewController, public training: TrainingProvider, public labels: LabelProvider) {
-        //this.datesThisMonth = this.calMenu.datesArray.datesThisMonth;
 
         this.storage.get('user-email').then(email => {
             if (email == null) {

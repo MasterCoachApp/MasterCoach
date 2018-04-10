@@ -91,37 +91,34 @@
                         <div left text-capitalize="none">
                             <table>
                                 <tr [ngClass]="today.dateValue == training.trainingDate ? 'selectedDate' : 'date'">
-                                    <th>*10*</th>
+                                    <th>{{this.tools.parseISOString(training.trainingDate).getDate()}}</th>
                                 </tr>
                                 <tr [ngClass]="today.dateValue == training.trainingDate ? 'daySelected' : 'day'">
-                                    <th>*April*</th>
+                                    <th>{{this.tools.getDayOfWeek(this.tools.parseISOString(training.trainingDate))}}</th>
                                 </tr>
                             </table>
                         </div>
                     </ion-col>
                     <ion-col col-10 class="tableCol">
                         <div class="executed">
-                            <div *ngFor="let event of training.mainCalEvent.exercises">
-                                {{event.type}}
                                 <ion-card class="trainingCard">
                                     <ion-row>
                                         <ion-col>
-                                            <ion-list-header class="header">{{event.type}}</ion-list-header>
+                                            <ion-list-header class="header">{{training.type}}</ion-list-header>
                                         </ion-col>
                                         <ion-col style="text-align: right">
-                                            <ion-list-header class="header">{{event.time}}</ion-list-header>
+                                            <ion-list-header class="header">{{training.time}}</ion-list-header>
                                         </ion-col>
                                     </ion-row>
-                                    <div *ngFor="let cat of event.categories" style="padding-bottom: 12px">
+                                    <div *ngFor="let cat of training.categories" style="padding-bottom: 12px">
                                         <span class="categoryHeader">{{cat}}</span>
-                                        <div *ngFor="let exercise of event.mainCalEvent.exercises">
+                                        <div *ngFor="let exercise of training.mainCalEvent.exercises">
                                             <ion-note class="exerciseHeader" *ngIf="exercise.exerciseCategory.category.name == cat">
                                                 {{exercise.exerciseName}}
                                             </ion-note>
                                         </div>
                                     </div>
-                                </ion-card>
-                            </div>
+                              </ion-card>
                         </div>
                     </ion-col>
                 </ion-row>

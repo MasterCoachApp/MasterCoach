@@ -29,7 +29,7 @@
                 </ion-label>
                 <div *ngIf="collapsable.filter.labelsFilterOpen">
                     <ion-item *ngFor="let label of listOfLabels">
-                        <ion-label> {{label.label['value']}}</ion-label>
+                        <ion-label> {{label.getValue()}}</ion-label>
                         <ion-checkbox (click)="updateLabelFilters(label)"></ion-checkbox>
                     </ion-item>
                 </div>
