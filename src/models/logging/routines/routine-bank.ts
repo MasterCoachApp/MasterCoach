@@ -1,8 +1,11 @@
 import {Routine} from "./routine";
+import {ExerciseTable} from "../create-training/exercise-table";
 
 export class RoutineBank {
 
     routineBank: Routine[] = [];
+
+
 
     constructor() {
 

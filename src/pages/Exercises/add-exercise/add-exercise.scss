@@ -27,14 +27,15 @@ page-add-exercise {
     align-content: right;
   }
   .noDisplay {
-    line-height: 0;
-    transition: line-height linear 1s;
+    //transition: all linear 1s;
+    line-height: 0px;
+
   }
   .categoryToggle {
-    line-height: 10px;
     transition: all linear 5s;
+    line-height: 10px;
+
     padding-top: 5px;
-    padding-left: 0;
 
   }
 }

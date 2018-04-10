@@ -109,8 +109,8 @@ export class TrainingProvider {
                         return false;
                     });
 
-                    training.mainCalEvent.warmUp = new WarmUp(main.child("warmUp").val());
-                    training.mainCalEvent.coolDown = new CoolDown(main.child("coolDown").val());
+                    // training.mainCalEvent.warmUp = new WarmUp(main.child("warmUp").val());
+                    // training.mainCalEvent.coolDown = new CoolDown(main.child("coolDown").val());
                     main.child("exercises").forEach(exercises => {
                         let headers = exercises.child("exerciseTableType").child("tableHeaderList");
                         let headerList: string[] = [];

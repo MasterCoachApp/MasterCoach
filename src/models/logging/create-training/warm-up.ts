@@ -1,11 +1,8 @@
-export class WarmUp {
+import {Routine} from "../routines/routine";
 
-    name: string;
+export class WarmUp extends Routine {
 
-    constructor(name: string) {
-
-        this.name = name;
-
+    constructor() {
+        super(null,null,null);
     }
-
 }
