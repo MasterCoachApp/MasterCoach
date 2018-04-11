@@ -1,0 +1,71 @@
+<!--
+  Generated template for the ToolsPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<!--<ion-header>-->
+
+  <!--<ion-navbar>-->
+    <!--<ion-title start>Tools</ion-title>-->
+    <!--<ion-buttons end>-->
+      <!--<button ion-button end>-->
+        <!--<ion-icon style="font-size: 30px; margin-right: 15px;" color="primary" name="ios-archive-outline"></ion-icon>-->
+      <!--</button>-->
+    <!--</ion-buttons>-->
+  <!--</ion-navbar>-->
+
+<!--</ion-header>-->
+
+
+<ion-content>
+  <ion-list-header>Utilities</ion-list-header>
+
+  <ion-list>
+    <ion-note>TOOLS</ion-note>
+    <ion-item class="listItem" tappable (click)="displayCalculator('stopwatch')">
+      <ion-label>Stopwatch</ion-label>
+    </ion-item>
+    <ion-item class="listItem" tappable (click)="displayCalculator('gun')">
+      <ion-label>Starting Gun</ion-label>
+    </ion-item>
+  </ion-list>
+
+  <ion-list>
+    <ion-note>MERCIER</ion-note>
+    <ion-item class="listItem" tappable (click)="displayCalculator('mercier')">
+      <ion-label>Outdoor / Indoor</ion-label>
+    </ion-item>
+  </ion-list>
+
+  <ion-list>
+    <ion-note>MEN</ion-note>
+    <ion-item tappable (click)="displayCalculator('decathlon')" class="listItem">
+      <ion-label>Decathlon</ion-label>
+    </ion-item>
+    <ion-item tappable (click)="displayCalculator('heptathlonM')" class="listItem">
+      <ion-label>Heptathlon</ion-label>
+    </ion-item>
+    <ion-item tappable (click)="displayCalculator('pentathlonM')" class="listItem">
+      <ion-label>Pentathlon</ion-label>
+    </ion-item>
+  </ion-list>
+
+  <ion-list>
+    <ion-note>WOMEN</ion-note>
+    <ion-item  tappable (click)="displayCalculator('heptathlonW')" class="listItem">
+      <ion-label>Heptathlon</ion-label>
+    </ion-item>
+    <ion-item  tappable (click)="displayCalculator('pentathlonW')" class="listItem">
+      <ion-label>Pentathlon</ion-label>
+    </ion-item>
+  </ion-list>
+
+  <ion-list>
+    <ion-note>UNIT CONVERTER</ion-note>
+    <ion-item tappable (click)="displayCalculator('units')" class="listItem">
+      Converter
+    </ion-item>
+  </ion-list>
+
+</ion-content>

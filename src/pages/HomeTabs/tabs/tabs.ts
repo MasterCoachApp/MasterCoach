@@ -1,10 +1,8 @@
 import {Component} from '@angular/core';
-
-import {AboutPage} from '../about/about';
-import {ContactPage} from '../contact/contact';
 import {HomePage} from '../home/home';
 import {IonicPage, ModalController} from "ionic-angular";
-import {CreateTrainingPage} from "../../Training/create-training/create-training";
+import {ProfilePage} from "../profile/profile";
+import {UtilitiesPage} from "../tools/utilities/utilities";
 
 @IonicPage()
 @Component({
@@ -13,8 +11,9 @@ import {CreateTrainingPage} from "../../Training/create-training/create-training
 export class TabsPage {
 
   tab1Root = 'HomePage';
-  tab2Root = 'AboutPage';
-  tab3Root = 'ContactPage';
+  tab2Root = 'ProfilePage';
+  tab3Root = 'UtilitiesPage';
+  tab4Root = 'ProfilePage';
 
   constructor(public modalCtrl: ModalController) {
 

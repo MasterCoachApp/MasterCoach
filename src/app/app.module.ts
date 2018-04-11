@@ -25,6 +25,9 @@ import {LabelProvider} from "../providers/training/labels/labelProvider";
 import {TrainingProvider} from "../providers/training/trainings/trainingProvider";
 import {ExerciseProvider} from "../providers/training/exercises/exerciseProvider";
 import {CalendarModule} from "ionic3-calendar-en";
+import {MenPointsProvider} from "../providers/tools/calculators/mens";
+import {MercierPointsProvider} from "../providers/tools/calculators/mercier";
+import {WomenPointsProvider} from "../providers/tools/calculators/womens";
 
 @NgModule({
     declarations: [
@@ -62,7 +65,10 @@ import {CalendarModule} from "ionic3-calendar-en";
         LabelProvider,
         TrainingProvider,
         ExerciseProvider,
-        CalendarMenu
+        CalendarMenu,
+        MenPointsProvider,
+        MercierPointsProvider,
+        WomenPointsProvider
     ],
     schemas: [
         CUSTOM_ELEMENTS_SCHEMA

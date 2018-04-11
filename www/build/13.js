@@ -1,14 +1,14 @@
 webpackJsonp([13],{
 
-/***/ 663:
+/***/ 674:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AddExercisePageModule", function() { return AddExercisePageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "HeptathlonMCalculatorPageModule", function() { return HeptathlonMCalculatorPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(37);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__add_exercise__ = __webpack_require__(679);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__heptathlon_m_calculator__ = __webpack_require__(697);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -18,34 +18,34 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var AddExercisePageModule = (function () {
-    function AddExercisePageModule() {
+var HeptathlonMCalculatorPageModule = (function () {
+    function HeptathlonMCalculatorPageModule() {
     }
-    AddExercisePageModule = __decorate([
+    HeptathlonMCalculatorPageModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["J" /* NgModule */])({
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_2__add_exercise__["a" /* AddExercisePage */],
+                __WEBPACK_IMPORTED_MODULE_2__heptathlon_m_calculator__["a" /* HeptathlonMCalculatorPage */],
             ],
             imports: [
-                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__add_exercise__["a" /* AddExercisePage */]),
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__heptathlon_m_calculator__["a" /* HeptathlonMCalculatorPage */]),
             ],
         })
-    ], AddExercisePageModule);
-    return AddExercisePageModule;
+    ], HeptathlonMCalculatorPageModule);
+    return HeptathlonMCalculatorPageModule;
 }());
 
-//# sourceMappingURL=add-exercise.module.js.map
+//# sourceMappingURL=heptathlon-m-calculator.module.js.map
 
 /***/ }),
 
-/***/ 679:
+/***/ 697:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AddExercisePage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return HeptathlonMCalculatorPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(37);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_training_exercises_exerciseProvider__ = __webpack_require__(448);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_tools_calculators_mens__ = __webpack_require__(450);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -59,151 +59,138 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 /**
- * Generated class for the AddExercisePage page.
+ * Generated class for the HeptathlonMCalculatorPage page.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
  */
-var AddExercisePage = (function () {
-    function AddExercisePage(navCtrl, navParams, viewCtrl, modalCtrl, banks) {
-        var _this = this;
+var HeptathlonMCalculatorPage = (function () {
+    function HeptathlonMCalculatorPage(navCtrl, navParams, calculator) {
         this.navCtrl = navCtrl;
         this.navParams = navParams;
-        this.viewCtrl = viewCtrl;
-        this.modalCtrl = modalCtrl;
-        this.banks = banks;
-        this.exercisesToAdd = [];
-        this.exerciseRecentBank = []; // currently will be empty
-        this.searchQuery = '';
-        this.categoryShow = {};
-        this.exerciseFilter = 'Category';
-        this.exercisesToAdd = [];
-        // this.exerciseBank = new ExerciseBank();
-        // this.exerciseCategoryBankSorted = this.exerciseCategoryBank.sort((a,b) => {
-        //     if(a.category.name < b.category.name) return -1;
-        //     if(a.category.name > b.category.name) return 1;
-        //     return 0;
-        // });
-        this.exerciseRecentBank = []; // to be completed
-        this.initializeExerciseBankSorted();
-        this.initializeExerciseCategoryBank();
-        console.log('exerciseBankSorted', this.exerciseBankSorted);
-        // console.log('exerciseBank',this.exerciseBank);
-        console.log('CATEGORY BANK', this.exerciseCategoryBank); // sorted
-        this.exerciseCategoryBank.forEach(function (data) {
-            return _this.categoryShow[data.category.name] = false;
-        });
-        console.log('categoryShow', this.categoryShow);
-        this.showAllCategories = false;
+        this.calculator = calculator;
+        this.inputs = {
+            sixty: "0.00",
+            lj: "0.00",
+            sp: "0.00",
+            hj: "0.00",
+            sixtyHurdles: "0.00",
+            pv: "0.00",
+            thousand: "0:00"
+        };
+        this.outputs = {
+            sixty: 0,
+            lj: 0,
+            sp: 0,
+            hj: 0,
+            sixtyHurdles: 0,
+            pv: 0,
+            thousand: 0,
+            dayOne: 0,
+            dayTwo: 0,
+            total: 0
+        };
     }
-    AddExercisePage.prototype.initializeExerciseBankSorted = function () {
-        // this.exerciseBankSorted = this.sortAlphabetical(this.banks.exerciseBank, 'exerciseName');
-        this.exerciseBankSorted = this.banks.exerciseBank.exerciseBank;
-    };
-    AddExercisePage.prototype.initializeExerciseCategoryBank = function () {
-        // this.exerciseCategoryBankFiltered = this.retrieveFilteredCategories().sort((a,b) => {
-        //     if(a.category.name < b.category.name) return -1;
-        //     if(a.category.name > b.category.name) return 1;
-        //     return 0;
-        // });
-        this.exerciseCategoryBank = this.banks.exerciseCategoryBank.exerciseCategoryBank;
-        this.exerciseCategoryBankFiltered = this.retrieveFilteredCategories();
-        console.log('FILTERED CAT BANK', this.exerciseCategoryBankFiltered);
-    };
-    AddExercisePage.prototype.filterItems = function (searchQuery) {
-        // Reset items back to all of the items
-        this.initializeExerciseBankSorted();
-        // set val to the value of the searchbar
-        var val = searchQuery;
-        // if the value is an empty string don't filter the items
-        if (val && val.trim() != '') {
-            this.exerciseBankSorted = this.exerciseBankSorted.filter(function (exercise) {
-                return (exercise.exerciseName.toLowerCase().indexOf(val.toLowerCase()) > -1);
-            });
-            this.initializeExerciseCategoryBank();
-        }
-        this.initializeExerciseCategoryBank();
-    };
-    AddExercisePage.prototype.retrieveFilteredCategories = function () {
-        var tempCategoryBank = [];
-        for (var i = 0; i < this.exerciseBankSorted.length; i++) {
-            if (tempCategoryBank.indexOf(this.exerciseBankSorted[i].exerciseCategory) > -1) {
-                continue;
-            }
-            else {
-                tempCategoryBank.push(this.exerciseBankSorted[i].exerciseCategory);
-            }
-        }
-        return tempCategoryBank;
-    };
-    AddExercisePage.prototype.sortAlphabetical = function (arrayOfObjects, property) {
-        arrayOfObjects.sort(function (a, b) {
-            if (a.property < b.property)
-                return -1;
-            if (a.property > b.property)
-                return 1;
-            return 0;
-        });
-        return arrayOfObjects;
-    };
-    AddExercisePage.prototype.ionViewDidLoad = function () {
-        // console.log('ionViewDidLoad AddExercisePage');
-    };
-    AddExercisePage.prototype.toggleCategoryShow = function (exerciseCategory) {
-        this.categoryShow[exerciseCategory.category.name] = !this.categoryShow[exerciseCategory.category.name];
-        console.log(this.categoryShow[exerciseCategory.category.name]);
-    };
-    AddExercisePage.prototype.toggleAllCategories = function () {
-        var _this = this;
-        this.showAllCategories = !this.showAllCategories;
-        this.exerciseCategoryBank.forEach(function (data) {
-            _this.categoryShow[data.category.name] = _this.showAllCategories;
-            console.log(data.category.name);
-            console.log(_this.showAllCategories);
-        });
-    };
-    AddExercisePage.prototype.toggleFilterIsCategory = function () {
-        this.filterIsCategory = (this.exerciseFilter == 'Category');
-    };
-    AddExercisePage.prototype.createExercise = function (searchQuery) {
-        var _this = this;
-        var createExerciseModal = this.modalCtrl.create('CreateExercisePage', { searchQuery: searchQuery });
-        createExerciseModal.onDidDismiss(function (data) {
-            if (data) {
-                _this.selectExercise(data);
-                _this.filterItems(searchQuery);
-            }
-        });
-        createExerciseModal.present();
-    };
-    AddExercisePage.prototype.selectExercise = function (exercise) {
-        var indexOfExercise = this.exercisesToAdd.indexOf(exercise);
-        if (indexOfExercise == -1) {
-            this.exercisesToAdd.push(exercise);
-            console.log('Adding');
-        }
-        else {
-            this.exercisesToAdd.splice(indexOfExercise, 1);
-            console.log('Popped!');
-        }
-        console.log('exercisesToAdd', this.exercisesToAdd);
-    };
-    AddExercisePage.prototype.addExercisesAndDismiss = function () {
-        this.viewCtrl.dismiss(this.exercisesToAdd);
-    };
-    AddExercisePage.prototype.cancel = function () {
+    HeptathlonMCalculatorPage.prototype.cancel = function () {
         this.navCtrl.pop();
     };
-    AddExercisePage = __decorate([
+    HeptathlonMCalculatorPage.prototype.save = function () {
+    };
+    HeptathlonMCalculatorPage.prototype.updateTextFocus = function (value) {
+        if (value == "thousand") {
+            if (this.inputs[value] == "0:00") {
+                this.inputs[value] = "";
+            }
+        }
+        else if (this.inputs[value] == "0.00") {
+            this.inputs[value] = "";
+        }
+    };
+    HeptathlonMCalculatorPage.prototype.updateTextBlur = function (value) {
+        if (value == "thousand") {
+            if (this.inputs[value] == "") {
+                this.inputs[value] = "0:00";
+            }
+        }
+        else if (this.inputs[value] == "") {
+            this.inputs[value] = "0.00";
+        }
+    };
+    HeptathlonMCalculatorPage.prototype.isNumber = function (event) {
+        var key = window.event ? event.keyCode : event.which;
+        if (key == 46 || event.keyCode == 8 || event.keyCode == 46 || event.keyCode == 37 || event.keyCode == 39) {
+            return true;
+        }
+        else
+            return !(key < 48 || key > 57);
+    };
+    ;
+    HeptathlonMCalculatorPage.prototype.isTime = function (event) {
+        var key = window.event ? event.keyCode : event.which;
+        if (key == 46 || key == 58 || event.keyCode == 8 || event.keyCode == 46 || event.keyCode == 37 || event.keyCode == 39) {
+            return true;
+        }
+        else
+            return !(key < 48 || key > 57);
+    };
+    ;
+    HeptathlonMCalculatorPage.prototype.updateScore = function () {
+        for (var key in this.inputs) {
+            if (this.inputs.hasOwnProperty(key)) {
+                if (key != "thousand") {
+                    var parse = Number(this.inputs[key]);
+                    if (isNaN(parse)) {
+                        parse = 0.00;
+                    }
+                    if (parse != 0.00) {
+                        var eventScore = this.calculator.getEventPoints(key, parse);
+                        if (isNaN(eventScore)) {
+                            eventScore = 0;
+                        }
+                        this.outputs[key] = eventScore;
+                    }
+                    else {
+                        this.outputs[key] = 0;
+                    }
+                }
+                else {
+                    if (this.inputs[key] != "" && this.inputs[key] != "0:00") {
+                        console.log(this.inputs[key]);
+                        var eventScore = this.calculator.getEventPoints(key, this.inputs[key]);
+                        if (isNaN(eventScore)) {
+                            eventScore = 0;
+                        }
+                        this.outputs[key] = eventScore;
+                    }
+                    else {
+                        this.outputs[key] = 0;
+                    }
+                }
+                var dayOne = this.calculator.getDayOne(this.outputs);
+                if (!isNaN(dayOne)) {
+                    this.outputs.dayOne = dayOne;
+                }
+                var dayTwo = this.calculator.getDayTwo(this.outputs);
+                if (!isNaN(dayOne)) {
+                    this.outputs.dayTwo = dayTwo;
+                }
+                var total = this.calculator.getTotal(this.outputs);
+                if (!isNaN(dayOne)) {
+                    this.outputs.total = total;
+                }
+            }
+        }
+    };
+    HeptathlonMCalculatorPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-            selector: 'page-add-exercise',template:/*ion-inline-start:"/Users/jonahelbaz/Desktop/MasterCoach/src/pages/Exercises/add-exercise/add-exercise.html"*/'<!--\n  Generated template for the AddExercisePage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-buttons left>\n      <button ion-button="Cancel" color="primary" (click)="cancel()">Cancel\n      </button>\n    </ion-buttons>\n    <ion-title>AddExercise</ion-title>\n    <ion-buttons right>\n      <button *ngIf="exerciseBankSorted.length != 0" ion-button="Submit" color="primary" (click)="addExercisesAndDismiss()">Add\n      </button>\n      <button *ngIf="exerciseBankSorted.length == 0" ion-button="Submit" color="primary" (click)="createExercise(searchQuery)">New\n      </button>\n    </ion-buttons>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n  <ion-searchbar (ionInput)="filterItems(searchQuery)" [(ngModel)]="searchQuery" autocomplete="on" placeholder="Filter exercises" [showCancelButton]="shouldShowCancel" [animated]="true">\n  </ion-searchbar>\n\n  <ion-segment [(ngModel)]="exerciseFilter" (click)="toggleFilterIsCategory()">\n    <ion-segment-button value="Recent">\n      Recent\n    </ion-segment-button>\n    <ion-segment-button value="Category">\n      Category\n    </ion-segment-button>\n    <ion-segment-button value="A-Z">\n      A-Z\n    </ion-segment-button>\n  </ion-segment>\n  <div [ngClass]="filterIsCategory ? \'categoryToggle\': \'noDisplay\'">\n    <ion-grid  no-lines>\n      <!--<ion-grid *ngIf="exerciseFilter == \'Category\'" no-lines>-->\n\n      <ion-row justify-content-center>\n        <ion-col style="text-align: right" col-4><ion-label>Hide All</ion-label></ion-col>\n        <ion-col style="text-align: center; margin: 0;" col-2><ion-toggle (click)="toggleAllCategories()"></ion-toggle></ion-col>\n        <ion-col style="text-align: left; margin-left: 5px" col-4><ion-label>Show All</ion-label></ion-col>\n      </ion-row>\n    </ion-grid>\n  </div>\n\n  <ion-list class="searchList" *ngIf="exerciseFilter == \'Recent\'">\n      <ion-item>\n          We need to make a provider that searches and sorts exercises by most recent, remember no duplicates!\n      </ion-item>\n  </ion-list>\n  <ion-list class="searchList" *ngIf="exerciseFilter == \'Category\'" style="text-line-through-color: grey;">\n    <div *ngFor="let exerciseCategory of exerciseCategoryBankFiltered">\n      <button ion-item detail-none (click)="toggleCategoryShow(exerciseCategory)">{{exerciseCategory.category.name}}<ion-icon class="categoryArrow" *ngIf="categoryShow[exerciseCategory.category.name]" name="ios-arrow-down" primary></ion-icon><ion-icon class="categoryArrow" primary *ngIf="!categoryShow[exerciseCategory.category.name]" name="ios-arrow-forward"></ion-icon></button>\n      <ion-list *ngIf="categoryShow[exerciseCategory.category.name]">\n        <div *ngFor="let exercise of exerciseBankSorted">\n          <ion-item *ngIf="exercise.exerciseCategory.category.name == exerciseCategory.category.name">\n            {{exercise.exerciseName}} <ion-icon></ion-icon>\n          </ion-item>\n        </div>\n      </ion-list>\n    </div>\n  </ion-list>\n  <ion-list class="searchList" *ngIf="exerciseFilter == \'A-Z\'">\n    <ion-item *ngFor="let exercise of exerciseBankSorted" (click)="selectExercise(exercise)">\n      {{exercise.exerciseName}} ({{exercise.exerciseCategory.category.name}})\n    </ion-item>\n  </ion-list>\n</ion-content>\n'/*ion-inline-end:"/Users/jonahelbaz/Desktop/MasterCoach/src/pages/Exercises/add-exercise/add-exercise.html"*/,
+            selector: 'page-heptathlon-m-calculator',template:/*ion-inline-start:"/Users/jonahelbaz/Desktop/MasterCoach/src/pages/HomeTabs/tools/calculators/heptathlon-m-calculator/heptathlon-m-calculator.html"*/'<!--\n  Generated template for the DecathlonCalculatorPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-buttons left (click)="cancel()">\n      <button ion-button="arrow-back" color="primary">\n        <ion-icon name="ios-arrow-down"></ion-icon>\n      </button>\n    </ion-buttons>\n    <ion-title>Heptathlon</ion-title>\n    <ion-buttons right (click)="save()">\n      <button ion-button="arrow-back" color="primary">\n        Save\n      </button>\n    </ion-buttons>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n\n  <ion-list>\n    <ion-row>\n      <ion-col>\n        <ion-label>60m</ion-label>\n      </ion-col>\n      <ion-col>\n        <ion-input maxlength="5" [(ngModel)]="inputs.sixty" (ionFocus)="updateTextFocus(\'sixty\')" (ionBlur)="updateTextBlur(\'sixty\')" (ionChange)="updateScore()"  (keypress)="isNumber($event)"></ion-input>\n      </ion-col>\n      <ion-col>\n        <ion-input [readonly]="true" class="output" [(ngModel)]="outputs.sixty" (ionFocus)="false"></ion-input>\n      </ion-col>\n    </ion-row>\n    <ion-row class="row">\n      <ion-col>\n        <ion-label>Long Jump</ion-label>\n      </ion-col>\n      <ion-col>\n        <ion-input maxlength="5" [(ngModel)]="inputs.lj" (ionFocus)="updateTextFocus(\'lj\')" (ionBlur)="updateTextBlur(\'lj\')" (ionChange)="updateScore()"  (keypress)="isNumber($event)"></ion-input>\n      </ion-col>\n      <ion-col>\n        <ion-input [readonly]="true" l class="output" [(ngModel)]="outputs.lj"></ion-input>\n      </ion-col>\n    </ion-row>\n    <ion-row>\n      <ion-col>\n        <ion-label>Shot Put</ion-label>\n      </ion-col>\n      <ion-col>\n        <ion-input maxlength="5" [(ngModel)]="inputs.sp" (ionFocus)="updateTextFocus(\'sp\')" (ionBlur)="updateTextBlur(\'sp\')" (ionChange)="updateScore()"  (keypress)="isNumber($event)"></ion-input>\n      </ion-col>\n      <ion-col>\n        <ion-input [readonly]="true" class="output" [(ngModel)]="outputs.sp"></ion-input>\n      </ion-col>\n    </ion-row>\n    <ion-row>\n      <ion-col>\n        <ion-label>High Jump</ion-label>\n      </ion-col>\n      <ion-col>\n        <ion-input maxlength="5" [(ngModel)]="inputs.hj" (ionFocus)="updateTextFocus(\'hj\')" (ionBlur)="updateTextBlur(\'hj\')" (ionChange)="updateScore()"  (keypress)="isNumber($event)"></ion-input>\n      </ion-col>\n      <ion-col>\n        <ion-input [readonly]="true" class="output" [(ngModel)]="outputs.hj"></ion-input>\n      </ion-col>\n    </ion-row>\n    <ion-row>\n      <ion-col>\n        <ion-label>60mH</ion-label>\n      </ion-col>\n      <ion-col>\n        <ion-input maxlength="5" [(ngModel)]="inputs.sixtyHurdles" (ionFocus)="updateTextFocus(\'sixtyHurdles\')" (ionBlur)="updateTextBlur(\'sixtyHurdles\')" (ionChange)="updateScore()"  (keypress)="isNumber($event)"></ion-input>\n      </ion-col>\n      <ion-col>\n        <ion-input [readonly]="true" class="output" [(ngModel)]="outputs.sixtyHurdles"></ion-input>\n      </ion-col>\n    </ion-row>\n    <ion-row>\n      <ion-col>\n        <ion-label>Pole Vault</ion-label>\n      </ion-col>\n      <ion-col>\n        <ion-input maxlength="5" [(ngModel)]="inputs.pv" (ionFocus)="updateTextFocus(\'pv\')" (ionBlur)="updateTextBlur(\'pv\')" (ionChange)="updateScore()"  (keypress)="isNumber($event)"></ion-input>\n      </ion-col>\n      <ion-col>\n        <ion-input [readonly]="true" class="output" [(ngModel)]="outputs.pv"></ion-input>\n      </ion-col>\n    </ion-row>\n    <ion-row>\n      <ion-col>\n        <ion-label>1000m</ion-label>\n      </ion-col>\n      <ion-col>\n        <ion-input maxlength="8" [(ngModel)]="inputs.thousand" (ionFocus)="updateTextFocus(\'thousand\')" (ionBlur)="updateTextBlur(\'thousand\')" (ionChange)="updateScore()"  (keypress)="isTime($event)"></ion-input>\n      </ion-col>\n      <ion-col>\n        <ion-input [readonly]="true" class="output" [(ngModel)]="outputs.thousand"></ion-input>\n      </ion-col>\n    </ion-row>\n    <ion-row class="outputResult">\n      <ion-col col-4></ion-col>\n      <ion-col col-5>\n        <ion-label>Score Day 1:</ion-label>\n      </ion-col>\n      <ion-col col-2>\n        <ion-input [readonly]="true" class="output" [(ngModel)]="outputs.dayOne"></ion-input>\n      </ion-col>\n    </ion-row>\n    <ion-row class="outputResult">\n      <ion-col col-4></ion-col>\n      <ion-col col-5>\n        <ion-label>Score Day 2:</ion-label>\n      </ion-col>\n      <ion-col col-2>\n        <ion-input [readonly]="true" class="output" [(ngModel)]="outputs.dayTwo"></ion-input>\n      </ion-col>\n    </ion-row>\n    <ion-row class="outputResult">\n      <ion-col col-4></ion-col>\n      <ion-col col-5>\n        <ion-label>Total Score:</ion-label>\n      </ion-col>\n      <ion-col col-2>\n        <ion-input [readonly]="true" class="output" [(ngModel)]="outputs.total"></ion-input>\n      </ion-col>\n    </ion-row>\n  </ion-list>\n</ion-content>\n\n'/*ion-inline-end:"/Users/jonahelbaz/Desktop/MasterCoach/src/pages/HomeTabs/tools/calculators/heptathlon-m-calculator/heptathlon-m-calculator.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* NavParams */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["p" /* ViewController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* ModalController */], __WEBPACK_IMPORTED_MODULE_2__providers_training_exercises_exerciseProvider__["a" /* ExerciseProvider */]])
-    ], AddExercisePage);
-    return AddExercisePage;
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2__providers_tools_calculators_mens__["a" /* MenPointsProvider */]])
+    ], HeptathlonMCalculatorPage);
+    return HeptathlonMCalculatorPage;
 }());
 
-//# sourceMappingURL=add-exercise.js.map
+//# sourceMappingURL=heptathlon-m-calculator.js.map
 
 /***/ })
 

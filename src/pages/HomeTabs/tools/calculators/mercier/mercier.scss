@@ -1,0 +1,24 @@
+page-mercier {
+
+  ion-select {
+    background-color: darken(color($colors, light), 10%);
+    width: 80%;
+    max-width: 100% !important;
+  }
+
+  ion-grid {
+    margin: 20px 0 10px 0;
+    background-color: darken(color($colors, light), 3%);
+  }
+
+  ion-input {
+    width: 80px;
+    background-color: darken(color($colors, light), 10%);
+    border-radius: 10px;
+  }
+
+  ion-label {
+    text-align: center;
+  }
+
+}

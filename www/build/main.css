@@ -33629,6 +33629,112 @@ page-home .trainingCard {
   padding: 5px 5px 15px 8px;
 }
 
+page-decathlon-calculator ion-row {
+  padding-bottom: 2px;
+  border-bottom: 1px solid white;
+}
+
+page-decathlon-calculator .output {
+  text-align: center;
+}
+
+page-decathlon-calculator ion-input {
+  margin-left: 40px;
+}
+
+page-decathlon-calculator ion-col {
+  height: 40px;
+}
+
+page-decathlon-calculator .outputResult {
+  border: none !important;
+  height: 30px;
+}
+
+page-heptathlon-m-calculator ion-row {
+  padding-bottom: 2px;
+  border-bottom: 1px solid white;
+}
+
+page-heptathlon-m-calculator .output {
+  text-align: center;
+}
+
+page-heptathlon-m-calculator ion-input {
+  margin-left: 40px;
+}
+
+page-heptathlon-m-calculator ion-col {
+  height: 40px;
+}
+
+page-heptathlon-m-calculator .outputResult {
+  border: none !important;
+  height: 30px;
+}
+
+page-mercier ion-select {
+  background-color: #dbdbdb;
+  width: 80%;
+  max-width: 100% !important;
+}
+
+page-mercier ion-grid {
+  margin: 20px 0 10px 0;
+  background-color: #ececec;
+}
+
+page-mercier ion-input {
+  width: 80px;
+  background-color: #dbdbdb;
+  border-radius: 10px;
+}
+
+page-mercier ion-label {
+  text-align: center;
+}
+
+page-pentathlon-m-calculator ion-row {
+  padding-bottom: 2px;
+  border-bottom: 1px solid white;
+}
+
+page-pentathlon-m-calculator .output {
+  text-align: center;
+}
+
+page-pentathlon-m-calculator ion-input {
+  margin-left: 40px;
+}
+
+page-pentathlon-m-calculator ion-col {
+  height: 40px;
+}
+
+page-pentathlon-m-calculator .outputResult {
+  border: none !important;
+  height: 30px;
+}
+
+page-unit-converter ion-input {
+  background-color: #dbdbdb;
+  height: 30px;
+  border-radius: 10px;
+  padding-left: 10px;
+  width: 100px;
+}
+
+page-unit-converter .output {
+  background-color: transparent;
+  text-align: right;
+}
+
+page-unit-converter ion-grid {
+  background-color: #ececec;
+  margin-bottom: 5px;
+  margin-top: 5px;
+}
+
 page-create-account {
   /* Shared */
   /* Facebook */

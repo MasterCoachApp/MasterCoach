@@ -1,4 +1,4 @@
-webpackJsonp([15],{
+webpackJsonp([23],{
 
 /***/ 155:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -7,7 +7,7 @@ webpackJsonp([15],{
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return UsersProvider; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_angularfire2_database__ = __webpack_require__(75);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__models_users_user__ = __webpack_require__(593);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__models_users_user__ = __webpack_require__(596);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -71,13 +71,13 @@ var UsersProvider = (function () {
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return TrainingProvider; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__models_custom_survey_components_trainings_pre_training__ = __webpack_require__(594);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__models_custom_survey_components_trainings_post_training__ = __webpack_require__(595);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__models_logging_training__ = __webpack_require__(452);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__models_custom_survey_components_trainings_pre_training__ = __webpack_require__(597);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__models_custom_survey_components_trainings_post_training__ = __webpack_require__(598);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__models_logging_training__ = __webpack_require__(454);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__users_users__ = __webpack_require__(155);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_angularfire2_database__ = __webpack_require__(75);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__models_logging_create_training_warm_up__ = __webpack_require__(596);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__models_logging_create_training_cool_down__ = __webpack_require__(597);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__models_logging_create_training_warm_up__ = __webpack_require__(599);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__models_logging_create_training_cool_down__ = __webpack_require__(600);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__models_logging_exercises_exercise__ = __webpack_require__(90);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__models_logging_create_training_exercise_table_type__ = __webpack_require__(215);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__models_logging_create_training_exercise_table__ = __webpack_require__(266);
@@ -299,64 +299,100 @@ webpackEmptyAsyncContext.id = 168;
 
 var map = {
 	"../pages/Exercises/add-exercise/add-exercise.module": [
-		663,
-		13
+		666,
+		47
 	],
 	"../pages/Exercises/create-exercise/create-exercise.module": [
-		664,
-		12
+		667,
+		46
 	],
 	"../pages/Exercises/select-exercise-category/select-exercise-category.module": [
-		665,
-		11
+		668,
+		45
 	],
 	"../pages/Exercises/select-exercise-table-type/select-exercise-table-type.module": [
-		666,
-		10
-	],
-	"../pages/HomeTabs/about/about.module": [
-		667,
-		9
-	],
-	"../pages/HomeTabs/contact/contact.module": [
-		668,
-		8
+		669,
+		44
 	],
 	"../pages/HomeTabs/home/home.module": [
-		669,
-		7
+		670,
+		43
+	],
+	"../pages/HomeTabs/profile/profile.module": [
+		671,
+		42
 	],
 	"../pages/HomeTabs/tabs/tabs.module": [
-		670,
-		6
+		672,
+		41
+	],
+	"../pages/HomeTabs/tools/calculators/decathlon-calculator/decathlon-calculator.module": [
+		673,
+		40
+	],
+	"../pages/HomeTabs/tools/calculators/heptathlon-m-calculator/heptathlon-m-calculator.module": [
+		674,
+		39
+	],
+	"../pages/HomeTabs/tools/calculators/heptathlon-w-calculator/heptathlon-w-calculator.module": [
+		675,
+		38
+	],
+	"../pages/HomeTabs/tools/calculators/mercier/mercier.module": [
+		676,
+		37
+	],
+	"../pages/HomeTabs/tools/calculators/pentathlon-m-calculator/pentathlon-m-calculator.module": [
+		677,
+		36
+	],
+	"../pages/HomeTabs/tools/calculators/pentathlon-w-calculator/pentathlon-w-calculator.module": [
+		678,
+		35
+	],
+	"../pages/HomeTabs/tools/calculators/unit-converter/unit-converter.module": [
+		679,
+		34
+	],
+	"../pages/HomeTabs/tools/gadgets/starting-gun/starting-gun.module": [
+		680,
+		33
+	],
+	"../pages/HomeTabs/tools/gadgets/stopwatch/stopwatch.module": [
+		681,
+		32
+	],
+	"../pages/HomeTabs/tools/utilities/utilities.module": [
+		715,
+		31
 	],
 	"../pages/Logins/create-account/create-account.module": [
-		671,
-		2
+		682,
+		27
 	],
 	"../pages/Logins/forgot-password/forgot-password.module": [
-		672,
-		5
+		683,
+		30
 	],
 	"../pages/Logins/login/login.module": [
-		673,
-		1
+		684,
+		26
 	],
 	"../pages/Logins/standard-login/standard-login.module": [
-		674,
-		4
+		685,
+		29
 	],
 	"../pages/Training/create-training/create-training.module": [
-		675,
-		0
+		686,
+		25
 	],
 	"../pages/Training/text-popover/text-popover.module": [
-		676,
-		14
+		687,
+		48
 	],
 	"../pages/view-training/view-training.module": [
-		677,
-		3
+		688,
+		28
 	]
 };
 function webpackAsyncContext(req) {
@@ -745,10 +781,10 @@ var ValidationProvider = (function () {
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ExerciseProvider; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__models_logging_exercises_exercise_bank__ = __webpack_require__(497);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__models_logging_exercises_exercise_bank__ = __webpack_require__(500);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__models_logging_create_training_exercise_category_bank__ = __webpack_require__(212);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__models_logging_create_training_exercise_table_type_bank__ = __webpack_require__(214);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__models_logging_routines_routine_bank__ = __webpack_require__(498);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__models_logging_routines_routine_bank__ = __webpack_require__(501);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -810,7 +846,7 @@ var ExerciseProvider = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_angularfire2_auth__ = __webpack_require__(268);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_angularfire2_database__ = __webpack_require__(75);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_firebase__ = __webpack_require__(601);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_firebase__ = __webpack_require__(604);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_firebase___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_firebase__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ionic_native_facebook__ = __webpack_require__(281);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__ionic_native_google_plus__ = __webpack_require__(282);
@@ -1125,6 +1161,305 @@ var AuthenticationProvider = (function () {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MenPointsProvider; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+var MenPointsProvider = (function () {
+    function MenPointsProvider() {
+    }
+    MenPointsProvider.prototype.getDayOne = function (outputs) {
+        var dayOneScore = 0;
+        for (var key in outputs) {
+            if (outputs.hasOwnProperty(key)) {
+                if (this.isDayOne(key)) {
+                    dayOneScore += outputs[key];
+                }
+            }
+        }
+        return dayOneScore;
+    };
+    MenPointsProvider.prototype.getDayTwo = function (outputs) {
+        var dayTwoScore = 0;
+        for (var key in outputs) {
+            if (outputs.hasOwnProperty(key)) {
+                if (this.isDayTwo(key)) {
+                    dayTwoScore += outputs[key];
+                }
+            }
+        }
+        return dayTwoScore;
+    };
+    MenPointsProvider.prototype.getTotal = function (outputs) {
+        var dayOne = this.getDayOne(outputs);
+        var dayTwo = this.getDayTwo(outputs);
+        return dayOne + dayTwo;
+    };
+    MenPointsProvider.prototype.isDayOne = function (value) {
+        return (value == "hundred" || value == "lj" || value == "sp" || value == "hj" || value == "four" || value == "sixty");
+    };
+    MenPointsProvider.prototype.isDayTwo = function (value) {
+        return (value == "hurdles" || value == "dt" || value == "pv" || value == "jt" || value == "fifteen" || value == "sixtyHurdles" || value == "thousand");
+    };
+    MenPointsProvider.prototype.getEventPoints = function (event, score) {
+        var a = 0;
+        var b = 0;
+        var c = 0;
+        var cm = 0;
+        var seconds = 0;
+        switch (event) {
+            case "hundred"://100
+                a = 25.4347;
+                b = 18;
+                c = 1.81;
+                return this.calculateRunning(score, a, b, c);
+            case "lj"://long jump
+                a = 0.14354;
+                b = 220;
+                c = 1.40;
+                cm = score * 100;
+                return this.calculateField(cm, a, b, c);
+            case "sp"://shot put
+                a = 51.39;
+                b = 1.5;
+                c = 1.05;
+                return this.calculateField(score, a, b, c);
+            case "hj"://High jump
+                a = 0.8465;
+                b = 75;
+                c = 1.42;
+                cm = score * 100;
+                return this.calculateField(cm, a, b, c);
+            case "four"://400
+                a = 1.53775;
+                b = 82;
+                c = 1.81;
+                return this.calculateRunning(score, a, b, c);
+            case "hurdles"://110mH
+                a = 5.74352;
+                b = 28.5;
+                c = 1.92;
+                return this.calculateRunning(score, a, b, c);
+            case "dt"://discus
+                a = 12.91;
+                b = 4;
+                c = 1.10;
+                return this.calculateField(score, a, b, c);
+            case "pv"://pole vault
+                a = 0.2797;
+                b = 100;
+                c = 1.35;
+                cm = score * 100;
+                return this.calculateField(cm, a, b, c);
+            case "jt"://javelin
+                a = 10.14;
+                b = 7;
+                c = 1.08;
+                return this.calculateField(score, a, b, c);
+            case "fifteen"://1500
+                a = 0.03768;
+                b = 480;
+                c = 1.85;
+                seconds = this.getSeconds(score);
+                return this.calculateRunning(seconds, a, b, c);
+            case "sixty":
+                a = 58.0150;
+                b = 11.5;
+                c = 1.81;
+                return this.calculateRunning(score, a, b, c);
+            case "sixtyHurdles":
+                a = 20.5173;
+                b = 15.5;
+                c = 1.92;
+                return this.calculateRunning(score, a, b, c);
+            case "thousand":
+                a = 0.08713;
+                b = 305.5;
+                c = 1.85;
+                seconds = this.getSeconds(score);
+                return this.calculateRunning(seconds, a, b, c);
+        }
+    };
+    MenPointsProvider.prototype.calculateRunning = function (score, a, b, c) {
+        return Math.floor(a * Math.pow(b - score, c));
+    };
+    MenPointsProvider.prototype.calculateField = function (score, a, b, c) {
+        return Math.floor(a * Math.pow(score - b, c));
+    };
+    MenPointsProvider.prototype.getSeconds = function (score) {
+        var time = score.split(":");
+        var min = Number(time[0]);
+        var sec = Number(time[1]);
+        if (isNaN(min))
+            min = 0;
+        if (isNaN(sec))
+            sec = 0;
+        return (min * 60 + sec);
+    };
+    MenPointsProvider = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["B" /* Injectable */])(),
+        __metadata("design:paramtypes", [])
+    ], MenPointsProvider);
+    return MenPointsProvider;
+}());
+
+//# sourceMappingURL=mens.js.map
+
+/***/ }),
+
+/***/ 451:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return WomenPointsProvider; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+var WomenPointsProvider = (function () {
+    function WomenPointsProvider() {
+    }
+    WomenPointsProvider.prototype.getDayOne = function (outputs) {
+        var dayOneScore = 0;
+        for (var key in outputs) {
+            if (outputs.hasOwnProperty(key)) {
+                if (this.isDayOne(key)) {
+                    dayOneScore += outputs[key];
+                }
+            }
+        }
+        return dayOneScore;
+    };
+    WomenPointsProvider.prototype.getDayTwo = function (outputs) {
+        var dayTwoScore = 0;
+        for (var key in outputs) {
+            if (outputs.hasOwnProperty(key)) {
+                if (this.isDayTwo(key)) {
+                    dayTwoScore += outputs[key];
+                }
+            }
+        }
+        return dayTwoScore;
+    };
+    WomenPointsProvider.prototype.getTotal = function (outputs) {
+        var dayOne = this.getDayOne(outputs);
+        var dayTwo = this.getDayTwo(outputs);
+        return dayOne + dayTwo;
+    };
+    WomenPointsProvider.prototype.isDayOne = function (value) {
+        return (value == "hurdles" || value == "sp" || value == "hj" || value == "two");
+    };
+    WomenPointsProvider.prototype.isDayTwo = function (value) {
+        return (value == "lj" || value == "jt" || value == "eight");
+    };
+    WomenPointsProvider.prototype.getEventPoints = function (event, score) {
+        var a = 0;
+        var b = 0;
+        var c = 0;
+        var cm = 0;
+        var seconds = 0;
+        switch (event) {
+            case "hundred"://100
+                a = 25.4347;
+                b = 18;
+                c = 1.81;
+                return this.calculateRunning(score, a, b, c);
+            case "lj"://long jump
+                a = 0.188807;
+                b = 210;
+                c = 1.41;
+                cm = score * 100;
+                return this.calculateField(cm, a, b, c);
+            case "sp"://shot put
+                a = 56.0211;
+                b = 1.5;
+                c = 1.05;
+                return this.calculateField(score, a, b, c);
+            case "hj"://High jump
+                a = 1.84523;
+                b = 75;
+                c = 1.348;
+                cm = score * 100;
+                return this.calculateField(cm, a, b, c);
+            case "two"://two
+                a = 4.99087;
+                b = 42.5;
+                c = 1.81;
+                return this.calculateRunning(score, a, b, c);
+            case "hurdles"://110mH
+                a = 9.23076;
+                b = 26.7;
+                c = 1.835;
+                return this.calculateRunning(score, a, b, c);
+            case "dt"://discus
+                a = 12.91;
+                b = 4;
+                c = 1.10;
+                return this.calculateField(score, a, b, c);
+            case "jt"://javelin
+                a = 15.9803;
+                b = 3.8;
+                c = 1.04;
+                return this.calculateField(score, a, b, c);
+            case "eight"://1500
+                a = 0.11193;
+                b = 254;
+                c = 1.88;
+                seconds = this.getSeconds(score);
+                return this.calculateRunning(seconds, a, b, c);
+            case "sixtyHurdles":
+                a = 20.0479;
+                b = 17;
+                c = 1.835;
+                return this.calculateRunning(score, a, b, c);
+        }
+    };
+    WomenPointsProvider.prototype.calculateRunning = function (score, a, b, c) {
+        return Math.floor(a * Math.pow(b - score, c));
+    };
+    WomenPointsProvider.prototype.calculateField = function (score, a, b, c) {
+        return Math.floor(a * Math.pow(score - b, c));
+    };
+    WomenPointsProvider.prototype.getSeconds = function (score) {
+        var time = score.split(":");
+        var min = Number(time[0]);
+        var sec = Number(time[1]);
+        if (isNaN(min))
+            min = 0;
+        if (isNaN(sec))
+            sec = 0;
+        return (min * 60 + sec);
+    };
+    WomenPointsProvider = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["B" /* Injectable */])(),
+        __metadata("design:paramtypes", [])
+    ], WomenPointsProvider);
+    return WomenPointsProvider;
+}());
+
+//# sourceMappingURL=womens.js.map
+
+/***/ }),
+
+/***/ 452:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return TextPopoverPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(37);
@@ -1169,7 +1504,7 @@ var TextPopoverPage = (function () {
 
 /***/ }),
 
-/***/ 451:
+/***/ 453:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1243,7 +1578,7 @@ var CalendarDay = (function () {
 
 /***/ }),
 
-/***/ 452:
+/***/ 454:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1318,13 +1653,638 @@ var Training = (function () {
 
 /***/ }),
 
-/***/ 453:
+/***/ 455:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MercierPointsProvider; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+var MercierPointsProvider = (function () {
+    function MercierPointsProvider() {
+    }
+    MercierPointsProvider.prototype.calculateMercierScore = function (inputs) {
+        var score = 0;
+        var noConvert = 0;
+        if (inputs['select'] == "100m") {
+            score = 290.52712 * (100 / inputs['sec']) - 1953.2266;
+        }
+        if (inputs['select'] == "200m") {
+            score = 267.75893 * (200 / inputs['sec']) - 1703.6447;
+        }
+        if (inputs['select'] == "400m") {
+            if (inputs['min'] > 0 && inputs['min'] < 9) {
+                alert("Please enter 400m performance in SECONDS only.");
+            }
+            else {
+                score = 262.37121 * (400 / inputs['sec']) - 1402.7708;
+            }
+        }
+        if (inputs['select'] == "800m") {
+            score = 302.9089 * (800 / ((60 * inputs['min']) + inputs['sec'])) - 1377.5673;
+        }
+        if (inputs['select'] == "1500m") {
+            score = 320.6038 * (1500 / ((60 * inputs['min']) + inputs['sec'])) - 1314.0045;
+        }
+        if (inputs['select'] == "5000m") {
+            score = 342.8535 * (5000 / ((60 * inputs['min']) + inputs['sec'])) - 1234.1959;
+        }
+        if (inputs['select'] == "10000m") {
+            score = 349.8535 * (10000 / ((60 * inputs['min']) + inputs['sec'])) - 1171.2847;
+        }
+        if (inputs['select'] == "Marathon") {
+            score = 384.5408 * (42194.99 / ((((60 * inputs['hr']) + inputs['sec']) * 60) + inputs['sec'])) - 1161.8021;
+        }
+        if (inputs['select'] == "High Jump") {
+            score = 2227.8560 * Math.sqrt(inputs['pts']) - 2447.9277;
+        }
+        if (inputs['select'] == "Long Jump") {
+            score = 1065.6947 * Math.sqrt(inputs['pts']) - 2120.1067;
+        }
+        if (inputs['select'] == "Triple Jump") {
+            score = 717.9505 * Math.sqrt(inputs['pts']) - 2042.6637;
+        }
+        if (inputs['select'] == "Pole Vault") {
+            score = 839.81066 * Math.sqrt(inputs['pts']) - 1065.4477;
+        }
+        if (inputs['select'] == "Discus") {
+            if (inputs['gender'] == "women") {
+                inputs['gender'] = "men";
+                score = 163.07395 * Math.sqrt(inputs['pts']) - 361.92521;
+            }
+            else {
+                score = 194.62465 * Math.sqrt(inputs['pts']) - 628.31962;
+            }
+        }
+        if (inputs['select'] == "Javelin") {
+            if (inputs['gender'] == "women") {
+                inputs['gender'] = "men";
+                noConvert = 1;
+                score = 170.11116 * Math.sqrt(inputs['pts']) - 417.375499;
+            }
+            else {
+                score = 168.13381 * Math.sqrt(inputs['pts']) - 601.71996;
+            }
+        }
+        if (inputs['select'] == "Shot Put") {
+            if (inputs['gender'] == "women") {
+                inputs['gender'] = "men";
+                noConvert = 1;
+                score = 326.4432919 * Math.sqrt(inputs['pts']) - 474.3020648;
+            }
+            else {
+                score = 363.768931 * Math.sqrt(inputs['pts']) - 701.8195151;
+            }
+        }
+        if (inputs['select'] == "Hammer") {
+            if (inputs['gender'] == "women") {
+                inputs['gender'] = "men";
+                noConvert = 1;
+                score = 155.50271 * Math.sqrt(inputs['pts']) - 364.68208;
+            }
+            else {
+                score = 166.96750 * Math.sqrt(inputs['pts']) - 537.76945;
+            }
+        }
+        if (inputs['select'] == "100mH") {
+            if (inputs['gender'] == "men") {
+                alert("Selected event is women-only.  Gender corrected.");
+            }
+            inputs['gender'] = "men";
+            score = 245.697911 * (100 / inputs['sec']) - 974.427319;
+        }
+        if (inputs['select'] == "110mH") {
+            if (inputs['gender'] == "women") {
+                alert("Selected event is men-only.  Gender corrected.");
+            }
+            inputs['gender'] = "men";
+            score = 232.393146 * (110 / inputs['sec']) - 977.72885;
+        }
+        if (inputs['select'] == "400mH") {
+            if (inputs['gender'] == "women") {
+                inputs['gender'] = "men";
+                score = 235.892182 * (400 / inputs['sec']) - 772.912406;
+            }
+            else {
+                score = 234.92702 * (400 / inputs['sec']) - 990.21339;
+            }
+        }
+        if (inputs['select'] == "Heptathlon") {
+            if (inputs['gender'] == "men") {
+                alert("Selected event is women-only.  Gender corrected.");
+            }
+            inputs['gender'] = "men";
+            score = 0.12948997 * inputs['pts'] + 133.9909428;
+        }
+        if (inputs['select'] == "Decathlon") {
+            if (inputs['gender'] == "women") {
+                alert("Selected event is men-only.  Gender corrected.");
+            }
+            inputs['gender'] = "men";
+            score = 0.1037911 * inputs['pts'] + 81.780218;
+        }
+        if (inputs['select'] == "3000m SC") {
+            if (inputs['gender'] == "women") {
+                inputs['gender'] = "men";
+                score = 308.3188307 * (3000 / ((60 * inputs['min']) + inputs['pts'])) - 700.8207684;
+            }
+            else {
+                score = score = 317.0980312 * (3000 / ((60 * inputs['min']) + inputs['pts'])) - 977.0359001;
+            }
+        }
+        if (inputs['select'] == "10km Walk") {
+            if (inputs['gender'] == "men") {
+                alert("Selected event is women-only.  Gender corrected.");
+            }
+            inputs['gender'] = "men";
+            if (isNaN(inputs['hr'])) {
+                inputs['hr'] = 0;
+            }
+            ;
+            score = 456.1325749 * (10000 / ((((60 * inputs['hr']) + inputs['min']) * 60) + inputs['sec']))
+                - 818.4565095;
+        }
+        if (inputs['select'] == "20km Walk") {
+            if (inputs['gender'] == "women") {
+                alert("Selected event is men-only.  Gender corrected.");
+            }
+            inputs['gender'] = "men";
+            if (isNaN(inputs['hr'])) {
+                inputs['hr'] = 0;
+            }
+            ;
+            score = 514.2338335 * (20000 / ((((60 * inputs['hr']) + inputs['min']) * 60) + inputs['sec']))
+                - 1188.463045;
+        }
+        if (inputs['select'] == "50km Walk") {
+            if (inputs['gender'] == "women") {
+                alert("Selected event is men-only.  Gender corrected.");
+            }
+            inputs['gender'] = "men";
+            if (isNaN(inputs['hr'])) {
+                inputs['hr'] = 0;
+            }
+            score = 578.7732604 * (50000 / ((((60 * inputs['hr']) + inputs['min']) * 60) + inputs['sec']))
+                - 1157.14858;
+        }
+        if (inputs['select'] == "-------") {
+            alert("Please select an event!");
+            return;
+        }
+        if (inputs['select'] == "150m") {
+            score = 265.3031224 * (150 / inputs['sec']) - 1720.7734;
+        }
+        if (inputs['select'] == "300m") {
+            score = 251.7769577 * (300 / inputs['sec']) - 1414.90071;
+        }
+        if (inputs['select'] == "600m") {
+            score = 285.7637 * (600 / ((60 * inputs['min']) + inputs['sec'])) - 1371.563558;
+        }
+        if (inputs['select'] == "1000m") {
+            score = 313.6503268 * (1000 / ((60 * inputs['min']) + inputs['sec'])) - 1374.25166;
+        }
+        if (inputs['select'] == "Mile") {
+            score = 321.7731201 * (1609.34 / ((60 * inputs['min']) + inputs['sec'])) - 1306.285127;
+        }
+        if (inputs['select'] == "2000m") {
+            score = 328.2988442 * (2000 / ((60 * inputs['min']) + inputs['sec'])) - 1303.430804;
+        }
+        if (inputs['select'] == "3000m") {
+            score = 331.264214 * (3000 / ((60 * inputs['min']) + inputs['sec'])) - 1240.294895;
+        }
+        return score;
+    };
+    MercierPointsProvider.prototype.manageScore = function (input, output, score) {
+        var score_temp = score;
+        var score_init = 0;
+        if (input["gender"] == "women") {
+            score_init = (score + 370.23683) / 1.10218405;
+        }
+        else {
+            score_init = score;
+        }
+        if (input["gender"] == "women" && output["gender"] == "men") {
+            score = (score_temp + 370.23683) / 1.10218405;
+        }
+        if (input["gender"] == "men" && output["gender"] == "women") {
+            score = 1.10218405 * score_temp - 370.23683;
+        }
+        this.comparePerformance(input, output, score, score_init);
+    };
+    MercierPointsProvider.prototype.comparePerformance = function (input, output, score, score_init) {
+        var comp_perf_m1, comp_perf_s, comp_perf_s1;
+        if (output["select"] == "100m") {
+            output['hr'] = "";
+            output['min'] = "";
+            output['sec'] = 100 / (0.003439 * score + 6.72526);
+        }
+        if (output["select"] == "200m") {
+            output['hr'] = "";
+            output['min'] = "";
+            output['sec'] = 200 / (0.003734 * score + 6.36315);
+        }
+        if (output["select"] == "400m") {
+            output['hr'] = "";
+            output['min'] = "";
+            output['sec'] = 400 / (0.0038105 * score + 5.34719);
+        }
+        if (output["select"] == "800m") {
+            output['hr'] = "";
+            output['min'] = Math.floor(800 / (0.003300 * score + 4.54844) / 60);
+            comp_perf_s1 = ((800 / (0.003300 * score + 4.54844) / 60) - output['min']) * 60;
+            if (Math.floor(comp_perf_s1 / 10) > 0) {
+                output['sec'] = comp_perf_s1;
+            }
+            else {
+                output['sec'] = "0" + comp_perf_s1;
+            }
+        }
+        if (output["select"] == "1500m") {
+            output['hr'] = "";
+            output['min'] = Math.floor(1500 / (0.003117 * score + 4.09988) / 60);
+            comp_perf_s1 = ((1500 / (0.003117 * score + 4.09988) / 60) - output['min']) * 60;
+            if (Math.floor(comp_perf_s1 / 10) > 0) {
+                output['sec'] = comp_perf_s1;
+            }
+            else {
+                output['sec'] = "0" + comp_perf_s1;
+            }
+        }
+        if (output["select"] == "5000m") {
+            output['hr'] = "";
+            output['min'] = Math.floor(5000 / (0.0029129 * score + 3.602496) / 60);
+            comp_perf_s1 = ((5000 / (0.0029129 * score + 3.602496) / 60) - output['min']) * 60;
+            if (Math.floor(comp_perf_s1 / 10) > 0) {
+                output['sec'] = comp_perf_s1;
+            }
+            else {
+                output['sec'] = "0" + comp_perf_s1;
+            }
+        }
+        if (output["select"] == "10000m") {
+            output['hr'] = "";
+            output['min'] = Math.floor(10000 / (0.002857 * score + 3.348169) / 60);
+            comp_perf_s1 = ((10000 / (0.002857 * score + 3.348169) / 60) - output['min']) * 60;
+            if (Math.floor(comp_perf_s1 / 10) > 0) {
+                comp_perf_s = comp_perf_s1;
+            }
+            else {
+                comp_perf_s = "0" + comp_perf_s1;
+            }
+        }
+        if (output["select"] == "Marathon") {
+            output['hr'] = Math.floor(42194.99 / (0.0025989 * score + 3.022432) / 3600);
+            comp_perf_m1 = Math.floor(((42194.99 / (0.0025989 * score + 3.022432) / 3600) - output['hr']) * 60);
+            if (Math.floor(comp_perf_m1 / 10) > 0) {
+                output['min'] = comp_perf_m1;
+            }
+            else {
+                output['min'] = "0" + comp_perf_m1;
+            }
+            comp_perf_s1 = ((((42194.99 / (0.0025989 * score + 3.022432) / 3600) - output['hr']) * 60) - output['min']) * 60;
+            if (Math.floor(comp_perf_s1 / 10) > 0) {
+                output['sec'] = comp_perf_s1;
+            }
+            else {
+                output['sec'] = "0" + comp_perf_s1;
+            }
+        }
+        if (output["select"] == "High Jump") {
+            output['hr'] = "";
+            output['min'] = "";
+            output['pts'] = Math.pow(0.00044878 * score + 1.098838, 2);
+        }
+        if (output["select"] == "Long Jump") {
+            output['hr'] = "";
+            output['min'] = "";
+            output['pts'] = Math.pow(0.0009379 * score + 1.9897558, 2);
+        }
+        if (output["select"] == "Triple Jump") {
+            output['hr'] = "";
+            output['min'] = "";
+            output['pts'] = Math.pow(0.0013899 * score + 2.8472750, 2);
+        }
+        if (output["select"] == "Pole Vault") {
+            output['hr'] = "";
+            output['min'] = "";
+            output['pts'] = Math.pow(0.0011566 * score + 1.293145, 2);
+        }
+        if (output["select"] == "Discus") {
+            output['hr'] = "";
+            output['min'] = "";
+            if (output['gender'] == "women") {
+                score = score_init;
+                output['pts'] = Math.pow(0.0061301 * score + 2.220986, 2);
+            }
+            else {
+                output['pts'] = Math.pow(0.005136 * score + 3.2303518, 2);
+            }
+        }
+        if (output["select"] == "Javelin") {
+            output['hr'] = "";
+            output['min'] = "";
+            if (output['gender'] == "women") {
+                score = score_init;
+                output['pts'] = Math.pow(0.0058689 * score + 2.4609307, 2);
+            }
+            else {
+                output['pts'] = Math.pow(0.0059368 * score + 3.5872388, 2);
+            }
+        }
+        if (output["select"] == "Shot Put") {
+            output['hr'] = "";
+            output['min'] = "";
+            if (output['gender'] == "women") {
+                score = score_init;
+                output['pts'] = Math.pow(0.003061312 * score + 1.454488154, 2);
+            }
+            else {
+                output['pts'] = Math.pow(0.002747525 * score + 1.930440381, 2);
+            }
+        }
+        if (output["select"] == "Hammer") {
+            output['hr'] = "";
+            output['min'] = "";
+            if (output['gender'] == "women") {
+                score = score_init;
+                output['pts'] = Math.pow(0.0064308 * score + 2.34518185, 2);
+            }
+            else {
+                output['pts'] = Math.pow(0.0059840 * score + 3.2248036, 2);
+            }
+        }
+        if (output["select"] == "100mH") {
+            if (output['gender'] == "men") {
+                alert("Comparison event is women-only.  Gender corrected.");
+            }
+            score = score_init;
+            output['hr'] = "";
+            output['min'] = "";
+            output['pts'] = 100 / (0.00406955 * score + 3.9663329);
+        }
+        if (output["select"] == "110mH") {
+            if (output['gender'] == "women") {
+                alert("Comparison event is men-only.  Gender corrected.");
+            }
+            score = score_init;
+            output['hr'] = "";
+            output['min'] = "";
+            output['pts'] = 110 / (0.00430147 * score + 4.2084435);
+        }
+        if (output["select"] == "400mH") {
+            output['hr'] = "";
+            output['min'] = "";
+            if (output['gender'] == "women") {
+                score = score_init;
+                output['pts'] = 400 / (0.0042374 * score + 3.2779819);
+            }
+            else {
+                output['pts'] = 400 / (0.00425567 * score + 4.2157351);
+            }
+        }
+        if (output["select"] == "Heptathlon") {
+            if (output['gender'] == "men") {
+                alert("Comparison event is women-only.  Gender corrected.");
+            }
+            score = score_init;
+            output['hr'] = "";
+            output['min'] = "";
+            output['pts'] = 7.71914876 * score - 1032.090149;
+        }
+        if (output["select"] == "Decathlon") {
+            if (output['gender'] == "women") {
+                alert("Comparison event is men-only.  Gender corrected.");
+            }
+            score = score_init;
+            output['hr'] = "";
+            output['min'] = "";
+            output['pts'] = 9.6301981 * score - 784.4197095;
+        }
+        if (output["select"] == "3000m SC") {
+            output['hr'] = "";
+            if (output['gender'] == "women") {
+                score = score_init;
+                output['min'] = Math.floor(3000 / (0.003243381 * score + 2.273050417) / 60);
+                comp_perf_s1 = ((3000 / (0.003243381 * score + 2.273050417) / 60) - output['min']) * 60;
+                if (Math.floor(comp_perf_s1 / 10) > 0) {
+                    output['sec'] = comp_perf_s1;
+                }
+                else {
+                    output['sec'] = "0" + comp_perf_s1;
+                }
+            }
+            else {
+                output['min'] = Math.floor(3000 / (0.003149187 * score + 3.084594697) / 60);
+                comp_perf_s1 = ((3000 / (0.003149187 * score + 3.084594697) / 60) - output['min']) * 60;
+                if (Math.floor(comp_perf_s1 / 10) > 0) {
+                    output['sec'] = comp_perf_s1;
+                }
+                else {
+                    output['sec'] = "0" + comp_perf_s1;
+                }
+            }
+        }
+        if (output["select"] == "10km Walk") {
+            if (output['gender'] == "men") {
+                alert("Comparison event is women-only.  Gender corrected.");
+            }
+            score = score_init;
+            output['hr'] = "";
+            output['min'] = Math.floor(10000 / (0.00218465 * score + 1.80028029) / 60);
+            comp_perf_s1 = ((10000 / (0.00218465 * score + 1.80028029) / 60) - output['min']) * 60;
+            if (Math.floor(comp_perf_s1 / 10) > 0) {
+                output['sec'] = comp_perf_s1;
+            }
+            else {
+                output['sec'] = "0" + comp_perf_s1;
+            }
+        }
+        if (output["select"] == "20km Walk") {
+            if (output['gender'] == "women") {
+                alert("Comparison event is men-only.  Gender corrected.");
+            }
+            score = score_init;
+            output['hr'] = Math.floor(20000 / (0.001937687 * score + 2.316516043) / 3600);
+            comp_perf_m1 = Math.floor(((20000 / (0.001937687 * score + 2.316516043) / 3600) - output['hr']) * 60);
+            if (Math.floor(comp_perf_m1 / 10) > 0) {
+                output['min'] = comp_perf_m1;
+            }
+            else {
+                output['min'] = "0" + comp_perf_m1;
+            }
+            comp_perf_s1 = ((((20000 / (0.001937687 * score + 2.316516043) / 3600) - output['hr']) * 60) - output['min']) * 60;
+            if (Math.floor(comp_perf_s1 / 10) > 0) {
+                output['sec'] = comp_perf_s1;
+            }
+            else {
+                output['sec'] = "0" + comp_perf_s1;
+            }
+        }
+        if (output["select"] == "50km Walk") {
+            if (output['gender'] == "women") {
+                alert("Comparison event is men-only.  Gender corrected.");
+            }
+            score = score_init;
+            output['hr'] = Math.floor(50000 / (0.001695422 * score + 2.024370694) / 3600);
+            comp_perf_m1 = Math.floor(((50000 / (0.001695422 * score + 2.024370694) / 3600) - output['hr']) * 60);
+            if (Math.floor(comp_perf_m1 / 10) > 0) {
+                output['min'] = comp_perf_m1;
+            }
+            else {
+                output['min'] = "0" + comp_perf_m1;
+            }
+            comp_perf_s1 = ((((50000 / (0.001695422 * score + 2.024370694) / 3600) - output['hr']) * 60) - output['min']) * 60;
+            if (Math.floor(comp_perf_s1 / 10) > 0) {
+                output['sec'] = comp_perf_s1;
+            }
+            else {
+                output['sec'] = "0" + comp_perf_s1;
+            }
+        }
+        if (output["select"] == "Indoor") {
+            alert("Please select a comparison event!");
+            return;
+        }
+        if (output["select"] == "150m") {
+            output['hr'] = "";
+            output['min'] = "";
+            output['sec'] = 150 / (.003768768 * score + 6.486427968);
+        }
+        if (output["select"] == "300m") {
+            output['hr'] = "";
+            output['min'] = "";
+            output['sec'] = 300 / (0.003970935 * score + 5.620258201);
+        }
+        if (output["select"] == "600m") {
+            output['hr'] = "";
+            output['min'] = Math.floor(600 / (0.003499 * score + 4.80022) / 60);
+            comp_perf_s1 = ((600 / (0.003499 * score + 4.80022) / 60) - output['min']) * 60;
+            if (Math.floor(comp_perf_s1 / 10) > 0) {
+                output['sec'] = comp_perf_s1;
+            }
+            else {
+                output['sec'] = "0" + comp_perf_s1;
+            }
+        }
+        if (output["select"] == "1000m") {
+            output['hr'] = "";
+            output['min'] = Math.floor(1000 / (0.00318746 * score + 4.382052887) / 60);
+            comp_perf_s1 = ((1000 / (0.00318746 * score + 4.382052887) / 60) - output['min']) * 60;
+            if (Math.floor(comp_perf_s1 / 10) > 0) {
+                output['sec'] = comp_perf_s1;
+            }
+            else {
+                output['sec'] = "0" + comp_perf_s1;
+            }
+        }
+        if (output["select"] == "Mile") {
+            output['hr'] = "";
+            output['min'] = Math.floor(1609.34 / (0.0031062 * score + 4.060811045) / 60);
+            comp_perf_s1 = ((1609.34 / (0.0031062 * score + 4.060811045) / 60) - output['min']) * 60;
+            if (Math.floor(comp_perf_s1 / 10) > 0) {
+                output['sec'] = comp_perf_s1;
+            }
+            else {
+                output['sec'] = "0" + comp_perf_s1;
+            }
+        }
+        if (output["select"] == "2000m") {
+            output['hr'] = "";
+            output['min'] = Math.floor(2000 / (0.0030444 * score + 3.97139601) / 60);
+            comp_perf_s1 = ((2000 / (0.0030444 * score + 3.97139601) / 60) - output['min']) * 60;
+            if (Math.floor(comp_perf_s1 / 10) > 0) {
+                output['sec'] = comp_perf_s1;
+            }
+            else {
+                output['sec'] = "0" + comp_perf_s1;
+            }
+        }
+        if (output["select"] == "3000m") {
+            output['hr'] = "";
+            output['min'] = Math.floor(3000 / (0.0030147 * score + 3.74703401) / 60);
+            comp_perf_s1 = ((3000 / (0.0030147 * score + 3.74703401) / 60) - output['min']) * 60;
+            if (Math.floor(comp_perf_s1 / 10) > 0) {
+                output['sec'] = comp_perf_s1;
+            }
+            else {
+                output['sec'] = "0" + comp_perf_s1;
+            }
+        }
+        if (output["select"] == "2 mile") {
+            output['hr'] = "";
+            output['min'] = Math.floor(2 * 1609.34 / (0.0029949 * score + 3.726724) / 60);
+            comp_perf_s1 = ((2 * 1609.34 / (0.0029949 * score + 3.726724) / 60) - output['min']) * 60;
+            if (Math.floor(comp_perf_s1 / 10) > 0) {
+                output['sec'] = comp_perf_s1;
+            }
+            else {
+                output['sec'] = "0" + comp_perf_s1;
+            }
+        }
+        if (output["select"] == "20 km") {
+            output['hr'] = Math.floor(20000 / (0.0027370 * score + 3.205521) / 3600);
+            comp_perf_m1 = Math.floor(((20000 / (0.0027370 * score + 3.205521) / 3600) - output['hr']) * 60);
+            if (Math.floor(comp_perf_m1 / 10) > 0) {
+                output['min'] = comp_perf_m1;
+            }
+            else {
+                output['min'] = "0" + comp_perf_m1;
+            }
+            comp_perf_s1 = ((((20000 / (0.0027370 * score + 3.205521) / 3600) - output['hr']) * 60) - output['min']) * 60;
+            if (Math.floor(comp_perf_s1 / 10) > 0) {
+                output['sec'] = comp_perf_s1;
+            }
+            else {
+                output['sec'] = "0" + comp_perf_s1;
+            }
+        }
+        if (output["select"] == "Half Marathon") {
+            output['hr'] = Math.floor(42194.99 / 2 / (0.00272793 * score + 3.1912339) / 3600);
+            comp_perf_m1 = Math.floor(((42194.99 / 2 / (0.00272793 * score + 3.1912339) / 3600) - output['hr']) * 60);
+            if (Math.floor(comp_perf_m1 / 10) > 0) {
+                output['min'] = comp_perf_m1;
+            }
+            else {
+                output['min'] = "0" + comp_perf_m1;
+            }
+            comp_perf_s1 = ((((42194.99 / 2 / (0.00272793 * score + 3.1912339) / 3600) - output['hr']) * 60) - output['min']) * 60;
+            if (Math.floor(comp_perf_s1 / 10) > 0) {
+                output['sec'] = comp_perf_s1;
+            }
+            else {
+                output['sec'] = "0" + comp_perf_s1;
+            }
+        }
+        output['score'] = score_init;
+        input['score'] = score;
+    };
+    MercierPointsProvider = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["B" /* Injectable */])(),
+        __metadata("design:paramtypes", [])
+    ], MercierPointsProvider);
+    return MercierPointsProvider;
+}());
+
+//# sourceMappingURL=mercier.js.map
+
+/***/ }),
+
+/***/ 456:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__ = __webpack_require__(454);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__app_module__ = __webpack_require__(473);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__ = __webpack_require__(457);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__app_module__ = __webpack_require__(476);
 
 
 Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* platformBrowserDynamic */])().bootstrapModule(__WEBPACK_IMPORTED_MODULE_1__app_module__["a" /* AppModule */]);
@@ -1332,7 +2292,7 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 
 /***/ }),
 
-/***/ 473:
+/***/ 476:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1340,13 +2300,13 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_platform_browser__ = __webpack_require__(46);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(37);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__app_component__ = __webpack_require__(655);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__app_component__ = __webpack_require__(658);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ionic_native_status_bar__ = __webpack_require__(323);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__ionic_native_splash_screen__ = __webpack_require__(324);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__ionic_storage__ = __webpack_require__(154);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_angularfire2__ = __webpack_require__(49);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_angularfire2_database__ = __webpack_require__(75);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__firebase_credentials__ = __webpack_require__(656);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__firebase_credentials__ = __webpack_require__(659);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10_angularfire2_auth__ = __webpack_require__(268);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__ionic_native_facebook__ = __webpack_require__(281);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__ionic_native_keyboard__ = __webpack_require__(157);
@@ -1357,17 +2317,23 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__providers_menus_calendar_menu__ = __webpack_require__(91);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__ionic_native_date_picker__ = __webpack_require__(216);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__ionic_native_google_plus__ = __webpack_require__(282);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__pages_Training_text_popover_text_popover__ = __webpack_require__(450);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__pages_Training_text_popover_text_popover__ = __webpack_require__(452);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__providers_training_labels_labelProvider__ = __webpack_require__(89);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__providers_training_trainings_trainingProvider__ = __webpack_require__(156);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__providers_training_exercises_exerciseProvider__ = __webpack_require__(448);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_24_ionic3_calendar_en__ = __webpack_require__(657);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_24_ionic3_calendar_en__ = __webpack_require__(660);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_25__providers_tools_calculators_mens__ = __webpack_require__(450);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_26__providers_tools_calculators_mercier__ = __webpack_require__(455);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_27__providers_tools_calculators_womens__ = __webpack_require__(451);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
+
+
 
 
 
@@ -1410,10 +2376,19 @@ var AppModule = (function () {
                         { loadChildren: '../pages/Exercises/create-exercise/create-exercise.module#CreateExercisePageModule', name: 'CreateExercisePage', segment: 'create-exercise', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/Exercises/select-exercise-category/select-exercise-category.module#SelectExerciseCategoryPageModule', name: 'SelectExerciseCategoryPage', segment: 'select-exercise-category', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/Exercises/select-exercise-table-type/select-exercise-table-type.module#SelectExerciseTableTypePageModule', name: 'SelectExerciseTableTypePage', segment: 'select-exercise-table-type', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/HomeTabs/about/about.module#AboutPageModule', name: 'AboutPage', segment: 'about', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/HomeTabs/contact/contact.module#ContactPageModule', name: 'ContactPage', segment: 'contact', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/HomeTabs/home/home.module#HomePageModule', name: 'HomePage', segment: 'home', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/HomeTabs/profile/profile.module#ProfilePageModule', name: 'ProfilePage', segment: 'profile', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/HomeTabs/tabs/tabs.module#TabsPageModule', name: 'TabsPage', segment: 'tabs', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/HomeTabs/tools/calculators/decathlon-calculator/decathlon-calculator.module#DecathlonCalculatorPageModule', name: 'DecathlonCalculatorPage', segment: 'decathlon-calculator', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/HomeTabs/tools/calculators/heptathlon-m-calculator/heptathlon-m-calculator.module#HeptathlonMCalculatorPageModule', name: 'HeptathlonMCalculatorPage', segment: 'heptathlon-m-calculator', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/HomeTabs/tools/calculators/heptathlon-w-calculator/heptathlon-w-calculator.module#HeptathlonWCalculatorPageModule', name: 'HeptathlonWCalculatorPage', segment: 'heptathlon-w-calculator', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/HomeTabs/tools/calculators/mercier/mercier.module#MercierPageModule', name: 'MercierPage', segment: 'mercier', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/HomeTabs/tools/calculators/pentathlon-m-calculator/pentathlon-m-calculator.module#PentathlonMCalculatorPageModule', name: 'PentathlonMCalculatorPage', segment: 'pentathlon-m-calculator', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/HomeTabs/tools/calculators/pentathlon-w-calculator/pentathlon-w-calculator.module#PentathlonWCalculatorPageModule', name: 'PentathlonWCalculatorPage', segment: 'pentathlon-w-calculator', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/HomeTabs/tools/calculators/unit-converter/unit-converter.module#UnitConverterPageModule', name: 'UnitConverterPage', segment: 'unit-converter', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/HomeTabs/tools/gadgets/starting-gun/starting-gun.module#StartingGunPageModule', name: 'StartingGunPage', segment: 'starting-gun', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/HomeTabs/tools/gadgets/stopwatch/stopwatch.module#StopwatchPageModule', name: 'StopwatchPage', segment: 'stopwatch', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/HomeTabs/tools/utilities/utilities.module#UtilitiesModule', name: 'UtilitiesPage', segment: 'utilities', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/Logins/create-account/create-account.module#CreateAccountPageModule', name: 'CreateAccountPage', segment: 'create-account', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/Logins/forgot-password/forgot-password.module#ForgotPasswordPageModule', name: 'ForgotPasswordPage', segment: 'forgot-password', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/Logins/login/login.module#LoginPageModule', name: 'LoginPage', segment: 'login', priority: 'low', defaultHistory: [] },
@@ -1450,7 +2425,10 @@ var AppModule = (function () {
                 __WEBPACK_IMPORTED_MODULE_21__providers_training_labels_labelProvider__["a" /* LabelProvider */],
                 __WEBPACK_IMPORTED_MODULE_22__providers_training_trainings_trainingProvider__["a" /* TrainingProvider */],
                 __WEBPACK_IMPORTED_MODULE_23__providers_training_exercises_exerciseProvider__["a" /* ExerciseProvider */],
-                __WEBPACK_IMPORTED_MODULE_17__providers_menus_calendar_menu__["a" /* CalendarMenu */]
+                __WEBPACK_IMPORTED_MODULE_17__providers_menus_calendar_menu__["a" /* CalendarMenu */],
+                __WEBPACK_IMPORTED_MODULE_25__providers_tools_calculators_mens__["a" /* MenPointsProvider */],
+                __WEBPACK_IMPORTED_MODULE_26__providers_tools_calculators_mercier__["a" /* MercierPointsProvider */],
+                __WEBPACK_IMPORTED_MODULE_27__providers_tools_calculators_womens__["a" /* WomenPointsProvider */]
             ],
             schemas: [
                 __WEBPACK_IMPORTED_MODULE_0__angular_core__["i" /* CUSTOM_ELEMENTS_SCHEMA */]
@@ -1464,7 +2442,7 @@ var AppModule = (function () {
 
 /***/ }),
 
-/***/ 497:
+/***/ 500:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1507,7 +2485,7 @@ var ExerciseBank = (function () {
 
 /***/ }),
 
-/***/ 498:
+/***/ 501:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1596,7 +2574,7 @@ var Label = (function () {
 
 /***/ }),
 
-/***/ 593:
+/***/ 596:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1615,7 +2593,7 @@ var User = (function () {
 
 /***/ }),
 
-/***/ 594:
+/***/ 597:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1681,7 +2659,7 @@ var PreTraining = (function () {
 
 /***/ }),
 
-/***/ 595:
+/***/ 598:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1727,7 +2705,7 @@ var PostTraining = (function () {
 
 /***/ }),
 
-/***/ 596:
+/***/ 599:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1743,7 +2721,7 @@ var WarmUp = (function () {
 
 /***/ }),
 
-/***/ 597:
+/***/ 600:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1759,7 +2737,7 @@ var CoolDown = (function () {
 
 /***/ }),
 
-/***/ 655:
+/***/ 658:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1853,7 +2831,7 @@ var MyApp = (function () {
 
 /***/ }),
 
-/***/ 656:
+/***/ 659:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1870,7 +2848,7 @@ var FIREBASE_CONFIG = {
 
 /***/ }),
 
-/***/ 660:
+/***/ 663:
 /***/ (function(module, exports, __webpack_require__) {
 
 var map = {
@@ -2133,7 +3111,7 @@ webpackContext.keys = function webpackContextKeys() {
 };
 webpackContext.resolve = webpackContextResolve;
 module.exports = webpackContext;
-webpackContext.id = 660;
+webpackContext.id = 663;
 
 /***/ }),
 
@@ -2325,7 +3303,7 @@ var Exercise = (function () {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CalendarMenu; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__tools_tools__ = __webpack_require__(67);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__models_calendar_calendar_day__ = __webpack_require__(451);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__models_calendar_calendar_day__ = __webpack_require__(453);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__models_calendar_menu_events__ = __webpack_require__(510);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__training_labels_labelProvider__ = __webpack_require__(89);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -2425,5 +3403,5 @@ var CalendarMenu = (function () {
 
 /***/ })
 
-},[453]);
+},[456]);
 //# sourceMappingURL=main.js.map

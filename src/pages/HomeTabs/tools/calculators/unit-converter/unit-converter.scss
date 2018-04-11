@@ -1,0 +1,22 @@
+page-unit-converter {
+
+  ion-input {
+    background-color: darken(color($colors, light), 10%);
+    height: 30px;
+    border-radius: 10px;
+    padding-left: 10px;
+    width: 100px;
+  }
+
+  .output {
+    background-color: transparent;
+    text-align: right;
+  }
+
+  ion-grid {
+    background-color: darken(color($colors, light), 3%);
+    margin-bottom: 5px;
+    margin-top: 5px;
+  }
+
+}

@@ -1,0 +1,28 @@
+page-decathlon-calculator {
+
+  ion-list  {
+  }
+
+  ion-row {
+    padding-bottom: 2px;
+    border-bottom: 1px solid white;
+  }
+
+  .output {
+    text-align: center;
+  }
+
+  ion-input {
+    margin-left: 40px; //Not real centering
+  }
+
+  ion-col {
+    height: 40px;
+  }
+
+  .outputResult {
+    border: none !important;
+    height: 30px;
+  }
+
+}

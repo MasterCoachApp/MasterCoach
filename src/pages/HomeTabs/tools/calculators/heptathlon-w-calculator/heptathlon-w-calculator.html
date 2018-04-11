@@ -1,0 +1,135 @@
+<!--
+  Generated template for the DecathlonCalculatorPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-buttons left (click)="cancel()">
+      <button ion-button="arrow-back" color="primary">
+        <ion-icon name="ios-arrow-down"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title>Heptathlon</ion-title>
+    <ion-buttons right (click)="save()">
+      <button ion-button="arrow-back" color="primary">
+        Save
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+  <ion-list>
+    <ion-row>
+      <ion-col>
+        <ion-label>100mH</ion-label>
+      </ion-col>
+      <ion-col>
+        <ion-input maxlength="5" [(ngModel)]="inputs.hurdles" (ionFocus)="updateTextFocus('hurdles')" (ionBlur)="updateTextBlur('hurdles')" (ionChange)="updateScore()"  (keypress)="isNumber($event)"></ion-input>
+      </ion-col>
+      <ion-col>
+        <ion-input [readonly]="true" class="output" [(ngModel)]="outputs.hurdles" (ionFocus)="false"></ion-input>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-label>High Jump</ion-label>
+      </ion-col>
+      <ion-col>
+        <ion-input maxlength="5" [(ngModel)]="inputs.hj" (ionFocus)="updateTextFocus('hj')" (ionBlur)="updateTextBlur('hj')" (ionChange)="updateScore()"  (keypress)="isNumber($event)"></ion-input>
+      </ion-col>
+      <ion-col>
+        <ion-input [readonly]="true" class="output" [(ngModel)]="outputs.hj"></ion-input>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-label>Shot Put</ion-label>
+      </ion-col>
+      <ion-col>
+        <ion-input maxlength="5" [(ngModel)]="inputs.sp" (ionFocus)="updateTextFocus('sp')" (ionBlur)="updateTextBlur('sp')" (ionChange)="updateScore()"  (keypress)="isNumber($event)"></ion-input>
+      </ion-col>
+      <ion-col>
+        <ion-input [readonly]="true" class="output" [(ngModel)]="outputs.sp"></ion-input>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-label>200m</ion-label>
+      </ion-col>
+      <ion-col>
+        <ion-input maxlength="5" [(ngModel)]="inputs.two" (ionFocus)="updateTextFocus('two')" (ionBlur)="updateTextBlur('two')" (ionChange)="updateScore()"  (keypress)="isNumber($event)"></ion-input>
+      </ion-col>
+      <ion-col>
+        <ion-input [readonly]="true" class="output" [(ngModel)]="outputs.two"></ion-input>
+      </ion-col>
+    </ion-row>
+    <ion-row class="row">
+      <ion-col>
+        <ion-label>Long Jump</ion-label>
+      </ion-col>
+      <ion-col>
+        <ion-input maxlength="5" [(ngModel)]="inputs.lj" (ionFocus)="updateTextFocus('lj')" (ionBlur)="updateTextBlur('lj')" (ionChange)="updateScore()"  (keypress)="isNumber($event)"></ion-input>
+      </ion-col>
+      <ion-col>
+        <ion-input [readonly]="true" l class="output" [(ngModel)]="outputs.lj"></ion-input>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-label>Javelin Throw</ion-label>
+      </ion-col>
+      <ion-col>
+        <ion-input maxlength="5" [(ngModel)]="inputs.jt" (ionFocus)="updateTextFocus('jt')" (ionBlur)="updateTextBlur('jt')" (ionChange)="updateScore()"  (keypress)="isNumber($event)"></ion-input>
+      </ion-col>
+      <ion-col>
+        <ion-input [readonly]="true" class="output" [(ngModel)]="outputs.jt"></ion-input>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-label>800m</ion-label>
+      </ion-col>
+      <ion-col>
+        <ion-input maxlength="8" [(ngModel)]="inputs.eight" (ionFocus)="updateTextFocus('eight')" (ionBlur)="updateTextBlur('eight')" (ionChange)="updateScore()"  (keypress)="isTime($event)"></ion-input>
+      </ion-col>
+      <ion-col>
+        <ion-input [readonly]="true" class="output" [(ngModel)]="outputs.eight"></ion-input>
+      </ion-col>
+    </ion-row>
+    <ion-row class="outputResult">
+      <ion-col col-4></ion-col>
+      <ion-col col-5>
+        <ion-label>Score Day 1:</ion-label>
+      </ion-col>
+      <ion-col col-2>
+        <ion-input [readonly]="true" class="output" [(ngModel)]="outputs.dayOne"></ion-input>
+      </ion-col>
+    </ion-row>
+    <ion-row class="outputResult">
+      <ion-col col-4></ion-col>
+      <ion-col col-5>
+        <ion-label>Score Day 2:</ion-label>
+      </ion-col>
+      <ion-col col-2>
+        <ion-input [readonly]="true" class="output" [(ngModel)]="outputs.dayTwo"></ion-input>
+      </ion-col>
+    </ion-row>
+    <ion-row class="outputResult">
+      <ion-col col-4></ion-col>
+      <ion-col col-5>
+        <ion-label>Total Score:</ion-label>
+      </ion-col>
+      <ion-col col-2>
+        <ion-input [readonly]="true" class="output" [(ngModel)]="outputs.total"></ion-input>
+      </ion-col>
+    </ion-row>
+  </ion-list>
+</ion-content>
+
