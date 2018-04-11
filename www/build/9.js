@@ -5,10 +5,10 @@ webpackJsonp([9],{
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SelectExerciseTableTypePageModule", function() { return SelectExerciseTableTypePageModule; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(37);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__select_exercise_table_type__ = __webpack_require__(682);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AboutPageModule", function() { return AboutPageModule; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_ionic_angular__ = __webpack_require__(37);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__about__ = __webpack_require__(683);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -18,34 +18,33 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var SelectExerciseTableTypePageModule = (function () {
-    function SelectExerciseTableTypePageModule() {
+var AboutPageModule = (function () {
+    function AboutPageModule() {
     }
-    SelectExerciseTableTypePageModule = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["J" /* NgModule */])({
+    AboutPageModule = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["J" /* NgModule */])({
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_2__select_exercise_table_type__["a" /* SelectExerciseTableTypePage */],
+                __WEBPACK_IMPORTED_MODULE_2__about__["a" /* AboutPage */],
             ],
             imports: [
-                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__select_exercise_table_type__["a" /* SelectExerciseTableTypePage */]),
-            ],
+                __WEBPACK_IMPORTED_MODULE_0_ionic_angular__["g" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__about__["a" /* AboutPage */]),
+            ]
         })
-    ], SelectExerciseTableTypePageModule);
-    return SelectExerciseTableTypePageModule;
+    ], AboutPageModule);
+    return AboutPageModule;
 }());
 
-//# sourceMappingURL=select-exercise-table-type.module.js.map
+//# sourceMappingURL=about.module.js.map
 
 /***/ }),
 
-/***/ 682:
+/***/ 683:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return SelectExerciseTableTypePage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AboutPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(37);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_training_exercises_exerciseProvider__ = __webpack_require__(448);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -57,39 +56,20 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
-
-/**
- * Generated class for the SelectExerciseTableTypePage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
-var SelectExerciseTableTypePage = (function () {
-    function SelectExerciseTableTypePage(navCtrl, navParams, banks, viewCtrl) {
+var AboutPage = (function () {
+    function AboutPage(navCtrl) {
         this.navCtrl = navCtrl;
-        this.navParams = navParams;
-        this.banks = banks;
-        this.viewCtrl = viewCtrl;
     }
-    SelectExerciseTableTypePage.prototype.ionViewDidLoad = function () {
-        console.log('ionViewDidLoad SelectExerciseTableTypePage');
-    };
-    SelectExerciseTableTypePage.prototype.selectTableType = function (tableType) {
-        this.viewCtrl.dismiss(tableType);
-    };
-    SelectExerciseTableTypePage.prototype.cancel = function () {
-        this.navCtrl.pop();
-    };
-    SelectExerciseTableTypePage = __decorate([
+    AboutPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-            selector: 'page-select-exercise-table-type',template:/*ion-inline-start:"/Users/jonahelbaz/Desktop/MasterCoach/src/pages/Exercises/select-exercise-table-type/select-exercise-table-type.html"*/'<!--\n  Generated template for the SelectExerciseTableTypePage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-buttons left>\n      <button ion-button="Back" color="primary" (click)="cancel()"><ion-icon name="ios-arrow-back"></ion-icon>\n      </button>\n    </ion-buttons>\n    <ion-title>SelectExerciseTableType</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n  <ion-list>\n    <button ion-item detail-none *ngFor="let tableType of banks.tableTypeBank.exerciseTableTypeBank" (click)="selectTableType(tableType)">\n      {{tableType.tableTypeName}}\n    </button>\n  </ion-list>\n</ion-content>\n'/*ion-inline-end:"/Users/jonahelbaz/Desktop/MasterCoach/src/pages/Exercises/select-exercise-table-type/select-exercise-table-type.html"*/,
+            selector: 'page-about',template:/*ion-inline-start:"/Users/jonahelbaz/Desktop/MasterCoach/src/pages/HomeTabs/about/about.html"*/'<ion-header>\n  <ion-navbar>\n    <ion-title>\n      About\n    </ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding >\n  <button ion-button full icon-left (click)="toggleAppTheme()">\n    <ion-icon  name="bulb"></ion-icon>Toggle Theme\n  </button>\n</ion-content>'/*ion-inline-end:"/Users/jonahelbaz/Desktop/MasterCoach/src/pages/HomeTabs/about/about.html"*/
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2__providers_training_exercises_exerciseProvider__["a" /* ExerciseProvider */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["p" /* ViewController */]])
-    ], SelectExerciseTableTypePage);
-    return SelectExerciseTableTypePage;
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavController */]])
+    ], AboutPage);
+    return AboutPage;
 }());
 
-//# sourceMappingURL=select-exercise-table-type.js.map
+//# sourceMappingURL=about.js.map
 
 /***/ })
 

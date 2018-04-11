@@ -78,6 +78,7 @@ export class TrainingProvider {
         userPromise = new Promise(function (resolve, reject) {
             let idRef = that.db.database.ref("Users/" + user.User_Id + "/Calendar");
             idRef.on('value', snapshot => {
+                that.listOfTrainings = [];
                 snapshot.forEach(snap => {
                     let training = new Training();
                     let post = snap.child("postCalEvent");

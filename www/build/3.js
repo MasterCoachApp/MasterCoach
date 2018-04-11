@@ -1,14 +1,14 @@
 webpackJsonp([3],{
 
-/***/ 674:
+/***/ 677:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "StandardLoginPageModule", function() { return StandardLoginPageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ViewTrainingPageModule", function() { return ViewTrainingPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(37);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__standard_login__ = __webpack_require__(688);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__view_training__ = __webpack_require__(694);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -18,39 +18,33 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var StandardLoginPageModule = (function () {
-    function StandardLoginPageModule() {
+var ViewTrainingPageModule = (function () {
+    function ViewTrainingPageModule() {
     }
-    StandardLoginPageModule = __decorate([
+    ViewTrainingPageModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["J" /* NgModule */])({
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_2__standard_login__["a" /* StandardLoginPage */],
+                __WEBPACK_IMPORTED_MODULE_2__view_training__["a" /* ViewTrainingPage */],
             ],
             imports: [
-                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__standard_login__["a" /* StandardLoginPage */]),
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__view_training__["a" /* ViewTrainingPage */]),
             ],
-            entryComponents: [
-                __WEBPACK_IMPORTED_MODULE_2__standard_login__["a" /* StandardLoginPage */],
-            ]
         })
-    ], StandardLoginPageModule);
-    return StandardLoginPageModule;
+    ], ViewTrainingPageModule);
+    return ViewTrainingPageModule;
 }());
 
-//# sourceMappingURL=standard-login.module.js.map
+//# sourceMappingURL=view-training.module.js.map
 
 /***/ }),
 
-/***/ 688:
+/***/ 694:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return StandardLoginPage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ViewTrainingPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(37);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_users_authentication__ = __webpack_require__(449);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_tools_tools__ = __webpack_require__(67);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ionic_storage__ = __webpack_require__(154);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -62,73 +56,30 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
-
-
-
 /**
- * Generated class for the StandardLoginPage page.
+ * Generated class for the ViewTrainingPage page.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
  */
-var StandardLoginPage = (function () {
-    function StandardLoginPage(navCtrl, menu, navParams, authProvider, tools, storage) {
+var ViewTrainingPage = (function () {
+    function ViewTrainingPage(navCtrl, navParams) {
         this.navCtrl = navCtrl;
-        this.menu = menu;
         this.navParams = navParams;
-        this.authProvider = authProvider;
-        this.tools = tools;
-        this.storage = storage;
-        menu.enable(false, 'mainCalendarMenu');
     }
-    StandardLoginPage.prototype.forgotPassword = function () {
-        this.navCtrl.push('ForgotPasswordPage');
+    ViewTrainingPage.prototype.ionViewDidLoad = function () {
+        console.log('ionViewDidLoad ViewTrainingPage');
     };
-    StandardLoginPage.prototype.login = function () {
-        var _this = this;
-        if (this.email == null || this.email == "" || this.password == null || this.password == "") {
-            this.tools.presentToast("bottom", "Please enter an email and password.");
-            return;
-        }
-        if (navigator.onLine) {
-            var that_1 = this;
-            var loading_1 = this.tools.presentLoading();
-            loading_1.present().then(function () {
-                var promise = new Promise(function (resolve, reject) {
-                    that_1.authProvider.authenticateUser(that_1.email, that_1.password).then(function (response) {
-                        if (response != "Valid")
-                            reject(response);
-                        else
-                            resolve();
-                    }).catch(function (error) {
-                        reject(error);
-                    });
-                });
-                promise.then(function () {
-                    loading_1.dismiss();
-                    _this.storage.set('user-email', _this.email);
-                    _this.navCtrl.push('TabsPage'); //allow entry if successful login
-                }).catch(function (error) {
-                    loading_1.dismiss();
-                    _this.authProvider.firebaseAuthenticationError(error);
-                    console.log('HELLO!');
-                });
-            });
-        }
-        else {
-            this.tools.presentToast("bottom", "Sorry, you're not connected to the internet");
-        }
-    };
-    StandardLoginPage = __decorate([
+    ViewTrainingPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-            selector: 'page-standard-login',template:/*ion-inline-start:"/Users/jonahelbaz/Desktop/MasterCoach/src/pages/Logins/standard-login/standard-login.html"*/'<!--\n  Generated template for the LoginPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n  <ion-navbar>\n    <ion-title>\n      Log In\n    </ion-title>\n  </ion-navbar>\n</ion-header>\n\n\n\n<ion-content>\n\n\n  <!--<div style="margin-top: 10px; text-align: center; margin-bottom: 10px">-->\n    <!--<span style="font-weight: bold; font-size: 24px;"> Log In</span>-->\n  <!--</div>-->\n\n  <ion-list no-lines>\n\n    <ion-item no-lines>\n      <ion-label class="icon"><ion-icon name="md-person"></ion-icon></ion-label>\n      <ion-input class="inputBox" [(ngModel)]="email" (keyup.enter)="login()"></ion-input>\n    </ion-item>\n\n    <ion-item no-lines>\n      <ion-label class="icon"><ion-icon name="md-lock"></ion-icon></ion-label>\n      <ion-input class="inputBox" [(ngModel)]="password" type="password" (keyup.enter)="login()"></ion-input>\n    </ion-item>\n\n  </ion-list>\n\n  <ion-row>\n    <ion-col class="loginButtonColumn">\n      <button class="loginButton" ion-button (click)="login()">Sign In</button>\n    </ion-col>\n  </ion-row>\n  <ion-row>\n    <ion-col class="loginButtonColumn">\n      <button ion-button class="loginButton" (click)="forgotPassword()">Reset Password</button>\n    </ion-col>\n  </ion-row>\n\n</ion-content>\n'/*ion-inline-end:"/Users/jonahelbaz/Desktop/MasterCoach/src/pages/Logins/standard-login/standard-login.html"*/,
+            selector: 'page-view-training',template:/*ion-inline-start:"/Users/jonahelbaz/Desktop/MasterCoach/src/pages/view-training/view-training.html"*/'<!--\n  Generated template for the ViewTrainingPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>view-training</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n\n</ion-content>\n'/*ion-inline-end:"/Users/jonahelbaz/Desktop/MasterCoach/src/pages/view-training/view-training.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* MenuController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2__providers_users_authentication__["a" /* AuthenticationProvider */], __WEBPACK_IMPORTED_MODULE_3__providers_tools_tools__["a" /* ToolsProvider */], __WEBPACK_IMPORTED_MODULE_4__ionic_storage__["b" /* Storage */]])
-    ], StandardLoginPage);
-    return StandardLoginPage;
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* NavParams */]])
+    ], ViewTrainingPage);
+    return ViewTrainingPage;
 }());
 
-//# sourceMappingURL=standard-login.js.map
+//# sourceMappingURL=view-training.js.map
 
 /***/ })
 

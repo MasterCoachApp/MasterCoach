@@ -26,6 +26,15 @@ export class LabelProvider {
               });
            });
         });
-     }
+        this.filteredTrainingList.sort(this.compare);
+    }
+
+    compare(a,b) {
+        if (a.trainingDate < b.trainingDate)
+            return -1;
+        if (a.trainingDate > b.trainingDate)
+            return 1;
+        return 0;
+    }
 
 }
