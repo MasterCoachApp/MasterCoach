@@ -1,14 +1,14 @@
 webpackJsonp([8],{
 
-/***/ 679:
+/***/ 681:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "UnitConverterPageModule", function() { return UnitConverterPageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "StartingGunPageModule", function() { return StartingGunPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(37);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__unit_converter__ = __webpack_require__(702);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__starting_gun__ = __webpack_require__(705);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -18,31 +18,31 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var UnitConverterPageModule = (function () {
-    function UnitConverterPageModule() {
+var StartingGunPageModule = (function () {
+    function StartingGunPageModule() {
     }
-    UnitConverterPageModule = __decorate([
+    StartingGunPageModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["J" /* NgModule */])({
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_2__unit_converter__["a" /* UnitConverterPage */],
+                __WEBPACK_IMPORTED_MODULE_2__starting_gun__["a" /* StartingGunPage */],
             ],
             imports: [
-                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__unit_converter__["a" /* UnitConverterPage */]),
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__starting_gun__["a" /* StartingGunPage */]),
             ],
         })
-    ], UnitConverterPageModule);
-    return UnitConverterPageModule;
+    ], StartingGunPageModule);
+    return StartingGunPageModule;
 }());
 
-//# sourceMappingURL=unit-converter.module.js.map
+//# sourceMappingURL=starting-gun.module.js.map
 
 /***/ }),
 
-/***/ 702:
+/***/ 705:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return UnitConverterPage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return StartingGunPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(37);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -57,94 +57,29 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 /**
- * Generated class for the UnitConverterPage page.
+ * Generated class for the StartingGunPage page.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
  */
-var UnitConverterPage = (function () {
-    function UnitConverterPage(navCtrl, navParams) {
+var StartingGunPage = (function () {
+    function StartingGunPage(navCtrl, navParams) {
         this.navCtrl = navCtrl;
         this.navParams = navParams;
-        this.measurements = {
-            feet: "0.00",
-            inches: "0.00",
-            meters: "0.00",
-        };
-        this.outputs = {
-            metric: "0.00m",
-            imperial: "0'0\""
-        };
     }
-    UnitConverterPage.prototype.cancel = function () {
-        this.navCtrl.pop();
+    StartingGunPage.prototype.ionViewDidLoad = function () {
+        console.log('ionViewDidLoad StartingGunPage');
     };
-    UnitConverterPage.prototype.isNumber = function (event) {
-        var key = window.event ? event.keyCode : event.which;
-        if (key == 46 || event.keyCode == 8 || event.keyCode == 46 || event.keyCode == 37 || event.keyCode == 39) {
-            return true;
-        }
-        else
-            return !(key < 48 || key > 57);
-    };
-    UnitConverterPage.prototype.updateTextFocus = function (value) {
-        if (this.measurements[value] == "0.00" || this.measurements[value] == "0") {
-            this.measurements[value] = "";
-        }
-    };
-    UnitConverterPage.prototype.updateTextBlur = function (value) {
-        if (this.measurements[value] == "") {
-            this.measurements[value] = "0.00";
-        }
-    };
-    UnitConverterPage.prototype.updateScoreImperial = function () {
-        var feet = this.measurements.feet;
-        var inches = this.measurements.inches;
-        var feetToInches = Number(feet) * 12;
-        if (isNaN(feetToInches)) {
-            feetToInches = 0.00;
-        }
-        var numInches = Number(inches);
-        if (isNaN(numInches)) {
-            numInches = 0.00;
-        }
-        var totalInches = feetToInches + numInches;
-        if (isNaN(totalInches)) {
-            totalInches = 0.00;
-        }
-        this.outputs.metric = String(totalInches * 0.0254).substr(0, 7) + "m";
-    };
-    UnitConverterPage.prototype.updateScoreMetric = function () {
-        var meters = Number(this.measurements.meters);
-        if (!isNaN(meters)) {
-            var conversionToFeet = String(meters * 3.28084);
-            var remainder = conversionToFeet.split(".");
-            var feet = Number(remainder[0]);
-            var inches = Number(remainder[1]) * 12;
-            if (!isNaN(feet)) {
-                this.outputs.imperial = String(feet).substr(0, 3) + '\'';
-            }
-            else {
-                this.outputs.imperial = "0'";
-            }
-            if (!isNaN(inches)) {
-                this.outputs.imperial = this.outputs.imperial + String(inches).substr(0, 3) + '\"';
-            }
-            else {
-                this.outputs.imperial = this.outputs.imperial + '0\"';
-            }
-        }
-    };
-    UnitConverterPage = __decorate([
+    StartingGunPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-            selector: 'page-unit-converter',template:/*ion-inline-start:"/Users/jonahelbaz/Desktop/MasterCoach/src/pages/HomeTabs/tools/calculators/unit-converter/unit-converter.html"*/'<!--\n  Generated template for the UnitConverterPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-buttons left (click)="cancel()">\n      <button ion-button="arrow-back" color="primary">\n        <ion-icon name="ios-arrow-down"></ion-icon>\n      </button>\n    </ion-buttons>\n    <ion-title>Unit Converter</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content>\n  <ion-grid>\n  <ion-row>\n    <ion-col col-4>\n      <ion-label>Feet</ion-label>\n    </ion-col>\n    <ion-col col-4>\n      <ion-label>Inches</ion-label>\n    </ion-col>\n  </ion-row>\n  <ion-row>\n    <ion-col col-4>\n      <ion-input [(ngModel)]="measurements.feet" (keypress)="isNumber($event)" (ionChange)="updateScoreImperial()" (ionFocus)="updateTextFocus(\'feet\')" (ionBlur)="updateTextBlur(\'feet\')"></ion-input>\n    </ion-col>\n    <ion-col col-4>\n      <ion-input [(ngModel)]="measurements.inches" (keypress)="isNumber($event)" (ionChange)="updateScoreImperial()" (ionFocus)="updateTextFocus(\'inches\')" (ionBlur)="updateTextBlur(\'inches\')"></ion-input>\n    </ion-col>\n    <ion-col col-4>\n      <ion-input [(ngModel)]="outputs.metric" class="output" [readonly]="true" (keypress)="isNumber($event)" (ionFocus)="updateTextFocus(\'inches\')" (ionBlur)="updateTextBlur(\'inches\')"></ion-input>\n    </ion-col>\n  </ion-row>\n  </ion-grid>\n  <ion-grid>\n  <ion-row>\n    <ion-col>\n      <ion-label>Meters</ion-label>\n    </ion-col>\n  </ion-row>\n  <ion-row>\n    <ion-col col-8>\n      <ion-input [(ngModel)]="measurements.meters" (ionChange)="updateScoreMetric()" (keypress)="isNumber($event)" (ionFocus)="updateTextFocus(\'meters\')" (ionBlur)="updateTextBlur(\'meters\')"></ion-input>\n    </ion-col>\n    <ion-col>\n      <ion-input [(ngModel)]="outputs.imperial" class="output" [readonly]="true" (keypress)="isNumber($event)" (ionFocus)="updateTextFocus(\'inches\')" (ionBlur)="updateTextBlur(\'inches\')"></ion-input>\n    </ion-col>\n  </ion-row>\n  </ion-grid>\n</ion-content>\n'/*ion-inline-end:"/Users/jonahelbaz/Desktop/MasterCoach/src/pages/HomeTabs/tools/calculators/unit-converter/unit-converter.html"*/,
+            selector: 'page-starting-gun',template:/*ion-inline-start:"/workspace/MasterCoach/src/pages/HomeTabs/tools/gadgets/starting-gun/starting-gun.html"*/'<!--\n  Generated template for the StartingGunPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-buttons left (click)="cancel()">\n      <button ion-button="arrow-back" color="primary">\n        <ion-icon name="ios-arrow-down"></ion-icon>\n      </button>\n    </ion-buttons>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n\n</ion-content>\n'/*ion-inline-end:"/workspace/MasterCoach/src/pages/HomeTabs/tools/gadgets/starting-gun/starting-gun.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* NavParams */]])
-    ], UnitConverterPage);
-    return UnitConverterPage;
+    ], StartingGunPage);
+    return StartingGunPage;
 }());
 
-//# sourceMappingURL=unit-converter.js.map
+//# sourceMappingURL=starting-gun.js.map
 
 /***/ })
 

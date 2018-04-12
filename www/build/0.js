@@ -1,6 +1,6 @@
 webpackJsonp([0],{
 
-/***/ 686:
+/***/ 688:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -8,8 +8,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CreateTrainingPageModule", function() { return CreateTrainingPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(37);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__create_training__ = __webpack_require__(709);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__pipes_pipes_module__ = __webpack_require__(710);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__create_training__ = __webpack_require__(712);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__pipes_pipes_module__ = __webpack_require__(713);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -44,18 +44,18 @@ var CreateTrainingPageModule = (function () {
 
 /***/ }),
 
-/***/ 709:
+/***/ 712:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CreateTrainingPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(37);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_users_users__ = __webpack_require__(155);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_users_users__ = __webpack_require__(156);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_tools_tools__ = __webpack_require__(67);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__text_popover_text_popover__ = __webpack_require__(452);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__providers_training_labels_labelProvider__ = __webpack_require__(89);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__providers_training_trainings_trainingProvider__ = __webpack_require__(156);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__providers_training_trainings_trainingProvider__ = __webpack_require__(157);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__models_logging_training__ = __webpack_require__(454);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -94,6 +94,7 @@ var CreateTrainingPage = (function () {
         this.users = users;
         this.alertCtrl = alertCtrl;
         this.tools = tools;
+        this.trainingHover = false;
         this.preTraining = this.trainings.preTraining.getPreTraining();
         this.postTraining = this.trainings.postTraining.getPostTraining();
         this.exercisesByCategory = {};
@@ -245,66 +246,56 @@ var CreateTrainingPage = (function () {
         });
         alert.present();
     };
-    CreateTrainingPage.prototype.addWarmUp = function () {
+    CreateTrainingPage.prototype.addWarmUpCoolDown = function (choice) {
         var _this = this;
-        var alert = this.alertCtrl.create({
-            title: 'Warm Up',
+        var addRoutineModal = this.modalCtrl.create('AddRoutinePage');
+        addRoutineModal.onDidDismiss(function (data) {
+            _this.training.mainCalEvent[choice] = data;
+            console.log(data);
+            console.log(_this.training.mainCalEvent[choice]);
         });
-        alert.addInput({
-            type: 'radio',
-            label: 'Warm up A',
-            value: 'Warm up A',
-            checked: false
-        });
-        alert.addInput({
-            type: 'radio',
-            label: 'Warm up B',
-            value: 'Warm up B',
-            checked: false
-        });
-        alert.addButton('Cancel');
-        alert.addButton({
-            text: 'Add',
-            handler: function (data) {
-                console.log('Checkbox data:', data);
-                if (data != null) {
-                    _this.training.mainCalEvent.warmUp = data;
-                }
-                // this.testCheckboxResult = data;
-            }
-        });
-        alert.present();
+        addRoutineModal.present();
     };
-    CreateTrainingPage.prototype.addCoolDown = function () {
-        var _this = this;
-        var alert = this.alertCtrl.create({
-            title: 'Cool Down',
-        });
-        alert.addInput({
-            type: 'radio',
-            label: 'Cool down A',
-            value: 'Cool down A',
-            checked: false
-        });
-        alert.addInput({
-            type: 'radio',
-            label: 'Cool down B',
-            value: 'Cool down B',
-            checked: false
-        });
-        alert.addButton('Cancel');
-        alert.addButton({
-            text: 'Add',
-            handler: function (data) {
-                console.log('Checkbox data:', data);
-                if (data != null) {
-                    _this.training.mainCalEvent.coolDown = data;
-                }
-                // this.testCheckboxResult = data;
-            }
-        });
-        alert.present();
-    };
+    // addCoolDown() {
+    //     let warmUpModal = this.modalCtrl.create(
+    //         'AddRoutinePage'
+    //     );
+    //
+    //     warmUpModal.onDidDismiss(data => {
+    //         this.training.mainCalEvent.warmUp = data;
+    //     });
+    //
+    //     warmUpModal.present();
+    //
+    //     let alert = this.alertCtrl.create({
+    //         title: 'Cool Down',
+    //
+    //     });
+    //     alert.addInput( {
+    //         type: 'radio',
+    //         label: 'Cool down A',
+    //         value: 'Cool down A',
+    //         checked: false
+    //     });
+    //     alert.addInput( {
+    //         type: 'radio',
+    //         label: 'Cool down B',
+    //         value: 'Cool down B',
+    //         checked: false
+    //     });
+    //     alert.addButton('Cancel');
+    //     alert.addButton({
+    //         text: 'Add',
+    //         handler: data => {
+    //             console.log('Checkbox data:', data);
+    //             if (data != null) {
+    //                 this.training.mainCalEvent.coolDown = data;
+    //             }
+    //             // this.testCheckboxResult = data;
+    //         }
+    //     });
+    //     alert.present();
+    // }
     CreateTrainingPage.prototype.cancel = function () {
         this.navCtrl.pop();
     };
@@ -323,7 +314,7 @@ var CreateTrainingPage = (function () {
     };
     CreateTrainingPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-            selector: 'page-create-training',template:/*ion-inline-start:"/Users/jonahelbaz/Desktop/MasterCoach/src/pages/Training/create-training/create-training.html"*/'<!--\n  Generated template for the CreateTrainingPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n    <ion-navbar>\n        <ion-buttons left>\n            <button ion-button color="primary" (click)="cancel()">\n                <ion-icon name="ios-arrow-down"></ion-icon>\n            </button>\n        </ion-buttons>\n        <ion-title>{{trainingMorningAfternoonEvening}} Training</ion-title>\n        <ion-buttons right>\n            <button ion-button color="primary" (click)="createNewTraining()">\n                Save\n            </button>\n        </ion-buttons>\n    </ion-navbar>\n</ion-header>\n\n\n<ion-content>\n    <ion-list no-lines>\n        <!--PRE TRAINING-->\n        <ion-list-header class="title item-stable" (click)="toggleGroup(\'preTraining\')">\n            <ion-col>\n                Pre-Training\n            </ion-col>\n            <ion-col style="text-align: right; width: 100%;" col-8>\n                <ion-icon style="text-align: right"  *ngIf="!isGroupShown(\'preTraining\')" class="drop"\n                          name="ios-arrow-forward"></ion-icon>\n                <ion-icon  *ngIf="isGroupShown(\'preTraining\')" class="drop" name="ios-arrow-down" right></ion-icon>\n            </ion-col>\n        </ion-list-header>\n        <div class="item-accordion" *ngIf="isGroupShown(\'preTraining\')">\n            <ion-grid>\n                <ion-row class="ionItemCrop" *ngFor="let title of preTrainingDivide.range" align-items-center>\n                    <ion-col col-4 left>{{title["key"]}}</ion-col>\n                    <ion-col col-8 right>\n                        <ion-range min="0" max="5" [snaps]="true" steps="1" [pin]="true" right class="range" [(ngModel)]="title[\'val\']">\n                            <ion-label range-left>0</ion-label>\n                            <ion-label range-right>5</ion-label>\n                        </ion-range>\n                    </ion-col>\n                </ion-row>\n              </ion-grid>\n            <ion-list>\n                <ion-item *ngFor="let title of preTrainingDivide.notes">\n                    <ion-label stacked> {{title["key"]}} </ion-label>\n                    <ion-textarea class="thoughts" [(ngModel)]="title[\'val\']"></ion-textarea>\n                </ion-item>\n            </ion-list>\n        </div>\n\n        <!--TRAINING-->\n        <ion-list-header class="title item-stable" (click)="toggleGroup(\'training\')">\n            <ion-col>\n                Training\n            </ion-col>\n            <ion-col style="text-align: right; width: 100%;" col-8>\n                <ion-icon style="text-align: right"  *ngIf="!isGroupShown(\'training\')" class="drop"\n                          name="ios-arrow-forward"></ion-icon>\n                <ion-icon  *ngIf="isGroupShown(\'training\')" class="drop" name="ios-arrow-down" right></ion-icon>\n            </ion-col>\n        </ion-list-header>\n        <ion-list class="item-accordion" *ngIf="isGroupShown(\'training\')">\n            <ion-list>\n                <ion-label stacked class="trainingHeaders">Warm Up</ion-label>\n                <ion-row *ngIf="training.mainCalEvent.warmUp.name != \'\'">\n                    <ion-col class="addWarmUpCoolDown" (click)="addWarmUp()">\n                        + Add Warm Up\n                    </ion-col>\n                </ion-row>\n                <ion-item *ngIf="training.mainCalEvent.warmUp.name == \'\'">\n                    <button ion-button (click)="addWarmUp()">{{training.mainCalEvent.warmUp.name}}\n                        <ion-icon class="trainingHeaders" name="close"\n                                  (click)="addWarmUp()">\n                        </ion-icon>\n                    </button>\n                </ion-item>\n                <ion-label stacked class="trainingHeaders">Training</ion-label>\n                <div *ngFor="let exercise of training.mainCalEvent.exercises ; let i = index">\n                    <ion-grid class="exerciseTable" no-margin>\n                        <ion-row *ngIf="i >= 1 && training.mainCalEvent.exercises[i].exerciseCategory !== training.mainCalEvent.exercises[i-1].exerciseCategory">\n                            <ion-col style="font-size: large" left>\n                                {{exercise.exerciseCategory.category.name}}\n                            </ion-col>\n                        </ion-row>\n                        <ion-row *ngIf="i == 0">\n                            <ion-col style="font-size: large" left>\n                                {{exercise.exerciseCategory.category.name}}\n                            </ion-col>\n                        </ion-row>\n                        <!--<div *ngFor="let exercise of exercisesByCategory[exerciseCategory]">-->\n                            <ion-row style="padding-bottom: 5px; width: 100%;" nowrap align-items-center justify-content-between>\n                                <ion-col style="font-size: medium" left>{{exercise.exerciseName}}</ion-col>\n                                <ion-col col-1 style="margin-right: 20px">\n                                    <button ion-button class="exerciseTableIcon" (click)="addLabel(exercise)">\n                                        <ion-icon name="pricetags"></ion-icon>\n                                    </button>\n                                </ion-col>\n                                <ion-col col-6 *ngIf="exercise.labels.length > 0">\n                                    <div class="scroll">\n                                        <button ion-button class="exerciseTableLabel" *ngFor="let label of exercise.labels" (click)="removeLabel(label, exercise)">\n                                            {{label}}\n                                            <ion-icon name="close" class="trainingHeaders"></ion-icon>\n                                        </button>\n                                    </div>\n                                </ion-col>\n                                <ion-col col-1 right style="margin-right: 20px">\n                                    <button ion-button style="border-radius: 25px; width: 10px; height: 30px;" (click)="tooltip()">\n                                        <ion-icon name="md-create"></ion-icon>\n                                    </button>\n                                </ion-col>\n                                <!--<ion-col right><ion-icon ion-button icon-only name="alert"></ion-icon></ion-col>-->\n                                <!--<ion-col><ion-note>NOTE</ion-note></ion-col>-->\n                                <!--<ion-col><ion-option>option</ion-option></ion-col>-->\n                            </ion-row>\n                            <ion-row no-margin no-border>\n                                <!--<ion-col *ngFor="let column of exercise.tableHeaders" col-{{exercise.columnMap[column]}}>{{column}}</ion-col>-->\n                                <!--ngStyle="width: exercise.columnMap[column]"-->\n                                <!--<ion-col style="text-align: center" *ngFor="let column of exercise.tableHeaders">{{column}}</ion-col>-->\n                                <ion-col class="exerciseHeader" col-1>#</ion-col>\n                                <ion-col class="exerciseHeader">Detail</ion-col>\n                                <ion-col class="exerciseHeader" col-3>Measure</ion-col>\n                                <ion-col class="exerciseHeader" col-2>Reps</ion-col>\n                                <ion-col class="exerciseHeader" col-1>\n                                    <ion-icon name="checkmark-outline" style="font-size: 20px; padding: 0; font-weight: bold"></ion-icon>\n                                </ion-col>\n                            </ion-row>\n\n                    <!--<ion-row *ngFor="let set of exercise.sets">-->\n                    <!--<ion-col *ngFor="let key of exercise.sets[set]" class="exerciseCol exerciseHeader"><ion-input>{{set[key]}}</ion-input></ion-col>-->\n\n                    <!--&lt;!&ndash;<ion-col *ngFor="let key of mainTraining.create-training.exercises[exercise].sets[set].keys()" class="exerciseCol exerciseHeader"><ion-input>{{set[key]}}</ion-input></ion-col>&ndash;&gt;-->\n                    <!--<ion-col class="exerciseCol" col-1>-->\n                    <!--<ion-checkbox name="checkmark" style="font-size: 20px; padding: 0; font-weight: bold" [(ngModel)]="set.complete"></ion-checkbox>-->\n                    <!--</ion-col>-->\n                    <!--</ion-row>-->\n                    <!--BEST VERSION BELOW-->\n\n                            <ion-row *ngFor="let set of exercise.sets" no-padding no-margin align-items-stretch>\n                                <ion-col class="exerciseCol" no-margin  col-1>{{set.setNumber}}</ion-col>\n                                <ion-col class="exerciseCol"><ion-input text-center no-margin placeholder="Detail" [(ngModel)]="set.detail"></ion-input></ion-col>\n                                <ion-col class="exerciseCol" col-3><ion-input text-center no-margin placeholder="Measure" [(ngModel)]="set.measure"></ion-input></ion-col>\n                                <ion-col class="exerciseCol" col-2><ion-input text-center no-margin placeholder="Reps" [(ngModel)]="set.reps"></ion-input></ion-col>\n                                <ion-col class="exerciseCol" no-margin col-1>\n                                    <ion-checkbox style="font-size: 10px;" no-padding no-margin [checked]="false" [(ngModel)]="set.complete"></ion-checkbox>\n                                </ion-col>\n                            </ion-row>\n                            <ion-row>\n                                <ion-col text-capitalize class="addSet" (click)="addSet(exercise)">\n                                        + ADD SET\n                                </ion-col>\n                            </ion-row>\n                        <!--</div>-->\n                    </ion-grid>\n                </div>\n\n                <ion-grid class="exerciseTable" no-padding>\n                    <ion-row>\n                        <ion-col text-capitalize class="addExercise" (click)="addExercise()">\n                            + ADD EXERCISE\n                        </ion-col>\n                    </ion-row>\n                </ion-grid>\n            </ion-list>\n            <ion-label stacked class="trainingHeaders">Cool Down</ion-label>\n            <ion-row *ngIf="training.mainCalEvent.coolDown.name != \'\'">\n                <ion-col text-capitalize class="addWarmUpCoolDown" (click)="addCoolDown()">\n                    + Add Cool Down\n                </ion-col>\n            </ion-row>\n            <ion-item *ngIf="training.mainCalEvent.coolDown.name == \'\'">\n                <ion-card class="warmUpCard" ion-button (click)="addCoolDown()">{{training.mainCalEvent.coolDown.name}}\n                    <ion-icon class="trainingHeaders" name="close"\n                              (click)="training.mainCalEvent.coolDown.name = \'\'"></ion-icon>\n                </ion-card>\n            </ion-item>\n            <ion-item>\n                <ion-label stacked>Notes</ion-label>\n                <ion-textarea class="thoughts" [(ngModel)]="training.mainCalEvent.notes[\'main\']"></ion-textarea>\n            </ion-item>\n        </ion-list>\n\n        <!--POST TRAINING-->\n        <ion-list-header class="title item-stable" (click)="toggleGroup(\'postTraining\')">\n            <ion-col>\n                Post-Training\n            </ion-col>\n            <ion-col style="text-align: right; width: 100%;" col-8>\n                <ion-icon style="text-align: right" *ngIf="!isGroupShown(\'postTraining\')" class="drop"\n                          name="ios-arrow-forward"></ion-icon>\n                <ion-icon *ngIf="isGroupShown(\'postTraining\')" class="drop" name="ios-arrow-down" right></ion-icon>\n            </ion-col>\n        </ion-list-header>\n        <div class="item-accordion" *ngIf="isGroupShown(\'postTraining\')">\n            <ion-grid>\n                <ion-row class="ionItemCrop" *ngFor="let title of postTrainingDivide.range" align-items-center>\n                    <ion-col col-4 left>{{title["key"]}}</ion-col>\n                    <ion-col col-8 right>\n                        <ion-range min="0" max="5" [snaps]="true" steps="1" [pin]="true" right class="range" [(ngModel)]="title[\'val\']">\n                            <ion-label range-left>0</ion-label>\n                            <ion-label range-right>5</ion-label>\n                        </ion-range>\n                    </ion-col>\n                </ion-row>\n            </ion-grid>\n            <ion-list>\n                <ion-item *ngFor="let title of postTrainingDivide.notes">\n                    <ion-label stacked> {{title["key"]}} </ion-label>\n                    <ion-textarea class="thoughts" [(ngModel)]="title[\'val\']"></ion-textarea>\n                </ion-item>\n            </ion-list>\n        </div>\n    </ion-list>\n\n</ion-content>\n'/*ion-inline-end:"/Users/jonahelbaz/Desktop/MasterCoach/src/pages/Training/create-training/create-training.html"*/,
+            selector: 'page-create-training',template:/*ion-inline-start:"/workspace/MasterCoach/src/pages/Training/create-training/create-training.html"*/'<!--\n  Generated template for the CreateTrainingPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n    <ion-navbar>\n        <ion-buttons left>\n            <button ion-button color="primary" (click)="cancel()">\n                <ion-icon name="ios-arrow-down"></ion-icon>\n            </button>\n        </ion-buttons>\n        <ion-title>{{trainingMorningAfternoonEvening}} Training</ion-title>\n        <ion-buttons right>\n            <button ion-button color="primary" (click)="createNewTraining()">\n                Save\n            </button>\n        </ion-buttons>\n    </ion-navbar>\n</ion-header>\n\n\n<ion-content [ngClass]="">\n    <ion-list no-lines>\n        <!--PRE TRAINING-->\n        <ion-list-header class="title item-stable" (click)="toggleGroup(\'preTraining\')">\n            <ion-col>\n                Pre-Training\n            </ion-col>\n            <ion-col style="text-align: right; width: 100%;" col-8>\n                <ion-icon style="text-align: right"  *ngIf="!isGroupShown(\'preTraining\')" class="drop"\n                          name="ios-arrow-forward"></ion-icon>\n                <ion-icon  *ngIf="isGroupShown(\'preTraining\')" class="drop" name="ios-arrow-down" right></ion-icon>\n            </ion-col>\n        </ion-list-header>\n        <div class="item-accordion" *ngIf="isGroupShown(\'preTraining\')">\n            <ion-grid>\n                <ion-row class="ionItemCrop" *ngFor="let title of preTrainingDivide.range" align-items-center>\n                    <ion-col col-4 left>{{title["key"]}}</ion-col>\n                    <ion-col col-8 right>\n                        <ion-range min="0" max="5" [snaps]="true" steps="1" [pin]="true" right class="range" [(ngModel)]="title[\'val\']">\n                            <ion-label range-left>0</ion-label>\n                            <ion-label range-right>5</ion-label>\n                        </ion-range>\n                    </ion-col>\n                </ion-row>\n              </ion-grid>\n            <ion-list>\n                <ion-item *ngFor="let title of preTrainingDivide.notes">\n                    <ion-label stacked> {{title["key"]}} </ion-label>\n                    <ion-textarea class="thoughts" [(ngModel)]="title[\'val\']"></ion-textarea>\n                </ion-item>\n            </ion-list>\n        </div>\n\n        <!--TRAINING-->\n        <ion-list-header class="title item-stable" (click)="toggleGroup(\'training\')">\n            <ion-col>\n                Training\n            </ion-col>\n            <ion-col style="text-align: right; width: 100%;" col-8>\n                <ion-icon style="text-align: right"  *ngIf="!isGroupShown(\'training\')" class="drop"\n                          name="ios-arrow-forward"></ion-icon>\n                <ion-icon  *ngIf="isGroupShown(\'training\')" class="drop" name="ios-arrow-down" right></ion-icon>\n            </ion-col>\n        </ion-list-header>\n        <ion-list class="item-accordion" *ngIf="isGroupShown(\'training\')">\n            <ion-list>\n                <ion-label stacked class="trainingHeaders">Warm Up</ion-label>\n                <ion-row *ngIf="training.mainCalEvent.warmUp == null">\n                    <ion-col class="addWarmUpCoolDown" (click)="addWarmUpCoolDown(\'warmUp\')">\n                        + Add Warm Up\n                    </ion-col>\n                </ion-row>\n                <ion-item *ngIf="training.mainCalEvent.warmUp">\n                    <ion-card detail-none (click)="addWarmUpCoolDown(\'warmUp\')">\n                        <ion-card-header>\n                            <ion-row>\n                                <ion-col>\n                                    {{training.mainCalEvent.warmUp.routineName}}\n                                </ion-col>\n                                <ion-col>\n                                    <ion-icon class="trainingHeaders" name="close"\n                                              (click)="training.mainCalEvent.warmUp = null" right>\n                                    </ion-icon>\n                                </ion-col>\n                            </ion-row>\n                        </ion-card-header>\n                        <ion-card-content>\n                            <div>\n                                <ion-row>\n                                    <ion-col *ngFor="let exercise of training.mainCalEvent.warmUp.exercises">\n                                        {{exercise.exerciseName}}\n                                    </ion-col>\n                                </ion-row>\n                            </div>\n                        </ion-card-content>\n                    </ion-card>\n                </ion-item>\n                <ion-label stacked class="trainingHeaders">Training</ion-label>\n                <div *ngFor="let exercise of training.mainCalEvent.exercises ; let i = index">\n                    <ion-grid class="exerciseTable" no-margin>\n                        <ion-row *ngIf="i >= 1 && training.mainCalEvent.exercises[i].exerciseCategory !== training.mainCalEvent.exercises[i-1].exerciseCategory">\n                            <ion-col style="font-size: large" left>\n                                {{exercise.exerciseCategory.category.name}}\n                            </ion-col>\n                        </ion-row>\n                        <ion-row *ngIf="i == 0">\n                            <ion-col style="font-size: large" left>\n                                {{exercise.exerciseCategory.category.name}}\n                            </ion-col>\n                        </ion-row>\n                        <!--<div *ngFor="let exercise of exercisesByCategory[exerciseCategory]">-->\n                            <ion-row style="padding-bottom: 5px; width: 100%;" nowrap align-items-center justify-content-between>\n                                <ion-col style="font-size: medium" left>{{exercise.exerciseName}}</ion-col>\n                                <ion-col col-1 style="margin-right: 20px">\n                                    <button ion-button class="exerciseTableIcon" (click)="addLabel(exercise)">\n                                        <ion-icon name="pricetags"></ion-icon>\n                                    </button>\n                                </ion-col>\n                                <ion-col col-6 *ngIf="exercise.labels.length > 0">\n                                    <div class="scroll">\n                                        <button ion-button class="exerciseTableLabel" *ngFor="let label of exercise.labels" (click)="removeLabel(label, exercise)">\n                                            {{label}}\n                                            <ion-icon name="close" class="trainingHeaders"></ion-icon>\n                                        </button>\n                                    </div>\n                                </ion-col>\n                                <ion-col col-1 right style="margin-right: 20px">\n                                    <button ion-button style="border-radius: 25px; width: 10px; height: 30px;" (click)="tooltip()">\n                                        <ion-icon name="md-create"></ion-icon>\n                                    </button>\n                                </ion-col>\n                                <!--<ion-col right><ion-icon ion-button icon-only name="alert"></ion-icon></ion-col>-->\n                                <!--<ion-col><ion-note>NOTE</ion-note></ion-col>-->\n                                <!--<ion-col><ion-option>option</ion-option></ion-col>-->\n                            </ion-row>\n                            <ion-row no-margin no-border>\n                                <ion-col class="exerciseHeader" col-1>#</ion-col>\n                                <ion-col class="exerciseHeader" *ngFor="let column of exercise.exerciseTableType.tableHeaderList">{{column}}</ion-col>\n                                <ion-col class="exerciseHeader" col-1>\n                                    <ion-icon name="checkmark-outline" style="font-size: 20px; padding: 0; font-weight: bold"></ion-icon>\n                                </ion-col>\n                            </ion-row>\n                            <ion-row no-margin no-border>\n                                <ion-col class="exerciseHeader" col-1>#</ion-col>\n                                <ion-col class="exerciseHeader">Detail</ion-col>\n                                <ion-col class="exerciseHeader" col-3>Measure</ion-col>\n                                <ion-col class="exerciseHeader" col-2>Reps</ion-col>\n                                <ion-col class="exerciseHeader" col-1>\n                                    <ion-icon name="checkmark-outline" style="font-size: 20px; padding: 0; font-weight: bold"></ion-icon>\n                                </ion-col>\n                            </ion-row>\n\n                    <!--<ion-row *ngFor="let set of exercise.sets">-->\n                    <!--<ion-col *ngFor="let key of exercise.sets[set]" class="exerciseCol exerciseHeader"><ion-input>{{set[key]}}</ion-input></ion-col>-->\n\n                    <!--&lt;!&ndash;<ion-col *ngFor="let key of mainTraining.create-training.exercises[exercise].sets[set].keys()" class="exerciseCol exerciseHeader"><ion-input>{{set[key]}}</ion-input></ion-col>&ndash;&gt;-->\n                    <!--<ion-col class="exerciseCol" col-1>-->\n                    <!--<ion-checkbox name="checkmark" style="font-size: 20px; padding: 0; font-weight: bold" [(ngModel)]="set.complete"></ion-checkbox>-->\n                    <!--</ion-col>-->\n                    <!--</ion-row>-->\n                    <!--BEST VERSION BELOW-->\n\n                            <ion-row *ngFor="let set of exercise.sets" no-padding no-margin align-items-stretch>\n                                <ion-col class="exerciseCol" no-margin  col-1>{{set.setNumber}}</ion-col>\n                                <ion-col class="exerciseCol"><ion-input text-center no-margin placeholder="Detail" [(ngModel)]="set.detail"></ion-input></ion-col>\n                                <ion-col class="exerciseCol" col-3><ion-input text-center no-margin placeholder="Measure" [(ngModel)]="set.measure"></ion-input></ion-col>\n                                <ion-col class="exerciseCol" col-2><ion-input text-center no-margin placeholder="Reps" [(ngModel)]="set.reps"></ion-input></ion-col>\n                                <ion-col class="exerciseCol" no-margin col-1>\n                                    <ion-checkbox style="font-size: 10px;" no-padding no-margin [checked]="false" [(ngModel)]="set.complete"></ion-checkbox>\n                                </ion-col>\n                            </ion-row>\n                            <ion-row *ngFor="let set of exercise.sets" no-padding no-margin align-items-stretch>\n                                <ion-col class="exerciseCol" no-margin  col-1>{{set.setNumber}}</ion-col>\n                                <ion-col class="exerciseCol"><ion-input text-center no-margin placeholder="Detail" [(ngModel)]="set.detail"></ion-input></ion-col>\n                                <ion-col class="exerciseCol" col-3><ion-input text-center no-margin placeholder="Measure" [(ngModel)]="set.measure"></ion-input></ion-col>\n                                <ion-col class="exerciseCol" col-2><ion-input text-center no-margin placeholder="Reps" [(ngModel)]="set.reps"></ion-input></ion-col>\n                                <ion-col class="exerciseCol" no-margin col-1>\n                                    <ion-checkbox style="font-size: 10px;" no-padding no-margin [checked]="false" [(ngModel)]="set.complete"></ion-checkbox>\n                                </ion-col>\n                            </ion-row>\n                            <ion-row>\n                                <ion-col text-capitalize class="addSet" (click)="addSet(exercise)">\n                                        + ADD SET\n                                </ion-col>\n                            </ion-row>\n                        <!--</div>-->\n                    </ion-grid>\n                </div>\n\n                <ion-grid class="exerciseTable" no-padding>\n                    <ion-row>\n                        <ion-col text-capitalize class="addExercise" (click)="addExercise()">\n                            + ADD EXERCISE\n                        </ion-col>\n                    </ion-row>\n                </ion-grid>\n            </ion-list>\n            <ion-label stacked class="trainingHeaders">Cool Down</ion-label>\n            <ion-row *ngIf="training.mainCalEvent.coolDown == null">\n                <ion-col text-capitalize class="addWarmUpCoolDown" (click)="addWarmUpCoolDown(\'coolDown\')">\n                    + Add Cool Down\n                </ion-col>\n            </ion-row>\n            <ion-item *ngIf="training.mainCalEvent.coolDown">\n                <ion-card detail-none (click)="addWarmUpCoolDown(\'coolDown\')">\n                    <ion-card-header>\n                        <ion-row>\n                            <ion-col>\n                                {{training.mainCalEvent.coolDown.routineName}}\n                            </ion-col>\n                            <ion-col>\n                                <ion-icon class="trainingHeaders" name="close"\n                                          (click)="training.mainCalEvent.coolDown = null">\n                                </ion-icon>\n                            </ion-col>\n                        </ion-row>\n                    </ion-card-header>\n                    <ion-card-content>\n                        <div *ngFor="let exercise of training.mainCalEvent.coolDown.exercises">\n                            <ion-row>\n                                <ion-col>\n                                    {{exercise.exerciseName}}\n                                </ion-col>\n                            </ion-row>\n                        </div>\n                    </ion-card-content>\n                </ion-card>\n            </ion-item>\n            <ion-item>\n                <ion-label stacked>Notes</ion-label>\n                <ion-textarea class="thoughts" [(ngModel)]="training.mainCalEvent.notes[\'main\']"></ion-textarea>\n            </ion-item>\n        </ion-list>\n\n        <!--POST TRAINING-->\n        <ion-list-header class="title item-stable" (click)="toggleGroup(\'postTraining\')">\n            <ion-col>\n                Post-Training\n            </ion-col>\n            <ion-col style="text-align: right; width: 100%;" col-8>\n                <ion-icon style="text-align: right" *ngIf="!isGroupShown(\'postTraining\')" class="drop"\n                          name="ios-arrow-forward"></ion-icon>\n                <ion-icon *ngIf="isGroupShown(\'postTraining\')" class="drop" name="ios-arrow-down" right></ion-icon>\n            </ion-col>\n        </ion-list-header>\n        <div class="item-accordion" *ngIf="isGroupShown(\'postTraining\')">\n            <ion-grid>\n                <ion-row class="ionItemCrop" *ngFor="let title of postTrainingDivide.range" align-items-center>\n                    <ion-col col-4 left>{{title["key"]}}</ion-col>\n                    <ion-col col-8 right>\n                        <ion-range min="0" max="5" [snaps]="true" steps="1" [pin]="true" right class="range" [(ngModel)]="title[\'val\']">\n                            <ion-label range-left>0</ion-label>\n                            <ion-label range-right>5</ion-label>\n                        </ion-range>\n                    </ion-col>\n                </ion-row>\n            </ion-grid>\n            <ion-list>\n                <ion-item *ngFor="let title of postTrainingDivide.notes">\n                    <ion-label stacked> {{title["key"]}} </ion-label>\n                    <ion-textarea class="thoughts" [(ngModel)]="title[\'val\']"></ion-textarea>\n                </ion-item>\n            </ion-list>\n        </div>\n    </ion-list>\n\n</ion-content>\n'/*ion-inline-end:"/workspace/MasterCoach/src/pages/Training/create-training/create-training.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["p" /* ViewController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* ModalController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* MenuController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* NavParams */], __WEBPACK_IMPORTED_MODULE_6__providers_training_trainings_trainingProvider__["a" /* TrainingProvider */], __WEBPACK_IMPORTED_MODULE_5__providers_training_labels_labelProvider__["a" /* LabelProvider */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* PopoverController */], __WEBPACK_IMPORTED_MODULE_2__providers_users_users__["a" /* UsersProvider */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */], __WEBPACK_IMPORTED_MODULE_3__providers_tools_tools__["a" /* ToolsProvider */]])
     ], CreateTrainingPage);
@@ -334,14 +325,14 @@ var CreateTrainingPage = (function () {
 
 /***/ }),
 
-/***/ 710:
+/***/ 713:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return PipesModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__my_my__ = __webpack_require__(711);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__label_filter_label_filter__ = __webpack_require__(712);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__my_my__ = __webpack_require__(714);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__label_filter_label_filter__ = __webpack_require__(715);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -370,7 +361,7 @@ var PipesModule = (function () {
 
 /***/ }),
 
-/***/ 711:
+/***/ 714:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -409,7 +400,7 @@ var MyPipe = (function () {
 
 /***/ }),
 
-/***/ 712:
+/***/ 715:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";

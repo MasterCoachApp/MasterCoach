@@ -33496,17 +33496,14 @@ page-add-exercise .categoryArrow {
 }
 
 page-add-exercise .noDisplay {
-  line-height: 0;
-  -webkit-transition: line-height linear 1s;
-  transition: line-height linear 1s;
+  line-height: 0px;
 }
 
 page-add-exercise .categoryToggle {
-  line-height: 10px;
   -webkit-transition: all linear 5s;
   transition: all linear 5s;
+  line-height: 10px;
   padding-top: 5px;
-  padding-left: 0;
 }
 
 page-create-exercise ion-input {
@@ -33733,6 +33730,15 @@ page-unit-converter ion-grid {
   background-color: #ececec;
   margin-bottom: 5px;
   margin-top: 5px;
+}
+
+utilities .listItem:hover {
+  cursor: pointer;
+  background-color: #8795CD;
+}
+
+utilities ion-note {
+  padding-left: 5px;
 }
 
 page-create-account {

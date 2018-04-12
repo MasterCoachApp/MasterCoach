@@ -1,14 +1,14 @@
 webpackJsonp([7],{
 
-/***/ 680:
+/***/ 682:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "StartingGunPageModule", function() { return StartingGunPageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "StopwatchPageModule", function() { return StopwatchPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(37);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__starting_gun__ = __webpack_require__(703);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__stopwatch__ = __webpack_require__(706);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -18,31 +18,31 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var StartingGunPageModule = (function () {
-    function StartingGunPageModule() {
+var StopwatchPageModule = (function () {
+    function StopwatchPageModule() {
     }
-    StartingGunPageModule = __decorate([
+    StopwatchPageModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["J" /* NgModule */])({
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_2__starting_gun__["a" /* StartingGunPage */],
+                __WEBPACK_IMPORTED_MODULE_2__stopwatch__["a" /* StopwatchPage */],
             ],
             imports: [
-                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__starting_gun__["a" /* StartingGunPage */]),
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__stopwatch__["a" /* StopwatchPage */]),
             ],
         })
-    ], StartingGunPageModule);
-    return StartingGunPageModule;
+    ], StopwatchPageModule);
+    return StopwatchPageModule;
 }());
 
-//# sourceMappingURL=starting-gun.module.js.map
+//# sourceMappingURL=stopwatch.module.js.map
 
 /***/ }),
 
-/***/ 703:
+/***/ 706:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return StartingGunPage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return StopwatchPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(37);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -57,29 +57,29 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 /**
- * Generated class for the StartingGunPage page.
+ * Generated class for the StopwatchPage page.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
  */
-var StartingGunPage = (function () {
-    function StartingGunPage(navCtrl, navParams) {
+var StopwatchPage = (function () {
+    function StopwatchPage(navCtrl, navParams) {
         this.navCtrl = navCtrl;
         this.navParams = navParams;
     }
-    StartingGunPage.prototype.ionViewDidLoad = function () {
-        console.log('ionViewDidLoad StartingGunPage');
+    StopwatchPage.prototype.cancel = function () {
+        this.navCtrl.pop();
     };
-    StartingGunPage = __decorate([
+    StopwatchPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-            selector: 'page-starting-gun',template:/*ion-inline-start:"/Users/jonahelbaz/Desktop/MasterCoach/src/pages/HomeTabs/tools/gadgets/starting-gun/starting-gun.html"*/'<!--\n  Generated template for the StartingGunPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-buttons left (click)="cancel()">\n      <button ion-button="arrow-back" color="primary">\n        <ion-icon name="ios-arrow-down"></ion-icon>\n      </button>\n    </ion-buttons>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n\n</ion-content>\n'/*ion-inline-end:"/Users/jonahelbaz/Desktop/MasterCoach/src/pages/HomeTabs/tools/gadgets/starting-gun/starting-gun.html"*/,
+            selector: 'page-stopwatch',template:/*ion-inline-start:"/workspace/MasterCoach/src/pages/HomeTabs/tools/gadgets/stopwatch/stopwatch.html"*/'<!--\n  Generated template for the StopwatchPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-title</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n\n</ion-content>\n'/*ion-inline-end:"/workspace/MasterCoach/src/pages/HomeTabs/tools/gadgets/stopwatch/stopwatch.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* NavParams */]])
-    ], StartingGunPage);
-    return StartingGunPage;
+    ], StopwatchPage);
+    return StopwatchPage;
 }());
 
-//# sourceMappingURL=starting-gun.js.map
+//# sourceMappingURL=stopwatch.js.map
 
 /***/ })
 

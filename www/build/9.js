@@ -1,14 +1,14 @@
 webpackJsonp([9],{
 
-/***/ 678:
+/***/ 680:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PentathlonWCalculatorPageModule", function() { return PentathlonWCalculatorPageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "UnitConverterPageModule", function() { return UnitConverterPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(37);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__pentathlon_w_calculator__ = __webpack_require__(701);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__unit_converter__ = __webpack_require__(704);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -18,34 +18,33 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var PentathlonWCalculatorPageModule = (function () {
-    function PentathlonWCalculatorPageModule() {
+var UnitConverterPageModule = (function () {
+    function UnitConverterPageModule() {
     }
-    PentathlonWCalculatorPageModule = __decorate([
+    UnitConverterPageModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["J" /* NgModule */])({
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_2__pentathlon_w_calculator__["a" /* PentathlonWCalculatorPage */],
+                __WEBPACK_IMPORTED_MODULE_2__unit_converter__["a" /* UnitConverterPage */],
             ],
             imports: [
-                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__pentathlon_w_calculator__["a" /* PentathlonWCalculatorPage */]),
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__unit_converter__["a" /* UnitConverterPage */]),
             ],
         })
-    ], PentathlonWCalculatorPageModule);
-    return PentathlonWCalculatorPageModule;
+    ], UnitConverterPageModule);
+    return UnitConverterPageModule;
 }());
 
-//# sourceMappingURL=pentathlon-w-calculator.module.js.map
+//# sourceMappingURL=unit-converter.module.js.map
 
 /***/ }),
 
-/***/ 701:
+/***/ 704:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return PentathlonWCalculatorPage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return UnitConverterPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(37);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_tools_calculators_womens__ = __webpack_require__(451);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -57,60 +56,30 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
-
 /**
- * Generated class for the PentathlonWCalculatorPage page.
+ * Generated class for the UnitConverterPage page.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
  */
-var PentathlonWCalculatorPage = (function () {
-    function PentathlonWCalculatorPage(navCtrl, navParams, calculator) {
+var UnitConverterPage = (function () {
+    function UnitConverterPage(navCtrl, navParams) {
         this.navCtrl = navCtrl;
         this.navParams = navParams;
-        this.calculator = calculator;
-        this.inputs = {
-            sixtyHurdles: "0.00",
-            lj: "0.00",
-            sp: "0.00",
-            hj: "0.00",
-            eight: "0:00"
+        this.measurements = {
+            feet: "0.00",
+            inches: "0.00",
+            meters: "0.00",
         };
         this.outputs = {
-            sixtyHurdles: 0,
-            lj: 0,
-            sp: 0,
-            hj: 0,
-            eight: 0,
-            total: 0
+            metric: "0.00m",
+            imperial: "0'0\""
         };
     }
-    PentathlonWCalculatorPage.prototype.cancel = function () {
+    UnitConverterPage.prototype.cancel = function () {
         this.navCtrl.pop();
     };
-    PentathlonWCalculatorPage.prototype.save = function () {
-    };
-    PentathlonWCalculatorPage.prototype.updateTextFocus = function (value) {
-        if (value == "eight") {
-            if (this.inputs[value] == "0:00") {
-                this.inputs[value] = "";
-            }
-        }
-        else if (this.inputs[value] == "0.00") {
-            this.inputs[value] = "";
-        }
-    };
-    PentathlonWCalculatorPage.prototype.updateTextBlur = function (value) {
-        if (value == "eight") {
-            if (this.inputs[value] == "") {
-                this.inputs[value] = "0:00";
-            }
-        }
-        else if (this.inputs[value] == "") {
-            this.inputs[value] = "0.00";
-        }
-    };
-    PentathlonWCalculatorPage.prototype.isNumber = function (event) {
+    UnitConverterPage.prototype.isNumber = function (event) {
         var key = window.event ? event.keyCode : event.which;
         if (key == 46 || event.keyCode == 8 || event.keyCode == 46 || event.keyCode == 37 || event.keyCode == 39) {
             return true;
@@ -118,62 +87,64 @@ var PentathlonWCalculatorPage = (function () {
         else
             return !(key < 48 || key > 57);
     };
-    PentathlonWCalculatorPage.prototype.isTime = function (event) {
-        var key = window.event ? event.keyCode : event.which;
-        if (key == 46 || key == 58 || event.keyCode == 8 || event.keyCode == 46 || event.keyCode == 37 || event.keyCode == 39) {
-            return true;
+    UnitConverterPage.prototype.updateTextFocus = function (value) {
+        if (this.measurements[value] == "0.00" || this.measurements[value] == "0") {
+            this.measurements[value] = "";
         }
-        else
-            return !(key < 48 || key > 57);
     };
-    ;
-    PentathlonWCalculatorPage.prototype.updateScore = function () {
-        for (var key in this.inputs) {
-            if (this.inputs.hasOwnProperty(key)) {
-                if (key != "eight") {
-                    var parse = Number(this.inputs[key]);
-                    if (isNaN(parse)) {
-                        parse = 0.00;
-                    }
-                    if (parse != 0.00) {
-                        var eventScore = this.calculator.getEventPoints(key, parse);
-                        if (isNaN(eventScore)) {
-                            eventScore = 0;
-                        }
-                        this.outputs[key] = eventScore;
-                    }
-                    else {
-                        this.outputs[key] = 0;
-                    }
-                }
-                else {
-                    if (this.inputs[key] != "" && this.inputs[key] != "0:00") {
-                        console.log(this.inputs[key]);
-                        var eventScore = this.calculator.getEventPoints(key, this.inputs[key]);
-                        if (isNaN(eventScore)) {
-                            eventScore = 0;
-                        }
-                        this.outputs[key] = eventScore;
-                    }
-                    else {
-                        this.outputs[key] = 0;
-                    }
-                }
-                var total = this.calculator.getTotal(this.outputs);
-                this.outputs.total = total;
+    UnitConverterPage.prototype.updateTextBlur = function (value) {
+        if (this.measurements[value] == "") {
+            this.measurements[value] = "0.00";
+        }
+    };
+    UnitConverterPage.prototype.updateScoreImperial = function () {
+        var feet = this.measurements.feet;
+        var inches = this.measurements.inches;
+        var feetToInches = Number(feet) * 12;
+        if (isNaN(feetToInches)) {
+            feetToInches = 0.00;
+        }
+        var numInches = Number(inches);
+        if (isNaN(numInches)) {
+            numInches = 0.00;
+        }
+        var totalInches = feetToInches + numInches;
+        if (isNaN(totalInches)) {
+            totalInches = 0.00;
+        }
+        this.outputs.metric = String(totalInches * 0.0254).substr(0, 7) + "m";
+    };
+    UnitConverterPage.prototype.updateScoreMetric = function () {
+        var meters = Number(this.measurements.meters);
+        if (!isNaN(meters)) {
+            var conversionToFeet = String(meters * 3.28084);
+            var remainder = conversionToFeet.split(".");
+            var feet = Number(remainder[0]);
+            var inches = Number(remainder[1]) * 12;
+            if (!isNaN(feet)) {
+                this.outputs.imperial = String(feet).substr(0, 3) + '\'';
+            }
+            else {
+                this.outputs.imperial = "0'";
+            }
+            if (!isNaN(inches)) {
+                this.outputs.imperial = this.outputs.imperial + String(inches).substr(0, 3) + '\"';
+            }
+            else {
+                this.outputs.imperial = this.outputs.imperial + '0\"';
             }
         }
     };
-    PentathlonWCalculatorPage = __decorate([
+    UnitConverterPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-            selector: 'page-pentathlon-w-calculator',template:/*ion-inline-start:"/Users/jonahelbaz/Desktop/MasterCoach/src/pages/HomeTabs/tools/calculators/pentathlon-w-calculator/pentathlon-w-calculator.html"*/'<!--\n  Generated template for the DecathlonCalculatorPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-buttons left (click)="cancel()">\n      <button ion-button="arrow-back" color="primary">\n        <ion-icon name="ios-arrow-down"></ion-icon>\n      </button>\n    </ion-buttons>\n    <ion-title>Heptathlon</ion-title>\n    <ion-buttons right (click)="save()">\n      <button ion-button="arrow-back" color="primary">\n        Save\n      </button>\n    </ion-buttons>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n\n  <ion-list>\n    <ion-row>\n      <ion-col>\n        <ion-label>60mH</ion-label>\n      </ion-col>\n      <ion-col>\n        <ion-input maxlength="5" [(ngModel)]="inputs.sixtyHurdles" (ionFocus)="updateTextFocus(\'sixtyHurdles\')" (ionBlur)="updateTextBlur(\'sixtyHurdles\')" (ionChange)="updateScore()"  (keypress)="isNumber($event)"></ion-input>\n      </ion-col>\n      <ion-col>\n        <ion-input [readonly]="true" class="output" [(ngModel)]="outputs.sixtyHurdles" (ionFocus)="false"></ion-input>\n      </ion-col>\n    </ion-row>\n    <ion-row>\n      <ion-col>\n        <ion-label>High Jump</ion-label>\n      </ion-col>\n      <ion-col>\n        <ion-input maxlength="5" [(ngModel)]="inputs.hj" (ionFocus)="updateTextFocus(\'hj\')" (ionBlur)="updateTextBlur(\'hj\')" (ionChange)="updateScore()"  (keypress)="isNumber($event)"></ion-input>\n      </ion-col>\n      <ion-col>\n        <ion-input [readonly]="true" class="output" [(ngModel)]="outputs.hj"></ion-input>\n      </ion-col>\n    </ion-row>\n    <ion-row>\n      <ion-col>\n        <ion-label>Shot Put</ion-label>\n      </ion-col>\n      <ion-col>\n        <ion-input maxlength="5" [(ngModel)]="inputs.sp" (ionFocus)="updateTextFocus(\'sp\')" (ionBlur)="updateTextBlur(\'sp\')" (ionChange)="updateScore()"  (keypress)="isNumber($event)"></ion-input>\n      </ion-col>\n      <ion-col>\n        <ion-input [readonly]="true" class="output" [(ngModel)]="outputs.sp"></ion-input>\n      </ion-col>\n    </ion-row>\n    <ion-row class="row">\n      <ion-col>\n        <ion-label>Long Jump</ion-label>\n      </ion-col>\n      <ion-col>\n        <ion-input maxlength="5" [(ngModel)]="inputs.lj" (ionFocus)="updateTextFocus(\'lj\')" (ionBlur)="updateTextBlur(\'lj\')" (ionChange)="updateScore()"  (keypress)="isNumber($event)"></ion-input>\n      </ion-col>\n      <ion-col>\n        <ion-input [readonly]="true" l class="output" [(ngModel)]="outputs.lj"></ion-input>\n      </ion-col>\n    </ion-row>\n    <ion-row>\n      <ion-col>\n        <ion-label>800m</ion-label>\n      </ion-col>\n      <ion-col>\n        <ion-input maxlength="8" [(ngModel)]="inputs.eight" (ionFocus)="updateTextFocus(\'eight\')" (ionBlur)="updateTextBlur(\'eight\')" (ionChange)="updateScore()"  (keypress)="isTime($event)"></ion-input>\n      </ion-col>\n      <ion-col>\n        <ion-input [readonly]="true" class="output" [(ngModel)]="outputs.eight"></ion-input>\n      </ion-col>\n    </ion-row>\n    <ion-row class="outputResult">\n      <ion-col col-4></ion-col>\n      <ion-col col-5>\n        <ion-label>Total Score:</ion-label>\n      </ion-col>\n      <ion-col col-2>\n        <ion-input [readonly]="true" class="output" [(ngModel)]="outputs.total"></ion-input>\n      </ion-col>\n    </ion-row>\n  </ion-list>\n</ion-content>\n\n'/*ion-inline-end:"/Users/jonahelbaz/Desktop/MasterCoach/src/pages/HomeTabs/tools/calculators/pentathlon-w-calculator/pentathlon-w-calculator.html"*/,
+            selector: 'page-unit-converter',template:/*ion-inline-start:"/workspace/MasterCoach/src/pages/HomeTabs/tools/calculators/unit-converter/unit-converter.html"*/'<!--\n  Generated template for the UnitConverterPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-buttons left (click)="cancel()">\n      <button ion-button="arrow-back" color="primary">\n        <ion-icon name="ios-arrow-down"></ion-icon>\n      </button>\n    </ion-buttons>\n    <ion-title>Unit Converter</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content>\n  <ion-grid>\n  <ion-row>\n    <ion-col col-4>\n      <ion-label>Feet</ion-label>\n    </ion-col>\n    <ion-col col-4>\n      <ion-label>Inches</ion-label>\n    </ion-col>\n  </ion-row>\n  <ion-row>\n    <ion-col col-4>\n      <ion-input [(ngModel)]="measurements.feet" (keypress)="isNumber($event)" (ionChange)="updateScoreImperial()" (ionFocus)="updateTextFocus(\'feet\')" (ionBlur)="updateTextBlur(\'feet\')"></ion-input>\n    </ion-col>\n    <ion-col col-4>\n      <ion-input [(ngModel)]="measurements.inches" (keypress)="isNumber($event)" (ionChange)="updateScoreImperial()" (ionFocus)="updateTextFocus(\'inches\')" (ionBlur)="updateTextBlur(\'inches\')"></ion-input>\n    </ion-col>\n    <ion-col col-4>\n      <ion-input [(ngModel)]="outputs.metric" class="output" [readonly]="true" (keypress)="isNumber($event)" (ionFocus)="updateTextFocus(\'inches\')" (ionBlur)="updateTextBlur(\'inches\')"></ion-input>\n    </ion-col>\n  </ion-row>\n  </ion-grid>\n  <ion-grid>\n  <ion-row>\n    <ion-col>\n      <ion-label>Meters</ion-label>\n    </ion-col>\n  </ion-row>\n  <ion-row>\n    <ion-col col-8>\n      <ion-input [(ngModel)]="measurements.meters" (ionChange)="updateScoreMetric()" (keypress)="isNumber($event)" (ionFocus)="updateTextFocus(\'meters\')" (ionBlur)="updateTextBlur(\'meters\')"></ion-input>\n    </ion-col>\n    <ion-col>\n      <ion-input [(ngModel)]="outputs.imperial" class="output" [readonly]="true" (keypress)="isNumber($event)" (ionFocus)="updateTextFocus(\'inches\')" (ionBlur)="updateTextBlur(\'inches\')"></ion-input>\n    </ion-col>\n  </ion-row>\n  </ion-grid>\n</ion-content>\n'/*ion-inline-end:"/workspace/MasterCoach/src/pages/HomeTabs/tools/calculators/unit-converter/unit-converter.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2__providers_tools_calculators_womens__["a" /* WomenPointsProvider */]])
-    ], PentathlonWCalculatorPage);
-    return PentathlonWCalculatorPage;
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* NavParams */]])
+    ], UnitConverterPage);
+    return UnitConverterPage;
 }());
 
-//# sourceMappingURL=pentathlon-w-calculator.js.map
+//# sourceMappingURL=unit-converter.js.map
 
 /***/ })
 

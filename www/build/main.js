@@ -1,13 +1,73 @@
-webpackJsonp([23],{
+webpackJsonp([24],{
 
-/***/ 155:
+/***/ 117:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ExerciseTable; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__exercise_set__ = __webpack_require__(217);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__exercises_exercise__ = __webpack_require__(90);
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+
+
+var ExerciseTable = (function (_super) {
+    __extends(ExerciseTable, _super);
+    // exerciseName: string; // exercise.exerciseName
+    // exerciseCategory: ExerciseCategory; // exercise.exerciseCategory
+    // exerciseTableType: ExerciseTableType; // exercise.tableType
+    // notes: string;
+    // pinnedNotes: string;
+    // tableHeaderList: string[];
+    function ExerciseTable(exercise) {
+        var _this = _super.call(this, exercise.exerciseName, exercise.exerciseCategory, exercise.exerciseTableType) || this;
+        _this.labels = [];
+        _this.sets = [new __WEBPACK_IMPORTED_MODULE_0__exercise_set__["a" /* ExerciseSet */](1)];
+        return _this;
+    }
+    ExerciseTable.prototype.addLabels = function (labelsToAdd) {
+        var _this = this;
+        labelsToAdd.forEach(function (data) {
+            return _this.labels.push(data);
+        });
+        console.log(this);
+    };
+    ExerciseTable.prototype.removeLabel = function (label) {
+        this.labels.splice(this.labels.indexOf(label), 1);
+    };
+    ExerciseTable.prototype.addSet = function () {
+        var lastSetNumber = this.sets[this.sets.length - 1]['setNumber'];
+        this.sets.push(new __WEBPACK_IMPORTED_MODULE_0__exercise_set__["a" /* ExerciseSet */](lastSetNumber + 1));
+    };
+    ExerciseTable.prototype.deleteSet = function (set) {
+        this.sets.splice(this.sets.indexOf(set), 1);
+    };
+    ExerciseTable.prototype.toggleComplete = function (set) {
+        this.sets[this.sets.indexOf(set)].complete = !this.sets[this.sets.indexOf(set)].complete;
+    };
+    return ExerciseTable;
+}(__WEBPACK_IMPORTED_MODULE_1__exercises_exercise__["a" /* Exercise */]));
+
+//# sourceMappingURL=exercise-table.js.map
+
+/***/ }),
+
+/***/ 156:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return UsersProvider; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_angularfire2_database__ = __webpack_require__(75);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__models_users_user__ = __webpack_require__(596);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__models_users_user__ = __webpack_require__(599);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -65,25 +125,23 @@ var UsersProvider = (function () {
 
 /***/ }),
 
-/***/ 156:
+/***/ 157:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return TrainingProvider; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__models_custom_survey_components_trainings_pre_training__ = __webpack_require__(597);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__models_custom_survey_components_trainings_post_training__ = __webpack_require__(598);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__models_custom_survey_components_trainings_pre_training__ = __webpack_require__(600);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__models_custom_survey_components_trainings_post_training__ = __webpack_require__(601);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__models_logging_training__ = __webpack_require__(454);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__users_users__ = __webpack_require__(155);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__users_users__ = __webpack_require__(156);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_angularfire2_database__ = __webpack_require__(75);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__models_logging_create_training_warm_up__ = __webpack_require__(599);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__models_logging_create_training_cool_down__ = __webpack_require__(600);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__models_logging_exercises_exercise__ = __webpack_require__(90);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__models_logging_create_training_exercise_table_type__ = __webpack_require__(215);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__models_logging_create_training_exercise_table__ = __webpack_require__(266);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__models_logging_create_training_exercise_set__ = __webpack_require__(267);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__models_logging_create_training_exercise_category__ = __webpack_require__(213);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__menus_calendar_menu__ = __webpack_require__(91);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__models_logging_exercises_exercise__ = __webpack_require__(90);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__models_logging_create_training_exercise_table_type__ = __webpack_require__(216);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__models_logging_create_training_exercise_table__ = __webpack_require__(117);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__models_logging_create_training_exercise_set__ = __webpack_require__(217);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__models_logging_create_training_exercise_category__ = __webpack_require__(214);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__menus_calendar_menu__ = __webpack_require__(91);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -93,8 +151,6 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-
-
 
 
 
@@ -187,8 +243,8 @@ var TrainingProvider = (function () {
                         training.addMainCalNote(note.key, note.val());
                         return false;
                     });
-                    training.mainCalEvent.warmUp = new __WEBPACK_IMPORTED_MODULE_6__models_logging_create_training_warm_up__["a" /* WarmUp */](main.child("warmUp").val());
-                    training.mainCalEvent.coolDown = new __WEBPACK_IMPORTED_MODULE_7__models_logging_create_training_cool_down__["a" /* CoolDown */](main.child("coolDown").val());
+                    // training.mainCalEvent.warmUp = new WarmUp(main.child("warmUp").val());
+                    // training.mainCalEvent.coolDown = new CoolDown(main.child("coolDown").val());
                     main.child("exercises").forEach(function (exercises) {
                         var headers = exercises.child("exerciseTableType").child("tableHeaderList");
                         var headerList = [];
@@ -196,9 +252,9 @@ var TrainingProvider = (function () {
                             headerList.push(header.val());
                             return false;
                         });
-                        var tableType = new __WEBPACK_IMPORTED_MODULE_9__models_logging_create_training_exercise_table_type__["a" /* ExerciseTableType */](exercises.child("exerciseTableType").child("tableTypeName").val(), headerList);
-                        var ex = new __WEBPACK_IMPORTED_MODULE_8__models_logging_exercises_exercise__["a" /* Exercise */](exercises.child("exerciseName").val(), new __WEBPACK_IMPORTED_MODULE_12__models_logging_create_training_exercise_category__["a" /* ExerciseCategory */](exercises.child("category").val()), tableType);
-                        var table = new __WEBPACK_IMPORTED_MODULE_10__models_logging_create_training_exercise_table__["a" /* ExerciseTable */](ex);
+                        var tableType = new __WEBPACK_IMPORTED_MODULE_7__models_logging_create_training_exercise_table_type__["a" /* ExerciseTableType */](exercises.child("exerciseTableType").child("tableTypeName").val(), headerList);
+                        var ex = new __WEBPACK_IMPORTED_MODULE_6__models_logging_exercises_exercise__["a" /* Exercise */](exercises.child("exerciseName").val(), new __WEBPACK_IMPORTED_MODULE_10__models_logging_create_training_exercise_category__["a" /* ExerciseCategory */](exercises.child("category").val()), tableType);
+                        var table = new __WEBPACK_IMPORTED_MODULE_8__models_logging_create_training_exercise_table__["a" /* ExerciseTable */](ex);
                         table.sets = [];
                         table.labels = [];
                         exercises.child("labels").forEach(function (label) {
@@ -206,7 +262,7 @@ var TrainingProvider = (function () {
                             return false;
                         });
                         exercises.child("sets").forEach(function (set) {
-                            var newSet = new __WEBPACK_IMPORTED_MODULE_11__models_logging_create_training_exercise_set__["a" /* ExerciseSet */](set.child("setNumber").val());
+                            var newSet = new __WEBPACK_IMPORTED_MODULE_9__models_logging_create_training_exercise_set__["a" /* ExerciseSet */](set.child("setNumber").val());
                             newSet.detail = set.child("detail").val();
                             newSet.complete = set.child("complete").val();
                             newSet.measure = set.child("measure").val();
@@ -268,7 +324,7 @@ var TrainingProvider = (function () {
     };
     TrainingProvider = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["B" /* Injectable */])(),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_13__menus_calendar_menu__["a" /* CalendarMenu */], __WEBPACK_IMPORTED_MODULE_5_angularfire2_database__["a" /* AngularFireDatabase */], __WEBPACK_IMPORTED_MODULE_4__users_users__["a" /* UsersProvider */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_11__menus_calendar_menu__["a" /* CalendarMenu */], __WEBPACK_IMPORTED_MODULE_5_angularfire2_database__["a" /* AngularFireDatabase */], __WEBPACK_IMPORTED_MODULE_4__users_users__["a" /* UsersProvider */]])
     ], TrainingProvider);
     return TrainingProvider;
 }());
@@ -277,7 +333,7 @@ var TrainingProvider = (function () {
 
 /***/ }),
 
-/***/ 168:
+/***/ 169:
 /***/ (function(module, exports) {
 
 function webpackEmptyAsyncContext(req) {
@@ -290,109 +346,109 @@ function webpackEmptyAsyncContext(req) {
 webpackEmptyAsyncContext.keys = function() { return []; };
 webpackEmptyAsyncContext.resolve = webpackEmptyAsyncContext;
 module.exports = webpackEmptyAsyncContext;
-webpackEmptyAsyncContext.id = 168;
+webpackEmptyAsyncContext.id = 169;
 
 /***/ }),
 
-/***/ 211:
+/***/ 212:
 /***/ (function(module, exports, __webpack_require__) {
 
 var map = {
 	"../pages/Exercises/add-exercise/add-exercise.module": [
-		666,
-		47
+		667,
+		22
 	],
 	"../pages/Exercises/create-exercise/create-exercise.module": [
-		667,
-		46
+		668,
+		21
 	],
 	"../pages/Exercises/select-exercise-category/select-exercise-category.module": [
-		668,
-		45
+		669,
+		20
 	],
 	"../pages/Exercises/select-exercise-table-type/select-exercise-table-type.module": [
-		669,
-		44
+		670,
+		19
 	],
 	"../pages/HomeTabs/home/home.module": [
-		670,
-		43
+		671,
+		18
 	],
 	"../pages/HomeTabs/profile/profile.module": [
-		671,
-		42
+		672,
+		17
 	],
 	"../pages/HomeTabs/tabs/tabs.module": [
-		672,
-		41
+		673,
+		16
 	],
 	"../pages/HomeTabs/tools/calculators/decathlon-calculator/decathlon-calculator.module": [
-		673,
-		40
+		674,
+		15
 	],
 	"../pages/HomeTabs/tools/calculators/heptathlon-m-calculator/heptathlon-m-calculator.module": [
-		674,
-		39
+		675,
+		14
 	],
 	"../pages/HomeTabs/tools/calculators/heptathlon-w-calculator/heptathlon-w-calculator.module": [
-		675,
-		38
+		676,
+		13
 	],
 	"../pages/HomeTabs/tools/calculators/mercier/mercier.module": [
-		676,
-		37
+		677,
+		12
 	],
 	"../pages/HomeTabs/tools/calculators/pentathlon-m-calculator/pentathlon-m-calculator.module": [
-		677,
-		36
+		678,
+		11
 	],
 	"../pages/HomeTabs/tools/calculators/pentathlon-w-calculator/pentathlon-w-calculator.module": [
-		678,
-		35
+		679,
+		10
 	],
 	"../pages/HomeTabs/tools/calculators/unit-converter/unit-converter.module": [
-		679,
-		34
+		680,
+		9
 	],
 	"../pages/HomeTabs/tools/gadgets/starting-gun/starting-gun.module": [
-		680,
-		33
+		681,
+		8
 	],
 	"../pages/HomeTabs/tools/gadgets/stopwatch/stopwatch.module": [
-		681,
-		32
+		682,
+		7
 	],
 	"../pages/HomeTabs/tools/utilities/utilities.module": [
-		715,
-		31
+		683,
+		6
 	],
 	"../pages/Logins/create-account/create-account.module": [
-		682,
-		27
+		684,
+		2
 	],
 	"../pages/Logins/forgot-password/forgot-password.module": [
-		683,
-		30
+		685,
+		5
 	],
 	"../pages/Logins/login/login.module": [
-		684,
-		26
+		686,
+		1
 	],
 	"../pages/Logins/standard-login/standard-login.module": [
-		685,
-		29
+		687,
+		4
 	],
 	"../pages/Training/create-training/create-training.module": [
-		686,
-		25
+		688,
+		0
 	],
 	"../pages/Training/text-popover/text-popover.module": [
-		687,
-		48
+		689,
+		23
 	],
 	"../pages/view-training/view-training.module": [
-		688,
-		28
+		690,
+		3
 	]
 };
 function webpackAsyncContext(req) {
@@ -406,25 +462,33 @@ function webpackAsyncContext(req) {
 webpackAsyncContext.keys = function webpackAsyncContextKeys() {
 	return Object.keys(map);
 };
-webpackAsyncContext.id = 211;
+webpackAsyncContext.id = 212;
 module.exports = webpackAsyncContext;
 
 /***/ }),
 
-/***/ 212:
+/***/ 213:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ExerciseCategoryBank; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__exercise_category__ = __webpack_require__(213);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__exercise_category__ = __webpack_require__(214);
 
 var ExerciseCategoryBank = (function () {
     function ExerciseCategoryBank() {
+        var _this = this;
         this.exerciseCategoryBank = [];
-        this.exerciseCategoryList = ['Sprints', 'Long Sprints', 'Distance', 'Long Jump', 'High Jump', 'Pole Vault', 'Triple Jump', 'Sprint Hurdles', '400m Hurdles', 'Javelin', 'Weights', 'Plyometrics', 'Medicine Ball'];
-        for (var i = 0; i < this.exerciseCategoryList.length; i++) {
-            this.exerciseCategoryBank.push(new __WEBPACK_IMPORTED_MODULE_0__exercise_category__["a" /* ExerciseCategory */](this.exerciseCategoryList[i]));
-        }
+        this.exerciseCategoryList = [
+            'Sprints', 'Long Sprints', 'Distance', 'Long Jump', 'High Jump',
+            'Pole Vault', 'Triple Jump', 'Sprint Hurdles', '400m Hurdles',
+            'Javelin', 'Weights', 'Plyometrics', 'Medicine Ball',
+            'Activation', 'Stabilization',
+            // 'Warm Up', 'Cool Down',
+            'Core', 'Running Drills',
+        ];
+        this.exerciseCategoryList.forEach(function (x) {
+            _this.exerciseCategoryBank.push(new __WEBPACK_IMPORTED_MODULE_0__exercise_category__["a" /* ExerciseCategory */](x));
+        });
     }
     return ExerciseCategoryBank;
 }());
@@ -433,7 +497,7 @@ var ExerciseCategoryBank = (function () {
 
 /***/ }),
 
-/***/ 213:
+/***/ 214:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -529,12 +593,12 @@ var ExerciseCategory = (function () {
 
 /***/ }),
 
-/***/ 214:
+/***/ 215:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ExerciseTableTypeBank; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__exercise_table_type__ = __webpack_require__(215);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__exercise_table_type__ = __webpack_require__(216);
 
 var ExerciseTableTypeBank = (function () {
     // exerciseTableTypeList: ['Running'];
@@ -550,6 +614,8 @@ var ExerciseTableTypeBank = (function () {
             new __WEBPACK_IMPORTED_MODULE_0__exercise_table_type__["a" /* ExerciseTableType */]('Hurdles', ['Detail', 'Discount', 'Height', 'Hurdles']),
             new __WEBPACK_IMPORTED_MODULE_0__exercise_table_type__["a" /* ExerciseTableType */]('Weight & 1RM', ['Detail', 'Weight', '%1RM', 'Reps']),
             new __WEBPACK_IMPORTED_MODULE_0__exercise_table_type__["a" /* ExerciseTableType */]('Weight & Reps', ['Detail', 'Weight', 'Reps']),
+            new __WEBPACK_IMPORTED_MODULE_0__exercise_table_type__["a" /* ExerciseTableType */]('Reps Only', ['Detail', 'Reps']),
+            new __WEBPACK_IMPORTED_MODULE_0__exercise_table_type__["a" /* ExerciseTableType */]('Duration', ['Detail', 'Time']),
             // new ExerciseTableType('Medicine Ball',['Detail', 'Weight', 'Reps']), // Detail to capture if single side or not, or exercise name
             new __WEBPACK_IMPORTED_MODULE_0__exercise_table_type__["a" /* ExerciseTableType */]('Plyometrics', ['Detail', 'Weight', 'Box Height', 'Reps'])
         ];
@@ -561,7 +627,7 @@ var ExerciseTableTypeBank = (function () {
 
 /***/ }),
 
-/***/ 215:
+/***/ 216:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -578,67 +644,7 @@ var ExerciseTableType = (function () {
 
 /***/ }),
 
-/***/ 266:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ExerciseTable; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__exercise_set__ = __webpack_require__(267);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__exercises_exercise__ = __webpack_require__(90);
-var __extends = (this && this.__extends) || (function () {
-    var extendStatics = Object.setPrototypeOf ||
-        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
-    return function (d, b) {
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
-
-
-var ExerciseTable = (function (_super) {
-    __extends(ExerciseTable, _super);
-    // exerciseName: string; // exercise.exerciseName
-    // exerciseCategory: ExerciseCategory; // exercise.exerciseCategory
-    // exerciseTableType: ExerciseTableType; // exercise.tableType
-    // notes: string;
-    // pinnedNotes: string;
-    // tableHeaderList: string[];
-    function ExerciseTable(exercise) {
-        var _this = _super.call(this, exercise.exerciseName, exercise.exerciseCategory, exercise.exerciseTableType) || this;
-        _this.labels = [];
-        _this.sets = [new __WEBPACK_IMPORTED_MODULE_0__exercise_set__["a" /* ExerciseSet */](1)];
-        return _this;
-    }
-    ExerciseTable.prototype.addLabels = function (labelsToAdd) {
-        var _this = this;
-        labelsToAdd.forEach(function (data) {
-            return _this.labels.push(data);
-        });
-        console.log(this);
-    };
-    ExerciseTable.prototype.removeLabel = function (label) {
-        this.labels.splice(this.labels.indexOf(label), 1);
-    };
-    ExerciseTable.prototype.addSet = function () {
-        var lastSetNumber = this.sets[this.sets.length - 1]['setNumber'];
-        this.sets.push(new __WEBPACK_IMPORTED_MODULE_0__exercise_set__["a" /* ExerciseSet */](lastSetNumber + 1));
-    };
-    ExerciseTable.prototype.deleteSet = function (set) {
-        this.sets.splice(this.sets.indexOf(set), 1);
-    };
-    ExerciseTable.prototype.toggleComplete = function (set) {
-        this.sets[this.sets.indexOf(set)].complete = !this.sets[this.sets.indexOf(set)].complete;
-    };
-    return ExerciseTable;
-}(__WEBPACK_IMPORTED_MODULE_1__exercises_exercise__["a" /* Exercise */]));
-
-//# sourceMappingURL=exercise-table.js.map
-
-/***/ }),
-
-/***/ 267:
+/***/ 217:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -782,9 +788,12 @@ var ValidationProvider = (function () {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ExerciseProvider; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__models_logging_exercises_exercise_bank__ = __webpack_require__(500);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__models_logging_create_training_exercise_category_bank__ = __webpack_require__(212);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__models_logging_create_training_exercise_table_type_bank__ = __webpack_require__(214);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__models_logging_create_training_exercise_category_bank__ = __webpack_require__(213);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__models_logging_create_training_exercise_table_type_bank__ = __webpack_require__(215);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__models_logging_routines_routine_bank__ = __webpack_require__(501);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__models_logging_routines_routine__ = __webpack_require__(502);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__models_logging_create_training_exercise_table__ = __webpack_require__(117);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__models_logging_routines_routine_category_bank__ = __webpack_require__(503);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -799,12 +808,16 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
+
+
 var ExerciseProvider = (function () {
     function ExerciseProvider() {
         this.exerciseBank = new __WEBPACK_IMPORTED_MODULE_1__models_logging_exercises_exercise_bank__["a" /* ExerciseBank */]();
         this.exerciseCategoryBank = new __WEBPACK_IMPORTED_MODULE_2__models_logging_create_training_exercise_category_bank__["a" /* ExerciseCategoryBank */]();
         this.tableTypeBank = new __WEBPACK_IMPORTED_MODULE_3__models_logging_create_training_exercise_table_type_bank__["a" /* ExerciseTableTypeBank */]();
         this.routineBank = new __WEBPACK_IMPORTED_MODULE_4__models_logging_routines_routine_bank__["a" /* RoutineBank */]();
+        this.routineCategoryBank = new __WEBPACK_IMPORTED_MODULE_7__models_logging_routines_routine_category_bank__["a" /* RoutineCategoryBank */]();
         this.exerciseCategoryBank.exerciseCategoryBank = this.exerciseCategoryBank.exerciseCategoryBank.sort(function (a, b) {
             if (a.category.name < b.category.name)
                 return -1;
@@ -814,9 +827,24 @@ var ExerciseProvider = (function () {
         });
         console.log('Exercise Provider CHECK', this.exerciseCategoryBank);
         this.exerciseBank.exerciseBank = this.sortAlphabetical(this.exerciseBank.exerciseBank, 'exerciseName');
-        // this.sortAlphabetical(this.exerciseCategoryBank, 'exerciseName');
         this.tableTypeBank.exerciseTableTypeBank = this.sortAlphabetical(this.tableTypeBank.exerciseTableTypeBank, 'tableTypeName');
+        this.routineBank.routineBank = this.sortAlphabetical(this.routineBank.routineBank, 'routineName');
+        this.populateRoutineBank(); // see below for populated bank, to be moved to a routine provider once structure beneath user is decided
     }
+    ExerciseProvider.prototype.populateRoutineBank = function () {
+        var warmUpExerciseNames = ['Walking A\'s', 'Hurdle Drills', 'High Knees', 'Lunges', 'Running Man'];
+        var warmUpExercises = this.createTables(this.createExerciseArray(warmUpExerciseNames));
+        var coolDownExerciseNames = ['Plank', 'Push Up & Rotate', 'Single Leg Hamstring Bridge', 'Switch Stance Hops'];
+        var coolDownExercises = this.createTables(this.createExerciseArray(coolDownExerciseNames));
+        var sprintExerciseNames = ['Block Starts', 'Running'];
+        var sprintExercises = this.createTables(this.createExerciseArray(sprintExerciseNames));
+        var warmUpRoutine = new __WEBPACK_IMPORTED_MODULE_5__models_logging_routines_routine__["a" /* Routine */]('Warm Up A', this.routineCategoryBank.routineCategoryBank.find(function (x) { return x.routineCategory.name == 'Warm Up'; }), warmUpExercises);
+        var coolDownRoutine = new __WEBPACK_IMPORTED_MODULE_5__models_logging_routines_routine__["a" /* Routine */]('Cool Down A', this.routineCategoryBank.routineCategoryBank.find(function (x) { return x.routineCategory.name == 'Cool Down'; }), coolDownExercises);
+        var sprintsRoutine = new __WEBPACK_IMPORTED_MODULE_5__models_logging_routines_routine__["a" /* Routine */]('Blocks Starts and Hurdles', this.routineCategoryBank.routineCategoryBank.find(function (x) { return x.routineCategory.name == 'Training'; }), sprintExercises);
+        this.routineBank.addRoutine(warmUpRoutine);
+        this.routineBank.addRoutine(coolDownRoutine);
+        this.routineBank.addRoutine(sprintsRoutine);
+    };
     ExerciseProvider.prototype.sortAlphabetical = function (arrayOfObjects, property) {
         arrayOfObjects.sort(function (a, b) {
             if (a.property < b.property)
@@ -826,6 +854,25 @@ var ExerciseProvider = (function () {
             return 0;
         });
         return arrayOfObjects;
+    };
+    ExerciseProvider.prototype.findExercise = function (exerciseName) {
+        console.log('check FIND', this.exerciseBank.exerciseBank.find(function (x) { return x.exerciseName == exerciseName; }));
+        return this.exerciseBank.exerciseBank.find(function (x) { return x.exerciseName == exerciseName; });
+    };
+    ExerciseProvider.prototype.createTables = function (exercises) {
+        var tables = [];
+        exercises.forEach(function (data) {
+            tables.push(new __WEBPACK_IMPORTED_MODULE_6__models_logging_create_training_exercise_table__["a" /* ExerciseTable */](data));
+        });
+        return tables;
+    };
+    ExerciseProvider.prototype.createExerciseArray = function (exerciseNames) {
+        var _this = this;
+        var exerciseArray = [];
+        exerciseNames.forEach(function (exerciseName) {
+            exerciseArray.push(_this.findExercise(exerciseName));
+        });
+        return exerciseArray;
     };
     ExerciseProvider = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["B" /* Injectable */])(),
@@ -846,14 +893,14 @@ var ExerciseProvider = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_angularfire2_auth__ = __webpack_require__(268);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_angularfire2_database__ = __webpack_require__(75);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_firebase__ = __webpack_require__(604);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_firebase__ = __webpack_require__(605);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_firebase___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_firebase__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ionic_native_facebook__ = __webpack_require__(281);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__ionic_native_google_plus__ = __webpack_require__(282);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__tools_tools__ = __webpack_require__(67);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_ionic_angular__ = __webpack_require__(37);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__tools_validations__ = __webpack_require__(283);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__ionic_storage__ = __webpack_require__(154);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__ionic_storage__ = __webpack_require__(155);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1009,7 +1056,7 @@ var AuthenticationProvider = (function () {
                         console.log('Email: ' + apiResponse.email);
                         if (apiResponse["first_name"] == "" || apiResponse["first_name"] == null || apiResponse["last_name"] == null || apiResponse["last_name"] == "") {
                             that.validation.requestDisplayNameValidation().then(function (nameResponse) {
-                                that.signInWithFacebookCredentials(facebookCredential_1, apiResponse.email, nameResponse.first, nameResponse.last).then(function (response) {
+                                that.signInWithExternalCredentials(facebookCredential_1, apiResponse.email, nameResponse.first, nameResponse.last).then(function (response) {
                                     resolve(apiResponse.email);
                                 }).catch(function (error) {
                                     reject(null);
@@ -1017,7 +1064,7 @@ var AuthenticationProvider = (function () {
                             });
                         }
                         else {
-                            that.signInWithFacebookCredentials(facebookCredential_1, apiResponse["email"], apiResponse["first_name"], apiResponse["last_name"]).then(function (response) {
+                            that.signInWithExternalCredentials(facebookCredential_1, apiResponse["email"], apiResponse["first_name"], apiResponse["last_name"]).then(function (response) {
                                 resolve(apiResponse['email']);
                             }).catch(function (error) {
                                 reject(null);
@@ -1033,11 +1080,11 @@ var AuthenticationProvider = (function () {
             return error; //not sure what this would be
         });
     };
-    AuthenticationProvider.prototype.signInWithFacebookCredentials = function (facebookCredential, email, first_name, last_name) {
+    AuthenticationProvider.prototype.signInWithExternalCredentials = function (credential, email, first_name, last_name) {
         var _this = this;
         var that = this;
         var promise = new Promise(function (resolve, reject) {
-            that.dbAuth.auth.signInWithCredential(facebookCredential)
+            that.dbAuth.auth.signInWithCredential(credential)
                 .then(function (success) {
                 if (success.email == null) {
                     that.validation.requestEmailVerification().then(function (emailResponse) {
@@ -1074,7 +1121,7 @@ var AuthenticationProvider = (function () {
                         });
                     });
                     innerPromise.then(function (response) {
-                        resolve("Success");
+                        resolve(email);
                     }).catch(function (error) {
                         reject(error);
                         console.log(error); //do something better here? Not sure what would cause this
@@ -1088,63 +1135,33 @@ var AuthenticationProvider = (function () {
             return error; //not sure what this would be
         });
     };
-    // check if same as fb, merge if so, currently a copy for the below functions advanceWithGoogle() and signInWithGoogleCredentials()
+    // slightly different from advance with FB
     AuthenticationProvider.prototype.advanceWithGoogle = function () {
-        this.google.login({})
-            .then(function (res) { return console.log(res); })
-            .catch(function (err) { return console.error(err); });
-        // let that = this;
-        // let promise = new Promise((resolve, reject) => {
-        //     that.google.login(UserData => {
-        //             // console.log((UserData));
-        //         }
-        //     )
-        // });
-        // return promise.then(response => {
-        //     return response;
-        // }).catch(error => {
-        //     return error; //not sure what this would be
-        // });
-        // let that = this;
-        // let promise = new Promise( (resolve, reject) => {
-        //     that.google.login({})
-        //         .then( response => {
-        //             if (response.status === 'connected') {
-        //
-        //                 const googleCredential = firebase.auth.FacebookAuthProvider.credential(response.authResponse.accessToken);
-        //
-        //                 that.facebook.api('me?fields=id,name,email,first_name,last_name', ['email']).then(apiResponse => {
-        //                     console.log(response);
-        //                     console.log('Good to see you, ' + apiResponse["first_name"] + " " + apiResponse["last_name"]);
-        //                     console.log('Facebook Id: ' + apiResponse.id);
-        //                     console.log('Email: ' + apiResponse.email);
-        //
-        //                     if(apiResponse["first_name"] == "" || apiResponse["first_name"] == null || apiResponse["last_name"] == null || apiResponse["last_name"] == "") {
-        //                         that.validation.requestDisplayNameValidation().then(nameResponse => {
-        //                             that.signInWithFacebookCredentials(googleCredential, apiResponse.email, nameResponse.first, nameResponse.last, ).then(response => {
-        //                                 resolve("Success");
-        //                             }).catch(error =>{
-        //                                 reject(error);
-        //                             });
-        //                         });
-        //                     }
-        //                     else {
-        //                         that.signInWithGoogleCredentials(googleCredential, apiResponse["email"], apiResponse["first_name"], apiResponse["last_name"], ).then(response => {
-        //                             resolve("Success");
-        //                         }).catch(error => {
-        //                             reject(error);
-        //                         });
-        //                     }
-        //                 });
-        //             }
-        //         });
-        // });
-        //
-        // return promise.then(response => {
-        //     return response;
-        // }).catch(error => {
-        //     return error; //not sure what this would be
-        // });
+        var that = this;
+        var promise = new Promise(function (resolve, reject) {
+            that.google.login({ webClientID: '736172868611-uo0ifja7fkisn2veblldbf1gj0veg9cd.apps.googleusercontent.com' })
+                .then(function (response) {
+                var googleCredential = __WEBPACK_IMPORTED_MODULE_3_firebase__["auth"].GoogleAuthProvider.credential(response.idToken, response.accessToken);
+                if (response["familyName"] == "" || response["givenName"] == null || response["familyName"] == null || response["givenName"] == "") {
+                    that.validation.requestDisplayNameValidation()
+                        .then(function (nameResponse) {
+                        that.signInWithExternalCredentials(googleCredential, nameResponse.email, nameResponse.first, nameResponse.last)
+                            .then(function (response) { return resolve(nameResponse.email); })
+                            .catch(function (error) { return reject(error); });
+                    });
+                }
+                else {
+                    that.signInWithExternalCredentials(googleCredential, response["email"], response["givenName"], response["familyName"])
+                        .then(function (newResponse) { return resolve(newResponse); })
+                        .catch(function (error) { return reject(null); });
+                }
+            });
+        });
+        return promise.then(function (response) {
+            return response;
+        }).catch(function (error) {
+            return error; //not sure what this would be
+        });
     };
     AuthenticationProvider = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["B" /* Injectable */])(),
@@ -1493,7 +1510,7 @@ var TextPopoverPage = (function () {
     };
     TextPopoverPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-            selector: 'page-text-popover',template:/*ion-inline-start:"/Users/jonahelbaz/Desktop/MasterCoach/src/pages/Training/text-popover/text-popover.html"*/'<!--\n  Generated template for the TextPopoverPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-textarea class="popoverText"></ion-textarea>\n'/*ion-inline-end:"/Users/jonahelbaz/Desktop/MasterCoach/src/pages/Training/text-popover/text-popover.html"*/,
+            selector: 'page-text-popover',template:/*ion-inline-start:"/workspace/MasterCoach/src/pages/Training/text-popover/text-popover.html"*/'<!--\n  Generated template for the TextPopoverPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-textarea class="popoverText"></ion-textarea>\n'/*ion-inline-end:"/workspace/MasterCoach/src/pages/Training/text-popover/text-popover.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* NavParams */]])
     ], TextPopoverPage);
@@ -1583,7 +1600,7 @@ var CalendarDay = (function () {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Training; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__create_training_exercise_table__ = __webpack_require__(266);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__create_training_exercise_table__ = __webpack_require__(117);
 
 var Training = (function () {
     function Training() {
@@ -2300,28 +2317,28 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_platform_browser__ = __webpack_require__(46);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(37);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__app_component__ = __webpack_require__(658);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__app_component__ = __webpack_require__(659);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ionic_native_status_bar__ = __webpack_require__(323);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__ionic_native_splash_screen__ = __webpack_require__(324);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__ionic_storage__ = __webpack_require__(154);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__ionic_storage__ = __webpack_require__(155);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_angularfire2__ = __webpack_require__(49);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_angularfire2_database__ = __webpack_require__(75);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__firebase_credentials__ = __webpack_require__(659);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__firebase_credentials__ = __webpack_require__(660);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10_angularfire2_auth__ = __webpack_require__(268);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__ionic_native_facebook__ = __webpack_require__(281);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__ionic_native_keyboard__ = __webpack_require__(157);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__providers_users_users__ = __webpack_require__(155);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__ionic_native_keyboard__ = __webpack_require__(158);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__providers_users_users__ = __webpack_require__(156);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__providers_tools_tools__ = __webpack_require__(67);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__providers_users_authentication__ = __webpack_require__(449);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__providers_tools_validations__ = __webpack_require__(283);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__providers_menus_calendar_menu__ = __webpack_require__(91);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__ionic_native_date_picker__ = __webpack_require__(216);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__ionic_native_date_picker__ = __webpack_require__(218);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__ionic_native_google_plus__ = __webpack_require__(282);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__pages_Training_text_popover_text_popover__ = __webpack_require__(452);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__providers_training_labels_labelProvider__ = __webpack_require__(89);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__providers_training_trainings_trainingProvider__ = __webpack_require__(156);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__providers_training_trainings_trainingProvider__ = __webpack_require__(157);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__providers_training_exercises_exerciseProvider__ = __webpack_require__(448);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_24_ionic3_calendar_en__ = __webpack_require__(660);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_24_ionic3_calendar_en__ = __webpack_require__(661);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_25__providers_tools_calculators_mens__ = __webpack_require__(450);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_26__providers_tools_calculators_mercier__ = __webpack_require__(455);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_27__providers_tools_calculators_womens__ = __webpack_require__(451);
@@ -2448,32 +2465,49 @@ var AppModule = (function () {
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ExerciseBank; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__exercise__ = __webpack_require__(90);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__create_training_exercise_category_bank__ = __webpack_require__(212);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__create_training_exercise_table_type_bank__ = __webpack_require__(214);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__create_training_exercise_category_bank__ = __webpack_require__(213);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__create_training_exercise_table_type_bank__ = __webpack_require__(215);
 
 
 
 var ExerciseBank = (function () {
     function ExerciseBank() {
-        // exerciseList: ['Runway','Running'];
+        this.exerciseBank = [];
         this.exerciseCategoryBank = new __WEBPACK_IMPORTED_MODULE_1__create_training_exercise_category_bank__["a" /* ExerciseCategoryBank */]();
         this.exerciseTableTypeBank = new __WEBPACK_IMPORTED_MODULE_2__create_training_exercise_table_type_bank__["a" /* ExerciseTableTypeBank */]();
-        this.exerciseBank = [
-            new __WEBPACK_IMPORTED_MODULE_0__exercise__["a" /* Exercise */]('Long Jump Runway', this.exerciseCategoryBank.exerciseCategoryBank.find(function (x) { return x.category.name === 'Long Jump'; }), this.exerciseTableTypeBank.exerciseTableTypeBank.find(function (x) { return x.tableTypeName == 'Runway'; })),
-            new __WEBPACK_IMPORTED_MODULE_0__exercise__["a" /* Exercise */]('Triple Runway', this.exerciseCategoryBank.exerciseCategoryBank.find(function (x) { return x.category.name === 'Triple Jump'; }), this.exerciseTableTypeBank.exerciseTableTypeBank.find(function (x) { return x.tableTypeName == 'Runway'; })),
-            new __WEBPACK_IMPORTED_MODULE_0__exercise__["a" /* Exercise */]('Javelin Runway', this.exerciseCategoryBank.exerciseCategoryBank.find(function (x) { return x.category.name === 'Javelin'; }), this.exerciseTableTypeBank.exerciseTableTypeBank.find(function (x) { return x.tableTypeName == 'Runway'; })),
-            new __WEBPACK_IMPORTED_MODULE_0__exercise__["a" /* Exercise */]('Javelin Ball Throws', this.exerciseCategoryBank.exerciseCategoryBank.find(function (x) { return x.category.name === 'Javelin'; }), this.exerciseTableTypeBank.exerciseTableTypeBank.find(function (x) { return x.tableTypeName == 'Runway'; })),
-            new __WEBPACK_IMPORTED_MODULE_0__exercise__["a" /* Exercise */]('Javelin Resistance Drills', this.exerciseCategoryBank.exerciseCategoryBank.find(function (x) { return x.category.name === 'Javelin'; }), this.exerciseTableTypeBank.exerciseTableTypeBank.find(function (x) { return x.tableTypeName == 'Runway'; })),
-            new __WEBPACK_IMPORTED_MODULE_0__exercise__["a" /* Exercise */]('Running', this.exerciseCategoryBank.exerciseCategoryBank.find(function (x) { return x.category.name === 'Sprints'; }), this.exerciseTableTypeBank.exerciseTableTypeBank.find(function (x) { return x.tableTypeName == 'Running'; })),
-            new __WEBPACK_IMPORTED_MODULE_0__exercise__["a" /* Exercise */]('Hurdle Hops', this.exerciseCategoryBank.exerciseCategoryBank.find(function (x) { return x.category.name === 'Plyometrics'; }), this.exerciseTableTypeBank.exerciseTableTypeBank.find(function (x) { return x.tableTypeName == 'Running'; })),
-            new __WEBPACK_IMPORTED_MODULE_0__exercise__["a" /* Exercise */]('Overhead Throw', this.exerciseCategoryBank.exerciseCategoryBank.find(function (x) { return x.category.name === 'Medicine Ball'; }), this.exerciseTableTypeBank.exerciseTableTypeBank.find(function (x) { return x.tableTypeName == 'Running'; })),
-            new __WEBPACK_IMPORTED_MODULE_0__exercise__["a" /* Exercise */]('Side Throw', this.exerciseCategoryBank.exerciseCategoryBank.find(function (x) { return x.category.name === 'Medicine Ball'; }), this.exerciseTableTypeBank.exerciseTableTypeBank.find(function (x) { return x.tableTypeName == 'Running'; })),
-            new __WEBPACK_IMPORTED_MODULE_0__exercise__["a" /* Exercise */]('Front Heave', this.exerciseCategoryBank.exerciseCategoryBank.find(function (x) { return x.category.name === 'Medicine Ball'; }), this.exerciseTableTypeBank.exerciseTableTypeBank.find(function (x) { return x.tableTypeName == 'Running'; })),
-            new __WEBPACK_IMPORTED_MODULE_0__exercise__["a" /* Exercise */]('Block Starts', this.exerciseCategoryBank.exerciseCategoryBank.find(function (x) { return x.category.name === 'Sprints'; }), this.exerciseTableTypeBank.exerciseTableTypeBank.find(function (x) { return x.tableTypeName == 'Running'; })),
-        ];
+        this.addExercise(this.createExercise('Long Jump Runway', 'Long Jump', 'Runway'));
+        this.addExercise(this.createExercise('Triple Runway', 'Triple Jump', 'Runway'));
+        // Jav
+        this.addExercise(this.createExercise('Javelin Runway', 'Javelin', 'Runway'));
+        this.addExercise(this.createExercise('Javelin Ball Throws', 'Javelin', 'Runway'));
+        this.addExercise(this.createExercise('Javelin Resistance Drills', 'Javelin', 'Runway'));
+        // Sprints
+        this.addExercise(this.createExercise('Running', 'Sprints', 'Running'));
+        this.addExercise(this.createExercise('Block Starts', 'Sprints', 'Running'));
+        // Plyo
+        this.addExercise(this.createExercise('Hurdle Hops', 'Plyometrics', 'Plyometrics'));
+        // Med Ball
+        this.addExercise(this.createExercise('Overhead Throw', 'Medicine Ball', 'Weight & Reps'));
+        this.addExercise(this.createExercise('Side Throw', 'Medicine Ball', 'Weight & Reps'));
+        this.addExercise(this.createExercise('Front Heave', 'Medicine Ball', 'Weight & Reps'));
+        // Warm Up Routine fill
+        this.addExercise(this.createExercise('Walking A\'s', 'Activation', 'Reps Only'));
+        this.addExercise(this.createExercise('Hurdle Drills', 'Activation', 'Hurdles'));
+        this.addExercise(this.createExercise('High Knees', 'Activation', 'Reps Only'));
+        this.addExercise(this.createExercise('Lunges', 'Activation', 'Reps Only'));
+        this.addExercise(this.createExercise('Running Man', 'Stabilization', 'Reps Only'));
+        // Cool Down Routine fill
+        this.addExercise(this.createExercise('Plank', 'Core', 'Duration'));
+        this.addExercise(this.createExercise('Push Up & Rotate', 'Stabilization', 'Reps Only'));
+        this.addExercise(this.createExercise('Single Leg Hamstring Bridge', 'Stabilization', 'Reps Only'));
+        this.addExercise(this.createExercise('Switch Stance Hops', 'Stabilization', 'Reps Only'));
     }
     ExerciseBank.prototype.addExercise = function (exercise) {
-        this.exerciseBank.push(new __WEBPACK_IMPORTED_MODULE_0__exercise__["a" /* Exercise */](exercise.exerciseName, exercise.exerciseCategory, exercise.exerciseTableType));
+        this.exerciseBank.push(exercise);
+    };
+    ExerciseBank.prototype.createExercise = function (exerciseName, categoryName, tableTypeName) {
+        var exercise = new __WEBPACK_IMPORTED_MODULE_0__exercise__["a" /* Exercise */](exerciseName, this.exerciseCategoryBank.exerciseCategoryBank.find(function (x) { return x.category.name === categoryName; }), this.exerciseTableTypeBank.exerciseTableTypeBank.find(function (x) { return x.tableTypeName == tableTypeName; }));
+        return exercise;
     };
     ExerciseBank.prototype.editExercise = function (exercise, exerciseName, exerciseCat, exerciseTableType) {
         this.exerciseBank[this.exerciseBank.indexOf(exercise)] = exercise; // is this needed? Need to check dependencies and maybe only allow if no trainings with it!
@@ -2504,7 +2538,66 @@ var RoutineBank = (function () {
 
 /***/ }),
 
-/***/ 510:
+/***/ 502:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Routine; });
+var Routine = (function () {
+    function Routine(routineName, routineCategory, exerciseTables) {
+        this.routineName = routineName;
+        this.routineCategory = routineCategory;
+        this.exercises = exerciseTables;
+    }
+    return Routine;
+}());
+
+//# sourceMappingURL=routine.js.map
+
+/***/ }),
+
+/***/ 503:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return RoutineCategoryBank; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__routine_category__ = __webpack_require__(504);
+
+var RoutineCategoryBank = (function () {
+    function RoutineCategoryBank() {
+        var _this = this;
+        this.routineCategoryBank = [];
+        var routineCategoryList = ['Warm Up', 'Cool Down', 'Training', 'Rehab'];
+        routineCategoryList.forEach(function (data) {
+            _this.routineCategoryBank.push(new __WEBPACK_IMPORTED_MODULE_0__routine_category__["a" /* RoutineCategory */](data));
+        });
+    }
+    return RoutineCategoryBank;
+}());
+
+//# sourceMappingURL=routine-category-bank.js.map
+
+/***/ }),
+
+/***/ 504:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return RoutineCategory; });
+var RoutineCategory = (function () {
+    function RoutineCategory(name) {
+        this.routineCategory = {
+            name: name
+        };
+    }
+    return RoutineCategory;
+}());
+
+//# sourceMappingURL=routine-category.js.map
+
+/***/ }),
+
+/***/ 513:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2521,12 +2614,12 @@ var MenuEvents = (function () {
 
 /***/ }),
 
-/***/ 511:
+/***/ 514:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return LabelBank; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__label__ = __webpack_require__(512);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__label__ = __webpack_require__(515);
 
 var LabelBank = (function () {
     function LabelBank() {
@@ -2553,7 +2646,7 @@ var LabelBank = (function () {
 
 /***/ }),
 
-/***/ 512:
+/***/ 515:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2574,7 +2667,7 @@ var Label = (function () {
 
 /***/ }),
 
-/***/ 596:
+/***/ 599:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2593,7 +2686,7 @@ var User = (function () {
 
 /***/ }),
 
-/***/ 597:
+/***/ 600:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2659,7 +2752,7 @@ var PreTraining = (function () {
 
 /***/ }),
 
-/***/ 598:
+/***/ 601:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2705,39 +2798,7 @@ var PostTraining = (function () {
 
 /***/ }),
 
-/***/ 599:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return WarmUp; });
-var WarmUp = (function () {
-    function WarmUp(name) {
-        this.name = name;
-    }
-    return WarmUp;
-}());
-
-//# sourceMappingURL=warm-up.js.map
-
-/***/ }),
-
-/***/ 600:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CoolDown; });
-var CoolDown = (function () {
-    function CoolDown(name) {
-        this.name = name;
-    }
-    return CoolDown;
-}());
-
-//# sourceMappingURL=cool-down.js.map
-
-/***/ }),
-
-/***/ 658:
+/***/ 659:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2746,10 +2807,10 @@ var CoolDown = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(37);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__ = __webpack_require__(323);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__ = __webpack_require__(324);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ionic_native_keyboard__ = __webpack_require__(157);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ionic_native_keyboard__ = __webpack_require__(158);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__providers_menus_calendar_menu__ = __webpack_require__(91);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__providers_training_labels_labelProvider__ = __webpack_require__(89);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__providers_training_trainings_trainingProvider__ = __webpack_require__(156);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__providers_training_trainings_trainingProvider__ = __webpack_require__(157);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -2820,7 +2881,7 @@ var MyApp = (function () {
         this.labels.updateFilteredTrainingList(this.training.listOfTrainings);
     };
     MyApp = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({template:/*ion-inline-start:"/Users/jonahelbaz/Desktop/MasterCoach/src/app/app.html"*/'<ion-menu [content]="content" type="reveal" id="mainCalendarMenu">\n    <ion-header>\n        <ion-toolbar>\n            <ion-item no-lines color="dark">\n                <ion-label style="font-size: 14px; color: white; padding-left: 10px;">Jonah Elbaz</ion-label>\n                <ion-select [(ngModel)]="this.calendarMenu.displayedYear" (ionChange)="this.setCalendarYear()">\n                    <ion-option *ngFor="let year of years">{{year}}</ion-option>\n                </ion-select>\n            </ion-item>\n        </ion-toolbar>\n    </ion-header>\n    <ion-content>\n        <ion-calendar></ion-calendar>\n        <!--<ion-calendar [ngClass]="displayFullCalendar ? \'showingCalendar\' : \'noDisplay\'" #calendar-->\n        <!--(swipe)="swipe($event, calendar)"-->\n        <!--(onMonthSelect)="onMonthSelect($event)"-->\n        <!--(onDaySelect)="onDaySelect($event)">-->\n        <!--</ion-calendar>-->\n\n           <ion-label class="menuSectionHeader" (click)="collapsable.filter.main = !collapsable.filter.main">\n                Filters\n               <ion-icon class="arrowIcon" item-left name="ios-arrow-forward" *ngIf="!collapsable.filter.main"></ion-icon>\n               <ion-icon class="arrowIcon" item-left name="ios-arrow-down" *ngIf="collapsable.filter.main"></ion-icon>\n            </ion-label>\n            <ion-list no-lines id="filterList" class="accordion-list" *ngIf="collapsable.filter.main">\n\n                <ion-label class="calendar-item filter" (click)="collapsable.filter.labelsFilterOpen = !collapsable.filter.labelsFilterOpen">\n                    Labels\n                </ion-label>\n                <div *ngIf="collapsable.filter.labelsFilterOpen">\n                    <ion-item *ngFor="let label of listOfLabels">\n                        <ion-label> {{label.getValue()}}</ion-label>\n                        <ion-checkbox (click)="updateLabelFilters(label)"></ion-checkbox>\n                    </ion-item>\n                </div>\n                <ion-label class="calendar-item filter" (click)="collapsable.filter.athleteFilterOpen = !collapsable.filter.athleteFilterOpen">\n                    Athlete\n                </ion-label>\n\n                <div *ngIf="collapsable.filter.athleteFilterOpen">\n                    <ion-item>\n                        <ion-label>Jonah Elbaz</ion-label>\n                        <ion-checkbox></ion-checkbox>\n                    </ion-item>\n                    <ion-item>\n                        <ion-label>Dylan Golow</ion-label>\n                        <ion-checkbox></ion-checkbox>\n                    </ion-item>\n                    <ion-item>\n                        <ion-label>Alex Stathis</ion-label>\n                        <ion-checkbox></ion-checkbox>\n                    </ion-item>\n                </div>\n            </ion-list>\n\n    </ion-content>\n    <ion-footer>\n    <ion-row>\n        <ion-col style="text-align: center; font-size: 25px;">\n            <ion-icon item-right name="md-share" class="share"></ion-icon>\n        </ion-col>\n        <ion-col style="text-align: center; font-size: 30px;">\n            <ion-icon item-right name="ios-download-outline" class="share"></ion-icon>\n        </ion-col>\n    </ion-row>\n        </ion-footer>\n</ion-menu>\n\n<ion-nav #content [root]="rootPage"></ion-nav>\n'/*ion-inline-end:"/Users/jonahelbaz/Desktop/MasterCoach/src/app/app.html"*/
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({template:/*ion-inline-start:"/workspace/MasterCoach/src/app/app.html"*/'<ion-menu [content]="content" type="reveal" id="mainCalendarMenu">\n    <ion-header>\n        <ion-toolbar>\n            <ion-item no-lines color="dark">\n                <ion-label style="font-size: 14px; color: white; padding-left: 10px;">Jonah Elbaz</ion-label>\n                <ion-select [(ngModel)]="this.calendarMenu.displayedYear" (ionChange)="this.setCalendarYear()">\n                    <ion-option *ngFor="let year of years">{{year}}</ion-option>\n                </ion-select>\n            </ion-item>\n        </ion-toolbar>\n    </ion-header>\n    <ion-content>\n        <ion-calendar></ion-calendar>\n        <!--<ion-calendar [ngClass]="displayFullCalendar ? \'showingCalendar\' : \'noDisplay\'" #calendar-->\n        <!--(swipe)="swipe($event, calendar)"-->\n        <!--(onMonthSelect)="onMonthSelect($event)"-->\n        <!--(onDaySelect)="onDaySelect($event)">-->\n        <!--</ion-calendar>-->\n\n           <ion-label class="menuSectionHeader" (click)="collapsable.filter.main = !collapsable.filter.main">\n                Filters\n               <ion-icon class="arrowIcon" item-left name="ios-arrow-forward" *ngIf="!collapsable.filter.main"></ion-icon>\n               <ion-icon class="arrowIcon" item-left name="ios-arrow-down" *ngIf="collapsable.filter.main"></ion-icon>\n            </ion-label>\n            <ion-list no-lines id="filterList" class="accordion-list" *ngIf="collapsable.filter.main">\n\n                <ion-label class="calendar-item filter" (click)="collapsable.filter.labelsFilterOpen = !collapsable.filter.labelsFilterOpen">\n                    Labels\n                </ion-label>\n                <div *ngIf="collapsable.filter.labelsFilterOpen">\n                    <ion-item *ngFor="let label of listOfLabels">\n                        <ion-label> {{label.getValue()}}</ion-label>\n                        <ion-checkbox (click)="updateLabelFilters(label)"></ion-checkbox>\n                    </ion-item>\n                </div>\n                <ion-label class="calendar-item filter" (click)="collapsable.filter.athleteFilterOpen = !collapsable.filter.athleteFilterOpen">\n                    Athlete\n                </ion-label>\n\n                <div *ngIf="collapsable.filter.athleteFilterOpen">\n                    <ion-item>\n                        <ion-label>Jonah Elbaz</ion-label>\n                        <ion-checkbox></ion-checkbox>\n                    </ion-item>\n                    <ion-item>\n                        <ion-label>Dylan Golow</ion-label>\n                        <ion-checkbox></ion-checkbox>\n                    </ion-item>\n                    <ion-item>\n                        <ion-label>Alex Stathis</ion-label>\n                        <ion-checkbox></ion-checkbox>\n                    </ion-item>\n                </div>\n            </ion-list>\n\n    </ion-content>\n    <ion-footer>\n    <ion-row>\n        <ion-col style="text-align: center; font-size: 25px;">\n            <ion-icon item-right name="md-share" class="share"></ion-icon>\n        </ion-col>\n        <ion-col style="text-align: center; font-size: 30px;">\n            <ion-icon item-right name="ios-download-outline" class="share"></ion-icon>\n        </ion-col>\n    </ion-row>\n        </ion-footer>\n</ion-menu>\n\n<ion-nav #content [root]="rootPage"></ion-nav>\n'/*ion-inline-end:"/workspace/MasterCoach/src/app/app.html"*/
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* Platform */], __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__["a" /* StatusBar */], __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__["a" /* SplashScreen */], __WEBPACK_IMPORTED_MODULE_4__ionic_native_keyboard__["a" /* Keyboard */], __WEBPACK_IMPORTED_MODULE_5__providers_menus_calendar_menu__["a" /* CalendarMenu */], __WEBPACK_IMPORTED_MODULE_6__providers_training_labels_labelProvider__["a" /* LabelProvider */], __WEBPACK_IMPORTED_MODULE_7__providers_training_trainings_trainingProvider__["a" /* TrainingProvider */]])
     ], MyApp);
@@ -2831,7 +2892,7 @@ var MyApp = (function () {
 
 /***/ }),
 
-/***/ 659:
+/***/ 660:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2848,7 +2909,7 @@ var FIREBASE_CONFIG = {
 
 /***/ }),
 
-/***/ 663:
+/***/ 664:
 /***/ (function(module, exports, __webpack_require__) {
 
 var map = {
@@ -3111,7 +3172,7 @@ webpackContext.keys = function webpackContextKeys() {
 };
 webpackContext.resolve = webpackContextResolve;
 module.exports = webpackContext;
-webpackContext.id = 663;
+webpackContext.id = 664;
 
 /***/ }),
 
@@ -3122,7 +3183,7 @@ webpackContext.id = 663;
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ToolsProvider; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(37);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_native_date_picker__ = __webpack_require__(216);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_native_date_picker__ = __webpack_require__(218);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -3228,7 +3289,7 @@ var ToolsProvider = (function () {
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return LabelProvider; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__models_custom_survey_components_labels_label_bank__ = __webpack_require__(511);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__models_custom_survey_components_labels_label_bank__ = __webpack_require__(514);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -3304,7 +3365,7 @@ var Exercise = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__tools_tools__ = __webpack_require__(67);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__models_calendar_calendar_day__ = __webpack_require__(453);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__models_calendar_menu_events__ = __webpack_require__(510);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__models_calendar_menu_events__ = __webpack_require__(513);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__training_labels_labelProvider__ = __webpack_require__(89);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;

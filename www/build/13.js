@@ -1,14 +1,14 @@
 webpackJsonp([13],{
 
-/***/ 674:
+/***/ 676:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "HeptathlonMCalculatorPageModule", function() { return HeptathlonMCalculatorPageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "HeptathlonWCalculatorPageModule", function() { return HeptathlonWCalculatorPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(37);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__heptathlon_m_calculator__ = __webpack_require__(697);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__heptathlon_w_calculator__ = __webpack_require__(700);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -18,34 +18,34 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var HeptathlonMCalculatorPageModule = (function () {
-    function HeptathlonMCalculatorPageModule() {
+var HeptathlonWCalculatorPageModule = (function () {
+    function HeptathlonWCalculatorPageModule() {
     }
-    HeptathlonMCalculatorPageModule = __decorate([
+    HeptathlonWCalculatorPageModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["J" /* NgModule */])({
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_2__heptathlon_m_calculator__["a" /* HeptathlonMCalculatorPage */],
+                __WEBPACK_IMPORTED_MODULE_2__heptathlon_w_calculator__["a" /* HeptathlonWCalculatorPage */],
             ],
             imports: [
-                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__heptathlon_m_calculator__["a" /* HeptathlonMCalculatorPage */]),
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__heptathlon_w_calculator__["a" /* HeptathlonWCalculatorPage */]),
             ],
         })
-    ], HeptathlonMCalculatorPageModule);
-    return HeptathlonMCalculatorPageModule;
+    ], HeptathlonWCalculatorPageModule);
+    return HeptathlonWCalculatorPageModule;
 }());
 
-//# sourceMappingURL=heptathlon-m-calculator.module.js.map
+//# sourceMappingURL=heptathlon-w-calculator.module.js.map
 
 /***/ }),
 
-/***/ 697:
+/***/ 700:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return HeptathlonMCalculatorPage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return HeptathlonWCalculatorPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(37);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_tools_calculators_mens__ = __webpack_require__(450);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_tools_calculators_womens__ = __webpack_require__(451);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -59,45 +59,45 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 /**
- * Generated class for the HeptathlonMCalculatorPage page.
+ * Generated class for the HeptathlonWCalculatorPage page.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
  */
-var HeptathlonMCalculatorPage = (function () {
-    function HeptathlonMCalculatorPage(navCtrl, navParams, calculator) {
+var HeptathlonWCalculatorPage = (function () {
+    function HeptathlonWCalculatorPage(navCtrl, navParams, calculator) {
         this.navCtrl = navCtrl;
         this.navParams = navParams;
         this.calculator = calculator;
         this.inputs = {
-            sixty: "0.00",
+            hurdles: "0.00",
             lj: "0.00",
             sp: "0.00",
             hj: "0.00",
-            sixtyHurdles: "0.00",
-            pv: "0.00",
-            thousand: "0:00"
+            two: "0.00",
+            jt: "0.00",
+            eight: "0:00"
         };
         this.outputs = {
-            sixty: 0,
+            hurdles: 0,
             lj: 0,
             sp: 0,
             hj: 0,
-            sixtyHurdles: 0,
-            pv: 0,
-            thousand: 0,
+            two: 0,
+            jt: 0,
+            eight: 0,
             dayOne: 0,
             dayTwo: 0,
             total: 0
         };
     }
-    HeptathlonMCalculatorPage.prototype.cancel = function () {
+    HeptathlonWCalculatorPage.prototype.cancel = function () {
         this.navCtrl.pop();
     };
-    HeptathlonMCalculatorPage.prototype.save = function () {
+    HeptathlonWCalculatorPage.prototype.save = function () {
     };
-    HeptathlonMCalculatorPage.prototype.updateTextFocus = function (value) {
-        if (value == "thousand") {
+    HeptathlonWCalculatorPage.prototype.updateTextFocus = function (value) {
+        if (value == "eight") {
             if (this.inputs[value] == "0:00") {
                 this.inputs[value] = "";
             }
@@ -106,8 +106,8 @@ var HeptathlonMCalculatorPage = (function () {
             this.inputs[value] = "";
         }
     };
-    HeptathlonMCalculatorPage.prototype.updateTextBlur = function (value) {
-        if (value == "thousand") {
+    HeptathlonWCalculatorPage.prototype.updateTextBlur = function (value) {
+        if (value == "eight") {
             if (this.inputs[value] == "") {
                 this.inputs[value] = "0:00";
             }
@@ -116,7 +116,7 @@ var HeptathlonMCalculatorPage = (function () {
             this.inputs[value] = "0.00";
         }
     };
-    HeptathlonMCalculatorPage.prototype.isNumber = function (event) {
+    HeptathlonWCalculatorPage.prototype.isNumber = function (event) {
         var key = window.event ? event.keyCode : event.which;
         if (key == 46 || event.keyCode == 8 || event.keyCode == 46 || event.keyCode == 37 || event.keyCode == 39) {
             return true;
@@ -125,7 +125,7 @@ var HeptathlonMCalculatorPage = (function () {
             return !(key < 48 || key > 57);
     };
     ;
-    HeptathlonMCalculatorPage.prototype.isTime = function (event) {
+    HeptathlonWCalculatorPage.prototype.isTime = function (event) {
         var key = window.event ? event.keyCode : event.which;
         if (key == 46 || key == 58 || event.keyCode == 8 || event.keyCode == 46 || event.keyCode == 37 || event.keyCode == 39) {
             return true;
@@ -134,10 +134,10 @@ var HeptathlonMCalculatorPage = (function () {
             return !(key < 48 || key > 57);
     };
     ;
-    HeptathlonMCalculatorPage.prototype.updateScore = function () {
+    HeptathlonWCalculatorPage.prototype.updateScore = function () {
         for (var key in this.inputs) {
             if (this.inputs.hasOwnProperty(key)) {
-                if (key != "thousand") {
+                if (key != "eight") {
                     var parse = Number(this.inputs[key]);
                     if (isNaN(parse)) {
                         parse = 0.00;
@@ -181,16 +181,16 @@ var HeptathlonMCalculatorPage = (function () {
             }
         }
     };
-    HeptathlonMCalculatorPage = __decorate([
+    HeptathlonWCalculatorPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-            selector: 'page-heptathlon-m-calculator',template:/*ion-inline-start:"/Users/jonahelbaz/Desktop/MasterCoach/src/pages/HomeTabs/tools/calculators/heptathlon-m-calculator/heptathlon-m-calculator.html"*/'<!--\n  Generated template for the DecathlonCalculatorPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-buttons left (click)="cancel()">\n      <button ion-button="arrow-back" color="primary">\n        <ion-icon name="ios-arrow-down"></ion-icon>\n      </button>\n    </ion-buttons>\n    <ion-title>Heptathlon</ion-title>\n    <ion-buttons right (click)="save()">\n      <button ion-button="arrow-back" color="primary">\n        Save\n      </button>\n    </ion-buttons>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n\n  <ion-list>\n    <ion-row>\n      <ion-col>\n        <ion-label>60m</ion-label>\n      </ion-col>\n      <ion-col>\n        <ion-input maxlength="5" [(ngModel)]="inputs.sixty" (ionFocus)="updateTextFocus(\'sixty\')" (ionBlur)="updateTextBlur(\'sixty\')" (ionChange)="updateScore()"  (keypress)="isNumber($event)"></ion-input>\n      </ion-col>\n      <ion-col>\n        <ion-input [readonly]="true" class="output" [(ngModel)]="outputs.sixty" (ionFocus)="false"></ion-input>\n      </ion-col>\n    </ion-row>\n    <ion-row class="row">\n      <ion-col>\n        <ion-label>Long Jump</ion-label>\n      </ion-col>\n      <ion-col>\n        <ion-input maxlength="5" [(ngModel)]="inputs.lj" (ionFocus)="updateTextFocus(\'lj\')" (ionBlur)="updateTextBlur(\'lj\')" (ionChange)="updateScore()"  (keypress)="isNumber($event)"></ion-input>\n      </ion-col>\n      <ion-col>\n        <ion-input [readonly]="true" l class="output" [(ngModel)]="outputs.lj"></ion-input>\n      </ion-col>\n    </ion-row>\n    <ion-row>\n      <ion-col>\n        <ion-label>Shot Put</ion-label>\n      </ion-col>\n      <ion-col>\n        <ion-input maxlength="5" [(ngModel)]="inputs.sp" (ionFocus)="updateTextFocus(\'sp\')" (ionBlur)="updateTextBlur(\'sp\')" (ionChange)="updateScore()"  (keypress)="isNumber($event)"></ion-input>\n      </ion-col>\n      <ion-col>\n        <ion-input [readonly]="true" class="output" [(ngModel)]="outputs.sp"></ion-input>\n      </ion-col>\n    </ion-row>\n    <ion-row>\n      <ion-col>\n        <ion-label>High Jump</ion-label>\n      </ion-col>\n      <ion-col>\n        <ion-input maxlength="5" [(ngModel)]="inputs.hj" (ionFocus)="updateTextFocus(\'hj\')" (ionBlur)="updateTextBlur(\'hj\')" (ionChange)="updateScore()"  (keypress)="isNumber($event)"></ion-input>\n      </ion-col>\n      <ion-col>\n        <ion-input [readonly]="true" class="output" [(ngModel)]="outputs.hj"></ion-input>\n      </ion-col>\n    </ion-row>\n    <ion-row>\n      <ion-col>\n        <ion-label>60mH</ion-label>\n      </ion-col>\n      <ion-col>\n        <ion-input maxlength="5" [(ngModel)]="inputs.sixtyHurdles" (ionFocus)="updateTextFocus(\'sixtyHurdles\')" (ionBlur)="updateTextBlur(\'sixtyHurdles\')" (ionChange)="updateScore()"  (keypress)="isNumber($event)"></ion-input>\n      </ion-col>\n      <ion-col>\n        <ion-input [readonly]="true" class="output" [(ngModel)]="outputs.sixtyHurdles"></ion-input>\n      </ion-col>\n    </ion-row>\n    <ion-row>\n      <ion-col>\n        <ion-label>Pole Vault</ion-label>\n      </ion-col>\n      <ion-col>\n        <ion-input maxlength="5" [(ngModel)]="inputs.pv" (ionFocus)="updateTextFocus(\'pv\')" (ionBlur)="updateTextBlur(\'pv\')" (ionChange)="updateScore()"  (keypress)="isNumber($event)"></ion-input>\n      </ion-col>\n      <ion-col>\n        <ion-input [readonly]="true" class="output" [(ngModel)]="outputs.pv"></ion-input>\n      </ion-col>\n    </ion-row>\n    <ion-row>\n      <ion-col>\n        <ion-label>1000m</ion-label>\n      </ion-col>\n      <ion-col>\n        <ion-input maxlength="8" [(ngModel)]="inputs.thousand" (ionFocus)="updateTextFocus(\'thousand\')" (ionBlur)="updateTextBlur(\'thousand\')" (ionChange)="updateScore()"  (keypress)="isTime($event)"></ion-input>\n      </ion-col>\n      <ion-col>\n        <ion-input [readonly]="true" class="output" [(ngModel)]="outputs.thousand"></ion-input>\n      </ion-col>\n    </ion-row>\n    <ion-row class="outputResult">\n      <ion-col col-4></ion-col>\n      <ion-col col-5>\n        <ion-label>Score Day 1:</ion-label>\n      </ion-col>\n      <ion-col col-2>\n        <ion-input [readonly]="true" class="output" [(ngModel)]="outputs.dayOne"></ion-input>\n      </ion-col>\n    </ion-row>\n    <ion-row class="outputResult">\n      <ion-col col-4></ion-col>\n      <ion-col col-5>\n        <ion-label>Score Day 2:</ion-label>\n      </ion-col>\n      <ion-col col-2>\n        <ion-input [readonly]="true" class="output" [(ngModel)]="outputs.dayTwo"></ion-input>\n      </ion-col>\n    </ion-row>\n    <ion-row class="outputResult">\n      <ion-col col-4></ion-col>\n      <ion-col col-5>\n        <ion-label>Total Score:</ion-label>\n      </ion-col>\n      <ion-col col-2>\n        <ion-input [readonly]="true" class="output" [(ngModel)]="outputs.total"></ion-input>\n      </ion-col>\n    </ion-row>\n  </ion-list>\n</ion-content>\n\n'/*ion-inline-end:"/Users/jonahelbaz/Desktop/MasterCoach/src/pages/HomeTabs/tools/calculators/heptathlon-m-calculator/heptathlon-m-calculator.html"*/,
+            selector: 'page-heptathlon-w-calculator',template:/*ion-inline-start:"/workspace/MasterCoach/src/pages/HomeTabs/tools/calculators/heptathlon-w-calculator/heptathlon-w-calculator.html"*/'<!--\n  Generated template for the DecathlonCalculatorPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-buttons left (click)="cancel()">\n      <button ion-button="arrow-back" color="primary">\n        <ion-icon name="ios-arrow-down"></ion-icon>\n      </button>\n    </ion-buttons>\n    <ion-title>Heptathlon</ion-title>\n    <ion-buttons right (click)="save()">\n      <button ion-button="arrow-back" color="primary">\n        Save\n      </button>\n    </ion-buttons>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n\n  <ion-list>\n    <ion-row>\n      <ion-col>\n        <ion-label>100mH</ion-label>\n      </ion-col>\n      <ion-col>\n        <ion-input maxlength="5" [(ngModel)]="inputs.hurdles" (ionFocus)="updateTextFocus(\'hurdles\')" (ionBlur)="updateTextBlur(\'hurdles\')" (ionChange)="updateScore()"  (keypress)="isNumber($event)"></ion-input>\n      </ion-col>\n      <ion-col>\n        <ion-input [readonly]="true" class="output" [(ngModel)]="outputs.hurdles" (ionFocus)="false"></ion-input>\n      </ion-col>\n    </ion-row>\n    <ion-row>\n      <ion-col>\n        <ion-label>High Jump</ion-label>\n      </ion-col>\n      <ion-col>\n        <ion-input maxlength="5" [(ngModel)]="inputs.hj" (ionFocus)="updateTextFocus(\'hj\')" (ionBlur)="updateTextBlur(\'hj\')" (ionChange)="updateScore()"  (keypress)="isNumber($event)"></ion-input>\n      </ion-col>\n      <ion-col>\n        <ion-input [readonly]="true" class="output" [(ngModel)]="outputs.hj"></ion-input>\n      </ion-col>\n    </ion-row>\n    <ion-row>\n      <ion-col>\n        <ion-label>Shot Put</ion-label>\n      </ion-col>\n      <ion-col>\n        <ion-input maxlength="5" [(ngModel)]="inputs.sp" (ionFocus)="updateTextFocus(\'sp\')" (ionBlur)="updateTextBlur(\'sp\')" (ionChange)="updateScore()"  (keypress)="isNumber($event)"></ion-input>\n      </ion-col>\n      <ion-col>\n        <ion-input [readonly]="true" class="output" [(ngModel)]="outputs.sp"></ion-input>\n      </ion-col>\n    </ion-row>\n    <ion-row>\n      <ion-col>\n        <ion-label>200m</ion-label>\n      </ion-col>\n      <ion-col>\n        <ion-input maxlength="5" [(ngModel)]="inputs.two" (ionFocus)="updateTextFocus(\'two\')" (ionBlur)="updateTextBlur(\'two\')" (ionChange)="updateScore()"  (keypress)="isNumber($event)"></ion-input>\n      </ion-col>\n      <ion-col>\n        <ion-input [readonly]="true" class="output" [(ngModel)]="outputs.two"></ion-input>\n      </ion-col>\n    </ion-row>\n    <ion-row class="row">\n      <ion-col>\n        <ion-label>Long Jump</ion-label>\n      </ion-col>\n      <ion-col>\n        <ion-input maxlength="5" [(ngModel)]="inputs.lj" (ionFocus)="updateTextFocus(\'lj\')" (ionBlur)="updateTextBlur(\'lj\')" (ionChange)="updateScore()"  (keypress)="isNumber($event)"></ion-input>\n      </ion-col>\n      <ion-col>\n        <ion-input [readonly]="true" l class="output" [(ngModel)]="outputs.lj"></ion-input>\n      </ion-col>\n    </ion-row>\n    <ion-row>\n      <ion-col>\n        <ion-label>Javelin Throw</ion-label>\n      </ion-col>\n      <ion-col>\n        <ion-input maxlength="5" [(ngModel)]="inputs.jt" (ionFocus)="updateTextFocus(\'jt\')" (ionBlur)="updateTextBlur(\'jt\')" (ionChange)="updateScore()"  (keypress)="isNumber($event)"></ion-input>\n      </ion-col>\n      <ion-col>\n        <ion-input [readonly]="true" class="output" [(ngModel)]="outputs.jt"></ion-input>\n      </ion-col>\n    </ion-row>\n    <ion-row>\n      <ion-col>\n        <ion-label>800m</ion-label>\n      </ion-col>\n      <ion-col>\n        <ion-input maxlength="8" [(ngModel)]="inputs.eight" (ionFocus)="updateTextFocus(\'eight\')" (ionBlur)="updateTextBlur(\'eight\')" (ionChange)="updateScore()"  (keypress)="isTime($event)"></ion-input>\n      </ion-col>\n      <ion-col>\n        <ion-input [readonly]="true" class="output" [(ngModel)]="outputs.eight"></ion-input>\n      </ion-col>\n    </ion-row>\n    <ion-row class="outputResult">\n      <ion-col col-4></ion-col>\n      <ion-col col-5>\n        <ion-label>Score Day 1:</ion-label>\n      </ion-col>\n      <ion-col col-2>\n        <ion-input [readonly]="true" class="output" [(ngModel)]="outputs.dayOne"></ion-input>\n      </ion-col>\n    </ion-row>\n    <ion-row class="outputResult">\n      <ion-col col-4></ion-col>\n      <ion-col col-5>\n        <ion-label>Score Day 2:</ion-label>\n      </ion-col>\n      <ion-col col-2>\n        <ion-input [readonly]="true" class="output" [(ngModel)]="outputs.dayTwo"></ion-input>\n      </ion-col>\n    </ion-row>\n    <ion-row class="outputResult">\n      <ion-col col-4></ion-col>\n      <ion-col col-5>\n        <ion-label>Total Score:</ion-label>\n      </ion-col>\n      <ion-col col-2>\n        <ion-input [readonly]="true" class="output" [(ngModel)]="outputs.total"></ion-input>\n      </ion-col>\n    </ion-row>\n  </ion-list>\n</ion-content>\n\n'/*ion-inline-end:"/workspace/MasterCoach/src/pages/HomeTabs/tools/calculators/heptathlon-w-calculator/heptathlon-w-calculator.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2__providers_tools_calculators_mens__["a" /* MenPointsProvider */]])
-    ], HeptathlonMCalculatorPage);
-    return HeptathlonMCalculatorPage;
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2__providers_tools_calculators_womens__["a" /* WomenPointsProvider */]])
+    ], HeptathlonWCalculatorPage);
+    return HeptathlonWCalculatorPage;
 }());
 
-//# sourceMappingURL=heptathlon-m-calculator.js.map
+//# sourceMappingURL=heptathlon-w-calculator.js.map
 
 /***/ })
 
