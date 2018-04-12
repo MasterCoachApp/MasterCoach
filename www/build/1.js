@@ -1,6 +1,6 @@
 webpackJsonp([1],{
 
-/***/ 687:
+/***/ 686:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -8,7 +8,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LoginPageModule", function() { return LoginPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(37);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__login__ = __webpack_require__(711);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__login__ = __webpack_require__(710);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -79,7 +79,7 @@ var TabsPage = (function () {
 
 /***/ }),
 
-/***/ 711:
+/***/ 710:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -143,19 +143,22 @@ var LoginPage = (function () {
                     if (response == null) {
                         reject(response);
                     }
-                    if (response == "Error 2") {
-                        _this.tools.presentToast("bottom", "We could not find an email associated to this facebook account");
-                        reject();
+                    else if (response.code != null) {
+                        reject(response.code);
                     }
                     else {
                         _this.storage.set('user-email', response);
                         resolve();
                     }
+                }).catch(function (error) {
+                    console.log("error : " + error);
+                    reject(error);
                 });
             });
             promise.then(function () {
                 _this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_2__HomeTabs_tabs_tabs__["a" /* TabsPage */]); //allow entry if successful login
             }).catch(function (error) {
+                console.log(error);
                 _this.authProvider.firebaseAuthenticationError(error);
             });
         }

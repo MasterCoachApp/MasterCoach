@@ -50,14 +50,17 @@ export class LoginPage {
              if(response == null) {
                  reject(response);
              }
-             if(response == "Error 2") {
-                 this.tools.presentToast("bottom", "We could not find an email associated to this facebook account");
-                 reject();
+             else if(response.code != null) {
+                 reject(response.code);
              }
              else {
                  this.storage.set('user-email', response);
                  resolve();
              }
+          }).catch(error => {
+              console.log("error : " + error);
+
+              reject(error);
           });
 
       });
@@ -65,6 +68,7 @@ export class LoginPage {
       promise.then(() => {
           this.navCtrl.push(TabsPage); //allow entry if successful login
       }).catch(error => { //handle errors thrown by firebase
+          console.log(error);
           this.authProvider.firebaseAuthenticationError(error);
       });
       }

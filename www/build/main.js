@@ -371,11 +371,11 @@ var map = {
 		19
 	],
 	"../pages/HomeTabs/home/home.module": [
-		672,
+		671,
 		18
 	],
 	"../pages/HomeTabs/profile/profile.module": [
-		671,
+		672,
 		17
 	],
 	"../pages/HomeTabs/tabs/tabs.module": [
@@ -395,11 +395,11 @@ var map = {
 		13
 	],
 	"../pages/HomeTabs/tools/calculators/mercier/mercier.module": [
-		678,
+		677,
 		12
 	],
 	"../pages/HomeTabs/tools/calculators/pentathlon-m-calculator/pentathlon-m-calculator.module": [
-		677,
+		678,
 		11
 	],
 	"../pages/HomeTabs/tools/calculators/pentathlon-w-calculator/pentathlon-w-calculator.module": [
@@ -415,11 +415,11 @@ var map = {
 		8
 	],
 	"../pages/HomeTabs/tools/gadgets/stopwatch/stopwatch.module": [
-		683,
+		682,
 		7
 	],
 	"../pages/HomeTabs/tools/utilities/utilities.module": [
-		682,
+		683,
 		6
 	],
 	"../pages/Logins/create-account/create-account.module": [
@@ -431,11 +431,11 @@ var map = {
 		5
 	],
 	"../pages/Logins/login/login.module": [
-		687,
+		686,
 		1
 	],
 	"../pages/Logins/standard-login/standard-login.module": [
-		686,
+		687,
 		4
 	],
 	"../pages/Training/create-training/create-training.module": [
@@ -963,6 +963,8 @@ var AuthenticationProvider = (function () {
             this.tools.presentToast("bottom", 'Sorry, that email is invalid');
         if (error == "auth/email-already-in-use")
             this.tools.presentToast("bottom", "Sorry, looks like that email is already registered");
+        if (error == "auth/account-exists-with-different-credential")
+            this.tools.presentToast("bottom", "Sorry, looks like that email is already registered. Please sign in with your original method");
         if (error == "auth/operation-not-allowed")
             this.tools.presentToast("bottom", "Sorry, that action cannot be performed at this time");
         if (error == "auth/weak-password")
@@ -1019,7 +1021,7 @@ var AuthenticationProvider = (function () {
         });
     };
     //attempt to add the created account to the real time database
-    AuthenticationProvider.prototype.createAccountDatabase = function (email, firstName, lastName, userId, accessToken) {
+    AuthenticationProvider.prototype.createAccountDatabase = function (email, firstName, lastName, userId, mediaId) {
         var that = this;
         var promise = new Promise(function (resolve, reject) {
             var newUser = {
@@ -1027,7 +1029,7 @@ var AuthenticationProvider = (function () {
                 "Last_name": lastName,
                 "First_name": firstName,
                 "UserId": userId,
-                "accessToken": accessToken
+                "mediaId": mediaId
             };
             var ref = that.db.database.ref("Users/" + userId).set(newUser).then(function (response) {
                 //will fail if the user id already exists
@@ -1051,14 +1053,11 @@ var AuthenticationProvider = (function () {
             ref.once('value', function (snapshot) {
                 var result = false;
                 snapshot.forEach(function (snap) {
-                    console.log(fbUserId);
-                    console.log(snap.child("accessToken").val());
-                    if (snap.child("accessToken").val() == fbUserId) {
+                    if (snap.child("facebookId").val() == fbUserId) {
                         result = true;
                     }
                     return false;
                 });
-                console.log(result);
                 resolve(result);
                 return false;
             });
@@ -1084,10 +1083,12 @@ var AuthenticationProvider = (function () {
                             if (response == false) {
                                 //Creating a new profile
                                 if (apiResponse["first_name"] == "" || apiResponse["first_name"] == null || apiResponse["last_name"] == null || apiResponse["last_name"] == "") {
-                                    that.signInWithExternalCredentials(facebookCredential_1, apiResponse.email, "Unknown", "Unknown", false, fbUserId_1).then(function (response) {
-                                        resolve(response);
-                                    }).catch(function (error) {
-                                        reject(error);
+                                    that.validation.requestDisplayNameValidation().then(function (names) {
+                                        that.signInWithExternalCredentials(facebookCredential_1, apiResponse.email, names.first_name, names.last_name, false, fbUserId_1).then(function (response) {
+                                            resolve(response);
+                                        }).catch(function (error) {
+                                            reject(error);
+                                        });
                                     });
                                 }
                                 else {
@@ -1099,7 +1100,6 @@ var AuthenticationProvider = (function () {
                                 }
                             }
                             else {
-                                console.log("found it");
                                 //Found the key so the user has signed in with facebook already
                                 that.signInWithExternalCredentials(facebookCredential_1, apiResponse["email"], apiResponse["first_name"], apiResponse["last_name"], true, fbUserId_1).then(function (response) {
                                     resolve(response);
@@ -1118,38 +1118,51 @@ var AuthenticationProvider = (function () {
             return error; //not sure what this would be
         });
     };
-    AuthenticationProvider.prototype.signInWithExternalCredentials = function (credential, email, first_name, last_name, continuing, accessToken) {
+    AuthenticationProvider.prototype.signInWithExternalCredentials = function (credential, email, first_name, last_name, continuing, mediaId) {
         var that = this;
         var promise = new Promise(function (resolve, reject) {
-            if (email == null) {
-                resolve("Error 2");
-            }
             that.dbAuth.auth.signInWithCredential(credential)
                 .then(function (success) {
-                if (!continuing) {
-                    if (success.email == null) {
-                        resolve("Error 2");
+                if (success.error == null) {
+                    if (!continuing) {
+                        if (success.email == null) {
+                            that.validation.requestEmailVerification().then(function (emailResponse) {
+                                success.updateEmail(emailResponse).then(function () {
+                                    that.createAccountDatabase(emailResponse, first_name, last_name, success.uid, mediaId)
+                                        .then(function () {
+                                        resolve("Success");
+                                    })
+                                        .catch(function (error) {
+                                        reject(error);
+                                        console.log(error); //do something better here? Not sure what would cause this
+                                    });
+                                }).catch(function (error) {
+                                    console.log("Error updating email: " + error);
+                                });
+                            });
+                        }
+                        else {
+                            that.createAccountDatabase(email, first_name, last_name, success.uid, mediaId)
+                                .then(function () {
+                                resolve(email);
+                            })
+                                .catch(function (error) {
+                                reject(error);
+                                console.log(error); //do something better here? Not sure what would cause this
+                            });
+                        }
                     }
-                    var innerPromise = new Promise(function (resolve, reject) {
-                        that.createAccountDatabase(email, first_name, last_name, success.uid, accessToken)
-                            .then(function (response) {
+                    else {
+                        if (success) {
                             resolve(email);
-                        }).catch(function (error) {
-                            reject(error);
-                            console.log(error); //do something better here? Not sure what would cause this
-                        });
-                    });
-                    innerPromise.then(function (response) {
-                        resolve(response);
-                    }).catch(function (error) {
-                        reject(error);
-                        console.log(error); //do something better here? Not sure what would cause this
-                    });
+                        }
+                        else {
+                            reject(success.error);
+                        }
+                    }
                 }
                 else {
-                    if (success) {
-                        resolve(email);
-                    }
+                    reject(success.error);
                 }
             }).catch(function (error) {
                 reject(error);
@@ -1168,19 +1181,28 @@ var AuthenticationProvider = (function () {
             that.google.login({ webClientID: '736172868611-uo0ifja7fkisn2veblldbf1gj0veg9cd.apps.googleusercontent.com' })
                 .then(function (response) {
                 var googleCredential = __WEBPACK_IMPORTED_MODULE_3_firebase__["auth"].GoogleAuthProvider.credential(response.idToken, response.accessToken);
-                if (response["familyName"] == "" || response["givenName"] == null || response["familyName"] == null || response["givenName"] == "") {
-                    that.validation.requestDisplayNameValidation()
-                        .then(function (nameResponse) {
-                        that.signInWithExternalCredentials(googleCredential, nameResponse.email, nameResponse.first, nameResponse.last, false, response.accessToken)
-                            .then(function (response) { return resolve(nameResponse.email); })
-                            .catch(function (error) { return reject(error); });
-                    });
-                }
-                else {
-                    that.signInWithExternalCredentials(googleCredential, response["email"], response["givenName"], response["familyName"], false, response.accessToken)
-                        .then(function (newResponse) { return resolve(newResponse); })
-                        .catch(function (error) { return reject(null); });
-                }
+                that.checkForAccessId(response.idToken).then(function (check) {
+                    if (check == false) {
+                        if (response["familyName"] == "" || response["givenName"] == null || response["familyName"] == null || response["givenName"] == "") {
+                            that.validation.requestDisplayNameValidation()
+                                .then(function (nameResponse) {
+                                that.signInWithExternalCredentials(googleCredential, response.email, nameResponse.first_name, nameResponse.last_name, false, response.idToken)
+                                    .then(function (response) { return resolve(nameResponse.email); })
+                                    .catch(function (error) { return reject(error); });
+                            });
+                        }
+                        else {
+                            that.signInWithExternalCredentials(googleCredential, response["email"], response["givenName"], response["familyName"], false, response.idToken)
+                                .then(function (newResponse) { return resolve(newResponse); })
+                                .catch(function (error) { return reject(null); });
+                        }
+                    }
+                    else {
+                        that.signInWithExternalCredentials(googleCredential, response["email"], response["givenName"], response["familyName"], true, response.idToken)
+                            .then(function (newResponse) { return resolve(newResponse); })
+                            .catch(function (error) { return reject(null); });
+                    }
+                });
             });
         });
         return promise.then(function (response) {
@@ -2419,23 +2441,23 @@ var AppModule = (function () {
                         { loadChildren: '../pages/Exercises/create-exercise/create-exercise.module#CreateExercisePageModule', name: 'CreateExercisePage', segment: 'create-exercise', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/Exercises/select-exercise-category/select-exercise-category.module#SelectExerciseCategoryPageModule', name: 'SelectExerciseCategoryPage', segment: 'select-exercise-category', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/Exercises/select-exercise-table-type/select-exercise-table-type.module#SelectExerciseTableTypePageModule', name: 'SelectExerciseTableTypePage', segment: 'select-exercise-table-type', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/HomeTabs/profile/profile.module#ProfilePageModule', name: 'ProfilePage', segment: 'profile', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/HomeTabs/home/home.module#HomePageModule', name: 'HomePage', segment: 'home', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/HomeTabs/profile/profile.module#ProfilePageModule', name: 'ProfilePage', segment: 'profile', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/HomeTabs/tabs/tabs.module#TabsPageModule', name: 'TabsPage', segment: 'tabs', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/HomeTabs/tools/calculators/decathlon-calculator/decathlon-calculator.module#DecathlonCalculatorPageModule', name: 'DecathlonCalculatorPage', segment: 'decathlon-calculator', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/HomeTabs/tools/calculators/heptathlon-m-calculator/heptathlon-m-calculator.module#HeptathlonMCalculatorPageModule', name: 'HeptathlonMCalculatorPage', segment: 'heptathlon-m-calculator', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/HomeTabs/tools/calculators/heptathlon-w-calculator/heptathlon-w-calculator.module#HeptathlonWCalculatorPageModule', name: 'HeptathlonWCalculatorPage', segment: 'heptathlon-w-calculator', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/HomeTabs/tools/calculators/pentathlon-m-calculator/pentathlon-m-calculator.module#PentathlonMCalculatorPageModule', name: 'PentathlonMCalculatorPage', segment: 'pentathlon-m-calculator', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/HomeTabs/tools/calculators/mercier/mercier.module#MercierPageModule', name: 'MercierPage', segment: 'mercier', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/HomeTabs/tools/calculators/pentathlon-m-calculator/pentathlon-m-calculator.module#PentathlonMCalculatorPageModule', name: 'PentathlonMCalculatorPage', segment: 'pentathlon-m-calculator', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/HomeTabs/tools/calculators/pentathlon-w-calculator/pentathlon-w-calculator.module#PentathlonWCalculatorPageModule', name: 'PentathlonWCalculatorPage', segment: 'pentathlon-w-calculator', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/HomeTabs/tools/calculators/unit-converter/unit-converter.module#UnitConverterPageModule', name: 'UnitConverterPage', segment: 'unit-converter', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/HomeTabs/tools/gadgets/starting-gun/starting-gun.module#StartingGunPageModule', name: 'StartingGunPage', segment: 'starting-gun', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/HomeTabs/tools/utilities/utilities.module#UtilitiesModule', name: 'UtilitiesPage', segment: 'utilities', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/HomeTabs/tools/gadgets/stopwatch/stopwatch.module#StopwatchPageModule', name: 'StopwatchPage', segment: 'stopwatch', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/HomeTabs/tools/utilities/utilities.module#UtilitiesModule', name: 'UtilitiesPage', segment: 'utilities', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/Logins/create-account/create-account.module#CreateAccountPageModule', name: 'CreateAccountPage', segment: 'create-account', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/Logins/forgot-password/forgot-password.module#ForgotPasswordPageModule', name: 'ForgotPasswordPage', segment: 'forgot-password', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/Logins/standard-login/standard-login.module#StandardLoginPageModule', name: 'StandardLoginPage', segment: 'standard-login', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/Logins/login/login.module#LoginPageModule', name: 'LoginPage', segment: 'login', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/Logins/standard-login/standard-login.module#StandardLoginPageModule', name: 'StandardLoginPage', segment: 'standard-login', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/Training/create-training/create-training.module#CreateTrainingPageModule', name: 'CreateTrainingPage', segment: 'create-training', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/Training/text-popover/text-popover.module#TextPopoverPageModule', name: 'TextPopoverPage', segment: 'text-popover', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/view-training/view-training.module#ViewTrainingPageModule', name: 'ViewTrainingPage', segment: 'view-training', priority: 'low', defaultHistory: [] }
@@ -2623,7 +2645,7 @@ var RoutineCategory = (function () {
 
 /***/ }),
 
-/***/ 516:
+/***/ 513:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2640,12 +2662,12 @@ var MenuEvents = (function () {
 
 /***/ }),
 
-/***/ 517:
+/***/ 514:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return LabelBank; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__label__ = __webpack_require__(518);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__label__ = __webpack_require__(515);
 
 var LabelBank = (function () {
     function LabelBank() {
@@ -2672,7 +2694,7 @@ var LabelBank = (function () {
 
 /***/ }),
 
-/***/ 518:
+/***/ 515:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -3315,7 +3337,7 @@ var ToolsProvider = (function () {
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return LabelProvider; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__models_custom_survey_components_labels_label_bank__ = __webpack_require__(517);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__models_custom_survey_components_labels_label_bank__ = __webpack_require__(514);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -3391,7 +3413,7 @@ var Exercise = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__tools_tools__ = __webpack_require__(67);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__models_calendar_calendar_day__ = __webpack_require__(453);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__models_calendar_menu_events__ = __webpack_require__(516);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__models_calendar_menu_events__ = __webpack_require__(513);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__training_labels_labelProvider__ = __webpack_require__(89);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
