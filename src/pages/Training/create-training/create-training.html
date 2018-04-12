@@ -137,9 +137,13 @@
                                 <!--<ion-col><ion-option>option</ion-option></ion-col>-->
                             </ion-row>
                             <ion-row no-margin no-border>
-                                <!--<ion-col *ngFor="let column of exercise.tableHeaders" col-{{exercise.columnMap[column]}}>{{column}}</ion-col>-->
-                                <!--ngStyle="width: exercise.columnMap[column]"-->
-                                <!--<ion-col style="text-align: center" *ngFor="let column of exercise.tableHeaders">{{column}}</ion-col>-->
+                                <ion-col class="exerciseHeader" col-1>#</ion-col>
+                                <ion-col class="exerciseHeader" *ngFor="let column of exercise.exerciseTableType.tableHeaderList">{{column}}</ion-col>
+                                <ion-col class="exerciseHeader" col-1>
+                                    <ion-icon name="checkmark-outline" style="font-size: 20px; padding: 0; font-weight: bold"></ion-icon>
+                                </ion-col>
+                            </ion-row>
+                            <ion-row no-margin no-border>
                                 <ion-col class="exerciseHeader" col-1>#</ion-col>
                                 <ion-col class="exerciseHeader">Detail</ion-col>
                                 <ion-col class="exerciseHeader" col-3>Measure</ion-col>
@@ -159,6 +163,15 @@
                     <!--</ion-row>-->
                     <!--BEST VERSION BELOW-->
 
+                            <ion-row *ngFor="let set of exercise.sets" no-padding no-margin align-items-stretch>
+                                <ion-col class="exerciseCol" no-margin  col-1>{{set.setNumber}}</ion-col>
+                                <ion-col class="exerciseCol"><ion-input text-center no-margin placeholder="Detail" [(ngModel)]="set.detail"></ion-input></ion-col>
+                                <ion-col class="exerciseCol" col-3><ion-input text-center no-margin placeholder="Measure" [(ngModel)]="set.measure"></ion-input></ion-col>
+                                <ion-col class="exerciseCol" col-2><ion-input text-center no-margin placeholder="Reps" [(ngModel)]="set.reps"></ion-input></ion-col>
+                                <ion-col class="exerciseCol" no-margin col-1>
+                                    <ion-checkbox style="font-size: 10px;" no-padding no-margin [checked]="false" [(ngModel)]="set.complete"></ion-checkbox>
+                                </ion-col>
+                            </ion-row>
                             <ion-row *ngFor="let set of exercise.sets" no-padding no-margin align-items-stretch>
                                 <ion-col class="exerciseCol" no-margin  col-1>{{set.setNumber}}</ion-col>
                                 <ion-col class="exerciseCol"><ion-input text-center no-margin placeholder="Detail" [(ngModel)]="set.detail"></ion-input></ion-col>
