@@ -6,9 +6,9 @@ export class Routine {
     routineCategory: RoutineCategory;
     exercises: ExerciseTable[];
 
-    constructor(routineName: string, routineCategory: RoutineCategory, exercises: ExerciseTable[]) {
+    constructor(routineName: string, routineCategory: RoutineCategory, exerciseTables: ExerciseTable[]) {
         this.routineName = routineName;
         this.routineCategory = routineCategory;
-        this.exercises = exercises;
+        this.exercises = exerciseTables;
     }
 }

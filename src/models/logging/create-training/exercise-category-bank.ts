@@ -9,11 +9,18 @@ export class ExerciseCategoryBank {
         [key: string]: ExerciseCategory
     }
 
-    exerciseCategoryList = ['Sprints', 'Long Sprints', 'Distance', 'Long Jump', 'High Jump', 'Pole Vault','Triple Jump', 'Sprint Hurdles', '400m Hurdles','Javelin','Weights','Plyometrics','Medicine Ball'];
+    exerciseCategoryList = [
+        'Sprints', 'Long Sprints', 'Distance', 'Long Jump', 'High Jump',
+        'Pole Vault','Triple Jump', 'Sprint Hurdles', '400m Hurdles',
+        'Javelin','Weights','Plyometrics','Medicine Ball',
+        'Activation', 'Stabilization',
+        // 'Warm Up', 'Cool Down',
+        'Core', 'Running Drills',
+    ];
 
     constructor() {
-        for (let i = 0; i < this.exerciseCategoryList.length; i++) {
-            this.exerciseCategoryBank.push(new ExerciseCategory(this.exerciseCategoryList[i]));
-        }
+        this.exerciseCategoryList.forEach(x => {
+            this.exerciseCategoryBank.push(new ExerciseCategory(x));
+        });
     }
 }

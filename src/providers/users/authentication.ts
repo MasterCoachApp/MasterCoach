@@ -176,7 +176,7 @@ export class AuthenticationProvider {
 
                             if(apiResponse["first_name"] == "" || apiResponse["first_name"] == null || apiResponse["last_name"] == null || apiResponse["last_name"] == "") {
                                 that.validation.requestDisplayNameValidation().then(nameResponse => {
-                                    that.signInWithFacebookCredentials(facebookCredential, apiResponse.email, nameResponse.first, nameResponse.last, ).then(response => {
+                                    that.signInWithExternalCredentials(facebookCredential, apiResponse.email, nameResponse.first, nameResponse.last, ).then(response => {
                                         resolve(apiResponse.email);
                                     }).catch(error =>{
                                         reject(null);
@@ -184,7 +184,7 @@ export class AuthenticationProvider {
                                 });
                             }
                             else {
-                                that.signInWithFacebookCredentials(facebookCredential, apiResponse["email"], apiResponse["first_name"], apiResponse["last_name"], ).then(response => {
+                                that.signInWithExternalCredentials(facebookCredential, apiResponse["email"], apiResponse["first_name"], apiResponse["last_name"], ).then(response => {
                                     resolve(apiResponse['email']);
                                 }).catch(error => {
                                     reject(null);
@@ -202,11 +202,11 @@ export class AuthenticationProvider {
         });
     }
 
-    signInWithFacebookCredentials(facebookCredential, email, first_name, last_name) {
+    signInWithExternalCredentials(credential, email, first_name, last_name) {
         let that = this;
         let promise = new Promise( (resolve, reject) => {
 
-            that.dbAuth.auth.signInWithCredential(facebookCredential)
+            that.dbAuth.auth.signInWithCredential(credential)
                 .then( success => {
                     if(success.email == null) {
                         that.validation.requestEmailVerification().then(emailResponse => {
@@ -232,8 +232,7 @@ export class AuthenticationProvider {
                             });
                         });
 
-                    }
-                    else {
+                    } else {
                         let innerPromise = new Promise((resolve, reject) => {
                             that.createAccountDatabase(email, first_name, last_name, success.uid)
                                 .then(response => {
@@ -244,7 +243,7 @@ export class AuthenticationProvider {
                             });
                         });
                         innerPromise.then(response => {
-                            resolve("Success");
+                            resolve(email);
                         }).catch(error => {
                             reject(error);
                             console.log(error); //do something better here? Not sure what would cause this
@@ -258,121 +257,36 @@ export class AuthenticationProvider {
             return error; //not sure what this would be
         });
     }
-
-    // check if same as fb, merge if so, currently a copy for the below functions advanceWithGoogle() and signInWithGoogleCredentials()
+    // slightly different from advance with FB
     advanceWithGoogle() {
 
-        this.google.login({})
-            .then(res => console.log(res))
-            .catch(err => console.error(err));
-        // let that = this;
-        // let promise = new Promise((resolve, reject) => {
-        //     that.google.login(UserData => {
-        //             // console.log((UserData));
-        //         }
-        //     )
-        // });
-        // return promise.then(response => {
-        //     return response;
-        // }).catch(error => {
-        //     return error; //not sure what this would be
-        // });
-        // let that = this;
-        // let promise = new Promise( (resolve, reject) => {
-        //     that.google.login({})
-        //         .then( response => {
-        //             if (response.status === 'connected') {
-        //
-        //                 const googleCredential = firebase.auth.FacebookAuthProvider.credential(response.authResponse.accessToken);
-        //
-        //                 that.facebook.api('me?fields=id,name,email,first_name,last_name', ['email']).then(apiResponse => {
-        //                     console.log(response);
-        //                     console.log('Good to see you, ' + apiResponse["first_name"] + " " + apiResponse["last_name"]);
-        //                     console.log('Facebook Id: ' + apiResponse.id);
-        //                     console.log('Email: ' + apiResponse.email);
-        //
-        //                     if(apiResponse["first_name"] == "" || apiResponse["first_name"] == null || apiResponse["last_name"] == null || apiResponse["last_name"] == "") {
-        //                         that.validation.requestDisplayNameValidation().then(nameResponse => {
-        //                             that.signInWithFacebookCredentials(googleCredential, apiResponse.email, nameResponse.first, nameResponse.last, ).then(response => {
-        //                                 resolve("Success");
-        //                             }).catch(error =>{
-        //                                 reject(error);
-        //                             });
-        //                         });
-        //                     }
-        //                     else {
-        //                         that.signInWithGoogleCredentials(googleCredential, apiResponse["email"], apiResponse["first_name"], apiResponse["last_name"], ).then(response => {
-        //                             resolve("Success");
-        //                         }).catch(error => {
-        //                             reject(error);
-        //                         });
-        //                     }
-        //                 });
-        //             }
-        //         });
-        // });
-        //
-        // return promise.then(response => {
-        //     return response;
-        // }).catch(error => {
-        //     return error; //not sure what this would be
-        // });
+        let that = this;
+        let promise = new Promise( (resolve, reject) => {
+            that.google.login({webClientID: '736172868611-uo0ifja7fkisn2veblldbf1gj0veg9cd.apps.googleusercontent.com'})
+                .then( response => {
+
+                    const googleCredential = firebase.auth.GoogleAuthProvider.credential(response.idToken, response.accessToken);
+
+                    if(response["familyName"] == "" || response["givenName"] == null || response["familyName"] == null || response["givenName"] == "") {
+
+                        that.validation.requestDisplayNameValidation()
+                            .then(nameResponse => {
+                            that.signInWithExternalCredentials(googleCredential, nameResponse.email, nameResponse.first, nameResponse.last)
+                                .then(response => resolve(nameResponse.email))
+                                .catch(error => reject(error));
+                        });
+                    } else {
+                        that.signInWithExternalCredentials(googleCredential, response["email"], response["givenName"], response["familyName"])
+                            .then(newResponse => resolve(newResponse))
+                            .catch(error => reject(null));
+                    }
+                });
+        });
+
+        return promise.then(response => {
+            return response;
+        }).catch(error => {
+            return error; //not sure what this would be
+        });
     }
-
-    // signInWithGoogleCredentials(facebookCredential, email, first_name, last_name) {
-    //     let that = this;
-    //     let promise = new Promise( (resolve, reject) => {
-    //
-    //         that.dbAuth.auth.signInWithCredential(facebookCredential)
-    //             .then( success => {
-    //                 if(success.email == null) {
-    //                     that.validation.requestEmailVerification().then(emailResponse => {
-    //                         success.updateEmail(emailResponse).then(() => {
-    //                             let innerPromise = new Promise((resolve, reject) => {
-    //                                 that.createAccountDatabase(emailResponse, first_name, last_name, success.uid)
-    //                                     .then(response => {
-    //                                         resolve();
-    //                                     }).catch(error => {
-    //                                     reject();
-    //                                     console.log(error); //do something better here? Not sure what would cause this
-    //                                 });
-    //                             });
-    //                             innerPromise.then(response => {
-    //                                 resolve("Success");
-    //                             }).catch(error => {
-    //                                 reject(error);
-    //                                 console.log(error); //do something better here? Not sure what would cause this
-    //                             });
-    //                         }).catch(error => {
-    //                             console.log("Error updating email: " + error);
-    //                         });
-    //                     });
-    //
-    //                 }
-    //                 else {
-    //                     let innerPromise = new Promise((resolve, reject) => {
-    //                         that.createAccountDatabase(email, first_name, last_name, success.uid)
-    //                             .then(response => {
-    //                                 resolve();
-    //                             }).catch(error => {
-    //                             reject();
-    //                             console.log(error); //do something better here? Not sure what would cause this
-    //                         });
-    //                     });
-    //                     innerPromise.then(response => {
-    //                         resolve("Success");
-    //                     }).catch(error => {
-    //                         reject(error);
-    //                         console.log(error); //do something better here? Not sure what would cause this
-    //                     });
-    //                 }
-    //             });
-    //     });
-    //     return promise.then(response => {
-    //         return response;
-    //     }).catch(error => {
-    //         return error; //not sure what this would be
-    //     });
-    // }
-
 }

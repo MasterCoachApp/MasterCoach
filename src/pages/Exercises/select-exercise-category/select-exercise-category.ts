@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {IonicPage, NavController, NavParams, ViewController} from 'ionic-angular';
+import {IonicPage, ModalController, NavController, NavParams, ViewController} from 'ionic-angular';
 import {ExerciseProvider} from "../../../providers/training/exercises/exerciseProvider";
 import {ExerciseCategory} from "../../../models/logging/create-training/exercise-category";
 
@@ -19,7 +19,7 @@ export class SelectExerciseCategoryPage {
 
 
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public banks: ExerciseProvider, public viewCtrl: ViewController) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public banks: ExerciseProvider, public viewCtrl: ViewController, public modalCtrl: ModalController) {
   }
 
   ionViewDidLoad() {
@@ -28,9 +28,21 @@ export class SelectExerciseCategoryPage {
   selectCategory(category: ExerciseCategory) {
     this.viewCtrl.dismiss(category);
   }
-    cancel() {
-        this.navCtrl.pop();
-    }
+  createNewExerciseCategory() {
+    let newExerciseCatModal = this.modalCtrl.create(
+        'CreateExerciseCategoryPage'
+    );
 
+    newExerciseCatModal.onDidDismiss( data => {
+      if (data) {
+        this.selectCategory(data);
+      }
+    });
 
+    newExerciseCatModal.present();
+  }
+
+  cancel() {
+      this.navCtrl.pop();
+  }
 }

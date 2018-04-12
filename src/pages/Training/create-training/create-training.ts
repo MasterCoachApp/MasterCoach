@@ -36,6 +36,8 @@ import {AddExercisePage} from "../../Exercises/add-exercise/add-exercise";
 
 export class CreateTrainingPage {
 
+    trainingHover: boolean = false;
+
     expandPostThoughts: boolean;
 
     listOfEvents: Label[];
@@ -242,68 +244,61 @@ export class CreateTrainingPage {
         alert.present();
     }
 
-    addWarmUp() {
-        let alert = this.alertCtrl.create({
-            title: 'Warm Up',
+    addWarmUpCoolDown(choice: string) {
+        let addRoutineModal = this.modalCtrl.create(
+            'AddRoutinePage'
+        );
 
+        addRoutineModal.onDidDismiss(data => {
+            this.training.mainCalEvent[choice] = data;
+            console.log(data);
+            console.log(this.training.mainCalEvent[choice]);
         });
-        alert.addInput( {
-            type: 'radio',
-            label: 'Warm up A',
-            value: 'Warm up A',
-            checked: false
-        });
-        alert.addInput( {
-            type: 'radio',
-            label: 'Warm up B',
-            value: 'Warm up B',
-            checked: false
-        });
-        alert.addButton('Cancel');
-        alert.addButton({
-            text: 'Add',
-            handler: data => {
-                console.log('Checkbox data:', data);
-                if (data != null) {
-                    this.training.mainCalEvent.warmUp = data;
-                }
-                // this.testCheckboxResult = data;
-            }
-        });
-        alert.present();
+
+        addRoutineModal.present();
 
     }
 
-    addCoolDown() {
-        let alert = this.alertCtrl.create({
-            title: 'Cool Down',
-
-        });
-        alert.addInput( {
-            type: 'radio',
-            label: 'Cool down A',
-            value: 'Cool down A',
-            checked: false
-        });
-        alert.addInput( {
-            type: 'radio',
-            label: 'Cool down B',
-            value: 'Cool down B',
-            checked: false
-        });
-        alert.addButton('Cancel');
-        alert.addButton({
-            text: 'Add',
-            handler: data => {
-                console.log('Checkbox data:', data);
-                if (data != null) {
-                    this.training.mainCalEvent.coolDown = data;
-                }
-                // this.testCheckboxResult = data;
-            }
-        });
-        alert.present();
-    }
+    // addCoolDown() {
+    //     let warmUpModal = this.modalCtrl.create(
+    //         'AddRoutinePage'
+    //     );
+    //
+    //     warmUpModal.onDidDismiss(data => {
+    //         this.training.mainCalEvent.warmUp = data;
+    //     });
+    //
+    //     warmUpModal.present();
+    //
+    //     let alert = this.alertCtrl.create({
+    //         title: 'Cool Down',
+    //
+    //     });
+    //     alert.addInput( {
+    //         type: 'radio',
+    //         label: 'Cool down A',
+    //         value: 'Cool down A',
+    //         checked: false
+    //     });
+    //     alert.addInput( {
+    //         type: 'radio',
+    //         label: 'Cool down B',
+    //         value: 'Cool down B',
+    //         checked: false
+    //     });
+    //     alert.addButton('Cancel');
+    //     alert.addButton({
+    //         text: 'Add',
+    //         handler: data => {
+    //             console.log('Checkbox data:', data);
+    //             if (data != null) {
+    //                 this.training.mainCalEvent.coolDown = data;
+    //             }
+    //             // this.testCheckboxResult = data;
+    //         }
+    //     });
+    //     alert.present();
+    // }
 
     cancel() {
         this.navCtrl.pop();
