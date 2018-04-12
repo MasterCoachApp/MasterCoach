@@ -257,35 +257,6 @@ export class CreateTrainingPage {
 
         addRoutineModal.present();
 
-        // let alert = this.alertCtrl.create({
-        //     title: 'Warm Up',
-        //
-        // });
-        // alert.addInput( {
-        //     type: 'radio',
-        //     label: 'Warm up A',
-        //     value: 'Warm up A',
-        //     checked: false
-        // });
-        // alert.addInput( {
-        //     type: 'radio',
-        //     label: 'Warm up B',
-        //     value: 'Warm up B',
-        //     checked: false
-        // });
-        // alert.addButton('Cancel');
-        // alert.addButton({
-        //     text: 'Add',
-        //     handler: data => {
-        //         console.log('Checkbox data:', data);
-        //         if (data != null) {
-        //             this.training.mainCalEvent.warmUp = data;
-        //         }
-        //         // this.testCheckboxResult = data;
-        //     }
-        // });
-        // alert.present();
-
     }
 
     // addCoolDown() {

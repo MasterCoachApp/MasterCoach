@@ -78,12 +78,10 @@ export class LoginPage {
 
                 that.authProvider.advanceWithGoogle().then(response => {
                     if(response == null) {
-                        console.log('RESPONSE WAS NOT NULL in LOGIN');
                         reject(response);
                     }
                     else {
                         this.storage.set('user-email', response);
-                        this.storage.get('user-email').then(val => console.log('user-email',val));
                         resolve();
                     }
                 });
