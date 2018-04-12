@@ -74,7 +74,7 @@
       "cordova-plugin-datepicker": {},
       "cordova-plugin-statusbar": {},
       "cordova-plugin-googleplus": {
-        "REVERSED_CLIENT_ID": "myreversedclientid"
+        "REVERSED_CLIENT_ID": "com.googleusercontent.apps.736172868611-iu6noqnvs6gd33p5c2bkmbeu7618ior9"
       }
     },
     "platforms": [

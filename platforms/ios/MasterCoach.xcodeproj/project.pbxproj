@@ -414,7 +414,7 @@
 				LastUpgradeCheck = 510;
 				TargetAttributes = {
 					1D6058900D05DD3D006BFB54 = {
-						DevelopmentTeam = LMRS4J25GR;
+						DevelopmentTeam = D2R75LW5CH;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -549,7 +549,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				DEVELOPMENT_TEAM = LMRS4J25GR;
+				DEVELOPMENT_TEAM = D2R75LW5CH;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"MasterCoach/Plugins/cordova-plugin-facebook4\"",
@@ -591,7 +591,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = YES;
-				DEVELOPMENT_TEAM = LMRS4J25GR;
+				DEVELOPMENT_TEAM = D2R75LW5CH;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"MasterCoach/Plugins/cordova-plugin-facebook4\"",
