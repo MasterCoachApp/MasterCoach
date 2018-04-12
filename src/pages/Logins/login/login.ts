@@ -50,6 +50,10 @@ export class LoginPage {
              if(response == null) {
                  reject(response);
              }
+             if(response == "Error 2") {
+                 this.tools.presentToast("bottom", "We could not find an email associated to this facebook account");
+                 reject();
+             }
              else {
                  this.storage.set('user-email', response);
                  resolve();
@@ -79,6 +83,9 @@ export class LoginPage {
                 that.authProvider.advanceWithGoogle().then(response => {
                     if(response == null) {
                         reject(response);
+                    }
+                    if(response == "Exists") {
+                        this.tools.presentToast("bottom", "An account already exists with this email. Please use the same method of signing in");
                     }
                     else {
                         this.storage.set('user-email', response);

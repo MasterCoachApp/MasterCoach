@@ -67,33 +67,37 @@ export class CreateAccountPage {
 
   }
 
-
-  createWithFacebook(){
-      if(navigator.onLine) { //test for internet connection
-
-          let that = this;
-          let promise = new Promise((resolve, reject) => {
-
-              that.authProvider.advanceWithFacebook().then(response => {
-                  if(response != "Success") {
-                      reject(response);
-                  }
-                  else {
-                      resolve();
-                  }
-              });
-
-          });
-
-          promise.then(() => {
-              this.navCtrl.push('TabsPage'); //allow entry if successful login
-          }).catch(error => { //handle errors thrown by firebase
-              this.authProvider.firebaseAuthenticationError(error);
-          });
-      }
-      else {
-          this.tools.presentToast("bottom", "Sorry, you're not connected to the internet");
-      }
-  }
+  //
+  // //Should get rid of this
+  // createWithFacebook(){
+  //     if(navigator.onLine) { //test for internet connection
+  //
+  //         let that = this;
+  //         let promise = new Promise((resolve, reject) => {
+  //
+  //             that.authProvider.advanceWithFacebook().then(response => {
+  //                 if(response == "Success") {
+  //                     resolve();
+  //                 }
+  //                 else if(response == "Exists") {
+  //
+  //                 }
+  //                 else {
+  //                     reject(response)
+  //                 }
+  //             });
+  //
+  //         });
+  //
+  //         promise.then(() => {
+  //             this.navCtrl.push('TabsPage'); //allow entry if successful login
+  //         }).catch(error => { //handle errors thrown by firebase
+  //             this.authProvider.firebaseAuthenticationError(error);
+  //         });
+  //     }
+  //     else {
+  //         this.tools.presentToast("bottom", "Sorry, you're not connected to the internet");
+  //     }
+  // }
 
 }

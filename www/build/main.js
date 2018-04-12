@@ -371,11 +371,11 @@ var map = {
 		19
 	],
 	"../pages/HomeTabs/home/home.module": [
-		671,
+		672,
 		18
 	],
 	"../pages/HomeTabs/profile/profile.module": [
-		672,
+		671,
 		17
 	],
 	"../pages/HomeTabs/tabs/tabs.module": [
@@ -395,11 +395,11 @@ var map = {
 		13
 	],
 	"../pages/HomeTabs/tools/calculators/mercier/mercier.module": [
-		677,
+		678,
 		12
 	],
 	"../pages/HomeTabs/tools/calculators/pentathlon-m-calculator/pentathlon-m-calculator.module": [
-		678,
+		677,
 		11
 	],
 	"../pages/HomeTabs/tools/calculators/pentathlon-w-calculator/pentathlon-w-calculator.module": [
@@ -415,11 +415,11 @@ var map = {
 		8
 	],
 	"../pages/HomeTabs/tools/gadgets/stopwatch/stopwatch.module": [
-		682,
+		683,
 		7
 	],
 	"../pages/HomeTabs/tools/utilities/utilities.module": [
-		683,
+		682,
 		6
 	],
 	"../pages/Logins/create-account/create-account.module": [
@@ -431,11 +431,11 @@ var map = {
 		5
 	],
 	"../pages/Logins/login/login.module": [
-		686,
+		687,
 		1
 	],
 	"../pages/Logins/standard-login/standard-login.module": [
-		687,
+		686,
 		4
 	],
 	"../pages/Training/create-training/create-training.module": [
@@ -995,7 +995,7 @@ var AuthenticationProvider = (function () {
         var promise = new Promise(function (resolve, reject) {
             that.dbAuth.auth.createUserWithEmailAndPassword(email, password).then(function (response) {
                 var promise = new Promise(function (resolve, reject) {
-                    that.createAccountDatabase(email, firstName, lastName, response.uid).then(function (response) {
+                    that.createAccountDatabase(email, firstName, lastName, response.uid, null).then(function (response) {
                         resolve();
                     }).catch(function (error) {
                         reject();
@@ -1019,16 +1019,18 @@ var AuthenticationProvider = (function () {
         });
     };
     //attempt to add the created account to the real time database
-    AuthenticationProvider.prototype.createAccountDatabase = function (email, firstName, lastName, userId) {
+    AuthenticationProvider.prototype.createAccountDatabase = function (email, firstName, lastName, userId, accessToken) {
         var that = this;
         var promise = new Promise(function (resolve, reject) {
             var newUser = {
                 "Email": email,
                 "Last_name": lastName,
                 "First_name": firstName,
-                "UserId": userId
+                "UserId": userId,
+                "accessToken": accessToken
             };
             var ref = that.db.database.ref("Users/" + userId).set(newUser).then(function (response) {
+                //will fail if the user id already exists
                 resolve();
             });
             reject();
@@ -1042,34 +1044,70 @@ var AuthenticationProvider = (function () {
     // -------------------------///
     //   Media Authentication   ///
     //-------------------------///
+    AuthenticationProvider.prototype.checkForAccessId = function (fbUserId) {
+        var that = this;
+        var promise = new Promise(function (resolve, reject) {
+            var ref = that.db.database.ref("Users");
+            ref.once('value', function (snapshot) {
+                var result = false;
+                snapshot.forEach(function (snap) {
+                    console.log(fbUserId);
+                    console.log(snap.child("accessToken").val());
+                    if (snap.child("accessToken").val() == fbUserId) {
+                        result = true;
+                    }
+                    return false;
+                });
+                console.log(result);
+                resolve(result);
+                return false;
+            });
+        });
+        return promise.then(function (response) {
+            return response;
+        }).catch(function (error) {
+            return error;
+        });
+    };
     AuthenticationProvider.prototype.advanceWithFacebook = function () {
+        var _this = this;
         var that = this;
         var promise = new Promise(function (resolve, reject) {
             that.facebook.login(['email'])
                 .then(function (response) {
                 if (response.status === 'connected') {
+                    var fbUserId_1 = response.authResponse.userID;
                     var facebookCredential_1 = __WEBPACK_IMPORTED_MODULE_3_firebase__["auth"].FacebookAuthProvider.credential(response.authResponse.accessToken);
                     that.facebook.api('me?fields=id,name,email,first_name,last_name', ['email']).then(function (apiResponse) {
-                        console.log(response);
-                        console.log('Good to see you, ' + apiResponse["first_name"] + " " + apiResponse["last_name"]);
-                        console.log('Facebook Id: ' + apiResponse.id);
-                        console.log('Email: ' + apiResponse.email);
-                        if (apiResponse["first_name"] == "" || apiResponse["first_name"] == null || apiResponse["last_name"] == null || apiResponse["last_name"] == "") {
-                            that.validation.requestDisplayNameValidation().then(function (nameResponse) {
-                                that.signInWithExternalCredentials(facebookCredential_1, apiResponse.email, nameResponse.first, nameResponse.last).then(function (response) {
-                                    resolve(apiResponse.email);
+                        that.checkForAccessId(fbUserId_1).then(function (response) {
+                            _this.tools.presentToast("bottom", response);
+                            if (response == false) {
+                                //Creating a new profile
+                                if (apiResponse["first_name"] == "" || apiResponse["first_name"] == null || apiResponse["last_name"] == null || apiResponse["last_name"] == "") {
+                                    that.signInWithExternalCredentials(facebookCredential_1, apiResponse.email, "Unknown", "Unknown", false, fbUserId_1).then(function (response) {
+                                        resolve(response);
+                                    }).catch(function (error) {
+                                        reject(error);
+                                    });
+                                }
+                                else {
+                                    that.signInWithExternalCredentials(facebookCredential_1, apiResponse["email"], apiResponse["first_name"], apiResponse["last_name"], false, fbUserId_1).then(function (response) {
+                                        resolve(response);
+                                    }).catch(function (error) {
+                                        reject(error);
+                                    });
+                                }
+                            }
+                            else {
+                                console.log("found it");
+                                //Found the key so the user has signed in with facebook already
+                                that.signInWithExternalCredentials(facebookCredential_1, apiResponse["email"], apiResponse["first_name"], apiResponse["last_name"], true, fbUserId_1).then(function (response) {
+                                    resolve(response);
                                 }).catch(function (error) {
-                                    reject(null);
+                                    reject(error);
                                 });
-                            });
-                        }
-                        else {
-                            that.signInWithExternalCredentials(facebookCredential_1, apiResponse["email"], apiResponse["first_name"], apiResponse["last_name"]).then(function (response) {
-                                resolve(apiResponse['email']);
-                            }).catch(function (error) {
-                                reject(null);
-                            });
-                        }
+                            }
+                        });
                     });
                 }
             });
@@ -1080,53 +1118,41 @@ var AuthenticationProvider = (function () {
             return error; //not sure what this would be
         });
     };
-    AuthenticationProvider.prototype.signInWithExternalCredentials = function (credential, email, first_name, last_name) {
-        var _this = this;
+    AuthenticationProvider.prototype.signInWithExternalCredentials = function (credential, email, first_name, last_name, continuing, accessToken) {
         var that = this;
         var promise = new Promise(function (resolve, reject) {
+            if (email == null) {
+                resolve("Error 2");
+            }
             that.dbAuth.auth.signInWithCredential(credential)
                 .then(function (success) {
-                if (success.email == null) {
-                    that.validation.requestEmailVerification().then(function (emailResponse) {
-                        success.updateEmail(emailResponse).then(function () {
-                            var innerPromise = new Promise(function (resolve, reject) {
-                                that.createAccountDatabase(emailResponse, first_name, last_name, success.uid)
-                                    .then(function (response) {
-                                    resolve(emailResponse);
-                                }).catch(function (error) {
-                                    reject();
-                                    console.log(error); //do something better here? Not sure what would cause this
-                                });
-                            });
-                            innerPromise.then(function (response) {
-                                _this.storage.set('user-email', response);
-                                resolve("Success");
-                            }).catch(function (error) {
-                                reject(error);
-                                console.log(error); //do something better here? Not sure what would cause this
-                            });
-                        }).catch(function (error) {
-                            console.log("Error updating email: " + error);
-                        });
-                    });
-                }
-                else {
+                if (!continuing) {
+                    if (success.email == null) {
+                        resolve("Error 2");
+                    }
                     var innerPromise = new Promise(function (resolve, reject) {
-                        that.createAccountDatabase(email, first_name, last_name, success.uid)
+                        that.createAccountDatabase(email, first_name, last_name, success.uid, accessToken)
                             .then(function (response) {
-                            resolve();
+                            resolve(email);
                         }).catch(function (error) {
-                            reject();
+                            reject(error);
                             console.log(error); //do something better here? Not sure what would cause this
                         });
                     });
                     innerPromise.then(function (response) {
-                        resolve(email);
+                        resolve(response);
                     }).catch(function (error) {
                         reject(error);
                         console.log(error); //do something better here? Not sure what would cause this
                     });
                 }
+                else {
+                    if (success) {
+                        resolve(email);
+                    }
+                }
+            }).catch(function (error) {
+                reject(error);
             });
         });
         return promise.then(function (response) {
@@ -1145,13 +1171,13 @@ var AuthenticationProvider = (function () {
                 if (response["familyName"] == "" || response["givenName"] == null || response["familyName"] == null || response["givenName"] == "") {
                     that.validation.requestDisplayNameValidation()
                         .then(function (nameResponse) {
-                        that.signInWithExternalCredentials(googleCredential, nameResponse.email, nameResponse.first, nameResponse.last)
+                        that.signInWithExternalCredentials(googleCredential, nameResponse.email, nameResponse.first, nameResponse.last, false, response.accessToken)
                             .then(function (response) { return resolve(nameResponse.email); })
                             .catch(function (error) { return reject(error); });
                     });
                 }
                 else {
-                    that.signInWithExternalCredentials(googleCredential, response["email"], response["givenName"], response["familyName"])
+                    that.signInWithExternalCredentials(googleCredential, response["email"], response["givenName"], response["familyName"], false, response.accessToken)
                         .then(function (newResponse) { return resolve(newResponse); })
                         .catch(function (error) { return reject(null); });
                 }
@@ -1510,7 +1536,7 @@ var TextPopoverPage = (function () {
     };
     TextPopoverPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-            selector: 'page-text-popover',template:/*ion-inline-start:"/workspace/MasterCoach/src/pages/Training/text-popover/text-popover.html"*/'<!--\n  Generated template for the TextPopoverPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-textarea class="popoverText"></ion-textarea>\n'/*ion-inline-end:"/workspace/MasterCoach/src/pages/Training/text-popover/text-popover.html"*/,
+            selector: 'page-text-popover',template:/*ion-inline-start:"/Users/jonahelbaz/Desktop/MasterCoach/src/pages/Training/text-popover/text-popover.html"*/'<!--\n  Generated template for the TextPopoverPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-textarea class="popoverText"></ion-textarea>\n'/*ion-inline-end:"/Users/jonahelbaz/Desktop/MasterCoach/src/pages/Training/text-popover/text-popover.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* NavParams */]])
     ], TextPopoverPage);
@@ -2393,23 +2419,23 @@ var AppModule = (function () {
                         { loadChildren: '../pages/Exercises/create-exercise/create-exercise.module#CreateExercisePageModule', name: 'CreateExercisePage', segment: 'create-exercise', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/Exercises/select-exercise-category/select-exercise-category.module#SelectExerciseCategoryPageModule', name: 'SelectExerciseCategoryPage', segment: 'select-exercise-category', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/Exercises/select-exercise-table-type/select-exercise-table-type.module#SelectExerciseTableTypePageModule', name: 'SelectExerciseTableTypePage', segment: 'select-exercise-table-type', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/HomeTabs/home/home.module#HomePageModule', name: 'HomePage', segment: 'home', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/HomeTabs/profile/profile.module#ProfilePageModule', name: 'ProfilePage', segment: 'profile', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/HomeTabs/home/home.module#HomePageModule', name: 'HomePage', segment: 'home', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/HomeTabs/tabs/tabs.module#TabsPageModule', name: 'TabsPage', segment: 'tabs', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/HomeTabs/tools/calculators/decathlon-calculator/decathlon-calculator.module#DecathlonCalculatorPageModule', name: 'DecathlonCalculatorPage', segment: 'decathlon-calculator', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/HomeTabs/tools/calculators/heptathlon-m-calculator/heptathlon-m-calculator.module#HeptathlonMCalculatorPageModule', name: 'HeptathlonMCalculatorPage', segment: 'heptathlon-m-calculator', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/HomeTabs/tools/calculators/heptathlon-w-calculator/heptathlon-w-calculator.module#HeptathlonWCalculatorPageModule', name: 'HeptathlonWCalculatorPage', segment: 'heptathlon-w-calculator', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/HomeTabs/tools/calculators/mercier/mercier.module#MercierPageModule', name: 'MercierPage', segment: 'mercier', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/HomeTabs/tools/calculators/pentathlon-m-calculator/pentathlon-m-calculator.module#PentathlonMCalculatorPageModule', name: 'PentathlonMCalculatorPage', segment: 'pentathlon-m-calculator', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/HomeTabs/tools/calculators/mercier/mercier.module#MercierPageModule', name: 'MercierPage', segment: 'mercier', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/HomeTabs/tools/calculators/pentathlon-w-calculator/pentathlon-w-calculator.module#PentathlonWCalculatorPageModule', name: 'PentathlonWCalculatorPage', segment: 'pentathlon-w-calculator', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/HomeTabs/tools/calculators/unit-converter/unit-converter.module#UnitConverterPageModule', name: 'UnitConverterPage', segment: 'unit-converter', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/HomeTabs/tools/gadgets/starting-gun/starting-gun.module#StartingGunPageModule', name: 'StartingGunPage', segment: 'starting-gun', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/HomeTabs/tools/gadgets/stopwatch/stopwatch.module#StopwatchPageModule', name: 'StopwatchPage', segment: 'stopwatch', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/HomeTabs/tools/utilities/utilities.module#UtilitiesModule', name: 'UtilitiesPage', segment: 'utilities', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/HomeTabs/tools/gadgets/stopwatch/stopwatch.module#StopwatchPageModule', name: 'StopwatchPage', segment: 'stopwatch', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/Logins/create-account/create-account.module#CreateAccountPageModule', name: 'CreateAccountPage', segment: 'create-account', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/Logins/forgot-password/forgot-password.module#ForgotPasswordPageModule', name: 'ForgotPasswordPage', segment: 'forgot-password', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/Logins/login/login.module#LoginPageModule', name: 'LoginPage', segment: 'login', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/Logins/standard-login/standard-login.module#StandardLoginPageModule', name: 'StandardLoginPage', segment: 'standard-login', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/Logins/login/login.module#LoginPageModule', name: 'LoginPage', segment: 'login', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/Training/create-training/create-training.module#CreateTrainingPageModule', name: 'CreateTrainingPage', segment: 'create-training', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/Training/text-popover/text-popover.module#TextPopoverPageModule', name: 'TextPopoverPage', segment: 'text-popover', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/view-training/view-training.module#ViewTrainingPageModule', name: 'ViewTrainingPage', segment: 'view-training', priority: 'low', defaultHistory: [] }
@@ -2597,7 +2623,7 @@ var RoutineCategory = (function () {
 
 /***/ }),
 
-/***/ 513:
+/***/ 516:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2614,12 +2640,12 @@ var MenuEvents = (function () {
 
 /***/ }),
 
-/***/ 514:
+/***/ 517:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return LabelBank; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__label__ = __webpack_require__(515);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__label__ = __webpack_require__(518);
 
 var LabelBank = (function () {
     function LabelBank() {
@@ -2646,7 +2672,7 @@ var LabelBank = (function () {
 
 /***/ }),
 
-/***/ 515:
+/***/ 518:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2881,7 +2907,7 @@ var MyApp = (function () {
         this.labels.updateFilteredTrainingList(this.training.listOfTrainings);
     };
     MyApp = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({template:/*ion-inline-start:"/workspace/MasterCoach/src/app/app.html"*/'<ion-menu [content]="content" type="reveal" id="mainCalendarMenu">\n    <ion-header>\n        <ion-toolbar>\n            <ion-item no-lines color="dark">\n                <ion-label style="font-size: 14px; color: white; padding-left: 10px;">Jonah Elbaz</ion-label>\n                <ion-select [(ngModel)]="this.calendarMenu.displayedYear" (ionChange)="this.setCalendarYear()">\n                    <ion-option *ngFor="let year of years">{{year}}</ion-option>\n                </ion-select>\n            </ion-item>\n        </ion-toolbar>\n    </ion-header>\n    <ion-content>\n        <ion-calendar></ion-calendar>\n        <!--<ion-calendar [ngClass]="displayFullCalendar ? \'showingCalendar\' : \'noDisplay\'" #calendar-->\n        <!--(swipe)="swipe($event, calendar)"-->\n        <!--(onMonthSelect)="onMonthSelect($event)"-->\n        <!--(onDaySelect)="onDaySelect($event)">-->\n        <!--</ion-calendar>-->\n\n           <ion-label class="menuSectionHeader" (click)="collapsable.filter.main = !collapsable.filter.main">\n                Filters\n               <ion-icon class="arrowIcon" item-left name="ios-arrow-forward" *ngIf="!collapsable.filter.main"></ion-icon>\n               <ion-icon class="arrowIcon" item-left name="ios-arrow-down" *ngIf="collapsable.filter.main"></ion-icon>\n            </ion-label>\n            <ion-list no-lines id="filterList" class="accordion-list" *ngIf="collapsable.filter.main">\n\n                <ion-label class="calendar-item filter" (click)="collapsable.filter.labelsFilterOpen = !collapsable.filter.labelsFilterOpen">\n                    Labels\n                </ion-label>\n                <div *ngIf="collapsable.filter.labelsFilterOpen">\n                    <ion-item *ngFor="let label of listOfLabels">\n                        <ion-label> {{label.getValue()}}</ion-label>\n                        <ion-checkbox (click)="updateLabelFilters(label)"></ion-checkbox>\n                    </ion-item>\n                </div>\n                <ion-label class="calendar-item filter" (click)="collapsable.filter.athleteFilterOpen = !collapsable.filter.athleteFilterOpen">\n                    Athlete\n                </ion-label>\n\n                <div *ngIf="collapsable.filter.athleteFilterOpen">\n                    <ion-item>\n                        <ion-label>Jonah Elbaz</ion-label>\n                        <ion-checkbox></ion-checkbox>\n                    </ion-item>\n                    <ion-item>\n                        <ion-label>Dylan Golow</ion-label>\n                        <ion-checkbox></ion-checkbox>\n                    </ion-item>\n                    <ion-item>\n                        <ion-label>Alex Stathis</ion-label>\n                        <ion-checkbox></ion-checkbox>\n                    </ion-item>\n                </div>\n            </ion-list>\n\n    </ion-content>\n    <ion-footer>\n    <ion-row>\n        <ion-col style="text-align: center; font-size: 25px;">\n            <ion-icon item-right name="md-share" class="share"></ion-icon>\n        </ion-col>\n        <ion-col style="text-align: center; font-size: 30px;">\n            <ion-icon item-right name="ios-download-outline" class="share"></ion-icon>\n        </ion-col>\n    </ion-row>\n        </ion-footer>\n</ion-menu>\n\n<ion-nav #content [root]="rootPage"></ion-nav>\n'/*ion-inline-end:"/workspace/MasterCoach/src/app/app.html"*/
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({template:/*ion-inline-start:"/Users/jonahelbaz/Desktop/MasterCoach/src/app/app.html"*/'<ion-menu [content]="content" type="reveal" id="mainCalendarMenu">\n    <ion-header>\n        <ion-toolbar>\n            <ion-item no-lines color="dark">\n                <ion-label style="font-size: 14px; color: white; padding-left: 10px;">Jonah Elbaz</ion-label>\n                <ion-select [(ngModel)]="this.calendarMenu.displayedYear" (ionChange)="this.setCalendarYear()">\n                    <ion-option *ngFor="let year of years">{{year}}</ion-option>\n                </ion-select>\n            </ion-item>\n        </ion-toolbar>\n    </ion-header>\n    <ion-content>\n        <ion-calendar></ion-calendar>\n        <!--<ion-calendar [ngClass]="displayFullCalendar ? \'showingCalendar\' : \'noDisplay\'" #calendar-->\n        <!--(swipe)="swipe($event, calendar)"-->\n        <!--(onMonthSelect)="onMonthSelect($event)"-->\n        <!--(onDaySelect)="onDaySelect($event)">-->\n        <!--</ion-calendar>-->\n\n           <ion-label class="menuSectionHeader" (click)="collapsable.filter.main = !collapsable.filter.main">\n                Filters\n               <ion-icon class="arrowIcon" item-left name="ios-arrow-forward" *ngIf="!collapsable.filter.main"></ion-icon>\n               <ion-icon class="arrowIcon" item-left name="ios-arrow-down" *ngIf="collapsable.filter.main"></ion-icon>\n            </ion-label>\n            <ion-list no-lines id="filterList" class="accordion-list" *ngIf="collapsable.filter.main">\n\n                <ion-label class="calendar-item filter" (click)="collapsable.filter.labelsFilterOpen = !collapsable.filter.labelsFilterOpen">\n                    Labels\n                </ion-label>\n                <div *ngIf="collapsable.filter.labelsFilterOpen">\n                    <ion-item *ngFor="let label of listOfLabels">\n                        <ion-label> {{label.getValue()}}</ion-label>\n                        <ion-checkbox (click)="updateLabelFilters(label)"></ion-checkbox>\n                    </ion-item>\n                </div>\n                <ion-label class="calendar-item filter" (click)="collapsable.filter.athleteFilterOpen = !collapsable.filter.athleteFilterOpen">\n                    Athlete\n                </ion-label>\n\n                <div *ngIf="collapsable.filter.athleteFilterOpen">\n                    <ion-item>\n                        <ion-label>Jonah Elbaz</ion-label>\n                        <ion-checkbox></ion-checkbox>\n                    </ion-item>\n                    <ion-item>\n                        <ion-label>Dylan Golow</ion-label>\n                        <ion-checkbox></ion-checkbox>\n                    </ion-item>\n                    <ion-item>\n                        <ion-label>Alex Stathis</ion-label>\n                        <ion-checkbox></ion-checkbox>\n                    </ion-item>\n                </div>\n            </ion-list>\n\n    </ion-content>\n    <ion-footer>\n    <ion-row>\n        <ion-col style="text-align: center; font-size: 25px;">\n            <ion-icon item-right name="md-share" class="share"></ion-icon>\n        </ion-col>\n        <ion-col style="text-align: center; font-size: 30px;">\n            <ion-icon item-right name="ios-download-outline" class="share"></ion-icon>\n        </ion-col>\n    </ion-row>\n        </ion-footer>\n</ion-menu>\n\n<ion-nav #content [root]="rootPage"></ion-nav>\n'/*ion-inline-end:"/Users/jonahelbaz/Desktop/MasterCoach/src/app/app.html"*/
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* Platform */], __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__["a" /* StatusBar */], __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__["a" /* SplashScreen */], __WEBPACK_IMPORTED_MODULE_4__ionic_native_keyboard__["a" /* Keyboard */], __WEBPACK_IMPORTED_MODULE_5__providers_menus_calendar_menu__["a" /* CalendarMenu */], __WEBPACK_IMPORTED_MODULE_6__providers_training_labels_labelProvider__["a" /* LabelProvider */], __WEBPACK_IMPORTED_MODULE_7__providers_training_trainings_trainingProvider__["a" /* TrainingProvider */]])
     ], MyApp);
@@ -3289,7 +3315,7 @@ var ToolsProvider = (function () {
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return LabelProvider; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__models_custom_survey_components_labels_label_bank__ = __webpack_require__(514);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__models_custom_survey_components_labels_label_bank__ = __webpack_require__(517);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -3365,7 +3391,7 @@ var Exercise = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__tools_tools__ = __webpack_require__(67);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__models_calendar_calendar_day__ = __webpack_require__(453);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__models_calendar_menu_events__ = __webpack_require__(513);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__models_calendar_menu_events__ = __webpack_require__(516);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__training_labels_labelProvider__ = __webpack_require__(89);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;

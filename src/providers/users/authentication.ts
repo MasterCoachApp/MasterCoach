@@ -3,7 +3,7 @@ import {AngularFireAuth} from "angularfire2/auth";
 import {AngularFireDatabase} from "angularfire2/database";
 import * as firebase from "firebase";
 import {Facebook} from "@ionic-native/facebook";
-import { GooglePlus } from '@ionic-native/google-plus';
+import {GooglePlus} from '@ionic-native/google-plus';
 import {ToolsProvider} from "../tools/tools";
 import {AlertController} from "ionic-angular";
 import {ValidationProvider} from "../tools/validations";
@@ -26,9 +26,9 @@ export class AuthenticationProvider {
 
             let auth = firebase.auth();
 
-            auth.sendPasswordResetEmail(emailAddress).then(function() {
+            auth.sendPasswordResetEmail(emailAddress).then(function () {
                 resolve("Success");
-            }).catch(function(error) {
+            }).catch(function (error) {
                 reject(error);
             });
         });
@@ -97,11 +97,11 @@ export class AuthenticationProvider {
 
     createAccountAuthentication(email: string, password: string, firstName: string, lastName: string) {
         let that = this;
-        let promise = new Promise( (resolve, reject) => {
+        let promise = new Promise((resolve, reject) => {
 
             that.dbAuth.auth.createUserWithEmailAndPassword(email, password).then(response => { //create account with firebase Authentication
-                let promise = new Promise( (resolve, reject) => {
-                    that.createAccountDatabase(email, firstName, lastName, response.uid).then(response =>{
+                let promise = new Promise((resolve, reject) => {
+                    that.createAccountDatabase(email, firstName, lastName, response.uid, null).then(response => {
                         resolve();
                     }).catch(error => {
                         reject();
@@ -114,7 +114,7 @@ export class AuthenticationProvider {
                     reject();
                     console.log(error); //do something better here? Not sure what would cause this
                 });
-            }).catch (error =>{
+            }).catch(error => {
                 reject(error.code);
             });
 
@@ -129,18 +129,20 @@ export class AuthenticationProvider {
 
 
     //attempt to add the created account to the real time database
-    createAccountDatabase(email: string, firstName: string, lastName: string, userId: string) {
+    createAccountDatabase(email: string, firstName: string, lastName: string, userId: string, fbUserId: string) {
         let that = this;
-        let promise = new Promise( (resolve, reject) => {
+        let promise = new Promise((resolve, reject) => {
             let newUser = { //store values in temporary object => should be modeled after real user object model
                 "Email": email,
                 "Last_name": lastName,
                 "First_name": firstName,
-                "UserId": userId
+                "UserId": userId,
+                "facebookId": fbUserId
             };
-            let ref = that.db.database.ref("Users/"+userId).set(
+            let ref = that.db.database.ref("Users/" + userId).set(
                 newUser
             ).then(response => {
+                //will fail if the user id already exists
                 resolve();
             });
             reject();
@@ -159,37 +161,77 @@ export class AuthenticationProvider {
     //   Media Authentication   ///
     //-------------------------///
 
+    checkForAccessId(fbUserId: string) {
+        let that = this;
+        let promise = new Promise((resolve, reject) => {
+            let ref = that.db.database.ref("Users");
+            ref.once('value', snapshot => {
+                let result = false;
+                snapshot.forEach(snap => {
+                    if (snap.child("facebookId").val() == fbUserId) {
+                        result = true;
+                    }
+                    return false;
+                });
+                console.log(result);
+                resolve(result);
+                return false;
+            });
+
+        });
+
+        return promise.then(response => {
+            return response;
+        }).catch(error => {
+            return error;
+        });
+    }
+
     advanceWithFacebook() {
         let that = this;
-        let promise = new Promise( (resolve, reject) => {
+        let promise = new Promise((resolve, reject) => {
             that.facebook.login(['email'])
-                .then( response => {
+                .then(response => {
                     if (response.status === 'connected') {
 
+                        let fbUserId = response.authResponse.userID;
                         const facebookCredential = firebase.auth.FacebookAuthProvider.credential(response.authResponse.accessToken);
 
                         that.facebook.api('me?fields=id,name,email,first_name,last_name', ['email']).then(apiResponse => {
-                            console.log(response);
-                            console.log('Good to see you, ' + apiResponse["first_name"] + " " + apiResponse["last_name"]);
-                            console.log('Facebook Id: ' + apiResponse.id);
-                            console.log('Email: ' + apiResponse.email);
 
-                            if(apiResponse["first_name"] == "" || apiResponse["first_name"] == null || apiResponse["last_name"] == null || apiResponse["last_name"] == "") {
-                                that.validation.requestDisplayNameValidation().then(nameResponse => {
-                                    that.signInWithExternalCredentials(facebookCredential, apiResponse.email, nameResponse.first, nameResponse.last, ).then(response => {
-                                        resolve(apiResponse.email);
-                                    }).catch(error =>{
-                                        reject(null);
+
+                            that.checkForAccessId(fbUserId).then(response => {
+                                this.tools.presentToast("bottom", response);
+
+                                if(response == false) {
+                                        //Creating a new profile
+                                    if (apiResponse["first_name"] == "" || apiResponse["first_name"] == null || apiResponse["last_name"] == null || apiResponse["last_name"] == "") {
+                                            that.signInWithExternalCredentials(facebookCredential, apiResponse.email, "Unknown", "Unknown", false, fbUserId).then(response => {
+                                                resolve(response);
+                                            }).catch(error => {
+                                                reject(error);
+                                            });
+                                    }
+                                    else {
+                                        that.signInWithExternalCredentials(facebookCredential, apiResponse["email"], apiResponse["first_name"], apiResponse["last_name"], false, fbUserId).then(response => {
+                                            resolve(response);
+                                        }).catch(error => {
+                                            reject(error);
+                                        });
+                                    }
+                                }
+
+                                else {
+                                    //Found the key so the user has signed in with facebook already
+                                    that.signInWithExternalCredentials(facebookCredential, apiResponse["email"], apiResponse["first_name"], apiResponse["last_name"], true, fbUserId).then(response => {
+                                        resolve(response);
+                                    }).catch(error => {
+                                        reject(error);
                                     });
-                                });
-                            }
-                            else {
-                                that.signInWithExternalCredentials(facebookCredential, apiResponse["email"], apiResponse["first_name"], apiResponse["last_name"], ).then(response => {
-                                    resolve(apiResponse['email']);
-                                }).catch(error => {
-                                    reject(null);
-                                });
-                            }
+                                }
+
+
+                            });
                         });
                     }
                 });
@@ -202,54 +244,47 @@ export class AuthenticationProvider {
         });
     }
 
-    signInWithExternalCredentials(credential, email, first_name, last_name) {
+    signInWithExternalCredentials(credential, email, first_name, last_name, continuing, accessToken) {
         let that = this;
-        let promise = new Promise( (resolve, reject) => {
+        let promise = new Promise((resolve, reject) => {
 
             that.dbAuth.auth.signInWithCredential(credential)
-                .then( success => {
-                    if(success.email == null) {
-                        that.validation.requestEmailVerification().then(emailResponse => {
-                            success.updateEmail(emailResponse).then(() => {
-                                let innerPromise = new Promise((resolve, reject) => {
-                                    that.createAccountDatabase(emailResponse, first_name, last_name, success.uid)
-                                        .then(response => {
-                                            resolve(emailResponse);
-                                        }).catch(error => {
-                                        reject();
-                                        console.log(error); //do something better here? Not sure what would cause this
-                                    });
-                                });
-                                innerPromise.then(response => {
-                                    this.storage.set('user-email', response);
-                                    resolve("Success");
-                                }).catch(error => {
-                                    reject(error);
-                                    console.log(error); //do something better here? Not sure what would cause this
-                                });
-                            }).catch(error => {
-                                console.log("Error updating email: " + error);
-                            });
-                        });
+                .then(success => {
 
-                    } else {
+                    if(!continuing) {
+
+                        if (success.email == null) { //no email found by facebook
+                            resolve("Error 2");
+                        }
+
                         let innerPromise = new Promise((resolve, reject) => {
-                            that.createAccountDatabase(email, first_name, last_name, success.uid)
-                                .then(response => {
-                                    resolve();
+
+                            that.createAccountDatabase(email, first_name, last_name, success.uid, accessToken)
+                                .then(() => {
+                                    resolve(email);
                                 }).catch(error => {
-                                reject();
+                                reject(error);
                                 console.log(error); //do something better here? Not sure what would cause this
                             });
                         });
+
                         innerPromise.then(response => {
-                            resolve(email);
+                            resolve(response);
                         }).catch(error => {
                             reject(error);
                             console.log(error); //do something better here? Not sure what would cause this
                         });
                     }
-                });
+
+                    else {
+
+                        if(success) {
+                            resolve(email);
+                        }
+                    }
+                }).catch(error => {
+                        reject(error);
+            });
         });
         return promise.then(response => {
             return response;
@@ -257,26 +292,27 @@ export class AuthenticationProvider {
             return error; //not sure what this would be
         });
     }
+
     // slightly different from advance with FB
     advanceWithGoogle() {
 
         let that = this;
-        let promise = new Promise( (resolve, reject) => {
+        let promise = new Promise((resolve, reject) => {
             that.google.login({webClientID: '736172868611-uo0ifja7fkisn2veblldbf1gj0veg9cd.apps.googleusercontent.com'})
-                .then( response => {
+                .then(response => {
 
                     const googleCredential = firebase.auth.GoogleAuthProvider.credential(response.idToken, response.accessToken);
 
-                    if(response["familyName"] == "" || response["givenName"] == null || response["familyName"] == null || response["givenName"] == "") {
+                    if (response["familyName"] == "" || response["givenName"] == null || response["familyName"] == null || response["givenName"] == "") {
 
                         that.validation.requestDisplayNameValidation()
                             .then(nameResponse => {
-                            that.signInWithExternalCredentials(googleCredential, nameResponse.email, nameResponse.first, nameResponse.last)
-                                .then(response => resolve(nameResponse.email))
-                                .catch(error => reject(error));
-                        });
+                                that.signInWithExternalCredentials(googleCredential, nameResponse.email, nameResponse.first, nameResponse.last, false, response.accessToken)
+                                    .then(response => resolve(nameResponse.email))
+                                    .catch(error => reject(error));
+                            });
                     } else {
-                        that.signInWithExternalCredentials(googleCredential, response["email"], response["givenName"], response["familyName"])
+                        that.signInWithExternalCredentials(googleCredential, response["email"], response["givenName"], response["familyName"],false,  response.accessToken)
                             .then(newResponse => resolve(newResponse))
                             .catch(error => reject(null));
                     }
