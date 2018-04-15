@@ -6,10 +6,25 @@ page-home {
   }
 
   .date {
-    font-size: 20px;
+    font-size: 28px;
+    text-align: left;
+    color: lighten(color($colors, dark), 30%);
   }
+
+  .monthHeader {
+    font-size: 16px;
+    background: none;
+    color: white;
+  }
+
+  .dateFont {
+    font-family: "Roboto";
+    font-style: normal;
+    font-weight: 400;
+  }
+
   .selectedDate {
-    font-size: 20px;
+    font-size: 28px;
     color: color($colors, primary);
   }
 
@@ -28,7 +43,7 @@ page-home {
     outline: 0;
     border: 0;
     background: none;
-    text-align: left;
+    text-align: center;
     height: 1.5em;
     opacity: .5;
     &:before {
@@ -43,7 +58,7 @@ page-home {
       height: 1px;
     }
     &:after {
-      background: color($colors, background);
+      background: #F5F6F8;
 
       content: attr(data-content);
       position: relative;
@@ -69,13 +84,15 @@ page-home {
 
     ion-fab-list button[ion-fab] {
       margin-top: 10px;
+      background-color: black;
+      text-shadow: grey 1px 0 10px;
 
       text-align: center;
       overflow: visible;
 
       div.label {
         background-color: transparent !important;
-        color: color($colors, light);
+        color: color($colors, dark);
         position: absolute;
         right: 48px;
         height: 24px;
@@ -83,13 +100,18 @@ page-home {
         padding: 5px 8px 5px 8px;
         margin-top: 8px;
         border-radius: 5px;
-        box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.14), 0 4px 5px rgba(0, 0, 0, 0.1);
+        //box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.14), 0 4px 5px rgba(0, 0, 0, 0.1);
+        text-shadow: grey 1px 0 10px;
       }
     }
 
     .button-inner {
       overflow: visible;
     }
+  }
+
+  .circleTab {
+    margin-bottom: 50px;
   }
 
   .categoryHeader {
@@ -102,10 +124,14 @@ page-home {
   }
 
   .trainingCard {
-    background-color: darken(color($colors, background), 5%);
+    background-color: white;
     width: 100%;
     border-radius: 10px;
     padding: 5px 5px 15px 8px;
+  }
+
+  .header {
+    color: darkred;
   }
 
 }

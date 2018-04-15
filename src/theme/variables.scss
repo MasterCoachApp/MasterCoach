@@ -53,11 +53,19 @@ $font-family: Helvetica, Arial, sans-serif;
 
 $facebook-logo: url('../assets/imgs/facebook_button_icon.svg') 6px 6px no-repeat;
 $google-logo: url('../assets/imgs/google_button_icon.svg') 6px 6px no-repeat;
+//$tabs-background: color($colors, dark);
+//$background-color: color($colors, background);
+//$text-color: color($colors, light);
+//$toolbar-background: color($colors, dark);
+//$alert-input-placeholder-color: white;
+
+
 $tabs-background: color($colors, dark);
-$background-color: color($colors, background);
-$text-color: color($colors, light);
+$background-color: #F5F6F8;
+$text-color: color($colors, dark);
 $toolbar-background: color($colors, dark);
 $alert-input-placeholder-color: white;
+
 
 //$popover-ios-width: 100%;
 //$popover-ios-height: 80%;

@@ -27,6 +27,7 @@ export class HomePage {
     monthInView: string = this.today.month;
     datesThisMonth: CalendarDay[] = [];
     listOfTrainings: Training[] = [];
+    fabClicked: boolean = false;
 
     constructor(public navCtrl: NavController, public app: App, public storage: Storage, public tools: ToolsProvider, public modalCtrl: ModalController, public user: UsersProvider, public menu: MenuController, public platform: Platform, public calMenu: CalendarMenu, public viewCtrl: ViewController, public training: TrainingProvider, public labels: LabelProvider) {
 
