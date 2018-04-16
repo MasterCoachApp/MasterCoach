@@ -67,7 +67,7 @@ var ExerciseTable = (function (_super) {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return UsersProvider; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_angularfire2_database__ = __webpack_require__(75);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__models_users_user__ = __webpack_require__(599);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__models_users_user__ = __webpack_require__(602);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -131,9 +131,9 @@ var UsersProvider = (function () {
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return TrainingProvider; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__models_custom_survey_components_trainings_pre_training__ = __webpack_require__(600);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__models_custom_survey_components_trainings_post_training__ = __webpack_require__(601);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__models_logging_training__ = __webpack_require__(454);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__models_custom_survey_components_trainings_pre_training__ = __webpack_require__(603);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__models_custom_survey_components_trainings_post_training__ = __webpack_require__(604);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__models_logging_training__ = __webpack_require__(456);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__users_users__ = __webpack_require__(156);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_angularfire2_database__ = __webpack_require__(75);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__models_logging_exercises_exercise__ = __webpack_require__(90);
@@ -355,99 +355,99 @@ webpackEmptyAsyncContext.id = 169;
 
 var map = {
 	"../pages/Exercises/add-exercise/add-exercise.module": [
-		667,
+		670,
 		22
 	],
 	"../pages/Exercises/create-exercise/create-exercise.module": [
-		668,
+		671,
 		21
 	],
 	"../pages/Exercises/select-exercise-category/select-exercise-category.module": [
-		669,
+		672,
 		20
 	],
 	"../pages/Exercises/select-exercise-table-type/select-exercise-table-type.module": [
-		670,
+		673,
 		19
 	],
 	"../pages/HomeTabs/home/home.module": [
-		671,
+		675,
 		18
 	],
 	"../pages/HomeTabs/profile/profile.module": [
-		672,
+		674,
 		17
 	],
 	"../pages/HomeTabs/tabs/tabs.module": [
-		673,
+		676,
 		16
 	],
 	"../pages/HomeTabs/tools/calculators/decathlon-calculator/decathlon-calculator.module": [
-		674,
+		677,
 		15
 	],
 	"../pages/HomeTabs/tools/calculators/heptathlon-m-calculator/heptathlon-m-calculator.module": [
-		675,
+		678,
 		14
 	],
 	"../pages/HomeTabs/tools/calculators/heptathlon-w-calculator/heptathlon-w-calculator.module": [
-		676,
+		679,
 		13
 	],
 	"../pages/HomeTabs/tools/calculators/mercier/mercier.module": [
-		677,
+		680,
 		12
 	],
 	"../pages/HomeTabs/tools/calculators/pentathlon-m-calculator/pentathlon-m-calculator.module": [
-		678,
+		681,
 		11
 	],
 	"../pages/HomeTabs/tools/calculators/pentathlon-w-calculator/pentathlon-w-calculator.module": [
-		679,
+		683,
 		10
 	],
 	"../pages/HomeTabs/tools/calculators/unit-converter/unit-converter.module": [
-		680,
+		682,
 		9
 	],
 	"../pages/HomeTabs/tools/gadgets/starting-gun/starting-gun.module": [
-		681,
+		684,
 		8
 	],
 	"../pages/HomeTabs/tools/gadgets/stopwatch/stopwatch.module": [
-		682,
+		685,
 		7
 	],
 	"../pages/HomeTabs/tools/utilities/utilities.module": [
-		683,
+		686,
 		6
 	],
 	"../pages/Logins/create-account/create-account.module": [
-		684,
+		687,
 		2
 	],
 	"../pages/Logins/forgot-password/forgot-password.module": [
-		685,
+		688,
 		5
 	],
 	"../pages/Logins/login/login.module": [
-		686,
+		689,
 		1
 	],
 	"../pages/Logins/standard-login/standard-login.module": [
-		687,
+		690,
 		4
 	],
 	"../pages/Training/create-training/create-training.module": [
-		688,
+		692,
 		0
 	],
 	"../pages/Training/text-popover/text-popover.module": [
-		689,
+		691,
 		23
 	],
 	"../pages/view-training/view-training.module": [
-		690,
+		693,
 		3
 	]
 };
@@ -665,7 +665,7 @@ var ExerciseSet = (function () {
 
 /***/ }),
 
-/***/ 283:
+/***/ 284:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -781,19 +781,19 @@ var ValidationProvider = (function () {
 
 /***/ }),
 
-/***/ 448:
+/***/ 450:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ExerciseProvider; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__models_logging_exercises_exercise_bank__ = __webpack_require__(500);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__models_logging_exercises_exercise_bank__ = __webpack_require__(502);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__models_logging_create_training_exercise_category_bank__ = __webpack_require__(213);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__models_logging_create_training_exercise_table_type_bank__ = __webpack_require__(215);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__models_logging_routines_routine_bank__ = __webpack_require__(501);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__models_logging_routines_routine__ = __webpack_require__(502);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__models_logging_routines_routine_bank__ = __webpack_require__(503);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__models_logging_routines_routine__ = __webpack_require__(504);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__models_logging_create_training_exercise_table__ = __webpack_require__(117);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__models_logging_routines_routine_category_bank__ = __webpack_require__(503);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__models_logging_routines_routine_category_bank__ = __webpack_require__(505);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -885,21 +885,21 @@ var ExerciseProvider = (function () {
 
 /***/ }),
 
-/***/ 449:
+/***/ 451:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AuthenticationProvider; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_angularfire2_auth__ = __webpack_require__(268);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_angularfire2_auth__ = __webpack_require__(269);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_angularfire2_database__ = __webpack_require__(75);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_firebase__ = __webpack_require__(605);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_firebase__ = __webpack_require__(608);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_firebase___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_firebase__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ionic_native_facebook__ = __webpack_require__(281);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__ionic_native_google_plus__ = __webpack_require__(282);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ionic_native_facebook__ = __webpack_require__(282);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__ionic_native_google_plus__ = __webpack_require__(283);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__tools_tools__ = __webpack_require__(67);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_ionic_angular__ = __webpack_require__(37);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__tools_validations__ = __webpack_require__(283);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__tools_validations__ = __webpack_require__(284);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__ionic_storage__ = __webpack_require__(155);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -1174,7 +1174,7 @@ var AuthenticationProvider = (function () {
 
 /***/ }),
 
-/***/ 450:
+/***/ 452:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1332,7 +1332,7 @@ var MenPointsProvider = (function () {
 
 /***/ }),
 
-/***/ 451:
+/***/ 453:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1473,7 +1473,7 @@ var WomenPointsProvider = (function () {
 
 /***/ }),
 
-/***/ 452:
+/***/ 454:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1521,7 +1521,7 @@ var TextPopoverPage = (function () {
 
 /***/ }),
 
-/***/ 453:
+/***/ 455:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1595,7 +1595,7 @@ var CalendarDay = (function () {
 
 /***/ }),
 
-/***/ 454:
+/***/ 456:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1670,7 +1670,7 @@ var Training = (function () {
 
 /***/ }),
 
-/***/ 455:
+/***/ 457:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2295,13 +2295,13 @@ var MercierPointsProvider = (function () {
 
 /***/ }),
 
-/***/ 456:
+/***/ 458:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__ = __webpack_require__(457);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__app_module__ = __webpack_require__(476);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__ = __webpack_require__(459);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__app_module__ = __webpack_require__(478);
 
 
 Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* platformBrowserDynamic */])().bootstrapModule(__WEBPACK_IMPORTED_MODULE_1__app_module__["a" /* AppModule */]);
@@ -2309,7 +2309,7 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 
 /***/ }),
 
-/***/ 476:
+/***/ 478:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2317,31 +2317,31 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_platform_browser__ = __webpack_require__(46);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(37);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__app_component__ = __webpack_require__(659);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ionic_native_status_bar__ = __webpack_require__(323);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__ionic_native_splash_screen__ = __webpack_require__(324);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__app_component__ = __webpack_require__(662);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ionic_native_status_bar__ = __webpack_require__(324);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__ionic_native_splash_screen__ = __webpack_require__(325);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__ionic_storage__ = __webpack_require__(155);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_angularfire2__ = __webpack_require__(49);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_angularfire2_database__ = __webpack_require__(75);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__firebase_credentials__ = __webpack_require__(660);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10_angularfire2_auth__ = __webpack_require__(268);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__ionic_native_facebook__ = __webpack_require__(281);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__firebase_credentials__ = __webpack_require__(663);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10_angularfire2_auth__ = __webpack_require__(269);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__ionic_native_facebook__ = __webpack_require__(282);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__ionic_native_keyboard__ = __webpack_require__(158);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__providers_users_users__ = __webpack_require__(156);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__providers_tools_tools__ = __webpack_require__(67);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__providers_users_authentication__ = __webpack_require__(449);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__providers_tools_validations__ = __webpack_require__(283);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__providers_users_authentication__ = __webpack_require__(451);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__providers_tools_validations__ = __webpack_require__(284);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__providers_menus_calendar_menu__ = __webpack_require__(91);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__ionic_native_date_picker__ = __webpack_require__(218);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__ionic_native_google_plus__ = __webpack_require__(282);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__pages_Training_text_popover_text_popover__ = __webpack_require__(452);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__ionic_native_google_plus__ = __webpack_require__(283);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__pages_Training_text_popover_text_popover__ = __webpack_require__(454);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__providers_training_labels_labelProvider__ = __webpack_require__(89);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__providers_training_trainings_trainingProvider__ = __webpack_require__(157);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__providers_training_exercises_exerciseProvider__ = __webpack_require__(448);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_24_ionic3_calendar_en__ = __webpack_require__(661);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_25__providers_tools_calculators_mens__ = __webpack_require__(450);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_26__providers_tools_calculators_mercier__ = __webpack_require__(455);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_27__providers_tools_calculators_womens__ = __webpack_require__(451);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__providers_training_exercises_exerciseProvider__ = __webpack_require__(450);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_24_ionic3_calendar_en__ = __webpack_require__(664);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_25__providers_tools_calculators_mens__ = __webpack_require__(452);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_26__providers_tools_calculators_mercier__ = __webpack_require__(457);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_27__providers_tools_calculators_womens__ = __webpack_require__(453);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -2393,16 +2393,16 @@ var AppModule = (function () {
                         { loadChildren: '../pages/Exercises/create-exercise/create-exercise.module#CreateExercisePageModule', name: 'CreateExercisePage', segment: 'create-exercise', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/Exercises/select-exercise-category/select-exercise-category.module#SelectExerciseCategoryPageModule', name: 'SelectExerciseCategoryPage', segment: 'select-exercise-category', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/Exercises/select-exercise-table-type/select-exercise-table-type.module#SelectExerciseTableTypePageModule', name: 'SelectExerciseTableTypePage', segment: 'select-exercise-table-type', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/HomeTabs/home/home.module#HomePageModule', name: 'HomePage', segment: 'home', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/HomeTabs/profile/profile.module#ProfilePageModule', name: 'ProfilePage', segment: 'profile', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/HomeTabs/home/home.module#HomePageModule', name: 'HomePage', segment: 'home', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/HomeTabs/tabs/tabs.module#TabsPageModule', name: 'TabsPage', segment: 'tabs', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/HomeTabs/tools/calculators/decathlon-calculator/decathlon-calculator.module#DecathlonCalculatorPageModule', name: 'DecathlonCalculatorPage', segment: 'decathlon-calculator', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/HomeTabs/tools/calculators/heptathlon-m-calculator/heptathlon-m-calculator.module#HeptathlonMCalculatorPageModule', name: 'HeptathlonMCalculatorPage', segment: 'heptathlon-m-calculator', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/HomeTabs/tools/calculators/heptathlon-w-calculator/heptathlon-w-calculator.module#HeptathlonWCalculatorPageModule', name: 'HeptathlonWCalculatorPage', segment: 'heptathlon-w-calculator', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/HomeTabs/tools/calculators/mercier/mercier.module#MercierPageModule', name: 'MercierPage', segment: 'mercier', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/HomeTabs/tools/calculators/pentathlon-m-calculator/pentathlon-m-calculator.module#PentathlonMCalculatorPageModule', name: 'PentathlonMCalculatorPage', segment: 'pentathlon-m-calculator', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/HomeTabs/tools/calculators/pentathlon-w-calculator/pentathlon-w-calculator.module#PentathlonWCalculatorPageModule', name: 'PentathlonWCalculatorPage', segment: 'pentathlon-w-calculator', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/HomeTabs/tools/calculators/unit-converter/unit-converter.module#UnitConverterPageModule', name: 'UnitConverterPage', segment: 'unit-converter', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/HomeTabs/tools/calculators/pentathlon-w-calculator/pentathlon-w-calculator.module#PentathlonWCalculatorPageModule', name: 'PentathlonWCalculatorPage', segment: 'pentathlon-w-calculator', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/HomeTabs/tools/gadgets/starting-gun/starting-gun.module#StartingGunPageModule', name: 'StartingGunPage', segment: 'starting-gun', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/HomeTabs/tools/gadgets/stopwatch/stopwatch.module#StopwatchPageModule', name: 'StopwatchPage', segment: 'stopwatch', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/HomeTabs/tools/utilities/utilities.module#UtilitiesModule', name: 'UtilitiesPage', segment: 'utilities', priority: 'low', defaultHistory: [] },
@@ -2410,8 +2410,8 @@ var AppModule = (function () {
                         { loadChildren: '../pages/Logins/forgot-password/forgot-password.module#ForgotPasswordPageModule', name: 'ForgotPasswordPage', segment: 'forgot-password', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/Logins/login/login.module#LoginPageModule', name: 'LoginPage', segment: 'login', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/Logins/standard-login/standard-login.module#StandardLoginPageModule', name: 'StandardLoginPage', segment: 'standard-login', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/Training/create-training/create-training.module#CreateTrainingPageModule', name: 'CreateTrainingPage', segment: 'create-training', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/Training/text-popover/text-popover.module#TextPopoverPageModule', name: 'TextPopoverPage', segment: 'text-popover', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/Training/create-training/create-training.module#CreateTrainingPageModule', name: 'CreateTrainingPage', segment: 'create-training', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/view-training/view-training.module#ViewTrainingPageModule', name: 'ViewTrainingPage', segment: 'view-training', priority: 'low', defaultHistory: [] }
                     ]
                 }),
@@ -2459,7 +2459,7 @@ var AppModule = (function () {
 
 /***/ }),
 
-/***/ 500:
+/***/ 502:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2519,7 +2519,7 @@ var ExerciseBank = (function () {
 
 /***/ }),
 
-/***/ 501:
+/***/ 503:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2538,7 +2538,7 @@ var RoutineBank = (function () {
 
 /***/ }),
 
-/***/ 502:
+/***/ 504:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2556,12 +2556,12 @@ var Routine = (function () {
 
 /***/ }),
 
-/***/ 503:
+/***/ 505:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return RoutineCategoryBank; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__routine_category__ = __webpack_require__(504);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__routine_category__ = __webpack_require__(506);
 
 var RoutineCategoryBank = (function () {
     function RoutineCategoryBank() {
@@ -2579,7 +2579,7 @@ var RoutineCategoryBank = (function () {
 
 /***/ }),
 
-/***/ 504:
+/***/ 506:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2597,7 +2597,7 @@ var RoutineCategory = (function () {
 
 /***/ }),
 
-/***/ 513:
+/***/ 518:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2614,12 +2614,12 @@ var MenuEvents = (function () {
 
 /***/ }),
 
-/***/ 514:
+/***/ 519:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return LabelBank; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__label__ = __webpack_require__(515);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__label__ = __webpack_require__(520);
 
 var LabelBank = (function () {
     function LabelBank() {
@@ -2646,7 +2646,7 @@ var LabelBank = (function () {
 
 /***/ }),
 
-/***/ 515:
+/***/ 520:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2667,7 +2667,7 @@ var Label = (function () {
 
 /***/ }),
 
-/***/ 599:
+/***/ 602:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2686,7 +2686,7 @@ var User = (function () {
 
 /***/ }),
 
-/***/ 600:
+/***/ 603:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2752,7 +2752,7 @@ var PreTraining = (function () {
 
 /***/ }),
 
-/***/ 601:
+/***/ 604:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2798,15 +2798,15 @@ var PostTraining = (function () {
 
 /***/ }),
 
-/***/ 659:
+/***/ 662:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MyApp; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(37);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__ = __webpack_require__(323);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__ = __webpack_require__(324);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__ = __webpack_require__(324);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__ = __webpack_require__(325);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ionic_native_keyboard__ = __webpack_require__(158);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__providers_menus_calendar_menu__ = __webpack_require__(91);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__providers_training_labels_labelProvider__ = __webpack_require__(89);
@@ -2892,7 +2892,7 @@ var MyApp = (function () {
 
 /***/ }),
 
-/***/ 660:
+/***/ 663:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2909,254 +2909,256 @@ var FIREBASE_CONFIG = {
 
 /***/ }),
 
-/***/ 664:
+/***/ 667:
 /***/ (function(module, exports, __webpack_require__) {
 
 var map = {
-	"./af": 326,
-	"./af.js": 326,
-	"./ar": 327,
-	"./ar-dz": 328,
-	"./ar-dz.js": 328,
-	"./ar-kw": 329,
-	"./ar-kw.js": 329,
-	"./ar-ly": 330,
-	"./ar-ly.js": 330,
-	"./ar-ma": 331,
-	"./ar-ma.js": 331,
-	"./ar-sa": 332,
-	"./ar-sa.js": 332,
-	"./ar-tn": 333,
-	"./ar-tn.js": 333,
-	"./ar.js": 327,
-	"./az": 334,
-	"./az.js": 334,
-	"./be": 335,
-	"./be.js": 335,
-	"./bg": 336,
-	"./bg.js": 336,
-	"./bm": 337,
-	"./bm.js": 337,
-	"./bn": 338,
-	"./bn.js": 338,
-	"./bo": 339,
-	"./bo.js": 339,
-	"./br": 340,
-	"./br.js": 340,
-	"./bs": 341,
-	"./bs.js": 341,
-	"./ca": 342,
-	"./ca.js": 342,
-	"./cs": 343,
-	"./cs.js": 343,
-	"./cv": 344,
-	"./cv.js": 344,
-	"./cy": 345,
-	"./cy.js": 345,
-	"./da": 346,
-	"./da.js": 346,
-	"./de": 347,
-	"./de-at": 348,
-	"./de-at.js": 348,
-	"./de-ch": 349,
-	"./de-ch.js": 349,
-	"./de.js": 347,
-	"./dv": 350,
-	"./dv.js": 350,
-	"./el": 351,
-	"./el.js": 351,
-	"./en-au": 352,
-	"./en-au.js": 352,
-	"./en-ca": 353,
-	"./en-ca.js": 353,
-	"./en-gb": 354,
-	"./en-gb.js": 354,
-	"./en-ie": 355,
-	"./en-ie.js": 355,
-	"./en-il": 356,
-	"./en-il.js": 356,
-	"./en-nz": 357,
-	"./en-nz.js": 357,
-	"./eo": 358,
-	"./eo.js": 358,
-	"./es": 359,
-	"./es-do": 360,
-	"./es-do.js": 360,
-	"./es-us": 361,
-	"./es-us.js": 361,
-	"./es.js": 359,
-	"./et": 362,
-	"./et.js": 362,
-	"./eu": 363,
-	"./eu.js": 363,
-	"./fa": 364,
-	"./fa.js": 364,
-	"./fi": 365,
-	"./fi.js": 365,
-	"./fo": 366,
-	"./fo.js": 366,
-	"./fr": 367,
-	"./fr-ca": 368,
-	"./fr-ca.js": 368,
-	"./fr-ch": 369,
-	"./fr-ch.js": 369,
-	"./fr.js": 367,
-	"./fy": 370,
-	"./fy.js": 370,
-	"./gd": 371,
-	"./gd.js": 371,
-	"./gl": 372,
-	"./gl.js": 372,
-	"./gom-latn": 373,
-	"./gom-latn.js": 373,
-	"./gu": 374,
-	"./gu.js": 374,
-	"./he": 375,
-	"./he.js": 375,
-	"./hi": 376,
-	"./hi.js": 376,
-	"./hr": 377,
-	"./hr.js": 377,
-	"./hu": 378,
-	"./hu.js": 378,
-	"./hy-am": 379,
-	"./hy-am.js": 379,
-	"./id": 380,
-	"./id.js": 380,
-	"./is": 381,
-	"./is.js": 381,
-	"./it": 382,
-	"./it.js": 382,
-	"./ja": 383,
-	"./ja.js": 383,
-	"./jv": 384,
-	"./jv.js": 384,
-	"./ka": 385,
-	"./ka.js": 385,
-	"./kk": 386,
-	"./kk.js": 386,
-	"./km": 387,
-	"./km.js": 387,
-	"./kn": 388,
-	"./kn.js": 388,
-	"./ko": 389,
-	"./ko.js": 389,
-	"./ky": 390,
-	"./ky.js": 390,
-	"./lb": 391,
-	"./lb.js": 391,
-	"./lo": 392,
-	"./lo.js": 392,
-	"./lt": 393,
-	"./lt.js": 393,
-	"./lv": 394,
-	"./lv.js": 394,
-	"./me": 395,
-	"./me.js": 395,
-	"./mi": 396,
-	"./mi.js": 396,
-	"./mk": 397,
-	"./mk.js": 397,
-	"./ml": 398,
-	"./ml.js": 398,
-	"./mr": 399,
-	"./mr.js": 399,
-	"./ms": 400,
-	"./ms-my": 401,
-	"./ms-my.js": 401,
-	"./ms.js": 400,
-	"./mt": 402,
-	"./mt.js": 402,
-	"./my": 403,
-	"./my.js": 403,
-	"./nb": 404,
-	"./nb.js": 404,
-	"./ne": 405,
-	"./ne.js": 405,
-	"./nl": 406,
-	"./nl-be": 407,
-	"./nl-be.js": 407,
-	"./nl.js": 406,
-	"./nn": 408,
-	"./nn.js": 408,
-	"./pa-in": 409,
-	"./pa-in.js": 409,
-	"./pl": 410,
-	"./pl.js": 410,
-	"./pt": 411,
-	"./pt-br": 412,
-	"./pt-br.js": 412,
-	"./pt.js": 411,
-	"./ro": 413,
-	"./ro.js": 413,
-	"./ru": 414,
-	"./ru.js": 414,
-	"./sd": 415,
-	"./sd.js": 415,
-	"./se": 416,
-	"./se.js": 416,
-	"./si": 417,
-	"./si.js": 417,
-	"./sk": 418,
-	"./sk.js": 418,
-	"./sl": 419,
-	"./sl.js": 419,
-	"./sq": 420,
-	"./sq.js": 420,
-	"./sr": 421,
-	"./sr-cyrl": 422,
-	"./sr-cyrl.js": 422,
-	"./sr.js": 421,
-	"./ss": 423,
-	"./ss.js": 423,
-	"./sv": 424,
-	"./sv.js": 424,
-	"./sw": 425,
-	"./sw.js": 425,
-	"./ta": 426,
-	"./ta.js": 426,
-	"./te": 427,
-	"./te.js": 427,
-	"./tet": 428,
-	"./tet.js": 428,
-	"./tg": 429,
-	"./tg.js": 429,
-	"./th": 430,
-	"./th.js": 430,
-	"./tl-ph": 431,
-	"./tl-ph.js": 431,
-	"./tlh": 432,
-	"./tlh.js": 432,
-	"./tr": 433,
-	"./tr.js": 433,
-	"./tzl": 434,
-	"./tzl.js": 434,
-	"./tzm": 435,
-	"./tzm-latn": 436,
-	"./tzm-latn.js": 436,
-	"./tzm.js": 435,
-	"./ug-cn": 437,
-	"./ug-cn.js": 437,
-	"./uk": 438,
-	"./uk.js": 438,
-	"./ur": 439,
-	"./ur.js": 439,
-	"./uz": 440,
-	"./uz-latn": 441,
-	"./uz-latn.js": 441,
-	"./uz.js": 440,
-	"./vi": 442,
-	"./vi.js": 442,
-	"./x-pseudo": 443,
-	"./x-pseudo.js": 443,
-	"./yo": 444,
-	"./yo.js": 444,
-	"./zh-cn": 445,
-	"./zh-cn.js": 445,
-	"./zh-hk": 446,
-	"./zh-hk.js": 446,
-	"./zh-tw": 447,
-	"./zh-tw.js": 447
+	"./af": 327,
+	"./af.js": 327,
+	"./ar": 328,
+	"./ar-dz": 329,
+	"./ar-dz.js": 329,
+	"./ar-kw": 330,
+	"./ar-kw.js": 330,
+	"./ar-ly": 331,
+	"./ar-ly.js": 331,
+	"./ar-ma": 332,
+	"./ar-ma.js": 332,
+	"./ar-sa": 333,
+	"./ar-sa.js": 333,
+	"./ar-tn": 334,
+	"./ar-tn.js": 334,
+	"./ar.js": 328,
+	"./az": 335,
+	"./az.js": 335,
+	"./be": 336,
+	"./be.js": 336,
+	"./bg": 337,
+	"./bg.js": 337,
+	"./bm": 338,
+	"./bm.js": 338,
+	"./bn": 339,
+	"./bn.js": 339,
+	"./bo": 340,
+	"./bo.js": 340,
+	"./br": 341,
+	"./br.js": 341,
+	"./bs": 342,
+	"./bs.js": 342,
+	"./ca": 343,
+	"./ca.js": 343,
+	"./cs": 344,
+	"./cs.js": 344,
+	"./cv": 345,
+	"./cv.js": 345,
+	"./cy": 346,
+	"./cy.js": 346,
+	"./da": 347,
+	"./da.js": 347,
+	"./de": 348,
+	"./de-at": 349,
+	"./de-at.js": 349,
+	"./de-ch": 350,
+	"./de-ch.js": 350,
+	"./de.js": 348,
+	"./dv": 351,
+	"./dv.js": 351,
+	"./el": 352,
+	"./el.js": 352,
+	"./en-au": 353,
+	"./en-au.js": 353,
+	"./en-ca": 354,
+	"./en-ca.js": 354,
+	"./en-gb": 355,
+	"./en-gb.js": 355,
+	"./en-ie": 356,
+	"./en-ie.js": 356,
+	"./en-il": 357,
+	"./en-il.js": 357,
+	"./en-nz": 358,
+	"./en-nz.js": 358,
+	"./eo": 359,
+	"./eo.js": 359,
+	"./es": 360,
+	"./es-do": 361,
+	"./es-do.js": 361,
+	"./es-us": 362,
+	"./es-us.js": 362,
+	"./es.js": 360,
+	"./et": 363,
+	"./et.js": 363,
+	"./eu": 364,
+	"./eu.js": 364,
+	"./fa": 365,
+	"./fa.js": 365,
+	"./fi": 366,
+	"./fi.js": 366,
+	"./fo": 367,
+	"./fo.js": 367,
+	"./fr": 368,
+	"./fr-ca": 369,
+	"./fr-ca.js": 369,
+	"./fr-ch": 370,
+	"./fr-ch.js": 370,
+	"./fr.js": 368,
+	"./fy": 371,
+	"./fy.js": 371,
+	"./gd": 372,
+	"./gd.js": 372,
+	"./gl": 373,
+	"./gl.js": 373,
+	"./gom-latn": 374,
+	"./gom-latn.js": 374,
+	"./gu": 375,
+	"./gu.js": 375,
+	"./he": 376,
+	"./he.js": 376,
+	"./hi": 377,
+	"./hi.js": 377,
+	"./hr": 378,
+	"./hr.js": 378,
+	"./hu": 379,
+	"./hu.js": 379,
+	"./hy-am": 380,
+	"./hy-am.js": 380,
+	"./id": 381,
+	"./id.js": 381,
+	"./is": 382,
+	"./is.js": 382,
+	"./it": 383,
+	"./it.js": 383,
+	"./ja": 384,
+	"./ja.js": 384,
+	"./jv": 385,
+	"./jv.js": 385,
+	"./ka": 386,
+	"./ka.js": 386,
+	"./kk": 387,
+	"./kk.js": 387,
+	"./km": 388,
+	"./km.js": 388,
+	"./kn": 389,
+	"./kn.js": 389,
+	"./ko": 390,
+	"./ko.js": 390,
+	"./ky": 391,
+	"./ky.js": 391,
+	"./lb": 392,
+	"./lb.js": 392,
+	"./lo": 393,
+	"./lo.js": 393,
+	"./lt": 394,
+	"./lt.js": 394,
+	"./lv": 395,
+	"./lv.js": 395,
+	"./me": 396,
+	"./me.js": 396,
+	"./mi": 397,
+	"./mi.js": 397,
+	"./mk": 398,
+	"./mk.js": 398,
+	"./ml": 399,
+	"./ml.js": 399,
+	"./mn": 400,
+	"./mn.js": 400,
+	"./mr": 401,
+	"./mr.js": 401,
+	"./ms": 402,
+	"./ms-my": 403,
+	"./ms-my.js": 403,
+	"./ms.js": 402,
+	"./mt": 404,
+	"./mt.js": 404,
+	"./my": 405,
+	"./my.js": 405,
+	"./nb": 406,
+	"./nb.js": 406,
+	"./ne": 407,
+	"./ne.js": 407,
+	"./nl": 408,
+	"./nl-be": 409,
+	"./nl-be.js": 409,
+	"./nl.js": 408,
+	"./nn": 410,
+	"./nn.js": 410,
+	"./pa-in": 411,
+	"./pa-in.js": 411,
+	"./pl": 412,
+	"./pl.js": 412,
+	"./pt": 413,
+	"./pt-br": 414,
+	"./pt-br.js": 414,
+	"./pt.js": 413,
+	"./ro": 415,
+	"./ro.js": 415,
+	"./ru": 416,
+	"./ru.js": 416,
+	"./sd": 417,
+	"./sd.js": 417,
+	"./se": 418,
+	"./se.js": 418,
+	"./si": 419,
+	"./si.js": 419,
+	"./sk": 420,
+	"./sk.js": 420,
+	"./sl": 421,
+	"./sl.js": 421,
+	"./sq": 422,
+	"./sq.js": 422,
+	"./sr": 423,
+	"./sr-cyrl": 424,
+	"./sr-cyrl.js": 424,
+	"./sr.js": 423,
+	"./ss": 425,
+	"./ss.js": 425,
+	"./sv": 426,
+	"./sv.js": 426,
+	"./sw": 427,
+	"./sw.js": 427,
+	"./ta": 428,
+	"./ta.js": 428,
+	"./te": 429,
+	"./te.js": 429,
+	"./tet": 430,
+	"./tet.js": 430,
+	"./tg": 431,
+	"./tg.js": 431,
+	"./th": 432,
+	"./th.js": 432,
+	"./tl-ph": 433,
+	"./tl-ph.js": 433,
+	"./tlh": 434,
+	"./tlh.js": 434,
+	"./tr": 435,
+	"./tr.js": 435,
+	"./tzl": 436,
+	"./tzl.js": 436,
+	"./tzm": 437,
+	"./tzm-latn": 438,
+	"./tzm-latn.js": 438,
+	"./tzm.js": 437,
+	"./ug-cn": 439,
+	"./ug-cn.js": 439,
+	"./uk": 440,
+	"./uk.js": 440,
+	"./ur": 441,
+	"./ur.js": 441,
+	"./uz": 442,
+	"./uz-latn": 443,
+	"./uz-latn.js": 443,
+	"./uz.js": 442,
+	"./vi": 444,
+	"./vi.js": 444,
+	"./x-pseudo": 445,
+	"./x-pseudo.js": 445,
+	"./yo": 446,
+	"./yo.js": 446,
+	"./zh-cn": 447,
+	"./zh-cn.js": 447,
+	"./zh-hk": 448,
+	"./zh-hk.js": 448,
+	"./zh-tw": 449,
+	"./zh-tw.js": 449
 };
 function webpackContext(req) {
 	return __webpack_require__(webpackContextResolve(req));
@@ -3172,7 +3174,7 @@ webpackContext.keys = function webpackContextKeys() {
 };
 webpackContext.resolve = webpackContextResolve;
 module.exports = webpackContext;
-webpackContext.id = 664;
+webpackContext.id = 667;
 
 /***/ }),
 
@@ -3289,7 +3291,7 @@ var ToolsProvider = (function () {
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return LabelProvider; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__models_custom_survey_components_labels_label_bank__ = __webpack_require__(514);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__models_custom_survey_components_labels_label_bank__ = __webpack_require__(519);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -3364,8 +3366,8 @@ var Exercise = (function () {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CalendarMenu; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__tools_tools__ = __webpack_require__(67);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__models_calendar_calendar_day__ = __webpack_require__(453);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__models_calendar_menu_events__ = __webpack_require__(513);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__models_calendar_calendar_day__ = __webpack_require__(455);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__models_calendar_menu_events__ = __webpack_require__(518);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__training_labels_labelProvider__ = __webpack_require__(89);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -3464,5 +3466,5 @@ var CalendarMenu = (function () {
 
 /***/ })
 
-},[456]);
+},[458]);
 //# sourceMappingURL=main.js.map
